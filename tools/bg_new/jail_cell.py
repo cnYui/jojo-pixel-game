@@ -1,4 +1,4 @@
-"""【草稿，还没接进 bg_jojo.py、没跑构建自检、没进游戏】预览：python -B tools\\bg_new\\jail_cell.py → _preview\\jail_cell_solo.png
+"""预览：python -B tools\\bg_new\\jail_cell.py → _preview\\jail_cell_solo.png
 
 序章拘留所（游戏层重画，2026-10-10 主代理）：房间透视、所有物品的位置和原工程 A.jail_cell 一样
 （调查点、伸手坐标、铁栏 6 张 pick、fgDepth 144 都不用改），每样东西画细：
@@ -466,7 +466,11 @@ def export(ex, BJ):
     if ex.check_on:
         for k_ in (0, 10, 13, 30, 47):
             t = k_ / 12.0
-            ex.checked('牢房 t=%.3f(k=%d) 导出 vs 直接绘制' % (t, k_), BJ.ndiff_rgba(BJ.ref_render(st, ex.images, 0, t), render(t)))
+            ex.checked('牢房 t=%.3f(k=%d) 导出 vs 直接绘制' % (t, k_), BJ.ndiff_rgba(BJ.ref_render(st, ex.images, 0, t, fg=False), render(t)))
+        for i, bq in enumerate((0, 20, 50)):
+            want = render(0).copy()
+            want.alpha_composite(bars(bq), (0, 0))
+            ex.checked('牢房 铁栏 bend=%.1f 导出 vs 直接绘制' % (bq / 50), BJ.ndiff_rgba(BJ.ref_render(st, ex.images, 0, 0, dict(bend=bq / 50)), want))
         a = np.array(render(0))
         ex.checked('牢房底图不透明', int((a[:, :, 3] != 255).sum()))
     return st

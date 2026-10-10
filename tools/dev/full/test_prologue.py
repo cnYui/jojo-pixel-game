@@ -131,6 +131,15 @@ class ProTester(playtest.Tester):
         if leader and s.get('leader') != leader:
             self.switch_leader(s, leader)
             return False
+        # 卧室中间荷莉的被褥是障碍（x 122–178、y 160–174）：要横穿时先走到被褥上面那条空道（y 154），横过去再下来
+        if s.get('stage') == 'bedroom_pro':
+            px, py = s.get('px', x), s.get('py', y)
+            if min(px, x) < 184 and max(px, x) > 116 and abs(px - x) > 8:
+                if py > 156:
+                    self.move(s, px, 154, 3)
+                    return False
+                if not self.move(s, x, 154, 4):
+                    return False
         if not self.move(s, x, y, radius):
             return False
         if press == 'u' and not s.get('leaderCanInvestigate'):

@@ -1,0 +1,41 @@
+  游戏层形象（同 bake_art，JOTARO_ADULT=False）：替换 10 个原精灵 holly.idle, holly.walk, holly.wave, joseph.idle, joseph.walk, joseph.run, joseph.camera, joseph.point, joseph.float, joseph.dodge
+op: 336 帧 1280×720（14.000 s），画面 6.9s，混音 4.5s，共 20.0s
+  D:\大疆\游戏素材\JoJo\游戏\assets\video\op.mp4  4.59 MB
+  D:\大疆\游戏素材\JoJo\游戏\assets\video\op.webm  4.67 MB
+  游戏层形象（同 bake_art，JOTARO_ADULT=False）：替换 10 个原精灵 holly.idle, holly.walk, holly.wave, joseph.idle, joseph.walk, joseph.run, joseph.camera, joseph.point, joseph.float, joseph.dodge
+coffin: 240 帧 1280×720（10.000 s），画面 8.8s，混音 4.3s，共 26.7s
+  D:\大疆\游戏素材\JoJo\游戏\assets\video\coffin.mp4  8.77 MB
+  D:\大疆\游戏素材\JoJo\游戏\assets\video\coffin.webm  6.76 MB
+JoJo build_assets：video data check
+[video]
+  $ -B D:\大疆\游戏素材\JoJo\游戏\tools\render_cutscene.py --scenes s00 --out D:\大疆\游戏素材\JoJo\游戏\assets\video --name op --scale 2
+  op: 14.00 s，mp4 4.59 MB，webm 4.67 MB
+  $ -B D:\大疆\游戏素材\JoJo\游戏\tools\render_cutscene.py --scenes s01 --out D:\大疆\游戏素材\JoJo\游戏\assets\video --name coffin --scale 2
+  coffin: 10.00 s，mp4 8.77 MB，webm 6.76 MB
+  [video] 47.6s
+[data]
+  data_meta.js                    0.22 MB
+  img_bg_ch1.js                   0.26 MB
+  img_bg_ch10.js                  0.02 MB
+  img_bg_ch11.js                  0.05 MB
+  img_bg_ch2.js                   0.06 MB
+  img_bg_ch3.js                   0.05 MB
+  img_bg_ch4.js                   0.05 MB
+  img_bg_ch5.js                   0.07 MB
+  img_bg_ch6.js                   0.05 MB
+  img_bg_ch7.js                   0.02 MB
+  img_bg_ch8.js                   0.04 MB
+  img_bg_ch9.js                   0.04 MB
+  img_bg_common.js                0.09 MB
+  img_bg_final.js                 0.13 MB
+  img_bg_prologue.js              0.54 MB
+  img_bg_title.js                 0.01 MB
+  img_core.js                     1.53 MB
+  合计 3.25 MB
+  [data] 0.3s
+[check]
+  ✓ check 通过
+  [check] 5.1s
+============================================================
+完成 53.0s；错误 0，警告 0，兜底 0，缓存跳过 []
+exit=0

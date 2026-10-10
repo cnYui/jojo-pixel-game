@@ -1149,23 +1149,27 @@ EXPORTERS = {
     'world_map': exp_world_map,
     'sky_day': exp_sky_day,
     'sea_day': exp_sea_day,
-    # 牢房重画草稿在 tools\bg_new\jail_cell.py（2026-10-10 main，没构建验证，先不接）；接的时候改成 lambda ex: exp_new(ex, 'jail_cell')
-    'jail_cell': exp_jail_cell,
-    'kujo_house_day': lambda ex: exp_kujo(ex, 'day'),
-    'kujo_house_night': lambda ex: exp_kujo(ex, 'night'),
-    'kujo_house_morning': lambda ex: exp_kujo(ex, 'morning'),
-    'kujo_bedroom_dusk': exp_kujo_bedroom_dusk,
-    'school_gate': exp_school_gate,
+    # 2026-10-10 main：牢房按用户要求重画物品细节（tools\bg_new\jail_cell.py，布局 / 锚点 / 铁栏不变；原 exp_jail_cell 留着不用）
+    'jail_cell': lambda ex: exp_new(ex, 'jail_cell'),
+    # 2026-10-10 bg-pro：序章背景加细节（tools\bg_new\kujo_house.py / kujo_bedroom_dusk.py / school_gate.py / dusk_gate.py；
+    #   尺寸、纵深带、锚点、图层和动画不变；原 exp_kujo / exp_kujo_bedroom_dusk / exp_school_gate / exp_dusk_gate 留着不用）
+    'kujo_house_day': lambda ex: bg_new('kujo_house').export(ex, sys.modules[__name__], 'day'),
+    'kujo_house_night': lambda ex: bg_new('kujo_house').export(ex, sys.modules[__name__], 'night'),
+    'kujo_house_morning': lambda ex: bg_new('kujo_house').export(ex, sys.modules[__name__], 'morning'),
+    'kujo_bedroom_dusk': lambda ex: exp_new(ex, 'kujo_bedroom_dusk'),
+    'school_gate': lambda ex: exp_new(ex, 'school_gate'),
     'school_infirmary': lambda ex: exp_new(ex, 'school_infirmary'),
-    'dusk_gate': exp_dusk_gate,
+    'dusk_gate': lambda ex: exp_new(ex, 'dusk_gate'),
     'tatami_top': lambda ex: exp_new(ex, 'tatami_top'),
     # 2026-10-10 scenes-early：序-8 上学路的长石阶（新）；驾驶舱按人的比例重画（tools\bg_new\cockpit.py，原 exp_cockpit 留着不用）
     'school_stairs': lambda ex: exp_new(ex, 'school_stairs'),
     'plane_cabin_side': lambda ex: exp_new(ex, 'plane_cabin_side'),
     'plane_cabin': exp_plane_cabin,
     'cockpit': lambda ex: exp_new(ex, 'cockpit'),
-    'hongkong_night': exp_hongkong_night,
-    'hk_garden_night': exp_hk_garden_night,
+    # 2026-10-10 bg-hk：第1章香港夜街 / 虎豹别墅加细节（tools\bg_new\hongkong_night.py / hk_garden_night.py；
+    #   尺寸、纵深带、锚点、剧情调查点位置不变；原 exp_hongkong_night / exp_hk_garden_night 留着不用）
+    'hongkong_night': lambda ex: exp_new(ex, 'hongkong_night'),
+    'hk_garden_night': lambda ex: exp_new(ex, 'hk_garden_night'),
 }
 
 # 后续章节在同一资源管线导出，兼容key只服务已写好的剧情名称。

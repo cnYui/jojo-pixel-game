@@ -46,7 +46,12 @@
     S.nameCard('jotaro');
     await S.zoom(1, null, null, 0.5);
     S.unpose(p);
-    S.hint(`随便看看牢房（0 / ${JAIL_KEYS.length}）　E 调查　U 恶灵的眼睛　J 恶灵伸手`, 12);
+    // 人物名牌（左下，2.6 s）和地点卡（左上）还在的时候先不出提示条：电脑上提示条在下面会压住名牌，手机上提示条在上面会压住地点卡
+    G.defer(2.3, () => {
+      const st = G.world.stage;
+      if (st && st.id === 'jail_pro' && !F().jailReady && !Object.keys(jailSeen()).length)
+        S.hint(`随便看看牢房（0 / ${JAIL_KEYS.length}）　E 调查　U 恶灵的眼睛　J 恶灵伸手`, 12);
+    }, 'ui');
   }
   // ---------------------------------------------------------------- 序-2 牢房探索（用户 2026-10-09：别那么快进荷莉来接的剧情，让玩家在牢房里好好探索）
   //   能调查的 10 样东西，每样都有 E 调查 / U 用“恶灵”的眼睛看 / J 让“恶灵”伸手 的反应（灯泡只有 U / J）；
@@ -1105,7 +1110,8 @@
       T().npc(S.cid('npc_student_f_a', 'scene:s09_woman'), 'girlC', 90, 150, { facing: 1, name: '女生C', label: '女生C', talk: talkGirlC }),
     ];
     st.hotspots = [
-      { id: 'cabinet', x: 270, y: 152, ly: 90, r: 16, label: '药柜', use: async (S) => S.say('jotaro', '消毒水、绷带……一切正常。') },
+      { id: 'cabinet', x: 263, y: 152, ly: 90, r: 16, label: '药柜', use: async (S) => S.say('jotaro', '消毒水、绷带……一切正常。') },
+      { id: 'door', x: 299, y: 154, ly: 92, r: 12, label: '门', use: async (S) => S.say('jotaro', '……包扎完再走。') },
       {
         id: 'window', x: 180, y: 152, ly: 64, r: 16, label: '窗', tags: ['detail'],
         use: async (S) => S.say('jotaro', '窗外是樱花。'),
@@ -1193,7 +1199,10 @@
       await S.recall(p);
     }
     await S.say('jotaro', '……出来。躲在后面操纵别人的家伙。', { expr: 'angry' });
-    const kak = S.spawn('kakyoin', 320, 156, { id: 'kakyoin_i', facing: -1 });
+    // 花京院推开保健室的门走进来（门在右边 x 283–315）
+    S.state('door', 1); S.sfx('door', 0.7);
+    await S.wait(0.25);
+    const kak = S.spawn('kakyoin', 299, 152, { id: 'kakyoin_i', facing: -1 });
     await S.walk(kak, 282, 156, { speed: 40, anim: 'possessed' });   // 别贴着右边缘：最后的推镜要把他的额头放在画面里
     S.pose(kak, 'possessed');
     const mg = S.menacing({ actor: kak, n: 3 });
@@ -1243,8 +1252,19 @@
     ctx.on('hurt', () => { if (d.phase3 === 'fly') d.hurt = true; });
     ctx.on('evade', () => { if (d.phase3 === 'fly') d.dodged = true; });
     ctx.on('graze', () => { if (d.phase3 === 'fly') d.dodged = true; });
+    // 玩家贴脸或绕到他身后时，水花往反方向飞、永远挡不到（自动测试在这里转了 15 分钟）：
+    //   预警开始先往空的那一边退开、转向玩家；发射那一刻再转一次
+    const ARENA = [40, 440];
+    const face = () => { const p = G.world.player; if (p) e.facing = p.x >= e.x ? 1 : -1; };
     const startWarn = () => {
       d.phase3 = 'warn'; d.cycT = ctx.t; d.blocked = false; d.hurt = false; d.dodged = false;
+      const p = G.world.player;
+      if (p && Math.abs(p.x - e.x) < 70) {
+        const tx = (ARENA[1] - p.x) > (p.x - ARENA[0]) ? Math.min(ARENA[1] - 12, p.x + 90) : Math.max(ARENA[0] + 12, p.x - 90);
+        Promise.resolve(G.combat.tweenTo(e, tx, p.y, 0.3)).catch(() => {});
+        S.sfx('dodge', 0.5);
+      }
+      face();
       G.TPL.bossCutin({ portrait: 'kakyoin', expr: 'evil', title: 'w6_hg_splash', colours: ['#1c6a40', '#0a3a20'] });
       S.sfx('sting_shock', 0.8);
       S.fx('glow', { x: e.x + e.facing * 20, y: e.y - 30, r: 10, colour: '#70ffb0' }, { life: 1.0, follow: e, dx: 20, dy: -30 });
@@ -1253,6 +1273,7 @@
     };
     const fire = () => {
       d.phase3 = 'fly'; d.cycT = ctx.t;
+      face();
       S.sfx('emerald', 0.9);
       for (let i = 0; i < 26; i++) {
         const a = (-24 + 48 * (i / 25)) * Math.PI / 180;
@@ -1270,6 +1291,9 @@
       if (d.phase3 === 'warn' && el >= 1.0) fire();
       else if (d.phase3 === 'fly') {
         if (d.blocked) { d.win = true; return true; }
+        // 宝石飞过去了没打中，但玩家一直面朝他按着 L：也算正面挡下（教学步骤，别让人卡住）
+        const pl = G.world.player;
+        if (el >= 1.3 && !d.hurt && pl && pl.state === 'guard' && (e.x - pl.x) * (pl.facing || 1) > 0) { d.win = true; return true; }
         if (el >= 1.3) {
           d.phase3 = 'rest'; d.cycT = ctx.t; d.cyc++;
           if (!d.hurt) S.hint('这一次，用替身正面挡住它（按住 L）', 4);
@@ -1598,7 +1622,7 @@
     for (const a of [jo, av]) if (a) a.visible = false;
     const jk = T().prop(S, 'scene:s05_joseph_kneel', 120, 158, { id: 'jo_kneel', facing: 1 });
     const ak = T().prop(S, 'scene:s05_avdol_kneel', 200, 158, { id: 'av_kneel', facing: -1 });
-    p.x = 240; p.y = 158; p.facing = -1;
+    p.x = 240; p.y = 170; p.facing = -1;   // y 170：站在榻榻米上托盘的前面（原来 158 正好踩在托盘上）
     if (kak) { kak.x = 270; kak.y = 158; kak.facing = -1; kak.visible = true; kak.follow = null; }
     S.music('sad', 0.5);
     await S.fadeIn(0.6);
@@ -1803,8 +1827,11 @@
     // 序-9 保健室
     setupInfirmary(S);
     await S.run(async (S2) => {
-      await S2.setStage('infirmary_pro', { x: 290, y: 160, facing: -1, music: 'tension' });
+      // 从门口进来（门开着），走进屋里再把门拉上
+      await S2.setStage('infirmary_pro', { x: 299, y: 152, facing: -1, music: 'tension' });
       if (G.audio && G.audio.duck) G.audio.duck(0.6, 30);
+      await S2.walk(S2.player, 280, 160, { speed: 55 });
+      S2.state('door', 0); S2.sfx('door', 0.6);
     });
     T().goal(S, { x: 230, y: 156, label: '校医', every: 15, done: () => !!F().sat, text: '找校医包扎一下（走到她跟前按 E）' });
     await S.until(() => F().noteRead);
@@ -1829,7 +1856,7 @@
     // 序-15 卧室 → 序-16 找 DIO
     setupBedroom(S);
     await S.run(async (S2) => {
-      await S2.setStage('bedroom_pro', { x: 240, y: 158, facing: -1, music: 'sad', fade: false });
+      await S2.setStage('bedroom_pro', { x: 240, y: 170, facing: -1, music: 'sad', fade: false });
       await bedroomScene(S2);
     });
     await bedroomFree(S);

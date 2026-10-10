@@ -43,8 +43,9 @@
   };
   // 保健室（新画）：可走 x 40–290、y 148–176；锚点 bed1 (100,152)、bed2 (180,152)、desk (236,156)、door (300,156)
   ST.infirmary_pro = {
+    // 右边 x 283–315 是推拉门（背景 pick 层 state.door：0 关 / 1 开）；进来时门开着，承太郎进门后关上
     id: 'infirmary_pro', bg: 'school_infirmary', x0: 0, x1: 320, yMin: 148, yMax: 176, camX: 0, music: 'tension',
-    props: [], npcs: [], hotspots: [], triggers: [], obstacles: walls(40, 290),
+    props: [], npcs: [], hotspots: [], triggers: [], obstacles: walls(40, 304), state: { door: 1 },
   };
   // 承太郎家卧室（黄昏）：可走 x 40–290、y 150–176；中间被褥 (150,166) 挡住，绕着走
   ST.bedroom_pro = {

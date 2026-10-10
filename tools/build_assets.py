@@ -1123,7 +1123,9 @@ def step_video(B):
     env = dict(os.environ, PYTHONDONTWRITEBYTECODE="1", PYTHONIOENCODING="utf-8")
     for name, scene in VIDEO_JOBS:
         mp4, webm = os.path.join(out_dir, name + ".mp4"), os.path.join(out_dir, name + ".webm")
-        src_mt = newest_mtime([rc, os.path.join(SRC, "scenes"), os.path.join(SRC, "engine"), os.path.join(SRC, "assets")])
+        # 2026-10-10：片头换上游戏重画的角色（tools/cutscene_sprites.py 读 tools/art），角色美术改了也要重渲
+        src_mt = newest_mtime([rc, os.path.join(SRC, "scenes"), os.path.join(SRC, "engine"), os.path.join(SRC, "assets"),
+                               os.path.join(HERE, "cutscene_sprites.py"), os.path.join(HERE, "art")])
         if (not B.force and os.path.exists(mp4) and os.path.exists(webm)
                 and min(os.path.getmtime(mp4), os.path.getmtime(webm)) > src_mt):
             print(f"  {name}: 已是最新，跳过")

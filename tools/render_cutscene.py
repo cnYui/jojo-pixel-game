@@ -14,7 +14,13 @@ r"""把原工程的场景渲成游戏过场视频（包 6，技术约定 §5.10 
 --range   在拼接后的时间轴上截 [t0, t1)（秒；最好给 k/24 的帧格时刻）
 --no-music  只混音效（插片：游戏 BGM 继续放）
 --gain    整体增益 dB（插片叠在 BGM 上偏响时用，例 -6）
+--orig-sprites  用原工程的精灵渲（只给前后对照用；正式视频别加）
 剪辑点：每个场景内部的切点本来就踩着它自己的原曲节拍（s00 = title 143.55 bpm），这里原样保留原混音，所以不会错拍（D9）。
+
+角色形象（2026-10-10，用户：“片头动画里乔瑟夫还是旧脸”）：渲染前先调 tools\cutscene_sprites.apply_game_redraws()，
+在内存里照 tools\art\bake_art 的顺序导入 art_* 模块并做原名重画（二乔新脸 + 指人手臂分段、荷莉头前移；
+承太郎按 bake_art.JOTARO_ADULT = False 保持原卡通大头），再把被换掉的精灵和游戏图集 assets\chars_new 逐像素核对，
+不一致（= 图集没重烘）就报错退出、不出视频。镜头、时间、混音、其他角色都不动。
 """
 import sys
 sys.dont_write_bytecode = True                       # 在 import 原工程之前
@@ -53,14 +59,24 @@ def main(argv=None):
     ap.add_argument("--no-music", action="store_true", help="只混音效（插片）")
     ap.add_argument("--gain", type=float, default=0.0, help="整体增益 dB")
     ap.add_argument("--crf", type=int, default=16, help="H.264 crf（webm 固定 VP9 crf 30）")
+    ap.add_argument("--orig-sprites", action="store_true", help="用原工程精灵（只给前后对照用）")
     a = ap.parse_args(argv)
 
     from common import load_scene, render_frame, scene_frames  # noqa: E402  源码\tools\common.py（只读）
     from render import build_audio  # noqa: E402                         源码\tools\render.py（只用 build_audio）
     from engine.core import FPS, UW, UH  # noqa: E402
 
-    os.makedirs(a.out, exist_ok=True)
     T0 = time.time()
+    if not a.orig_sprites:                           # 游戏层形象：必须在 import 场景模块之前（见 cutscene_sprites）
+        import cutscene_sprites
+        redrawn = cutscene_sprites.apply_game_redraws()
+        bad = cutscene_sprites.check_atlas(redrawn)
+        if bad:
+            for name, fi, why in bad:
+                print(f"  {name} 帧 {fi}：{why}")
+            print("游戏层形象和 assets\\chars_new 图集不一致（先跑 art chars 重烘），不出视频")
+            return 5
+    os.makedirs(a.out, exist_ok=True)
     scenes, start = [], 0.0
     for nm in a.scenes.split(","):
         name, mod = load_scene(nm.strip())
