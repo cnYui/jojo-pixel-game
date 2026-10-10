@@ -51,6 +51,9 @@
       this._gl = -1;
     }
     get visible() { return this.mode !== 'hidden'; }
+    // 本体离地高度：this.z 是“替身离本体脚底多高”，画面 / 判定 / 特效要再加上本体自己的 z
+    //   （序-8 石阶上人的 z = 台阶高度，最高 80；飞的敌人 z = fly.z）。以前没加，人在坡顶时替身掉在地面那一层（2026-10-10 用户截图）
+    oz() { return (this.owner && this.owner.z) || 0; }
     idleSpot() {
       const sp = this.owner.standPos;
       const ip = (sp && (sp.dx != null || sp.z != null) ? sp : null) || this.def.idle || IDLE_DEF;
@@ -74,7 +77,7 @@
         this.pose = 'idle'; this.poseT = 0; this.seq = null; this._act = null; this.frameOverride = null; this.depth = -0.5;
         this._ap = { t: 0, dur: Math.max(0.01, dur), rise };
         if (this.kind === 'humanoid' || this.kind === 'sand') {
-          spawn('summon_lines', { x: Math.round(this.x), y: Math.round(ow.y - this.z), colour: this.color, aura_colour: this.color, dur },
+          spawn('summon_lines', { x: Math.round(this.x), y: Math.round(ow.y - this.oz() - this.z), colour: this.color, aura_colour: this.color, dur },
             { by: ow, tag: 'stand' });
         }
         if (this.kind === 'sand') this._sand(ow);
@@ -134,7 +137,7 @@
       return this;
     }
     _sand(ow) {
-      spawn('burst', { x: Math.round(ow.x + (ow.facing || 1) * 4), y: Math.round(ow.y - 2), n: 16, speed: 50, life: 0.5,
+      spawn('burst', { x: Math.round(ow.x + (ow.facing || 1) * 4), y: Math.round(ow.y - this.oz() - 2), n: 16, speed: 50, life: 0.5,
         colours: SAND, gravity: 160, spread: 140, angle: 90, seed: (this._clk * 97) | 0 }, { by: ow, tag: 'stand' });
     }
 
@@ -205,28 +208,28 @@
       if (this.ghostOn && this.mode !== 'hidden' && this.atlas) {
         if (this._gl < 0 || this._clk - this._gl >= 1 / 30) {
           this._gl = this._clk;
-          this.ghosts.push({ x: this.x, z: this.z, pose: this.pose, frame: this.frame(), facing: this.owner.facing, t: this._clk });
+          this.ghosts.push({ x: this.x, z: this.z, oz: this.oz(), pose: this.pose, frame: this.frame(), facing: this.owner.facing, t: this._clk });
           if (this.ghosts.length > 4) this.ghosts.shift();
         }
       }
       while (this.ghosts.length && this._clk - this.ghosts[0].t >= 0.25) this.ghosts.shift();
     }
     // 判定原点（= 替身当前位置）、拳影 / 连打特效中心（世界坐标）
-    origin() { return { x: this.x, y: this.owner.y, z: this.z }; }
-    chest() { const f = this.owner.facing || 1, sc = this.owner.scale || 1; return { x: this.x + f * 8 * sc, y: this.owner.y, z: this.z + 30 * sc }; }
+    origin() { return { x: this.x, y: this.owner.y, z: this.oz() + this.z }; }
+    chest() { const f = this.owner.facing || 1, sc = this.owner.scale || 1; return { x: this.x + f * 8 * sc, y: this.owner.y, z: this.oz() + this.z + 30 * sc }; }
 
     // ---------------- 画（canvas pass；纵深排序项：owner.y ± 0.5）
     draw(g, camX, camY, o = {}) {
       const ow = this.owner;
       if (this.mode === 'hidden' || !ow.visible || !this.atlas || this.kind === 'vine') return;
-      const flip = (ow.facing || 1) < 0, sy0 = ow.y - camY, scale = ow.scale || 1;
+      const flip = (ow.facing || 1) < 0, sy0 = ow.y - this.oz() - camY, scale = ow.scale || 1;
       if (this.ghosts.length) {
         const col = light(this.ghost || this.color, 0.3), n = this.ghosts.length;
         this.ghosts.forEach((gh, i) => {
           const age = this._clk - gh.t;
           if (age >= 0.25) return;
           const dth = (n > 1 ? 0.2 + 0.35 * (i / (n - 1)) : 0.55) * (1 - age / 0.25);
-          this.atlas.draw(g, gh.pose, gh.frame, gh.x - camX, sy0 - gh.z, { flip: gh.facing < 0, scale, skin: this.skin, tint: { color: col, k: 0.45 }, dither: dth });
+          this.atlas.draw(g, gh.pose, gh.frame, gh.x - camX, ow.y - camY - (gh.oz || 0) - gh.z, { flip: gh.facing < 0, scale, skin: this.skin, tint: { color: col, k: 0.45 }, dither: dth });
         });
       }
       let pose = this.pose;

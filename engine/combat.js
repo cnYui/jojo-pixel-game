@@ -51,7 +51,7 @@
   // 替身身前（面朝方向 ahead px、手臂高度 = 替身图高一半）的世界坐标；没亮替身 / 非人形替身就用本体
   function standFront(a,ahead=0){
     const s=a.stand,f=a.facing||1,k=scOf(a);
-    if(s&&s.visible&&s.kind==='humanoid'&&s.atlas){const top=s.atlas.topPx?s.atlas.topPx():48;return {x:s.x+f*ahead*k,y:a.y,z:s.z+top*.5*k};}
+    if(s&&s.visible&&s.kind==='humanoid'&&s.atlas){const top=s.atlas.topPx?s.atlas.topPx():48;return {x:s.x+f*ahead*k,y:a.y,z:(a.z||0)+s.z+top*.5*k};}   // 替身 z 是相对本体的，要加本体自己的 z（同 stand.origin()）
     return {x:a.x+f*(ahead+10)*k,y:a.y,z:(a.z||0)+(a.topPx?a.topPx()*k:44)*.5};
   }
   // 弹体出手点（2026-10-09 晚）：只给 {x, y, z}。以前 moveTick 把整个角色对象当 o 并进弹体：角色的 burn（null）盖掉火球的燃烧、
@@ -388,7 +388,7 @@
   function shoot(owner,spec,o={}) {
     spec=Object.assign({},spec);const n=spec.n || 1,group={stopped:false};let first;
     for(let i=0;i<n;i++){
-      const z=o.z==null ? owner && owner.stand?owner.stand.z+14:18 : o.z,base=spec.ang==null?(owner && owner.facing<0?Math.PI:0):spec.ang,ang=base+(n>1?(i/(n-1)*2-1)*(spec.spread||0)*Math.PI/180:0);
+      const z=o.z==null ? owner && owner.stand?(owner.z||0)+owner.stand.z+14:18 : o.z,base=spec.ang==null?(owner && owner.facing<0?Math.PI:0):spec.ang,ang=base+(n>1?(i/(n-1)*2-1)*(spec.spread||0)*Math.PI/180:0);
       const s=Object.assign({kind:'bullet',life:2.4,dmg:8,push:8,slot:'shot',reflect:true,hitR:[8,7,18],x:owner?owner.x:0,y:owner?owner.y:160,z,owner,side:enemySide(owner)?'enemy':'player',t:0,dead:false},spec,o,{ang,hitSet:new Set(),firstT:new Map(),nearSet:new Set(),cine:W().cine,_group:group});
       s.vx=spec.vx==null?Math.cos(ang)*(spec.speed ?? 160):spec.vx;s.vy=spec.vy==null?Math.sin(ang)*(spec.speed ?? 160):spec.vy;s._travel=0;W().shots.push(s);if(!first)first=s;
     }return first;
@@ -492,7 +492,7 @@
     if(G.S && G.S.zoom && !await guard(G.S.zoom(1.35,e,-28,.2)))return;if(!valid())return;G.flash(f(8),.5);G.slowAll(.25,.6);e.ghostOn=true;ghostBurst(e,3);play(e,'hurt');
     const x=e.x,dir=att?att.facing:1;const flight=new Promise(res=>w.anims.push({t:0,dur:.6,fn:u=>{if(valid()){e.x=x+dir*35*u;e.z=24*Math.sin(Math.PI*u);}},res}));
     if(!await guard(Promise.all([flight,att?createC(att).rush(.6,{dmg:false}):Promise.resolve()])))return;e.ghostOn=false;
-    if(e.stand && e.stand.visible){fxAt(o.style==='draw'?'stand_out':'shatter',{cid:e.stand.id,x:e.stand.x,y:e.stand.y-e.stand.z,pieces:30,dur:o.style==='draw'?.25:.9},e,.9);e.stand.hide();}else if(o.style==='shatter')fxAt('shatter',{cid:e.cid,x:e.x,y:e.y-e.z,pieces:18,dur:.7},e,.7);
+    if(e.stand && e.stand.visible){fxAt(o.style==='draw'?'stand_out':'shatter',{cid:e.stand.id,x:e.stand.x,y:e.stand.y-(e.z||0)-e.stand.z,pieces:30,dur:o.style==='draw'?.25:.9},e,.9);e.stand.hide();}else if(o.style==='shatter')fxAt('shatter',{cid:e.cid,x:e.x,y:e.y-e.z,pieces:18,dur:.7},e,.7);
     e.z=0;play(e,'down');if(G.fx)G.fx.dustAt(e.x,e.y,0,8);snd('thud');snd('ko_hit');if(!await guard(G.uifx && G.uifx.title?G.uifx.title(o.style==='draw'?'draw':'saiki',{x:320,y:230,pop:.12,dur:1.2}):G.wait(1.2,'ui')))return;snd('jingle_victory');if(G.S && G.S.zoom && !await guard(G.S.zoom(1,null,null,.2)))return;if(!valid())return;w.zoom=null;w.cine=old || null;e.onKo&&e.onKo(e);
   }
   function drawPixel(P,layer){if(layer!=='mid' || W().insert)return;const w=W(),cx=G.cam.x || 0,cy=G.cam.y || 0,px=G.px;

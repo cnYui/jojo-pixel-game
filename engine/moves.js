@@ -921,7 +921,7 @@
       m.teleSeen = e.tele; m.stance = false; m.stanceT = 0;
       if (e.outline === STANCE_OUTLINE) e.outline = null;
       if (e.stand) { e.stand.act('punch', { dx: 4, seq: [[0, 99]], hold: true }); m.pulledBack = true; }
-      const sx = e.stand ? e.stand.x : e.x, sz = e.stand ? e.stand.z : 0;
+      const sx = e.stand ? e.stand.x : e.x, sz = (e.z || 0) + (e.stand ? e.stand.z : 0);
       G.combat.fxAt('glint', { x: sx + e.facing * 22, y: e.y - sz - 34, size: 10, dur: 0.3 }, e, 0.3);
     },
     brain(e, dt, ctx) { return chariotBrain(e, dt, ctx); },
@@ -1002,7 +1002,7 @@
       m.glintT = (m.glintT || 0) - dt;
       if (m.glintT <= 0) {   // 剑尖每 0.25 s 一闪：举剑帧的剑尖在替身 x + 朝向 12、离地 54 px
         m.glintT = 0.25;
-        const sx = e.stand ? e.stand.x : e.x, sz = e.stand ? e.stand.z : 0;
+        const sx = e.stand ? e.stand.x : e.x, sz = (e.z || 0) + (e.stand ? e.stand.z : 0);
         G.combat.fxAt('glint', { x: sx + e.facing * 12, y: e.y - sz - 54, size: 5, dur: 0.2 }, e, 0.22);
       }
     } else {
