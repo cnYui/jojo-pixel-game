@@ -1,0 +1,33 @@
+{
+  "id": "npc_passenger_c",
+  "name": "乘客（打呼的大叔）",
+  "work": "JoJo",
+  "image": "npc_passenger_c.png",
+  "cell": [16, 18],
+  "pivot": [8, 18],
+  "facing": "right",
+  "animations": {
+    "seated": {
+      "row": 0,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "plane passenger, head and shoulders above the seat back (16x18), facing right; snoring with mouth open"
+    },
+    "slump": {
+      "row": 1,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "stung by Tower of Gray: head slumped forward, eyes shut, sweat (16x18)"
+    }
+  },
+  "aliases": {},
+  "expressions": [],
+  "variants": {},
+  "source": {
+    "project": "jojo",
+    "call": "game.art_npc（import assets; assets.load_all(); from engine import sprite; sprite.get('npc_passenger_c.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'npc_passenger_c.<动作>', x, y, frame=i, flip=False)"
+  },
+  "notes": "乘客（打呼的大叔）（Passenger C），NPC·人物。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=seated/slump。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
+}

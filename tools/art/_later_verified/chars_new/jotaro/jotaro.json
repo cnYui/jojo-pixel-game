@@ -1,0 +1,160 @@
+{
+  "id": "jotaro",
+  "name": "空条承太郎",
+  "work": "JoJo",
+  "image": "jotaro.png",
+  "cell": [73, 56],
+  "pivot": [34, 54],
+  "facing": "right",
+  "animations": {
+    "idle": {
+      "row": 0,
+      "frames": 2,
+      "fps": 2,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "standing, hands in pockets; f1 = breath (upper body 1px down)"
+    },
+    "walk": {
+      "row": 1,
+      "frames": 4,
+      "fps": 8,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "walk cycle, hands in pockets (contact, pass, contact, pass)"
+    },
+    "run": {
+      "row": 2,
+      "frames": 4,
+      "fps": 10,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "run cycle: leaning forward, fists pumping, coat tail flying"
+    },
+    "float": {
+      "row": 3,
+      "frames": 2,
+      "fps": 8,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "后续补帧：jotaro.float"
+    },
+    "sit": {
+      "row": 4,
+      "frames": 2,
+      "fps": 1.5,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "sitting (40x44), arms crossed. Anchor = floor; seat surface is 10px above it"
+    },
+    "point": {
+      "row": 5,
+      "frames": 2,
+      "fps": 4,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "iconic point: right arm straight forward, index finger; f1 = coat flutter"
+    },
+    "pose": {
+      "row": 6,
+      "frames": 2,
+      "fps": 3,
+      "kind": "oneshot",
+      "seamless": false,
+      "desc": "JoJo pose: hand gripping cap brim, wide stance; f1 = cap pulled low, coat flare"
+    },
+    "shock": {
+      "row": 7,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "surprised: wide eyes, sweat drop, hands out of pockets"
+    },
+    "hurt": {
+      "row": 8,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "hit recoil: leaning back, eyes shut, teeth gritted"
+    },
+    "down": {
+      "row": 9,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "knocked down on his back, head LEFT, eyes shut (58x22); anchor = ground"
+    },
+    "dodge": {
+      "row": 10,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "dodge (K): quick back-step, leaning back, coat tail flying"
+    },
+    "guard": {
+      "row": 11,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "guard (L): forearms crossed in front of the chin, cap pulled low, braced stance"
+    },
+    "kick": {
+      "row": 12,
+      "frames": 2,
+      "fps": 8,
+      "kind": "oneshot",
+      "seamless": false,
+      "desc": "后续补帧：jotaro.kick"
+    },
+    "kid": {
+      "row": 13,
+      "frames": 2,
+      "fps": 1,
+      "kind": "static",
+      "desc": "剧情形态：kid"
+    },
+    "portrait": {
+      "row": 14,
+      "frames": 2,
+      "fps": 8,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "bust, stern; f0 mouth closed, f1 talking"
+    },
+    "portrait_angry": {
+      "row": 15,
+      "frames": 2,
+      "fps": 8,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "furious glare, V-brows; f0 frown, f1 shouting (ORA!)"
+    }
+  },
+  "aliases": {},
+  "expressions": [
+    {
+      "id": "portrait",
+      "emotion": "normal",
+      "frames": 2,
+      "fps": 8,
+      "size": [32, 32],
+      "files": ["头像/portrait_0.png", "头像/portrait_1.png"],
+      "desc": "bust, stern; f0 mouth closed, f1 talking"
+    },
+    {
+      "id": "portrait_angry",
+      "emotion": "angry",
+      "frames": 2,
+      "fps": 8,
+      "size": [32, 32],
+      "files": ["头像/portrait_angry_0.png", "头像/portrait_angry_1.png"],
+      "desc": "furious glare, V-brows; f0 frown, f1 shouting (ORA!)"
+    }
+  ],
+  "variants": {},
+  "source": {
+    "project": "jojo",
+    "call": "game.art_heroes / game.art_later_existing / game.orig（import assets; assets.load_all(); from engine import sprite; sprite.get('jotaro.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'jotaro.<动作>', x, y, frame=i, flip=False)"
+  },
+  "notes": "空条承太郎（Jotaro Kujo），主角团·人物。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle/walk/run/float/sit/point/pose/shock/hurt/down/dodge/guard/kid/portrait/portrait_angry；脚点(自定义点)=kick。sit：坐姿（40×44）；锚点=地面，座面比锚点高 10px。point：右臂向前伸直、食指指人（朝右）；f1 衣摆飘动。portrait* 动作是说话头像（32×32 半身）：图集里放在最后几行（按底部中点对齐，只是为了同格对齐，不代表脚点），同时逐帧导出到“头像”文件夹，见 expressions；多数 frame0=闭嘴/静态、frame1=说话/加强（具体见各自 desc），原引擎对话框打字时以 8fps 来回切换。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
+}

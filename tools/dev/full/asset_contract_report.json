@@ -1,0 +1,8889 @@
+{
+  "ok": false,
+  "errors": [
+    {
+      "kind": "界面:specials",
+      "key": "波纹疾走",
+      "where": "engine/moves.js:346",
+      "detail": ""
+    },
+    {
+      "kind": "界面:specials",
+      "key": "愚者·沙之巨像",
+      "where": "engine/moves.js:400",
+      "detail": ""
+    }
+  ],
+  "warnings": [],
+  "counts": {
+    "背景": 172,
+    "配乐": 152,
+    "音效": 353,
+    "角色": 178,
+    "说话人": 497,
+    "道具": 46,
+    "特效": 140,
+    "地图": 64,
+    "界面:titles": 33,
+    "界面:chapters": 13,
+    "界面:namecards": 16,
+    "界面:standcards": 12,
+    "界面:locations": 12,
+    "界面:vs": 17,
+    "界面:sfx": 48,
+    "动作": 726,
+    "界面:specials": 11
+  },
+  "refs": [
+    {
+      "kind": "背景",
+      "key": "jail_cell",
+      "where": "地图注册:jail_pro"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:jail_pro"
+    },
+    {
+      "kind": "背景",
+      "key": "kujo_house_day",
+      "where": "地图注册:kujo_pro"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:kujo_pro"
+    },
+    {
+      "kind": "背景",
+      "key": "school_gate",
+      "where": "地图注册:school_pro"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:school_pro"
+    },
+    {
+      "kind": "背景",
+      "key": "school_infirmary",
+      "where": "地图注册:infirmary_pro"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "地图注册:infirmary_pro"
+    },
+    {
+      "kind": "背景",
+      "key": "kujo_bedroom_dusk",
+      "where": "地图注册:bedroom_pro"
+    },
+    {
+      "kind": "配乐",
+      "key": "sad",
+      "where": "地图注册:bedroom_pro"
+    },
+    {
+      "kind": "背景",
+      "key": "dusk_gate",
+      "where": "地图注册:gate_pro"
+    },
+    {
+      "kind": "配乐",
+      "key": "travel",
+      "where": "地图注册:gate_pro"
+    },
+    {
+      "kind": "背景",
+      "key": "world_map",
+      "where": "地图注册:map_ch1"
+    },
+    {
+      "kind": "配乐",
+      "key": "travel",
+      "where": "地图注册:map_ch1"
+    },
+    {
+      "kind": "背景",
+      "key": "plane_cabin_side",
+      "where": "地图注册:plane_ch1"
+    },
+    {
+      "kind": "配乐",
+      "key": "travel",
+      "where": "地图注册:plane_ch1"
+    },
+    {
+      "kind": "音效",
+      "key": "plane_engine_loop",
+      "where": "地图注册:plane_ch1"
+    },
+    {
+      "kind": "背景",
+      "key": "cockpit",
+      "where": "地图注册:cockpit_ch1"
+    },
+    {
+      "kind": "背景",
+      "key": "sky_day",
+      "where": "地图注册:sky_ch1"
+    },
+    {
+      "kind": "背景",
+      "key": "sea_day",
+      "where": "地图注册:sea_ch1"
+    },
+    {
+      "kind": "背景",
+      "key": "hongkong_night",
+      "where": "地图注册:hk_street_ch1"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:hk_street_ch1"
+    },
+    {
+      "kind": "音效",
+      "key": "crowd_loop",
+      "where": "地图注册:hk_street_ch1"
+    },
+    {
+      "kind": "背景",
+      "key": "hongkong_night",
+      "where": "地图注册:hk_street_ch1b"
+    },
+    {
+      "kind": "配乐",
+      "key": "travel",
+      "where": "地图注册:hk_street_ch1b"
+    },
+    {
+      "kind": "音效",
+      "key": "crowd_loop",
+      "where": "地图注册:hk_street_ch1b"
+    },
+    {
+      "kind": "背景",
+      "key": "hk_garden_night",
+      "where": "地图注册:hk_garden_ch1"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "地图注册:hk_garden_ch1"
+    },
+    {
+      "kind": "背景",
+      "key": "world_map",
+      "where": "地图注册:map_ch2"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:map_ch2"
+    },
+    {
+      "kind": "背景",
+      "key": "world_map",
+      "where": "地图注册:map_ch3"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:map_ch3"
+    },
+    {
+      "kind": "背景",
+      "key": "world_map",
+      "where": "地图注册:map_ch4"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:map_ch4"
+    },
+    {
+      "kind": "背景",
+      "key": "world_map",
+      "where": "地图注册:map_ch5"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:map_ch5"
+    },
+    {
+      "kind": "背景",
+      "key": "yacht_deck",
+      "where": "地图注册:boat_ch2"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:boat_ch2"
+    },
+    {
+      "kind": "背景",
+      "key": "sea_day",
+      "where": "地图注册:sea_ch2"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:sea_ch2"
+    },
+    {
+      "kind": "背景",
+      "key": "underwater",
+      "where": "地图注册:underwater_ch2"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:underwater_ch2"
+    },
+    {
+      "kind": "背景",
+      "key": "sea_day",
+      "where": "地图注册:dinghy_ch2"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:dinghy_ch2"
+    },
+    {
+      "kind": "背景",
+      "key": "freighter_deck",
+      "where": "地图注册:freighter_ch2"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:freighter_ch2"
+    },
+    {
+      "kind": "背景",
+      "key": "freighter_corridor",
+      "where": "地图注册:hold_ch2"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:hold_ch2"
+    },
+    {
+      "kind": "背景",
+      "key": "singapore_street",
+      "where": "地图注册:sg_street_ch3"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:sg_street_ch3"
+    },
+    {
+      "kind": "背景",
+      "key": "singapore_hotel",
+      "where": "地图注册:sg_hotel_ch3"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:sg_hotel_ch3"
+    },
+    {
+      "kind": "背景",
+      "key": "cable_car",
+      "where": "地图注册:cable_ch3"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:cable_ch3"
+    },
+    {
+      "kind": "背景",
+      "key": "underwater",
+      "where": "地图注册:sea_ch3"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:sea_ch3"
+    },
+    {
+      "kind": "背景",
+      "key": "train_interior",
+      "where": "地图注册:train_ch3"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:train_ch3"
+    },
+    {
+      "kind": "背景",
+      "key": "calcutta_street",
+      "where": "地图注册:calcutta_ch4"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:calcutta_ch4"
+    },
+    {
+      "kind": "背景",
+      "key": "india_alley",
+      "where": "地图注册:alley_ch4"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:alley_ch4"
+    },
+    {
+      "kind": "背景",
+      "key": "ganges_ghat",
+      "where": "地图注册:varanasi_ch4"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:varanasi_ch4"
+    },
+    {
+      "kind": "背景",
+      "key": "calcutta_street",
+      "where": "地图注册:varanasi_st_ch4"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:varanasi_st_ch4"
+    },
+    {
+      "kind": "背景",
+      "key": "desert_highway",
+      "where": "地图注册:road_ch5"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:road_ch5"
+    },
+    {
+      "kind": "背景",
+      "key": "desert_highway",
+      "where": "地图注册:cliff_ch5"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:cliff_ch5"
+    },
+    {
+      "kind": "背景",
+      "key": "fog_town",
+      "where": "地图注册:fog_ch5"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:fog_ch5"
+    },
+    {
+      "kind": "背景",
+      "key": "enya_inn",
+      "where": "地图注册:inn_ch5"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:inn_ch5"
+    },
+    {
+      "kind": "背景",
+      "key": "karachi_street",
+      "where": "地图注册:karachi_ch5"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:karachi_ch5"
+    },
+    {
+      "kind": "背景",
+      "key": "brain_inside",
+      "where": "地图注册:brain_ch5"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:brain_ch5"
+    },
+    {
+      "kind": "背景",
+      "key": "desert_noon",
+      "where": "地图注册:desert_ch6"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:desert_ch6"
+    },
+    {
+      "kind": "背景",
+      "key": "yaprin_village",
+      "where": "地图注册:village_ch6"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:village_ch6"
+    },
+    {
+      "kind": "背景",
+      "key": "cessna_cabin",
+      "where": "地图注册:cessna_ch6"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "地图注册:cessna_ch6"
+    },
+    {
+      "kind": "背景",
+      "key": "dream_carnival",
+      "where": "地图注册:dream_ch6"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "地图注册:dream_ch6"
+    },
+    {
+      "kind": "背景",
+      "key": "desert_night",
+      "where": "地图注册:camp_ch6"
+    },
+    {
+      "kind": "配乐",
+      "key": "ominous",
+      "where": "地图注册:camp_ch6"
+    },
+    {
+      "kind": "背景",
+      "key": "redsea_island",
+      "where": "地图注册:island_ch7"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:island_ch7"
+    },
+    {
+      "kind": "背景",
+      "key": "submarine",
+      "where": "地图注册:sub_ch7"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "地图注册:sub_ch7"
+    },
+    {
+      "kind": "背景",
+      "key": "seabed_mouth",
+      "where": "地图注册:seabed_ch7"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "地图注册:seabed_ch7"
+    },
+    {
+      "kind": "背景",
+      "key": "egypt_coast",
+      "where": "地图注册:coast_ch7"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:coast_ch7"
+    },
+    {
+      "kind": "背景",
+      "key": "egypt_coast",
+      "where": "地图注册:coast_ch8"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:coast_ch8"
+    },
+    {
+      "kind": "背景",
+      "key": "desert_day",
+      "where": "地图注册:desert_ch8"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "地图注册:desert_ch8"
+    },
+    {
+      "kind": "背景",
+      "key": "desert_day",
+      "where": "地图注册:glide_ch8"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "地图注册:glide_ch8"
+    },
+    {
+      "kind": "背景",
+      "key": "aswan_town",
+      "where": "地图注册:aswan_ch8"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:aswan_ch8"
+    },
+    {
+      "kind": "背景",
+      "key": "egypt_temple",
+      "where": "地图注册:temple_ch9"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:temple_ch9"
+    },
+    {
+      "kind": "背景",
+      "key": "nile_bank",
+      "where": "地图注册:nile_ch9"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:nile_ch9"
+    },
+    {
+      "kind": "背景",
+      "key": "luxor_town",
+      "where": "地图注册:luxor_ch9"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:luxor_ch9"
+    },
+    {
+      "kind": "背景",
+      "key": "egypt_rail",
+      "where": "地图注册:rail_ch9"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "地图注册:rail_ch9"
+    },
+    {
+      "kind": "背景",
+      "key": "luxor_house",
+      "where": "地图注册:house_ch9"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "地图注册:house_ch9"
+    },
+    {
+      "kind": "背景",
+      "key": "cafe_interior",
+      "where": "地图注册:cafe_ch10"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:cafe_ch10"
+    },
+    {
+      "kind": "背景",
+      "key": "cairo_day",
+      "where": "地图注册:cairo_day_ch10"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "地图注册:cairo_day_ch10"
+    },
+    {
+      "kind": "背景",
+      "key": "cairo_sewer",
+      "where": "地图注册:sewer_ch10"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "地图注册:sewer_ch10"
+    },
+    {
+      "kind": "背景",
+      "key": "mansion_hall",
+      "where": "地图注册:flashback_ch10"
+    },
+    {
+      "kind": "配乐",
+      "key": "ominous",
+      "where": "地图注册:flashback_ch10"
+    },
+    {
+      "kind": "背景",
+      "key": "mansion_exterior",
+      "where": "地图注册:mansion_ext_ch11"
+    },
+    {
+      "kind": "配乐",
+      "key": "ominous",
+      "where": "地图注册:mansion_ext_ch11"
+    },
+    {
+      "kind": "背景",
+      "key": "mansion_corridor",
+      "where": "地图注册:corridor_ch11"
+    },
+    {
+      "kind": "配乐",
+      "key": "ominous",
+      "where": "地图注册:corridor_ch11"
+    },
+    {
+      "kind": "背景",
+      "key": "game_room",
+      "where": "地图注册:game_ch11"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "地图注册:game_ch11"
+    },
+    {
+      "kind": "背景",
+      "key": "illusion_corridor",
+      "where": "地图注册:illusion_ch11"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "地图注册:illusion_ch11"
+    },
+    {
+      "kind": "背景",
+      "key": "mansion_hall",
+      "where": "地图注册:hall_ch11"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "地图注册:hall_ch11"
+    },
+    {
+      "kind": "背景",
+      "key": "mansion_tower",
+      "where": "地图注册:tower_ch11"
+    },
+    {
+      "kind": "配乐",
+      "key": "ominous",
+      "where": "地图注册:tower_ch11"
+    },
+    {
+      "kind": "背景",
+      "key": "mansion_stairs",
+      "where": "地图注册:stairs_fin"
+    },
+    {
+      "kind": "配乐",
+      "key": "ominous",
+      "where": "地图注册:stairs_fin"
+    },
+    {
+      "kind": "背景",
+      "key": "cairo_street_night",
+      "where": "地图注册:chase_fin"
+    },
+    {
+      "kind": "配乐",
+      "key": "boss",
+      "where": "地图注册:chase_fin"
+    },
+    {
+      "kind": "背景",
+      "key": "cairo_rooftops",
+      "where": "地图注册:roof_fin"
+    },
+    {
+      "kind": "配乐",
+      "key": "boss",
+      "where": "地图注册:roof_fin"
+    },
+    {
+      "kind": "背景",
+      "key": "cairo_street_night",
+      "where": "地图注册:street_fin"
+    },
+    {
+      "kind": "配乐",
+      "key": "boss",
+      "where": "地图注册:street_fin"
+    },
+    {
+      "kind": "背景",
+      "key": "cairo_street_dawn",
+      "where": "地图注册:dawn_fin"
+    },
+    {
+      "kind": "配乐",
+      "key": "sad",
+      "where": "地图注册:dawn_fin"
+    },
+    {
+      "kind": "背景",
+      "key": "kujo_bedroom_morning",
+      "where": "地图注册:bedroom_fin"
+    },
+    {
+      "kind": "配乐",
+      "key": "ending",
+      "where": "地图注册:bedroom_fin"
+    },
+    {
+      "kind": "背景",
+      "key": "airport",
+      "where": "地图注册:airport_fin"
+    },
+    {
+      "kind": "配乐",
+      "key": "ending",
+      "where": "地图注册:airport_fin"
+    },
+    {
+      "kind": "角色",
+      "key": "jotaro",
+      "where": "story/ch01.js:166"
+    },
+    {
+      "kind": "角色",
+      "key": "towergray",
+      "where": "story/ch01.js:175"
+    },
+    {
+      "kind": "角色",
+      "key": "starplat",
+      "where": "story/ch01.js:176"
+    },
+    {
+      "kind": "角色",
+      "key": "jotaro",
+      "where": "story/ch01.js:180"
+    },
+    {
+      "kind": "角色",
+      "key": "kakyoin",
+      "where": "story/ch01.js:193"
+    },
+    {
+      "kind": "角色",
+      "key": "towergray",
+      "where": "story/ch01.js:198"
+    },
+    {
+      "kind": "角色",
+      "key": "kakyoin",
+      "where": "story/ch01.js:223"
+    },
+    {
+      "kind": "角色",
+      "key": "hiero",
+      "where": "story/ch01.js:223"
+    },
+    {
+      "kind": "角色",
+      "key": "polnareff",
+      "where": "story/ch01.js:306"
+    },
+    {
+      "kind": "角色",
+      "key": "chariot",
+      "where": "story/ch01.js:312"
+    },
+    {
+      "kind": "角色",
+      "key": "avdol",
+      "where": "story/ch01.js:446"
+    },
+    {
+      "kind": "角色",
+      "key": "avdol",
+      "where": "story/ch01.js:516"
+    },
+    {
+      "kind": "角色",
+      "key": "jgeil",
+      "where": "story/ch01.js:527"
+    },
+    {
+      "kind": "角色",
+      "key": "towergray",
+      "where": "story/ch01.js:150"
+    },
+    {
+      "kind": "角色",
+      "key": "polnareff",
+      "where": "story/ch01.js:357"
+    },
+    {
+      "kind": "说话人",
+      "key": "grayfly",
+      "where": "story/ch01.js:109"
+    },
+    {
+      "kind": "说话人",
+      "key": "grayfly",
+      "where": "story/ch01.js:110"
+    },
+    {
+      "kind": "说话人",
+      "key": "npc_stewardess",
+      "where": "story/ch01.js:114"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch01.js:138"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch01.js:139"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch01.js:140"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch01.js:141"
+    },
+    {
+      "kind": "说话人",
+      "key": "grayfly",
+      "where": "story/ch01.js:227"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch01.js:230"
+    },
+    {
+      "kind": "说话人",
+      "key": "npc_passenger_a",
+      "where": "story/ch01.js:232"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch01.js:238"
+    },
+    {
+      "kind": "说话人",
+      "key": "npc_hk_passer_a",
+      "where": "story/ch01.js:286"
+    },
+    {
+      "kind": "说话人",
+      "key": "npc_hk_granny",
+      "where": "story/ch01.js:290"
+    },
+    {
+      "kind": "说话人",
+      "key": "npc_hk_owner",
+      "where": "story/ch01.js:294"
+    },
+    {
+      "kind": "说话人",
+      "key": "npc_fortune",
+      "where": "story/ch01.js:298"
+    },
+    {
+      "kind": "说话人",
+      "key": "npc_hk_passer_b",
+      "where": "story/ch01.js:300"
+    },
+    {
+      "kind": "说话人",
+      "key": "npc_hk_passer_b",
+      "where": "story/ch01.js:315"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch01.js:485"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch01.js:547"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch01.js:547"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch01.js:547"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch01.js:557"
+    },
+    {
+      "kind": "道具",
+      "key": "scene:s06_pilot_ko",
+      "where": "story/ch01.js:242"
+    },
+    {
+      "kind": "道具",
+      "key": "scene:s06_pilot_ko",
+      "where": "story/ch01.js:242"
+    },
+    {
+      "kind": "道具",
+      "key": "scene:s06_cap",
+      "where": "story/ch01.js:242"
+    },
+    {
+      "kind": "道具",
+      "key": "plane_crash",
+      "where": "story/ch01.js:263"
+    },
+    {
+      "kind": "道具",
+      "key": "hk_table",
+      "where": "story/ch01.js:335"
+    },
+    {
+      "kind": "道具",
+      "key": "hk_table",
+      "where": "story/ch01.js:336"
+    },
+    {
+      "kind": "道具",
+      "key": "tv",
+      "where": "story/ch01.js:337"
+    },
+    {
+      "kind": "道具",
+      "key": "kite",
+      "where": "story/ch01.js:338"
+    },
+    {
+      "kind": "道具",
+      "key": "dish",
+      "where": "story/ch01.js:360"
+    },
+    {
+      "kind": "道具",
+      "key": "coin",
+      "where": "story/ch01.js:363"
+    },
+    {
+      "kind": "道具",
+      "key": "scene:s07_pol_char",
+      "where": "story/ch01.js:504"
+    },
+    {
+      "kind": "道具",
+      "key": "scene:s07_pol_kneel",
+      "where": "story/ch01.js:520"
+    },
+    {
+      "kind": "道具",
+      "key": "mr_statue",
+      "where": "story/ch01.js:552"
+    },
+    {
+      "kind": "道具",
+      "key": "mr_statue",
+      "where": "story/ch01.js:577"
+    },
+    {
+      "kind": "背景",
+      "key": "menace",
+      "where": "story/ch01.js:174"
+    },
+    {
+      "kind": "背景",
+      "key": "radial",
+      "where": "story/ch01.js:223"
+    },
+    {
+      "kind": "背景",
+      "key": "hongkong_night",
+      "where": "story/ch01.js:306"
+    },
+    {
+      "kind": "背景",
+      "key": "radial",
+      "where": "story/ch01.js:516"
+    },
+    {
+      "kind": "特效",
+      "key": "hit_spark",
+      "where": "story/ch01.js:178"
+    },
+    {
+      "kind": "特效",
+      "key": "shatter",
+      "where": "story/ch01.js:225"
+    },
+    {
+      "kind": "特效",
+      "key": "water_splash",
+      "where": "story/ch01.js:268"
+    },
+    {
+      "kind": "特效",
+      "key": "fire_burst",
+      "where": "story/ch01.js:370"
+    },
+    {
+      "kind": "特效",
+      "key": "burst",
+      "where": "story/ch01.js:478"
+    },
+    {
+      "kind": "特效",
+      "key": "fire_burst",
+      "where": "story/ch01.js:479"
+    },
+    {
+      "kind": "特效",
+      "key": "slash_arc",
+      "where": "story/ch01.js:480"
+    },
+    {
+      "kind": "特效",
+      "key": "dust",
+      "where": "story/ch01.js:481"
+    },
+    {
+      "kind": "特效",
+      "key": "burst",
+      "where": "story/ch01.js:485"
+    },
+    {
+      "kind": "特效",
+      "key": "slash_arc",
+      "where": "story/ch01.js:486"
+    },
+    {
+      "kind": "特效",
+      "key": "dust",
+      "where": "story/ch01.js:512"
+    },
+    {
+      "kind": "音效",
+      "key": "whoosh",
+      "where": "story/ch01.js:123"
+    },
+    {
+      "kind": "音效",
+      "key": "stab",
+      "where": "story/ch01.js:178"
+    },
+    {
+      "kind": "音效",
+      "key": "glass_break",
+      "where": "story/ch01.js:226"
+    },
+    {
+      "kind": "音效",
+      "key": "punch",
+      "where": "story/ch01.js:226"
+    },
+    {
+      "kind": "音效",
+      "key": "rumble",
+      "where": "story/ch01.js:233"
+    },
+    {
+      "kind": "音效",
+      "key": "thud",
+      "where": "story/ch01.js:233"
+    },
+    {
+      "kind": "音效",
+      "key": "wind",
+      "where": "story/ch01.js:264"
+    },
+    {
+      "kind": "音效",
+      "key": "crash",
+      "where": "story/ch01.js:267"
+    },
+    {
+      "kind": "音效",
+      "key": "splash",
+      "where": "story/ch01.js:267"
+    },
+    {
+      "kind": "音效",
+      "key": "sting_comedy",
+      "where": "story/ch01.js:274"
+    },
+    {
+      "kind": "音效",
+      "key": "pop",
+      "where": "story/ch01.js:360"
+    },
+    {
+      "kind": "音效",
+      "key": "coin",
+      "where": "story/ch01.js:363"
+    },
+    {
+      "kind": "音效",
+      "key": "fire_burst",
+      "where": "story/ch01.js:371"
+    },
+    {
+      "kind": "音效",
+      "key": "slash",
+      "where": "story/ch01.js:371"
+    },
+    {
+      "kind": "音效",
+      "key": "glass_break",
+      "where": "story/ch01.js:478"
+    },
+    {
+      "kind": "音效",
+      "key": "fire_burst",
+      "where": "story/ch01.js:479"
+    },
+    {
+      "kind": "音效",
+      "key": "slash",
+      "where": "story/ch01.js:480"
+    },
+    {
+      "kind": "音效",
+      "key": "armor_off",
+      "where": "story/ch01.js:485"
+    },
+    {
+      "kind": "音效",
+      "key": "zoom",
+      "where": "story/ch01.js:511"
+    },
+    {
+      "kind": "音效",
+      "key": "thud",
+      "where": "story/ch01.js:512"
+    },
+    {
+      "kind": "音效",
+      "key": "sting_comedy",
+      "where": "story/ch01.js:515"
+    },
+    {
+      "kind": "音效",
+      "key": "punch",
+      "where": "story/ch01.js:524"
+    },
+    {
+      "kind": "音效",
+      "key": "heartbeat",
+      "where": "story/ch01.js:525"
+    },
+    {
+      "kind": "音效",
+      "key": "insect_buzz_loop",
+      "where": "story/ch01.js:157"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "story/ch01.js:147"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "story/ch01.js:276"
+    },
+    {
+      "kind": "配乐",
+      "key": "sad",
+      "where": "story/ch01.js:525"
+    },
+    {
+      "kind": "配乐",
+      "key": "travel",
+      "where": "story/ch01.js:534"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "story/ch01.js:167"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/ch01.js:193"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "story/ch01.js:241"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/ch01.js:446"
+    },
+    {
+      "kind": "配乐",
+      "key": "travel",
+      "where": "story/ch01.js:541"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "story/ch01.js:576"
+    },
+    {
+      "kind": "地图",
+      "key": "cockpit_ch1",
+      "where": "story/ch01.js:241"
+    },
+    {
+      "kind": "地图",
+      "key": "sky_ch1",
+      "where": "story/ch01.js:261"
+    },
+    {
+      "kind": "地图",
+      "key": "sea_ch1",
+      "where": "story/ch01.js:266"
+    },
+    {
+      "kind": "地图",
+      "key": "map_ch1",
+      "where": "story/ch01.js:541"
+    },
+    {
+      "kind": "地图",
+      "key": "plane_ch1",
+      "where": "story/ch01.js:543"
+    },
+    {
+      "kind": "地图",
+      "key": "hk_street_ch1",
+      "where": "story/ch01.js:546"
+    },
+    {
+      "kind": "地图",
+      "key": "hk_garden_ch1",
+      "where": "story/ch01.js:550"
+    },
+    {
+      "kind": "地图",
+      "key": "hk_street_ch1b",
+      "where": "story/ch01.js:556"
+    },
+    {
+      "kind": "地图",
+      "key": "hk_garden_ch1",
+      "where": "story/ch01.js:576"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "saiki",
+      "where": "story/ch01.js:229"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "draw",
+      "where": "story/ch01.js:524"
+    },
+    {
+      "kind": "界面:chapters",
+      "key": "ch1",
+      "where": "story/ch01.js:540"
+    },
+    {
+      "kind": "界面:namecards",
+      "key": "polnareff",
+      "where": "story/ch01.js:367"
+    },
+    {
+      "kind": "界面:standcards",
+      "key": "towergray",
+      "where": "story/ch01.js:182"
+    },
+    {
+      "kind": "界面:locations",
+      "key": "hongkong",
+      "where": "story/ch01.js:546"
+    },
+    {
+      "kind": "界面:vs",
+      "key": "towergray",
+      "where": "story/ch01.js:194"
+    },
+    {
+      "kind": "界面:vs",
+      "key": "chariot",
+      "where": "story/ch01.js:446"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "ガキッ",
+      "where": "story/ch01.js:181"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "呜哇啊啊啊——！！",
+      "where": "story/ch01.js:264"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "扑通——！！",
+      "where": "story/ch01.js:269"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "シュバッ",
+      "where": "story/ch01.js:371"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "シュバババ",
+      "where": "story/ch01.js:481"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "チッチッ",
+      "where": "story/ch01.js:517"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "ORA!",
+      "where": "story/ch01.js:524"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch01.js:5"
+    },
+    {
+      "kind": "说话人",
+      "key": "npc_stewardess",
+      "where": "story/ch01.js:113"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch01.js:113"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch01.js:140"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch01.js:140"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch01.js:163"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch01.js:163"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch01.js:183"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch01.js:183"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch01.js:183"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch01.js:183"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch01.js:187"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch01.js:187"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch01.js:248"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch01.js:248"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch01.js:256"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch01.js:258"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch01.js:272"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch01.js:275"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch01.js:275"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch01.js:275"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch01.js:275"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch01.js:285"
+    },
+    {
+      "kind": "说话人",
+      "key": "npc_hk_passer_a",
+      "where": "story/ch01.js:285"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch01.js:289"
+    },
+    {
+      "kind": "说话人",
+      "key": "npc_hk_granny",
+      "where": "story/ch01.js:289"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch01.js:311"
+    },
+    {
+      "kind": "说话人",
+      "key": "npc_hk_owner",
+      "where": "story/ch01.js:311"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch01.js:311"
+    },
+    {
+      "kind": "说话人",
+      "key": "npc_hk_owner",
+      "where": "story/ch01.js:354"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch01.js:354"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch01.js:354"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch01.js:354"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch01.js:354"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch01.js:354"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch01.js:358"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch01.js:358"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch01.js:361"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch01.js:361"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch01.js:361"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch01.js:368"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch01.js:368"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch01.js:368"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch01.js:373"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch01.js:373"
+    },
+    {
+      "kind": "说话人",
+      "key": "npc_hk_owner",
+      "where": "story/ch01.js:375"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch01.js:375"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch01.js:439"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch01.js:440"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch01.js:440"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch01.js:440"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch01.js:483"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch01.js:483"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch01.js:486"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch01.js:486"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch01.js:507"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch01.js:514"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch01.js:514"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch01.js:522"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch01.js:522"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch01.js:522"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch01.js:522"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch01.js:523"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch01.js:528"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch01.js:528"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch01.js:528"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch01.js:528"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch01.js:528"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch01.js:528"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch01.js:532"
+    },
+    {
+      "kind": "说话人",
+      "key": "fake_tennille",
+      "where": "story/ch02.js:29"
+    },
+    {
+      "kind": "说话人",
+      "key": "fake_tennille",
+      "where": "story/ch02.js:29"
+    },
+    {
+      "kind": "说话人",
+      "key": "fake_tennille",
+      "where": "story/ch02.js:29"
+    },
+    {
+      "kind": "说话人",
+      "key": "npc_sailor",
+      "where": "story/ch02.js:29"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch02.js:32"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch02.js:32"
+    },
+    {
+      "kind": "说话人",
+      "key": "anne",
+      "where": "story/ch02.js:38"
+    },
+    {
+      "kind": "说话人",
+      "key": "fake_tennille",
+      "where": "story/ch02.js:40"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch02.js:40"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch02.js:40"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch02.js:41"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch02.js:41"
+    },
+    {
+      "kind": "道具",
+      "key": "shark",
+      "where": "story/ch02.js:38"
+    },
+    {
+      "kind": "特效",
+      "key": "glint",
+      "where": "story/ch02.js:7"
+    },
+    {
+      "kind": "特效",
+      "key": "bubbles",
+      "where": "story/ch02.js:10"
+    },
+    {
+      "kind": "特效",
+      "key": "water_splash",
+      "where": "story/ch02.js:38"
+    },
+    {
+      "kind": "特效",
+      "key": "explosion",
+      "where": "story/ch02.js:41"
+    },
+    {
+      "kind": "特效",
+      "key": "burst",
+      "where": "story/ch02.js:43"
+    },
+    {
+      "kind": "音效",
+      "key": "punch",
+      "where": "story/ch02.js:38"
+    },
+    {
+      "kind": "音效",
+      "key": "blip",
+      "where": "story/ch02.js:41"
+    },
+    {
+      "kind": "音效",
+      "key": "explosion",
+      "where": "story/ch02.js:41"
+    },
+    {
+      "kind": "音效",
+      "key": "glass_break",
+      "where": "story/ch02.js:12"
+    },
+    {
+      "kind": "音效",
+      "key": "glass_break",
+      "where": "story/ch02.js:22"
+    },
+    {
+      "kind": "音效",
+      "key": "door",
+      "where": "story/ch02.js:25"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/ch02.js:6"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/ch02.js:19"
+    },
+    {
+      "kind": "配乐",
+      "key": "travel",
+      "where": "story/ch02.js:36"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/ch02.js:40"
+    },
+    {
+      "kind": "配乐",
+      "key": "travel",
+      "where": "story/ch02.js:41"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "story/ch02.js:42"
+    },
+    {
+      "kind": "配乐",
+      "key": "travel",
+      "where": "story/ch02.js:43"
+    },
+    {
+      "kind": "地图",
+      "key": "map_ch2",
+      "where": "story/ch02.js:36"
+    },
+    {
+      "kind": "地图",
+      "key": "boat_ch2",
+      "where": "story/ch02.js:37"
+    },
+    {
+      "kind": "地图",
+      "key": "sea_ch2",
+      "where": "story/ch02.js:38"
+    },
+    {
+      "kind": "地图",
+      "key": "boat_ch2",
+      "where": "story/ch02.js:39"
+    },
+    {
+      "kind": "地图",
+      "key": "underwater_ch2",
+      "where": "story/ch02.js:40"
+    },
+    {
+      "kind": "地图",
+      "key": "boat_ch2",
+      "where": "story/ch02.js:41"
+    },
+    {
+      "kind": "地图",
+      "key": "dinghy_ch2",
+      "where": "story/ch02.js:41"
+    },
+    {
+      "kind": "地图",
+      "key": "freighter_ch2",
+      "where": "story/ch02.js:42"
+    },
+    {
+      "kind": "地图",
+      "key": "hold_ch2",
+      "where": "story/ch02.js:43"
+    },
+    {
+      "kind": "地图",
+      "key": "dinghy_ch2",
+      "where": "story/ch02.js:43"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "saiki",
+      "where": "story/ch02.js:41"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "saiki",
+      "where": "story/ch02.js:43"
+    },
+    {
+      "kind": "界面:chapters",
+      "key": "ch2",
+      "where": "story/ch02.js:36"
+    },
+    {
+      "kind": "界面:namecards",
+      "key": "fake_tennille",
+      "where": "story/ch02.js:41"
+    },
+    {
+      "kind": "界面:standcards",
+      "key": "darkbluemoon",
+      "where": "story/ch02.js:40"
+    },
+    {
+      "kind": "界面:standcards",
+      "key": "strength",
+      "where": "story/ch02.js:43"
+    },
+    {
+      "kind": "界面:locations",
+      "key": "south_sea",
+      "where": "story/ch02.js:37"
+    },
+    {
+      "kind": "界面:vs",
+      "key": "darkbluemoon",
+      "where": "story/ch02.js:6"
+    },
+    {
+      "kind": "界面:vs",
+      "key": "strength",
+      "where": "story/ch02.js:19"
+    },
+    {
+      "kind": "角色",
+      "key": "strength",
+      "where": "story/ch02.js:19"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch02.js:4"
+    },
+    {
+      "kind": "说话人",
+      "key": "fake_tennille",
+      "where": "story/ch02.js:29"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch02.js:29"
+    },
+    {
+      "kind": "说话人",
+      "key": "anne",
+      "where": "story/ch02.js:38"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch02.js:38"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch02.js:41"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch02.js:41"
+    },
+    {
+      "kind": "说话人",
+      "key": "anne",
+      "where": "story/ch02.js:41"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch02.js:43"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch02.js:43"
+    },
+    {
+      "kind": "说话人",
+      "key": "npc_sailor",
+      "where": "story/ch02.js:43"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch02.js:43"
+    },
+    {
+      "kind": "角色",
+      "key": "polnareff",
+      "where": "story/ch03.js:45"
+    },
+    {
+      "kind": "角色",
+      "key": "anne",
+      "where": "story/ch03.js:26"
+    },
+    {
+      "kind": "说话人",
+      "key": "devo",
+      "where": "story/ch03.js:9"
+    },
+    {
+      "kind": "说话人",
+      "key": "npc_police",
+      "where": "story/ch03.js:33"
+    },
+    {
+      "kind": "说话人",
+      "key": "npc_townsfolk",
+      "where": "story/ch03.js:33"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch03.js:33"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch03.js:33"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch03.js:34"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch03.js:39"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch03.js:40"
+    },
+    {
+      "kind": "说话人",
+      "key": "devo",
+      "where": "story/ch03.js:43"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch03.js:45"
+    },
+    {
+      "kind": "说话人",
+      "key": "rubbersoul",
+      "where": "story/ch03.js:45"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch03.js:45"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch03.js:45"
+    },
+    {
+      "kind": "特效",
+      "key": "burst",
+      "where": "story/ch03.js:13"
+    },
+    {
+      "kind": "特效",
+      "key": "water_splash",
+      "where": "story/ch03.js:17"
+    },
+    {
+      "kind": "特效",
+      "key": "tendrils",
+      "where": "story/ch03.js:45"
+    },
+    {
+      "kind": "特效",
+      "key": "hit_spark",
+      "where": "story/ch03.js:45"
+    },
+    {
+      "kind": "音效",
+      "key": "sting_reveal",
+      "where": "story/ch03.js:12"
+    },
+    {
+      "kind": "音效",
+      "key": "slash",
+      "where": "story/ch03.js:13"
+    },
+    {
+      "kind": "音效",
+      "key": "glass_break",
+      "where": "story/ch03.js:17"
+    },
+    {
+      "kind": "音效",
+      "key": "door",
+      "where": "story/ch03.js:43"
+    },
+    {
+      "kind": "音效",
+      "key": "drain",
+      "where": "story/ch03.js:45"
+    },
+    {
+      "kind": "音效",
+      "key": "punch",
+      "where": "story/ch03.js:45"
+    },
+    {
+      "kind": "音效",
+      "key": "rero",
+      "where": "story/ch03.js:45"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/ch03.js:6"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/ch03.js:19"
+    },
+    {
+      "kind": "配乐",
+      "key": "travel",
+      "where": "story/ch03.js:41"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "story/ch03.js:42"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "story/ch03.js:45"
+    },
+    {
+      "kind": "配乐",
+      "key": "travel",
+      "where": "story/ch03.js:45"
+    },
+    {
+      "kind": "地图",
+      "key": "map_ch3",
+      "where": "story/ch03.js:41"
+    },
+    {
+      "kind": "地图",
+      "key": "sg_street_ch3",
+      "where": "story/ch03.js:41"
+    },
+    {
+      "kind": "地图",
+      "key": "sg_hotel_ch3",
+      "where": "story/ch03.js:42"
+    },
+    {
+      "kind": "地图",
+      "key": "sg_street_ch3",
+      "where": "story/ch03.js:44"
+    },
+    {
+      "kind": "地图",
+      "key": "cable_ch3",
+      "where": "story/ch03.js:45"
+    },
+    {
+      "kind": "地图",
+      "key": "train_ch3",
+      "where": "story/ch03.js:45"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "saiki",
+      "where": "story/ch03.js:13"
+    },
+    {
+      "kind": "界面:chapters",
+      "key": "ch3",
+      "where": "story/ch03.js:41"
+    },
+    {
+      "kind": "界面:namecards",
+      "key": "devo",
+      "where": "story/ch03.js:43"
+    },
+    {
+      "kind": "界面:namecards",
+      "key": "rubbersoul",
+      "where": "story/ch03.js:45"
+    },
+    {
+      "kind": "界面:standcards",
+      "key": "ebonydevil",
+      "where": "story/ch03.js:43"
+    },
+    {
+      "kind": "界面:standcards",
+      "key": "yellowtemperance",
+      "where": "story/ch03.js:45"
+    },
+    {
+      "kind": "界面:locations",
+      "key": "singapore",
+      "where": "story/ch03.js:41"
+    },
+    {
+      "kind": "界面:vs",
+      "key": "devo",
+      "where": "story/ch03.js:6"
+    },
+    {
+      "kind": "界面:vs",
+      "key": "yellowtemperance",
+      "where": "story/ch03.js:19"
+    },
+    {
+      "kind": "角色",
+      "key": "devo",
+      "where": "story/ch03.js:7"
+    },
+    {
+      "kind": "角色",
+      "key": "devo_doll",
+      "where": "story/ch03.js:7"
+    },
+    {
+      "kind": "角色",
+      "key": "rubbersoul",
+      "where": "story/ch03.js:20"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch03.js:4"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch03.js:43"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch03.js:43"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch03.js:45"
+    },
+    {
+      "kind": "说话人",
+      "key": "rubbersoul",
+      "where": "story/ch03.js:45"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch03.js:45"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch03.js:45"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch03.js:45"
+    },
+    {
+      "kind": "角色",
+      "key": "avdol",
+      "where": "story/ch04.js:78"
+    },
+    {
+      "kind": "角色",
+      "key": "polnareff",
+      "where": "story/ch04.js:78"
+    },
+    {
+      "kind": "角色",
+      "key": "polnareff",
+      "where": "story/ch04.js:78"
+    },
+    {
+      "kind": "角色",
+      "key": "nena",
+      "where": "story/ch04.js:80"
+    },
+    {
+      "kind": "角色",
+      "key": "npc_townsfolk",
+      "where": "story/ch04.js:29"
+    },
+    {
+      "kind": "角色",
+      "key": "npc_townsfolk",
+      "where": "story/ch04.js:29"
+    },
+    {
+      "kind": "角色",
+      "key": "prop:mirror_shard",
+      "where": "story/ch04.js:42"
+    },
+    {
+      "kind": "角色",
+      "key": "npc_townsfolk",
+      "where": "story/ch04.js:44"
+    },
+    {
+      "kind": "角色",
+      "key": "prop:tar_barrel",
+      "where": "story/ch04.js:65"
+    },
+    {
+      "kind": "角色",
+      "key": "npc_police",
+      "where": "story/ch04.js:65"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch04.js:57"
+    },
+    {
+      "kind": "说话人",
+      "key": "empress",
+      "where": "story/ch04.js:72"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch04.js:75"
+    },
+    {
+      "kind": "说话人",
+      "key": "npc_kid",
+      "where": "story/ch04.js:75"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch04.js:75"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch04.js:75"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch04.js:75"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch04.js:75"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch04.js:75"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch04.js:75"
+    },
+    {
+      "kind": "说话人",
+      "key": "npc_police",
+      "where": "story/ch04.js:76"
+    },
+    {
+      "kind": "说话人",
+      "key": "empress",
+      "where": "story/ch04.js:76"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch04.js:76"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch04.js:76"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch04.js:78"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch04.js:78"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch04.js:80"
+    },
+    {
+      "kind": "道具",
+      "key": "hat",
+      "where": "story/ch04.js:57"
+    },
+    {
+      "kind": "背景",
+      "key": "black",
+      "where": "story/ch04.js:78"
+    },
+    {
+      "kind": "背景",
+      "key": "black",
+      "where": "story/ch04.js:80"
+    },
+    {
+      "kind": "特效",
+      "key": "glint",
+      "where": "story/ch04.js:51"
+    },
+    {
+      "kind": "特效",
+      "key": "shatter",
+      "where": "story/ch04.js:56"
+    },
+    {
+      "kind": "特效",
+      "key": "speedlines",
+      "where": "story/ch04.js:57"
+    },
+    {
+      "kind": "特效",
+      "key": "vines",
+      "where": "story/ch04.js:63"
+    },
+    {
+      "kind": "特效",
+      "key": "vines",
+      "where": "story/ch04.js:72"
+    },
+    {
+      "kind": "特效",
+      "key": "glint",
+      "where": "story/ch04.js:78"
+    },
+    {
+      "kind": "音效",
+      "key": "glass_break",
+      "where": "story/ch04.js:42"
+    },
+    {
+      "kind": "音效",
+      "key": "slash",
+      "where": "story/ch04.js:49"
+    },
+    {
+      "kind": "音效",
+      "key": "glint",
+      "where": "story/ch04.js:51"
+    },
+    {
+      "kind": "音效",
+      "key": "gunshot",
+      "where": "story/ch04.js:52"
+    },
+    {
+      "kind": "音效",
+      "key": "coin",
+      "where": "story/ch04.js:54"
+    },
+    {
+      "kind": "音效",
+      "key": "glint",
+      "where": "story/ch04.js:55"
+    },
+    {
+      "kind": "音效",
+      "key": "slash",
+      "where": "story/ch04.js:56"
+    },
+    {
+      "kind": "音效",
+      "key": "camera_shutter",
+      "where": "story/ch04.js:63"
+    },
+    {
+      "kind": "音效",
+      "key": "sting_shock",
+      "where": "story/ch04.js:68"
+    },
+    {
+      "kind": "音效",
+      "key": "sting_shock",
+      "where": "story/ch04.js:71"
+    },
+    {
+      "kind": "音效",
+      "key": "drain",
+      "where": "story/ch04.js:72"
+    },
+    {
+      "kind": "音效",
+      "key": "gunshot",
+      "where": "story/ch04.js:78"
+    },
+    {
+      "kind": "音效",
+      "key": "car_engine",
+      "where": "story/ch04.js:78"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/ch04.js:34"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/ch04.js:61"
+    },
+    {
+      "kind": "配乐",
+      "key": "travel",
+      "where": "story/ch04.js:77"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/ch04.js:78"
+    },
+    {
+      "kind": "配乐",
+      "key": "travel",
+      "where": "story/ch04.js:78"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "story/ch04.js:79"
+    },
+    {
+      "kind": "地图",
+      "key": "map_ch4",
+      "where": "story/ch04.js:77"
+    },
+    {
+      "kind": "地图",
+      "key": "calcutta_ch4",
+      "where": "story/ch04.js:77"
+    },
+    {
+      "kind": "地图",
+      "key": "alley_ch4",
+      "where": "story/ch04.js:78"
+    },
+    {
+      "kind": "地图",
+      "key": "map_ch4",
+      "where": "story/ch04.js:78"
+    },
+    {
+      "kind": "地图",
+      "key": "varanasi_st_ch4",
+      "where": "story/ch04.js:79"
+    },
+    {
+      "kind": "地图",
+      "key": "varanasi_ch4",
+      "where": "story/ch04.js:80"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "saiki",
+      "where": "story/ch04.js:57"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "saiki",
+      "where": "story/ch04.js:73"
+    },
+    {
+      "kind": "界面:chapters",
+      "key": "ch4",
+      "where": "story/ch04.js:77"
+    },
+    {
+      "kind": "界面:namecards",
+      "key": "jgeil",
+      "where": "story/ch04.js:31"
+    },
+    {
+      "kind": "界面:namecards",
+      "key": "holhorse",
+      "where": "story/ch04.js:78"
+    },
+    {
+      "kind": "界面:standcards",
+      "key": "hangedman",
+      "where": "story/ch04.js:78"
+    },
+    {
+      "kind": "界面:standcards",
+      "key": "empress",
+      "where": "story/ch04.js:80"
+    },
+    {
+      "kind": "界面:locations",
+      "key": "calcutta",
+      "where": "story/ch04.js:77"
+    },
+    {
+      "kind": "界面:vs",
+      "key": "emperor_hangedman",
+      "where": "story/ch04.js:34"
+    },
+    {
+      "kind": "界面:vs",
+      "key": "empress",
+      "where": "story/ch04.js:61"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "住手！他是无辜的！",
+      "where": "story/ch04.js:30"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "退开！",
+      "where": "story/ch04.js:71"
+    },
+    {
+      "kind": "角色",
+      "key": "jgeil",
+      "where": "story/ch04.js:28"
+    },
+    {
+      "kind": "角色",
+      "key": "empress",
+      "where": "story/ch04.js:62"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch04.js:4"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch04.js:68"
+    },
+    {
+      "kind": "说话人",
+      "key": "empress",
+      "where": "story/ch04.js:68"
+    },
+    {
+      "kind": "说话人",
+      "key": "holhorse",
+      "where": "story/ch04.js:78"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch04.js:78"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch04.js:78"
+    },
+    {
+      "kind": "说话人",
+      "key": "holhorse",
+      "where": "story/ch04.js:78"
+    },
+    {
+      "kind": "说话人",
+      "key": "nena",
+      "where": "story/ch04.js:78"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch04.js:78"
+    },
+    {
+      "kind": "说话人",
+      "key": "empress",
+      "where": "story/ch04.js:78"
+    },
+    {
+      "kind": "角色",
+      "key": "jotaro",
+      "where": "story/ch05.js:65"
+    },
+    {
+      "kind": "角色",
+      "key": "enya",
+      "where": "story/ch05.js:67"
+    },
+    {
+      "kind": "角色",
+      "key": "steelydan",
+      "where": "story/ch05.js:39"
+    },
+    {
+      "kind": "角色",
+      "key": "npc_townsfolk",
+      "where": "story/ch05.js:45"
+    },
+    {
+      "kind": "角色",
+      "key": "steelydan",
+      "where": "story/ch05.js:61"
+    },
+    {
+      "kind": "说话人",
+      "key": "enya",
+      "where": "story/ch05.js:35"
+    },
+    {
+      "kind": "说话人",
+      "key": "steelydan",
+      "where": "story/ch05.js:40"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch05.js:61"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch05.js:61"
+    },
+    {
+      "kind": "说话人",
+      "key": "npc_townsfolk",
+      "where": "story/ch05.js:64"
+    },
+    {
+      "kind": "说话人",
+      "key": "enya",
+      "where": "story/ch05.js:64"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch05.js:64"
+    },
+    {
+      "kind": "说话人",
+      "key": "holhorse",
+      "where": "story/ch05.js:64"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch05.js:64"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch05.js:65"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch05.js:65"
+    },
+    {
+      "kind": "说话人",
+      "key": "zz",
+      "where": "story/ch05.js:65"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch05.js:67"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch05.js:67"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch05.js:67"
+    },
+    {
+      "kind": "说话人",
+      "key": "steelydan",
+      "where": "story/ch05.js:67"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch05.js:67"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch05.js:67"
+    },
+    {
+      "kind": "道具",
+      "key": "car",
+      "where": "story/ch05.js:8"
+    },
+    {
+      "kind": "背景",
+      "key": "black",
+      "where": "story/ch05.js:67"
+    },
+    {
+      "kind": "特效",
+      "key": "hit_spark",
+      "where": "story/ch05.js:11"
+    },
+    {
+      "kind": "特效",
+      "key": "dust",
+      "where": "story/ch05.js:17"
+    },
+    {
+      "kind": "特效",
+      "key": "crack",
+      "where": "story/ch05.js:17"
+    },
+    {
+      "kind": "特效",
+      "key": "hit_spark",
+      "where": "story/ch05.js:17"
+    },
+    {
+      "kind": "特效",
+      "key": "glint",
+      "where": "story/ch05.js:19"
+    },
+    {
+      "kind": "特效",
+      "key": "inhale_stream",
+      "where": "story/ch05.js:24"
+    },
+    {
+      "kind": "特效",
+      "key": "tendrils",
+      "where": "story/ch05.js:32"
+    },
+    {
+      "kind": "特效",
+      "key": "inhale_stream",
+      "where": "story/ch05.js:35"
+    },
+    {
+      "kind": "特效",
+      "key": "burst",
+      "where": "story/ch05.js:61"
+    },
+    {
+      "kind": "特效",
+      "key": "tendrils",
+      "where": "story/ch05.js:67"
+    },
+    {
+      "kind": "特效",
+      "key": "tendrils",
+      "where": "story/ch05.js:67"
+    },
+    {
+      "kind": "音效",
+      "key": "punch",
+      "where": "story/ch05.js:11"
+    },
+    {
+      "kind": "音效",
+      "key": "skid",
+      "where": "story/ch05.js:12"
+    },
+    {
+      "kind": "音效",
+      "key": "punch_heavy",
+      "where": "story/ch05.js:17"
+    },
+    {
+      "kind": "音效",
+      "key": "grunt_enemy",
+      "where": "story/ch05.js:30"
+    },
+    {
+      "kind": "音效",
+      "key": "splash",
+      "where": "story/ch05.js:67"
+    },
+    {
+      "kind": "音效",
+      "key": "car_engine",
+      "where": "story/ch05.js:67"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/ch05.js:6"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/ch05.js:16"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/ch05.js:23"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/ch05.js:51"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/ch05.js:61"
+    },
+    {
+      "kind": "配乐",
+      "key": "travel",
+      "where": "story/ch05.js:65"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/ch05.js:65"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "story/ch05.js:66"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "story/ch05.js:67"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/ch05.js:67"
+    },
+    {
+      "kind": "地图",
+      "key": "karachi_ch5",
+      "where": "story/ch05.js:61"
+    },
+    {
+      "kind": "地图",
+      "key": "map_ch5",
+      "where": "story/ch05.js:65"
+    },
+    {
+      "kind": "地图",
+      "key": "road_ch5",
+      "where": "story/ch05.js:65"
+    },
+    {
+      "kind": "地图",
+      "key": "cliff_ch5",
+      "where": "story/ch05.js:65"
+    },
+    {
+      "kind": "地图",
+      "key": "fog_ch5",
+      "where": "story/ch05.js:66"
+    },
+    {
+      "kind": "地图",
+      "key": "karachi_ch5",
+      "where": "story/ch05.js:67"
+    },
+    {
+      "kind": "地图",
+      "key": "brain_ch5",
+      "where": "story/ch05.js:67"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "saiki",
+      "where": "story/ch05.js:19"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "saiki",
+      "where": "story/ch05.js:35"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "saiki",
+      "where": "story/ch05.js:61"
+    },
+    {
+      "kind": "界面:chapters",
+      "key": "ch5",
+      "where": "story/ch05.js:65"
+    },
+    {
+      "kind": "界面:namecards",
+      "key": "zz",
+      "where": "story/ch05.js:65"
+    },
+    {
+      "kind": "界面:namecards",
+      "key": "steelydan",
+      "where": "story/ch05.js:67"
+    },
+    {
+      "kind": "界面:standcards",
+      "key": "justice",
+      "where": "story/ch05.js:67"
+    },
+    {
+      "kind": "界面:standcards",
+      "key": "lovers",
+      "where": "story/ch05.js:67"
+    },
+    {
+      "kind": "界面:vs",
+      "key": "wheeloffortune",
+      "where": "story/ch05.js:6"
+    },
+    {
+      "kind": "界面:vs",
+      "key": "wheeloffortune",
+      "where": "story/ch05.js:16"
+    },
+    {
+      "kind": "界面:vs",
+      "key": "justice",
+      "where": "story/ch05.js:23"
+    },
+    {
+      "kind": "界面:vs",
+      "key": "lovers",
+      "where": "story/ch05.js:51"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "！？",
+      "where": "story/ch05.js:45"
+    },
+    {
+      "kind": "界面:specials",
+      "key": "正义 · 吸雾",
+      "where": "story/ch05.js:21"
+    },
+    {
+      "kind": "角色",
+      "key": "wheel",
+      "where": "story/ch05.js:7"
+    },
+    {
+      "kind": "角色",
+      "key": "wheel",
+      "where": "story/ch05.js:16"
+    },
+    {
+      "kind": "角色",
+      "key": "enya",
+      "where": "story/ch05.js:23"
+    },
+    {
+      "kind": "角色",
+      "key": "zombie",
+      "where": "story/ch05.js:31"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch05.js:4"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch05.js:47"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch05.js:56"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch05.js:61"
+    },
+    {
+      "kind": "说话人",
+      "key": "steelydan",
+      "where": "story/ch05.js:61"
+    },
+    {
+      "kind": "说话人",
+      "key": "anne",
+      "where": "story/ch05.js:65"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch05.js:65"
+    },
+    {
+      "kind": "说话人",
+      "key": "holhorse",
+      "where": "story/ch05.js:67"
+    },
+    {
+      "kind": "说话人",
+      "key": "enya",
+      "where": "story/ch05.js:67"
+    },
+    {
+      "kind": "说话人",
+      "key": "holhorse",
+      "where": "story/ch05.js:67"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch05.js:67"
+    },
+    {
+      "kind": "角色",
+      "key": "jotaro",
+      "where": "story/ch06.js:20"
+    },
+    {
+      "kind": "角色",
+      "key": "prop:rock",
+      "where": "story/ch06.js:53"
+    },
+    {
+      "kind": "角色",
+      "key": "kakyoin",
+      "where": "story/ch06.js:72"
+    },
+    {
+      "kind": "角色",
+      "key": "death13",
+      "where": "story/ch06.js:84"
+    },
+    {
+      "kind": "角色",
+      "key": "kakyoin",
+      "where": "story/ch06.js:94"
+    },
+    {
+      "kind": "角色",
+      "key": "death13",
+      "where": "story/ch06.js:105"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch06.js:7"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch06.js:13"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch06.js:62"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch06.js:63"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch06.js:67"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch06.js:93"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch06.js:109"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch06.js:122"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch06.js:124"
+    },
+    {
+      "kind": "道具",
+      "key": "camel",
+      "where": "story/ch06.js:8"
+    },
+    {
+      "kind": "道具",
+      "key": "baby_cradle",
+      "where": "story/ch06.js:121"
+    },
+    {
+      "kind": "特效",
+      "key": "crack",
+      "where": "story/ch06.js:26"
+    },
+    {
+      "kind": "特效",
+      "key": "glint",
+      "where": "story/ch06.js:37"
+    },
+    {
+      "kind": "音效",
+      "key": "thud",
+      "where": "story/ch06.js:13"
+    },
+    {
+      "kind": "音效",
+      "key": "glass_break",
+      "where": "story/ch06.js:26"
+    },
+    {
+      "kind": "音效",
+      "key": "crash",
+      "where": "story/ch06.js:89"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/ch06.js:21"
+    },
+    {
+      "kind": "界面:chapters",
+      "key": "ch6",
+      "where": "story/ch06.js:113"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch06.js:18"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch06.js:18"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch06.js:20"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch06.js:57"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch06.js:57"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch06.js:70"
+    },
+    {
+      "kind": "说话人",
+      "key": "death13",
+      "where": "story/ch06.js:70"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch06.js:88"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch06.js:88"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch06.js:126"
+    },
+    {
+      "kind": "角色",
+      "key": "polnareff",
+      "where": "story/ch07.js:14"
+    },
+    {
+      "kind": "角色",
+      "key": "judgement",
+      "where": "story/ch07.js:24"
+    },
+    {
+      "kind": "角色",
+      "key": "avdol",
+      "where": "story/ch07.js:33"
+    },
+    {
+      "kind": "角色",
+      "key": "magred",
+      "where": "story/ch07.js:33"
+    },
+    {
+      "kind": "角色",
+      "key": "avdol",
+      "where": "story/ch07.js:36"
+    },
+    {
+      "kind": "角色",
+      "key": "prop:genie_lamp",
+      "where": "story/ch07.js:43"
+    },
+    {
+      "kind": "角色",
+      "key": "judgement",
+      "where": "story/ch07.js:47"
+    },
+    {
+      "kind": "角色",
+      "key": "jotaro",
+      "where": "story/ch07.js:65"
+    },
+    {
+      "kind": "角色",
+      "key": "highpriestess",
+      "where": "story/ch07.js:93"
+    },
+    {
+      "kind": "角色",
+      "key": "prop:joseph_hand",
+      "where": "story/ch07.js:106"
+    },
+    {
+      "kind": "角色",
+      "key": "jotaro",
+      "where": "story/ch07.js:114"
+    },
+    {
+      "kind": "角色",
+      "key": "midler_back",
+      "where": "story/ch07.js:144"
+    },
+    {
+      "kind": "说话人",
+      "key": "judgement",
+      "where": "story/ch07.js:13"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch07.js:31"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch07.js:63"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch07.js:105"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch07.js:108"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch07.js:113"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch07.js:146"
+    },
+    {
+      "kind": "道具",
+      "key": "genie_lamp",
+      "where": "story/ch07.js:154"
+    },
+    {
+      "kind": "背景",
+      "key": "black",
+      "where": "story/ch07.js:106"
+    },
+    {
+      "kind": "特效",
+      "key": "shatter",
+      "where": "story/ch07.js:46"
+    },
+    {
+      "kind": "音效",
+      "key": "metal_scrape",
+      "where": "story/ch07.js:68"
+    },
+    {
+      "kind": "音效",
+      "key": "sub_alarm",
+      "where": "story/ch07.js:76"
+    },
+    {
+      "kind": "音效",
+      "key": "metal_crunch",
+      "where": "story/ch07.js:91"
+    },
+    {
+      "kind": "音效",
+      "key": "metal_scrape",
+      "where": "story/ch07.js:101"
+    },
+    {
+      "kind": "音效",
+      "key": "metal_crunch",
+      "where": "story/ch07.js:107"
+    },
+    {
+      "kind": "音效",
+      "key": "water_splash",
+      "where": "story/ch07.js:143"
+    },
+    {
+      "kind": "音效",
+      "key": "metal_scrape",
+      "where": "story/ch07.js:153"
+    },
+    {
+      "kind": "音效",
+      "key": "teeth_crunch",
+      "where": "story/ch07.js:118"
+    },
+    {
+      "kind": "界面:chapters",
+      "key": "ch7",
+      "where": "story/ch07.js:154"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch07.js:10"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch07.js:11"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch07.js:12"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch07.js:34"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch07.js:34"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch07.js:34"
+    },
+    {
+      "kind": "说话人",
+      "key": "clay_sherry",
+      "where": "story/ch07.js:41"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch07.js:53"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch07.js:53"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch07.js:65"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch07.js:139"
+    },
+    {
+      "kind": "角色",
+      "key": "jotaro",
+      "where": "story/ch08.js:15"
+    },
+    {
+      "kind": "角色",
+      "key": "iggy",
+      "where": "story/ch08.js:48"
+    },
+    {
+      "kind": "角色",
+      "key": "prop:rock",
+      "where": "story/ch08.js:49"
+    },
+    {
+      "kind": "角色",
+      "key": "jotaro",
+      "where": "story/ch08.js:59"
+    },
+    {
+      "kind": "角色",
+      "key": "fool",
+      "where": "story/ch08.js:78"
+    },
+    {
+      "kind": "角色",
+      "key": "prop:cane",
+      "where": "story/ch08.js:98"
+    },
+    {
+      "kind": "角色",
+      "key": "prop:manga",
+      "where": "story/ch08.js:118"
+    },
+    {
+      "kind": "角色",
+      "key": "oingo",
+      "where": "story/ch08.js:155"
+    },
+    {
+      "kind": "角色",
+      "key": "ndoul",
+      "where": "story/ch08.js:93"
+    },
+    {
+      "kind": "角色",
+      "key": "iggy",
+      "where": "story/ch08.js:176"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch08.js:56"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch08.js:97"
+    },
+    {
+      "kind": "说话人",
+      "key": "boingo",
+      "where": "story/ch08.js:136"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch08.js:177"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch08.js:183"
+    },
+    {
+      "kind": "道具",
+      "key": "manga",
+      "where": "story/ch08.js:113"
+    },
+    {
+      "kind": "道具",
+      "key": "orange",
+      "where": "story/ch08.js:113"
+    },
+    {
+      "kind": "道具",
+      "key": "gum",
+      "where": "story/ch08.js:176"
+    },
+    {
+      "kind": "道具",
+      "key": "heli",
+      "where": "story/ch08.js:176"
+    },
+    {
+      "kind": "背景",
+      "key": "black",
+      "where": "story/ch08.js:96"
+    },
+    {
+      "kind": "背景",
+      "key": "desert_night",
+      "where": "story/ch08.js:98"
+    },
+    {
+      "kind": "背景",
+      "key": "black",
+      "where": "story/ch08.js:118"
+    },
+    {
+      "kind": "特效",
+      "key": "shockwave",
+      "where": "story/ch08.js:11"
+    },
+    {
+      "kind": "特效",
+      "key": "explosion",
+      "where": "story/ch08.js:147"
+    },
+    {
+      "kind": "音效",
+      "key": "pop",
+      "where": "story/ch08.js:35"
+    },
+    {
+      "kind": "音效",
+      "key": "sand_storm",
+      "where": "story/ch08.js:67"
+    },
+    {
+      "kind": "音效",
+      "key": "water_jet",
+      "where": "story/ch08.js:70"
+    },
+    {
+      "kind": "音效",
+      "key": "dog_bark",
+      "where": "story/ch08.js:92"
+    },
+    {
+      "kind": "音效",
+      "key": "punch_heavy",
+      "where": "story/ch08.js:94"
+    },
+    {
+      "kind": "音效",
+      "key": "water_jet",
+      "where": "story/ch08.js:96"
+    },
+    {
+      "kind": "音效",
+      "key": "dog_bark",
+      "where": "story/ch08.js:111"
+    },
+    {
+      "kind": "音效",
+      "key": "splash",
+      "where": "story/ch08.js:143"
+    },
+    {
+      "kind": "音效",
+      "key": "slash",
+      "where": "story/ch08.js:144"
+    },
+    {
+      "kind": "音效",
+      "key": "explosion",
+      "where": "story/ch08.js:147"
+    },
+    {
+      "kind": "音效",
+      "key": "dog_bark",
+      "where": "story/ch08.js:177"
+    },
+    {
+      "kind": "音效",
+      "key": "water_jet",
+      "where": "story/ch08.js:180"
+    },
+    {
+      "kind": "音效",
+      "key": "crash",
+      "where": "story/ch08.js:180"
+    },
+    {
+      "kind": "音效",
+      "key": "water_jet",
+      "where": "story/ch08.js:40"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/ch08.js:16"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/ch08.js:60"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "story/ch08.js:138"
+    },
+    {
+      "kind": "界面:chapters",
+      "key": "ch8",
+      "where": "story/ch08.js:175"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch08.js:5"
+    },
+    {
+      "kind": "说话人",
+      "key": "ndoul",
+      "where": "story/ch08.js:95"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch08.js:95"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch08.js:104"
+    },
+    {
+      "kind": "说话人",
+      "key": "iggy",
+      "where": "story/ch08.js:138"
+    },
+    {
+      "kind": "说话人",
+      "key": "oingo",
+      "where": "story/ch08.js:166"
+    },
+    {
+      "kind": "说话人",
+      "key": "boingo",
+      "where": "story/ch08.js:166"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch08.js:166"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch08.js:181"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch08.js:181"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch08.js:181"
+    },
+    {
+      "kind": "说话人",
+      "key": "ndoul",
+      "where": "story/ch08.js:181"
+    },
+    {
+      "kind": "角色",
+      "key": "polnareff",
+      "where": "story/ch09.js:16"
+    },
+    {
+      "kind": "角色",
+      "key": "chaka",
+      "where": "story/ch09.js:17"
+    },
+    {
+      "kind": "角色",
+      "key": "jotaro",
+      "where": "story/ch09.js:32"
+    },
+    {
+      "kind": "角色",
+      "key": "khan",
+      "where": "story/ch09.js:33"
+    },
+    {
+      "kind": "角色",
+      "key": "jotaro",
+      "where": "story/ch09.js:41"
+    },
+    {
+      "kind": "角色",
+      "key": "polnareff_possessed",
+      "where": "story/ch09.js:42"
+    },
+    {
+      "kind": "角色",
+      "key": "joseph",
+      "where": "story/ch09.js:54"
+    },
+    {
+      "kind": "角色",
+      "key": "prop:metal_junk",
+      "where": "story/ch09.js:72"
+    },
+    {
+      "kind": "角色",
+      "key": "prop:socket",
+      "where": "story/ch09.js:81"
+    },
+    {
+      "kind": "角色",
+      "key": "mariah",
+      "where": "story/ch09.js:97"
+    },
+    {
+      "kind": "角色",
+      "key": "alessi",
+      "where": "story/ch09.js:142"
+    },
+    {
+      "kind": "角色",
+      "key": "alessi",
+      "where": "story/ch09.js:165"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch09.js:14"
+    },
+    {
+      "kind": "说话人",
+      "key": "chaka",
+      "where": "story/ch09.js:14"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch09.js:26"
+    },
+    {
+      "kind": "说话人",
+      "key": "khan",
+      "where": "story/ch09.js:31"
+    },
+    {
+      "kind": "说话人",
+      "key": "alessi",
+      "where": "story/ch09.js:112"
+    },
+    {
+      "kind": "道具",
+      "key": "anubis_sword",
+      "where": "story/ch09.js:12"
+    },
+    {
+      "kind": "道具",
+      "key": "socket",
+      "where": "story/ch09.js:183"
+    },
+    {
+      "kind": "特效",
+      "key": "slash_arc",
+      "where": "story/ch09.js:19"
+    },
+    {
+      "kind": "特效",
+      "key": "warn_line",
+      "where": "story/ch09.js:77"
+    },
+    {
+      "kind": "特效",
+      "key": "rush",
+      "where": "story/ch09.js:174"
+    },
+    {
+      "kind": "音效",
+      "key": "stab",
+      "where": "story/ch09.js:19"
+    },
+    {
+      "kind": "音效",
+      "key": "splash",
+      "where": "story/ch09.js:26"
+    },
+    {
+      "kind": "音效",
+      "key": "dog_bark",
+      "where": "story/ch09.js:49"
+    },
+    {
+      "kind": "音效",
+      "key": "splash",
+      "where": "story/ch09.js:49"
+    },
+    {
+      "kind": "音效",
+      "key": "train_horn",
+      "where": "story/ch09.js:85"
+    },
+    {
+      "kind": "音效",
+      "key": "thud",
+      "where": "story/ch09.js:135"
+    },
+    {
+      "kind": "音效",
+      "key": "thud",
+      "where": "story/ch09.js:158"
+    },
+    {
+      "kind": "音效",
+      "key": "ora_rush",
+      "where": "story/ch09.js:174"
+    },
+    {
+      "kind": "音效",
+      "key": "slash",
+      "where": "story/ch09.js:174"
+    },
+    {
+      "kind": "音效",
+      "key": "magnet_clack",
+      "where": "story/ch09.js:181"
+    },
+    {
+      "kind": "音效",
+      "key": "axe_chop",
+      "where": "story/ch09.js:134"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/ch09.js:55"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "story/ch09.js:116"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/ch09.js:151"
+    },
+    {
+      "kind": "界面:chapters",
+      "key": "ch9",
+      "where": "story/ch09.js:12"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch09.js:5"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch09.js:40"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch09.js:40"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch09.js:48"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch09.js:52"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch09.js:53"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch09.js:53"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch09.js:55"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch09.js:59"
+    },
+    {
+      "kind": "说话人",
+      "key": "mariah",
+      "where": "story/ch09.js:102"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch09.js:102"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch09.js:111"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch09.js:171"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch09.js:173"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch09.js:173"
+    },
+    {
+      "kind": "说话人",
+      "key": "alessi",
+      "where": "story/ch09.js:173"
+    },
+    {
+      "kind": "角色",
+      "key": "iggy",
+      "where": "story/ch10.js:57"
+    },
+    {
+      "kind": "角色",
+      "key": "holhorse",
+      "where": "story/ch10.js:58"
+    },
+    {
+      "kind": "角色",
+      "key": "iggy",
+      "where": "story/ch10.js:90"
+    },
+    {
+      "kind": "角色",
+      "key": "petshop",
+      "where": "story/ch10.js:93"
+    },
+    {
+      "kind": "角色",
+      "key": "prop:ice_wall",
+      "where": "story/ch10.js:114"
+    },
+    {
+      "kind": "角色",
+      "key": "darby",
+      "where": "story/ch10.js:154"
+    },
+    {
+      "kind": "角色",
+      "key": "dio",
+      "where": "story/ch10.js:166"
+    },
+    {
+      "kind": "角色",
+      "key": "holhorse",
+      "where": "story/ch10.js:166"
+    },
+    {
+      "kind": "角色",
+      "key": "iggy",
+      "where": "story/ch10.js:177"
+    },
+    {
+      "kind": "角色",
+      "key": "darby",
+      "where": "story/ch10.js:139"
+    },
+    {
+      "kind": "角色",
+      "key": "npc_cat",
+      "where": "story/ch10.js:140"
+    },
+    {
+      "kind": "角色",
+      "key": "npc_dealer",
+      "where": "story/ch10.js:141"
+    },
+    {
+      "kind": "说话人",
+      "key": "darby",
+      "where": "story/ch10.js:47"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch10.js:50"
+    },
+    {
+      "kind": "说话人",
+      "key": "boingo",
+      "where": "story/ch10.js:56"
+    },
+    {
+      "kind": "说话人",
+      "key": "darby",
+      "where": "story/ch10.js:147"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch10.js:151"
+    },
+    {
+      "kind": "说话人",
+      "key": "darby",
+      "where": "story/ch10.js:152"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch10.js:156"
+    },
+    {
+      "kind": "说话人",
+      "key": "darby",
+      "where": "story/ch10.js:156"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch10.js:160"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch10.js:160"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch10.js:161"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch10.js:161"
+    },
+    {
+      "kind": "说话人",
+      "key": "holhorse",
+      "where": "story/ch10.js:167"
+    },
+    {
+      "kind": "道具",
+      "key": "mirror_stand",
+      "where": "story/ch10.js:65"
+    },
+    {
+      "kind": "道具",
+      "key": "oil_drum",
+      "where": "story/ch10.js:65"
+    },
+    {
+      "kind": "背景",
+      "key": "#17242c",
+      "where": "story/ch10.js:8"
+    },
+    {
+      "kind": "背景",
+      "key": "black",
+      "where": "story/ch10.js:166"
+    },
+    {
+      "kind": "背景",
+      "key": "cairo_day",
+      "where": "story/ch10.js:177"
+    },
+    {
+      "kind": "音效",
+      "key": "drain",
+      "where": "story/ch10.js:7"
+    },
+    {
+      "kind": "音效",
+      "key": "card_flip",
+      "where": "story/ch10.js:21"
+    },
+    {
+      "kind": "音效",
+      "key": "clang",
+      "where": "story/ch10.js:76"
+    },
+    {
+      "kind": "音效",
+      "key": "thud",
+      "where": "story/ch10.js:77"
+    },
+    {
+      "kind": "音效",
+      "key": "gunshot",
+      "where": "story/ch10.js:81"
+    },
+    {
+      "kind": "音效",
+      "key": "punch_heavy",
+      "where": "story/ch10.js:106"
+    },
+    {
+      "kind": "音效",
+      "key": "ice",
+      "where": "story/ch10.js:116"
+    },
+    {
+      "kind": "音效",
+      "key": "ice",
+      "where": "story/ch10.js:128"
+    },
+    {
+      "kind": "音效",
+      "key": "dog_bark",
+      "where": "story/ch10.js:171"
+    },
+    {
+      "kind": "配乐",
+      "key": "ominous",
+      "where": "story/ch10.js:181"
+    },
+    {
+      "kind": "地图",
+      "key": "cafe_ch10",
+      "where": "story/ch10.js:136"
+    },
+    {
+      "kind": "地图",
+      "key": "flashback_ch10",
+      "where": "story/ch10.js:164"
+    },
+    {
+      "kind": "地图",
+      "key": "cairo_day_ch10",
+      "where": "story/ch10.js:168"
+    },
+    {
+      "kind": "地图",
+      "key": "mansion_ext_ch11",
+      "where": "story/ch10.js:180"
+    },
+    {
+      "kind": "界面:chapters",
+      "key": "ch10",
+      "where": "story/ch10.js:136"
+    },
+    {
+      "kind": "界面:namecards",
+      "key": "darby",
+      "where": "story/ch10.js:143"
+    },
+    {
+      "kind": "界面:locations",
+      "key": "cairo_outskirts",
+      "where": "story/ch10.js:137"
+    },
+    {
+      "kind": "界面:locations",
+      "key": "cairo",
+      "where": "story/ch10.js:159"
+    },
+    {
+      "kind": "界面:vs",
+      "key": "osiris",
+      "where": "story/ch10.js:154"
+    },
+    {
+      "kind": "角色",
+      "key": "prop:atum_doll_b",
+      "where": "story/ch10.js:11"
+    },
+    {
+      "kind": "角色",
+      "key": "darby",
+      "where": "story/ch10.js:25"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch10.js:5"
+    },
+    {
+      "kind": "说话人",
+      "key": "darby",
+      "where": "story/ch10.js:144"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch10.js:144"
+    },
+    {
+      "kind": "说话人",
+      "key": "holhorse",
+      "where": "story/ch10.js:165"
+    },
+    {
+      "kind": "说话人",
+      "key": "dio",
+      "where": "story/ch10.js:165"
+    },
+    {
+      "kind": "说话人",
+      "key": "iggy",
+      "where": "story/ch10.js:168"
+    },
+    {
+      "kind": "说话人",
+      "key": "holhorse",
+      "where": "story/ch10.js:170"
+    },
+    {
+      "kind": "说话人",
+      "key": "boingo",
+      "where": "story/ch10.js:170"
+    },
+    {
+      "kind": "角色",
+      "key": "polnareff",
+      "where": "story/ch11.js:110"
+    },
+    {
+      "kind": "角色",
+      "key": "vanilla",
+      "where": "story/ch11.js:111"
+    },
+    {
+      "kind": "角色",
+      "key": "polnareff",
+      "where": "story/ch11.js:150"
+    },
+    {
+      "kind": "角色",
+      "key": "vanilla",
+      "where": "story/ch11.js:151"
+    },
+    {
+      "kind": "角色",
+      "key": "vanilla",
+      "where": "story/ch11.js:187"
+    },
+    {
+      "kind": "角色",
+      "key": "telence",
+      "where": "story/ch11.js:198"
+    },
+    {
+      "kind": "角色",
+      "key": "starplat",
+      "where": "story/ch11.js:207"
+    },
+    {
+      "kind": "角色",
+      "key": "telence",
+      "where": "story/ch11.js:207"
+    },
+    {
+      "kind": "角色",
+      "key": "jotaro",
+      "where": "story/ch11.js:224"
+    },
+    {
+      "kind": "角色",
+      "key": "nukesaku",
+      "where": "story/ch11.js:225"
+    },
+    {
+      "kind": "角色",
+      "key": "kennyg",
+      "where": "story/ch11.js:88"
+    },
+    {
+      "kind": "角色",
+      "key": "telence",
+      "where": "story/ch11.js:194"
+    },
+    {
+      "kind": "角色",
+      "key": "nukesaku",
+      "where": "story/ch11.js:221"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/ch11.js:58"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch11.js:105"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch11.js:163"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch11.js:165"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch11.js:179"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch11.js:186"
+    },
+    {
+      "kind": "说话人",
+      "key": "vanilla",
+      "where": "story/ch11.js:188"
+    },
+    {
+      "kind": "说话人",
+      "key": "dio",
+      "where": "story/ch11.js:189"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch11.js:192"
+    },
+    {
+      "kind": "说话人",
+      "key": "telence",
+      "where": "story/ch11.js:196"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch11.js:196"
+    },
+    {
+      "kind": "说话人",
+      "key": "telence",
+      "where": "story/ch11.js:200"
+    },
+    {
+      "kind": "说话人",
+      "key": "telence",
+      "where": "story/ch11.js:203"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/ch11.js:204"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch11.js:206"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch11.js:216"
+    },
+    {
+      "kind": "说话人",
+      "key": "vanilla",
+      "where": "story/ch11.js:217"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch11.js:223"
+    },
+    {
+      "kind": "说话人",
+      "key": "nukesaku",
+      "where": "story/ch11.js:226"
+    },
+    {
+      "kind": "说话人",
+      "key": "dio",
+      "where": "story/ch11.js:231"
+    },
+    {
+      "kind": "道具",
+      "key": "coffin",
+      "where": "story/ch11.js:227"
+    },
+    {
+      "kind": "背景",
+      "key": "#161126",
+      "where": "story/ch11.js:9"
+    },
+    {
+      "kind": "背景",
+      "key": "mansion_hall",
+      "where": "story/ch11.js:174"
+    },
+    {
+      "kind": "背景",
+      "key": "black",
+      "where": "story/ch11.js:187"
+    },
+    {
+      "kind": "背景",
+      "key": "black",
+      "where": "story/ch11.js:189"
+    },
+    {
+      "kind": "背景",
+      "key": "redsea_island",
+      "where": "story/ch11.js:198"
+    },
+    {
+      "kind": "背景",
+      "key": "game_room",
+      "where": "story/ch11.js:207"
+    },
+    {
+      "kind": "背景",
+      "key": "mansion_hall",
+      "where": "story/ch11.js:211"
+    },
+    {
+      "kind": "背景",
+      "key": "black",
+      "where": "story/ch11.js:228"
+    },
+    {
+      "kind": "背景",
+      "key": "mansion_exterior",
+      "where": "story/ch11.js:230"
+    },
+    {
+      "kind": "音效",
+      "key": "glass_break",
+      "where": "story/ch11.js:8"
+    },
+    {
+      "kind": "音效",
+      "key": "vine",
+      "where": "story/ch11.js:28"
+    },
+    {
+      "kind": "音效",
+      "key": "baseball_hit",
+      "where": "story/ch11.js:38"
+    },
+    {
+      "kind": "音效",
+      "key": "tv_game",
+      "where": "story/ch11.js:38"
+    },
+    {
+      "kind": "音效",
+      "key": "sax_melody",
+      "where": "story/ch11.js:80"
+    },
+    {
+      "kind": "音效",
+      "key": "sand",
+      "where": "story/ch11.js:130"
+    },
+    {
+      "kind": "音效",
+      "key": "void_eat",
+      "where": "story/ch11.js:136"
+    },
+    {
+      "kind": "音效",
+      "key": "punch_heavy",
+      "where": "story/ch11.js:153"
+    },
+    {
+      "kind": "音效",
+      "key": "crash",
+      "where": "story/ch11.js:166"
+    },
+    {
+      "kind": "音效",
+      "key": "drip",
+      "where": "story/ch11.js:189"
+    },
+    {
+      "kind": "音效",
+      "key": "glass_break",
+      "where": "story/ch11.js:199"
+    },
+    {
+      "kind": "音效",
+      "key": "ko_hit",
+      "where": "story/ch11.js:208"
+    },
+    {
+      "kind": "音效",
+      "key": "door",
+      "where": "story/ch11.js:227"
+    },
+    {
+      "kind": "音效",
+      "key": "sting_reveal",
+      "where": "story/ch11.js:217"
+    },
+    {
+      "kind": "配乐",
+      "key": "sad",
+      "where": "story/ch11.js:173"
+    },
+    {
+      "kind": "配乐",
+      "key": "boss",
+      "where": "story/ch11.js:210"
+    },
+    {
+      "kind": "配乐",
+      "key": "ominous",
+      "where": "story/ch11.js:231"
+    },
+    {
+      "kind": "地图",
+      "key": "illusion_ch11",
+      "where": "story/ch11.js:62"
+    },
+    {
+      "kind": "地图",
+      "key": "mansion_ext_ch11",
+      "where": "story/ch11.js:183"
+    },
+    {
+      "kind": "地图",
+      "key": "corridor_ch11",
+      "where": "story/ch11.js:194"
+    },
+    {
+      "kind": "地图",
+      "key": "game_ch11",
+      "where": "story/ch11.js:199"
+    },
+    {
+      "kind": "地图",
+      "key": "hall_ch11",
+      "where": "story/ch11.js:209"
+    },
+    {
+      "kind": "地图",
+      "key": "tower_ch11",
+      "where": "story/ch11.js:220"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "saiki",
+      "where": "story/ch11.js:103"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "saiki",
+      "where": "story/ch11.js:208"
+    },
+    {
+      "kind": "界面:chapters",
+      "key": "ch11",
+      "where": "story/ch11.js:183"
+    },
+    {
+      "kind": "界面:namecards",
+      "key": "vanilla",
+      "where": "story/ch11.js:190"
+    },
+    {
+      "kind": "界面:namecards",
+      "key": "telence",
+      "where": "story/ch11.js:195"
+    },
+    {
+      "kind": "界面:standcards",
+      "key": "cream",
+      "where": "story/ch11.js:217"
+    },
+    {
+      "kind": "界面:locations",
+      "key": "dio_mansion",
+      "where": "story/ch11.js:184"
+    },
+    {
+      "kind": "界面:vs",
+      "key": "cream",
+      "where": "story/ch11.js:110"
+    },
+    {
+      "kind": "界面:specials",
+      "key": "阳光飞踢",
+      "where": "story/ch11.js:152"
+    },
+    {
+      "kind": "界面:vs",
+      "key": "tenoresax",
+      "where": "story/ch11.js:63"
+    },
+    {
+      "kind": "界面:vs",
+      "key": "atum",
+      "where": "story/ch11.js:201"
+    },
+    {
+      "kind": "角色",
+      "key": "jotaro",
+      "where": "story/ch11.js:45"
+    },
+    {
+      "kind": "角色",
+      "key": "polnareff",
+      "where": "story/ch11.js:176"
+    },
+    {
+      "kind": "角色",
+      "key": "avdol",
+      "where": "story/ch11.js:177"
+    },
+    {
+      "kind": "角色",
+      "key": "iggy",
+      "where": "story/ch11.js:178"
+    },
+    {
+      "kind": "角色",
+      "key": "avdol",
+      "where": "story/ch11.js:213"
+    },
+    {
+      "kind": "角色",
+      "key": "polnareff",
+      "where": "story/ch11.js:213"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch11.js:5"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch11.js:62"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/ch11.js:172"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch11.js:197"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/ch11.js:219"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/ch11.js:219"
+    },
+    {
+      "kind": "背景",
+      "key": "menace",
+      "where": "story/common.js:322"
+    },
+    {
+      "kind": "背景",
+      "key": "radial",
+      "where": "story/common.js:338"
+    },
+    {
+      "kind": "背景",
+      "key": "menace",
+      "where": "story/common.js:359"
+    },
+    {
+      "kind": "背景",
+      "key": "#0a0c24",
+      "where": "story/common.js:368"
+    },
+    {
+      "kind": "背景",
+      "key": "radial",
+      "where": "story/common.js:374"
+    },
+    {
+      "kind": "特效",
+      "key": "glint",
+      "where": "story/common.js:155"
+    },
+    {
+      "kind": "特效",
+      "key": "vines",
+      "where": "story/common.js:168"
+    },
+    {
+      "kind": "特效",
+      "key": "crack",
+      "where": "story/common.js:172"
+    },
+    {
+      "kind": "特效",
+      "key": "hit_spark",
+      "where": "story/common.js:173"
+    },
+    {
+      "kind": "特效",
+      "key": "flame_pointer",
+      "where": "story/common.js:197"
+    },
+    {
+      "kind": "特效",
+      "key": "tendrils",
+      "where": "story/common.js:208"
+    },
+    {
+      "kind": "特效",
+      "key": "slash_arc",
+      "where": "story/common.js:220"
+    },
+    {
+      "kind": "特效",
+      "key": "scent_line",
+      "where": "story/common.js:231"
+    },
+    {
+      "kind": "特效",
+      "key": "glint",
+      "where": "story/common.js:350"
+    },
+    {
+      "kind": "特效",
+      "key": "glint",
+      "where": "story/common.js:363"
+    },
+    {
+      "kind": "特效",
+      "key": "menace_bg",
+      "where": "story/common.js:84"
+    },
+    {
+      "kind": "特效",
+      "key": "menace_bg",
+      "where": "story/common.js:84"
+    },
+    {
+      "kind": "特效",
+      "key": "radial_burst_bg",
+      "where": "story/common.js:85"
+    },
+    {
+      "kind": "特效",
+      "key": "radial_burst_bg",
+      "where": "story/common.js:85"
+    },
+    {
+      "kind": "特效",
+      "key": "speedlines",
+      "where": "story/common.js:86"
+    },
+    {
+      "kind": "特效",
+      "key": "speedlines",
+      "where": "story/common.js:86"
+    },
+    {
+      "kind": "特效",
+      "key": "vignette",
+      "where": "story/common.js:87"
+    },
+    {
+      "kind": "特效",
+      "key": "vignette",
+      "where": "story/common.js:87"
+    },
+    {
+      "kind": "特效",
+      "key": "cap_shadow",
+      "where": "story/common.js:346"
+    },
+    {
+      "kind": "特效",
+      "key": "draw_route",
+      "where": "story/common.js:517"
+    },
+    {
+      "kind": "特效",
+      "key": "tendrils",
+      "where": "story/common.js:570"
+    },
+    {
+      "kind": "特效",
+      "key": "vignette",
+      "where": "story/common.js:573"
+    },
+    {
+      "kind": "音效",
+      "key": "glint",
+      "where": "story/common.js:150"
+    },
+    {
+      "kind": "音效",
+      "key": "vine",
+      "where": "story/common.js:169"
+    },
+    {
+      "kind": "音效",
+      "key": "crash",
+      "where": "story/common.js:174"
+    },
+    {
+      "kind": "音效",
+      "key": "punch",
+      "where": "story/common.js:174"
+    },
+    {
+      "kind": "音效",
+      "key": "camera_shutter",
+      "where": "story/common.js:177"
+    },
+    {
+      "kind": "音效",
+      "key": "fire_burst",
+      "where": "story/common.js:198"
+    },
+    {
+      "kind": "音效",
+      "key": "hiero_tentacle",
+      "where": "story/common.js:209"
+    },
+    {
+      "kind": "音效",
+      "key": "slash",
+      "where": "story/common.js:221"
+    },
+    {
+      "kind": "音效",
+      "key": "dog_bark",
+      "where": "story/common.js:235"
+    },
+    {
+      "kind": "音效",
+      "key": "glint",
+      "where": "story/common.js:364"
+    },
+    {
+      "kind": "音效",
+      "key": "pop",
+      "where": "story/common.js:520"
+    },
+    {
+      "kind": "音效",
+      "key": "ding",
+      "where": "story/common.js:521"
+    },
+    {
+      "kind": "音效",
+      "key": "heartbeat",
+      "where": "story/common.js:584"
+    },
+    {
+      "kind": "角色",
+      "key": "kakyoin",
+      "where": "story/final.js:95"
+    },
+    {
+      "kind": "角色",
+      "key": "joseph",
+      "where": "story/final.js:113"
+    },
+    {
+      "kind": "角色",
+      "key": "chariot",
+      "where": "story/final.js:208"
+    },
+    {
+      "kind": "角色",
+      "key": "dio",
+      "where": "story/final.js:208"
+    },
+    {
+      "kind": "角色",
+      "key": "polnareff",
+      "where": "story/final.js:211"
+    },
+    {
+      "kind": "角色",
+      "key": "jotaro",
+      "where": "story/final.js:252"
+    },
+    {
+      "kind": "角色",
+      "key": "dio",
+      "where": "story/final.js:255"
+    },
+    {
+      "kind": "角色",
+      "key": "dio",
+      "where": "story/final.js:322"
+    },
+    {
+      "kind": "角色",
+      "key": "theworld",
+      "where": "story/final.js:325"
+    },
+    {
+      "kind": "角色",
+      "key": "starplat",
+      "where": "story/final.js:325"
+    },
+    {
+      "kind": "角色",
+      "key": "dio",
+      "where": "story/final.js:329"
+    },
+    {
+      "kind": "角色",
+      "key": "scene:s18_final2_jotaro_back",
+      "where": "story/final.js:331"
+    },
+    {
+      "kind": "角色",
+      "key": "joseph",
+      "where": "story/final.js:338"
+    },
+    {
+      "kind": "角色",
+      "key": "starplat",
+      "where": "story/final.js:338"
+    },
+    {
+      "kind": "角色",
+      "key": "holly",
+      "where": "story/final.js:343"
+    },
+    {
+      "kind": "角色",
+      "key": "dio",
+      "where": "story/final.js:72"
+    },
+    {
+      "kind": "角色",
+      "key": "dio",
+      "where": "story/final.js:111"
+    },
+    {
+      "kind": "说话人",
+      "key": "dio",
+      "where": "story/final.js:9"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/final.js:23"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/final.js:24"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/final.js:69"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/final.js:71"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/final.js:94"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/final.js:99"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/final.js:110"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/final.js:114"
+    },
+    {
+      "kind": "说话人",
+      "key": "dio",
+      "where": "story/final.js:207"
+    },
+    {
+      "kind": "说话人",
+      "key": "polnareff",
+      "where": "story/final.js:210"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/final.js:245"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/final.js:318"
+    },
+    {
+      "kind": "说话人",
+      "key": "dio",
+      "where": "story/final.js:323"
+    },
+    {
+      "kind": "说话人",
+      "key": "dio",
+      "where": "story/final.js:330"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/final.js:332"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/final.js:340"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/final.js:340"
+    },
+    {
+      "kind": "说话人",
+      "key": "holly",
+      "where": "story/final.js:345"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/final.js:350"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/final.js:351"
+    },
+    {
+      "kind": "道具",
+      "key": "road_sign",
+      "where": "story/final.js:206"
+    },
+    {
+      "kind": "道具",
+      "key": "truck",
+      "where": "story/final.js:314"
+    },
+    {
+      "kind": "道具",
+      "key": "senator_car",
+      "where": "story/final.js:314"
+    },
+    {
+      "kind": "背景",
+      "key": "cairo_rooftops",
+      "where": "story/final.js:95"
+    },
+    {
+      "kind": "背景",
+      "key": "#641e37",
+      "where": "story/final.js:113"
+    },
+    {
+      "kind": "背景",
+      "key": "cairo_street_night",
+      "where": "story/final.js:208"
+    },
+    {
+      "kind": "背景",
+      "key": "cairo_street_night",
+      "where": "story/final.js:211"
+    },
+    {
+      "kind": "背景",
+      "key": "cairo_street_night",
+      "where": "story/final.js:223"
+    },
+    {
+      "kind": "背景",
+      "key": "black",
+      "where": "story/final.js:316"
+    },
+    {
+      "kind": "背景",
+      "key": "#641e37",
+      "where": "story/final.js:322"
+    },
+    {
+      "kind": "背景",
+      "key": "radial",
+      "where": "story/final.js:325"
+    },
+    {
+      "kind": "背景",
+      "key": "black",
+      "where": "story/final.js:329"
+    },
+    {
+      "kind": "背景",
+      "key": "cairo_street_night",
+      "where": "story/final.js:331"
+    },
+    {
+      "kind": "背景",
+      "key": "black",
+      "where": "story/final.js:332"
+    },
+    {
+      "kind": "背景",
+      "key": "cairo_street_dawn",
+      "where": "story/final.js:334"
+    },
+    {
+      "kind": "背景",
+      "key": "cairo_street_dawn",
+      "where": "story/final.js:338"
+    },
+    {
+      "kind": "背景",
+      "key": "kujo_bedroom_morning",
+      "where": "story/final.js:343"
+    },
+    {
+      "kind": "音效",
+      "key": "footstep",
+      "where": "story/final.js:15"
+    },
+    {
+      "kind": "音效",
+      "key": "timestop_hum",
+      "where": "story/final.js:16"
+    },
+    {
+      "kind": "音效",
+      "key": "crash",
+      "where": "story/final.js:24"
+    },
+    {
+      "kind": "音效",
+      "key": "hiero_tentacle",
+      "where": "story/final.js:36"
+    },
+    {
+      "kind": "音效",
+      "key": "knife_volley",
+      "where": "story/final.js:44"
+    },
+    {
+      "kind": "音效",
+      "key": "hiero_tentacle",
+      "where": "story/final.js:45"
+    },
+    {
+      "kind": "音效",
+      "key": "punch_heavy",
+      "where": "story/final.js:74"
+    },
+    {
+      "kind": "音效",
+      "key": "emerald_shot",
+      "where": "story/final.js:84"
+    },
+    {
+      "kind": "音效",
+      "key": "glass_break",
+      "where": "story/final.js:91"
+    },
+    {
+      "kind": "音效",
+      "key": "knife_freeze",
+      "where": "story/final.js:175"
+    },
+    {
+      "kind": "音效",
+      "key": "parry",
+      "where": "story/final.js:179"
+    },
+    {
+      "kind": "音效",
+      "key": "knife_volley",
+      "where": "story/final.js:184"
+    },
+    {
+      "kind": "音效",
+      "key": "flatline",
+      "where": "story/final.js:199"
+    },
+    {
+      "kind": "音效",
+      "key": "glint",
+      "where": "story/final.js:209"
+    },
+    {
+      "kind": "音效",
+      "key": "punch_heavy",
+      "where": "story/final.js:210"
+    },
+    {
+      "kind": "音效",
+      "key": "roadroller",
+      "where": "story/final.js:222"
+    },
+    {
+      "kind": "音效",
+      "key": "punch_heavy",
+      "where": "story/final.js:234"
+    },
+    {
+      "kind": "音效",
+      "key": "guard",
+      "where": "story/final.js:270"
+    },
+    {
+      "kind": "音效",
+      "key": "glass_break",
+      "where": "story/final.js:316"
+    },
+    {
+      "kind": "音效",
+      "key": "drain",
+      "where": "story/final.js:322"
+    },
+    {
+      "kind": "音效",
+      "key": "roar",
+      "where": "story/final.js:323"
+    },
+    {
+      "kind": "音效",
+      "key": "glass_break",
+      "where": "story/final.js:328"
+    },
+    {
+      "kind": "音效",
+      "key": "heartbeat",
+      "where": "story/final.js:339"
+    },
+    {
+      "kind": "音效",
+      "key": "timestop",
+      "where": "story/final.js:123"
+    },
+    {
+      "kind": "音效",
+      "key": "punch_heavy",
+      "where": "story/final.js:169"
+    },
+    {
+      "kind": "音效",
+      "key": "thud",
+      "where": "story/final.js:244"
+    },
+    {
+      "kind": "音效",
+      "key": "timestop_sp",
+      "where": "story/final.js:262"
+    },
+    {
+      "kind": "配乐",
+      "key": "sad",
+      "where": "story/final.js:94"
+    },
+    {
+      "kind": "配乐",
+      "key": "sad",
+      "where": "story/final.js:333"
+    },
+    {
+      "kind": "配乐",
+      "key": "boss",
+      "where": "story/final.js:252"
+    },
+    {
+      "kind": "地图",
+      "key": "stairs_fin",
+      "where": "story/final.js:8"
+    },
+    {
+      "kind": "地图",
+      "key": "roof_fin",
+      "where": "story/final.js:28"
+    },
+    {
+      "kind": "地图",
+      "key": "street_fin",
+      "where": "story/final.js:250"
+    },
+    {
+      "kind": "地图",
+      "key": "chase_fin",
+      "where": "story/final.js:312"
+    },
+    {
+      "kind": "地图",
+      "key": "dawn_fin",
+      "where": "story/final.js:333"
+    },
+    {
+      "kind": "地图",
+      "key": "bedroom_fin",
+      "where": "story/final.js:341"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "roadroller",
+      "where": "story/final.js:222"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "wryyy",
+      "where": "story/final.js:323"
+    },
+    {
+      "kind": "界面:chapters",
+      "key": "final",
+      "where": "story/final.js:311"
+    },
+    {
+      "kind": "界面:standcards",
+      "key": "starplat_world",
+      "where": "story/final.js:232"
+    },
+    {
+      "kind": "界面:locations",
+      "key": "kujo_day50",
+      "where": "story/final.js:342"
+    },
+    {
+      "kind": "界面:locations",
+      "key": "cairo_airport",
+      "where": "story/final.js:347"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "dio_ts",
+      "where": "story/final.js:73"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "dio_resume",
+      "where": "story/final.js:73"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "dio_ts",
+      "where": "story/final.js:112"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "dio_resume",
+      "where": "story/final.js:112"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "dio_ts",
+      "where": "story/final.js:123"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "dio_resume",
+      "where": "story/final.js:123"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "dio_ts",
+      "where": "story/final.js:228"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "dio_resume",
+      "where": "story/final.js:228"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "jotaro_ts",
+      "where": "story/final.js:233"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "jotaro_resume",
+      "where": "story/final.js:233"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "jotaro_ts",
+      "where": "story/final.js:262"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "jotaro_resume",
+      "where": "story/final.js:262"
+    },
+    {
+      "kind": "界面:specials",
+      "key": "jotaro_ts",
+      "where": "story/final.js:259"
+    },
+    {
+      "kind": "角色",
+      "key": "dio",
+      "where": "story/final.js:19"
+    },
+    {
+      "kind": "角色",
+      "key": "polnareff",
+      "where": "story/final.js:20"
+    },
+    {
+      "kind": "角色",
+      "key": "kakyoin",
+      "where": "story/final.js:60"
+    },
+    {
+      "kind": "角色",
+      "key": "kakyoin",
+      "where": "story/final.js:89"
+    },
+    {
+      "kind": "角色",
+      "key": "joseph",
+      "where": "story/final.js:107"
+    },
+    {
+      "kind": "角色",
+      "key": "dio",
+      "where": "story/final.js:107"
+    },
+    {
+      "kind": "角色",
+      "key": "prop:roadroller",
+      "where": "story/final.js:225"
+    },
+    {
+      "kind": "角色",
+      "key": "jotaro",
+      "where": "story/final.js:226"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/final.js:5"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/final.js:8"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/final.js:28"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/final.js:249"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/final.js:249"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/final.js:313"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/final.js:313"
+    },
+    {
+      "kind": "说话人",
+      "key": "dio",
+      "where": "story/final.js:313"
+    },
+    {
+      "kind": "说话人",
+      "key": "dio",
+      "where": "story/final.js:320"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/final.js:320"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/final.js:346"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/final.js:346"
+    },
+    {
+      "kind": "背景",
+      "key": "radial",
+      "where": "story/late_common.js:59"
+    },
+    {
+      "kind": "音效",
+      "key": "thud",
+      "where": "story/late_common.js:94"
+    },
+    {
+      "kind": "音效",
+      "key": "emerald_shot",
+      "where": "story/late_common.js:98"
+    },
+    {
+      "kind": "音效",
+      "key": "thud",
+      "where": "story/late_common.js:37"
+    },
+    {
+      "kind": "音效",
+      "key": "dog_bark",
+      "where": "story/mid_common.js:14"
+    },
+    {
+      "kind": "音效",
+      "key": "teeth_crunch",
+      "where": "story/mid_common.js:50"
+    },
+    {
+      "kind": "音效",
+      "key": "thud",
+      "where": "story/mid_common.js:29"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/mid_common.js:6"
+    },
+    {
+      "kind": "角色",
+      "key": "starplat",
+      "where": "story/prologue.js:329"
+    },
+    {
+      "kind": "角色",
+      "key": "joseph",
+      "where": "story/prologue.js:330"
+    },
+    {
+      "kind": "角色",
+      "key": "prop:pinky",
+      "where": "story/prologue.js:331"
+    },
+    {
+      "kind": "角色",
+      "key": "jotaro",
+      "where": "story/prologue.js:560"
+    },
+    {
+      "kind": "角色",
+      "key": "avdol",
+      "where": "story/prologue.js:572"
+    },
+    {
+      "kind": "角色",
+      "key": "jotaro",
+      "where": "story/prologue.js:620"
+    },
+    {
+      "kind": "角色",
+      "key": "jotaro",
+      "where": "story/prologue.js:690"
+    },
+    {
+      "kind": "角色",
+      "key": "starplat",
+      "where": "story/prologue.js:691"
+    },
+    {
+      "kind": "角色",
+      "key": "prop:photo",
+      "where": "story/prologue.js:825"
+    },
+    {
+      "kind": "角色",
+      "key": "jotaro",
+      "where": "story/prologue.js:844"
+    },
+    {
+      "kind": "角色",
+      "key": "scene:s03_jotaro_back",
+      "where": "story/prologue.js:850"
+    },
+    {
+      "kind": "角色",
+      "key": "scene:s11_eyes",
+      "where": "story/prologue.js:866"
+    },
+    {
+      "kind": "角色",
+      "key": "jotaro",
+      "where": "story/prologue.js:1169"
+    },
+    {
+      "kind": "角色",
+      "key": "kakyoin",
+      "where": "story/prologue.js:1173"
+    },
+    {
+      "kind": "角色",
+      "key": "starplat",
+      "where": "story/prologue.js:1207"
+    },
+    {
+      "kind": "角色",
+      "key": "kakyoin",
+      "where": "story/prologue.js:1208"
+    },
+    {
+      "kind": "角色",
+      "key": "kakyoin",
+      "where": "story/prologue.js:1252"
+    },
+    {
+      "kind": "角色",
+      "key": "scene:s04_jotarm",
+      "where": "story/prologue.js:1309"
+    },
+    {
+      "kind": "角色",
+      "key": "prop:fleshbud",
+      "where": "story/prologue.js:1310"
+    },
+    {
+      "kind": "角色",
+      "key": "joseph",
+      "where": "story/prologue.js:1317"
+    },
+    {
+      "kind": "角色",
+      "key": "scene:s04_josarm",
+      "where": "story/prologue.js:1325"
+    },
+    {
+      "kind": "角色",
+      "key": "prop:fleshbud",
+      "where": "story/prologue.js:1326"
+    },
+    {
+      "kind": "角色",
+      "key": "prop:photo",
+      "where": "story/prologue.js:1460"
+    },
+    {
+      "kind": "角色",
+      "key": "holly",
+      "where": "story/prologue.js:1491"
+    },
+    {
+      "kind": "角色",
+      "key": "starplat",
+      "where": "story/prologue.js:1563"
+    },
+    {
+      "kind": "角色",
+      "key": "scene:s05_fist",
+      "where": "story/prologue.js:1564"
+    },
+    {
+      "kind": "角色",
+      "key": "holly",
+      "where": "story/prologue.js:379"
+    },
+    {
+      "kind": "角色",
+      "key": "joseph",
+      "where": "story/prologue.js:380"
+    },
+    {
+      "kind": "角色",
+      "key": "avdol",
+      "where": "story/prologue.js:381"
+    },
+    {
+      "kind": "角色",
+      "key": "kakyoin",
+      "where": "story/prologue.js:943"
+    },
+    {
+      "kind": "角色",
+      "key": "kakyoin",
+      "where": "story/prologue.js:1076"
+    },
+    {
+      "kind": "角色",
+      "key": "kakyoin",
+      "where": "story/prologue.js:1163"
+    },
+    {
+      "kind": "角色",
+      "key": "holly",
+      "where": "story/prologue.js:1269"
+    },
+    {
+      "kind": "角色",
+      "key": "kakyoin",
+      "where": "story/prologue.js:1270"
+    },
+    {
+      "kind": "角色",
+      "key": "holly",
+      "where": "story/prologue.js:1361"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:85"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:94"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:121"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:127"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:133"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:142"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:147"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:158"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:165"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:174"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:209"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:218"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:221"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:233"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:234"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:269"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:291"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:300"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:304"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:375"
+    },
+    {
+      "kind": "说话人",
+      "key": "holly",
+      "where": "story/prologue.js:388"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:393"
+    },
+    {
+      "kind": "说话人",
+      "key": "holly",
+      "where": "story/prologue.js:398"
+    },
+    {
+      "kind": "说话人",
+      "key": "holly",
+      "where": "story/prologue.js:400"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:401"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:411"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:412"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:415"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:422"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:423"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:426"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:431"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:433"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:439"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:619"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:654"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:664"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:678"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:682"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:685"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:686"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:687"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:699"
+    },
+    {
+      "kind": "说话人",
+      "key": "holly",
+      "where": "story/prologue.js:709"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:710"
+    },
+    {
+      "kind": "说话人",
+      "key": "holly",
+      "where": "story/prologue.js:712"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:713"
+    },
+    {
+      "kind": "说话人",
+      "key": "holly",
+      "where": "story/prologue.js:715"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:721"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:726"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:727"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:727"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:728"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:732"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:733"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:748"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:753"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:764"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:765"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:772"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:773"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:795"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:828"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:837"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:838"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:839"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:841"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:842"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:856"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:859"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:860"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:888"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:889"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:890"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:892"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:902"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:907"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:920"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/prologue.js:946"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:950"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/prologue.js:951"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:954"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:988"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:991"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:992"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:994"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:1002"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:1064"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:1075"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/prologue.js:1081"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/prologue.js:1082"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:1083"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/prologue.js:1085"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/prologue.js:1100"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/prologue.js:1113"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/prologue.js:1183"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:1251"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:1253"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:1255"
+    },
+    {
+      "kind": "说话人",
+      "key": "holly",
+      "where": "story/prologue.js:1281"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:1282"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:1288"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:1289"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:1290"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:1292"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:1293"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:1296"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:1299"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:1319"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/prologue.js:1346"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/prologue.js:1347"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:1349"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:1397"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:1418"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:1419"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:1422"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:1429"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:1436"
+    },
+    {
+      "kind": "说话人",
+      "key": "holly",
+      "where": "story/prologue.js:1446"
+    },
+    {
+      "kind": "说话人",
+      "key": "holly",
+      "where": "story/prologue.js:1447"
+    },
+    {
+      "kind": "说话人",
+      "key": "holly",
+      "where": "story/prologue.js:1448"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:1449"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/prologue.js:1454"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/prologue.js:1455"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:1467"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:1485"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:1488"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:1489"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:1502"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:1556"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:1557"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:1558"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:1576"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/prologue.js:1580"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:1581"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/prologue.js:1582"
+    },
+    {
+      "kind": "说话人",
+      "key": "kakyoin",
+      "where": "story/prologue.js:1583"
+    },
+    {
+      "kind": "道具",
+      "key": "scene:s02_stool",
+      "where": "story/prologue.js:36"
+    },
+    {
+      "kind": "道具",
+      "key": "disguise_metal_cup",
+      "where": "story/prologue.js:180"
+    },
+    {
+      "kind": "道具",
+      "key": "magazine",
+      "where": "story/prologue.js:202"
+    },
+    {
+      "kind": "道具",
+      "key": "pinky",
+      "where": "story/prologue.js:417"
+    },
+    {
+      "kind": "道具",
+      "key": "tissue",
+      "where": "story/prologue.js:947"
+    },
+    {
+      "kind": "道具",
+      "key": "pen",
+      "where": "story/prologue.js:1036"
+    },
+    {
+      "kind": "道具",
+      "key": "fleshbud",
+      "where": "story/prologue.js:1087"
+    },
+    {
+      "kind": "道具",
+      "key": "scene:s04_kaksit",
+      "where": "story/prologue.js:1345"
+    },
+    {
+      "kind": "道具",
+      "key": "scene:s05_holly_down",
+      "where": "story/prologue.js:1385"
+    },
+    {
+      "kind": "道具",
+      "key": "scene:s05_joseph_kneel",
+      "where": "story/prologue.js:1479"
+    },
+    {
+      "kind": "道具",
+      "key": "scene:s05_avdol_kneel",
+      "where": "story/prologue.js:1480"
+    },
+    {
+      "kind": "道具",
+      "key": "scene:s05_joseph_reach",
+      "where": "story/prologue.js:1487"
+    },
+    {
+      "kind": "道具",
+      "key": "photo",
+      "where": "story/prologue.js:1509"
+    },
+    {
+      "kind": "道具",
+      "key": "camera",
+      "where": "story/prologue.js:1646"
+    },
+    {
+      "kind": "背景",
+      "key": "menace",
+      "where": "story/prologue.js:333"
+    },
+    {
+      "kind": "背景",
+      "key": "radial",
+      "where": "story/prologue.js:567"
+    },
+    {
+      "kind": "背景",
+      "key": "radial",
+      "where": "story/prologue.js:620"
+    },
+    {
+      "kind": "背景",
+      "key": "menace",
+      "where": "story/prologue.js:690"
+    },
+    {
+      "kind": "背景",
+      "key": "menace",
+      "where": "story/prologue.js:824"
+    },
+    {
+      "kind": "背景",
+      "key": "menace",
+      "where": "story/prologue.js:844"
+    },
+    {
+      "kind": "背景",
+      "key": "menace",
+      "where": "story/prologue.js:850"
+    },
+    {
+      "kind": "背景",
+      "key": "kujo_house_night",
+      "where": "story/prologue.js:862"
+    },
+    {
+      "kind": "背景",
+      "key": "black",
+      "where": "story/prologue.js:866"
+    },
+    {
+      "kind": "背景",
+      "key": "#1a2a20",
+      "where": "story/prologue.js:1252"
+    },
+    {
+      "kind": "背景",
+      "key": "tatami_top",
+      "where": "story/prologue.js:1307"
+    },
+    {
+      "kind": "背景",
+      "key": "radial",
+      "where": "story/prologue.js:1317"
+    },
+    {
+      "kind": "背景",
+      "key": "tatami_top",
+      "where": "story/prologue.js:1323"
+    },
+    {
+      "kind": "背景",
+      "key": "#1a1410",
+      "where": "story/prologue.js:1460"
+    },
+    {
+      "kind": "背景",
+      "key": "menace",
+      "where": "story/prologue.js:1491"
+    },
+    {
+      "kind": "背景",
+      "key": "menace",
+      "where": "story/prologue.js:1561"
+    },
+    {
+      "kind": "背景",
+      "key": "kujo_house_day",
+      "where": "story/prologue.js:1645"
+    },
+    {
+      "kind": "背景",
+      "key": "kujo_house_day",
+      "where": "story/prologue.js:1694"
+    },
+    {
+      "kind": "背景",
+      "key": "kujo_house_morning",
+      "where": "story/prologue.js:1697"
+    },
+    {
+      "kind": "特效",
+      "key": "burst",
+      "where": "story/prologue.js:163"
+    },
+    {
+      "kind": "特效",
+      "key": "hit_spark",
+      "where": "story/prologue.js:352"
+    },
+    {
+      "kind": "特效",
+      "key": "burst",
+      "where": "story/prologue.js:396"
+    },
+    {
+      "kind": "特效",
+      "key": "speedlines",
+      "where": "story/prologue.js:406"
+    },
+    {
+      "kind": "特效",
+      "key": "sparkles",
+      "where": "story/prologue.js:435"
+    },
+    {
+      "kind": "特效",
+      "key": "water_gush",
+      "where": "story/prologue.js:550"
+    },
+    {
+      "kind": "特效",
+      "key": "smoke",
+      "where": "story/prologue.js:551"
+    },
+    {
+      "kind": "特效",
+      "key": "shockwave",
+      "where": "story/prologue.js:601"
+    },
+    {
+      "kind": "特效",
+      "key": "fire_burst",
+      "where": "story/prologue.js:616"
+    },
+    {
+      "kind": "特效",
+      "key": "hit_spark",
+      "where": "story/prologue.js:640"
+    },
+    {
+      "kind": "特效",
+      "key": "shockwave",
+      "where": "story/prologue.js:641"
+    },
+    {
+      "kind": "特效",
+      "key": "smoke",
+      "where": "story/prologue.js:642"
+    },
+    {
+      "kind": "特效",
+      "key": "burst",
+      "where": "story/prologue.js:643"
+    },
+    {
+      "kind": "特效",
+      "key": "vines",
+      "where": "story/prologue.js:799"
+    },
+    {
+      "kind": "特效",
+      "key": "crack",
+      "where": "story/prologue.js:805"
+    },
+    {
+      "kind": "特效",
+      "key": "hit_spark",
+      "where": "story/prologue.js:806"
+    },
+    {
+      "kind": "特效",
+      "key": "shockwave",
+      "where": "story/prologue.js:807"
+    },
+    {
+      "kind": "特效",
+      "key": "glint",
+      "where": "story/prologue.js:835"
+    },
+    {
+      "kind": "特效",
+      "key": "glint",
+      "where": "story/prologue.js:853"
+    },
+    {
+      "kind": "特效",
+      "key": "glint",
+      "where": "story/prologue.js:854"
+    },
+    {
+      "kind": "特效",
+      "key": "tendrils",
+      "where": "story/prologue.js:929"
+    },
+    {
+      "kind": "特效",
+      "key": "dust",
+      "where": "story/prologue.js:935"
+    },
+    {
+      "kind": "特效",
+      "key": "hit_spark",
+      "where": "story/prologue.js:1047"
+    },
+    {
+      "kind": "特效",
+      "key": "glint",
+      "where": "story/prologue.js:1062"
+    },
+    {
+      "kind": "特效",
+      "key": "tendrils",
+      "where": "story/prologue.js:1066"
+    },
+    {
+      "kind": "特效",
+      "key": "glow",
+      "where": "story/prologue.js:1130"
+    },
+    {
+      "kind": "特效",
+      "key": "rush",
+      "where": "story/prologue.js:1210"
+    },
+    {
+      "kind": "特效",
+      "key": "hit_spark",
+      "where": "story/prologue.js:1213"
+    },
+    {
+      "kind": "特效",
+      "key": "hit_spark",
+      "where": "story/prologue.js:1221"
+    },
+    {
+      "kind": "特效",
+      "key": "shockwave",
+      "where": "story/prologue.js:1222"
+    },
+    {
+      "kind": "特效",
+      "key": "speedlines",
+      "where": "story/prologue.js:1232"
+    },
+    {
+      "kind": "特效",
+      "key": "shockwave",
+      "where": "story/prologue.js:1236"
+    },
+    {
+      "kind": "特效",
+      "key": "dust",
+      "where": "story/prologue.js:1237"
+    },
+    {
+      "kind": "特效",
+      "key": "burst",
+      "where": "story/prologue.js:1313"
+    },
+    {
+      "kind": "特效",
+      "key": "shatter",
+      "where": "story/prologue.js:1336"
+    },
+    {
+      "kind": "特效",
+      "key": "vines",
+      "where": "story/prologue.js:1391"
+    },
+    {
+      "kind": "特效",
+      "key": "glint",
+      "where": "story/prologue.js:1462"
+    },
+    {
+      "kind": "特效",
+      "key": "shockwave",
+      "where": "story/prologue.js:1571"
+    },
+    {
+      "kind": "音效",
+      "key": "footstep",
+      "where": "story/prologue.js:41"
+    },
+    {
+      "kind": "音效",
+      "key": "footstep",
+      "where": "story/prologue.js:42"
+    },
+    {
+      "kind": "音效",
+      "key": "whoosh",
+      "where": "story/prologue.js:77"
+    },
+    {
+      "kind": "音效",
+      "key": "thud",
+      "where": "story/prologue.js:120"
+    },
+    {
+      "kind": "音效",
+      "key": "slash",
+      "where": "story/prologue.js:126"
+    },
+    {
+      "kind": "音效",
+      "key": "whoosh",
+      "where": "story/prologue.js:132"
+    },
+    {
+      "kind": "音效",
+      "key": "glass_break",
+      "where": "story/prologue.js:138"
+    },
+    {
+      "kind": "音效",
+      "key": "rumble",
+      "where": "story/prologue.js:154"
+    },
+    {
+      "kind": "音效",
+      "key": "whoosh",
+      "where": "story/prologue.js:164"
+    },
+    {
+      "kind": "音效",
+      "key": "pop",
+      "where": "story/prologue.js:170"
+    },
+    {
+      "kind": "音效",
+      "key": "clang",
+      "where": "story/prologue.js:181"
+    },
+    {
+      "kind": "音效",
+      "key": "clang",
+      "where": "story/prologue.js:182"
+    },
+    {
+      "kind": "音效",
+      "key": "whoosh",
+      "where": "story/prologue.js:200"
+    },
+    {
+      "kind": "音效",
+      "key": "pop",
+      "where": "story/prologue.js:205"
+    },
+    {
+      "kind": "音效",
+      "key": "thud",
+      "where": "story/prologue.js:249"
+    },
+    {
+      "kind": "音效",
+      "key": "whoosh",
+      "where": "story/prologue.js:346"
+    },
+    {
+      "kind": "音效",
+      "key": "pop",
+      "where": "story/prologue.js:350"
+    },
+    {
+      "kind": "音效",
+      "key": "pop",
+      "where": "story/prologue.js:362"
+    },
+    {
+      "kind": "音效",
+      "key": "footstep",
+      "where": "story/prologue.js:372"
+    },
+    {
+      "kind": "音效",
+      "key": "footstep",
+      "where": "story/prologue.js:373"
+    },
+    {
+      "kind": "音效",
+      "key": "footstep",
+      "where": "story/prologue.js:374"
+    },
+    {
+      "kind": "音效",
+      "key": "pop",
+      "where": "story/prologue.js:395"
+    },
+    {
+      "kind": "音效",
+      "key": "sparkle",
+      "where": "story/prologue.js:395"
+    },
+    {
+      "kind": "音效",
+      "key": "dododo",
+      "where": "story/prologue.js:408"
+    },
+    {
+      "kind": "音效",
+      "key": "pop",
+      "where": "story/prologue.js:419"
+    },
+    {
+      "kind": "音效",
+      "key": "pop",
+      "where": "story/prologue.js:425"
+    },
+    {
+      "kind": "音效",
+      "key": "charge",
+      "where": "story/prologue.js:436"
+    },
+    {
+      "kind": "音效",
+      "key": "power_up",
+      "where": "story/prologue.js:446"
+    },
+    {
+      "kind": "音效",
+      "key": "meter_full",
+      "where": "story/prologue.js:470"
+    },
+    {
+      "kind": "音效",
+      "key": "ding",
+      "where": "story/prologue.js:541"
+    },
+    {
+      "kind": "音效",
+      "key": "splash",
+      "where": "story/prologue.js:552"
+    },
+    {
+      "kind": "音效",
+      "key": "water_gush",
+      "where": "story/prologue.js:552"
+    },
+    {
+      "kind": "音效",
+      "key": "fire_burst",
+      "where": "story/prologue.js:553"
+    },
+    {
+      "kind": "音效",
+      "key": "punch_heavy",
+      "where": "story/prologue.js:598"
+    },
+    {
+      "kind": "音效",
+      "key": "fire_burst",
+      "where": "story/prologue.js:615"
+    },
+    {
+      "kind": "音效",
+      "key": "whoosh",
+      "where": "story/prologue.js:627"
+    },
+    {
+      "kind": "音效",
+      "key": "rumble",
+      "where": "story/prologue.js:634"
+    },
+    {
+      "kind": "音效",
+      "key": "crash",
+      "where": "story/prologue.js:645"
+    },
+    {
+      "kind": "音效",
+      "key": "freeze",
+      "where": "story/prologue.js:680"
+    },
+    {
+      "kind": "音效",
+      "key": "menacing",
+      "where": "story/prologue.js:695"
+    },
+    {
+      "kind": "音效",
+      "key": "pop",
+      "where": "story/prologue.js:794"
+    },
+    {
+      "kind": "音效",
+      "key": "vine",
+      "where": "story/prologue.js:801"
+    },
+    {
+      "kind": "音效",
+      "key": "crash",
+      "where": "story/prologue.js:810"
+    },
+    {
+      "kind": "音效",
+      "key": "punch",
+      "where": "story/prologue.js:810"
+    },
+    {
+      "kind": "音效",
+      "key": "camera_shutter",
+      "where": "story/prologue.js:815"
+    },
+    {
+      "kind": "音效",
+      "key": "zoom",
+      "where": "story/prologue.js:818"
+    },
+    {
+      "kind": "音效",
+      "key": "heartbeat",
+      "where": "story/prologue.js:829"
+    },
+    {
+      "kind": "音效",
+      "key": "heartbeat",
+      "where": "story/prologue.js:832"
+    },
+    {
+      "kind": "音效",
+      "key": "menacing4",
+      "where": "story/prologue.js:852"
+    },
+    {
+      "kind": "音效",
+      "key": "heartbeat",
+      "where": "story/prologue.js:869"
+    },
+    {
+      "kind": "音效",
+      "key": "whoosh",
+      "where": "story/prologue.js:932"
+    },
+    {
+      "kind": "音效",
+      "key": "thud",
+      "where": "story/prologue.js:934"
+    },
+    {
+      "kind": "音效",
+      "key": "pop",
+      "where": "story/prologue.js:949"
+    },
+    {
+      "kind": "音效",
+      "key": "parry",
+      "where": "story/prologue.js:1049"
+    },
+    {
+      "kind": "音效",
+      "key": "punch",
+      "where": "story/prologue.js:1050"
+    },
+    {
+      "kind": "音效",
+      "key": "thud",
+      "where": "story/prologue.js:1051"
+    },
+    {
+      "kind": "音效",
+      "key": "hiero_tentacle",
+      "where": "story/prologue.js:1067"
+    },
+    {
+      "kind": "音效",
+      "key": "thud",
+      "where": "story/prologue.js:1072"
+    },
+    {
+      "kind": "音效",
+      "key": "menacing",
+      "where": "story/prologue.js:1080"
+    },
+    {
+      "kind": "音效",
+      "key": "sting_shock",
+      "where": "story/prologue.js:1129"
+    },
+    {
+      "kind": "音效",
+      "key": "emerald",
+      "where": "story/prologue.js:1136"
+    },
+    {
+      "kind": "音效",
+      "key": "hiero_tentacle",
+      "where": "story/prologue.js:1198"
+    },
+    {
+      "kind": "音效",
+      "key": "punch",
+      "where": "story/prologue.js:1213"
+    },
+    {
+      "kind": "音效",
+      "key": "ko_hit",
+      "where": "story/prologue.js:1224"
+    },
+    {
+      "kind": "音效",
+      "key": "crit",
+      "where": "story/prologue.js:1224"
+    },
+    {
+      "kind": "音效",
+      "key": "thud",
+      "where": "story/prologue.js:1239"
+    },
+    {
+      "kind": "音效",
+      "key": "jingle_victory",
+      "where": "story/prologue.js:1243"
+    },
+    {
+      "kind": "音效",
+      "key": "pop",
+      "where": "story/prologue.js:1280"
+    },
+    {
+      "kind": "音效",
+      "key": "stab",
+      "where": "story/prologue.js:1305"
+    },
+    {
+      "kind": "音效",
+      "key": "hamon",
+      "where": "story/prologue.js:1318"
+    },
+    {
+      "kind": "音效",
+      "key": "hamon",
+      "where": "story/prologue.js:1333"
+    },
+    {
+      "kind": "音效",
+      "key": "fire_burst",
+      "where": "story/prologue.js:1339"
+    },
+    {
+      "kind": "音效",
+      "key": "ding",
+      "where": "story/prologue.js:1371"
+    },
+    {
+      "kind": "音效",
+      "key": "heartbeat",
+      "where": "story/prologue.js:1379"
+    },
+    {
+      "kind": "音效",
+      "key": "thud",
+      "where": "story/prologue.js:1387"
+    },
+    {
+      "kind": "音效",
+      "key": "glint",
+      "where": "story/prologue.js:1463"
+    },
+    {
+      "kind": "音效",
+      "key": "heartbeat",
+      "where": "story/prologue.js:1492"
+    },
+    {
+      "kind": "音效",
+      "key": "punch_heavy",
+      "where": "story/prologue.js:1493"
+    },
+    {
+      "kind": "音效",
+      "key": "heartbeat",
+      "where": "story/prologue.js:1496"
+    },
+    {
+      "kind": "音效",
+      "key": "punch_heavy",
+      "where": "story/prologue.js:1497"
+    },
+    {
+      "kind": "音效",
+      "key": "punch_heavy",
+      "where": "story/prologue.js:1572"
+    },
+    {
+      "kind": "音效",
+      "key": "menacing",
+      "where": "story/prologue.js:1574"
+    },
+    {
+      "kind": "音效",
+      "key": "power_up",
+      "where": "story/prologue.js:1585"
+    },
+    {
+      "kind": "音效",
+      "key": "wind",
+      "where": "story/prologue.js:1597"
+    },
+    {
+      "kind": "音效",
+      "key": "footstep",
+      "where": "story/prologue.js:1601"
+    },
+    {
+      "kind": "音效",
+      "key": "dododo",
+      "where": "story/prologue.js:1605"
+    },
+    {
+      "kind": "音效",
+      "key": "ora_loop",
+      "where": "story/prologue.js:1211"
+    },
+    {
+      "kind": "音效",
+      "key": "freeze",
+      "where": "story/prologue.js:679"
+    },
+    {
+      "kind": "音效",
+      "key": "ko_hit",
+      "where": "story/prologue.js:1242"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/prologue.js:443"
+    },
+    {
+      "kind": "配乐",
+      "key": "ominous",
+      "where": "story/prologue.js:784"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "story/prologue.js:1268"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "story/prologue.js:1360"
+    },
+    {
+      "kind": "配乐",
+      "key": "sad",
+      "where": "story/prologue.js:1390"
+    },
+    {
+      "kind": "配乐",
+      "key": "sad",
+      "where": "story/prologue.js:1483"
+    },
+    {
+      "kind": "配乐",
+      "key": "travel",
+      "where": "story/prologue.js:1603"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/prologue.js:1170"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "story/prologue.js:1629"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "story/prologue.js:1645"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "story/prologue.js:1663"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "story/prologue.js:1677"
+    },
+    {
+      "kind": "配乐",
+      "key": "battle",
+      "where": "story/prologue.js:1686"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "story/prologue.js:1694"
+    },
+    {
+      "kind": "配乐",
+      "key": "sad",
+      "where": "story/prologue.js:1703"
+    },
+    {
+      "kind": "地图",
+      "key": "kujo_pro",
+      "where": "story/prologue.js:862"
+    },
+    {
+      "kind": "地图",
+      "key": "gate_pro",
+      "where": "story/prologue.js:1592"
+    },
+    {
+      "kind": "地图",
+      "key": "jail_pro",
+      "where": "story/prologue.js:1629"
+    },
+    {
+      "kind": "地图",
+      "key": "kujo_pro",
+      "where": "story/prologue.js:1645"
+    },
+    {
+      "kind": "地图",
+      "key": "school_pro",
+      "where": "story/prologue.js:1663"
+    },
+    {
+      "kind": "地图",
+      "key": "infirmary_pro",
+      "where": "story/prologue.js:1677"
+    },
+    {
+      "kind": "地图",
+      "key": "school_pro",
+      "where": "story/prologue.js:1686"
+    },
+    {
+      "kind": "地图",
+      "key": "kujo_pro",
+      "where": "story/prologue.js:1694"
+    },
+    {
+      "kind": "地图",
+      "key": "kujo_pro",
+      "where": "story/prologue.js:1697"
+    },
+    {
+      "kind": "地图",
+      "key": "bedroom_pro",
+      "where": "story/prologue.js:1703"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "stand",
+      "where": "story/prologue.js:679"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "draw",
+      "where": "story/prologue.js:1242"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "day50",
+      "where": "story/prologue.js:1494"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "day_unit",
+      "where": "story/prologue.js:1499"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "egypt",
+      "where": "story/prologue.js:1609"
+    },
+    {
+      "kind": "界面:chapters",
+      "key": "prologue",
+      "where": "story/prologue.js:1624"
+    },
+    {
+      "kind": "界面:namecards",
+      "key": "jotaro",
+      "where": "story/prologue.js:45"
+    },
+    {
+      "kind": "界面:namecards",
+      "key": "holly",
+      "where": "story/prologue.js:387"
+    },
+    {
+      "kind": "界面:namecards",
+      "key": "joseph",
+      "where": "story/prologue.js:410"
+    },
+    {
+      "kind": "界面:namecards",
+      "key": "avdol",
+      "where": "story/prologue.js:430"
+    },
+    {
+      "kind": "界面:namecards",
+      "key": "kakyoin",
+      "where": "story/prologue.js:945"
+    },
+    {
+      "kind": "界面:standcards",
+      "key": "hermit",
+      "where": "story/prologue.js:802"
+    },
+    {
+      "kind": "界面:locations",
+      "key": "tokyo",
+      "where": "story/prologue.js:40"
+    },
+    {
+      "kind": "界面:locations",
+      "key": "kujo",
+      "where": "story/prologue.js:1649"
+    },
+    {
+      "kind": "界面:locations",
+      "key": "school",
+      "where": "story/prologue.js:1665"
+    },
+    {
+      "kind": "界面:vs",
+      "key": "hiero",
+      "where": "story/prologue.js:1170"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "咚",
+      "where": "story/prologue.js:120"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "ギギ…",
+      "where": "story/prologue.js:156"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "咚",
+      "where": "story/prologue.js:249"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "ポロッ",
+      "where": "story/prologue.js:353"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "ドドド",
+      "where": "story/prologue.js:409"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "？",
+      "where": "story/prologue.js:421"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "ジュウウ",
+      "where": "story/prologue.js:554"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "ギギギ…",
+      "where": "story/prologue.js:633"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "メキメキッ",
+      "where": "story/prologue.js:639"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "呀嘞呀嘞daze",
+      "where": "story/prologue.js:698"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "バキッ!!",
+      "where": "story/prologue.js:809"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "ガシッ",
+      "where": "story/prologue.js:1048"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "ガシッ",
+      "where": "story/prologue.js:1060"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "绿宝石水花！",
+      "where": "story/prologue.js:1131"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "ガシッ",
+      "where": "story/prologue.js:1197"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "ORA",
+      "where": "story/prologue.js:1214"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "ORA!!",
+      "where": "story/prologue.js:1223"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "ズルッ",
+      "where": "story/prologue.js:1304"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "バチバチッ",
+      "where": "story/prologue.js:1338"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "ドクン",
+      "where": "story/prologue.js:1378"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "ドサッ",
+      "where": "story/prologue.js:1386"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "ギュッ",
+      "where": "story/prologue.js:1570"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "ドドド",
+      "where": "story/prologue.js:1606"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "ドドド",
+      "where": "story/prologue.js:1607"
+    },
+    {
+      "kind": "界面:specials",
+      "key": "jail_bars",
+      "where": "story/prologue.js:620"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "w6_hg_splash",
+      "where": "story/prologue.js:1128"
+    },
+    {
+      "kind": "界面:specials",
+      "key": "jotaro",
+      "where": "story/prologue.js:567"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:579"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:580"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:581"
+    },
+    {
+      "kind": "说话人",
+      "key": "avdol",
+      "where": "story/prologue.js:582"
+    },
+    {
+      "kind": "说话人",
+      "key": "joseph",
+      "where": "story/prologue.js:1362"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:1591"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:1594"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "story/prologue.js:1643"
+    },
+    {
+      "kind": "背景",
+      "key": "jail_cell",
+      "where": "story/stages.js:25"
+    },
+    {
+      "kind": "背景",
+      "key": "kujo_house_day",
+      "where": "story/stages.js:30"
+    },
+    {
+      "kind": "背景",
+      "key": "school_gate",
+      "where": "story/stages.js:35"
+    },
+    {
+      "kind": "背景",
+      "key": "school_infirmary",
+      "where": "story/stages.js:40"
+    },
+    {
+      "kind": "背景",
+      "key": "kujo_bedroom_dusk",
+      "where": "story/stages.js:45"
+    },
+    {
+      "kind": "背景",
+      "key": "dusk_gate",
+      "where": "story/stages.js:51"
+    },
+    {
+      "kind": "背景",
+      "key": "world_map",
+      "where": "story/stages.js:58"
+    },
+    {
+      "kind": "背景",
+      "key": "plane_cabin_side",
+      "where": "story/stages.js:64"
+    },
+    {
+      "kind": "背景",
+      "key": "cockpit",
+      "where": "story/stages.js:69"
+    },
+    {
+      "kind": "背景",
+      "key": "sky_day",
+      "where": "story/stages.js:74"
+    },
+    {
+      "kind": "背景",
+      "key": "sea_day",
+      "where": "story/stages.js:78"
+    },
+    {
+      "kind": "背景",
+      "key": "hongkong_night",
+      "where": "story/stages.js:83"
+    },
+    {
+      "kind": "背景",
+      "key": "hk_garden_night",
+      "where": "story/stages.js:90"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "story/stages.js:25"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "story/stages.js:30"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "story/stages.js:35"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "story/stages.js:40"
+    },
+    {
+      "kind": "配乐",
+      "key": "sad",
+      "where": "story/stages.js:45"
+    },
+    {
+      "kind": "配乐",
+      "key": "travel",
+      "where": "story/stages.js:51"
+    },
+    {
+      "kind": "配乐",
+      "key": "travel",
+      "where": "story/stages.js:58"
+    },
+    {
+      "kind": "配乐",
+      "key": "travel",
+      "where": "story/stages.js:64"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "story/stages.js:83"
+    },
+    {
+      "kind": "配乐",
+      "key": "travel",
+      "where": "story/stages.js:87"
+    },
+    {
+      "kind": "配乐",
+      "key": "tension",
+      "where": "story/stages.js:90"
+    },
+    {
+      "kind": "配乐",
+      "key": "daily",
+      "where": "story/stages_ch02_05.js:5"
+    },
+    {
+      "kind": "背景",
+      "key": "cafe_interior",
+      "where": "story/stages_late.js:7"
+    },
+    {
+      "kind": "背景",
+      "key": "cairo_day",
+      "where": "story/stages_late.js:8"
+    },
+    {
+      "kind": "背景",
+      "key": "cairo_sewer",
+      "where": "story/stages_late.js:9"
+    },
+    {
+      "kind": "背景",
+      "key": "mansion_hall",
+      "where": "story/stages_late.js:10"
+    },
+    {
+      "kind": "背景",
+      "key": "mansion_exterior",
+      "where": "story/stages_late.js:11"
+    },
+    {
+      "kind": "背景",
+      "key": "mansion_corridor",
+      "where": "story/stages_late.js:12"
+    },
+    {
+      "kind": "背景",
+      "key": "game_room",
+      "where": "story/stages_late.js:13"
+    },
+    {
+      "kind": "背景",
+      "key": "illusion_corridor",
+      "where": "story/stages_late.js:14"
+    },
+    {
+      "kind": "背景",
+      "key": "mansion_hall",
+      "where": "story/stages_late.js:15"
+    },
+    {
+      "kind": "背景",
+      "key": "mansion_tower",
+      "where": "story/stages_late.js:16"
+    },
+    {
+      "kind": "背景",
+      "key": "mansion_stairs",
+      "where": "story/stages_late.js:17"
+    },
+    {
+      "kind": "背景",
+      "key": "cairo_street_night",
+      "where": "story/stages_late.js:18"
+    },
+    {
+      "kind": "背景",
+      "key": "cairo_rooftops",
+      "where": "story/stages_late.js:19"
+    },
+    {
+      "kind": "背景",
+      "key": "cairo_street_night",
+      "where": "story/stages_late.js:20"
+    },
+    {
+      "kind": "背景",
+      "key": "cairo_street_dawn",
+      "where": "story/stages_late.js:21"
+    },
+    {
+      "kind": "背景",
+      "key": "kujo_bedroom_morning",
+      "where": "story/stages_late.js:22"
+    },
+    {
+      "kind": "背景",
+      "key": "airport",
+      "where": "story/stages_late.js:23"
+    },
+    {
+      "kind": "音效",
+      "key": "wall_slam",
+      "where": "engine/combat.js:20"
+    },
+    {
+      "kind": "音效",
+      "key": "punch",
+      "where": "engine/combat.js:85"
+    },
+    {
+      "kind": "音效",
+      "key": "fire_burst",
+      "where": "engine/combat.js:237"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "破绽！",
+      "where": "engine/combat.js:117"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "キィン！",
+      "where": "engine/combat.js:155"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "被劈开了！",
+      "where": "engine/combat.js:481"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "U!",
+      "where": "engine/fight.js:82"
+    },
+    {
+      "kind": "角色",
+      "key": "chariot",
+      "where": "engine/moves.js:305"
+    },
+    {
+      "kind": "角色",
+      "key": "fool",
+      "where": "engine/moves.js:404"
+    },
+    {
+      "kind": "背景",
+      "key": "radial",
+      "where": "engine/moves.js:54"
+    },
+    {
+      "kind": "背景",
+      "key": "radial",
+      "where": "engine/moves.js:116"
+    },
+    {
+      "kind": "背景",
+      "key": "menace",
+      "where": "engine/moves.js:194"
+    },
+    {
+      "kind": "背景",
+      "key": "radial",
+      "where": "engine/moves.js:290"
+    },
+    {
+      "kind": "背景",
+      "key": "radial",
+      "where": "engine/moves.js:346"
+    },
+    {
+      "kind": "背景",
+      "key": "radial",
+      "where": "engine/moves.js:400"
+    },
+    {
+      "kind": "特效",
+      "key": "shockwave",
+      "where": "engine/moves.js:68"
+    },
+    {
+      "kind": "特效",
+      "key": "glow",
+      "where": "engine/moves.js:127"
+    },
+    {
+      "kind": "特效",
+      "key": "fire_ankh",
+      "where": "engine/moves.js:204"
+    },
+    {
+      "kind": "特效",
+      "key": "explosion",
+      "where": "engine/moves.js:212"
+    },
+    {
+      "kind": "特效",
+      "key": "fire_burst",
+      "where": "engine/moves.js:213"
+    },
+    {
+      "kind": "特效",
+      "key": "shockwave",
+      "where": "engine/moves.js:214"
+    },
+    {
+      "kind": "特效",
+      "key": "crack",
+      "where": "engine/moves.js:236"
+    },
+    {
+      "kind": "特效",
+      "key": "fire",
+      "where": "engine/moves.js:240"
+    },
+    {
+      "kind": "特效",
+      "key": "explosion",
+      "where": "engine/moves.js:247"
+    },
+    {
+      "kind": "特效",
+      "key": "burst",
+      "where": "engine/moves.js:298"
+    },
+    {
+      "kind": "特效",
+      "key": "stand_summon",
+      "where": "engine/moves.js:305"
+    },
+    {
+      "kind": "特效",
+      "key": "slash_arc",
+      "where": "engine/moves.js:307"
+    },
+    {
+      "kind": "特效",
+      "key": "slash_arc",
+      "where": "engine/moves.js:313"
+    },
+    {
+      "kind": "特效",
+      "key": "vines",
+      "where": "engine/moves.js:354"
+    },
+    {
+      "kind": "特效",
+      "key": "hamon",
+      "where": "engine/moves.js:356"
+    },
+    {
+      "kind": "特效",
+      "key": "wrap",
+      "where": "engine/moves.js:358"
+    },
+    {
+      "kind": "特效",
+      "key": "vines",
+      "where": "engine/moves.js:360"
+    },
+    {
+      "kind": "特效",
+      "key": "hit_spark",
+      "where": "engine/moves.js:362"
+    },
+    {
+      "kind": "特效",
+      "key": "stand_summon",
+      "where": "engine/moves.js:404"
+    },
+    {
+      "kind": "特效",
+      "key": "burst",
+      "where": "engine/moves.js:406"
+    },
+    {
+      "kind": "特效",
+      "key": "shockwave",
+      "where": "engine/moves.js:407"
+    },
+    {
+      "kind": "特效",
+      "key": "shockwave",
+      "where": "engine/moves.js:420"
+    },
+    {
+      "kind": "特效",
+      "key": "smoke",
+      "where": "engine/moves.js:435"
+    },
+    {
+      "kind": "特效",
+      "key": "speedlines",
+      "where": "engine/moves.js:567"
+    },
+    {
+      "kind": "特效",
+      "key": "slash_arc",
+      "where": "engine/moves.js:839"
+    },
+    {
+      "kind": "特效",
+      "key": "glint",
+      "where": "engine/moves.js:877"
+    },
+    {
+      "kind": "特效",
+      "key": "burst",
+      "where": "engine/moves.js:896"
+    },
+    {
+      "kind": "特效",
+      "key": "burst",
+      "where": "engine/moves.js:898"
+    },
+    {
+      "kind": "特效",
+      "key": "slash_arc",
+      "where": "engine/moves.js:918"
+    },
+    {
+      "kind": "特效",
+      "key": "sparkles",
+      "where": "engine/moves.js:931"
+    },
+    {
+      "kind": "特效",
+      "key": "glint",
+      "where": "engine/moves.js:958"
+    },
+    {
+      "kind": "音效",
+      "key": "emerald",
+      "where": "engine/moves.js:128"
+    },
+    {
+      "kind": "音效",
+      "key": "sparkle",
+      "where": "engine/moves.js:128"
+    },
+    {
+      "kind": "音效",
+      "key": "crossfire",
+      "where": "engine/moves.js:201"
+    },
+    {
+      "kind": "音效",
+      "key": "crossfire",
+      "where": "engine/moves.js:224"
+    },
+    {
+      "kind": "音效",
+      "key": "rumble",
+      "where": "engine/moves.js:237"
+    },
+    {
+      "kind": "音效",
+      "key": "armor_off",
+      "where": "engine/moves.js:297"
+    },
+    {
+      "kind": "音效",
+      "key": "rapier_loop",
+      "where": "engine/moves.js:300"
+    },
+    {
+      "kind": "音效",
+      "key": "hamon",
+      "where": "engine/moves.js:353"
+    },
+    {
+      "kind": "音效",
+      "key": "fire_burst",
+      "where": "engine/moves.js:436"
+    },
+    {
+      "kind": "音效",
+      "key": "hiero_tentacle",
+      "where": "engine/moves.js:552"
+    },
+    {
+      "kind": "音效",
+      "key": "whoosh",
+      "where": "engine/moves.js:565"
+    },
+    {
+      "kind": "音效",
+      "key": "whoosh",
+      "where": "engine/moves.js:605"
+    },
+    {
+      "kind": "音效",
+      "key": "hiero_tentacle",
+      "where": "engine/moves.js:740"
+    },
+    {
+      "kind": "音效",
+      "key": "slash",
+      "where": "engine/moves.js:841"
+    },
+    {
+      "kind": "音效",
+      "key": "armor_off",
+      "where": "engine/moves.js:895"
+    },
+    {
+      "kind": "音效",
+      "key": "insect_buzz_loop",
+      "where": "engine/moves.js:726"
+    },
+    {
+      "kind": "音效",
+      "key": "whoosh",
+      "where": "engine/moves.js:18"
+    },
+    {
+      "kind": "音效",
+      "key": "punch",
+      "where": "engine/moves.js:18"
+    },
+    {
+      "kind": "音效",
+      "key": "whoosh",
+      "where": "engine/moves.js:29"
+    },
+    {
+      "kind": "音效",
+      "key": "punch_heavy",
+      "where": "engine/moves.js:29"
+    },
+    {
+      "kind": "音效",
+      "key": "whoosh",
+      "where": "engine/moves.js:37"
+    },
+    {
+      "kind": "音效",
+      "key": "crit",
+      "where": "engine/moves.js:37"
+    },
+    {
+      "kind": "音效",
+      "key": "ko_hit",
+      "where": "engine/moves.js:44"
+    },
+    {
+      "kind": "音效",
+      "key": "emerald_shot",
+      "where": "engine/moves.js:85"
+    },
+    {
+      "kind": "音效",
+      "key": "hiero_tentacle",
+      "where": "engine/moves.js:91"
+    },
+    {
+      "kind": "音效",
+      "key": "emerald",
+      "where": "engine/moves.js:101"
+    },
+    {
+      "kind": "音效",
+      "key": "whoosh",
+      "where": "engine/moves.js:148"
+    },
+    {
+      "kind": "音效",
+      "key": "punch",
+      "where": "engine/moves.js:148"
+    },
+    {
+      "kind": "音效",
+      "key": "fire_burst",
+      "where": "engine/moves.js:159"
+    },
+    {
+      "kind": "音效",
+      "key": "fire_burst",
+      "where": "engine/moves.js:162"
+    },
+    {
+      "kind": "音效",
+      "key": "fire_burst",
+      "where": "engine/moves.js:167"
+    },
+    {
+      "kind": "音效",
+      "key": "explosion",
+      "where": "engine/moves.js:174"
+    },
+    {
+      "kind": "音效",
+      "key": "slash0",
+      "where": "engine/moves.js:258"
+    },
+    {
+      "kind": "音效",
+      "key": "slash1",
+      "where": "engine/moves.js:261"
+    },
+    {
+      "kind": "音效",
+      "key": "stab",
+      "where": "engine/moves.js:265"
+    },
+    {
+      "kind": "音效",
+      "key": "slash0",
+      "where": "engine/moves.js:265"
+    },
+    {
+      "kind": "音效",
+      "key": "crit",
+      "where": "engine/moves.js:271"
+    },
+    {
+      "kind": "音效",
+      "key": "slash0",
+      "where": "engine/moves.js:276"
+    },
+    {
+      "kind": "音效",
+      "key": "ko_hit",
+      "where": "engine/moves.js:280"
+    },
+    {
+      "kind": "音效",
+      "key": "vine",
+      "where": "engine/moves.js:323"
+    },
+    {
+      "kind": "音效",
+      "key": "punch",
+      "where": "engine/moves.js:323"
+    },
+    {
+      "kind": "音效",
+      "key": "vine",
+      "where": "engine/moves.js:329"
+    },
+    {
+      "kind": "音效",
+      "key": "hamon",
+      "where": "engine/moves.js:329"
+    },
+    {
+      "kind": "音效",
+      "key": "vine",
+      "where": "engine/moves.js:333"
+    },
+    {
+      "kind": "音效",
+      "key": "punch_heavy",
+      "where": "engine/moves.js:333"
+    },
+    {
+      "kind": "音效",
+      "key": "hamon",
+      "where": "engine/moves.js:338"
+    },
+    {
+      "kind": "音效",
+      "key": "dog_bark",
+      "where": "engine/moves.js:373"
+    },
+    {
+      "kind": "音效",
+      "key": "punch",
+      "where": "engine/moves.js:373"
+    },
+    {
+      "kind": "音效",
+      "key": "sand",
+      "where": "engine/moves.js:377"
+    },
+    {
+      "kind": "音效",
+      "key": "punch",
+      "where": "engine/moves.js:377"
+    },
+    {
+      "kind": "音效",
+      "key": "sand",
+      "where": "engine/moves.js:382"
+    },
+    {
+      "kind": "音效",
+      "key": "thud",
+      "where": "engine/moves.js:383"
+    },
+    {
+      "kind": "音效",
+      "key": "crit",
+      "where": "engine/moves.js:387"
+    },
+    {
+      "kind": "音效",
+      "key": "thud",
+      "where": "engine/moves.js:392"
+    },
+    {
+      "kind": "音效",
+      "key": "punch_heavy",
+      "where": "engine/moves.js:418"
+    },
+    {
+      "kind": "音效",
+      "key": "whoosh",
+      "where": "engine/moves.js:419"
+    },
+    {
+      "kind": "音效",
+      "key": "charge",
+      "where": "engine/moves.js:428"
+    },
+    {
+      "kind": "音效",
+      "key": "fire",
+      "where": "engine/moves.js:454"
+    },
+    {
+      "kind": "音效",
+      "key": "fire",
+      "where": "engine/moves.js:476"
+    },
+    {
+      "kind": "音效",
+      "key": "hiero_tentacle",
+      "where": "engine/moves.js:522"
+    },
+    {
+      "kind": "音效",
+      "key": "punch",
+      "where": "engine/moves.js:522"
+    },
+    {
+      "kind": "音效",
+      "key": "whoosh",
+      "where": "engine/moves.js:546"
+    },
+    {
+      "kind": "音效",
+      "key": "stab",
+      "where": "engine/moves.js:639"
+    },
+    {
+      "kind": "音效",
+      "key": "whoosh",
+      "where": "engine/moves.js:640"
+    },
+    {
+      "kind": "音效",
+      "key": "stab",
+      "where": "engine/moves.js:649"
+    },
+    {
+      "kind": "音效",
+      "key": "whoosh",
+      "where": "engine/moves.js:650"
+    },
+    {
+      "kind": "音效",
+      "key": "punch",
+      "where": "engine/moves.js:809"
+    },
+    {
+      "kind": "音效",
+      "key": "stab",
+      "where": "engine/moves.js:818"
+    },
+    {
+      "kind": "音效",
+      "key": "slash0",
+      "where": "engine/moves.js:818"
+    },
+    {
+      "kind": "音效",
+      "key": "slash1",
+      "where": "engine/moves.js:825"
+    },
+    {
+      "kind": "音效",
+      "key": "punch",
+      "where": "engine/moves.js:825"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "ガシッ",
+      "where": "engine/moves.js:551"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "破绽！",
+      "where": "engine/moves.js:572"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "キィン！",
+      "where": "engine/moves.js:654"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "ギュルッ",
+      "where": "engine/moves.js:739"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "被劈开了！",
+      "where": "engine/moves.js:840"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "残像！",
+      "where": "engine/moves.js:904"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "破绽！",
+      "where": "engine/moves.js:930"
+    },
+    {
+      "kind": "界面:titles",
+      "key": "w6_hg_splash",
+      "where": "engine/moves.js:514"
+    },
+    {
+      "kind": "界面:specials",
+      "key": "jotaro",
+      "where": "engine/moves.js:54"
+    },
+    {
+      "kind": "界面:specials",
+      "key": "kakyoin",
+      "where": "engine/moves.js:116"
+    },
+    {
+      "kind": "界面:specials",
+      "key": "avdol",
+      "where": "engine/moves.js:194"
+    },
+    {
+      "kind": "界面:specials",
+      "key": "polnareff",
+      "where": "engine/moves.js:290"
+    },
+    {
+      "kind": "界面:specials",
+      "key": "波纹疾走",
+      "where": "engine/moves.js:346"
+    },
+    {
+      "kind": "界面:specials",
+      "key": "愚者·沙之巨像",
+      "where": "engine/moves.js:400"
+    },
+    {
+      "kind": "角色",
+      "key": "anne",
+      "where": "engine/moves_ch02_05.js:55"
+    },
+    {
+      "kind": "特效",
+      "key": "dust",
+      "where": "engine/moves_ch02_05.js:22"
+    },
+    {
+      "kind": "特效",
+      "key": "dust",
+      "where": "engine/moves_ch02_05.js:29"
+    },
+    {
+      "kind": "音效",
+      "key": "whoosh",
+      "where": "engine/moves_ch02_05.js:5"
+    },
+    {
+      "kind": "音效",
+      "key": "punch",
+      "where": "engine/moves_ch02_05.js:5"
+    },
+    {
+      "kind": "音效",
+      "key": "slash",
+      "where": "engine/moves_ch02_05.js:9"
+    },
+    {
+      "kind": "音效",
+      "key": "slash",
+      "where": "engine/moves_ch02_05.js:19"
+    },
+    {
+      "kind": "音效",
+      "key": "explosion",
+      "where": "engine/moves_ch02_05.js:39"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "看玻璃碎片里的倒影！",
+      "where": "engine/moves_ch02_05.js:22"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "engine/moves_ch06_09.js:38"
+    },
+    {
+      "kind": "特效",
+      "key": "shatter",
+      "where": "engine/moves_ch06_09.js:40"
+    },
+    {
+      "kind": "特效",
+      "key": "magnet_junk",
+      "where": "engine/moves_ch06_09.js:79"
+    },
+    {
+      "kind": "音效",
+      "key": "whoosh",
+      "where": "engine/moves_ch06_09.js:8"
+    },
+    {
+      "kind": "音效",
+      "key": "slash",
+      "where": "engine/moves_ch06_09.js:8"
+    },
+    {
+      "kind": "音效",
+      "key": "clay_crumble",
+      "where": "engine/moves_ch06_09.js:13"
+    },
+    {
+      "kind": "说话人",
+      "key": "chaka",
+      "where": "engine/moves_ch06_09.js:45"
+    },
+    {
+      "kind": "音效",
+      "key": "gunshot",
+      "where": "engine/moves_ch10_final.js:25"
+    },
+    {
+      "kind": "音效",
+      "key": "whoosh",
+      "where": "engine/moves_ch10_final.js:8"
+    },
+    {
+      "kind": "音效",
+      "key": "punch",
+      "where": "engine/moves_ch10_final.js:8"
+    },
+    {
+      "kind": "音效",
+      "key": "gunshot",
+      "where": "engine/moves_ch10_final.js:19"
+    },
+    {
+      "kind": "音效",
+      "key": "bird_screech",
+      "where": "engine/moves_ch10_final.js:29"
+    },
+    {
+      "kind": "音效",
+      "key": "stab",
+      "where": "engine/moves_ch10_final.js:29"
+    },
+    {
+      "kind": "音效",
+      "key": "ice",
+      "where": "engine/moves_ch10_final.js:36"
+    },
+    {
+      "kind": "音效",
+      "key": "ice",
+      "where": "engine/moves_ch10_final.js:39"
+    },
+    {
+      "kind": "音效",
+      "key": "ice",
+      "where": "engine/moves_ch10_final.js:42"
+    },
+    {
+      "kind": "音效",
+      "key": "muda_loop",
+      "where": "engine/moves_ch10_final.js:68"
+    },
+    {
+      "kind": "音效",
+      "key": "punch",
+      "where": "engine/moves_ch10_final.js:68"
+    },
+    {
+      "kind": "音效",
+      "key": "knife_volley",
+      "where": "engine/moves_ch10_final.js:70"
+    },
+    {
+      "kind": "音效",
+      "key": "zoom",
+      "where": "engine/script.js:168"
+    },
+    {
+      "kind": "音效",
+      "key": "thunder",
+      "where": "engine/script.js:190"
+    },
+    {
+      "kind": "音效",
+      "key": "power_up",
+      "where": "engine/script.js:436"
+    },
+    {
+      "kind": "音效",
+      "key": "stand_recall",
+      "where": "engine/stand.js:101"
+    },
+    {
+      "kind": "音效",
+      "key": "clock_tick",
+      "where": "engine/timestop.js:48"
+    },
+    {
+      "kind": "音效",
+      "key": "timestop",
+      "where": "engine/timestop.js:26"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "チク…",
+      "where": "engine/timestop.js:48"
+    },
+    {
+      "kind": "界面:sfx",
+      "key": "タク…",
+      "where": "engine/timestop.js:48"
+    },
+    {
+      "kind": "配乐",
+      "key": "title_song",
+      "where": "main.js:135"
+    },
+    {
+      "kind": "说话人",
+      "key": "jotaro",
+      "where": "main.js:87"
+    }
+  ],
+  "assets": {
+    "chars": 91,
+    "props": 106,
+    "scene": 97,
+    "bg": 73,
+    "images": 950,
+    "fx": 101,
+    "sfx": 147,
+    "music": 11,
+    "glyphs": {
+      "12": 1576,
+      "16": 1576
+    }
+  },
+  "chapters": [
+    "prologue",
+    "ch01",
+    "ch02",
+    "ch03",
+    "ch04",
+    "ch05",
+    "ch06",
+    "ch07",
+    "ch08",
+    "ch09",
+    "ch10",
+    "ch11",
+    "final"
+  ],
+  "boundary": "静态字面量及实际元数据；变量、拼接、模板插值、嵌套对象动作归属需实际运行验收。未把动作、头像或声音回退算作资源存在。"
+}

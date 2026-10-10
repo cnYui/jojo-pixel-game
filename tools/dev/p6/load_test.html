@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>包 6 数据加载自测</title>
+<style>
+  body { background: #14121e; color: #e8e4f0; font: 13px/1.5 monospace; margin: 16px; }
+  .ok { color: #8f8; } .bad { color: #f88; }
+</style>
+</head>
+<body>
+<pre id="log">加载中…</pre>
+<script>
+// 包 6 自测（技术约定 §7.6）：只加载 data\*.js（或 fixture），检查 GAME_DATA 字段齐全、每个图片 key 都能 decode()、
+// 背景包按需加载、packKeys 正确、视频能播。?src=data（默认，读 游戏\data\）或 ?src=fixture（读 tools\dev\fixture\）。
+'use strict';
+(function () {
+  const q = new URLSearchParams(location.search);
+  const SRC = q.get('src') || 'data';
+  const ROOT = SRC === 'fixture' ? '../fixture/' : '../../../data/';
+  const GAME_ROOT = '../../../';
+  const out = { src: SRC, errors: [], info: {}, done: false };
+  window.__RESULT = out;
+  const logEl = document.getElementById('log');
+  const lines = [];
+  function log(s, bad) { lines.push((bad ? '✗ ' : '  ') + s); logEl.textContent = lines.join('\n'); }
+  function err(s) { out.errors.push(s); log(s, true); }
+
+  function loadScript(src) {
+    return new Promise((res, rej) => {
+      const el = document.createElement('script');
+      el.src = src;
+      el.onload = () => res();
+      el.onerror = () => rej(new Error('script 加载失败 ' + src));
+      document.head.appendChild(el);
+    });
+  }
+  // packs[*].file：data 模式下是相对游戏根目录的 "data/img_bg_x.js"；fixture 模式下已经是相对本页的
+  function packUrl(file) { return SRC === 'fixture' ? file : GAME_ROOT + file; }
+
+  function decodeKey(key) {
+    const uri = window.GAME_DATA.img[key];
+    if (!uri) return Promise.reject(new Error('img 里没有 ' + key));
+    const im = new Image();
+    im.src = uri;
+    return im.decode().then(() => im);
+  }
+
+  const IMG_RE = /^(chars|heads|props|scene|bg|ui|font|fx)\//;
+  function walkKeys(o, acc) {
+    if (typeof o === 'string') { if (IMG_RE.test(o)) acc.add(o); }
+    else if (Array.isArray(o)) o.forEach(v => walkKeys(v, acc));
+    else if (o && typeof o === 'object') Object.values(o).forEach(v => walkKeys(v, acc));
+    return acc;
+  }
+
+  async function run() {
+    const t0 = performance.now();
+    await loadScript(ROOT + 'data_meta.js');
+    const D = window.GAME_DATA;
+    if (!D) { err('没有 window.GAME_DATA'); return; }
+    const FIELDS = ['v', 'built', 'img', 'packsLoaded', 'packKeys', 'packs', 'chars', 'heroes', 'speakers', 'stands',
+      'props', 'scene', 'bg', 'ui', 'font', 'fxtex', 'audio', 'video'];
+    for (const f of FIELDS) if (!(f in D)) err('GAME_DATA 缺字段 ' + f);
+    if (Object.keys(D.img).length) err('data_meta.js 里 img 应该是空对象');
+    await loadScript(ROOT + 'img_core.js');
+    const core = (D.packKeys && D.packKeys.core) || [];
+    if (!core.length) err('packKeys.core 为空');
+    if (!D.packsLoaded.core) err('packsLoaded.core 不是 true');
+    out.info.coreKeys = core.length;
+    let dec = 0, fail = 0, maxW = 0, maxH = 0;
+    await Promise.all(core.map(k => decodeKey(k).then(im => { dec++; maxW = Math.max(maxW, im.naturalWidth); maxH = Math.max(maxH, im.naturalHeight); })
+      .catch(e => { fail++; err('decode 失败 ' + k + '：' + e.message); })));
+    out.info.coreDecoded = dec; out.info.coreMax = [maxW, maxH];
+    log(`img_core：${dec} 张 decode 成功，${fail} 张失败，最大 ${maxW}×${maxH}`);
+    // 背景包
+    const bgPacks = Object.keys(D.packs).filter(n => n !== 'core');
+    out.info.bgPacks = {};
+    const loadedFiles = new Set();
+    for (const name of bgPacks) {
+      const p = D.packs[name];
+      if (!name.startsWith('bg_')) err('包名没有 bg_ 前缀：' + name);
+      if (!D.packsLoaded[name] && !loadedFiles.has(p.file)) { await loadScript(packUrl(p.file)); loadedFiles.add(p.file); }
+      if (!D.packsLoaded[name]) { err(name + ' 加载后 packsLoaded 不是 true'); continue; }
+      const keys = D.packKeys[name] || [];
+      let ok = 0;
+      await Promise.all(keys.map(k => decodeKey(k).then(() => ok++).catch(e => err('decode 失败 ' + k + '：' + e.message))));
+      for (const bk of (p.bg || [])) {
+        const st = D.bg[bk];
+        if (!st) { err(name + ' 列了背景 ' + bk + '，D.bg 里没有'); continue; }
+        if ('bg_' + st.pack !== name && name !== 'bg_fixture') err(`背景 ${bk}.pack = ${st.pack}，却列在 ${name} 里`);
+      }
+      out.info.bgPacks[name] = { keys: keys.length, decoded: ok, bg: (p.bg || []).length };
+      log(`${name}：${ok}/${keys.length} 张，背景 ${(p.bg || []).length} 个`);
+    }
+    // 元数据里引用的每个 key 都在 img 里
+    const refs = walkKeys({ chars: D.chars, props: D.props, scene: D.scene, bg: D.bg, ui: D.ui, font: D.font, fxtex: D.fxtex }, new Set());
+    let missing = 0;
+    for (const k of refs) if (!(k in D.img)) { missing++; if (missing <= 20) err('元数据引用的 key 不在 img：' + k); }
+    out.info.refs = refs.size; out.info.missingRefs = missing;
+    log(`元数据引用 ${refs.size} 个图片 key，缺 ${missing}`);
+    // 读像素（willReadFrequently）：字库第一个字、某个图集
+    const c = document.createElement('canvas'); c.width = 64; c.height = 64;
+    const g = c.getContext('2d', { willReadFrequently: true });
+    for (let i = 0; i < 5; i++) {
+      const im = await decodeKey(core[i % core.length]);
+      g.clearRect(0, 0, 64, 64); g.drawImage(im, 0, 0); g.getImageData(0, 0, 64, 64);
+    }
+    // 字库
+    for (const sz of ['12', '16']) {
+      const f = D.font[sz];
+      if (!f) { err('font.' + sz + ' 没有'); continue; }
+      out.info['glyphs' + sz] = Object.keys(f.glyphs).length;
+      if (!f.glyphs['承'] || !f.glyphs['A']) err('字库 ' + sz + ' 缺常用字');
+    }
+    // 角色：amap / headAlias / 头像
+    let nHeads = 0;
+    for (const [cid, ch] of Object.entries(D.chars)) {
+      for (const [al, emo] of Object.entries(ch.headAlias || {})) if (!(emo in ch.heads)) err(`${cid}.headAlias.${al} → ${emo} 不在 heads`);
+      for (const [lg, v] of Object.entries(ch.amap || {})) {
+        const a = typeof v === 'string' ? v : v.a;
+        if (!(a in ch.animations) && !(a in (ch.aliases || {}))) err(`${cid}.amap.${lg} → ${a} 不在 animations`);
+      }
+      nHeads += Object.keys(ch.heads).length;
+      if (typeof ch.top !== 'number' || typeof ch.bodyW !== 'number') err(cid + ' 缺 top / bodyW');
+    }
+    out.info.chars = Object.keys(D.chars).length; out.info.heads = nHeads;
+    log(`角色 ${out.info.chars} 个，表情 ${nHeads} 种`);
+    // 视频
+    out.info.video = {};
+    for (const [name, v] of Object.entries(D.video || {})) {
+      const el = document.createElement('video');
+      el.muted = true; el.playsInline = true;
+      const canWebm = el.canPlayType('video/webm; codecs="vp9, opus"');
+      const url = (SRC === 'fixture' ? '' : GAME_ROOT) + (canWebm && v.webm ? v.webm : v.src);
+      el.src = url;
+      const r = await new Promise(res => {
+        const to = setTimeout(() => res({ ok: false, why: 'timeout', t: el.currentTime }), 8000);
+        el.addEventListener('timeupdate', () => { if (el.currentTime > 0.5) { clearTimeout(to); res({ ok: true, t: el.currentTime, w: el.videoWidth, h: el.videoHeight }); } });
+        el.addEventListener('error', () => { clearTimeout(to); res({ ok: false, why: 'error ' + (el.error && el.error.code) }); });
+        el.play().catch(e => { clearTimeout(to); res({ ok: false, why: 'play() ' + e.message }); });
+      });
+      el.pause();
+      r.url = url; r.duration = el.duration;
+      out.info.video[name] = r;
+      if (!r.ok) err(`视频 ${name} 播不了：${r.why}（${url}）`);
+      else log(`视频 ${name}：能播（${r.w}×${r.h}，时长 ${el.duration.toFixed(2)} s，${url.split('/').pop()}）`);
+    }
+    out.info.ms = Math.round(performance.now() - t0);
+    log(`用时 ${out.info.ms} ms；错误 ${out.errors.length}`);
+  }
+  run().catch(e => err('异常：' + (e && e.stack || e))).then(() => { out.done = true; });
+})();
+</script>
+</body>
+</html>

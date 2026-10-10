@@ -1,0 +1,57 @@
+{
+  "id": "strength",
+  "name": "力量",
+  "work": "JoJo",
+  "image": "strength.png",
+  "cell": [70, 44],
+  "pivot": [29, 42],
+  "facing": "right",
+  "animations": {
+    "idle": {
+      "row": 0,
+      "frames": 2,
+      "fps": 2,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "Strength: big orangutan, cheek-pad face, knuckle stance (f0) / smug grin scratching head (f1); 40x40"
+    },
+    "walk": {
+      "row": 1,
+      "frames": 4,
+      "fps": 6,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "后续补帧：strength.walk"
+    },
+    "hurt": {
+      "row": 2,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "后续补帧：strength.hurt"
+    },
+    "down": {
+      "row": 3,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "后续补帧：strength.down"
+    },
+    "attack": {
+      "row": 4,
+      "frames": 2,
+      "fps": 8,
+      "kind": "oneshot",
+      "seamless": false,
+      "desc": "后续补帧：strength.attack"
+    }
+  },
+  "aliases": {},
+  "expressions": [],
+  "variants": {},
+  "source": {
+    "project": "jojo",
+    "call": "game.art_later_existing / game.orig（import assets; assets.load_all(); from engine import sprite; sprite.get('strength.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'strength.<动作>', x, y, frame=i, flip=False)"
+  },
+  "notes": "力量（Strength），敌人·动物·动物。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle/down；脚点(自定义点)=walk/hurt/attack。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
+}

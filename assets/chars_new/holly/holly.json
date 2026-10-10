@@ -1,0 +1,93 @@
+{
+  "id": "holly",
+  "name": "荷莉",
+  "work": "JoJo",
+  "image": "holly.png",
+  "cell": [68, 48],
+  "pivot": [40, 48],
+  "facing": "right",
+  "animations": {
+    "idle": {
+      "row": 0,
+      "frames": 2,
+      "fps": 2,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "cheerful, standing, arms relaxed; f1 bob（游戏层：头往前挪 2 px）"
+    },
+    "walk": {
+      "row": 1,
+      "frames": 4,
+      "fps": 8,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "bouncy walk cycle (contact, pass, contact, pass)（游戏层：头往前挪 2 px）"
+    },
+    "wave": {
+      "row": 2,
+      "frames": 2,
+      "fps": 5,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "waving happily (^_^) with her raised hand, side to side（游戏层：头往前挪 2 px）"
+    },
+    "faint": {
+      "row": 3,
+      "frames": 2,
+      "fps": 3,
+      "kind": "oneshot",
+      "seamless": false,
+      "desc": "f0 swooning (hand to forehead, knees buckle); f1 collapsed on the floor, head left. 52x48, anchor = her feet (x=40)"
+    },
+    "bed": {
+      "row": 4,
+      "frames": 2,
+      "fps": 3,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "sick in a futon (56x24), head on pillow at right, thorny stand vines from her back; f1 vines writhe + sweat. Anchor = floor"
+    },
+    "portrait": {
+      "row": 5,
+      "frames": 2,
+      "fps": 8,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "cheerful mom: blonde bob, blue eyes, pink apron; f0 closed smile, f1 open smile/talking"
+    },
+    "portrait_sick": {
+      "row": 6,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "sick: pale, feverish sweat, eyes half-closed, stand vines creeping over her shoulders"
+    }
+  },
+  "aliases": {},
+  "expressions": [
+    {
+      "id": "portrait",
+      "emotion": "normal",
+      "frames": 2,
+      "fps": 8,
+      "size": [32, 32],
+      "files": ["头像/portrait_0.png", "头像/portrait_1.png"],
+      "desc": "cheerful mom: blonde bob, blue eyes, pink apron; f0 closed smile, f1 open smile/talking"
+    },
+    {
+      "id": "portrait_sick",
+      "emotion": "sick",
+      "frames": 1,
+      "fps": 1,
+      "size": [32, 32],
+      "files": ["头像/portrait_sick_0.png"],
+      "desc": "sick: pale, feverish sweat, eyes half-closed, stand vines creeping over her shoulders"
+    }
+  ],
+  "variants": {},
+  "source": {
+    "project": "jojo",
+    "call": "game.orig（import assets; assets.load_all(); from engine import sprite; sprite.get('holly.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'holly.<动作>', x, y, frame=i, flip=False)"
+  },
+  "notes": "荷莉（Holly Kujo），主角团·人物。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle/walk/wave/bed/portrait/portrait_sick；脚点(自定义点)=faint。faint：f0 晕眩下蹲，f1 瘫倒在地、头朝左；锚点=她的脚。bed：躺在被褥里、头枕在右侧枕头上；锚点=地面。portrait* 动作是说话头像（32×32 半身）：图集里放在最后几行（按底部中点对齐，只是为了同格对齐，不代表脚点），同时逐帧导出到“头像”文件夹，见 expressions；多数 frame0=闭嘴/静态、frame1=说话/加强（具体见各自 desc），原引擎对话框打字时以 8fps 来回切换。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
+}

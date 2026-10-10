@@ -1,0 +1,1287 @@
+{
+ "music": {
+  "battle": {
+   "barSec": 1.422222,
+   "beatSec": 0.355556,
+   "bpm": 168.75,
+   "encDelay": 1105,
+   "file": "data/music/battle.js",
+   "loopEnd": 28.444444,
+   "loopStart": 0,
+   "samples": 1254400,
+   "sec": 28.444444
+  },
+  "boss": {
+   "barSec": 1.393197,
+   "beatSec": 0.348299,
+   "bpm": 172.2656,
+   "encDelay": 1105,
+   "file": "data/music/boss.js",
+   "loopEnd": 33.436735,
+   "loopStart": 0,
+   "samples": 1474560,
+   "sec": 33.436735
+  },
+  "daily": {
+   "barSec": 1.814059,
+   "beatSec": 0.453515,
+   "bpm": 132.3,
+   "encDelay": 1105,
+   "file": "data/music/daily.js",
+   "loopEnd": 29.024943,
+   "loopStart": 0,
+   "samples": 1280000,
+   "sec": 29.024943
+  },
+  "ending": {
+   "barSec": 2.612245,
+   "beatSec": 0.653061,
+   "bpm": 91.875,
+   "encDelay": 1105,
+   "file": "data/music/ending.js",
+   "loopEnd": 41.795918,
+   "loopStart": 0,
+   "samples": 1843200,
+   "sec": 41.795918
+  },
+  "ominous": {
+   "barSec": 3.343673,
+   "beatSec": 0.835918,
+   "bpm": 71.7773,
+   "encDelay": 1105,
+   "file": "data/music/ominous.js",
+   "loopEnd": 40.124082,
+   "loopStart": 0,
+   "samples": 1769472,
+   "sec": 40.124082
+  },
+  "sad": {
+   "barSec": 2.380408,
+   "beatSec": 0.793469,
+   "bpm": 75.6173,
+   "encDelay": 1105,
+   "file": "data/music/sad.js",
+   "loopEnd": 38.086531,
+   "loopStart": 0,
+   "samples": 1679616,
+   "sec": 38.086531
+  },
+  "tension": {
+   "barSec": 2.222222,
+   "beatSec": 0.555556,
+   "bpm": 108.0,
+   "encDelay": 1105,
+   "file": "data/music/tension.js",
+   "loopEnd": 35.555556,
+   "loopStart": 0,
+   "samples": 1568000,
+   "sec": 35.555556
+  },
+  "title": {
+   "barSec": 1.671837,
+   "beatSec": 0.417959,
+   "bpm": 143.5547,
+   "encDelay": 1105,
+   "file": "data/music/title.js",
+   "loopEnd": 40.124082,
+   "loopStart": 0,
+   "samples": 1769472,
+   "sec": 40.124082
+  },
+  "title_song": {
+   "file": "data/music/title_song.js",
+   "sec": 273.06,
+   "samples": 12041946,
+   "encDelay": 1105,
+   "loopStart": 0,
+   "loopEnd": 273.06,
+   "stream": true
+  },
+  "travel": {
+   "barSec": 1.991111,
+   "beatSec": 0.497778,
+   "bpm": 120.5357,
+   "encDelay": 1105,
+   "file": "data/music/travel.js",
+   "loopEnd": 31.857778,
+   "loopStart": 0,
+   "samples": 1404928,
+   "sec": 31.857778
+  },
+  "victory": {
+   "barSec": 1.814059,
+   "beatSec": 0.453515,
+   "bpm": 132.3,
+   "encDelay": 1105,
+   "file": "data/music/victory.js",
+   "loopEnd": 21.768707,
+   "loopStart": 0,
+   "samples": 960000,
+   "sec": 21.768707
+  }
+ },
+ "sfx": {
+  "punch0": {
+   "sec": 0.32,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 14112,
+   "encDelay": 1105,
+   "group": "punch"
+  },
+  "punch1": {
+   "sec": 0.32,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 14112,
+   "encDelay": 1105,
+   "group": "punch"
+  },
+  "punch2": {
+   "sec": 0.32,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 14112,
+   "encDelay": 1105,
+   "group": "punch"
+  },
+  "punch3": {
+   "sec": 0.32,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 14112,
+   "encDelay": 1105,
+   "group": "punch"
+  },
+  "punch_heavy": {
+   "sec": 1.2768,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 56305,
+   "encDelay": 1105
+  },
+  "whoosh": {
+   "sec": 0.4302,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 18970,
+   "encDelay": 1105
+  },
+  "slash0": {
+   "sec": 0.5,
+   "ch": 1,
+   "hit": 0.07,
+   "loop": false,
+   "samples": 22050,
+   "encDelay": 1105,
+   "group": "slash"
+  },
+  "slash1": {
+   "sec": 0.5,
+   "ch": 1,
+   "hit": 0.07,
+   "loop": false,
+   "samples": 22050,
+   "encDelay": 1105,
+   "group": "slash"
+  },
+  "stab": {
+   "sec": 0.32,
+   "ch": 1,
+   "hit": 0.065,
+   "loop": false,
+   "samples": 14112,
+   "encDelay": 1105
+  },
+  "thud": {
+   "sec": 0.4271,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 18837,
+   "encDelay": 1105
+  },
+  "fire": {
+   "sec": 1.5,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 66150,
+   "encDelay": 1105
+  },
+  "fire_burst": {
+   "sec": 1.3785,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 60793,
+   "encDelay": 1105
+  },
+  "emerald": {
+   "sec": 1.1949,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 52694,
+   "encDelay": 1105
+  },
+  "vine": {
+   "sec": 0.8,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 35280,
+   "encDelay": 1105
+  },
+  "hamon": {
+   "sec": 1.0,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 44100,
+   "encDelay": 1105
+  },
+  "glass_break": {
+   "sec": 1.1191,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 49354,
+   "encDelay": 1105
+  },
+  "menacing": {
+   "sec": 2.0,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 88200,
+   "encDelay": 1105
+  },
+  "menacing4": {
+   "sec": 4.0,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 176400,
+   "encDelay": 1105
+  },
+  "dododo": {
+   "sec": 2.0,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 88200,
+   "encDelay": 1105
+  },
+  "sting_reveal": {
+   "sec": 2.0786,
+   "ch": 2,
+   "hit": 0.26,
+   "loop": false,
+   "samples": 91667,
+   "encDelay": 1105
+  },
+  "sting_shock": {
+   "sec": 2.346,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 103457,
+   "encDelay": 1105
+  },
+  "sting_comedy": {
+   "sec": 2.6611,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 117356,
+   "encDelay": 1105
+  },
+  "jingle_victory": {
+   "sec": 2.3642,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 104260,
+   "encDelay": 1105
+  },
+  "tbc": {
+   "sec": 2.7819,
+   "ch": 2,
+   "hit": 1.607,
+   "loop": false,
+   "samples": 122681,
+   "encDelay": 1105
+  },
+  "blip": {
+   "sec": 0.03,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 1323,
+   "encDelay": 1105
+  },
+  "blip_train": {
+   "sec": 1.0,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 44100,
+   "encDelay": 1105
+  },
+  "glint": {
+   "sec": 0.7,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 30870,
+   "encDelay": 1105
+  },
+  "sparkle": {
+   "sec": 1.4202,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 62631,
+   "encDelay": 1105
+  },
+  "zoom": {
+   "sec": 0.55,
+   "ch": 1,
+   "hit": 0.47,
+   "loop": false,
+   "samples": 24255,
+   "encDelay": 1105
+  },
+  "freeze": {
+   "sec": 1.3841,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 61037,
+   "encDelay": 1105
+  },
+  "pop": {
+   "sec": 0.15,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 6615,
+   "encDelay": 1105
+  },
+  "ding": {
+   "sec": 1.2,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 52920,
+   "encDelay": 1105
+  },
+  "heartbeat": {
+   "sec": 0.6299,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 27778,
+   "encDelay": 1105
+  },
+  "charge": {
+   "sec": 1.2,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 52920,
+   "encDelay": 1105
+  },
+  "power_up": {
+   "sec": 0.6506,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 28691,
+   "encDelay": 1105
+  },
+  "coin": {
+   "sec": 0.7,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 30870,
+   "encDelay": 1105
+  },
+  "footstep0": {
+   "sec": 0.1154,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 5091,
+   "encDelay": 1105,
+   "group": "footstep"
+  },
+  "footstep1": {
+   "sec": 0.1146,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 5052,
+   "encDelay": 1105,
+   "group": "footstep"
+  },
+  "footstep2": {
+   "sec": 0.1221,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 5384,
+   "encDelay": 1105,
+   "group": "footstep"
+  },
+  "footstep3": {
+   "sec": 0.1193,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 5260,
+   "encDelay": 1105,
+   "group": "footstep"
+  },
+  "door": {
+   "sec": 1.0,
+   "ch": 1,
+   "hit": 0.62,
+   "loop": false,
+   "samples": 44099,
+   "encDelay": 1105
+  },
+  "plane_engine": {
+   "sec": 3.0,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 132300,
+   "encDelay": 1105
+  },
+  "wind": {
+   "sec": 3.0,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 132300,
+   "encDelay": 1105
+  },
+  "crowd": {
+   "sec": 3.0,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 132300,
+   "encDelay": 1105
+  },
+  "explosion": {
+   "sec": 3.0699,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 135382,
+   "encDelay": 1105
+  },
+  "crash": {
+   "sec": 2.3015,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 101496,
+   "encDelay": 1105
+  },
+  "splash": {
+   "sec": 1.2447,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 54892,
+   "encDelay": 1105
+  },
+  "water_gush": {
+   "sec": 1.6,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 70560,
+   "encDelay": 1105
+  },
+  "rumble": {
+   "sec": 2.0,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 88200,
+   "encDelay": 1105
+  },
+  "rero": {
+   "sec": 0.9894,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 43632,
+   "encDelay": 1105
+  },
+  "camera_shutter": {
+   "sec": 0.4588,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 20232,
+   "encDelay": 1105
+  },
+  "dog_bark": {
+   "sec": 0.3,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 13230,
+   "encDelay": 1105
+  },
+  "clock_tick": {
+   "sec": 0.1295,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 5712,
+   "encDelay": 1105
+  },
+  "timestop": {
+   "sec": 3.3,
+   "ch": 2,
+   "hit": 0.85,
+   "loop": false,
+   "samples": 145530,
+   "encDelay": 1105
+  },
+  "timestop_sp": {
+   "sec": 3.5869,
+   "ch": 2,
+   "hit": 0.9239,
+   "loop": false,
+   "samples": 158184,
+   "encDelay": 1105
+  },
+  "time_resume": {
+   "sec": 1.5,
+   "ch": 2,
+   "hit": 1.02,
+   "loop": false,
+   "samples": 66150,
+   "encDelay": 1105
+  },
+  "knife_throw": {
+   "sec": 0.32,
+   "ch": 1,
+   "hit": 0.08,
+   "loop": false,
+   "samples": 14112,
+   "encDelay": 1105
+  },
+  "knife_hit": {
+   "sec": 0.45,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 19845,
+   "encDelay": 1105
+  },
+  "roar": {
+   "sec": 2.3133,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 102015,
+   "encDelay": 1105
+  },
+  "gunshot": {
+   "sec": 1.1098,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 48942,
+   "encDelay": 1105
+  },
+  "drain": {
+   "sec": 1.6,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 70560,
+   "encDelay": 1105
+  },
+  "bubbles": {
+   "sec": 1.0,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 44100,
+   "encDelay": 1105
+  },
+  "car_engine": {
+   "sec": 3.0,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 132300,
+   "encDelay": 1105
+  },
+  "sand": {
+   "sec": 1.2,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 52920,
+   "encDelay": 1105
+  },
+  "ora_rush": {
+   "sec": 1.5,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 66150,
+   "encDelay": 1105
+  },
+  "muda_rush": {
+   "sec": 1.5,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 66150,
+   "encDelay": 1105
+  },
+  "ice": {
+   "sec": 1.2674,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 55893,
+   "encDelay": 1105
+  },
+  "card_flip": {
+   "sec": 0.1299,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 5728,
+   "encDelay": 1105
+  },
+  "bird_screech": {
+   "sec": 0.9,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 39690,
+   "encDelay": 1105
+  },
+  "tv_game": {
+   "sec": 1.908,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 84141,
+   "encDelay": 1105
+  },
+  "heli": {
+   "sec": 3.0,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 132300,
+   "encDelay": 1105
+  },
+  "thunder": {
+   "sec": 3.841,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 169389,
+   "encDelay": 1105
+  },
+  "bat_flap": {
+   "sec": 0.9,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 39690,
+   "encDelay": 1105
+  },
+  "metal_scrape": {
+   "sec": 0.5,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 22050,
+   "encDelay": 1105
+  },
+  "metal_crunch": {
+   "sec": 0.9,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 39690,
+   "encDelay": 1105
+  },
+  "water_splash": {
+   "sec": 1.6,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 70560,
+   "encDelay": 1105
+  },
+  "teeth_crunch": {
+   "sec": 0.8,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 35280,
+   "encDelay": 1105
+  },
+  "clay_crumble": {
+   "sec": 1.2,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 52920,
+   "encDelay": 1105
+  },
+  "lalala": {
+   "sec": 0.8876,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 39143,
+   "encDelay": 1105
+  },
+  "water_jet": {
+   "sec": 1.2,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 52920,
+   "encDelay": 1105
+  },
+  "sand_storm": {
+   "sec": 1.5,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 66150,
+   "encDelay": 1105
+  },
+  "magnet_clack": {
+   "sec": 0.6237,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 27505,
+   "encDelay": 1105
+  },
+  "train_horn": {
+   "sec": 1.8,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 79380,
+   "encDelay": 1105
+  },
+  "axe_chop": {
+   "sec": 0.85,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 37485,
+   "encDelay": 1105
+  },
+  "sub_alarm": {
+   "sec": 1.0742,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 47372,
+   "encDelay": 1105
+  },
+  "genie_appear": {
+   "sec": 1.3,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 57330,
+   "encDelay": 1105
+  },
+  "roadroller": {
+   "sec": 3.2,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 141120,
+   "encDelay": 1105
+  },
+  "drip": {
+   "sec": 0.5668,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 24996,
+   "encDelay": 1105
+  },
+  "baseball_hit": {
+   "sec": 0.5,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 22050,
+   "encDelay": 1105
+  },
+  "sax_melody": {
+   "sec": 1.8972,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 83665,
+   "encDelay": 1105
+  },
+  "void_eat": {
+   "sec": 1.1,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 48510,
+   "encDelay": 1105
+  },
+  "knife_freeze": {
+   "sec": 1.1,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 48510,
+   "encDelay": 1105
+  },
+  "knife_volley": {
+   "sec": 0.794,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 35015,
+   "encDelay": 1105
+  },
+  "flatline": {
+   "sec": 1.4,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 61740,
+   "encDelay": 1105
+  },
+  "clang": {
+   "sec": 0.65,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 28665,
+   "encDelay": 1105
+  },
+  "ora_loop": {
+   "sec": 1.0,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": true,
+   "samples": 44100,
+   "encDelay": 1105
+  },
+  "muda_loop": {
+   "sec": 1.0,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": true,
+   "samples": 44100,
+   "encDelay": 1105
+  },
+  "rapier_loop": {
+   "sec": 1.0,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": true,
+   "samples": 44100,
+   "encDelay": 1105
+  },
+  "timestop_hum": {
+   "sec": 4.0,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": true,
+   "samples": 176400,
+   "encDelay": 1105
+  },
+  "heartbeat_loop": {
+   "sec": 1.0909,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": true,
+   "samples": 48109,
+   "encDelay": 1105
+  },
+  "insect_buzz_loop": {
+   "sec": 2.0,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": true,
+   "samples": 88200,
+   "encDelay": 1105
+  },
+  "fire_loop": {
+   "sec": 3.0,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": true,
+   "samples": 132300,
+   "encDelay": 1105
+  },
+  "crowd_loop": {
+   "sec": 6.0,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": true,
+   "samples": 264600,
+   "encDelay": 1105
+  },
+  "wind_loop": {
+   "sec": 6.0,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": true,
+   "samples": 264600,
+   "encDelay": 1105
+  },
+  "plane_engine_loop": {
+   "sec": 6.0,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": true,
+   "samples": 264600,
+   "encDelay": 1105
+  },
+  "dodge": {
+   "sec": 0.355,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 15654,
+   "encDelay": 1105
+  },
+  "dodge_perfect": {
+   "sec": 1.8735,
+   "ch": 2,
+   "hit": 0.3,
+   "loop": false,
+   "samples": 82623,
+   "encDelay": 1105
+  },
+  "guard": {
+   "sec": 0.5697,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 25124,
+   "encDelay": 1105
+  },
+  "parry": {
+   "sec": 1.5412,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 67968,
+   "encDelay": 1105
+  },
+  "guard_break": {
+   "sec": 1.0,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 44100,
+   "encDelay": 1105
+  },
+  "crit": {
+   "sec": 1.1716,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 51669,
+   "encDelay": 1105
+  },
+  "ko_hit": {
+   "sec": 3.2597,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 143751,
+   "encDelay": 1105
+  },
+  "wall_slam": {
+   "sec": 0.7,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 30870,
+   "encDelay": 1105
+  },
+  "skid": {
+   "sec": 0.4,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 17640,
+   "encDelay": 1105
+  },
+  "stand_summon_star": {
+   "sec": 1.9546,
+   "ch": 2,
+   "hit": 0.25,
+   "loop": false,
+   "samples": 86197,
+   "encDelay": 1105
+  },
+  "stand_summon_hiero": {
+   "sec": 1.9617,
+   "ch": 2,
+   "hit": 0.25,
+   "loop": false,
+   "samples": 86511,
+   "encDelay": 1105
+  },
+  "stand_summon_red": {
+   "sec": 1.9469,
+   "ch": 2,
+   "hit": 0.25,
+   "loop": false,
+   "samples": 85860,
+   "encDelay": 1105
+  },
+  "stand_summon_chariot": {
+   "sec": 1.9723,
+   "ch": 2,
+   "hit": 0.25,
+   "loop": false,
+   "samples": 86979,
+   "encDelay": 1105
+  },
+  "stand_summon_purple": {
+   "sec": 1.9649,
+   "ch": 2,
+   "hit": 0.25,
+   "loop": false,
+   "samples": 86654,
+   "encDelay": 1105
+  },
+  "stand_summon_fool": {
+   "sec": 2.0573,
+   "ch": 2,
+   "hit": 0.25,
+   "loop": false,
+   "samples": 90725,
+   "encDelay": 1105
+  },
+  "stand_summon_world": {
+   "sec": 2.0858,
+   "ch": 2,
+   "hit": 0.25,
+   "loop": false,
+   "samples": 91983,
+   "encDelay": 1105
+  },
+  "stand_recall": {
+   "sec": 0.4,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 17640,
+   "encDelay": 1105
+  },
+  "meter_tick": {
+   "sec": 0.03,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 1323,
+   "encDelay": 1105
+  },
+  "meter_full": {
+   "sec": 0.8664,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 38210,
+   "encDelay": 1105
+  },
+  "super_start": {
+   "sec": 2.2094,
+   "ch": 2,
+   "hit": 0.5,
+   "loop": false,
+   "samples": 97435,
+   "encDelay": 1105
+  },
+  "game_over_jingle": {
+   "sec": 3.0049,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 132518,
+   "encDelay": 1105
+  },
+  "menu_move": {
+   "sec": 0.0655,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 2889,
+   "encDelay": 1105
+  },
+  "menu_confirm": {
+   "sec": 0.1777,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 7837,
+   "encDelay": 1105
+  },
+  "menu_cancel": {
+   "sec": 0.1284,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 5663,
+   "encDelay": 1105
+  },
+  "menu_error": {
+   "sec": 0.16,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 7056,
+   "encDelay": 1105
+  },
+  "emerald_shot": {
+   "sec": 0.2883,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 12716,
+   "encDelay": 1105
+  },
+  "hiero_tentacle": {
+   "sec": 0.5,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 22050,
+   "encDelay": 1105
+  },
+  "crossfire": {
+   "sec": 3.488,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 153819,
+   "encDelay": 1105
+  },
+  "armor_off": {
+   "sec": 1.1173,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 49271,
+   "encDelay": 1105
+  },
+  "ora_voice": {
+   "sec": 0.1943,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 8568,
+   "encDelay": 1105
+  },
+  "muda_voice": {
+   "sec": 0.1952,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 8608,
+   "encDelay": 1105
+  },
+  "hora_voice": {
+   "sec": 0.1823,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 8039,
+   "encDelay": 1105
+  },
+  "grunt_jotaro": {
+   "sec": 0.3,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 13230,
+   "encDelay": 1105
+  },
+  "grunt_kakyoin": {
+   "sec": 0.3,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 13230,
+   "encDelay": 1105
+  },
+  "grunt_polnareff": {
+   "sec": 0.3,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 13230,
+   "encDelay": 1105
+  },
+  "grunt_avdol": {
+   "sec": 0.3,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 13230,
+   "encDelay": 1105
+  },
+  "grunt_joseph": {
+   "sec": 0.3,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 13230,
+   "encDelay": 1105
+  },
+  "grunt_enemy": {
+   "sec": 0.3,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 13230,
+   "encDelay": 1105
+  },
+  "grunt_dio": {
+   "sec": 0.3,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 13230,
+   "encDelay": 1105
+  }
+ }
+}

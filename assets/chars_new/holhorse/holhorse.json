@@ -1,0 +1,75 @@
+{
+  "id": "holhorse",
+  "name": "荷尔·荷斯",
+  "work": "JoJo",
+  "image": "holhorse.png",
+  "cell": [71, 54],
+  "pivot": [33, 54],
+  "facing": "right",
+  "animations": {
+    "idle": {
+      "row": 0,
+      "frames": 2,
+      "fps": 3,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "Hol Horse: cowboy hat, cream duster, cigarette, Emperor gun raised; f1 breath + smoke"
+    },
+    "flee": {
+      "row": 1,
+      "frames": 2,
+      "fps": 10,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "Hol Horse running away in a panic, hat popping off, coat flapping (32x54; faces right, flip to flee left)"
+    },
+    "shoot": {
+      "row": 2,
+      "frames": 2,
+      "fps": 8,
+      "kind": "oneshot",
+      "seamless": false,
+      "desc": "aiming Emperor (f0) / firing w. muzzle flash + recoil (f1); 48w canvas, anchor at body x=16"
+    },
+    "hurt": {
+      "row": 3,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "后续补帧：holhorse.hurt"
+    },
+    "down": {
+      "row": 4,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "后续补帧：holhorse.down"
+    },
+    "portrait": {
+      "row": 5,
+      "frames": 2,
+      "fps": 8,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "Hol Horse portrait: smirk w/ cigarette (f0) / talking grin (f1)"
+    }
+  },
+  "aliases": {},
+  "expressions": [
+    {
+      "id": "portrait",
+      "emotion": "normal",
+      "frames": 2,
+      "fps": 8,
+      "size": [32, 32],
+      "files": ["头像/portrait_0.png", "头像/portrait_1.png"],
+      "desc": "Hol Horse portrait: smirk w/ cigarette (f0) / talking grin (f1)"
+    }
+  ],
+  "variants": {},
+  "source": {
+    "project": "jojo",
+    "call": "game.art_later_existing / game.orig（import assets; assets.load_all(); from engine import sprite; sprite.get('holhorse.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'holhorse.<动作>', x, y, frame=i, flip=False)"
+  },
+  "notes": "荷尔·荷斯（Hol Horse），敌人·人物·人物。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle/flee/down/portrait；脚点(自定义点)=shoot/hurt。idle：f1 呼吸 + 烟圈。flee：朝右逃跑；要向左逃请水平翻转。shoot：f0 瞄准，f1 开火（枪口焰 + 后坐）；锚点在身体 x 处。portrait* 动作是说话头像（32×32 半身）：图集里放在最后几行（按底部中点对齐，只是为了同格对齐，不代表脚点），同时逐帧导出到“头像”文件夹，见 expressions；多数 frame0=闭嘴/静态、frame1=说话/加强（具体见各自 desc），原引擎对话框打字时以 8fps 来回切换。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
+}

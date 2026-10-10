@@ -1,0 +1,4747 @@
+{
+ "built": "2026-10-10T09:57:00",
+ "chars_dir": "D:\\大疆\\游戏素材\\JoJo\\游戏\\assets\\chars_new",
+ "props_dir": "D:\\大疆\\游戏素材\\JoJo\\游戏\\assets\\props_new",
+ "new_names": [
+  "alessi.axe",
+  "alessi.beg",
+  "alessi.down",
+  "alessi.hurt",
+  "alessi.portrait",
+  "alessi.walk",
+  "anne.angry",
+  "anne.down",
+  "anne.hurt",
+  "anne.idle",
+  "anne.portrait",
+  "anne.portrait_angry",
+  "anne.run",
+  "anne.shock",
+  "anne.talk",
+  "anne.walk",
+  "anne.wave",
+  "atum.down",
+  "atum.hurt",
+  "atum.idle",
+  "atum.portrait",
+  "atum.talk",
+  "atum.walk",
+  "avdol.dodge",
+  "avdol.float",
+  "avdol.guard",
+  "avdol.push",
+  "boingo.portrait",
+  "boingo.scared",
+  "cameo.down",
+  "cameo.hurt",
+  "cameo.idle",
+  "cameo.portrait",
+  "cameo.talk",
+  "cameo.walk",
+  "chaka.down",
+  "chaka.hurt",
+  "chaka.idle",
+  "chaka.portrait",
+  "chaka.slash",
+  "chaka.talk",
+  "chaka.walk",
+  "chariot.bare_idle",
+  "chariot.bare_thrust",
+  "chariot.hurt",
+  "chariot.parry",
+  "chariot.slash",
+  "clay_gold.attack",
+  "clay_gold.down",
+  "clay_gold.hurt",
+  "clay_gold.idle",
+  "clay_gold.portrait",
+  "clay_gold.talk",
+  "clay_gold.walk",
+  "clay_pol.attack",
+  "clay_pol.down",
+  "clay_pol.hurt",
+  "clay_pol.idle",
+  "clay_pol.portrait",
+  "clay_pol.talk",
+  "clay_pol.walk",
+  "clay_sherry.attack",
+  "clay_sherry.down",
+  "clay_sherry.hurt",
+  "clay_sherry.idle",
+  "clay_sherry.portrait",
+  "clay_sherry.talk",
+  "clay_sherry.walk",
+  "darkbluemoon.attack",
+  "darkbluemoon.hurt",
+  "death13.hurt",
+  "death13.portrait",
+  "death13.swing",
+  "devo.down",
+  "devo.hurt",
+  "devo.idle",
+  "devo.portrait",
+  "devo.slash",
+  "devo.talk",
+  "devo.walk",
+  "devo_doll.down",
+  "devo_doll.hurt",
+  "devo_doll.idle",
+  "devo_doll.run",
+  "devo_doll.slash",
+  "devo_doll.talk",
+  "devo_doll.walk",
+  "dio.punch",
+  "empress.bite",
+  "empress.down",
+  "empress.hurt",
+  "empress.idle",
+  "empress.l0_bite",
+  "empress.l0_idle",
+  "empress.l1_bite",
+  "empress.l1_idle",
+  "empress.l2_bite",
+  "empress.l2_idle",
+  "empress.l3_bite",
+  "empress.l3_idle",
+  "empress.portrait",
+  "empress.talk",
+  "empress.walk",
+  "enya.cast",
+  "enya.down",
+  "enya.hurt",
+  "fake_tennille.down",
+  "fake_tennille.grab",
+  "fake_tennille.hurt",
+  "fake_tennille.idle",
+  "fake_tennille.portrait",
+  "fake_tennille.portrait_reveal",
+  "fake_tennille.reveal",
+  "fake_tennille.talk",
+  "fake_tennille.walk",
+  "fool.claw",
+  "fool.slam",
+  "fool.wall",
+  "grayfly.down",
+  "grayfly.hurt",
+  "grayfly.idle",
+  "grayfly.portrait",
+  "grayfly.portrait_scared",
+  "grayfly.seated",
+  "hangedman.attack",
+  "hiero.block",
+  "hiero.hurt",
+  "hiero.whip",
+  "highpriestess.attack",
+  "holhorse.down",
+  "holhorse.hurt",
+  "horus.attack",
+  "horus.down",
+  "horus.hurt",
+  "horus.idle",
+  "horus.walk",
+  "iggy.dodge",
+  "iggy.hurt",
+  "iggy.limp_walk",
+  "jgeil.walk",
+  "joseph.dodge",
+  "joseph.float",
+  "joseph.guard",
+  "joseph.vine_atk",
+  "joseph.vine_heavy",
+  "joseph.vine_hold",
+  "joseph.whip",
+  "jotaro.dodge",
+  "jotaro.down",
+  "jotaro.float",
+  "jotaro.guard",
+  "jotaro.kick",
+  "jotaro.kid",
+  "jotaro_kid.down",
+  "jotaro_kid.hurt",
+  "jotaro_kid.idle",
+  "jotaro_kid.portrait",
+  "jotaro_kid.punch",
+  "jotaro_kid.run",
+  "jotaro_kid.talk",
+  "jotaro_kid.walk",
+  "judgement.attack",
+  "judgement.portrait",
+  "kakyoin.dodge",
+  "kakyoin.float",
+  "kakyoin.guard",
+  "kennyg.attack",
+  "kennyg.down",
+  "kennyg.hurt",
+  "kennyg.idle",
+  "kennyg.portrait",
+  "kennyg.sax",
+  "kennyg.talk",
+  "kennyg.walk",
+  "khan.down",
+  "khan.hurt",
+  "khan.idle",
+  "khan.portrait",
+  "khan.slash",
+  "khan.talk",
+  "khan.walk",
+  "lovers.down",
+  "lovers.hurt",
+  "lovers.idle",
+  "lovers.split",
+  "lovers.talk",
+  "lovers.walk",
+  "magred.block",
+  "magred.heavy",
+  "magred.hurt",
+  "magred.punch",
+  "mannish.cry",
+  "mannish.down",
+  "mannish.hurt",
+  "mannish.idle",
+  "mannish.laugh",
+  "mannish.portrait",
+  "mannish.talk",
+  "mannish.walk",
+  "mariah.down",
+  "mariah.hurt",
+  "mariah.kick",
+  "mariah.portrait",
+  "mariah.walk",
+  "midler_back.down",
+  "midler_back.hurt",
+  "midler_back.idle",
+  "midler_back.talk",
+  "midler_back.walk",
+  "ndoul.down",
+  "ndoul.hurt",
+  "ndoul.portrait",
+  "nena.down",
+  "nena.hurt",
+  "nena.idle",
+  "nena.portrait",
+  "nena.talk",
+  "nena.true_form",
+  "nena.walk",
+  "npc_cat.down",
+  "npc_cat.eat",
+  "npc_cat.hurt",
+  "npc_cat.idle",
+  "npc_cat.talk",
+  "npc_cat.walk",
+  "npc_dealer.deal",
+  "npc_dealer.down",
+  "npc_dealer.hurt",
+  "npc_dealer.idle",
+  "npc_dealer.portrait",
+  "npc_dealer.talk",
+  "npc_dealer.walk",
+  "npc_fortune.idle",
+  "npc_fortune.portrait",
+  "npc_hk_granny.idle",
+  "npc_hk_granny.portrait",
+  "npc_hk_granny.walk",
+  "npc_hk_owner.idle",
+  "npc_hk_owner.portrait",
+  "npc_hk_owner.walk",
+  "npc_hk_passer_a.idle",
+  "npc_hk_passer_a.portrait",
+  "npc_hk_passer_a.walk",
+  "npc_hk_passer_b.idle",
+  "npc_hk_passer_b.portrait",
+  "npc_hk_passer_b.walk",
+  "npc_islander.down",
+  "npc_islander.hurt",
+  "npc_islander.idle",
+  "npc_islander.portrait",
+  "npc_islander.talk",
+  "npc_islander.walk",
+  "npc_kid.down",
+  "npc_kid.hurt",
+  "npc_kid.idle",
+  "npc_kid.portrait",
+  "npc_kid.run",
+  "npc_kid.talk",
+  "npc_kid.walk",
+  "npc_merchant.down",
+  "npc_merchant.hurt",
+  "npc_merchant.idle",
+  "npc_merchant.portrait",
+  "npc_merchant.talk",
+  "npc_merchant.walk",
+  "npc_nurse.faint",
+  "npc_nurse.idle",
+  "npc_nurse.portrait",
+  "npc_nurse.portrait_possessed",
+  "npc_nurse.possessed",
+  "npc_nurse.stab",
+  "npc_nurse.walk",
+  "npc_passenger_a.portrait",
+  "npc_passenger_a.seated",
+  "npc_passenger_a.slump",
+  "npc_passenger_b.seated",
+  "npc_passenger_b.slump",
+  "npc_passenger_c.seated",
+  "npc_passenger_c.slump",
+  "npc_passenger_d.seated",
+  "npc_passenger_d.slump",
+  "npc_police.idle",
+  "npc_police.portrait",
+  "npc_police.read",
+  "npc_police.shock",
+  "npc_police.walk",
+  "npc_sailor.down",
+  "npc_sailor.hurt",
+  "npc_sailor.idle",
+  "npc_sailor.portrait",
+  "npc_sailor.talk",
+  "npc_sailor.walk",
+  "npc_spw.down",
+  "npc_spw.hurt",
+  "npc_spw.idle",
+  "npc_spw.portrait",
+  "npc_spw.talk",
+  "npc_spw.walk",
+  "npc_stewardess.idle",
+  "npc_stewardess.portrait",
+  "npc_stewardess.walk",
+  "npc_student_f_a.cheer",
+  "npc_student_f_a.down",
+  "npc_student_f_a.idle",
+  "npc_student_f_a.portrait",
+  "npc_student_f_a.walk",
+  "npc_student_f_b.cheer",
+  "npc_student_f_b.down",
+  "npc_student_f_b.idle",
+  "npc_student_f_b.portrait",
+  "npc_student_f_b.walk",
+  "npc_student_m.bow",
+  "npc_student_m.idle",
+  "npc_student_m.portrait",
+  "npc_student_m.walk",
+  "npc_townsfolk.down",
+  "npc_townsfolk.hurt",
+  "npc_townsfolk.idle",
+  "npc_townsfolk.portrait",
+  "npc_townsfolk.talk",
+  "npc_townsfolk.walk",
+  "npc_villager_f.down",
+  "npc_villager_f.hurt",
+  "npc_villager_f.idle",
+  "npc_villager_f.portrait",
+  "npc_villager_f.talk",
+  "npc_villager_f.walk",
+  "nukesaku.attack",
+  "nukesaku.down",
+  "nukesaku.hurt",
+  "nukesaku.idle",
+  "nukesaku.portrait",
+  "nukesaku.portrait_reverse",
+  "nukesaku.reverse",
+  "nukesaku.talk",
+  "nukesaku.walk",
+  "oingo.portrait",
+  "osiris.attack",
+  "osiris.down",
+  "osiris.hurt",
+  "osiris.idle",
+  "osiris.walk",
+  "petshop.dive",
+  "polnareff.dodge",
+  "polnareff.down",
+  "polnareff.float",
+  "polnareff.guard",
+  "polnareff.kick",
+  "polnareff.kid",
+  "polnareff.kneel",
+  "polnareff.possessed",
+  "polnareff_kid.down",
+  "polnareff_kid.hide",
+  "polnareff_kid.hurt",
+  "polnareff_kid.idle",
+  "polnareff_kid.portrait",
+  "polnareff_kid.run",
+  "polnareff_kid.talk",
+  "polnareff_kid.walk",
+  "polnareff_possessed.attack",
+  "polnareff_possessed.down",
+  "polnareff_possessed.hurt",
+  "polnareff_possessed.idle",
+  "polnareff_possessed.portrait",
+  "polnareff_possessed.slash",
+  "polnareff_possessed.talk",
+  "polnareff_possessed.walk",
+  "rubbersoul.beg",
+  "rubbersoul.down",
+  "rubbersoul.hurt",
+  "rubbersoul.idle",
+  "rubbersoul.portrait",
+  "rubbersoul.slime_attack",
+  "rubbersoul.slime_idle",
+  "rubbersoul.talk",
+  "rubbersoul.walk",
+  "starplat.finger",
+  "starplat.hurt",
+  "starplat.reach",
+  "starplat.upper",
+  "steelydan.command",
+  "steelydan.down",
+  "steelydan.fly",
+  "steelydan.hurt",
+  "steelydan.portrait",
+  "strength.attack",
+  "strength.down",
+  "strength.hurt",
+  "strength.walk",
+  "telence.down",
+  "telence.hurt",
+  "telence.punch",
+  "telence.walk",
+  "theworld.hurt",
+  "theworld.kick",
+  "towergray.needle",
+  "vanilla.hurt",
+  "vanilla.kick",
+  "vanilla.kneel",
+  "vanilla.stomp",
+  "vanilla.walk",
+  "wheel.climb",
+  "wheel.spray",
+  "wilson.down",
+  "wilson.hurt",
+  "wilson.idle",
+  "wilson.portrait",
+  "wilson.talk",
+  "wilson.walk",
+  "zombie.attack",
+  "zz.down",
+  "zz.hurt",
+  "zz.idle",
+  "zz.portrait",
+  "zz.talk",
+  "zz.walk"
+ ],
+ "new_cids": [
+  "npc_nurse",
+  "npc_passenger_a",
+  "npc_passenger_b",
+  "npc_passenger_c",
+  "npc_passenger_d",
+  "npc_police",
+  "npc_student_f_a",
+  "npc_student_f_b",
+  "npc_stewardess",
+  "npc_hk_granny",
+  "npc_hk_passer_b",
+  "npc_hk_owner",
+  "npc_hk_passer_a",
+  "npc_fortune",
+  "npc_student_m",
+  "grayfly",
+  "fake_tennille",
+  "anne",
+  "devo",
+  "rubbersoul",
+  "nena",
+  "zz",
+  "cameo",
+  "chaka",
+  "khan",
+  "kennyg",
+  "nukesaku",
+  "wilson",
+  "npc_sailor",
+  "npc_kid",
+  "npc_townsfolk",
+  "npc_villager_f",
+  "npc_islander",
+  "npc_dealer",
+  "polnareff_kid",
+  "jotaro_kid",
+  "polnareff_possessed",
+  "clay_sherry",
+  "clay_gold",
+  "clay_pol",
+  "atum",
+  "npc_spw",
+  "npc_merchant",
+  "devo_doll",
+  "empress",
+  "lovers",
+  "mannish",
+  "npc_cat",
+  "midler_back",
+  "osiris",
+  "horus"
+ ],
+ "redrawn_names": [
+  "holly.idle",
+  "holly.walk",
+  "holly.wave",
+  "joseph.idle",
+  "joseph.walk",
+  "joseph.run",
+  "joseph.camera",
+  "joseph.point",
+  "joseph.float",
+  "joseph.dodge"
+ ],
+ "scene_overrides": [
+  "s05_joseph_kneel.png",
+  "s05_joseph_reach.png",
+  "s20_joseph_wave.png"
+ ],
+ "chars": {
+  "jotaro": {
+   "cell": [
+    68,
+    57
+   ],
+   "pivot": [
+    29,
+    54
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "run",
+    "float",
+    "sit",
+    "point",
+    "pose",
+    "shock",
+    "hurt",
+    "down",
+    "dodge",
+    "guard",
+    "kick",
+    "kid",
+    "portrait",
+    "portrait_angry"
+   ],
+   "expressions": [
+    "portrait",
+    "portrait_angry"
+   ],
+   "aliases": {},
+   "new": [
+    "dodge",
+    "down",
+    "float",
+    "guard",
+    "kick",
+    "kid"
+   ]
+  },
+  "kakyoin": {
+   "cell": [
+    50,
+    51
+   ],
+   "pivot": [
+    25,
+    48
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "float",
+    "cast",
+    "cherry",
+    "possessed",
+    "hurt",
+    "down",
+    "dodge",
+    "guard",
+    "portrait",
+    "portrait_hurt"
+   ],
+   "expressions": [
+    "portrait",
+    "portrait_hurt"
+   ],
+   "aliases": {},
+   "new": [
+    "dodge",
+    "float",
+    "guard"
+   ]
+  },
+  "avdol": {
+   "cell": [
+    68,
+    53
+   ],
+   "pivot": [
+    27,
+    50
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "float",
+    "cast",
+    "yes",
+    "hurt",
+    "down",
+    "dodge",
+    "guard",
+    "push",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "dodge",
+    "float",
+    "guard",
+    "push"
+   ]
+  },
+  "polnareff": {
+   "cell": [
+    86,
+    61
+   ],
+   "pivot": [
+    30,
+    58
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "float",
+    "crawl",
+    "fight",
+    "wave",
+    "shock",
+    "cry",
+    "possessed",
+    "hurt",
+    "down",
+    "dodge",
+    "guard",
+    "kick",
+    "kid",
+    "kneel",
+    "portrait",
+    "portrait_shock"
+   ],
+   "expressions": [
+    "portrait",
+    "portrait_shock"
+   ],
+   "aliases": {},
+   "new": [
+    "dodge",
+    "down",
+    "float",
+    "guard",
+    "kick",
+    "kid",
+    "kneel",
+    "possessed"
+   ]
+  },
+  "iggy": {
+   "cell": [
+    32,
+    32
+   ],
+   "pivot": [
+    16,
+    32
+   ],
+   "animations": [
+    "idle",
+    "run",
+    "sit",
+    "bite",
+    "hurt",
+    "down",
+    "dodge",
+    "limp_walk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "dodge",
+    "hurt",
+    "limp_walk"
+   ]
+  },
+  "starplat": {
+   "cell": [
+    116,
+    68
+   ],
+   "pivot": [
+    30,
+    64
+   ],
+   "animations": [
+    "idle",
+    "punch",
+    "rush",
+    "block",
+    "pose",
+    "hurt",
+    "finger",
+    "fist",
+    "reach",
+    "upper",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "finger",
+    "hurt",
+    "reach",
+    "upper"
+   ]
+  },
+  "magred": {
+   "cell": [
+    92,
+    60
+   ],
+   "pivot": [
+    28,
+    58
+   ],
+   "animations": [
+    "idle",
+    "punch",
+    "cast",
+    "block",
+    "hurt",
+    "heavy"
+   ],
+   "expressions": [],
+   "aliases": {},
+   "new": [
+    "block",
+    "heavy",
+    "hurt",
+    "punch"
+   ]
+  },
+  "hiero": {
+   "cell": [
+    81,
+    60
+   ],
+   "pivot": [
+    29,
+    56
+   ],
+   "animations": [
+    "idle",
+    "cast",
+    "block",
+    "hurt",
+    "whip"
+   ],
+   "expressions": [],
+   "aliases": {},
+   "new": [
+    "block",
+    "hurt",
+    "whip"
+   ]
+  },
+  "chariot": {
+   "cell": [
+    85,
+    68
+   ],
+   "pivot": [
+    23,
+    66
+   ],
+   "animations": [
+    "idle",
+    "thrust",
+    "hurt",
+    "bare_idle",
+    "bare_thrust",
+    "parry",
+    "slash"
+   ],
+   "expressions": [],
+   "aliases": {},
+   "new": [
+    "bare_idle",
+    "bare_thrust",
+    "hurt",
+    "parry",
+    "slash"
+   ]
+  },
+  "fool": {
+   "cell": [
+    78,
+    74
+   ],
+   "pivot": [
+    32,
+    54
+   ],
+   "animations": [
+    "idle",
+    "glide",
+    "claw",
+    "slam",
+    "wall"
+   ],
+   "expressions": [],
+   "aliases": {},
+   "new": [
+    "claw",
+    "slam",
+    "wall"
+   ]
+  },
+  "towergray": {
+   "cell": [
+    26,
+    12
+   ],
+   "pivot": [
+    8,
+    6
+   ],
+   "animations": [
+    "fly",
+    "needle"
+   ],
+   "expressions": [],
+   "aliases": {},
+   "new": [
+    "needle"
+   ]
+  },
+  "npc_nurse": {
+   "cell": [
+    48,
+    48
+   ],
+   "pivot": [
+    24,
+    48
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "possessed",
+    "faint",
+    "stab",
+    "portrait",
+    "portrait_possessed"
+   ],
+   "expressions": [
+    "portrait",
+    "portrait_possessed"
+   ],
+   "aliases": {},
+   "new": [
+    "faint",
+    "idle",
+    "portrait",
+    "portrait_possessed",
+    "possessed",
+    "stab",
+    "walk"
+   ]
+  },
+  "npc_passenger_a": {
+   "cell": [
+    32,
+    34
+   ],
+   "pivot": [
+    16,
+    18
+   ],
+   "animations": [
+    "seated",
+    "slump",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "portrait",
+    "seated",
+    "slump"
+   ]
+  },
+  "npc_passenger_b": {
+   "cell": [
+    16,
+    18
+   ],
+   "pivot": [
+    8,
+    18
+   ],
+   "animations": [
+    "seated",
+    "slump"
+   ],
+   "expressions": [],
+   "aliases": {},
+   "new": [
+    "seated",
+    "slump"
+   ]
+  },
+  "npc_passenger_c": {
+   "cell": [
+    16,
+    18
+   ],
+   "pivot": [
+    8,
+    18
+   ],
+   "animations": [
+    "seated",
+    "slump"
+   ],
+   "expressions": [],
+   "aliases": {},
+   "new": [
+    "seated",
+    "slump"
+   ]
+  },
+  "npc_passenger_d": {
+   "cell": [
+    16,
+    18
+   ],
+   "pivot": [
+    8,
+    18
+   ],
+   "animations": [
+    "seated",
+    "slump"
+   ],
+   "expressions": [],
+   "aliases": {},
+   "new": [
+    "seated",
+    "slump"
+   ]
+  },
+  "npc_police": {
+   "cell": [
+    34,
+    48
+   ],
+   "pivot": [
+    17,
+    48
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "shock",
+    "read",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "idle",
+    "portrait",
+    "read",
+    "shock",
+    "walk"
+   ]
+  },
+  "npc_student_f_a": {
+   "cell": [
+    48,
+    48
+   ],
+   "pivot": [
+    24,
+    48
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "down",
+    "cheer",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "cheer",
+    "down",
+    "idle",
+    "portrait",
+    "walk"
+   ]
+  },
+  "npc_student_f_b": {
+   "cell": [
+    48,
+    48
+   ],
+   "pivot": [
+    24,
+    48
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "down",
+    "cheer",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "cheer",
+    "down",
+    "idle",
+    "portrait",
+    "walk"
+   ]
+  },
+  "npc_stewardess": {
+   "cell": [
+    32,
+    48
+   ],
+   "pivot": [
+    16,
+    48
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "idle",
+    "portrait",
+    "walk"
+   ]
+  },
+  "npc_hk_granny": {
+   "cell": [
+    32,
+    48
+   ],
+   "pivot": [
+    16,
+    48
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "idle",
+    "portrait",
+    "walk"
+   ]
+  },
+  "npc_hk_passer_b": {
+   "cell": [
+    32,
+    64
+   ],
+   "pivot": [
+    16,
+    48
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "idle",
+    "portrait",
+    "walk"
+   ]
+  },
+  "npc_hk_owner": {
+   "cell": [
+    32,
+    48
+   ],
+   "pivot": [
+    16,
+    48
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "idle",
+    "portrait",
+    "walk"
+   ]
+  },
+  "npc_hk_passer_a": {
+   "cell": [
+    32,
+    64
+   ],
+   "pivot": [
+    16,
+    48
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "idle",
+    "portrait",
+    "walk"
+   ]
+  },
+  "npc_fortune": {
+   "cell": [
+    32,
+    48
+   ],
+   "pivot": [
+    16,
+    48
+   ],
+   "animations": [
+    "idle",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "idle",
+    "portrait"
+   ]
+  },
+  "npc_student_m": {
+   "cell": [
+    32,
+    48
+   ],
+   "pivot": [
+    16,
+    48
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "bow",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "bow",
+    "idle",
+    "portrait",
+    "walk"
+   ]
+  },
+  "grayfly": {
+   "cell": [
+    52,
+    44
+   ],
+   "pivot": [
+    26,
+    44
+   ],
+   "animations": [
+    "idle",
+    "hurt",
+    "down",
+    "seated",
+    "portrait",
+    "portrait_scared"
+   ],
+   "expressions": [
+    "portrait",
+    "portrait_scared"
+   ],
+   "aliases": {},
+   "new": [
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "portrait_scared",
+    "seated"
+   ]
+  },
+  "fake_tennille": {
+   "cell": [
+    60,
+    64
+   ],
+   "pivot": [
+    30,
+    48
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "grab",
+    "reveal",
+    "talk",
+    "portrait",
+    "portrait_reveal"
+   ],
+   "expressions": [
+    "portrait",
+    "portrait_reveal"
+   ],
+   "aliases": {},
+   "new": [
+    "down",
+    "grab",
+    "hurt",
+    "idle",
+    "portrait",
+    "portrait_reveal",
+    "reveal",
+    "talk",
+    "walk"
+   ]
+  },
+  "anne": {
+   "cell": [
+    44,
+    48
+   ],
+   "pivot": [
+    22,
+    32
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "run",
+    "wave",
+    "shock",
+    "hurt",
+    "down",
+    "angry",
+    "talk",
+    "portrait",
+    "portrait_angry"
+   ],
+   "expressions": [
+    "portrait",
+    "portrait_angry"
+   ],
+   "aliases": {},
+   "new": [
+    "angry",
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "portrait_angry",
+    "run",
+    "shock",
+    "talk",
+    "walk",
+    "wave"
+   ]
+  },
+  "devo": {
+   "cell": [
+    58,
+    62
+   ],
+   "pivot": [
+    29,
+    46
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "slash",
+    "talk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "slash",
+    "talk",
+    "walk"
+   ]
+  },
+  "rubbersoul": {
+   "cell": [
+    60,
+    64
+   ],
+   "pivot": [
+    30,
+    48
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "beg",
+    "slime_attack",
+    "slime_idle",
+    "talk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "beg",
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "slime_attack",
+    "slime_idle",
+    "talk",
+    "walk"
+   ]
+  },
+  "nena": {
+   "cell": [
+    58,
+    62
+   ],
+   "pivot": [
+    29,
+    46
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "talk",
+    "true_form",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "talk",
+    "true_form",
+    "walk"
+   ]
+  },
+  "zz": {
+   "cell": [
+    46,
+    50
+   ],
+   "pivot": [
+    23,
+    34
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "talk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "talk",
+    "walk"
+   ]
+  },
+  "cameo": {
+   "cell": [
+    58,
+    62
+   ],
+   "pivot": [
+    29,
+    46
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "talk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "talk",
+    "walk"
+   ]
+  },
+  "chaka": {
+   "cell": [
+    58,
+    62
+   ],
+   "pivot": [
+    29,
+    46
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "slash",
+    "talk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "slash",
+    "talk",
+    "walk"
+   ]
+  },
+  "khan": {
+   "cell": [
+    56,
+    60
+   ],
+   "pivot": [
+    28,
+    44
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "slash",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {
+    "talk": "idle"
+   },
+   "new": [
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "slash",
+    "talk",
+    "walk"
+   ]
+  },
+  "kennyg": {
+   "cell": [
+    60,
+    64
+   ],
+   "pivot": [
+    30,
+    48
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "attack",
+    "sax",
+    "talk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "attack",
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "sax",
+    "talk",
+    "walk"
+   ]
+  },
+  "nukesaku": {
+   "cell": [
+    56,
+    60
+   ],
+   "pivot": [
+    28,
+    44
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "attack",
+    "reverse",
+    "talk",
+    "portrait",
+    "portrait_reverse"
+   ],
+   "expressions": [
+    "portrait",
+    "portrait_reverse"
+   ],
+   "aliases": {},
+   "new": [
+    "attack",
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "portrait_reverse",
+    "reverse",
+    "talk",
+    "walk"
+   ]
+  },
+  "wilson": {
+   "cell": [
+    56,
+    60
+   ],
+   "pivot": [
+    28,
+    44
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "talk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "talk",
+    "walk"
+   ]
+  },
+  "npc_sailor": {
+   "cell": [
+    56,
+    60
+   ],
+   "pivot": [
+    28,
+    44
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "talk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "talk",
+    "walk"
+   ]
+  },
+  "npc_kid": {
+   "cell": [
+    42,
+    46
+   ],
+   "pivot": [
+    21,
+    30
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "run",
+    "hurt",
+    "down",
+    "talk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "run",
+    "talk",
+    "walk"
+   ]
+  },
+  "npc_townsfolk": {
+   "cell": [
+    56,
+    60
+   ],
+   "pivot": [
+    28,
+    44
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "talk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "talk",
+    "walk"
+   ]
+  },
+  "npc_villager_f": {
+   "cell": [
+    56,
+    60
+   ],
+   "pivot": [
+    28,
+    44
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "talk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "talk",
+    "walk"
+   ]
+  },
+  "npc_islander": {
+   "cell": [
+    54,
+    58
+   ],
+   "pivot": [
+    27,
+    42
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "talk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "talk",
+    "walk"
+   ]
+  },
+  "npc_dealer": {
+   "cell": [
+    56,
+    60
+   ],
+   "pivot": [
+    28,
+    44
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "deal",
+    "talk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "deal",
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "talk",
+    "walk"
+   ]
+  },
+  "polnareff_kid": {
+   "cell": [
+    40,
+    44
+   ],
+   "pivot": [
+    20,
+    28
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "run",
+    "hurt",
+    "down",
+    "hide",
+    "talk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "down",
+    "hide",
+    "hurt",
+    "idle",
+    "portrait",
+    "run",
+    "talk",
+    "walk"
+   ]
+  },
+  "jotaro_kid": {
+   "cell": [
+    42,
+    46
+   ],
+   "pivot": [
+    21,
+    30
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "run",
+    "punch",
+    "hurt",
+    "down",
+    "talk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "punch",
+    "run",
+    "talk",
+    "walk"
+   ]
+  },
+  "polnareff_possessed": {
+   "cell": [
+    60,
+    64
+   ],
+   "pivot": [
+    30,
+    48
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "attack",
+    "talk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {
+    "slash": "attack"
+   },
+   "new": [
+    "attack",
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "slash",
+    "talk",
+    "walk"
+   ]
+  },
+  "clay_sherry": {
+   "cell": [
+    56,
+    60
+   ],
+   "pivot": [
+    28,
+    44
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "attack",
+    "talk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "attack",
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "talk",
+    "walk"
+   ]
+  },
+  "clay_gold": {
+   "cell": [
+    60,
+    64
+   ],
+   "pivot": [
+    30,
+    48
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "attack",
+    "talk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "attack",
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "talk",
+    "walk"
+   ]
+  },
+  "clay_pol": {
+   "cell": [
+    60,
+    64
+   ],
+   "pivot": [
+    30,
+    48
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "attack",
+    "talk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "attack",
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "talk",
+    "walk"
+   ]
+  },
+  "atum": {
+   "cell": [
+    62,
+    66
+   ],
+   "pivot": [
+    31,
+    50
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {
+    "talk": "idle"
+   },
+   "new": [
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "talk",
+    "walk"
+   ]
+  },
+  "npc_spw": {
+   "cell": [
+    58,
+    62
+   ],
+   "pivot": [
+    29,
+    46
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "talk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "talk",
+    "walk"
+   ]
+  },
+  "npc_merchant": {
+   "cell": [
+    56,
+    60
+   ],
+   "pivot": [
+    28,
+    44
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "talk",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "down",
+    "hurt",
+    "idle",
+    "portrait",
+    "talk",
+    "walk"
+   ]
+  },
+  "devo_doll": {
+   "cell": [
+    24,
+    16
+   ],
+   "pivot": [
+    12,
+    16
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "run",
+    "hurt",
+    "down",
+    "slash",
+    "talk"
+   ],
+   "expressions": [],
+   "aliases": {},
+   "new": [
+    "down",
+    "hurt",
+    "idle",
+    "run",
+    "slash",
+    "talk",
+    "walk"
+   ]
+  },
+  "empress": {
+   "cell": [
+    32,
+    40
+   ],
+   "pivot": [
+    16,
+    24
+   ],
+   "animations": [
+    "idle",
+    "bite",
+    "hurt",
+    "down",
+    "l0_bite",
+    "l0_idle",
+    "l1_bite",
+    "l1_idle",
+    "l2_bite",
+    "l2_idle",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {
+    "walk": "idle",
+    "l3_bite": "bite",
+    "l3_idle": "idle",
+    "talk": "idle"
+   },
+   "new": [
+    "bite",
+    "down",
+    "hurt",
+    "idle",
+    "l0_bite",
+    "l0_idle",
+    "l1_bite",
+    "l1_idle",
+    "l2_bite",
+    "l2_idle",
+    "l3_bite",
+    "l3_idle",
+    "portrait",
+    "talk",
+    "walk"
+   ]
+  },
+  "lovers": {
+   "cell": [
+    8,
+    8
+   ],
+   "pivot": [
+    4,
+    4
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "split"
+   ],
+   "expressions": [],
+   "aliases": {
+    "talk": "idle"
+   },
+   "new": [
+    "down",
+    "hurt",
+    "idle",
+    "split",
+    "talk",
+    "walk"
+   ]
+  },
+  "mannish": {
+   "cell": [
+    32,
+    32
+   ],
+   "pivot": [
+    16,
+    16
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "laugh",
+    "cry",
+    "hurt",
+    "down",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {
+    "talk": "idle"
+   },
+   "new": [
+    "cry",
+    "down",
+    "hurt",
+    "idle",
+    "laugh",
+    "portrait",
+    "talk",
+    "walk"
+   ]
+  },
+  "npc_cat": {
+   "cell": [
+    26,
+    20
+   ],
+   "pivot": [
+    13,
+    20
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "eat"
+   ],
+   "expressions": [],
+   "aliases": {
+    "talk": "idle"
+   },
+   "new": [
+    "down",
+    "eat",
+    "hurt",
+    "idle",
+    "talk",
+    "walk"
+   ]
+  },
+  "midler_back": {
+   "cell": [
+    32,
+    48
+   ],
+   "pivot": [
+    16,
+    48
+   ],
+   "animations": [
+    "idle"
+   ],
+   "expressions": [],
+   "aliases": {
+    "walk": "idle",
+    "hurt": "idle",
+    "down": "idle",
+    "talk": "idle"
+   },
+   "new": [
+    "down",
+    "hurt",
+    "idle",
+    "talk",
+    "walk"
+   ]
+  },
+  "osiris": {
+   "cell": [
+    48,
+    52
+   ],
+   "pivot": [
+    24,
+    52
+   ],
+   "animations": [
+    "idle",
+    "hurt",
+    "down",
+    "attack"
+   ],
+   "expressions": [],
+   "aliases": {
+    "walk": "idle"
+   },
+   "new": [
+    "attack",
+    "down",
+    "hurt",
+    "idle",
+    "walk"
+   ]
+  },
+  "horus": {
+   "cell": [
+    48,
+    52
+   ],
+   "pivot": [
+    24,
+    52
+   ],
+   "animations": [
+    "idle",
+    "hurt",
+    "down",
+    "attack"
+   ],
+   "expressions": [],
+   "aliases": {
+    "walk": "idle"
+   },
+   "new": [
+    "attack",
+    "down",
+    "hurt",
+    "idle",
+    "walk"
+   ]
+  },
+  "joseph": {
+   "cell": [
+    82,
+    57
+   ],
+   "pivot": [
+    30,
+    54
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "run",
+    "float",
+    "point",
+    "camera",
+    "shock",
+    "hurt",
+    "lie",
+    "dodge",
+    "guard",
+    "vine_atk",
+    "vine_heavy",
+    "vine_hold",
+    "whip",
+    "portrait",
+    "portrait_shock"
+   ],
+   "expressions": [
+    "portrait",
+    "portrait_shock"
+   ],
+   "aliases": {},
+   "new": [
+    "dodge",
+    "float",
+    "guard",
+    "vine_atk",
+    "vine_heavy",
+    "vine_hold",
+    "whip"
+   ]
+  },
+  "darkbluemoon": {
+   "cell": [
+    74,
+    30
+   ],
+   "pivot": [
+    29,
+    15
+   ],
+   "animations": [
+    "swim",
+    "hurt",
+    "attack"
+   ],
+   "expressions": [],
+   "aliases": {},
+   "new": [
+    "attack",
+    "hurt"
+   ]
+  },
+  "strength": {
+   "cell": [
+    70,
+    44
+   ],
+   "pivot": [
+    29,
+    42
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "attack"
+   ],
+   "expressions": [],
+   "aliases": {},
+   "new": [
+    "attack",
+    "down",
+    "hurt",
+    "walk"
+   ]
+  },
+  "hangedman": {
+   "cell": [
+    66,
+    56
+   ],
+   "pivot": [
+    25,
+    54
+   ],
+   "animations": [
+    "idle",
+    "attack"
+   ],
+   "expressions": [],
+   "aliases": {},
+   "new": [
+    "attack"
+   ]
+  },
+  "holhorse": {
+   "cell": [
+    71,
+    54
+   ],
+   "pivot": [
+    33,
+    54
+   ],
+   "animations": [
+    "idle",
+    "flee",
+    "shoot",
+    "hurt",
+    "down",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "down",
+    "hurt"
+   ]
+  },
+  "jgeil": {
+   "cell": [
+    36,
+    52
+   ],
+   "pivot": [
+    18,
+    52
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "walk"
+   ]
+  },
+  "wheel": {
+   "cell": [
+    82,
+    64
+   ],
+   "pivot": [
+    32,
+    64
+   ],
+   "animations": [
+    "car",
+    "climb",
+    "spray"
+   ],
+   "expressions": [],
+   "aliases": {},
+   "new": [
+    "climb",
+    "spray"
+   ]
+  },
+  "enya": {
+   "cell": [
+    66,
+    52
+   ],
+   "pivot": [
+    33,
+    50
+   ],
+   "animations": [
+    "idle",
+    "cast",
+    "hurt",
+    "down",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "cast",
+    "down",
+    "hurt"
+   ]
+  },
+  "zombie": {
+   "cell": [
+    58,
+    52
+   ],
+   "pivot": [
+    21,
+    50
+   ],
+   "animations": [
+    "walk",
+    "attack"
+   ],
+   "expressions": [],
+   "aliases": {},
+   "new": [
+    "attack"
+   ]
+  },
+  "steelydan": {
+   "cell": [
+    66,
+    64
+   ],
+   "pivot": [
+    33,
+    48
+   ],
+   "animations": [
+    "idle",
+    "fly",
+    "hurt",
+    "down",
+    "command",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "command",
+    "down",
+    "fly",
+    "hurt",
+    "portrait"
+   ]
+  },
+  "death13": {
+   "cell": [
+    71,
+    70
+   ],
+   "pivot": [
+    26,
+    54
+   ],
+   "animations": [
+    "float",
+    "hurt",
+    "swing",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "hurt",
+    "portrait",
+    "swing"
+   ]
+  },
+  "judgement": {
+   "cell": [
+    66,
+    70
+   ],
+   "pivot": [
+    25,
+    54
+   ],
+   "animations": [
+    "idle",
+    "attack",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "attack",
+    "portrait"
+   ]
+  },
+  "highpriestess": {
+   "cell": [
+    62,
+    44
+   ],
+   "pivot": [
+    23,
+    42
+   ],
+   "animations": [
+    "idle",
+    "attack"
+   ],
+   "expressions": [],
+   "aliases": {},
+   "new": [
+    "attack"
+   ]
+  },
+  "ndoul": {
+   "cell": [
+    66,
+    64
+   ],
+   "pivot": [
+    33,
+    48
+   ],
+   "animations": [
+    "idle",
+    "hurt",
+    "down",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "down",
+    "hurt",
+    "portrait"
+   ]
+  },
+  "boingo": {
+   "cell": [
+    42,
+    64
+   ],
+   "pivot": [
+    16,
+    48
+   ],
+   "animations": [
+    "idle",
+    "scared",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "portrait",
+    "scared"
+   ]
+  },
+  "mariah": {
+   "cell": [
+    70,
+    66
+   ],
+   "pivot": [
+    33,
+    50
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "kick",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "down",
+    "hurt",
+    "kick",
+    "portrait",
+    "walk"
+   ]
+  },
+  "alessi": {
+   "cell": [
+    72,
+    66
+   ],
+   "pivot": [
+    33,
+    50
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "axe",
+    "beg",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "axe",
+    "beg",
+    "down",
+    "hurt",
+    "portrait",
+    "walk"
+   ]
+  },
+  "petshop": {
+   "cell": [
+    26,
+    26
+   ],
+   "pivot": [
+    13,
+    26
+   ],
+   "animations": [
+    "fly",
+    "perch",
+    "dive"
+   ],
+   "expressions": [],
+   "aliases": {},
+   "new": [
+    "dive"
+   ]
+  },
+  "vanilla": {
+   "cell": [
+    67,
+    56
+   ],
+   "pivot": [
+    28,
+    54
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "kick",
+    "kneel",
+    "stomp",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "hurt",
+    "kick",
+    "kneel",
+    "stomp",
+    "walk"
+   ]
+  },
+  "theworld": {
+   "cell": [
+    76,
+    62
+   ],
+   "pivot": [
+    26,
+    58
+   ],
+   "animations": [
+    "idle",
+    "punch",
+    "rush",
+    "pose",
+    "hurt",
+    "crack",
+    "fist",
+    "kick",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "hurt",
+    "kick"
+   ]
+  },
+  "dio": {
+   "cell": [
+    65,
+    66
+   ],
+   "pivot": [
+    26,
+    64
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "jump",
+    "punch",
+    "throw",
+    "pose",
+    "laugh",
+    "hurt",
+    "coffin_rise",
+    "crumble",
+    "portrait",
+    "portrait_rage"
+   ],
+   "expressions": [
+    "portrait",
+    "portrait_rage"
+   ],
+   "aliases": {},
+   "new": [
+    "punch"
+   ]
+  },
+  "telence": {
+   "cell": [
+    70,
+    52
+   ],
+   "pivot": [
+    33,
+    50
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "punch",
+    "hurt",
+    "down",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "down",
+    "hurt",
+    "punch",
+    "walk"
+   ]
+  },
+  "oingo": {
+   "cell": [
+    32,
+    64
+   ],
+   "pivot": [
+    16,
+    48
+   ],
+   "animations": [
+    "idle",
+    "boom",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "portrait"
+   ]
+  },
+  "holly": {
+   "cell": [
+    68,
+    48
+   ],
+   "pivot": [
+    40,
+    48
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "wave",
+    "faint",
+    "bed",
+    "portrait",
+    "portrait_sick"
+   ],
+   "expressions": [
+    "portrait",
+    "portrait_sick"
+   ],
+   "aliases": {},
+   "new": []
+  }
+ },
+ "props": [
+  {
+   "id": "magazine",
+   "name": "magazine",
+   "sprite": "prop_new.magazine",
+   "file": "magazine.png",
+   "frames": 1,
+   "size": [
+    10,
+    7
+   ],
+   "anchor": [
+    5,
+    7
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    5,
+    7
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "漫画周刊，保留独立名字供序章调查"
+  },
+  {
+   "id": "jail_pipe",
+   "name": "jail_pipe",
+   "sprite": "prop_new.jail_pipe",
+   "file": "jail_pipe.png",
+   "frames": 2,
+   "size": [
+    16,
+    48
+   ],
+   "anchor": [
+    8,
+    48
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    48
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "完好的水管与阀门 / 管口爆开；水流由像素特效叠加",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "tissue",
+   "name": "tissue",
+   "sprite": "prop_new.tissue",
+   "file": "tissue.png",
+   "frames": 1,
+   "size": [
+    10,
+    8
+   ],
+   "anchor": [
+    5,
+    8
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    5,
+    8
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "花京院递出的皱纸巾"
+  },
+  {
+   "id": "pen",
+   "name": "pen",
+   "sprite": "prop_new.pen",
+   "file": "pen.png",
+   "frames": 1,
+   "size": [
+    9,
+    3
+   ],
+   "anchor": [
+    4,
+    3
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    3
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "校医使用的钢笔"
+  },
+  {
+   "id": "pinky",
+   "name": "pinky",
+   "sprite": "prop_new.pinky",
+   "file": "pinky.png",
+   "frames": 1,
+   "size": [
+    4,
+    5
+   ],
+   "anchor": [
+    2,
+    5
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    2,
+    5
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "乔瑟夫皮手套色义手小指"
+  },
+  {
+   "id": "hk_table",
+   "name": "hk_table",
+   "sprite": "prop_new.hk_table",
+   "file": "hk_table.png",
+   "frames": 2,
+   "size": [
+    48,
+    20
+   ],
+   "anchor": [
+    24,
+    20
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    24,
+    20
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "圆桌与四凳 / 桌面时钟；火焰由像素特效叠加",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "mr_statue",
+   "name": "mr_statue",
+   "sprite": "prop_new.mr_statue",
+   "file": "mr_statue.png",
+   "frames": 3,
+   "size": [
+    24,
+    40
+   ],
+   "anchor": [
+    12,
+    40
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    40
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "虎像 / 红色魔术师像 / 碎石；虎像从原画等比缩至24像素宽",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "chariot_armor",
+   "name": "chariot_armor",
+   "sprite": "prop_new.chariot_armor",
+   "file": "chariot_armor.png",
+   "frames": 4,
+   "size": [
+    8,
+    8
+   ],
+   "anchor": [
+    4,
+    8
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    8
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "肩甲 / 胸甲 / 头盔 / 护腿",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "dish",
+   "name": "dish",
+   "sprite": "prop_new.dish",
+   "file": "dish.png",
+   "frames": 3,
+   "size": [
+    8,
+    5
+   ],
+   "anchor": [
+    4,
+    5
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    5
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "青蛙 / 整鱼 / 不明食物",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "kite",
+   "name": "kite",
+   "sprite": "prop_new.kite",
+   "file": "kite.png",
+   "frames": 1,
+   "size": [
+    8,
+    8
+   ],
+   "anchor": [
+    4,
+    8
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    8
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "香港街头的小风筝"
+  },
+  {
+   "id": "ship_eye_a",
+   "name": "ship_eye_a",
+   "sprite": "prop_new.ship_eye_a",
+   "file": "ship_eye_a.png",
+   "frames": 2,
+   "size": [
+    12,
+    8
+   ],
+   "anchor": [
+    6,
+    8
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    8
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "甲板的眼睛",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "ship_eye_b",
+   "name": "ship_eye_b",
+   "sprite": "prop_new.ship_eye_b",
+   "file": "ship_eye_b.png",
+   "frames": 2,
+   "size": [
+    10,
+    10
+   ],
+   "anchor": [
+    5,
+    10
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    5,
+    10
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "舱壁的眼睛",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "ship_eye_c",
+   "name": "ship_eye_c",
+   "sprite": "prop_new.ship_eye_c",
+   "file": "ship_eye_c.png",
+   "frames": 2,
+   "size": [
+    16,
+    8
+   ],
+   "anchor": [
+    8,
+    8
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    8
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "水管的眼睛",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "shark",
+   "name": "shark",
+   "sprite": "prop_new.shark",
+   "file": "shark.png",
+   "frames": 2,
+   "size": [
+    40,
+    16
+   ],
+   "anchor": [
+    20,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    20,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "海中的鲨鱼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "barnacle",
+   "name": "barnacle",
+   "sprite": "prop_new.barnacle",
+   "file": "barnacle.png",
+   "frames": 2,
+   "size": [
+    6,
+    6
+   ],
+   "anchor": [
+    3,
+    6
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    3,
+    6
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藤壶生长",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "hook",
+   "name": "hook",
+   "sprite": "prop_new.hook",
+   "file": "hook.png",
+   "frames": 1,
+   "size": [
+    24,
+    16
+   ],
+   "anchor": [
+    12,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "货轮吊钩"
+  },
+  {
+   "id": "slime_puddle",
+   "name": "slime_puddle",
+   "sprite": "prop_new.slime_puddle",
+   "file": "slime_puddle.png",
+   "frames": 1,
+   "size": [
+    20,
+    6
+   ],
+   "anchor": [
+    10,
+    6
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    10,
+    6
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "黄色黏液"
+  },
+  {
+   "id": "tar_barrel",
+   "name": "tar_barrel",
+   "sprite": "prop_new.tar_barrel",
+   "file": "tar_barrel.png",
+   "frames": 2,
+   "size": [
+    16,
+    20
+   ],
+   "anchor": [
+    8,
+    20
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    20
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "焦油桶／倒出的焦油",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "mirror_shard",
+   "name": "mirror_shard",
+   "sprite": "prop_new.mirror_shard",
+   "file": "mirror_shard.png",
+   "frames": 1,
+   "size": [
+    6,
+    6
+   ],
+   "anchor": [
+    3,
+    6
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    3,
+    6
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "反射用镜子碎片"
+  },
+  {
+   "id": "fork",
+   "name": "fork",
+   "sprite": "prop_new.fork",
+   "file": "fork.png",
+   "frames": 1,
+   "size": [
+    10,
+    4
+   ],
+   "anchor": [
+    5,
+    4
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    5,
+    4
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "恋人刺入义手的叉子"
+  },
+  {
+   "id": "cessna",
+   "name": "cessna",
+   "sprite": "prop_new.cessna",
+   "file": "cessna.png",
+   "frames": 2,
+   "size": [
+    64,
+    24
+   ],
+   "anchor": [
+    32,
+    24
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    32,
+    24
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "塞斯纳飞机／受损状态",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "toy_knife",
+   "name": "toy_knife",
+   "sprite": "prop_new.toy_knife",
+   "file": "toy_knife.png",
+   "frames": 1,
+   "size": [
+    12,
+    5
+   ],
+   "anchor": [
+    6,
+    5
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    5
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "梦境外的玩具刀"
+  },
+  {
+   "id": "toy_box",
+   "name": "toy_box",
+   "sprite": "prop_new.toy_box",
+   "file": "toy_box.png",
+   "frames": 1,
+   "size": [
+    18,
+    14
+   ],
+   "anchor": [
+    9,
+    14
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    9,
+    14
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "玩具盒"
+  },
+  {
+   "id": "genie_lamp",
+   "name": "genie_lamp",
+   "sprite": "prop_new.genie_lamp",
+   "file": "genie_lamp.png",
+   "frames": 1,
+   "size": [
+    24,
+    16
+   ],
+   "anchor": [
+    12,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "审判藏身的神灯"
+  },
+  {
+   "id": "tooth",
+   "name": "tooth",
+   "sprite": "prop_new.tooth",
+   "file": "tooth.png",
+   "frames": 2,
+   "size": [
+    24,
+    20
+   ],
+   "anchor": [
+    12,
+    20
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    20
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "巨牙／碎牙",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "dive_helmet",
+   "name": "dive_helmet",
+   "sprite": "prop_new.dive_helmet",
+   "file": "dive_helmet.png",
+   "frames": 1,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "潜水头盔叠层"
+  },
+  {
+   "id": "joseph_hand",
+   "name": "joseph_hand",
+   "sprite": "prop_new.joseph_hand",
+   "file": "joseph_hand.png",
+   "frames": 1,
+   "size": [
+    14,
+    9
+   ],
+   "anchor": [
+    7,
+    9
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    7,
+    9
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "断落的机械义手"
+  },
+  {
+   "id": "pebble",
+   "name": "pebble",
+   "sprite": "prop_new.pebble",
+   "file": "pebble.png",
+   "frames": 1,
+   "size": [
+    5,
+    4
+   ],
+   "anchor": [
+    2,
+    4
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    2,
+    4
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "声音诱饵石子"
+  },
+  {
+   "id": "anubis_sword",
+   "name": "anubis_sword",
+   "sprite": "prop_new.anubis_sword",
+   "file": "anubis_sword.png",
+   "frames": 1,
+   "size": [
+    34,
+    10
+   ],
+   "anchor": [
+    17,
+    10
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    17,
+    10
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "阿努比斯神弯刀"
+  },
+  {
+   "id": "socket",
+   "name": "socket",
+   "sprite": "prop_new.socket",
+   "file": "socket.png",
+   "frames": 1,
+   "size": [
+    10,
+    12
+   ],
+   "anchor": [
+    5,
+    12
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    5,
+    12
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "巴斯特女神磁力插座"
+  },
+  {
+   "id": "train",
+   "name": "train",
+   "sprite": "prop_new.train",
+   "file": "train.png",
+   "frames": 2,
+   "size": [
+    96,
+    44
+   ],
+   "anchor": [
+    48,
+    44
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    48,
+    44
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "列车／轮组状态",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "metal_junk",
+   "name": "metal_junk",
+   "sprite": "prop_new.metal_junk",
+   "file": "metal_junk.png",
+   "frames": 4,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "螺丝／钉子／剪刀／铁链",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "mirror_stand",
+   "name": "mirror_stand",
+   "sprite": "prop_new.mirror_stand",
+   "file": "mirror_stand.png",
+   "frames": 1,
+   "size": [
+    18,
+    32
+   ],
+   "anchor": [
+    9,
+    32
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    9,
+    32
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "太阳使者的镜面伪装"
+  },
+  {
+   "id": "oil_drum",
+   "name": "oil_drum",
+   "sprite": "prop_new.oil_drum",
+   "file": "oil_drum.png",
+   "frames": 1,
+   "size": [
+    16,
+    22
+   ],
+   "anchor": [
+    8,
+    22
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    22
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "地下通道油桶"
+  },
+  {
+   "id": "atum_doll_a",
+   "name": "atum_doll_a",
+   "sprite": "prop_new.atum_doll_a",
+   "file": "atum_doll_a.png",
+   "frames": 1,
+   "size": [
+    12,
+    16
+   ],
+   "anchor": [
+    6,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "波鲁纳雷夫灵魂人偶"
+  },
+  {
+   "id": "atum_doll_b",
+   "name": "atum_doll_b",
+   "sprite": "prop_new.atum_doll_b",
+   "file": "atum_doll_b.png",
+   "frames": 1,
+   "size": [
+    12,
+    16
+   ],
+   "anchor": [
+    6,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "花京院灵魂人偶"
+  },
+  {
+   "id": "atum_doll_c",
+   "name": "atum_doll_c",
+   "sprite": "prop_new.atum_doll_c",
+   "file": "atum_doll_c.png",
+   "frames": 1,
+   "size": [
+    12,
+    16
+   ],
+   "anchor": [
+    6,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "乔瑟夫灵魂人偶"
+  },
+  {
+   "id": "sax",
+   "name": "sax",
+   "sprite": "prop_new.sax",
+   "file": "sax.png",
+   "frames": 1,
+   "size": [
+    16,
+    26
+   ],
+   "anchor": [
+    8,
+    26
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    26
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "肯尼G的萨克斯"
+  },
+  {
+   "id": "road_sign",
+   "name": "road_sign",
+   "sprite": "prop_new.road_sign",
+   "file": "road_sign.png",
+   "frames": 1,
+   "size": [
+    12,
+    40
+   ],
+   "anchor": [
+    6,
+    40
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    40
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "DIO使用的道路标志"
+  },
+  {
+   "id": "magazine_vest",
+   "name": "magazine_vest",
+   "sprite": "prop_new.magazine_vest",
+   "file": "magazine_vest.png",
+   "frames": 1,
+   "size": [
+    24,
+    28
+   ],
+   "anchor": [
+    12,
+    28
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    28
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "承太郎藏在制服内的杂志"
+  },
+  {
+   "id": "truck",
+   "name": "truck",
+   "sprite": "prop_new.truck",
+   "file": "truck.png",
+   "frames": 1,
+   "size": [
+    64,
+    36
+   ],
+   "anchor": [
+    32,
+    36
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    32,
+    36
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "乔瑟夫的皮卡"
+  },
+  {
+   "id": "senator_car",
+   "name": "senator_car",
+   "sprite": "prop_new.senator_car",
+   "file": "senator_car.png",
+   "frames": 1,
+   "size": [
+    72,
+    28
+   ],
+   "anchor": [
+    36,
+    28
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    36,
+    28
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "议员的豪华轿车"
+  },
+  {
+   "id": "blanket",
+   "name": "blanket",
+   "sprite": "prop_new.blanket",
+   "file": "blanket.png",
+   "frames": 2,
+   "size": [
+    56,
+    14
+   ],
+   "anchor": [
+    28,
+    14
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    28,
+    14
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "霍莉的薄被／掀开状态",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "rock",
+   "name": "rock",
+   "sprite": "prop_new.rock",
+   "file": "rock.png",
+   "frames": 1,
+   "size": [
+    24,
+    18
+   ],
+   "anchor": [
+    12,
+    18
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    18
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "沙漠中的独立岩石"
+  },
+  {
+   "id": "baby_cradle",
+   "name": "baby_cradle",
+   "sprite": "prop_new.baby_cradle",
+   "file": "baby_cradle.png",
+   "frames": 2,
+   "size": [
+    36,
+    24
+   ],
+   "anchor": [
+    18,
+    24
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    18,
+    24
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "玛尼修男孩的摇篮／摆动状态",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "ice_wall",
+   "name": "ice_wall",
+   "sprite": "prop_new.ice_wall",
+   "file": "ice_wall.png",
+   "frames": 2,
+   "size": [
+    56,
+    52
+   ],
+   "anchor": [
+    28,
+    52
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    28,
+    52
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "荷鲁斯的冰墙／碎裂状态",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "upper_tooth",
+   "name": "upper_tooth",
+   "sprite": "prop_new.upper_tooth",
+   "file": "upper_tooth.png",
+   "frames": 2,
+   "size": [
+    30,
+    42
+   ],
+   "anchor": [
+    15,
+    42
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    15,
+    42
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇上颌巨牙／碎裂",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "lower_tooth",
+   "name": "lower_tooth",
+   "sprite": "prop_new.lower_tooth",
+   "file": "lower_tooth.png",
+   "frames": 2,
+   "size": [
+    30,
+    42
+   ],
+   "anchor": [
+    15,
+    42
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    15,
+    42
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇下颌巨牙／碎裂",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "hide_wardrobe",
+   "name": "hide_wardrobe",
+   "sprite": "prop_new.hide_wardrobe",
+   "file": "hide_wardrobe.png",
+   "frames": 2,
+   "size": [
+    58,
+    86
+   ],
+   "anchor": [
+    29,
+    86
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    29,
+    86
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：衣柜关／开",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "aquarium",
+   "name": "aquarium",
+   "sprite": "prop_new.aquarium",
+   "file": "aquarium.png",
+   "frames": 2,
+   "size": [
+    84,
+    48
+   ],
+   "anchor": [
+    42,
+    48
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    42,
+    48
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：鱼缸盖关／开",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "hide_bed",
+   "name": "hide_bed",
+   "sprite": "prop_new.hide_bed",
+   "file": "hide_bed.png",
+   "frames": 2,
+   "size": [
+    122,
+    47
+   ],
+   "anchor": [
+    61,
+    47
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    61,
+    47
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：床单垂下／掀起",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "hide_curtain",
+   "name": "hide_curtain",
+   "sprite": "prop_new.hide_curtain",
+   "file": "hide_curtain.png",
+   "frames": 2,
+   "size": [
+    80,
+    86
+   ],
+   "anchor": [
+    40,
+    86
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    40,
+    86
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：窗帘闭合／拉开",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "hide_crate",
+   "name": "hide_crate",
+   "sprite": "prop_new.hide_crate",
+   "file": "hide_crate.png",
+   "frames": 2,
+   "size": [
+    40,
+    36
+   ],
+   "anchor": [
+    20,
+    36
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    20,
+    36
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：木箱盖关／开",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "hide_cupboard",
+   "name": "hide_cupboard",
+   "sprite": "prop_new.hide_cupboard",
+   "file": "hide_cupboard.png",
+   "frames": 2,
+   "size": [
+    50,
+    76
+   ],
+   "anchor": [
+    25,
+    76
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    25,
+    76
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：橱柜关／开",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "cane",
+   "name": "cane",
+   "sprite": "prop_new.cane",
+   "file": "cane.png",
+   "frames": 1,
+   "size": [
+    8,
+    36
+   ],
+   "anchor": [
+    4,
+    36
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    36
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "恩多尔的白色手杖"
+  },
+  {
+   "id": "tea_cup",
+   "name": "tea_cup",
+   "sprite": "prop_new.tea_cup",
+   "file": "tea_cup.png",
+   "frames": 1,
+   "size": [
+    12,
+    10
+   ],
+   "anchor": [
+    6,
+    10
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    10
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "被盖布划穿的杯子"
+  },
+  {
+   "id": "cake",
+   "name": "cake",
+   "sprite": "prop_new.cake",
+   "file": "cake.png",
+   "frames": 1,
+   "size": [
+    14,
+    12
+   ],
+   "anchor": [
+    7,
+    12
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    7,
+    12
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "伊奇藏在纸盒里的蛋糕"
+  },
+  {
+   "id": "cart",
+   "name": "cart",
+   "sprite": "prop_new.cart",
+   "file": "cart.png",
+   "frames": 1,
+   "size": [
+    54,
+    36
+   ],
+   "anchor": [
+    27,
+    36
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    27,
+    36
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "橙子商人的手推车"
+  },
+  {
+   "id": "hat",
+   "name": "hat",
+   "sprite": "prop_new.hat",
+   "file": "hat.png",
+   "frames": 1,
+   "size": [
+    28,
+    13
+   ],
+   "anchor": [
+    14,
+    13
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    14,
+    13
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "荷尔·贺斯掉落的棕色牛仔帽"
+  },
+  {
+   "id": "disguise_pressure_gauge",
+   "name": "disguise_pressure_gauge",
+   "sprite": "prop_new.disguise_pressure_gauge",
+   "file": "disguise_pressure_gauge.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：pressure_gauge，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_valve",
+   "name": "disguise_valve",
+   "sprite": "prop_new.disguise_valve",
+   "file": "disguise_valve.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：valve，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_wrench",
+   "name": "disguise_wrench",
+   "sprite": "prop_new.disguise_wrench",
+   "file": "disguise_wrench.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：wrench，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_metal_cup",
+   "name": "disguise_metal_cup",
+   "sprite": "prop_new.disguise_metal_cup",
+   "file": "disguise_metal_cup.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：metal_cup，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_razor",
+   "name": "disguise_razor",
+   "sprite": "prop_new.disguise_razor",
+   "file": "disguise_razor.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：razor，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_binoculars",
+   "name": "disguise_binoculars",
+   "sprite": "prop_new.disguise_binoculars",
+   "file": "disguise_binoculars.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：binoculars，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_pipe_elbow",
+   "name": "disguise_pipe_elbow",
+   "sprite": "prop_new.disguise_pipe_elbow",
+   "file": "disguise_pipe_elbow.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：pipe_elbow，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_radio",
+   "name": "disguise_radio",
+   "sprite": "prop_new.disguise_radio",
+   "file": "disguise_radio.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：radio，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_diving_boot",
+   "name": "disguise_diving_boot",
+   "sprite": "prop_new.disguise_diving_boot",
+   "file": "disguise_diving_boot.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：diving_boot，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_oxygen_tank",
+   "name": "disguise_oxygen_tank",
+   "sprite": "prop_new.disguise_oxygen_tank",
+   "file": "disguise_oxygen_tank.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：oxygen_tank，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_compass",
+   "name": "disguise_compass",
+   "sprite": "prop_new.disguise_compass",
+   "file": "disguise_compass.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：compass，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_hatch_handle",
+   "name": "disguise_hatch_handle",
+   "sprite": "prop_new.disguise_hatch_handle",
+   "file": "disguise_hatch_handle.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：hatch_handle，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  }
+ ],
+ "verify": {
+  "frames": 1143,
+  "errors": 0,
+  "engine_draws": 2000,
+  "engine_bad": 0,
+  "engine_skipped_half_px_flips": 0
+ },
+ "amap_errors": [],
+ "previews": [
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\jotaro.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\kakyoin.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\avdol.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\polnareff.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\iggy.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\starplat.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\magred.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\hiero.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\chariot.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\fool.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\towergray.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_nurse.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_passenger_a.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_passenger_b.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_passenger_c.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_passenger_d.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_police.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_student_f_a.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_student_f_b.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_stewardess.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_hk_granny.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_hk_passer_b.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_hk_owner.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_hk_passer_a.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_fortune.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_student_m.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\grayfly.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\fake_tennille.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\anne.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\devo.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\rubbersoul.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\nena.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\zz.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\cameo.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\chaka.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\khan.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\kennyg.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\nukesaku.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\wilson.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_sailor.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_kid.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_townsfolk.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_villager_f.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_islander.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_dealer.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\polnareff_kid.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\jotaro_kid.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\polnareff_possessed.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\clay_sherry.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\clay_gold.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\clay_pol.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\atum.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_spw.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_merchant.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\devo_doll.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\empress.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\lovers.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\mannish.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_cat.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\midler_back.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\osiris.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\horus.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\joseph.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\darkbluemoon.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\strength.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\hangedman.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\holhorse.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\jgeil.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\wheel.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\enya.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\zombie.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\steelydan.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\death13.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\judgement.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\highpriestess.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\ndoul.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\boingo.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\mariah.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\alessi.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\petshop.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\vanilla.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\theworld.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\dio.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\telence.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\oingo.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\holly.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\props_new.png"
+ ],
+ "seconds": 17.98
+}

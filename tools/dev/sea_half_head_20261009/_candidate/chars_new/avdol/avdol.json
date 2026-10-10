@@ -1,0 +1,113 @@
+{
+  "id": "avdol",
+  "name": "阿布德尔",
+  "work": "JoJo",
+  "image": "avdol.png",
+  "cell": [68, 53],
+  "pivot": [27, 50],
+  "facing": "right",
+  "animations": {
+    "idle": {
+      "row": 0,
+      "frames": 2,
+      "fps": 3,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "Avdol standing, breathing bob (2f)"
+    },
+    "walk": {
+      "row": 1,
+      "frames": 4,
+      "fps": 8,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "Avdol walk cycle: contact, pass, contact, pass (4f)"
+    },
+    "float": {
+      "row": 2,
+      "frames": 2,
+      "fps": 3,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "后续补帧：avdol.float"
+    },
+    "cast": {
+      "row": 3,
+      "frames": 2,
+      "fps": 8,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "Avdol casting fire, both palms forward; f1 robe/braids blown (2f)"
+    },
+    "yes": {
+      "row": 4,
+      "frames": 2,
+      "fps": 6,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "\"YES I AM!\" finger wag, smug grin (2f, alternate)"
+    },
+    "hurt": {
+      "row": 5,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "Avdol hit, recoiling back (1f)"
+    },
+    "down": {
+      "row": 6,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "Avdol collapsed on his back, eyes closed, head LEFT (1f, 54x20)"
+    },
+    "dodge": {
+      "row": 7,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "dodge (K): leaning back-step, arm flung up, braids and hem blown"
+    },
+    "guard": {
+      "row": 8,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "guard (L): forearms crossed before the chest, palms out, braids blown"
+    },
+    "push": {
+      "row": 9,
+      "frames": 2,
+      "fps": 8,
+      "kind": "oneshot",
+      "seamless": false,
+      "desc": "后续补帧：avdol.push"
+    },
+    "portrait": {
+      "row": 10,
+      "frames": 2,
+      "fps": 8,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "Avdol bust: headband, braids, crimson robe; f0 closed f1 talking"
+    }
+  },
+  "aliases": {},
+  "expressions": [
+    {
+      "id": "portrait",
+      "emotion": "normal",
+      "frames": 2,
+      "fps": 8,
+      "size": [32, 32],
+      "files": ["头像/portrait_0.png", "头像/portrait_1.png"],
+      "desc": "Avdol bust: headband, braids, crimson robe; f0 closed f1 talking"
+    }
+  ],
+  "variants": {},
+  "source": {
+    "project": "jojo",
+    "call": "game.sea_half_head（import assets; assets.load_all(); from engine import sprite; sprite.get('avdol.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'avdol.<动作>', x, y, frame=i, flip=False)"
+  },
+  "notes": "阿布德尔（Muhammad Avdol），主角团·人物。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle/walk/cast/yes/hurt/down/dodge/guard/portrait；脚点(自定义点)=float/push。down：仰卧倒地，头朝左。portrait* 动作是说话头像（32×32 半身）：图集里放在最后几行（按底部中点对齐，只是为了同格对齐，不代表脚点），同时逐帧导出到“头像”文件夹，见 expressions；多数 frame0=闭嘴/静态、frame1=说话/加强（具体见各自 desc），原引擎对话框打字时以 8fps 来回切换。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
+}

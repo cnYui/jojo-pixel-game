@@ -1,0 +1,3350 @@
+{
+ "work": "JoJo",
+ "note": "包 7A 新画的道具（tools\\art\\art_props.py）。file 是横向帧条（帧从左到右紧挨，每帧 size 大小）；pivot=锚点在单帧内的像素坐标；kind=static 且 frames>1 表示多个状态（按序号取帧）。格式同 角色图集\\道具\\道具目录.json；props 和 sprites 两个键内容相同。",
+ "props": [
+  {
+   "id": "magazine",
+   "name": "magazine",
+   "sprite": "prop_new.magazine",
+   "file": "magazine.png",
+   "frames": 1,
+   "size": [
+    10,
+    7
+   ],
+   "anchor": [
+    5,
+    7
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    5,
+    7
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "漫画周刊，保留独立名字供序章调查"
+  },
+  {
+   "id": "jail_pipe",
+   "name": "jail_pipe",
+   "sprite": "prop_new.jail_pipe",
+   "file": "jail_pipe.png",
+   "frames": 2,
+   "size": [
+    16,
+    48
+   ],
+   "anchor": [
+    8,
+    48
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    48
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "完好的水管与阀门 / 管口爆开；水流由像素特效叠加",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "tissue",
+   "name": "tissue",
+   "sprite": "prop_new.tissue",
+   "file": "tissue.png",
+   "frames": 1,
+   "size": [
+    10,
+    8
+   ],
+   "anchor": [
+    5,
+    8
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    5,
+    8
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "花京院递出的皱纸巾"
+  },
+  {
+   "id": "pen",
+   "name": "pen",
+   "sprite": "prop_new.pen",
+   "file": "pen.png",
+   "frames": 1,
+   "size": [
+    9,
+    3
+   ],
+   "anchor": [
+    4,
+    3
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    3
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "校医使用的钢笔"
+  },
+  {
+   "id": "pinky",
+   "name": "pinky",
+   "sprite": "prop_new.pinky",
+   "file": "pinky.png",
+   "frames": 1,
+   "size": [
+    4,
+    5
+   ],
+   "anchor": [
+    2,
+    5
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    2,
+    5
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "乔瑟夫皮手套色义手小指"
+  },
+  {
+   "id": "hk_table",
+   "name": "hk_table",
+   "sprite": "prop_new.hk_table",
+   "file": "hk_table.png",
+   "frames": 2,
+   "size": [
+    48,
+    20
+   ],
+   "anchor": [
+    24,
+    20
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    24,
+    20
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "圆桌与四凳 / 桌面时钟；火焰由像素特效叠加",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "mr_statue",
+   "name": "mr_statue",
+   "sprite": "prop_new.mr_statue",
+   "file": "mr_statue.png",
+   "frames": 3,
+   "size": [
+    24,
+    40
+   ],
+   "anchor": [
+    12,
+    40
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    40
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "虎像 / 红色魔术师像 / 碎石；虎像从原画等比缩至24像素宽",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "chariot_armor",
+   "name": "chariot_armor",
+   "sprite": "prop_new.chariot_armor",
+   "file": "chariot_armor.png",
+   "frames": 4,
+   "size": [
+    8,
+    8
+   ],
+   "anchor": [
+    4,
+    8
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    8
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "肩甲 / 胸甲 / 头盔 / 护腿",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "dish",
+   "name": "dish",
+   "sprite": "prop_new.dish",
+   "file": "dish.png",
+   "frames": 3,
+   "size": [
+    8,
+    5
+   ],
+   "anchor": [
+    4,
+    5
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    5
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "青蛙 / 整鱼 / 不明食物",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "kite",
+   "name": "kite",
+   "sprite": "prop_new.kite",
+   "file": "kite.png",
+   "frames": 1,
+   "size": [
+    8,
+    8
+   ],
+   "anchor": [
+    4,
+    8
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    8
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "香港街头的小风筝"
+  },
+  {
+   "id": "ship_eye_a",
+   "name": "ship_eye_a",
+   "sprite": "prop_new.ship_eye_a",
+   "file": "ship_eye_a.png",
+   "frames": 2,
+   "size": [
+    12,
+    8
+   ],
+   "anchor": [
+    6,
+    8
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    8
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "甲板的眼睛",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "ship_eye_b",
+   "name": "ship_eye_b",
+   "sprite": "prop_new.ship_eye_b",
+   "file": "ship_eye_b.png",
+   "frames": 2,
+   "size": [
+    10,
+    10
+   ],
+   "anchor": [
+    5,
+    10
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    5,
+    10
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "舱壁的眼睛",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "ship_eye_c",
+   "name": "ship_eye_c",
+   "sprite": "prop_new.ship_eye_c",
+   "file": "ship_eye_c.png",
+   "frames": 2,
+   "size": [
+    16,
+    8
+   ],
+   "anchor": [
+    8,
+    8
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    8
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "水管的眼睛",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "shark",
+   "name": "shark",
+   "sprite": "prop_new.shark",
+   "file": "shark.png",
+   "frames": 2,
+   "size": [
+    40,
+    16
+   ],
+   "anchor": [
+    20,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    20,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "海中的鲨鱼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "barnacle",
+   "name": "barnacle",
+   "sprite": "prop_new.barnacle",
+   "file": "barnacle.png",
+   "frames": 2,
+   "size": [
+    6,
+    6
+   ],
+   "anchor": [
+    3,
+    6
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    3,
+    6
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藤壶生长",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "hook",
+   "name": "hook",
+   "sprite": "prop_new.hook",
+   "file": "hook.png",
+   "frames": 1,
+   "size": [
+    24,
+    16
+   ],
+   "anchor": [
+    12,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "货轮吊钩"
+  },
+  {
+   "id": "slime_puddle",
+   "name": "slime_puddle",
+   "sprite": "prop_new.slime_puddle",
+   "file": "slime_puddle.png",
+   "frames": 1,
+   "size": [
+    20,
+    6
+   ],
+   "anchor": [
+    10,
+    6
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    10,
+    6
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "黄色黏液"
+  },
+  {
+   "id": "tar_barrel",
+   "name": "tar_barrel",
+   "sprite": "prop_new.tar_barrel",
+   "file": "tar_barrel.png",
+   "frames": 2,
+   "size": [
+    16,
+    20
+   ],
+   "anchor": [
+    8,
+    20
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    20
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "焦油桶／倒出的焦油",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "mirror_shard",
+   "name": "mirror_shard",
+   "sprite": "prop_new.mirror_shard",
+   "file": "mirror_shard.png",
+   "frames": 1,
+   "size": [
+    6,
+    6
+   ],
+   "anchor": [
+    3,
+    6
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    3,
+    6
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "反射用镜子碎片"
+  },
+  {
+   "id": "fork",
+   "name": "fork",
+   "sprite": "prop_new.fork",
+   "file": "fork.png",
+   "frames": 1,
+   "size": [
+    10,
+    4
+   ],
+   "anchor": [
+    5,
+    4
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    5,
+    4
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "恋人刺入义手的叉子"
+  },
+  {
+   "id": "cessna",
+   "name": "cessna",
+   "sprite": "prop_new.cessna",
+   "file": "cessna.png",
+   "frames": 2,
+   "size": [
+    64,
+    24
+   ],
+   "anchor": [
+    32,
+    24
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    32,
+    24
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "塞斯纳飞机／受损状态",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "toy_knife",
+   "name": "toy_knife",
+   "sprite": "prop_new.toy_knife",
+   "file": "toy_knife.png",
+   "frames": 1,
+   "size": [
+    12,
+    5
+   ],
+   "anchor": [
+    6,
+    5
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    5
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "梦境外的玩具刀"
+  },
+  {
+   "id": "toy_box",
+   "name": "toy_box",
+   "sprite": "prop_new.toy_box",
+   "file": "toy_box.png",
+   "frames": 1,
+   "size": [
+    18,
+    14
+   ],
+   "anchor": [
+    9,
+    14
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    9,
+    14
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "玩具盒"
+  },
+  {
+   "id": "genie_lamp",
+   "name": "genie_lamp",
+   "sprite": "prop_new.genie_lamp",
+   "file": "genie_lamp.png",
+   "frames": 1,
+   "size": [
+    24,
+    16
+   ],
+   "anchor": [
+    12,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "审判藏身的神灯"
+  },
+  {
+   "id": "tooth",
+   "name": "tooth",
+   "sprite": "prop_new.tooth",
+   "file": "tooth.png",
+   "frames": 2,
+   "size": [
+    24,
+    20
+   ],
+   "anchor": [
+    12,
+    20
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    20
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "巨牙／碎牙",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "dive_helmet",
+   "name": "dive_helmet",
+   "sprite": "prop_new.dive_helmet",
+   "file": "dive_helmet.png",
+   "frames": 1,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "潜水头盔叠层"
+  },
+  {
+   "id": "joseph_hand",
+   "name": "joseph_hand",
+   "sprite": "prop_new.joseph_hand",
+   "file": "joseph_hand.png",
+   "frames": 1,
+   "size": [
+    14,
+    9
+   ],
+   "anchor": [
+    7,
+    9
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    7,
+    9
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "断落的机械义手"
+  },
+  {
+   "id": "pebble",
+   "name": "pebble",
+   "sprite": "prop_new.pebble",
+   "file": "pebble.png",
+   "frames": 1,
+   "size": [
+    5,
+    4
+   ],
+   "anchor": [
+    2,
+    4
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    2,
+    4
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "声音诱饵石子"
+  },
+  {
+   "id": "anubis_sword",
+   "name": "anubis_sword",
+   "sprite": "prop_new.anubis_sword",
+   "file": "anubis_sword.png",
+   "frames": 1,
+   "size": [
+    34,
+    10
+   ],
+   "anchor": [
+    17,
+    10
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    17,
+    10
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "阿努比斯神弯刀"
+  },
+  {
+   "id": "socket",
+   "name": "socket",
+   "sprite": "prop_new.socket",
+   "file": "socket.png",
+   "frames": 1,
+   "size": [
+    10,
+    12
+   ],
+   "anchor": [
+    5,
+    12
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    5,
+    12
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "巴斯特女神磁力插座"
+  },
+  {
+   "id": "train",
+   "name": "train",
+   "sprite": "prop_new.train",
+   "file": "train.png",
+   "frames": 2,
+   "size": [
+    96,
+    44
+   ],
+   "anchor": [
+    48,
+    44
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    48,
+    44
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "列车／轮组状态",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "metal_junk",
+   "name": "metal_junk",
+   "sprite": "prop_new.metal_junk",
+   "file": "metal_junk.png",
+   "frames": 4,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "螺丝／钉子／剪刀／铁链",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "mirror_stand",
+   "name": "mirror_stand",
+   "sprite": "prop_new.mirror_stand",
+   "file": "mirror_stand.png",
+   "frames": 1,
+   "size": [
+    18,
+    32
+   ],
+   "anchor": [
+    9,
+    32
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    9,
+    32
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "太阳使者的镜面伪装"
+  },
+  {
+   "id": "oil_drum",
+   "name": "oil_drum",
+   "sprite": "prop_new.oil_drum",
+   "file": "oil_drum.png",
+   "frames": 1,
+   "size": [
+    16,
+    22
+   ],
+   "anchor": [
+    8,
+    22
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    22
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "地下通道油桶"
+  },
+  {
+   "id": "atum_doll_a",
+   "name": "atum_doll_a",
+   "sprite": "prop_new.atum_doll_a",
+   "file": "atum_doll_a.png",
+   "frames": 1,
+   "size": [
+    12,
+    16
+   ],
+   "anchor": [
+    6,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "波鲁纳雷夫灵魂人偶"
+  },
+  {
+   "id": "atum_doll_b",
+   "name": "atum_doll_b",
+   "sprite": "prop_new.atum_doll_b",
+   "file": "atum_doll_b.png",
+   "frames": 1,
+   "size": [
+    12,
+    16
+   ],
+   "anchor": [
+    6,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "花京院灵魂人偶"
+  },
+  {
+   "id": "atum_doll_c",
+   "name": "atum_doll_c",
+   "sprite": "prop_new.atum_doll_c",
+   "file": "atum_doll_c.png",
+   "frames": 1,
+   "size": [
+    12,
+    16
+   ],
+   "anchor": [
+    6,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "乔瑟夫灵魂人偶"
+  },
+  {
+   "id": "sax",
+   "name": "sax",
+   "sprite": "prop_new.sax",
+   "file": "sax.png",
+   "frames": 1,
+   "size": [
+    16,
+    26
+   ],
+   "anchor": [
+    8,
+    26
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    26
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "肯尼G的萨克斯"
+  },
+  {
+   "id": "road_sign",
+   "name": "road_sign",
+   "sprite": "prop_new.road_sign",
+   "file": "road_sign.png",
+   "frames": 1,
+   "size": [
+    12,
+    40
+   ],
+   "anchor": [
+    6,
+    40
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    40
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "DIO使用的道路标志"
+  },
+  {
+   "id": "magazine_vest",
+   "name": "magazine_vest",
+   "sprite": "prop_new.magazine_vest",
+   "file": "magazine_vest.png",
+   "frames": 1,
+   "size": [
+    24,
+    28
+   ],
+   "anchor": [
+    12,
+    28
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    28
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "承太郎藏在制服内的杂志"
+  },
+  {
+   "id": "truck",
+   "name": "truck",
+   "sprite": "prop_new.truck",
+   "file": "truck.png",
+   "frames": 1,
+   "size": [
+    64,
+    36
+   ],
+   "anchor": [
+    32,
+    36
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    32,
+    36
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "乔瑟夫的皮卡"
+  },
+  {
+   "id": "senator_car",
+   "name": "senator_car",
+   "sprite": "prop_new.senator_car",
+   "file": "senator_car.png",
+   "frames": 1,
+   "size": [
+    72,
+    28
+   ],
+   "anchor": [
+    36,
+    28
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    36,
+    28
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "议员的豪华轿车"
+  },
+  {
+   "id": "blanket",
+   "name": "blanket",
+   "sprite": "prop_new.blanket",
+   "file": "blanket.png",
+   "frames": 2,
+   "size": [
+    56,
+    14
+   ],
+   "anchor": [
+    28,
+    14
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    28,
+    14
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "霍莉的薄被／掀开状态",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "rock",
+   "name": "rock",
+   "sprite": "prop_new.rock",
+   "file": "rock.png",
+   "frames": 1,
+   "size": [
+    24,
+    18
+   ],
+   "anchor": [
+    12,
+    18
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    18
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "沙漠中的独立岩石"
+  },
+  {
+   "id": "baby_cradle",
+   "name": "baby_cradle",
+   "sprite": "prop_new.baby_cradle",
+   "file": "baby_cradle.png",
+   "frames": 2,
+   "size": [
+    36,
+    24
+   ],
+   "anchor": [
+    18,
+    24
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    18,
+    24
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "玛尼修男孩的摇篮／摆动状态",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "ice_wall",
+   "name": "ice_wall",
+   "sprite": "prop_new.ice_wall",
+   "file": "ice_wall.png",
+   "frames": 2,
+   "size": [
+    56,
+    52
+   ],
+   "anchor": [
+    28,
+    52
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    28,
+    52
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "荷鲁斯的冰墙／碎裂状态",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "upper_tooth",
+   "name": "upper_tooth",
+   "sprite": "prop_new.upper_tooth",
+   "file": "upper_tooth.png",
+   "frames": 2,
+   "size": [
+    30,
+    42
+   ],
+   "anchor": [
+    15,
+    42
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    15,
+    42
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇上颌巨牙／碎裂",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "lower_tooth",
+   "name": "lower_tooth",
+   "sprite": "prop_new.lower_tooth",
+   "file": "lower_tooth.png",
+   "frames": 2,
+   "size": [
+    30,
+    42
+   ],
+   "anchor": [
+    15,
+    42
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    15,
+    42
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇下颌巨牙／碎裂",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "hide_wardrobe",
+   "name": "hide_wardrobe",
+   "sprite": "prop_new.hide_wardrobe",
+   "file": "hide_wardrobe.png",
+   "frames": 2,
+   "size": [
+    58,
+    86
+   ],
+   "anchor": [
+    29,
+    86
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    29,
+    86
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：衣柜关／开",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "aquarium",
+   "name": "aquarium",
+   "sprite": "prop_new.aquarium",
+   "file": "aquarium.png",
+   "frames": 2,
+   "size": [
+    84,
+    48
+   ],
+   "anchor": [
+    42,
+    48
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    42,
+    48
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：鱼缸盖关／开",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "hide_bed",
+   "name": "hide_bed",
+   "sprite": "prop_new.hide_bed",
+   "file": "hide_bed.png",
+   "frames": 2,
+   "size": [
+    122,
+    47
+   ],
+   "anchor": [
+    61,
+    47
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    61,
+    47
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：床单垂下／掀起",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "hide_curtain",
+   "name": "hide_curtain",
+   "sprite": "prop_new.hide_curtain",
+   "file": "hide_curtain.png",
+   "frames": 2,
+   "size": [
+    80,
+    86
+   ],
+   "anchor": [
+    40,
+    86
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    40,
+    86
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：窗帘闭合／拉开",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "hide_crate",
+   "name": "hide_crate",
+   "sprite": "prop_new.hide_crate",
+   "file": "hide_crate.png",
+   "frames": 2,
+   "size": [
+    40,
+    36
+   ],
+   "anchor": [
+    20,
+    36
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    20,
+    36
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：木箱盖关／开",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "hide_cupboard",
+   "name": "hide_cupboard",
+   "sprite": "prop_new.hide_cupboard",
+   "file": "hide_cupboard.png",
+   "frames": 2,
+   "size": [
+    50,
+    76
+   ],
+   "anchor": [
+    25,
+    76
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    25,
+    76
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：橱柜关／开",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "cane",
+   "name": "cane",
+   "sprite": "prop_new.cane",
+   "file": "cane.png",
+   "frames": 1,
+   "size": [
+    8,
+    36
+   ],
+   "anchor": [
+    4,
+    36
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    36
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "恩多尔的白色手杖"
+  },
+  {
+   "id": "tea_cup",
+   "name": "tea_cup",
+   "sprite": "prop_new.tea_cup",
+   "file": "tea_cup.png",
+   "frames": 1,
+   "size": [
+    12,
+    10
+   ],
+   "anchor": [
+    6,
+    10
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    10
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "被盖布划穿的杯子"
+  },
+  {
+   "id": "cake",
+   "name": "cake",
+   "sprite": "prop_new.cake",
+   "file": "cake.png",
+   "frames": 1,
+   "size": [
+    14,
+    12
+   ],
+   "anchor": [
+    7,
+    12
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    7,
+    12
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "伊奇藏在纸盒里的蛋糕"
+  },
+  {
+   "id": "cart",
+   "name": "cart",
+   "sprite": "prop_new.cart",
+   "file": "cart.png",
+   "frames": 1,
+   "size": [
+    54,
+    36
+   ],
+   "anchor": [
+    27,
+    36
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    27,
+    36
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "橙子商人的手推车"
+  },
+  {
+   "id": "hat",
+   "name": "hat",
+   "sprite": "prop_new.hat",
+   "file": "hat.png",
+   "frames": 1,
+   "size": [
+    28,
+    13
+   ],
+   "anchor": [
+    14,
+    13
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    14,
+    13
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "荷尔·贺斯掉落的棕色牛仔帽"
+  },
+  {
+   "id": "disguise_pressure_gauge",
+   "name": "disguise_pressure_gauge",
+   "sprite": "prop_new.disguise_pressure_gauge",
+   "file": "disguise_pressure_gauge.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：pressure_gauge，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_valve",
+   "name": "disguise_valve",
+   "sprite": "prop_new.disguise_valve",
+   "file": "disguise_valve.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：valve，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_wrench",
+   "name": "disguise_wrench",
+   "sprite": "prop_new.disguise_wrench",
+   "file": "disguise_wrench.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：wrench，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_metal_cup",
+   "name": "disguise_metal_cup",
+   "sprite": "prop_new.disguise_metal_cup",
+   "file": "disguise_metal_cup.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：metal_cup，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_razor",
+   "name": "disguise_razor",
+   "sprite": "prop_new.disguise_razor",
+   "file": "disguise_razor.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：razor，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_binoculars",
+   "name": "disguise_binoculars",
+   "sprite": "prop_new.disguise_binoculars",
+   "file": "disguise_binoculars.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：binoculars，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_pipe_elbow",
+   "name": "disguise_pipe_elbow",
+   "sprite": "prop_new.disguise_pipe_elbow",
+   "file": "disguise_pipe_elbow.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：pipe_elbow，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_radio",
+   "name": "disguise_radio",
+   "sprite": "prop_new.disguise_radio",
+   "file": "disguise_radio.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：radio，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_diving_boot",
+   "name": "disguise_diving_boot",
+   "sprite": "prop_new.disguise_diving_boot",
+   "file": "disguise_diving_boot.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：diving_boot，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_oxygen_tank",
+   "name": "disguise_oxygen_tank",
+   "sprite": "prop_new.disguise_oxygen_tank",
+   "file": "disguise_oxygen_tank.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：oxygen_tank，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_compass",
+   "name": "disguise_compass",
+   "sprite": "prop_new.disguise_compass",
+   "file": "disguise_compass.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：compass，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_hatch_handle",
+   "name": "disguise_hatch_handle",
+   "sprite": "prop_new.disguise_hatch_handle",
+   "file": "disguise_hatch_handle.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：hatch_handle，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  }
+ ],
+ "sprites": [
+  {
+   "id": "magazine",
+   "name": "magazine",
+   "sprite": "prop_new.magazine",
+   "file": "magazine.png",
+   "frames": 1,
+   "size": [
+    10,
+    7
+   ],
+   "anchor": [
+    5,
+    7
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    5,
+    7
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "漫画周刊，保留独立名字供序章调查"
+  },
+  {
+   "id": "jail_pipe",
+   "name": "jail_pipe",
+   "sprite": "prop_new.jail_pipe",
+   "file": "jail_pipe.png",
+   "frames": 2,
+   "size": [
+    16,
+    48
+   ],
+   "anchor": [
+    8,
+    48
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    48
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "完好的水管与阀门 / 管口爆开；水流由像素特效叠加",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "tissue",
+   "name": "tissue",
+   "sprite": "prop_new.tissue",
+   "file": "tissue.png",
+   "frames": 1,
+   "size": [
+    10,
+    8
+   ],
+   "anchor": [
+    5,
+    8
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    5,
+    8
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "花京院递出的皱纸巾"
+  },
+  {
+   "id": "pen",
+   "name": "pen",
+   "sprite": "prop_new.pen",
+   "file": "pen.png",
+   "frames": 1,
+   "size": [
+    9,
+    3
+   ],
+   "anchor": [
+    4,
+    3
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    3
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "校医使用的钢笔"
+  },
+  {
+   "id": "pinky",
+   "name": "pinky",
+   "sprite": "prop_new.pinky",
+   "file": "pinky.png",
+   "frames": 1,
+   "size": [
+    4,
+    5
+   ],
+   "anchor": [
+    2,
+    5
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    2,
+    5
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "乔瑟夫皮手套色义手小指"
+  },
+  {
+   "id": "hk_table",
+   "name": "hk_table",
+   "sprite": "prop_new.hk_table",
+   "file": "hk_table.png",
+   "frames": 2,
+   "size": [
+    48,
+    20
+   ],
+   "anchor": [
+    24,
+    20
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    24,
+    20
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "圆桌与四凳 / 桌面时钟；火焰由像素特效叠加",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "mr_statue",
+   "name": "mr_statue",
+   "sprite": "prop_new.mr_statue",
+   "file": "mr_statue.png",
+   "frames": 3,
+   "size": [
+    24,
+    40
+   ],
+   "anchor": [
+    12,
+    40
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    40
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "虎像 / 红色魔术师像 / 碎石；虎像从原画等比缩至24像素宽",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "chariot_armor",
+   "name": "chariot_armor",
+   "sprite": "prop_new.chariot_armor",
+   "file": "chariot_armor.png",
+   "frames": 4,
+   "size": [
+    8,
+    8
+   ],
+   "anchor": [
+    4,
+    8
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    8
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "肩甲 / 胸甲 / 头盔 / 护腿",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "dish",
+   "name": "dish",
+   "sprite": "prop_new.dish",
+   "file": "dish.png",
+   "frames": 3,
+   "size": [
+    8,
+    5
+   ],
+   "anchor": [
+    4,
+    5
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    5
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "青蛙 / 整鱼 / 不明食物",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "kite",
+   "name": "kite",
+   "sprite": "prop_new.kite",
+   "file": "kite.png",
+   "frames": 1,
+   "size": [
+    8,
+    8
+   ],
+   "anchor": [
+    4,
+    8
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    8
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "香港街头的小风筝"
+  },
+  {
+   "id": "ship_eye_a",
+   "name": "ship_eye_a",
+   "sprite": "prop_new.ship_eye_a",
+   "file": "ship_eye_a.png",
+   "frames": 2,
+   "size": [
+    12,
+    8
+   ],
+   "anchor": [
+    6,
+    8
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    8
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "甲板的眼睛",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "ship_eye_b",
+   "name": "ship_eye_b",
+   "sprite": "prop_new.ship_eye_b",
+   "file": "ship_eye_b.png",
+   "frames": 2,
+   "size": [
+    10,
+    10
+   ],
+   "anchor": [
+    5,
+    10
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    5,
+    10
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "舱壁的眼睛",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "ship_eye_c",
+   "name": "ship_eye_c",
+   "sprite": "prop_new.ship_eye_c",
+   "file": "ship_eye_c.png",
+   "frames": 2,
+   "size": [
+    16,
+    8
+   ],
+   "anchor": [
+    8,
+    8
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    8
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "水管的眼睛",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "shark",
+   "name": "shark",
+   "sprite": "prop_new.shark",
+   "file": "shark.png",
+   "frames": 2,
+   "size": [
+    40,
+    16
+   ],
+   "anchor": [
+    20,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    20,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "海中的鲨鱼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "barnacle",
+   "name": "barnacle",
+   "sprite": "prop_new.barnacle",
+   "file": "barnacle.png",
+   "frames": 2,
+   "size": [
+    6,
+    6
+   ],
+   "anchor": [
+    3,
+    6
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    3,
+    6
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藤壶生长",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "hook",
+   "name": "hook",
+   "sprite": "prop_new.hook",
+   "file": "hook.png",
+   "frames": 1,
+   "size": [
+    24,
+    16
+   ],
+   "anchor": [
+    12,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "货轮吊钩"
+  },
+  {
+   "id": "slime_puddle",
+   "name": "slime_puddle",
+   "sprite": "prop_new.slime_puddle",
+   "file": "slime_puddle.png",
+   "frames": 1,
+   "size": [
+    20,
+    6
+   ],
+   "anchor": [
+    10,
+    6
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    10,
+    6
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "黄色黏液"
+  },
+  {
+   "id": "tar_barrel",
+   "name": "tar_barrel",
+   "sprite": "prop_new.tar_barrel",
+   "file": "tar_barrel.png",
+   "frames": 2,
+   "size": [
+    16,
+    20
+   ],
+   "anchor": [
+    8,
+    20
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    20
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "焦油桶／倒出的焦油",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "mirror_shard",
+   "name": "mirror_shard",
+   "sprite": "prop_new.mirror_shard",
+   "file": "mirror_shard.png",
+   "frames": 1,
+   "size": [
+    6,
+    6
+   ],
+   "anchor": [
+    3,
+    6
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    3,
+    6
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "反射用镜子碎片"
+  },
+  {
+   "id": "fork",
+   "name": "fork",
+   "sprite": "prop_new.fork",
+   "file": "fork.png",
+   "frames": 1,
+   "size": [
+    10,
+    4
+   ],
+   "anchor": [
+    5,
+    4
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    5,
+    4
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "恋人刺入义手的叉子"
+  },
+  {
+   "id": "cessna",
+   "name": "cessna",
+   "sprite": "prop_new.cessna",
+   "file": "cessna.png",
+   "frames": 2,
+   "size": [
+    64,
+    24
+   ],
+   "anchor": [
+    32,
+    24
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    32,
+    24
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "塞斯纳飞机／受损状态",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "toy_knife",
+   "name": "toy_knife",
+   "sprite": "prop_new.toy_knife",
+   "file": "toy_knife.png",
+   "frames": 1,
+   "size": [
+    12,
+    5
+   ],
+   "anchor": [
+    6,
+    5
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    5
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "梦境外的玩具刀"
+  },
+  {
+   "id": "toy_box",
+   "name": "toy_box",
+   "sprite": "prop_new.toy_box",
+   "file": "toy_box.png",
+   "frames": 1,
+   "size": [
+    18,
+    14
+   ],
+   "anchor": [
+    9,
+    14
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    9,
+    14
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "玩具盒"
+  },
+  {
+   "id": "genie_lamp",
+   "name": "genie_lamp",
+   "sprite": "prop_new.genie_lamp",
+   "file": "genie_lamp.png",
+   "frames": 1,
+   "size": [
+    24,
+    16
+   ],
+   "anchor": [
+    12,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "审判藏身的神灯"
+  },
+  {
+   "id": "tooth",
+   "name": "tooth",
+   "sprite": "prop_new.tooth",
+   "file": "tooth.png",
+   "frames": 2,
+   "size": [
+    24,
+    20
+   ],
+   "anchor": [
+    12,
+    20
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    20
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "巨牙／碎牙",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "dive_helmet",
+   "name": "dive_helmet",
+   "sprite": "prop_new.dive_helmet",
+   "file": "dive_helmet.png",
+   "frames": 1,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "潜水头盔叠层"
+  },
+  {
+   "id": "joseph_hand",
+   "name": "joseph_hand",
+   "sprite": "prop_new.joseph_hand",
+   "file": "joseph_hand.png",
+   "frames": 1,
+   "size": [
+    14,
+    9
+   ],
+   "anchor": [
+    7,
+    9
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    7,
+    9
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "断落的机械义手"
+  },
+  {
+   "id": "pebble",
+   "name": "pebble",
+   "sprite": "prop_new.pebble",
+   "file": "pebble.png",
+   "frames": 1,
+   "size": [
+    5,
+    4
+   ],
+   "anchor": [
+    2,
+    4
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    2,
+    4
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "声音诱饵石子"
+  },
+  {
+   "id": "anubis_sword",
+   "name": "anubis_sword",
+   "sprite": "prop_new.anubis_sword",
+   "file": "anubis_sword.png",
+   "frames": 1,
+   "size": [
+    34,
+    10
+   ],
+   "anchor": [
+    17,
+    10
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    17,
+    10
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "阿努比斯神弯刀"
+  },
+  {
+   "id": "socket",
+   "name": "socket",
+   "sprite": "prop_new.socket",
+   "file": "socket.png",
+   "frames": 1,
+   "size": [
+    10,
+    12
+   ],
+   "anchor": [
+    5,
+    12
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    5,
+    12
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "巴斯特女神磁力插座"
+  },
+  {
+   "id": "train",
+   "name": "train",
+   "sprite": "prop_new.train",
+   "file": "train.png",
+   "frames": 2,
+   "size": [
+    96,
+    44
+   ],
+   "anchor": [
+    48,
+    44
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    48,
+    44
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "列车／轮组状态",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "metal_junk",
+   "name": "metal_junk",
+   "sprite": "prop_new.metal_junk",
+   "file": "metal_junk.png",
+   "frames": 4,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "螺丝／钉子／剪刀／铁链",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "mirror_stand",
+   "name": "mirror_stand",
+   "sprite": "prop_new.mirror_stand",
+   "file": "mirror_stand.png",
+   "frames": 1,
+   "size": [
+    18,
+    32
+   ],
+   "anchor": [
+    9,
+    32
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    9,
+    32
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "太阳使者的镜面伪装"
+  },
+  {
+   "id": "oil_drum",
+   "name": "oil_drum",
+   "sprite": "prop_new.oil_drum",
+   "file": "oil_drum.png",
+   "frames": 1,
+   "size": [
+    16,
+    22
+   ],
+   "anchor": [
+    8,
+    22
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    22
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "地下通道油桶"
+  },
+  {
+   "id": "atum_doll_a",
+   "name": "atum_doll_a",
+   "sprite": "prop_new.atum_doll_a",
+   "file": "atum_doll_a.png",
+   "frames": 1,
+   "size": [
+    12,
+    16
+   ],
+   "anchor": [
+    6,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "波鲁纳雷夫灵魂人偶"
+  },
+  {
+   "id": "atum_doll_b",
+   "name": "atum_doll_b",
+   "sprite": "prop_new.atum_doll_b",
+   "file": "atum_doll_b.png",
+   "frames": 1,
+   "size": [
+    12,
+    16
+   ],
+   "anchor": [
+    6,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "花京院灵魂人偶"
+  },
+  {
+   "id": "atum_doll_c",
+   "name": "atum_doll_c",
+   "sprite": "prop_new.atum_doll_c",
+   "file": "atum_doll_c.png",
+   "frames": 1,
+   "size": [
+    12,
+    16
+   ],
+   "anchor": [
+    6,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "乔瑟夫灵魂人偶"
+  },
+  {
+   "id": "sax",
+   "name": "sax",
+   "sprite": "prop_new.sax",
+   "file": "sax.png",
+   "frames": 1,
+   "size": [
+    16,
+    26
+   ],
+   "anchor": [
+    8,
+    26
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    26
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "肯尼G的萨克斯"
+  },
+  {
+   "id": "road_sign",
+   "name": "road_sign",
+   "sprite": "prop_new.road_sign",
+   "file": "road_sign.png",
+   "frames": 1,
+   "size": [
+    12,
+    40
+   ],
+   "anchor": [
+    6,
+    40
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    40
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "DIO使用的道路标志"
+  },
+  {
+   "id": "magazine_vest",
+   "name": "magazine_vest",
+   "sprite": "prop_new.magazine_vest",
+   "file": "magazine_vest.png",
+   "frames": 1,
+   "size": [
+    24,
+    28
+   ],
+   "anchor": [
+    12,
+    28
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    28
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "承太郎藏在制服内的杂志"
+  },
+  {
+   "id": "truck",
+   "name": "truck",
+   "sprite": "prop_new.truck",
+   "file": "truck.png",
+   "frames": 1,
+   "size": [
+    64,
+    36
+   ],
+   "anchor": [
+    32,
+    36
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    32,
+    36
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "乔瑟夫的皮卡"
+  },
+  {
+   "id": "senator_car",
+   "name": "senator_car",
+   "sprite": "prop_new.senator_car",
+   "file": "senator_car.png",
+   "frames": 1,
+   "size": [
+    72,
+    28
+   ],
+   "anchor": [
+    36,
+    28
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    36,
+    28
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "议员的豪华轿车"
+  },
+  {
+   "id": "blanket",
+   "name": "blanket",
+   "sprite": "prop_new.blanket",
+   "file": "blanket.png",
+   "frames": 2,
+   "size": [
+    56,
+    14
+   ],
+   "anchor": [
+    28,
+    14
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    28,
+    14
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "霍莉的薄被／掀开状态",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "rock",
+   "name": "rock",
+   "sprite": "prop_new.rock",
+   "file": "rock.png",
+   "frames": 1,
+   "size": [
+    24,
+    18
+   ],
+   "anchor": [
+    12,
+    18
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    18
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "沙漠中的独立岩石"
+  },
+  {
+   "id": "baby_cradle",
+   "name": "baby_cradle",
+   "sprite": "prop_new.baby_cradle",
+   "file": "baby_cradle.png",
+   "frames": 2,
+   "size": [
+    36,
+    24
+   ],
+   "anchor": [
+    18,
+    24
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    18,
+    24
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "玛尼修男孩的摇篮／摆动状态",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "ice_wall",
+   "name": "ice_wall",
+   "sprite": "prop_new.ice_wall",
+   "file": "ice_wall.png",
+   "frames": 2,
+   "size": [
+    56,
+    52
+   ],
+   "anchor": [
+    28,
+    52
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    28,
+    52
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "荷鲁斯的冰墙／碎裂状态",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "upper_tooth",
+   "name": "upper_tooth",
+   "sprite": "prop_new.upper_tooth",
+   "file": "upper_tooth.png",
+   "frames": 2,
+   "size": [
+    30,
+    42
+   ],
+   "anchor": [
+    15,
+    42
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    15,
+    42
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇上颌巨牙／碎裂",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "lower_tooth",
+   "name": "lower_tooth",
+   "sprite": "prop_new.lower_tooth",
+   "file": "lower_tooth.png",
+   "frames": 2,
+   "size": [
+    30,
+    42
+   ],
+   "anchor": [
+    15,
+    42
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    15,
+    42
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇下颌巨牙／碎裂",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "hide_wardrobe",
+   "name": "hide_wardrobe",
+   "sprite": "prop_new.hide_wardrobe",
+   "file": "hide_wardrobe.png",
+   "frames": 2,
+   "size": [
+    58,
+    86
+   ],
+   "anchor": [
+    29,
+    86
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    29,
+    86
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：衣柜关／开",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "aquarium",
+   "name": "aquarium",
+   "sprite": "prop_new.aquarium",
+   "file": "aquarium.png",
+   "frames": 2,
+   "size": [
+    84,
+    48
+   ],
+   "anchor": [
+    42,
+    48
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    42,
+    48
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：鱼缸盖关／开",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "hide_bed",
+   "name": "hide_bed",
+   "sprite": "prop_new.hide_bed",
+   "file": "hide_bed.png",
+   "frames": 2,
+   "size": [
+    122,
+    47
+   ],
+   "anchor": [
+    61,
+    47
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    61,
+    47
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：床单垂下／掀起",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "hide_curtain",
+   "name": "hide_curtain",
+   "sprite": "prop_new.hide_curtain",
+   "file": "hide_curtain.png",
+   "frames": 2,
+   "size": [
+    80,
+    86
+   ],
+   "anchor": [
+    40,
+    86
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    40,
+    86
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：窗帘闭合／拉开",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "hide_crate",
+   "name": "hide_crate",
+   "sprite": "prop_new.hide_crate",
+   "file": "hide_crate.png",
+   "frames": 2,
+   "size": [
+    40,
+    36
+   ],
+   "anchor": [
+    20,
+    36
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    20,
+    36
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：木箱盖关／开",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "hide_cupboard",
+   "name": "hide_cupboard",
+   "sprite": "prop_new.hide_cupboard",
+   "file": "hide_cupboard.png",
+   "frames": 2,
+   "size": [
+    50,
+    76
+   ],
+   "anchor": [
+    25,
+    76
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    25,
+    76
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：橱柜关／开",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "cane",
+   "name": "cane",
+   "sprite": "prop_new.cane",
+   "file": "cane.png",
+   "frames": 1,
+   "size": [
+    8,
+    36
+   ],
+   "anchor": [
+    4,
+    36
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    36
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "恩多尔的白色手杖"
+  },
+  {
+   "id": "tea_cup",
+   "name": "tea_cup",
+   "sprite": "prop_new.tea_cup",
+   "file": "tea_cup.png",
+   "frames": 1,
+   "size": [
+    12,
+    10
+   ],
+   "anchor": [
+    6,
+    10
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    10
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "被盖布划穿的杯子"
+  },
+  {
+   "id": "cake",
+   "name": "cake",
+   "sprite": "prop_new.cake",
+   "file": "cake.png",
+   "frames": 1,
+   "size": [
+    14,
+    12
+   ],
+   "anchor": [
+    7,
+    12
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    7,
+    12
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "伊奇藏在纸盒里的蛋糕"
+  },
+  {
+   "id": "cart",
+   "name": "cart",
+   "sprite": "prop_new.cart",
+   "file": "cart.png",
+   "frames": 1,
+   "size": [
+    54,
+    36
+   ],
+   "anchor": [
+    27,
+    36
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    27,
+    36
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "橙子商人的手推车"
+  },
+  {
+   "id": "hat",
+   "name": "hat",
+   "sprite": "prop_new.hat",
+   "file": "hat.png",
+   "frames": 1,
+   "size": [
+    28,
+    13
+   ],
+   "anchor": [
+    14,
+    13
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    14,
+    13
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "荷尔·贺斯掉落的棕色牛仔帽"
+  },
+  {
+   "id": "disguise_pressure_gauge",
+   "name": "disguise_pressure_gauge",
+   "sprite": "prop_new.disguise_pressure_gauge",
+   "file": "disguise_pressure_gauge.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：pressure_gauge，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_valve",
+   "name": "disguise_valve",
+   "sprite": "prop_new.disguise_valve",
+   "file": "disguise_valve.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：valve，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_wrench",
+   "name": "disguise_wrench",
+   "sprite": "prop_new.disguise_wrench",
+   "file": "disguise_wrench.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：wrench，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_metal_cup",
+   "name": "disguise_metal_cup",
+   "sprite": "prop_new.disguise_metal_cup",
+   "file": "disguise_metal_cup.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：metal_cup，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_razor",
+   "name": "disguise_razor",
+   "sprite": "prop_new.disguise_razor",
+   "file": "disguise_razor.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：razor，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_binoculars",
+   "name": "disguise_binoculars",
+   "sprite": "prop_new.disguise_binoculars",
+   "file": "disguise_binoculars.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：binoculars，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_pipe_elbow",
+   "name": "disguise_pipe_elbow",
+   "sprite": "prop_new.disguise_pipe_elbow",
+   "file": "disguise_pipe_elbow.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：pipe_elbow，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_radio",
+   "name": "disguise_radio",
+   "sprite": "prop_new.disguise_radio",
+   "file": "disguise_radio.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：radio，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_diving_boot",
+   "name": "disguise_diving_boot",
+   "sprite": "prop_new.disguise_diving_boot",
+   "file": "disguise_diving_boot.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：diving_boot，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_oxygen_tank",
+   "name": "disguise_oxygen_tank",
+   "sprite": "prop_new.disguise_oxygen_tank",
+   "file": "disguise_oxygen_tank.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：oxygen_tank，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_compass",
+   "name": "disguise_compass",
+   "sprite": "prop_new.disguise_compass",
+   "file": "disguise_compass.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：compass，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "disguise_hatch_handle",
+   "name": "disguise_hatch_handle",
+   "sprite": "prop_new.disguise_hatch_handle",
+   "file": "disguise_hatch_handle.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：hatch_handle，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  }
+ ]
+}

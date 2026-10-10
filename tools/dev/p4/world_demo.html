@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>包 4 自测：世界 / 图集 / 替身 / 队伍</title>
+<style>
+  html, body { margin: 0; background: #111; color: #ddd; font: 12px sans-serif; }
+  #screen { display: block; image-rendering: pixelated; width: 1280px; height: 720px; }
+</style>
+</head>
+<body>
+<canvas id="screen"></canvas>
+<!-- 数据：tools\dev\p4\make_fixture.py 生成 -->
+<script src="_fixture/data_meta.js"></script>
+<script src="_fixture/img_core.js"></script>
+<script src="_fixture/img_bg_fixture.js"></script>
+<!-- 别的包的模块：桩（px.js 用包 2 的真文件） -->
+<script src="stub_core.js"></script>
+<script src="../../../engine/px.js"></script>
+<script src="stub_fx.js"></script>
+<!-- 包 4 -->
+<script src="../../../engine/atlas.js"></script>
+<script src="../../../engine/bg.js"></script>
+<script src="../../../engine/world.js"></script>
+<script src="../../../engine/stand.js"></script>
+<script src="../../../engine/party.js"></script>
+<!-- 桩：combat / timestop / KITS / G.S / G.LOOK / ui -->
+<script src="stub_game.js"></script>
+<script src="demo.js"></script>
+</body>
+</html>

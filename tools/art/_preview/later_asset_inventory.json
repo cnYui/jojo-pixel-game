@@ -1,0 +1,9174 @@
+{
+ "actions": [
+  {
+   "cid": "alessi",
+   "logical": "axe",
+   "real": "axe",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "alessi",
+   "logical": "beg",
+   "real": "beg",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "alessi",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "alessi",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "alessi",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "alessi",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "anne",
+   "logical": "angry",
+   "real": "angry",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "anne",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "anne",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "anne",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "anne",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "anne",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "anne",
+   "logical": "portrait_angry",
+   "real": "portrait_angry",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "anne",
+   "logical": "run",
+   "real": "run",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "anne",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "anne",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "anne",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "anne",
+   "logical": "wave",
+   "real": "wave",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "atum",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "atum",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "atum",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "atum",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "atum",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "atum",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "atum",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "atum",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "avdol",
+   "logical": "cmd",
+   "real": "cast",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "avdol",
+   "logical": "cmd2",
+   "real": "cast",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "avdol",
+   "logical": "cmd_hold",
+   "real": "cast",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "avdol",
+   "logical": "dodge",
+   "real": "dodge",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "avdol",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "avdol",
+   "logical": "float",
+   "real": "float",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "avdol",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "avdol",
+   "logical": "guard",
+   "real": "guard",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "avdol",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "avdol",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "avdol",
+   "logical": "special",
+   "real": "cast",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "avdol",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "avdol",
+   "logical": "win",
+   "real": "yes",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "boingo",
+   "logical": "scared",
+   "real": "scared",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "boingo",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "cameo",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "cameo",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "cameo",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "cameo",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "cameo",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "cameo",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "cameo",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "cameo",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chaka",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chaka",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chaka",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chaka",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chaka",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chaka",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chaka",
+   "logical": "slash",
+   "real": "slash",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chaka",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chaka",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chariot",
+   "logical": "attack",
+   "real": "thrust",
+   "frames": 3,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chariot",
+   "logical": "bare_attack",
+   "real": "bare_thrust",
+   "frames": 3,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chariot",
+   "logical": "bare_block",
+   "real": "bare_idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chariot",
+   "logical": "bare_hurt",
+   "real": "bare_idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chariot",
+   "logical": "bare_idle",
+   "real": "bare_idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chariot",
+   "logical": "bare_pose",
+   "real": "bare_idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chariot",
+   "logical": "bare_punch",
+   "real": "bare_thrust",
+   "frames": 3,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chariot",
+   "logical": "bare_punch2",
+   "real": "bare_thrust",
+   "frames": 3,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chariot",
+   "logical": "bare_punch_heavy",
+   "real": "bare_thrust",
+   "frames": 3,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chariot",
+   "logical": "bare_rush",
+   "real": "bare_thrust",
+   "frames": 3,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chariot",
+   "logical": "bare_slash",
+   "real": "bare_thrust",
+   "frames": 3,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chariot",
+   "logical": "bare_special",
+   "real": "bare_thrust",
+   "frames": 3,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chariot",
+   "logical": "block",
+   "real": "parry",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chariot",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chariot",
+   "logical": "pose",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chariot",
+   "logical": "punch",
+   "real": "thrust",
+   "frames": 3,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chariot",
+   "logical": "punch2",
+   "real": "thrust",
+   "frames": 3,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chariot",
+   "logical": "punch_heavy",
+   "real": "thrust",
+   "frames": 3,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chariot",
+   "logical": "rush",
+   "real": "thrust",
+   "frames": 3,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chariot",
+   "logical": "slash",
+   "real": "slash",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "chariot",
+   "logical": "special",
+   "real": "thrust",
+   "frames": 3,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_gold",
+   "logical": "attack",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_gold",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_gold",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_gold",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_gold",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_gold",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_gold",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_gold",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_gold",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_pol",
+   "logical": "attack",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_pol",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_pol",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_pol",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_pol",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_pol",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_pol",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_pol",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_pol",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_sherry",
+   "logical": "attack",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_sherry",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_sherry",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_sherry",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_sherry",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_sherry",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_sherry",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_sherry",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "clay_sherry",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "cream",
+   "logical": "attack",
+   "real": "void",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "原图集"
+  },
+  {
+   "cid": "cream",
+   "logical": "fly",
+   "real": "void",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "原图集"
+  },
+  {
+   "cid": "cream",
+   "logical": "pose",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "原图集"
+  },
+  {
+   "cid": "darby",
+   "logical": "idle",
+   "real": "sit",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "原图集"
+  },
+  {
+   "cid": "darby",
+   "logical": "talk",
+   "real": "sit",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "原图集"
+  },
+  {
+   "cid": "darkbluemoon",
+   "logical": "attack",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "darkbluemoon",
+   "logical": "fly",
+   "real": "swim",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "darkbluemoon",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "darkbluemoon",
+   "logical": "idle",
+   "real": "swim",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "death13",
+   "logical": "attack",
+   "real": "float",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "death13",
+   "logical": "fly",
+   "real": "float",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "death13",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "death13",
+   "logical": "idle",
+   "real": "float",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "death13",
+   "logical": "swing",
+   "real": "swing",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "devo",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "devo",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "devo",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "devo",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "devo",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "devo",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "devo",
+   "logical": "slash",
+   "real": "slash",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "devo",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "devo",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "devo_doll",
+   "logical": "attack",
+   "real": "slash",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "devo_doll",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "devo_doll",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "devo_doll",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "devo_doll",
+   "logical": "run",
+   "real": "run",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "devo_doll",
+   "logical": "slash",
+   "real": "slash",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "devo_doll",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "devo_doll",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "dio",
+   "logical": "attack",
+   "real": "throw",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "dio",
+   "logical": "cmd",
+   "real": "pose",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "dio",
+   "logical": "fly",
+   "real": "jump",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "dio",
+   "logical": "punch",
+   "real": "punch",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "dio",
+   "logical": "shoot",
+   "real": "throw",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "dio",
+   "logical": "special",
+   "real": "pose",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "dio",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "dio",
+   "logical": "win",
+   "real": "laugh",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "dio",
+   "logical": "windup",
+   "real": "throw",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": 0,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "empress",
+   "logical": "attack",
+   "real": "bite",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "empress",
+   "logical": "bite",
+   "real": "bite",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "empress",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "empress",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "empress",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "empress",
+   "logical": "l0_bite",
+   "real": "l0_bite",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "empress",
+   "logical": "l0_idle",
+   "real": "l0_idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "empress",
+   "logical": "l1_bite",
+   "real": "l1_bite",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "empress",
+   "logical": "l1_idle",
+   "real": "l1_idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "empress",
+   "logical": "l2_bite",
+   "real": "l2_bite",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "empress",
+   "logical": "l2_idle",
+   "real": "l2_idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "empress",
+   "logical": "l3_bite",
+   "real": "bite",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "empress",
+   "logical": "l3_idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "empress",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "empress",
+   "logical": "walk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "enya",
+   "logical": "attack",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": 1,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "enya",
+   "logical": "cast",
+   "real": "cast",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "enya",
+   "logical": "cmd",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": 1,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "enya",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "enya",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "enya",
+   "logical": "special",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": 1,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "enya",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "fake_tennille",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "fake_tennille",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "fake_tennille",
+   "logical": "grab",
+   "real": "grab",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "fake_tennille",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "fake_tennille",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "fake_tennille",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "fake_tennille",
+   "logical": "portrait_reveal",
+   "real": "portrait_reveal",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "fake_tennille",
+   "logical": "reveal",
+   "real": "reveal",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "fake_tennille",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "fake_tennille",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "fake_tennille",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "fool",
+   "logical": "block",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "fool",
+   "logical": "claw",
+   "real": "claw",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "fool",
+   "logical": "fly",
+   "real": "glide",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "fool",
+   "logical": "pose",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "fool",
+   "logical": "slam",
+   "real": "slam",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "fool",
+   "logical": "wall",
+   "real": "wall",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "geb",
+   "logical": "attack",
+   "real": "claw",
+   "frames": 3,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "原图集"
+  },
+  {
+   "cid": "geb",
+   "logical": "idle",
+   "real": "claw",
+   "frames": 3,
+   "kind": "oneshot",
+   "frame": 0,
+   "source": "原图集"
+  },
+  {
+   "cid": "grayfly",
+   "logical": "cmd",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "grayfly",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "grayfly",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "grayfly",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "grayfly",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "grayfly",
+   "logical": "seated",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "grayfly",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "grayfly",
+   "logical": "sit",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "grayfly",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "grayfly",
+   "logical": "walk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "hangedman",
+   "logical": "attack",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "hangedman",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "hermit",
+   "logical": "idle",
+   "real": "vine",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "原图集"
+  },
+  {
+   "cid": "hiero",
+   "logical": "block",
+   "real": "block",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "hiero",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "hiero",
+   "logical": "pose",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "hiero",
+   "logical": "punch",
+   "real": "cast",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "hiero",
+   "logical": "punch2",
+   "real": "cast",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "hiero",
+   "logical": "punch_heavy",
+   "real": "whip",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "hiero",
+   "logical": "rush",
+   "real": "cast",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "hiero",
+   "logical": "special",
+   "real": "cast",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "highpriestess",
+   "logical": "attack",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "highpriestess",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "holhorse",
+   "logical": "attack",
+   "real": "shoot",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "holhorse",
+   "logical": "cmd",
+   "real": "shoot",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": 0,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "holhorse",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "holhorse",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "holhorse",
+   "logical": "run",
+   "real": "flee",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "holhorse",
+   "logical": "shoot",
+   "real": "shoot",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "holhorse",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "holhorse",
+   "logical": "windup",
+   "real": "shoot",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": 0,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "holly",
+   "logical": "down",
+   "real": "faint",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": 1,
+   "source": "原图集"
+  },
+  {
+   "cid": "holly",
+   "logical": "hurt",
+   "real": "faint",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": 0,
+   "source": "原图集"
+  },
+  {
+   "cid": "holly",
+   "logical": "shock",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "原图集"
+  },
+  {
+   "cid": "holly",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "原图集"
+  },
+  {
+   "cid": "holly",
+   "logical": "win",
+   "real": "wave",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "原图集"
+  },
+  {
+   "cid": "horus",
+   "logical": "attack",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "horus",
+   "logical": "block",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "horus",
+   "logical": "cast",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "horus",
+   "logical": "cmd",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "horus",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "horus",
+   "logical": "fly",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "horus",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "horus",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "horus",
+   "logical": "pose",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "horus",
+   "logical": "punch",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "horus",
+   "logical": "punch2",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "horus",
+   "logical": "punch_heavy",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "horus",
+   "logical": "rush",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "horus",
+   "logical": "special",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "horus",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "horus",
+   "logical": "walk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "iggy",
+   "logical": "cmd",
+   "real": "bite",
+   "frames": 2,
+   "kind": "loop",
+   "frame": 0,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "iggy",
+   "logical": "cmd2",
+   "real": "bite",
+   "frames": 2,
+   "kind": "loop",
+   "frame": 0,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "iggy",
+   "logical": "cmd_hold",
+   "real": "bite",
+   "frames": 2,
+   "kind": "loop",
+   "frame": 0,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "iggy",
+   "logical": "dodge",
+   "real": "dodge",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "iggy",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "iggy",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "iggy",
+   "logical": "limp_walk",
+   "real": "limp_walk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "iggy",
+   "logical": "special",
+   "real": "bite",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "iggy",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "iggy",
+   "logical": "walk",
+   "real": "run",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jgeil",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jgeil",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jgeil",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "joseph",
+   "logical": "cmd",
+   "real": "point",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "joseph",
+   "logical": "cmd2",
+   "real": "point",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "joseph",
+   "logical": "cmd_hold",
+   "real": "point",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "joseph",
+   "logical": "dodge",
+   "real": "dodge",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "joseph",
+   "logical": "down",
+   "real": "lie",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "joseph",
+   "logical": "float",
+   "real": "float",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "joseph",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "joseph",
+   "logical": "guard",
+   "real": "guard",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "joseph",
+   "logical": "special",
+   "real": "point",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "joseph",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "joseph",
+   "logical": "whip",
+   "real": "whip",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "joseph",
+   "logical": "win",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jotaro",
+   "logical": "cmd",
+   "real": "point",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jotaro",
+   "logical": "cmd2",
+   "real": "point",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jotaro",
+   "logical": "cmd_hold",
+   "real": "point",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jotaro",
+   "logical": "dodge",
+   "real": "dodge",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jotaro",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jotaro",
+   "logical": "float",
+   "real": "float",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jotaro",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jotaro",
+   "logical": "guard",
+   "real": "guard",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jotaro",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jotaro",
+   "logical": "kid",
+   "real": "kid",
+   "frames": 2,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jotaro",
+   "logical": "special",
+   "real": "pose",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jotaro",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jotaro",
+   "logical": "win",
+   "real": "pose",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jotaro_kid",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jotaro_kid",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jotaro_kid",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jotaro_kid",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jotaro_kid",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jotaro_kid",
+   "logical": "punch",
+   "real": "punch",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jotaro_kid",
+   "logical": "run",
+   "real": "run",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jotaro_kid",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jotaro_kid",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "jotaro_kid",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "judgement",
+   "logical": "attack",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "judgement",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "justice",
+   "logical": "attack",
+   "real": "skull",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "原图集"
+  },
+  {
+   "cid": "justice",
+   "logical": "idle",
+   "real": "skull",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "原图集"
+  },
+  {
+   "cid": "kakyoin",
+   "logical": "cmd",
+   "real": "cast",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "kakyoin",
+   "logical": "cmd2",
+   "real": "cast",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "kakyoin",
+   "logical": "cmd_hold",
+   "real": "cast",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "kakyoin",
+   "logical": "dodge",
+   "real": "dodge",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "kakyoin",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "kakyoin",
+   "logical": "float",
+   "real": "float",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "kakyoin",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "kakyoin",
+   "logical": "guard",
+   "real": "guard",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "kakyoin",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "kakyoin",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "kakyoin",
+   "logical": "special",
+   "real": "cast",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "kakyoin",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "kakyoin",
+   "logical": "win",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "kennyg",
+   "logical": "attack",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "kennyg",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "kennyg",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "kennyg",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "kennyg",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "kennyg",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "kennyg",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "kennyg",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "kennyg",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "khan",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "khan",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "khan",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "khan",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "khan",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "khan",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "khan",
+   "logical": "slash",
+   "real": "slash",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "khan",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "khan",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "lovers",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "lovers",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "lovers",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "lovers",
+   "logical": "split",
+   "real": "split",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "lovers",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "lovers",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "magred",
+   "logical": "block",
+   "real": "block",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "magred",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "magred",
+   "logical": "pose",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "magred",
+   "logical": "punch",
+   "real": "punch",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "magred",
+   "logical": "punch2",
+   "real": "punch",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "magred",
+   "logical": "punch_heavy",
+   "real": "cast",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "magred",
+   "logical": "rush",
+   "real": "cast",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "magred",
+   "logical": "special",
+   "real": "cast",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "mannish",
+   "logical": "cry",
+   "real": "cry",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "mannish",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "mannish",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "mannish",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "mannish",
+   "logical": "laugh",
+   "real": "laugh",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "mannish",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "mannish",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "mannish",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "mariah",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "mariah",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "mariah",
+   "logical": "kick",
+   "real": "kick",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "mariah",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "mariah",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "midler_back",
+   "logical": "down",
+   "real": "idle",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "midler_back",
+   "logical": "hurt",
+   "real": "idle",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "midler_back",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "midler_back",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "midler_back",
+   "logical": "walk",
+   "real": "idle",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "ndoul",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "ndoul",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "ndoul",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "nena",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "nena",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "nena",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "nena",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "nena",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "nena",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "nena",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "nena",
+   "logical": "true_form",
+   "real": "true_form",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "nena",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_cat",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_cat",
+   "logical": "eat",
+   "real": "eat",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_cat",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_cat",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_cat",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_cat",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_dealer",
+   "logical": "deal",
+   "real": "deal",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_dealer",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_dealer",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_dealer",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_dealer",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_dealer",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_dealer",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_dealer",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_dealer",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_fortune",
+   "logical": "hurt",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_fortune",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_fortune",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_fortune",
+   "logical": "walk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_hk_granny",
+   "logical": "hurt",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_hk_granny",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_hk_granny",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_hk_granny",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_hk_owner",
+   "logical": "hurt",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_hk_owner",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_hk_owner",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_hk_owner",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_hk_passer_a",
+   "logical": "hurt",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_hk_passer_a",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_hk_passer_a",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_hk_passer_a",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_hk_passer_b",
+   "logical": "hurt",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_hk_passer_b",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_hk_passer_b",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_hk_passer_b",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_islander",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_islander",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_islander",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_islander",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_islander",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_islander",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_islander",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_islander",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_kid",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_kid",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_kid",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_kid",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_kid",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_kid",
+   "logical": "run",
+   "real": "run",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_kid",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_kid",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_kid",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_merchant",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_merchant",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_merchant",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_merchant",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_merchant",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_merchant",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_merchant",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_merchant",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_nurse",
+   "logical": "attack",
+   "real": "stab",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_nurse",
+   "logical": "cmd",
+   "real": "stab",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_nurse",
+   "logical": "down",
+   "real": "faint",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_nurse",
+   "logical": "hurt",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_nurse",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_nurse",
+   "logical": "shock",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_nurse",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_nurse",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_nurse",
+   "logical": "windup",
+   "real": "possessed",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_a",
+   "logical": "down",
+   "real": "slump",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_a",
+   "logical": "hurt",
+   "real": "slump",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_a",
+   "logical": "idle",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_a",
+   "logical": "seated",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_a",
+   "logical": "shock",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_a",
+   "logical": "sit",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_a",
+   "logical": "talk",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_a",
+   "logical": "walk",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_b",
+   "logical": "down",
+   "real": "slump",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_b",
+   "logical": "hurt",
+   "real": "slump",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_b",
+   "logical": "idle",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_b",
+   "logical": "seated",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_b",
+   "logical": "shock",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_b",
+   "logical": "sit",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_b",
+   "logical": "talk",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_b",
+   "logical": "walk",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_c",
+   "logical": "down",
+   "real": "slump",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_c",
+   "logical": "hurt",
+   "real": "slump",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_c",
+   "logical": "idle",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_c",
+   "logical": "seated",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_c",
+   "logical": "shock",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_c",
+   "logical": "sit",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_c",
+   "logical": "talk",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_c",
+   "logical": "walk",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_d",
+   "logical": "down",
+   "real": "slump",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_d",
+   "logical": "hurt",
+   "real": "slump",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_d",
+   "logical": "idle",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_d",
+   "logical": "seated",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_d",
+   "logical": "shock",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_d",
+   "logical": "sit",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_d",
+   "logical": "talk",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_passenger_d",
+   "logical": "walk",
+   "real": "seated",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_police",
+   "logical": "hurt",
+   "real": "shock",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_police",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_police",
+   "logical": "shock",
+   "real": "shock",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_police",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_police",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_sailor",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_sailor",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_sailor",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_sailor",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_sailor",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_sailor",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_sailor",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_sailor",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_spw",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_spw",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_spw",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_spw",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_spw",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_spw",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_spw",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_spw",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_stewardess",
+   "logical": "hurt",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_stewardess",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_stewardess",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_stewardess",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_student_f_a",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_student_f_a",
+   "logical": "hurt",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_student_f_a",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_student_f_a",
+   "logical": "shock",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_student_f_a",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_student_f_a",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_student_f_a",
+   "logical": "win",
+   "real": "cheer",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_student_f_b",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_student_f_b",
+   "logical": "hurt",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_student_f_b",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_student_f_b",
+   "logical": "shock",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_student_f_b",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_student_f_b",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_student_f_b",
+   "logical": "win",
+   "real": "cheer",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_student_m",
+   "logical": "hurt",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_student_m",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_student_m",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_student_m",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_townsfolk",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_townsfolk",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_townsfolk",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_townsfolk",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_townsfolk",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_townsfolk",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_townsfolk",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_townsfolk",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_villager_f",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_villager_f",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_villager_f",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_villager_f",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_villager_f",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_villager_f",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_villager_f",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "npc_villager_f",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "nukesaku",
+   "logical": "attack",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "nukesaku",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "nukesaku",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "nukesaku",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "nukesaku",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "nukesaku",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "nukesaku",
+   "logical": "portrait_reverse",
+   "real": "portrait_reverse",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "nukesaku",
+   "logical": "reverse",
+   "real": "reverse",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "nukesaku",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "nukesaku",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "nukesaku",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "oingo",
+   "logical": "hurt",
+   "real": "boom",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "原图集"
+  },
+  {
+   "cid": "oingo",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "原图集"
+  },
+  {
+   "cid": "osiris",
+   "logical": "attack",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "osiris",
+   "logical": "block",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "osiris",
+   "logical": "cast",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "osiris",
+   "logical": "cmd",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "osiris",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "osiris",
+   "logical": "fly",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "osiris",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "osiris",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "osiris",
+   "logical": "pose",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "osiris",
+   "logical": "punch",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "osiris",
+   "logical": "punch2",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "osiris",
+   "logical": "punch_heavy",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "osiris",
+   "logical": "rush",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "osiris",
+   "logical": "special",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "osiris",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "osiris",
+   "logical": "walk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "petshop",
+   "logical": "attack",
+   "real": "fly",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "petshop",
+   "logical": "dive",
+   "real": "dive",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "petshop",
+   "logical": "fly",
+   "real": "fly",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "petshop",
+   "logical": "idle",
+   "real": "perch",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff",
+   "logical": "cmd",
+   "real": "fight",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff",
+   "logical": "cmd2",
+   "real": "fight",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff",
+   "logical": "cmd_hold",
+   "real": "fight",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff",
+   "logical": "dodge",
+   "real": "dodge",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff",
+   "logical": "float",
+   "real": "float",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff",
+   "logical": "guard",
+   "real": "guard",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff",
+   "logical": "kid",
+   "real": "kid",
+   "frames": 2,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff",
+   "logical": "possessed",
+   "real": "possessed",
+   "frames": 2,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff",
+   "logical": "special",
+   "real": "fight",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff",
+   "logical": "win",
+   "real": "wave",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff_kid",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff_kid",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff_kid",
+   "logical": "hide",
+   "real": "hide",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff_kid",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff_kid",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff_kid",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff_kid",
+   "logical": "run",
+   "real": "run",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff_kid",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff_kid",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff_kid",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff_possessed",
+   "logical": "attack",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff_possessed",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff_possessed",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff_possessed",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff_possessed",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff_possessed",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff_possessed",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff_possessed",
+   "logical": "slash",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff_possessed",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "polnareff_possessed",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "rubbersoul",
+   "logical": "beg",
+   "real": "beg",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "rubbersoul",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "rubbersoul",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "rubbersoul",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "rubbersoul",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "rubbersoul",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "rubbersoul",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "rubbersoul",
+   "logical": "slime_attack",
+   "real": "slime_attack",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "rubbersoul",
+   "logical": "slime_idle",
+   "real": "slime_idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "rubbersoul",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "rubbersoul",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "starplat",
+   "logical": "block",
+   "real": "block",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "starplat",
+   "logical": "finger",
+   "real": "finger",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "starplat",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "starplat",
+   "logical": "punch",
+   "real": "punch",
+   "frames": 3,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "starplat",
+   "logical": "punch2",
+   "real": "punch",
+   "frames": 3,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "starplat",
+   "logical": "punch_heavy",
+   "real": "upper",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "starplat",
+   "logical": "rush",
+   "real": "rush",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "starplat",
+   "logical": "special",
+   "real": "rush",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "steelydan",
+   "logical": "command",
+   "real": "command",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "steelydan",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "steelydan",
+   "logical": "fly",
+   "real": "fly",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "steelydan",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "steelydan",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "strength",
+   "logical": "attack",
+   "real": "attack",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "strength",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "strength",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "strength",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "strength",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "telence",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "原图集"
+  },
+  {
+   "cid": "theworld",
+   "logical": "block",
+   "real": "idle",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "theworld",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "theworld",
+   "logical": "kick",
+   "real": "kick",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "theworld",
+   "logical": "punch",
+   "real": "punch",
+   "frames": 3,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "theworld",
+   "logical": "punch2",
+   "real": "punch",
+   "frames": 3,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "theworld",
+   "logical": "punch_heavy",
+   "real": "punch",
+   "frames": 3,
+   "kind": "oneshot",
+   "frame": 2,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "theworld",
+   "logical": "rush",
+   "real": "rush",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "theworld",
+   "logical": "special",
+   "real": "rush",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "towergray",
+   "logical": "attack",
+   "real": "needle",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "towergray",
+   "logical": "fly",
+   "real": "fly",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "towergray",
+   "logical": "hurt",
+   "real": "fly",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "towergray",
+   "logical": "idle",
+   "real": "fly",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "towergray",
+   "logical": "shoot",
+   "real": "needle",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "towergray",
+   "logical": "windup",
+   "real": "fly",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "vanilla",
+   "logical": "attack",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "vanilla",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "vanilla",
+   "logical": "kick",
+   "real": "kick",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "vanilla",
+   "logical": "stomp",
+   "real": "stomp",
+   "frames": 2,
+   "kind": "oneshot",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "vanilla",
+   "logical": "talk",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "vanilla",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "wheel",
+   "logical": "attack",
+   "real": "car",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "wheel",
+   "logical": "climb",
+   "real": "climb",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "wheel",
+   "logical": "idle",
+   "real": "car",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "wheel",
+   "logical": "spray",
+   "real": "spray",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "wheel",
+   "logical": "walk",
+   "real": "car",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "wilson",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "wilson",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "wilson",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "wilson",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "wilson",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "wilson",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "wilson",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "wilson",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "zombie",
+   "logical": "attack",
+   "real": "attack",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "zombie",
+   "logical": "idle",
+   "real": "walk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "zz",
+   "logical": "down",
+   "real": "down",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "zz",
+   "logical": "getup",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "zz",
+   "logical": "hurt",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "zz",
+   "logical": "idle",
+   "real": "idle",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "zz",
+   "logical": "portrait",
+   "real": "portrait",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "zz",
+   "logical": "shock",
+   "real": "hurt",
+   "frames": 1,
+   "kind": "static",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "zz",
+   "logical": "talk",
+   "real": "talk",
+   "frames": 2,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  },
+  {
+   "cid": "zz",
+   "logical": "walk",
+   "real": "walk",
+   "frames": 4,
+   "kind": "loop",
+   "frame": null,
+   "source": "新烘焙"
+  }
+ ],
+ "props": [
+  {
+   "id": "bat",
+   "name": "蝙蝠",
+   "sprite": "prop.bat",
+   "file": "bat.png",
+   "frames": 2,
+   "size": [
+    19,
+    12
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    9,
+    6
+   ],
+   "fps": 12,
+   "kind": "loop",
+   "desc": "vampire bat, 2f flap (wings up/down, 10-12fps). anchor mm",
+   "source": "原图集"
+  },
+  {
+   "id": "boat",
+   "name": "小木船",
+   "sprite": "prop.boat",
+   "file": "boat.png",
+   "frames": 1,
+   "size": [
+    34,
+    16
+   ],
+   "anchor": "mb",
+   "anchor_semantic": "脚点(底部中点)",
+   "pivot": [
+    17,
+    16
+   ],
+   "fps": 1,
+   "kind": "static",
+   "desc": "small wooden boat w/ cabin + outboard; waterline y=11. anchor mb",
+   "source": "原图集"
+  },
+  {
+   "id": "bullet",
+   "name": "子弹",
+   "sprite": "prop.bullet",
+   "file": "bullet.png",
+   "frames": 1,
+   "size": [
+    10,
+    6
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    5,
+    3
+   ],
+   "fps": 1,
+   "kind": "static",
+   "desc": "bullet flying RIGHT. anchor mm",
+   "source": "原图集"
+  },
+  {
+   "id": "camel",
+   "name": "骆驼",
+   "sprite": "prop.camel",
+   "file": "camel.png",
+   "frames": 4,
+   "size": [
+    44,
+    40
+   ],
+   "anchor": "mb",
+   "anchor_semantic": "脚点(底部中点)",
+   "pivot": [
+    22,
+    40
+   ],
+   "fps": 8,
+   "kind": "loop",
+   "desc": "dromedary w/ saddle + striped blanket, 4f pacing walk (8fps). anchor mb",
+   "source": "原图集"
+  },
+  {
+   "id": "camera",
+   "name": "乔瑟夫的拍立得相机",
+   "sprite": "prop.camera",
+   "file": "camera.png",
+   "frames": 1,
+   "size": [
+    19,
+    15
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    9,
+    7
+   ],
+   "fps": 1,
+   "kind": "static",
+   "desc": "Joseph's instant camera, front view (lens at viewer). anchor mm",
+   "source": "原图集"
+  },
+  {
+   "id": "car",
+   "name": "红色越野车",
+   "sprite": "prop.car",
+   "file": "car.png",
+   "frames": 2,
+   "size": [
+    58,
+    26
+   ],
+   "anchor": "mb",
+   "anchor_semantic": "脚点(底部中点)",
+   "pivot": [
+    29,
+    26
+   ],
+   "fps": 10,
+   "kind": "loop",
+   "desc": "Joseph's red 4WD w/ roof luggage, 2f wheel spin + bounce (10fps). anchor mb",
+   "source": "原图集"
+  },
+  {
+   "id": "card",
+   "name": "扑克牌",
+   "sprite": "prop.card",
+   "file": "card.png",
+   "frames": 2,
+   "size": [
+    11,
+    14
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    5,
+    7
+   ],
+   "fps": 1,
+   "kind": "static",
+   "desc": "playing card: f0 back (red), f1 ace of spades. anchor mm",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "原图集"
+  },
+  {
+   "id": "cherry",
+   "name": "樱桃",
+   "sprite": "prop.cherry",
+   "file": "cherry.png",
+   "frames": 1,
+   "size": [
+    11,
+    13
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    5,
+    6
+   ],
+   "fps": 1,
+   "kind": "static",
+   "desc": "Kakyoin's cherries (rero rero). anchor mm",
+   "source": "原图集"
+  },
+  {
+   "id": "chip",
+   "name": "赌场筹码",
+   "sprite": "prop.chip",
+   "file": "chip.png",
+   "frames": 2,
+   "size": [
+    9,
+    9
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    4,
+    4
+   ],
+   "fps": 1,
+   "kind": "static",
+   "desc": "poker chip: f0 red, f1 blue. anchor mm",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "原图集"
+  },
+  {
+   "id": "clocktower",
+   "name": "开罗钟塔",
+   "sprite": "prop.clocktower",
+   "file": "clocktower.png",
+   "frames": 3,
+   "size": [
+    40,
+    112
+   ],
+   "anchor": "mb",
+   "anchor_semantic": "脚点(底部中点)",
+   "pivot": [
+    20,
+    112
+   ],
+   "fps": 1,
+   "kind": "static",
+   "desc": "Cairo clock tower 40x112; face centre (19.5,29.5) r=9; f0 4:00, f1 hands jumped (time skipped), f2 face shattered. anchor mb",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "原图集"
+  },
+  {
+   "id": "coffin",
+   "name": "DIO 的铁棺",
+   "sprite": "prop.coffin",
+   "file": "coffin.png",
+   "frames": 3,
+   "size": [
+    60,
+    46
+   ],
+   "anchor": "mb",
+   "anchor_semantic": "脚点(底部中点)",
+   "pivot": [
+    30,
+    46
+   ],
+   "fps": 2,
+   "kind": "oneshot",
+   "desc": "DIO's barnacled iron coffin w/ bronze cross, 3/4 top view, head at left; f0 closed, f1 lid ajar (red eyes in gap), f2 open (velvet lid hinged up behind). anchor mb",
+   "source": "原图集"
+  },
+  {
+   "id": "coin",
+   "name": "金币",
+   "sprite": "prop.coin",
+   "file": "coin.png",
+   "frames": 4,
+   "size": [
+    8,
+    9
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    4,
+    4
+   ],
+   "fps": 14,
+   "kind": "loop",
+   "desc": "gold coin, 4f spin (face, 3/4, edge, back; 12-16fps). anchor mm",
+   "source": "原图集"
+  },
+  {
+   "id": "fleshbud",
+   "name": "肉芽",
+   "sprite": "prop.fleshbud",
+   "file": "fleshbud.png",
+   "frames": 3,
+   "size": [
+    21,
+    21
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    10,
+    10
+   ],
+   "fps": 8,
+   "kind": "loop",
+   "desc": "DIO's flesh bud: pink bulb + wriggling tendrils, 3f loop (8fps). anchor mm",
+   "source": "原图集"
+  },
+  {
+   "id": "gum",
+   "name": "咖啡味口香糖",
+   "sprite": "prop.gum",
+   "file": "gum.png",
+   "frames": 1,
+   "size": [
+    14,
+    8
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    7,
+    4
+   ],
+   "fps": 1,
+   "kind": "static",
+   "desc": "Iggy's coffee-flavoured gum pack. anchor mm",
+   "source": "原图集"
+  },
+  {
+   "id": "gun",
+   "name": "皇帝左轮枪",
+   "sprite": "prop.gun",
+   "file": "gun.png",
+   "frames": 1,
+   "size": [
+    20,
+    11
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    10,
+    5
+   ],
+   "fps": 1,
+   "kind": "static",
+   "desc": "Hol Horse's Emperor revolver, barrel RIGHT. anchor mm",
+   "source": "原图集"
+  },
+  {
+   "id": "heli",
+   "name": "SPW 直升机",
+   "sprite": "prop.heli",
+   "file": "heli.png",
+   "frames": 2,
+   "size": [
+    66,
+    30
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    33,
+    15
+   ],
+   "fps": 16,
+   "kind": "loop",
+   "desc": "SPW Foundation helicopter, 2f rotor (16-24fps). anchor mm",
+   "source": "原图集"
+  },
+  {
+   "id": "knife",
+   "name": "飞刀",
+   "sprite": "prop.knife",
+   "file": "knife.png",
+   "frames": 1,
+   "size": [
+    18,
+    7
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    9,
+    3
+   ],
+   "fps": 1,
+   "kind": "static",
+   "desc": "DIO's throwing knife, point RIGHT; rotate with rot=. anchor mm",
+   "source": "原图集"
+  },
+  {
+   "id": "manga",
+   "name": "预言漫画",
+   "sprite": "prop.manga",
+   "file": "manga.png",
+   "frames": 2,
+   "size": [
+    26,
+    17
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    13,
+    8
+   ],
+   "fps": 1,
+   "kind": "static",
+   "desc": "Boingo's prophecy comic: f0 closed cover, f1 open spread (same 26x17 canvas). anchor mm",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "原图集"
+  },
+  {
+   "id": "map_car",
+   "name": "地图图标·汽车",
+   "sprite": "prop.map_car",
+   "file": "map_car.png",
+   "frames": 1,
+   "size": [
+    13,
+    7
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    6,
+    3
+   ],
+   "fps": 1,
+   "kind": "static",
+   "desc": "tiny world-map icon: car, facing right. anchor mm",
+   "source": "原图集"
+  },
+  {
+   "id": "map_plane",
+   "name": "地图图标·飞机",
+   "sprite": "prop.map_plane",
+   "file": "map_plane.png",
+   "frames": 1,
+   "size": [
+    13,
+    11
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    6,
+    5
+   ],
+   "fps": 1,
+   "kind": "static",
+   "desc": "tiny world-map icon: airliner (top view), facing right. anchor mm",
+   "source": "原图集"
+  },
+  {
+   "id": "map_ship",
+   "name": "地图图标·轮船",
+   "sprite": "prop.map_ship",
+   "file": "map_ship.png",
+   "frames": 1,
+   "size": [
+    13,
+    9
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    6,
+    4
+   ],
+   "fps": 1,
+   "kind": "static",
+   "desc": "tiny world-map icon: ship, facing right. anchor mm",
+   "source": "原图集"
+  },
+  {
+   "id": "map_sub",
+   "name": "地图图标·潜艇",
+   "sprite": "prop.map_sub",
+   "file": "map_sub.png",
+   "frames": 1,
+   "size": [
+    13,
+    7
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    6,
+    3
+   ],
+   "fps": 1,
+   "kind": "static",
+   "desc": "tiny world-map icon: submarine, facing right. anchor mm",
+   "source": "原图集"
+  },
+  {
+   "id": "map_train",
+   "name": "地图图标·火车",
+   "sprite": "prop.map_train",
+   "file": "map_train.png",
+   "frames": 1,
+   "size": [
+    14,
+    8
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    7,
+    4
+   ],
+   "fps": 1,
+   "kind": "static",
+   "desc": "tiny world-map icon: steam train, facing right. anchor mm",
+   "source": "原图集"
+  },
+  {
+   "id": "orange",
+   "name": "橙子（炸弹）",
+   "sprite": "prop.orange",
+   "file": "orange.png",
+   "frames": 1,
+   "size": [
+    10,
+    10
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    5,
+    5
+   ],
+   "fps": 1,
+   "kind": "static",
+   "desc": "orange (Oingo's orange bomb). anchor mm",
+   "source": "原图集"
+  },
+  {
+   "id": "photo",
+   "name": "拍立得相片",
+   "sprite": "prop.photo",
+   "file": "photo.png",
+   "frames": 3,
+   "size": [
+    16,
+    20
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    8,
+    10
+   ],
+   "fps": 2,
+   "kind": "oneshot",
+   "desc": "polaroid: f0 blank/undeveloped, f1 developing, f2 DIO from behind w/ star on neck. anchor mm",
+   "source": "原图集"
+  },
+  {
+   "id": "photo_crew",
+   "name": "全员合影",
+   "sprite": "prop.photo_crew",
+   "file": "photo_crew.png",
+   "frames": 1,
+   "size": [
+    64,
+    58
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    32,
+    29
+   ],
+   "fps": 1,
+   "kind": "static",
+   "desc": "polaroid of the whole crew (Pol, Avdol, Joseph, Jotaro, Kakyoin + Iggy). anchor mm",
+   "source": "原图集"
+  },
+  {
+   "id": "plane",
+   "name": "客机",
+   "sprite": "prop.plane",
+   "file": "plane.png",
+   "frames": 2,
+   "size": [
+    96,
+    32
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    48,
+    16
+   ],
+   "fps": 3,
+   "kind": "loop",
+   "desc": "airliner side view facing right, star on tail; 2f nav-light blink (~3fps). anchor mm",
+   "source": "原图集"
+  },
+  {
+   "id": "plane_crash",
+   "name": "坠毁中的客机",
+   "sprite": "prop.plane_crash",
+   "file": "plane_crash.png",
+   "frames": 2,
+   "size": [
+    96,
+    32
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    48,
+    16
+   ],
+   "fps": 8,
+   "kind": "loop",
+   "desc": "EXTRA: same airliner mid-crash (soot, burning engine, 2f fire flicker ~8fps). anchor mm",
+   "source": "原图集"
+  },
+  {
+   "id": "roadroller",
+   "name": "压路机",
+   "sprite": "prop.roadroller",
+   "file": "roadroller.png",
+   "frames": 3,
+   "size": [
+    80,
+    56
+   ],
+   "anchor": "mb",
+   "anchor_semantic": "脚点(底部中点)",
+   "pivot": [
+    40,
+    56
+   ],
+   "fps": 1,
+   "kind": "static",
+   "desc": "ROAD ROLLER DA! 80x56 side view facing right; f0 clean, f1 battered, f2 glowing cracks (about to explode). anchor mb (drums on bottom row)",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "原图集"
+  },
+  {
+   "id": "ship",
+   "name": "货轮",
+   "sprite": "prop.ship",
+   "file": "ship.png",
+   "frames": 1,
+   "size": [
+    120,
+    48
+   ],
+   "anchor": "mb",
+   "anchor_semantic": "脚点(底部中点)",
+   "pivot": [
+    60,
+    48
+   ],
+   "fps": 1,
+   "kind": "static",
+   "desc": "container freighter facing right; waterline at y=38 (10px above bottom). anchor mb",
+   "source": "原图集"
+  },
+  {
+   "id": "submarine",
+   "name": "潜艇",
+   "sprite": "prop.submarine",
+   "file": "submarine.png",
+   "frames": 2,
+   "size": [
+    82,
+    30
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    41,
+    15
+   ],
+   "fps": 12,
+   "kind": "loop",
+   "desc": "SPW submarine facing right, 2f propeller (12fps). anchor mm",
+   "source": "原图集"
+  },
+  {
+   "id": "suitcase",
+   "name": "旅行箱",
+   "sprite": "prop.suitcase",
+   "file": "suitcase.png",
+   "frames": 1,
+   "size": [
+    19,
+    16
+   ],
+   "anchor": "mb",
+   "anchor_semantic": "脚点(底部中点)",
+   "pivot": [
+    9,
+    16
+   ],
+   "fps": 1,
+   "kind": "static",
+   "desc": "leather travel suitcase w/ stickers. anchor mb",
+   "source": "原图集"
+  },
+  {
+   "id": "sword",
+   "name": "细剑（银色战车）",
+   "sprite": "prop.sword",
+   "file": "sword.png",
+   "frames": 1,
+   "size": [
+    34,
+    10
+   ],
+   "anchor": "mm",
+   "anchor_semantic": "中心",
+   "pivot": [
+    17,
+    5
+   ],
+   "fps": 1,
+   "kind": "static",
+   "desc": "rapier (Silver Chariot style), point RIGHT. anchor mm",
+   "source": "原图集"
+  },
+  {
+   "id": "tv",
+   "name": "复古电视机（游戏）",
+   "sprite": "prop.tv",
+   "file": "tv.png",
+   "frames": 3,
+   "size": [
+    34,
+    30
+   ],
+   "anchor": "mb",
+   "anchor_semantic": "脚点(底部中点)",
+   "pivot": [
+    17,
+    30
+   ],
+   "fps": 8,
+   "kind": "loop",
+   "desc": "retro CRT playing a racing game (Telence's F-MEGA), 3f loop (8fps). anchor mb",
+   "source": "原图集"
+  },
+  {
+   "id": "watertower",
+   "name": "屋顶水塔",
+   "sprite": "prop.watertower",
+   "file": "watertower.png",
+   "frames": 2,
+   "size": [
+    38,
+    62
+   ],
+   "anchor": "mb",
+   "anchor_semantic": "脚点(底部中点)",
+   "pivot": [
+    19,
+    62
+   ],
+   "fps": 1,
+   "kind": "static",
+   "desc": "rooftop water tank on legs; f0 intact, f1 burst hole (tank centre ~(15,24)). anchor mb",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "原图集"
+  },
+  {
+   "id": "magazine",
+   "name": "magazine",
+   "sprite": "prop_new.magazine",
+   "file": "magazine.png",
+   "frames": 1,
+   "size": [
+    10,
+    7
+   ],
+   "anchor": [
+    5,
+    7
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    5,
+    7
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "漫画周刊，保留独立名字供序章调查",
+   "source": "新画"
+  },
+  {
+   "id": "jail_pipe",
+   "name": "jail_pipe",
+   "sprite": "prop_new.jail_pipe",
+   "file": "jail_pipe.png",
+   "frames": 2,
+   "size": [
+    16,
+    48
+   ],
+   "anchor": [
+    8,
+    48
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    48
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "完好的水管与阀门 / 管口爆开；水流由像素特效叠加",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "tissue",
+   "name": "tissue",
+   "sprite": "prop_new.tissue",
+   "file": "tissue.png",
+   "frames": 1,
+   "size": [
+    10,
+    8
+   ],
+   "anchor": [
+    5,
+    8
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    5,
+    8
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "花京院递出的皱纸巾",
+   "source": "新画"
+  },
+  {
+   "id": "pen",
+   "name": "pen",
+   "sprite": "prop_new.pen",
+   "file": "pen.png",
+   "frames": 1,
+   "size": [
+    9,
+    3
+   ],
+   "anchor": [
+    4,
+    3
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    3
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "校医使用的钢笔",
+   "source": "新画"
+  },
+  {
+   "id": "pinky",
+   "name": "pinky",
+   "sprite": "prop_new.pinky",
+   "file": "pinky.png",
+   "frames": 1,
+   "size": [
+    4,
+    5
+   ],
+   "anchor": [
+    2,
+    5
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    2,
+    5
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "乔瑟夫皮手套色义手小指",
+   "source": "新画"
+  },
+  {
+   "id": "hk_table",
+   "name": "hk_table",
+   "sprite": "prop_new.hk_table",
+   "file": "hk_table.png",
+   "frames": 2,
+   "size": [
+    48,
+    20
+   ],
+   "anchor": [
+    24,
+    20
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    24,
+    20
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "圆桌与四凳 / 桌面时钟；火焰由像素特效叠加",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "mr_statue",
+   "name": "mr_statue",
+   "sprite": "prop_new.mr_statue",
+   "file": "mr_statue.png",
+   "frames": 3,
+   "size": [
+    24,
+    40
+   ],
+   "anchor": [
+    12,
+    40
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    40
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "虎像 / 红色魔术师像 / 碎石；虎像从原画等比缩至24像素宽",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "chariot_armor",
+   "name": "chariot_armor",
+   "sprite": "prop_new.chariot_armor",
+   "file": "chariot_armor.png",
+   "frames": 4,
+   "size": [
+    8,
+    8
+   ],
+   "anchor": [
+    4,
+    8
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    8
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "肩甲 / 胸甲 / 头盔 / 护腿",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "dish",
+   "name": "dish",
+   "sprite": "prop_new.dish",
+   "file": "dish.png",
+   "frames": 3,
+   "size": [
+    8,
+    5
+   ],
+   "anchor": [
+    4,
+    5
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    5
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "青蛙 / 整鱼 / 不明食物",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "kite",
+   "name": "kite",
+   "sprite": "prop_new.kite",
+   "file": "kite.png",
+   "frames": 1,
+   "size": [
+    8,
+    8
+   ],
+   "anchor": [
+    4,
+    8
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    8
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "香港街头的小风筝",
+   "source": "新画"
+  },
+  {
+   "id": "ship_eye_a",
+   "name": "ship_eye_a",
+   "sprite": "prop_new.ship_eye_a",
+   "file": "ship_eye_a.png",
+   "frames": 2,
+   "size": [
+    12,
+    8
+   ],
+   "anchor": [
+    6,
+    8
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    8
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "甲板的眼睛",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "ship_eye_b",
+   "name": "ship_eye_b",
+   "sprite": "prop_new.ship_eye_b",
+   "file": "ship_eye_b.png",
+   "frames": 2,
+   "size": [
+    10,
+    10
+   ],
+   "anchor": [
+    5,
+    10
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    5,
+    10
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "舱壁的眼睛",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "ship_eye_c",
+   "name": "ship_eye_c",
+   "sprite": "prop_new.ship_eye_c",
+   "file": "ship_eye_c.png",
+   "frames": 2,
+   "size": [
+    16,
+    8
+   ],
+   "anchor": [
+    8,
+    8
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    8
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "水管的眼睛",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "shark",
+   "name": "shark",
+   "sprite": "prop_new.shark",
+   "file": "shark.png",
+   "frames": 2,
+   "size": [
+    40,
+    16
+   ],
+   "anchor": [
+    20,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    20,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "海中的鲨鱼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "barnacle",
+   "name": "barnacle",
+   "sprite": "prop_new.barnacle",
+   "file": "barnacle.png",
+   "frames": 2,
+   "size": [
+    6,
+    6
+   ],
+   "anchor": [
+    3,
+    6
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    3,
+    6
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藤壶生长",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "hook",
+   "name": "hook",
+   "sprite": "prop_new.hook",
+   "file": "hook.png",
+   "frames": 1,
+   "size": [
+    24,
+    16
+   ],
+   "anchor": [
+    12,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "货轮吊钩",
+   "source": "新画"
+  },
+  {
+   "id": "slime_puddle",
+   "name": "slime_puddle",
+   "sprite": "prop_new.slime_puddle",
+   "file": "slime_puddle.png",
+   "frames": 1,
+   "size": [
+    20,
+    6
+   ],
+   "anchor": [
+    10,
+    6
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    10,
+    6
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "黄色黏液",
+   "source": "新画"
+  },
+  {
+   "id": "tar_barrel",
+   "name": "tar_barrel",
+   "sprite": "prop_new.tar_barrel",
+   "file": "tar_barrel.png",
+   "frames": 2,
+   "size": [
+    16,
+    20
+   ],
+   "anchor": [
+    8,
+    20
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    20
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "焦油桶／倒出的焦油",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "mirror_shard",
+   "name": "mirror_shard",
+   "sprite": "prop_new.mirror_shard",
+   "file": "mirror_shard.png",
+   "frames": 1,
+   "size": [
+    6,
+    6
+   ],
+   "anchor": [
+    3,
+    6
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    3,
+    6
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "反射用镜子碎片",
+   "source": "新画"
+  },
+  {
+   "id": "fork",
+   "name": "fork",
+   "sprite": "prop_new.fork",
+   "file": "fork.png",
+   "frames": 1,
+   "size": [
+    10,
+    4
+   ],
+   "anchor": [
+    5,
+    4
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    5,
+    4
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "恋人刺入义手的叉子",
+   "source": "新画"
+  },
+  {
+   "id": "cessna",
+   "name": "cessna",
+   "sprite": "prop_new.cessna",
+   "file": "cessna.png",
+   "frames": 2,
+   "size": [
+    64,
+    24
+   ],
+   "anchor": [
+    32,
+    24
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    32,
+    24
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "塞斯纳飞机／受损状态",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "toy_knife",
+   "name": "toy_knife",
+   "sprite": "prop_new.toy_knife",
+   "file": "toy_knife.png",
+   "frames": 1,
+   "size": [
+    12,
+    5
+   ],
+   "anchor": [
+    6,
+    5
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    5
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "梦境外的玩具刀",
+   "source": "新画"
+  },
+  {
+   "id": "toy_box",
+   "name": "toy_box",
+   "sprite": "prop_new.toy_box",
+   "file": "toy_box.png",
+   "frames": 1,
+   "size": [
+    18,
+    14
+   ],
+   "anchor": [
+    9,
+    14
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    9,
+    14
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "玩具盒",
+   "source": "新画"
+  },
+  {
+   "id": "genie_lamp",
+   "name": "genie_lamp",
+   "sprite": "prop_new.genie_lamp",
+   "file": "genie_lamp.png",
+   "frames": 1,
+   "size": [
+    24,
+    16
+   ],
+   "anchor": [
+    12,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "审判藏身的神灯",
+   "source": "新画"
+  },
+  {
+   "id": "tooth",
+   "name": "tooth",
+   "sprite": "prop_new.tooth",
+   "file": "tooth.png",
+   "frames": 2,
+   "size": [
+    24,
+    20
+   ],
+   "anchor": [
+    12,
+    20
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    20
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "巨牙／碎牙",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "dive_helmet",
+   "name": "dive_helmet",
+   "sprite": "prop_new.dive_helmet",
+   "file": "dive_helmet.png",
+   "frames": 1,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "潜水头盔叠层",
+   "source": "新画"
+  },
+  {
+   "id": "joseph_hand",
+   "name": "joseph_hand",
+   "sprite": "prop_new.joseph_hand",
+   "file": "joseph_hand.png",
+   "frames": 1,
+   "size": [
+    14,
+    9
+   ],
+   "anchor": [
+    7,
+    9
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    7,
+    9
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "断落的机械义手",
+   "source": "新画"
+  },
+  {
+   "id": "pebble",
+   "name": "pebble",
+   "sprite": "prop_new.pebble",
+   "file": "pebble.png",
+   "frames": 1,
+   "size": [
+    5,
+    4
+   ],
+   "anchor": [
+    2,
+    4
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    2,
+    4
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "声音诱饵石子",
+   "source": "新画"
+  },
+  {
+   "id": "anubis_sword",
+   "name": "anubis_sword",
+   "sprite": "prop_new.anubis_sword",
+   "file": "anubis_sword.png",
+   "frames": 1,
+   "size": [
+    34,
+    10
+   ],
+   "anchor": [
+    17,
+    10
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    17,
+    10
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "阿努比斯神弯刀",
+   "source": "新画"
+  },
+  {
+   "id": "socket",
+   "name": "socket",
+   "sprite": "prop_new.socket",
+   "file": "socket.png",
+   "frames": 1,
+   "size": [
+    10,
+    12
+   ],
+   "anchor": [
+    5,
+    12
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    5,
+    12
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "巴斯特女神磁力插座",
+   "source": "新画"
+  },
+  {
+   "id": "train",
+   "name": "train",
+   "sprite": "prop_new.train",
+   "file": "train.png",
+   "frames": 2,
+   "size": [
+    96,
+    44
+   ],
+   "anchor": [
+    48,
+    44
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    48,
+    44
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "列车／轮组状态",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "metal_junk",
+   "name": "metal_junk",
+   "sprite": "prop_new.metal_junk",
+   "file": "metal_junk.png",
+   "frames": 4,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "螺丝／钉子／剪刀／铁链",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "mirror_stand",
+   "name": "mirror_stand",
+   "sprite": "prop_new.mirror_stand",
+   "file": "mirror_stand.png",
+   "frames": 1,
+   "size": [
+    18,
+    32
+   ],
+   "anchor": [
+    9,
+    32
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    9,
+    32
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "太阳使者的镜面伪装",
+   "source": "新画"
+  },
+  {
+   "id": "oil_drum",
+   "name": "oil_drum",
+   "sprite": "prop_new.oil_drum",
+   "file": "oil_drum.png",
+   "frames": 1,
+   "size": [
+    16,
+    22
+   ],
+   "anchor": [
+    8,
+    22
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    22
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "地下通道油桶",
+   "source": "新画"
+  },
+  {
+   "id": "atum_doll_a",
+   "name": "atum_doll_a",
+   "sprite": "prop_new.atum_doll_a",
+   "file": "atum_doll_a.png",
+   "frames": 1,
+   "size": [
+    12,
+    16
+   ],
+   "anchor": [
+    6,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "波鲁纳雷夫灵魂人偶",
+   "source": "新画"
+  },
+  {
+   "id": "atum_doll_b",
+   "name": "atum_doll_b",
+   "sprite": "prop_new.atum_doll_b",
+   "file": "atum_doll_b.png",
+   "frames": 1,
+   "size": [
+    12,
+    16
+   ],
+   "anchor": [
+    6,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "花京院灵魂人偶",
+   "source": "新画"
+  },
+  {
+   "id": "atum_doll_c",
+   "name": "atum_doll_c",
+   "sprite": "prop_new.atum_doll_c",
+   "file": "atum_doll_c.png",
+   "frames": 1,
+   "size": [
+    12,
+    16
+   ],
+   "anchor": [
+    6,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "乔瑟夫灵魂人偶",
+   "source": "新画"
+  },
+  {
+   "id": "sax",
+   "name": "sax",
+   "sprite": "prop_new.sax",
+   "file": "sax.png",
+   "frames": 1,
+   "size": [
+    16,
+    26
+   ],
+   "anchor": [
+    8,
+    26
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    26
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "肯尼G的萨克斯",
+   "source": "新画"
+  },
+  {
+   "id": "road_sign",
+   "name": "road_sign",
+   "sprite": "prop_new.road_sign",
+   "file": "road_sign.png",
+   "frames": 1,
+   "size": [
+    12,
+    40
+   ],
+   "anchor": [
+    6,
+    40
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    40
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "DIO使用的道路标志",
+   "source": "新画"
+  },
+  {
+   "id": "magazine_vest",
+   "name": "magazine_vest",
+   "sprite": "prop_new.magazine_vest",
+   "file": "magazine_vest.png",
+   "frames": 1,
+   "size": [
+    24,
+    28
+   ],
+   "anchor": [
+    12,
+    28
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    28
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "承太郎藏在制服内的杂志",
+   "source": "新画"
+  },
+  {
+   "id": "truck",
+   "name": "truck",
+   "sprite": "prop_new.truck",
+   "file": "truck.png",
+   "frames": 1,
+   "size": [
+    64,
+    36
+   ],
+   "anchor": [
+    32,
+    36
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    32,
+    36
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "乔瑟夫的皮卡",
+   "source": "新画"
+  },
+  {
+   "id": "senator_car",
+   "name": "senator_car",
+   "sprite": "prop_new.senator_car",
+   "file": "senator_car.png",
+   "frames": 1,
+   "size": [
+    72,
+    28
+   ],
+   "anchor": [
+    36,
+    28
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    36,
+    28
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "议员的豪华轿车",
+   "source": "新画"
+  },
+  {
+   "id": "blanket",
+   "name": "blanket",
+   "sprite": "prop_new.blanket",
+   "file": "blanket.png",
+   "frames": 2,
+   "size": [
+    56,
+    14
+   ],
+   "anchor": [
+    28,
+    14
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    28,
+    14
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "霍莉的薄被／掀开状态",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "rock",
+   "name": "rock",
+   "sprite": "prop_new.rock",
+   "file": "rock.png",
+   "frames": 1,
+   "size": [
+    24,
+    18
+   ],
+   "anchor": [
+    12,
+    18
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    12,
+    18
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "沙漠中的独立岩石",
+   "source": "新画"
+  },
+  {
+   "id": "baby_cradle",
+   "name": "baby_cradle",
+   "sprite": "prop_new.baby_cradle",
+   "file": "baby_cradle.png",
+   "frames": 2,
+   "size": [
+    36,
+    24
+   ],
+   "anchor": [
+    18,
+    24
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    18,
+    24
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "玛尼修男孩的摇篮／摆动状态",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "ice_wall",
+   "name": "ice_wall",
+   "sprite": "prop_new.ice_wall",
+   "file": "ice_wall.png",
+   "frames": 2,
+   "size": [
+    56,
+    52
+   ],
+   "anchor": [
+    28,
+    52
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    28,
+    52
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "荷鲁斯的冰墙／碎裂状态",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "upper_tooth",
+   "name": "upper_tooth",
+   "sprite": "prop_new.upper_tooth",
+   "file": "upper_tooth.png",
+   "frames": 2,
+   "size": [
+    30,
+    42
+   ],
+   "anchor": [
+    15,
+    42
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    15,
+    42
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇上颌巨牙／碎裂",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "lower_tooth",
+   "name": "lower_tooth",
+   "sprite": "prop_new.lower_tooth",
+   "file": "lower_tooth.png",
+   "frames": 2,
+   "size": [
+    30,
+    42
+   ],
+   "anchor": [
+    15,
+    42
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    15,
+    42
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇下颌巨牙／碎裂",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "hide_wardrobe",
+   "name": "hide_wardrobe",
+   "sprite": "prop_new.hide_wardrobe",
+   "file": "hide_wardrobe.png",
+   "frames": 2,
+   "size": [
+    58,
+    86
+   ],
+   "anchor": [
+    29,
+    86
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    29,
+    86
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：衣柜关／开",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "aquarium",
+   "name": "aquarium",
+   "sprite": "prop_new.aquarium",
+   "file": "aquarium.png",
+   "frames": 2,
+   "size": [
+    84,
+    48
+   ],
+   "anchor": [
+    42,
+    48
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    42,
+    48
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：鱼缸盖关／开",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "hide_bed",
+   "name": "hide_bed",
+   "sprite": "prop_new.hide_bed",
+   "file": "hide_bed.png",
+   "frames": 2,
+   "size": [
+    122,
+    47
+   ],
+   "anchor": [
+    61,
+    47
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    61,
+    47
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：床单垂下／掀起",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "hide_curtain",
+   "name": "hide_curtain",
+   "sprite": "prop_new.hide_curtain",
+   "file": "hide_curtain.png",
+   "frames": 2,
+   "size": [
+    80,
+    86
+   ],
+   "anchor": [
+    40,
+    86
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    40,
+    86
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：窗帘闭合／拉开",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "hide_crate",
+   "name": "hide_crate",
+   "sprite": "prop_new.hide_crate",
+   "file": "hide_crate.png",
+   "frames": 2,
+   "size": [
+    40,
+    36
+   ],
+   "anchor": [
+    20,
+    36
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    20,
+    36
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：木箱盖关／开",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "hide_cupboard",
+   "name": "hide_cupboard",
+   "sprite": "prop_new.hide_cupboard",
+   "file": "hide_cupboard.png",
+   "frames": 2,
+   "size": [
+    50,
+    76
+   ],
+   "anchor": [
+    25,
+    76
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    25,
+    76
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "藏点：橱柜关／开",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "cane",
+   "name": "cane",
+   "sprite": "prop_new.cane",
+   "file": "cane.png",
+   "frames": 1,
+   "size": [
+    8,
+    36
+   ],
+   "anchor": [
+    4,
+    36
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    36
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "恩多尔的白色手杖",
+   "source": "新画"
+  },
+  {
+   "id": "tea_cup",
+   "name": "tea_cup",
+   "sprite": "prop_new.tea_cup",
+   "file": "tea_cup.png",
+   "frames": 1,
+   "size": [
+    12,
+    10
+   ],
+   "anchor": [
+    6,
+    10
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    10
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "被盖布划穿的杯子",
+   "source": "新画"
+  },
+  {
+   "id": "cake",
+   "name": "cake",
+   "sprite": "prop_new.cake",
+   "file": "cake.png",
+   "frames": 1,
+   "size": [
+    14,
+    12
+   ],
+   "anchor": [
+    7,
+    12
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    7,
+    12
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "伊奇藏在纸盒里的蛋糕",
+   "source": "新画"
+  },
+  {
+   "id": "cart",
+   "name": "cart",
+   "sprite": "prop_new.cart",
+   "file": "cart.png",
+   "frames": 1,
+   "size": [
+    54,
+    36
+   ],
+   "anchor": [
+    27,
+    36
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    27,
+    36
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "橙子商人的手推车",
+   "source": "新画"
+  },
+  {
+   "id": "hat",
+   "name": "hat",
+   "sprite": "prop_new.hat",
+   "file": "hat.png",
+   "frames": 1,
+   "size": [
+    28,
+    13
+   ],
+   "anchor": [
+    14,
+    13
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    14,
+    13
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "荷尔·贺斯掉落的棕色牛仔帽",
+   "source": "新画"
+  },
+  {
+   "id": "disguise_pressure_gauge",
+   "name": "disguise_pressure_gauge",
+   "sprite": "prop_new.disguise_pressure_gauge",
+   "file": "disguise_pressure_gauge.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：pressure_gauge，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "disguise_valve",
+   "name": "disguise_valve",
+   "sprite": "prop_new.disguise_valve",
+   "file": "disguise_valve.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：valve，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "disguise_wrench",
+   "name": "disguise_wrench",
+   "sprite": "prop_new.disguise_wrench",
+   "file": "disguise_wrench.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：wrench，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "disguise_metal_cup",
+   "name": "disguise_metal_cup",
+   "sprite": "prop_new.disguise_metal_cup",
+   "file": "disguise_metal_cup.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：metal_cup，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "disguise_razor",
+   "name": "disguise_razor",
+   "sprite": "prop_new.disguise_razor",
+   "file": "disguise_razor.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：razor，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "disguise_binoculars",
+   "name": "disguise_binoculars",
+   "sprite": "prop_new.disguise_binoculars",
+   "file": "disguise_binoculars.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：binoculars，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "disguise_pipe_elbow",
+   "name": "disguise_pipe_elbow",
+   "sprite": "prop_new.disguise_pipe_elbow",
+   "file": "disguise_pipe_elbow.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：pipe_elbow，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "disguise_radio",
+   "name": "disguise_radio",
+   "sprite": "prop_new.disguise_radio",
+   "file": "disguise_radio.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：radio，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "disguise_diving_boot",
+   "name": "disguise_diving_boot",
+   "sprite": "prop_new.disguise_diving_boot",
+   "file": "disguise_diving_boot.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：diving_boot，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "disguise_oxygen_tank",
+   "name": "disguise_oxygen_tank",
+   "sprite": "prop_new.disguise_oxygen_tank",
+   "file": "disguise_oxygen_tank.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：oxygen_tank，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "disguise_compass",
+   "name": "disguise_compass",
+   "sprite": "prop_new.disguise_compass",
+   "file": "disguise_compass.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：compass，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  },
+  {
+   "id": "disguise_hatch_handle",
+   "name": "disguise_hatch_handle",
+   "sprite": "prop_new.disguise_hatch_handle",
+   "file": "disguise_hatch_handle.png",
+   "frames": 2,
+   "size": [
+    16,
+    16
+   ],
+   "anchor": [
+    8,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "女教皇伪装：hatch_handle，正常／眨眼",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc",
+   "source": "新画"
+  }
+ ],
+ "references": {
+  "literal_refs": [
+   {
+    "file": "story\\ch01.js",
+    "line": 76,
+    "kind": "角色",
+    "id": "towergray"
+   },
+   {
+    "file": "story\\ch01.js",
+    "line": 77,
+    "kind": "角色",
+    "id": "starplat"
+   },
+   {
+    "file": "story\\ch01.js",
+    "line": 81,
+    "kind": "角色",
+    "id": "jotaro"
+   },
+   {
+    "file": "story\\ch01.js",
+    "line": 101,
+    "kind": "角色",
+    "id": "kakyoin"
+   },
+   {
+    "file": "story\\ch01.js",
+    "line": 101,
+    "kind": "角色",
+    "id": "hiero"
+   },
+   {
+    "file": "story\\ch01.js",
+    "line": 168,
+    "kind": "角色",
+    "id": "polnareff"
+   },
+   {
+    "file": "story\\ch01.js",
+    "line": 174,
+    "kind": "角色",
+    "id": "chariot"
+   },
+   {
+    "file": "story\\ch01.js",
+    "line": 247,
+    "kind": "角色",
+    "id": "avdol"
+   },
+   {
+    "file": "story\\ch01.js",
+    "line": 253,
+    "kind": "角色",
+    "id": "jgeil"
+   },
+   {
+    "file": "story\\ch01.js",
+    "line": 37,
+    "kind": "道具",
+    "id": "blanket"
+   },
+   {
+    "file": "story\\ch01.js",
+    "line": 127,
+    "kind": "道具",
+    "id": "plane_crash"
+   },
+   {
+    "file": "story\\ch01.js",
+    "line": 195,
+    "kind": "道具",
+    "id": "dish"
+   },
+   {
+    "file": "story\\ch01.js",
+    "line": 198,
+    "kind": "道具",
+    "id": "coin"
+   },
+   {
+    "file": "story\\ch02.js",
+    "line": 38,
+    "kind": "道具",
+    "id": "shark"
+   },
+   {
+    "file": "story\\ch03.js",
+    "line": 45,
+    "kind": "角色",
+    "id": "polnareff"
+   },
+   {
+    "file": "story\\ch04.js",
+    "line": 50,
+    "kind": "角色",
+    "id": "avdol"
+   },
+   {
+    "file": "story\\ch04.js",
+    "line": 50,
+    "kind": "角色",
+    "id": "polnareff"
+   },
+   {
+    "file": "story\\ch04.js",
+    "line": 50,
+    "kind": "角色",
+    "id": "polnareff"
+   },
+   {
+    "file": "story\\ch04.js",
+    "line": 52,
+    "kind": "角色",
+    "id": "nena"
+   },
+   {
+    "file": "story\\ch04.js",
+    "line": 29,
+    "kind": "道具",
+    "id": "hat"
+   },
+   {
+    "file": "story\\ch05.js",
+    "line": 59,
+    "kind": "角色",
+    "id": "jotaro"
+   },
+   {
+    "file": "story\\ch05.js",
+    "line": 61,
+    "kind": "角色",
+    "id": "enya"
+   },
+   {
+    "file": "story\\ch05.js",
+    "line": 8,
+    "kind": "道具",
+    "id": "car"
+   },
+   {
+    "file": "story\\ch06.js",
+    "line": 53,
+    "kind": "道具",
+    "id": "rock"
+   },
+   {
+    "file": "story\\ch06.js",
+    "line": 83,
+    "kind": "角色",
+    "id": "death13"
+   },
+   {
+    "file": "story\\ch06.js",
+    "line": 104,
+    "kind": "角色",
+    "id": "death13"
+   },
+   {
+    "file": "story\\ch06.js",
+    "line": 8,
+    "kind": "道具",
+    "id": "camel"
+   },
+   {
+    "file": "story\\ch06.js",
+    "line": 120,
+    "kind": "道具",
+    "id": "baby_cradle"
+   },
+   {
+    "file": "story\\ch07.js",
+    "line": 25,
+    "kind": "角色",
+    "id": "judgement"
+   },
+   {
+    "file": "story\\ch07.js",
+    "line": 34,
+    "kind": "角色",
+    "id": "avdol"
+   },
+   {
+    "file": "story\\ch07.js",
+    "line": 34,
+    "kind": "角色",
+    "id": "magician"
+   },
+   {
+    "file": "story\\ch07.js",
+    "line": 44,
+    "kind": "道具",
+    "id": "lamp"
+   },
+   {
+    "file": "story\\ch07.js",
+    "line": 48,
+    "kind": "角色",
+    "id": "judgement"
+   },
+   {
+    "file": "story\\ch07.js",
+    "line": 84,
+    "kind": "道具",
+    "id": "prosthetic_hand"
+   },
+   {
+    "file": "story\\ch07.js",
+    "line": 128,
+    "kind": "道具",
+    "id": "lamp"
+   },
+   {
+    "file": "story\\ch08.js",
+    "line": 43,
+    "kind": "角色",
+    "id": "iggy"
+   },
+   {
+    "file": "story\\ch08.js",
+    "line": 44,
+    "kind": "道具",
+    "id": "pebble"
+   },
+   {
+    "file": "story\\ch08.js",
+    "line": 73,
+    "kind": "角色",
+    "id": "fool"
+   },
+   {
+    "file": "story\\ch08.js",
+    "line": 93,
+    "kind": "道具",
+    "id": "cane"
+   },
+   {
+    "file": "story\\ch08.js",
+    "line": 131,
+    "kind": "角色",
+    "id": "oingo"
+   },
+   {
+    "file": "story\\ch08.js",
+    "line": 107,
+    "kind": "道具",
+    "id": "manga"
+   },
+   {
+    "file": "story\\ch08.js",
+    "line": 107,
+    "kind": "道具",
+    "id": "orange"
+   },
+   {
+    "file": "story\\ch08.js",
+    "line": 152,
+    "kind": "道具",
+    "id": "gum"
+   },
+   {
+    "file": "story\\ch08.js",
+    "line": 152,
+    "kind": "道具",
+    "id": "heli"
+   },
+   {
+    "file": "story\\ch09.js",
+    "line": 17,
+    "kind": "角色",
+    "id": "chaka"
+   },
+   {
+    "file": "story\\ch09.js",
+    "line": 32,
+    "kind": "角色",
+    "id": "khan"
+   },
+   {
+    "file": "story\\ch09.js",
+    "line": 40,
+    "kind": "角色",
+    "id": "polnareff_possessed"
+   },
+   {
+    "file": "story\\ch09.js",
+    "line": 69,
+    "kind": "道具",
+    "id": "metal_junk"
+   },
+   {
+    "file": "story\\ch09.js",
+    "line": 74,
+    "kind": "道具",
+    "id": "socket"
+   },
+   {
+    "file": "story\\ch09.js",
+    "line": 90,
+    "kind": "角色",
+    "id": "mariah"
+   },
+   {
+    "file": "story\\ch09.js",
+    "line": 135,
+    "kind": "角色",
+    "id": "alessi"
+   },
+   {
+    "file": "story\\ch09.js",
+    "line": 158,
+    "kind": "角色",
+    "id": "alessi"
+   },
+   {
+    "file": "story\\ch09.js",
+    "line": 12,
+    "kind": "道具",
+    "id": "anubis_sword"
+   },
+   {
+    "file": "story\\ch09.js",
+    "line": 176,
+    "kind": "道具",
+    "id": "socket"
+   },
+   {
+    "file": "story\\ch10.js",
+    "line": 58,
+    "kind": "角色",
+    "id": "holhorse"
+   },
+   {
+    "file": "story\\ch10.js",
+    "line": 93,
+    "kind": "角色",
+    "id": "petshop"
+   },
+   {
+    "file": "story\\ch10.js",
+    "line": 114,
+    "kind": "道具",
+    "id": "ice_wall"
+   },
+   {
+    "file": "story\\ch10.js",
+    "line": 161,
+    "kind": "角色",
+    "id": "dio"
+   },
+   {
+    "file": "story\\ch10.js",
+    "line": 161,
+    "kind": "角色",
+    "id": "holhorse"
+   },
+   {
+    "file": "story\\ch10.js",
+    "line": 172,
+    "kind": "角色",
+    "id": "iggy"
+   },
+   {
+    "file": "story\\ch10.js",
+    "line": 65,
+    "kind": "道具",
+    "id": "mirror_stand"
+   },
+   {
+    "file": "story\\ch10.js",
+    "line": 65,
+    "kind": "道具",
+    "id": "oil_drum"
+   },
+   {
+    "file": "story\\ch11.js",
+    "line": 95,
+    "kind": "角色",
+    "id": "vanilla"
+   },
+   {
+    "file": "story\\ch11.js",
+    "line": 133,
+    "kind": "角色",
+    "id": "vanilla"
+   },
+   {
+    "file": "story\\ch11.js",
+    "line": 168,
+    "kind": "角色",
+    "id": "vanilla"
+   },
+   {
+    "file": "story\\ch11.js",
+    "line": 177,
+    "kind": "角色",
+    "id": "telence"
+   },
+   {
+    "file": "story\\ch11.js",
+    "line": 185,
+    "kind": "角色",
+    "id": "starplat"
+   },
+   {
+    "file": "story\\ch11.js",
+    "line": 185,
+    "kind": "角色",
+    "id": "telence"
+   },
+   {
+    "file": "story\\ch11.js",
+    "line": 203,
+    "kind": "角色",
+    "id": "nukesaku"
+   },
+   {
+    "file": "story\\ch11.js",
+    "line": 205,
+    "kind": "道具",
+    "id": "coffin"
+   },
+   {
+    "file": "story\\final.js",
+    "line": 86,
+    "kind": "角色",
+    "id": "kakyoin"
+   },
+   {
+    "file": "story\\final.js",
+    "line": 104,
+    "kind": "角色",
+    "id": "joseph"
+   },
+   {
+    "file": "story\\final.js",
+    "line": 163,
+    "kind": "角色",
+    "id": "chariot"
+   },
+   {
+    "file": "story\\final.js",
+    "line": 163,
+    "kind": "角色",
+    "id": "dio"
+   },
+   {
+    "file": "story\\final.js",
+    "line": 166,
+    "kind": "角色",
+    "id": "polnareff"
+   },
+   {
+    "file": "story\\final.js",
+    "line": 203,
+    "kind": "角色",
+    "id": "dio"
+   },
+   {
+    "file": "story\\final.js",
+    "line": 258,
+    "kind": "角色",
+    "id": "dio"
+   },
+   {
+    "file": "story\\final.js",
+    "line": 261,
+    "kind": "角色",
+    "id": "theworld"
+   },
+   {
+    "file": "story\\final.js",
+    "line": 261,
+    "kind": "角色",
+    "id": "starplat"
+   },
+   {
+    "file": "story\\final.js",
+    "line": 265,
+    "kind": "角色",
+    "id": "dio"
+   },
+   {
+    "file": "story\\final.js",
+    "line": 274,
+    "kind": "角色",
+    "id": "joseph"
+   },
+   {
+    "file": "story\\final.js",
+    "line": 274,
+    "kind": "角色",
+    "id": "starplat"
+   },
+   {
+    "file": "story\\final.js",
+    "line": 279,
+    "kind": "角色",
+    "id": "holly"
+   },
+   {
+    "file": "story\\final.js",
+    "line": 161,
+    "kind": "道具",
+    "id": "road_sign"
+   },
+   {
+    "file": "story\\final.js",
+    "line": 250,
+    "kind": "道具",
+    "id": "truck"
+   },
+   {
+    "file": "story\\final.js",
+    "line": 250,
+    "kind": "道具",
+    "id": "senator_car"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 202,
+    "kind": "角色",
+    "id": "joseph"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 203,
+    "kind": "角色",
+    "id": "starplat"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 348,
+    "kind": "角色",
+    "id": "avdol"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 412,
+    "kind": "角色",
+    "id": "jotaro"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 413,
+    "kind": "角色",
+    "id": "starplat"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 545,
+    "kind": "道具",
+    "id": "photo"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 564,
+    "kind": "角色",
+    "id": "jotaro"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 871,
+    "kind": "角色",
+    "id": "kakyoin"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 905,
+    "kind": "角色",
+    "id": "starplat"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 906,
+    "kind": "角色",
+    "id": "kakyoin"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 950,
+    "kind": "角色",
+    "id": "kakyoin"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 1007,
+    "kind": "道具",
+    "id": "fleshbud"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 1014,
+    "kind": "角色",
+    "id": "joseph"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 1023,
+    "kind": "道具",
+    "id": "fleshbud"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 1156,
+    "kind": "道具",
+    "id": "photo"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 1187,
+    "kind": "角色",
+    "id": "holly"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 1255,
+    "kind": "角色",
+    "id": "starplat"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 55,
+    "kind": "道具",
+    "id": "magazine"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 213,
+    "kind": "道具",
+    "id": "pinky"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 666,
+    "kind": "道具",
+    "id": "tissue"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 736,
+    "kind": "道具",
+    "id": "pen"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 786,
+    "kind": "道具",
+    "id": "fleshbud"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 1205,
+    "kind": "道具",
+    "id": "photo"
+   },
+   {
+    "file": "story\\prologue.js",
+    "line": 1337,
+    "kind": "道具",
+    "id": "camera"
+   }
+  ],
+  "missing": [
+   {
+    "file": "story\\ch07.js",
+    "line": 34,
+    "kind": "角色",
+    "id": "magician"
+   },
+   {
+    "file": "story\\ch07.js",
+    "line": 44,
+    "kind": "道具",
+    "id": "lamp"
+   },
+   {
+    "file": "story\\ch07.js",
+    "line": 84,
+    "kind": "道具",
+    "id": "prosthetic_hand"
+   },
+   {
+    "file": "story\\ch07.js",
+    "line": 128,
+    "kind": "道具",
+    "id": "lamp"
+   }
+  ],
+  "scope": "仅角色/道具的静态 cid 字面量和 prop 调用字面量；scene 名称、动态拼接、变量、动作名由主代理联调检查。"
+ }
+}

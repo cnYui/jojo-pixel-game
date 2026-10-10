@@ -1,0 +1,296 @@
+{
+  "seconds": 672.42,
+  "state": {
+    "scene": "world",
+    "stage": "hk_street_ch1b",
+    "x0": 0,
+    "x1": 960,
+    "free": false,
+    "busy": true,
+    "combat": false,
+    "cine": false,
+    "leader": "kakyoin",
+    "px": 882,
+    "py": 172,
+    "pz": 0,
+    "pfacing": 1,
+    "pstate": "idle",
+    "hp": 36,
+    "maxHp": 100,
+    "energy": 98,
+    "energyMax": 100,
+    "iframe": 0,
+    "dodgeCd": 0,
+    "standMode": "hidden",
+    "rootT": 0,
+    "party": [
+      [
+        "jotaro",
+        100,
+        130,
+        "idle",
+        20,
+        "npc",
+        true
+      ],
+      [
+        "joseph",
+        110,
+        110,
+        "idle",
+        0,
+        "npc",
+        true
+      ],
+      [
+        "avdol",
+        6,
+        120,
+        "idle",
+        8,
+        "npc",
+        true
+      ],
+      [
+        "kakyoin",
+        36,
+        100,
+        "idle",
+        98,
+        "player",
+        true
+      ],
+      [
+        "polnareff",
+        110,
+        110,
+        "idle",
+        0,
+        "npc",
+        true
+      ]
+    ],
+    "leaderCanInvestigate": false,
+    "fightId": null,
+    "fightSwap": false,
+    "fightT": 154.3,
+    "fightLosable": null,
+    "fightCoverage": null,
+    "assist": false,
+    "storyU": false,
+    "fightHint": null,
+    "lateGame": null,
+    "midGame": null,
+    "steps": null,
+    "enemies": [],
+    "warns": [],
+    "shots": [],
+    "hazards": [],
+    "objects": [],
+    "boss": null,
+    "combo": 0,
+    "dlg": null,
+    "dwho": null,
+    "ddone": false,
+    "dpage": -1,
+    "dlen": 0,
+    "narr": null,
+    "nauto": 0,
+    "choice": null,
+    "notice": null,
+    "menu": null,
+    "menuItems": null,
+    "chapter": false,
+    "qte": null,
+    "hint": null,
+    "insert": false,
+    "video": false,
+    "timer": null,
+    "gauge": null,
+    "near": null,
+    "npcs": [
+      [
+        "波鲁纳雷夫",
+        906,
+        166
+      ],
+      [
+        "路人",
+        150,
+        160
+      ],
+      [
+        "卖粥阿婆",
+        300,
+        158
+      ],
+      [
+        "大排档老板",
+        590,
+        158
+      ],
+      [
+        "算命先生",
+        760,
+        158
+      ],
+      [
+        "妇人",
+        860,
+        158
+      ]
+    ],
+    "hotspots": [
+      [
+        "霓虹招牌",
+        400,
+        60,
+        []
+      ],
+      [
+        "橱窗倒影",
+        230,
+        120,
+        [
+          "detail"
+        ]
+      ],
+      [
+        "菜单板",
+        520,
+        120,
+        []
+      ],
+      [
+        "报摊电视",
+        660,
+        150,
+        [
+          "nensha"
+        ]
+      ],
+      [
+        "招牌上的风筝",
+        860,
+        70,
+        [
+          "reach"
+        ]
+      ],
+      [
+        "往码头的路口",
+        940,
+        158,
+        []
+      ]
+    ],
+    "ts": null,
+    "flags": {
+      "planeTalk": 3,
+      "blanket": true,
+      "sensed": true,
+      "polSeen": true,
+      "kite": true,
+      "dinner": true,
+      "dinnerDone": true,
+      "garden": true,
+      "duel": true,
+      "ch1Exit": true
+    },
+    "fade": 0,
+    "okLocked": false,
+    "ctitle": "第1章　香港",
+    "dbgShot": null,
+    "counts": {
+      "hit": 145,
+      "dodge": 175,
+      "whiff": 4,
+      "hurt": 66,
+      "parry": 1,
+      "evade": 233,
+      "guard": 13,
+      "special": 3,
+      "graze": 1,
+      "post_unknown": 1,
+      "rushStart": 1,
+      "rush": 1,
+      "rushHit": 11,
+      "rushEnd": 1,
+      "koBlocked": 3,
+      "qte_start": 1,
+      "qte": 1,
+      "party_join": 1,
+      "swap": 4,
+      "investigate": 3,
+      "stand_react": 2
+    },
+    "fallbacks": [
+      "towergray:cmd→needle"
+    ],
+    "missingImg": [],
+    "missingSfx": [],
+    "missingGlyph": [],
+    "missingHead": [],
+    "fps": {
+      "avg": 60,
+      "min": 59.5
+    },
+    "evTotals": {
+      "look_missing": 0,
+      "script_error": 0,
+      "video_missing": 0,
+      "api_missing": []
+    },
+    "lookStats": {
+      "total": 12,
+      "hits": 11,
+      "by": {
+        "kakyoin": 4,
+        "avdol": 1,
+        "jotaro": 4,
+        "joseph": 3
+      }
+    },
+    "walkY": [
+      150,
+      176
+    ],
+    "playerAtk": null,
+    "playerAtkT": 0.4333333333333333,
+    "playerRush": true,
+    "playerCanCancel": true
+  },
+  "errors": [],
+  "notes": [],
+  "coverage": {
+    "b1b_towergray": {
+      "parry": 2,
+      "hit": 99,
+      "dodge": 4,
+      "evade": 112,
+      "hurt": 8,
+      "rushStart": 3,
+      "rush": 3,
+      "rushHit": 36,
+      "rushEnd": 2,
+      "special": 1
+    },
+    "b02_chariot": {
+      "hit": 145,
+      "dodge": 175,
+      "whiff": 4,
+      "hurt": 66,
+      "parry": 1,
+      "evade": 233,
+      "guard": 13,
+      "special": 3,
+      "graze": 1,
+      "post_unknown": 1,
+      "rushStart": 1,
+      "rush": 1,
+      "rushHit": 11,
+      "rushEnd": 1,
+      "koBlocked": 3
+    }
+  }
+}

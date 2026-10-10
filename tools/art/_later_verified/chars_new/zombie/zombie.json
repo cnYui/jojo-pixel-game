@@ -1,0 +1,34 @@
+{
+  "id": "zombie",
+  "name": "雾之僵尸",
+  "work": "JoJo",
+  "image": "zombie.png",
+  "cell": [58, 52],
+  "pivot": [21, 50],
+  "facing": "right",
+  "animations": {
+    "walk": {
+      "row": 0,
+      "frames": 2,
+      "fps": 4,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "Justice fog zombie shambling, arms out, hole in chest"
+    },
+    "attack": {
+      "row": 1,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "后续补帧：zombie.attack"
+    }
+  },
+  "aliases": {},
+  "expressions": [],
+  "variants": {},
+  "source": {
+    "project": "jojo",
+    "call": "game.art_later_existing / game.orig（import assets; assets.load_all(); from engine import sprite; sprite.get('zombie.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'zombie.<动作>', x, y, frame=i, flip=False)"
+  },
+  "notes": "雾之僵尸（Justice's fog zombie），敌人·替身·怪物。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=walk；脚点(自定义点)=attack。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
+}

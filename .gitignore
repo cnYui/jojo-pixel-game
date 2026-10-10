@@ -1,0 +1,9 @@
+# 游戏目录自己的本地仓库（2026-10-10 建，只在本机，不连远程）。
+# 根仓库 D:\大疆 用 /游戏素材/ 整个忽略了这里，所以单独建仓。
+# 下面这些都是测试 / 预览产出，能重新生成，不进仓库：
+tools/_playtest/
+tools/dev/*/_out/
+tools/bg_new/_preview/
+tools/_build.lock
+__pycache__/
+*.pyc

@@ -1,0 +1,57 @@
+{
+  "id": "hiero",
+  "name": "绿色法皇",
+  "work": "JoJo",
+  "image": "hiero.png",
+  "cell": [81, 60],
+  "pivot": [29, 56],
+  "facing": "right",
+  "animations": {
+    "idle": {
+      "row": 0,
+      "frames": 2,
+      "fps": 5,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "Hierophant Green floating, ribbon tendrils wave, 2f (40x56)"
+    },
+    "cast": {
+      "row": 1,
+      "frames": 2,
+      "fps": 8,
+      "kind": "oneshot",
+      "seamless": false,
+      "desc": "Emerald Splash: 0 hands together glowing, 1 emeralds fly (56x56, body x=20)"
+    },
+    "block": {
+      "row": 2,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "guard: both hands spread open in front (the vertical threads are drawn at runtime)"
+    },
+    "hurt": {
+      "row": 3,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "recoil: leaning back, arms flung behind"
+    },
+    "whip": {
+      "row": 4,
+      "frames": 2,
+      "fps": 12,
+      "kind": "oneshot",
+      "seamless": false,
+      "desc": "tentacle whip: 0 near arm flung out, tendrils lash forward; 1 tendrils curl back (body x=20)"
+    }
+  },
+  "aliases": {},
+  "expressions": [],
+  "variants": {},
+  "source": {
+    "project": "jojo",
+    "call": "game.art_stands / game.orig（import assets; assets.load_all(); from engine import sprite; sprite.get('hiero.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'hiero.<动作>', x, y, frame=i, flip=False)"
+  },
+  "notes": "绿色法皇（Hierophant Green），主角团替身·替身。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(自定义点)=idle/cast/block/hurt/whip。替身在场景里通常以 alpha≈0.9 绘制并叠加光环（引擎的 sp.aura），图集里是不透明原图、不含光环。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
+}

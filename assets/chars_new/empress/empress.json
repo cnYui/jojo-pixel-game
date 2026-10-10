@@ -1,0 +1,116 @@
+{
+  "id": "empress",
+  "name": "女帝",
+  "work": "JoJo",
+  "image": "empress.png",
+  "cell": [32, 40],
+  "pivot": [16, 24],
+  "facing": "right",
+  "animations": {
+    "idle": {
+      "row": 0,
+      "frames": 2,
+      "fps": 3,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "女帝：idle"
+    },
+    "bite": {
+      "row": 1,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "女帝：bite"
+    },
+    "hurt": {
+      "row": 2,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "女帝：hurt"
+    },
+    "down": {
+      "row": 3,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "女帝：down"
+    },
+    "l0_bite": {
+      "row": 4,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "女帝：l0_bite"
+    },
+    "l0_idle": {
+      "row": 5,
+      "frames": 2,
+      "fps": 3,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "女帝：l0_idle"
+    },
+    "l1_bite": {
+      "row": 6,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "女帝：l1_bite"
+    },
+    "l1_idle": {
+      "row": 7,
+      "frames": 2,
+      "fps": 3,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "女帝：l1_idle"
+    },
+    "l2_bite": {
+      "row": 8,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "女帝：l2_bite"
+    },
+    "l2_idle": {
+      "row": 9,
+      "frames": 2,
+      "fps": 3,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "女帝：l2_idle"
+    },
+    "portrait": {
+      "row": 10,
+      "frames": 2,
+      "fps": 8,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "剧情近景对话头像：静态 / 说话"
+    }
+  },
+  "aliases": {
+    "walk": "idle",
+    "l3_bite": "bite",
+    "l3_idle": "idle",
+    "talk": "idle"
+  },
+  "expressions": [
+    {
+      "id": "portrait",
+      "emotion": "normal",
+      "frames": 2,
+      "fps": 8,
+      "size": [32, 32],
+      "files": ["头像/portrait_0.png", "头像/portrait_1.png"],
+      "desc": "剧情近景对话头像：静态 / 说话"
+    }
+  ],
+  "variants": {},
+  "source": {
+    "project": "jojo",
+    "call": "game.art_dialogue_heads / game.art_later_creatures（import assets; assets.load_all(); from engine import sprite; sprite.get('empress.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'empress.<动作>', x, y, frame=i, flip=False)"
+  },
+  "notes": "女帝（empress），非人形·替身。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle/bite/hurt/down/l0_bite/l0_idle/l1_bite/l1_idle/l2_bite/l2_idle；中心=portrait。替身在场景里通常以 alpha≈0.9 绘制并叠加光环（引擎的 sp.aura），图集里是不透明原图、不含光环。portrait* 动作是说话头像（32×32 半身）：图集里放在最后几行（按底部中点对齐，只是为了同格对齐，不代表脚点），同时逐帧导出到“头像”文件夹，见 expressions；多数 frame0=闭嘴/静态、frame1=说话/加强（具体见各自 desc），原引擎对话框打字时以 8fps 来回切换。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。aliases：帧完全相同的动作只存一份。"
+}

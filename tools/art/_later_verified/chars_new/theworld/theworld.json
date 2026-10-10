@@ -1,0 +1,99 @@
+{
+  "id": "theworld",
+  "name": "世界",
+  "work": "JoJo",
+  "image": "theworld.png",
+  "cell": [76, 62],
+  "pivot": [26, 58],
+  "facing": "right",
+  "animations": {
+    "idle": {
+      "row": 0,
+      "frames": 4,
+      "fps": 6,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "The World floating, fists low, 4f bob (40x56)"
+    },
+    "punch": {
+      "row": 1,
+      "frames": 3,
+      "fps": 12,
+      "kind": "oneshot",
+      "seamless": false,
+      "desc": "0 wind-up, 1 jab, 2 cross; 64x56, body at x=20"
+    },
+    "rush": {
+      "row": 2,
+      "frames": 2,
+      "fps": 16,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "MUDA rush: afterimage fists blur, 2f; 64x56"
+    },
+    "pose": {
+      "row": 3,
+      "frames": 2,
+      "fps": 4,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "ZA WARUDO arms-spread pose (56x56, body centre x=28)"
+    },
+    "hurt": {
+      "row": 4,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "后续补帧：theworld.hurt"
+    },
+    "crack": {
+      "row": 5,
+      "frames": 2,
+      "fps": 6,
+      "kind": "oneshot",
+      "seamless": false,
+      "desc": "The World cracking apart (0 first cracks, 1 shattering)"
+    },
+    "fist": {
+      "row": 6,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "single fist 10x8 facing right (for fx rush)"
+    },
+    "kick": {
+      "row": 7,
+      "frames": 2,
+      "fps": 8,
+      "kind": "oneshot",
+      "seamless": false,
+      "desc": "后续补帧：theworld.kick"
+    },
+    "portrait": {
+      "row": 8,
+      "frames": 2,
+      "fps": 8,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "32x32 bust: 0 stern, 1 shouting MUDA"
+    }
+  },
+  "aliases": {},
+  "expressions": [
+    {
+      "id": "portrait",
+      "emotion": "normal",
+      "frames": 2,
+      "fps": 8,
+      "size": [32, 32],
+      "files": ["头像/portrait_0.png", "头像/portrait_1.png"],
+      "desc": "32x32 bust: 0 stern, 1 shouting MUDA"
+    }
+  ],
+  "variants": {},
+  "source": {
+    "project": "jojo",
+    "call": "game.art_later_existing / game.orig（import assets; assets.load_all(); from engine import sprite; sprite.get('theworld.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'theworld.<动作>', x, y, frame=i, flip=False)"
+  },
+  "notes": "世界（The World），DIO 阵营·替身。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(自定义点)=idle/punch/rush/pose/hurt/crack/kick；中心=fist；脚点(底部中点)=portrait。fist：单个拳头（10×8，朝右），场景里用来堆乱拳特效；锚点=拳头中心，所以在图集里落在 pivot（脚点）处。替身在场景里通常以 alpha≈0.9 绘制并叠加光环（引擎的 sp.aura），图集里是不透明原图、不含光环。portrait* 动作是说话头像（32×32 半身）：图集里放在最后几行（按底部中点对齐，只是为了同格对齐，不代表脚点），同时逐帧导出到“头像”文件夹，见 expressions；多数 frame0=闭嘴/静态、frame1=说话/加强（具体见各自 desc），原引擎对话框打字时以 8fps 来回切换。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
+}

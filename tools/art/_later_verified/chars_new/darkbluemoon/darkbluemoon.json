@@ -1,0 +1,42 @@
+{
+  "id": "darkbluemoon",
+  "name": "暗蓝之月",
+  "work": "JoJo",
+  "image": "darkbluemoon.png",
+  "cell": [74, 30],
+  "pivot": [29, 15],
+  "facing": "right",
+  "animations": {
+    "swim": {
+      "row": 0,
+      "frames": 2,
+      "fps": 6,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "Dark Blue Moon: scaly blue fish-man swimming right, fins + webbed claw; f1 leg kick (48x24, anchor centre)"
+    },
+    "hurt": {
+      "row": 1,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "后续补帧：darkbluemoon.hurt"
+    },
+    "attack": {
+      "row": 2,
+      "frames": 2,
+      "fps": 8,
+      "kind": "oneshot",
+      "seamless": false,
+      "desc": "后续补帧：darkbluemoon.attack"
+    }
+  },
+  "aliases": {},
+  "expressions": [],
+  "variants": {},
+  "source": {
+    "project": "jojo",
+    "call": "game.art_later_existing / game.orig（import assets; assets.load_all(); from engine import sprite; sprite.get('darkbluemoon.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'darkbluemoon.<动作>', x, y, frame=i, flip=False)"
+  },
+  "notes": "暗蓝之月（Dark Blue Moon），敌人·替身·替身。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：中心=swim；中心(自定义点)=hurt/attack。swim：朝右游泳；锚点=身体中心。替身在场景里通常以 alpha≈0.9 绘制并叠加光环（引擎的 sp.aura），图集里是不透明原图、不含光环。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
+}

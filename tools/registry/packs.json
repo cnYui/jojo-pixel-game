@@ -1,0 +1,263 @@
+{
+  "title": {
+    "bg": [
+      "title_pyramids"
+    ],
+    "music": [
+      "title_song"
+    ]
+  },
+  "common": {
+    "bg": [
+      "world_map",
+      "sky_day",
+      "sea_day"
+    ],
+    "music": []
+  },
+  "prologue": {
+    "bg": [
+      "jail_cell",
+      "kujo_house_day",
+      "kujo_house_night",
+      "kujo_house_morning",
+      "kujo_bedroom_dusk",
+      "school_gate",
+      "school_infirmary",
+      "school_stairs",
+      "dusk_gate",
+      "tatami_top"
+    ],
+    "music": [
+      "daily",
+      "battle",
+      "ominous",
+      "tension",
+      "sad",
+      "travel"
+    ]
+  },
+  "ch1": {
+    "bg": [
+      "plane_cabin_side",
+      "plane_cabin",
+      "cockpit",
+      "hongkong_night",
+      "hk_garden_night"
+    ],
+    "music": [
+      "travel",
+      "tension",
+      "battle",
+      "daily",
+      "sad"
+    ]
+  },
+  "ch2": {
+    "bg": [
+      "yacht_deck",
+      "sea_day",
+      "underwater",
+      "freighter_deck",
+      "freighter_corridor"
+    ],
+    "music": [
+      "daily",
+      "battle",
+      "ominous",
+      "tension",
+      "sad",
+      "travel",
+      "boss",
+      "ending"
+    ]
+  },
+  "ch3": {
+    "bg": [
+      "singapore_street",
+      "singapore_hotel",
+      "cable_car",
+      "underwater",
+      "train_interior"
+    ],
+    "music": [
+      "daily",
+      "battle",
+      "ominous",
+      "tension",
+      "sad",
+      "travel",
+      "boss",
+      "ending"
+    ]
+  },
+  "ch4": {
+    "bg": [
+      "calcutta_street",
+      "india_alley",
+      "ganges_ghat"
+    ],
+    "music": [
+      "daily",
+      "battle",
+      "ominous",
+      "tension",
+      "sad",
+      "travel",
+      "boss",
+      "ending"
+    ]
+  },
+  "ch5": {
+    "bg": [
+      "desert_highway",
+      "fog_town",
+      "enya_inn",
+      "calcutta_street",
+      "brain_inside"
+    ],
+    "music": [
+      "daily",
+      "battle",
+      "ominous",
+      "tension",
+      "sad",
+      "travel",
+      "boss",
+      "ending"
+    ]
+  },
+  "ch6": {
+    "bg": [
+      "desert_noon",
+      "yaprin_village",
+      "cessna_cabin",
+      "dream_carnival",
+      "desert_night"
+    ],
+    "music": [
+      "daily",
+      "battle",
+      "ominous",
+      "tension",
+      "sad",
+      "travel",
+      "boss",
+      "ending"
+    ]
+  },
+  "ch7": {
+    "bg": [
+      "redsea_island",
+      "submarine",
+      "seabed_mouth",
+      "egypt_coast"
+    ],
+    "music": [
+      "daily",
+      "battle",
+      "ominous",
+      "tension",
+      "sad",
+      "travel",
+      "boss",
+      "ending"
+    ]
+  },
+  "ch8": {
+    "bg": [
+      "egypt_coast",
+      "desert_day",
+      "aswan_town",
+      "desert_night"
+    ],
+    "music": [
+      "daily",
+      "battle",
+      "ominous",
+      "tension",
+      "sad",
+      "travel",
+      "boss",
+      "ending"
+    ]
+  },
+  "ch9": {
+    "bg": [
+      "egypt_temple",
+      "nile_bank",
+      "luxor_town",
+      "egypt_rail",
+      "luxor_house"
+    ],
+    "music": [
+      "daily",
+      "battle",
+      "ominous",
+      "tension",
+      "sad",
+      "travel",
+      "boss",
+      "ending"
+    ]
+  },
+  "ch10": {
+    "bg": [
+      "cafe_interior",
+      "cairo_day",
+      "cairo_sewer",
+      "mansion_hall"
+    ],
+    "music": [
+      "daily",
+      "battle",
+      "ominous",
+      "tension",
+      "sad",
+      "travel",
+      "boss",
+      "ending"
+    ]
+  },
+  "ch11": {
+    "bg": [
+      "mansion_exterior",
+      "mansion_corridor",
+      "game_room",
+      "illusion_corridor",
+      "mansion_hall",
+      "mansion_tower",
+      "redsea_island"
+    ],
+    "music": [
+      "daily",
+      "battle",
+      "ominous",
+      "tension",
+      "sad",
+      "travel",
+      "boss",
+      "ending"
+    ]
+  },
+  "final": {
+    "bg": [
+      "mansion_stairs",
+      "cairo_street_night",
+      "cairo_rooftops",
+      "cairo_street_dawn",
+      "kujo_bedroom_morning",
+      "airport"
+    ],
+    "music": [
+      "daily",
+      "battle",
+      "ominous",
+      "tension",
+      "sad",
+      "travel",
+      "boss",
+      "ending"
+    ]
+  }
+}

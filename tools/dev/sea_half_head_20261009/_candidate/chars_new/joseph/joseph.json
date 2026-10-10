@@ -1,0 +1,145 @@
+{
+  "id": "joseph",
+  "name": "乔瑟夫",
+  "work": "JoJo",
+  "image": "joseph.png",
+  "cell": [82, 57],
+  "pivot": [30, 54],
+  "facing": "right",
+  "animations": {
+    "idle": {
+      "row": 0,
+      "frames": 2,
+      "fps": 2,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "standing, arms at sides (brown glove = left hand); f1 breath"
+    },
+    "walk": {
+      "row": 1,
+      "frames": 4,
+      "fps": 8,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "walk cycle, arms swinging (contact, pass, contact, pass)"
+    },
+    "run": {
+      "row": 2,
+      "frames": 4,
+      "fps": 10,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "run cycle, leaning forward, holding his hat on with the gloved hand"
+    },
+    "float": {
+      "row": 3,
+      "frames": 2,
+      "fps": 3,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "后续补帧：joseph.float"
+    },
+    "point": {
+      "row": 4,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "smug wink, pointing: \"your next line is...\""
+    },
+    "camera": {
+      "row": 5,
+      "frames": 2,
+      "fps": 4,
+      "kind": "oneshot",
+      "seamless": false,
+      "desc": "f0 camera raised high in gloved hand, other hand cocked; f1 Hermit Purple vines burst along the arm, karate chop smashes the camera"
+    },
+    "shock": {
+      "row": 6,
+      "frames": 2,
+      "fps": 8,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "\"OH MY GOD!\": hands on head, mouth wide; f1 hat pops up, jolt"
+    },
+    "hurt": {
+      "row": 7,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "hit recoil, leaning back, hat knocked up"
+    },
+    "lie": {
+      "row": 8,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "lying on his back (60x20), head right, eyes closed, hat fallen beside; anchor = ground"
+    },
+    "dodge": {
+      "row": 9,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "后续补帧：joseph.dodge"
+    },
+    "guard": {
+      "row": 10,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "后续补帧：joseph.guard"
+    },
+    "whip": {
+      "row": 11,
+      "frames": 2,
+      "fps": 8,
+      "kind": "oneshot",
+      "seamless": false,
+      "desc": "后续补帧：joseph.whip"
+    },
+    "portrait": {
+      "row": 12,
+      "frames": 2,
+      "fps": 8,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "bust: wide-brim hat, grey beard; f0 closed, f1 talking"
+    },
+    "portrait_shock": {
+      "row": 13,
+      "frames": 2,
+      "fps": 8,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "\"OH MY GOD!\": white eyes, huge open mouth, sweat; f1 mouth wider"
+    }
+  },
+  "aliases": {},
+  "expressions": [
+    {
+      "id": "portrait",
+      "emotion": "normal",
+      "frames": 2,
+      "fps": 8,
+      "size": [32, 32],
+      "files": ["头像/portrait_0.png", "头像/portrait_1.png"],
+      "desc": "bust: wide-brim hat, grey beard; f0 closed, f1 talking"
+    },
+    {
+      "id": "portrait_shock",
+      "emotion": "shock",
+      "frames": 2,
+      "fps": 8,
+      "size": [32, 32],
+      "files": ["头像/portrait_shock_0.png", "头像/portrait_shock_1.png"],
+      "desc": "\"OH MY GOD!\": white eyes, huge open mouth, sweat; f1 mouth wider"
+    }
+  ],
+  "variants": {},
+  "source": {
+    "project": "jojo",
+    "call": "game.sea_half_head（import assets; assets.load_all(); from engine import sprite; sprite.get('joseph.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'joseph.<动作>', x, y, frame=i, flip=False)"
+  },
+  "notes": "乔瑟夫（Joseph Joestar），主角团·人物。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle/walk/run/point/camera/shock/hurt/lie/portrait/portrait_shock；脚点(自定义点)=float/dodge/guard/whip。idle：棕色手套 = 左手（义肢）。lie：仰卧，头朝右（与 avdol/kakyoin 的 down 方向相反），帽子掉在身旁；锚点=地面。portrait* 动作是说话头像（32×32 半身）：图集里放在最后几行（按底部中点对齐，只是为了同格对齐，不代表脚点），同时逐帧导出到“头像”文件夹，见 expressions；多数 frame0=闭嘴/静态、frame1=说话/加强（具体见各自 desc），原引擎对话框打字时以 8fps 来回切换。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
+}

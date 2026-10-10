@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><title>像素特效联系表与性能验收</title>
+<style>body{margin:0;background:#181620;color:#f0e8c8;font:14px sans-serif}canvas{display:block;margin:0 0 12px;image-rendering:pixelated}</style>
+<script src="_out/stub_data.js"></script><script src="stub_core.js"></script>
+<script src="../../../engine/px.js"></script><script src="../../../engine/fx.js"></script>
+<script src="_out/cases.js"></script>
+<script>
+'use strict';
+window.P2_RESULT={ready:false,errors:[],timing:[]};
+(async()=>{
+  await G.res.preloadAll();
+  const cases=window.P2_CASES,T0=window.P2_T0,CW=320,CH=180,GAP=4,LABEL=150,ROWS=10;
+  const scratch=G.mkCanvas(CW,CH,true),P=G.px.buffer(CW,CH),data=new ImageData(new Uint8ClampedArray(P.u32.buffer),CW,CH);
+  const sub=(v,t,t1,col)=>typeof v==='string'&&v.startsWith('$')?({'$t':t,'$t0':T0,'$t1':t1,'$a':col.a,'$i':col.i}[v]):
+    Array.isArray(v)?v.map(x=>sub(x,t,t1,col)):v&&typeof v==='object'?Object.fromEntries(Object.entries(v).map(([k,x])=>[k,sub(x,t,t1,col)])):v;
+  function prepared(c,col){
+    const t=T0+(col.t??.1),t1=T0+(c.t1??0),main=c.calls.find(call=>call.fn!=='sprite')||c.calls[0];
+    return c.calls.map(call=>({fn:call.fn,args:[P,...sub(call.pos,t,t1,col),sub({...call.kw,...(call===main?col.kw:{})},t,t1,col)]}));
+  }
+  function draw(c,calls){
+    const bg=G.pix('test/bg_'+c.bg);P.u32.set(bg.u32);
+    for(const call of calls){if(typeof G.FX[call.fn]!=='function')throw Error('特效不存在：'+call.fn);G.FX[call.fn](...call.args);}
+  }
+  for(let si=0;si<Math.ceil(cases.length/ROWS);si++){
+    const rows=cases.slice(si*ROWS,(si+1)*ROWS),sheet=G.mkCanvas(LABEL+4*(CW+GAP),rows.length*(CH+GAP));
+    sheet.id='sheet_'+String(si).padStart(2,'0');document.body.append(sheet);
+    const ctx=sheet.g;ctx.fillStyle='#181620';ctx.fillRect(0,0,sheet.width,sheet.height);
+    for(let r=0;r<rows.length;r++){
+      const c=rows[r],y=r*(CH+GAP),cols=c.cols||c.times.map(t=>({t}));
+      ctx.font='14px SimSun';ctx.fillStyle='#f0e8c8';ctx.fillText(c.id,6,y+18);
+      ctx.font='12px SimSun';ctx.fillStyle='#9696aa';ctx.fillText('['+c.pri+'] JavaScript',6,y+38);
+      for(let ci=0;ci<cols.length;ci++){
+        const col=cols[ci],calls=prepared(c,col),x=LABEL+ci*(CW+GAP);
+        try{draw(c,calls);scratch.g.putImageData(data,0,0);ctx.drawImage(scratch,x,y);}
+        catch(e){window.P2_RESULT.errors.push({id:c.id,col:ci,error:e.stack||String(e)});ctx.fillStyle='#c83040';ctx.fillText(String(e).slice(0,42),x+4,y+20);}
+        ctx.font='12px SimSun';ctx.fillStyle='#fff';ctx.fillText(col.t!=null?'t0+'+col.t.toFixed(2):JSON.stringify(col.kw||{a:col.a}).slice(0,40),x+2,y+CH-3);
+      }
+    }
+  }
+  // 预热缓存后只计光栅调用；参数构造、画布回写和联系表标签不计入函数预算。
+  for(const c of cases){
+    const col=(c.cols||c.times.map(t=>({t})))[1],calls=prepared(c,col),main=calls.find(call=>call.fn!=='sprite')||calls[0];
+    if(typeof G.FX[main.fn]!=='function')continue;
+    for(let i=0;i<24;i++)G.FX[main.fn](...main.args);
+    const n=160,start=performance.now();for(let i=0;i<n;i++)G.FX[main.fn](...main.args);
+    window.P2_RESULT.timing.push({id:c.id,fn:main.fn,pri:c.pri,ms:(performance.now()-start)/n,limit:['impact_frame','timestop','timestop_world','dim_bg'].includes(main.fn)?3:2});
+  }
+  G.fx.clear();G.clk.flow=0;
+  const names=['hit_spark','shockwave','dust','smoke','fire','glint'];
+  for(let i=0;i<30;i++)G.fx.spawn(names[i%names.length],{x:30+i*9,y:65+(i%4)*20,n:8,size:6,r_max:24,dur:2,life:2},{space:'canvas',life:2});
+  G.clk.flow=.12;for(let i=0;i<24;i++)G.fx.drawPixel(P,'mid');
+  const n=160,start=performance.now();for(let i=0;i<n;i++)G.fx.drawPixel(P,'mid');
+  window.P2_RESULT.instances={n:30,ms:(performance.now()-start)/n,limit:4};
+  window.P2_RESULT.events=G.dbg.events;window.P2_RESULT.missingImg=Array.from(G.dbg.missingImg);
+  window.P2_RESULT.ready=true;
+})().catch(e=>{window.P2_RESULT.errors.push({error:e.stack||String(e)});window.P2_RESULT.ready=true;});
+</script></html>

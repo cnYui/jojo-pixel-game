@@ -1,0 +1,35 @@
+{
+  "id": "hangedman",
+  "name": "倒吊人",
+  "work": "JoJo",
+  "image": "hangedman.png",
+  "cell": [66, 56],
+  "pivot": [25, 54],
+  "facing": "right",
+  "animations": {
+    "idle": {
+      "row": 0,
+      "frames": 2,
+      "fps": 4,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "Hanged Man: bandaged mummy stand, burning red eyes, wrist blade forward; f1 floats 1px up + strips wave (draw inside mirrors/puddles)"
+    },
+    "attack": {
+      "row": 1,
+      "frames": 2,
+      "fps": 8,
+      "kind": "oneshot",
+      "seamless": false,
+      "desc": "后续补帧：hangedman.attack"
+    }
+  },
+  "aliases": {},
+  "expressions": [],
+  "variants": {},
+  "source": {
+    "project": "jojo",
+    "call": "game.art_later_existing / game.orig（import assets; assets.load_all(); from engine import sprite; sprite.get('hangedman.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'hangedman.<动作>', x, y, frame=i, flip=False)"
+  },
+  "notes": "倒吊人（The Hanged Man），敌人·替身·替身。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle；脚点(自定义点)=attack。idle：倒吊人只出现在镜子/水面倒影里（场景里画在倒影中）。替身在场景里通常以 alpha≈0.9 绘制并叠加光环（引擎的 sp.aura），图集里是不透明原图、不含光环。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
+}

@@ -1,0 +1,83 @@
+{
+  "id": "npc_kid",
+  "name": "印度少年",
+  "work": "JoJo",
+  "image": "npc_kid.png",
+  "cell": [42, 46],
+  "pivot": [21, 30],
+  "facing": "right",
+  "animations": {
+    "idle": {
+      "row": 0,
+      "frames": 2,
+      "fps": 3,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "印度少年：idle"
+    },
+    "walk": {
+      "row": 1,
+      "frames": 4,
+      "fps": 6,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "印度少年：walk"
+    },
+    "run": {
+      "row": 2,
+      "frames": 4,
+      "fps": 6,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "印度少年：run"
+    },
+    "hurt": {
+      "row": 3,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "印度少年：hurt"
+    },
+    "down": {
+      "row": 4,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "印度少年：down"
+    },
+    "talk": {
+      "row": 5,
+      "frames": 2,
+      "fps": 3,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "印度少年：talk"
+    },
+    "portrait": {
+      "row": 6,
+      "frames": 2,
+      "fps": 8,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "印度少年：portrait"
+    }
+  },
+  "aliases": {},
+  "expressions": [
+    {
+      "id": "portrait",
+      "emotion": "normal",
+      "frames": 2,
+      "fps": 8,
+      "size": [32, 32],
+      "files": ["头像/portrait_0.png", "头像/portrait_1.png"],
+      "desc": "印度少年：portrait"
+    }
+  ],
+  "variants": {},
+  "source": {
+    "project": "jojo",
+    "call": "game.art_new_npc_kid（import assets; assets.load_all(); from engine import sprite; sprite.get('npc_kid.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'npc_kid.<动作>', x, y, frame=i, flip=False)"
+  },
+  "notes": "印度少年（npc_kid），人物·人物。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle/walk/run/hurt/down/talk；中心=portrait。portrait* 动作是说话头像（32×32 半身）：图集里放在最后几行（按底部中点对齐，只是为了同格对齐，不代表脚点），同时逐帧导出到“头像”文件夹，见 expressions；多数 frame0=闭嘴/静态、frame1=说话/加强（具体见各自 desc），原引擎对话框打字时以 8fps 来回切换。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
+}

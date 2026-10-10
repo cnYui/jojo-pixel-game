@@ -1,0 +1,781 @@
+{
+  "errors": [],
+  "shots": [
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\01_title.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\02_passengers_seated.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\03_blanket_reach.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\04_free_plane_ch1.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\05_story_tg_intro.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\06_b1a_towergray_jotaro_start.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\07_story_tg_card.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\08_b1b_towergray_start.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\09_b1b_towergray_rooted.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\10_b1b_towergray_a0_t8.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\11_b1b_towergray_a0_t16.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\12_b1b_towergray_a0_t24.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\13_story_cabin_masks.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\14_story_cockpit.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\15_qte_clash.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\16_qte_timing.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\17_crew_float.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\18_story_sea_float.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\19_story_sea_boat.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\20_free_hk_street_ch1.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\21_story_pol_enter.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\22_story_dishes.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\23_story_coin_trick.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\24_story_fire_clock.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\25_statue_0.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\26_free_hk_garden_ch1.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\27_story_garden_duel.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\28_b02_chariot_start.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\29_statue_1.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\30_statue_2.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\31_b02_chariot_lost_1.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\32_b02_chariot_lost_2.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\33_story_pol_char.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\34_story_yes_i_am.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\35_story_bud.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\36_qte_mash.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\37_story_sherry.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\38_story_pol_join.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\39_free_hk_street_ch1b.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\40_story_ending.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\41_ch1_tbc.png",
+    "排查\\20261009-203001-大招命中与特效\\剧情第一章\\42_chapter_complete_1.png"
+  ],
+  "notes": [
+    {
+      "kind": "route_complete",
+      "t": 674.98,
+      "chapter": 1
+    }
+  ],
+  "dialog_lines": [
+    "法皇的手，比我自己的长一点。",
+    "……这架飞机上，有一个不属于人的气息。",
+    "……窗户里面，好像有只虫子一闪而过。",
+    "然而，DIO的刺客早已潜伏在飞机上……",
+    "……虫子？在飞机上？",
+    "承太郎，那不是普通的虫子。",
+    "那是……『灰塔』！",
+    "专门把杀人伪装成事故的替身。去年那起空难，就是它干的。",
+    "……连白金之星都抓不住。",
+    "承太郎，这里交给我。",
+    "它想让整架飞机的人陪葬。……我不会让它得逞。",
+    "……随你。",
+    "DIO……大人……",
+    "替身被打碎，本体也撑不住了。",
+    "……我、我怎么睡着了？刚才好像做了个噩梦……",
+    "不对……飞机在往下掉！",
+    "驾驶员……被灰塔下了手！",
+    "OH MY GOD!",
+    "这是我人生第三次坠机了！",
+    "……我再也不跟你坐同一架飞机了。",
+    "……第三次？",
+    "……我开始明白，您说的“没问题”是什么意思了。",
+    "有渔船！喂——！这边——！",
+    "……橱窗里，有个白头发的家伙一直跟着我们。",
+    "……起风了？",
+    "……剑？",
+    "喂！我的电视！",
+    "……记在 SPW 财团的账上。",
+    "咦？刚才好像有什么东西……",
+    "咦，风筝自己掉下来了？谢谢！",
+    "灯火通明的招牌。",
+    "灯火映在玻璃上。",
+    "全是汉字。……我也只认得一半。",
+    "电视在放新闻：今日一架客机在香港外海迫降……",
+    "谢谢你们帮孩子取下风筝。",
+    "码头在那边，船要明天才开。……先去大排档吃点东西。",
+    "码头在那边。船要明天才开。先去大排档。",
+    "刚才有个法国佬在街上用硬币变戏法，一剑串五个！厉害得很！",
+    "后生仔，饮碗粥暖暖胃啦。",
+    "几位？外面坐，凉快！今晚的叉烧刚出炉！",
+    "飞机是坐不了了。DIO 的刺客会连累一整架的乘客。",
+    "走海路？要多花好几天。",
+    "就像《八十天环游地球》！船和火车，一路往西！",
+    "五十天的期限，赶得上吗？",
+    "赶得上！……好，点菜就交给我！汉字嘛，看着长得差不多就行！",
+    "这行字看着很香！",
+    "Excusez-moi～能帮我看看菜单吗？我一个字都看不懂。",
+    "哈哈！我也看不懂！一起点吧！",
+    "……这是，青蛙？",
+    "OH MY GOD!",
+    "哈哈哈！很有冒险精神嘛！作为谢礼——给各位看个小把戏。",
+    "我的银色战车，剑术天下第一！",
+    "……你的剑尖，从刚才起就一直对着我。",
+    "占卜师果然敏锐。DIO 大人说过，先收拾会喷火的那个。",
+    "瞧，火焰时钟。指针走到十二点之前——你会死在自己的火里。",
+    "这里人太多了。去虎豹别墅吧，那里宽敞，适合决斗。",
+    "我、我的桌子！！",
+    "……记在 SPW 财团的账上。",
+    "看相、算命、看风水～",
+    "谢谢你们帮孩子取下风筝。",
+    "咦，风筝自己掉下来了？谢谢！",
+    "……是我眼花了吗。",
+    "……剑？",
+    "喂！我的电视！",
+    "……记在 SPW 财团的账上。",
+    "……橱窗里，有个白头发的家伙一直跟着我们。",
+    "……看不懂的字。原来是“当铺”。",
+    "灯火映在玻璃上。",
+    "全是汉字。……我也只认得一半。",
+    "电视在放新闻：今日一架客机在香港外海迫降……",
+    "谢谢你们帮孩子取下风筝。",
+    "七层塔。",
+    "张着大嘴的老虎石像。",
+    "香港的气很乱……人太多了。",
+    "洞里供着神像。",
+    "来吧，占卜师。我们一对一。",
+    "乔斯达先生，请别插手。这是火与剑的较量。",
+    "……小心点。",
+    "瞧，你的替身像。",
+    "……雕得不错。",
+    "我的银色战车最快的样子，你还没见过！",
+    "阿布德尔倒下了……",
+    "瞧，你的替身像。",
+    "……雕得不错。",
+    "我的银色战车最快的样子，你还没见过！",
+    "阿布德尔倒下了……",
+    "瞧，你的替身像。",
+    "……雕得不错。",
+    "我的银色战车最快的样子，你还没见过！",
+    "你的火，一丝也进不来！",
+    "……那就不从正面进去。",
+    "……从……地底下……？",
+    "十字火焰风暴·Special。你的剑再快，也切不到脚底下的火。",
+    "你……一开始就算好了？",
+    "YES I AM!",
+    "……我输了。输给这样的火，不丢人。",
+    "你的剑很干净。正因为这样，我才觉得奇怪。",
+    "额头上。……又是那东西。",
+    "我妹妹雪莉，在下雨的回家路上……被一个男人害死了。",
+    "唯一看见的人说，那个男人……两只手都是右手。",
+    "我在找一个有两只右手的男人……他杀了我妹妹。",
+    "后来我遇到了 DIO。他说他知道那个人在哪。……再后来，我就什么都不记得了。",
+    "跟我们走吧。DIO 身边，一定有那家伙的线索。",
+    "……要来就来。",
+    "……Merci。这把剑，借给你们。",
+    "波鲁纳雷夫 加入了队伍！",
+    "……橱窗里，有个白头发的家伙一直跟着我们。",
+    "……起风了？",
+    "……剑？",
+    "喂！我的电视！",
+    "……记在 SPW 财团的账上。",
+    "咦？刚才好像有什么东西……",
+    "咦，风筝自己掉下来了？谢谢！",
+    "灯火通明的招牌。",
+    "灯火映在玻璃上。",
+    "全是汉字。……我也只认得一半。",
+    "电视在放新闻：今日一架客机在香港外海迫降……",
+    "谢谢你们帮孩子取下风筝。",
+    "第二天，一行人登上了 SPW 财团安排的船，驶向新加坡。"
+  ],
+  "trace": [
+    {
+      "t": 5.0,
+      "stage": "map_ch1",
+      "leader": "jotaro"
+    },
+    {
+      "t": 7.73,
+      "stage": "plane_ch1",
+      "leader": "jotaro"
+    },
+    {
+      "t": 72.02,
+      "stage": "cockpit_ch1",
+      "leader": "kakyoin"
+    },
+    {
+      "t": 77.66,
+      "stage": "sky_ch1",
+      "leader": "joseph"
+    },
+    {
+      "t": 79.34,
+      "stage": "sea_ch1",
+      "leader": "joseph"
+    },
+    {
+      "t": 87.7,
+      "stage": "hk_street_ch1",
+      "leader": "joseph"
+    },
+    {
+      "t": 229.61,
+      "stage": "hk_garden_ch1",
+      "leader": "jotaro"
+    },
+    {
+      "t": 616.92,
+      "stage": "hk_street_ch1b",
+      "leader": "polnareff"
+    }
+  ],
+  "marks": [
+    [
+      22.45,
+      "b1a_towergray_jotaro",
+      "fight"
+    ],
+    [
+      36.75,
+      "b1b_towergray",
+      "fight"
+    ],
+    [
+      77.89,
+      "QTE后确认键保护",
+      "no_dialog"
+    ],
+    [
+      246.2,
+      "b02_chariot",
+      "fight"
+    ],
+    [
+      610.27,
+      "QTE后确认键保护",
+      "no_dialog"
+    ],
+    [
+      674.81,
+      "ch1_tbc",
+      "story"
+    ],
+    [
+      674.98,
+      "1",
+      "chapter_complete"
+    ]
+  ],
+  "coverage": {
+    "b1b_towergray": {
+      "parry": 2,
+      "hit": 99,
+      "dodge": 4,
+      "evade": 112,
+      "hurt": 8,
+      "rushStart": 3,
+      "rush": 3,
+      "rushHit": 36,
+      "rushEnd": 2,
+      "special": 1
+    },
+    "b02_chariot": {
+      "hit": 145,
+      "dodge": 175,
+      "whiff": 4,
+      "hurt": 66,
+      "parry": 1,
+      "evade": 233,
+      "guard": 13,
+      "special": 3,
+      "graze": 1,
+      "post_unknown": 1,
+      "rushStart": 1,
+      "rush": 1,
+      "rushHit": 11,
+      "rushEnd": 1,
+      "koBlocked": 3
+    }
+  },
+  "fallbacks": [
+    "towergray:cmd→needle"
+  ],
+  "final": {
+    "scene": "world",
+    "stage": "hk_street_ch1b",
+    "x0": 0,
+    "x1": 960,
+    "free": true,
+    "busy": false,
+    "combat": false,
+    "cine": false,
+    "leader": "kakyoin",
+    "px": 882,
+    "py": 172,
+    "pz": 0,
+    "pfacing": 1,
+    "pstate": "idle",
+    "hp": 36,
+    "maxHp": 100,
+    "energy": 98,
+    "energyMax": 100,
+    "iframe": 0,
+    "dodgeCd": 0,
+    "standMode": "hidden",
+    "rootT": 0,
+    "party": [
+      [
+        "jotaro",
+        100,
+        130,
+        "idle",
+        20,
+        "npc",
+        true
+      ],
+      [
+        "joseph",
+        110,
+        110,
+        "idle",
+        0,
+        "npc",
+        true
+      ],
+      [
+        "avdol",
+        6,
+        120,
+        "idle",
+        8,
+        "npc",
+        true
+      ],
+      [
+        "kakyoin",
+        36,
+        100,
+        "idle",
+        98,
+        "player",
+        true
+      ],
+      [
+        "polnareff",
+        110,
+        110,
+        "idle",
+        0,
+        "npc",
+        true
+      ]
+    ],
+    "leaderCanInvestigate": false,
+    "fightId": null,
+    "fightSwap": false,
+    "fightT": 154.3,
+    "fightLosable": null,
+    "fightCoverage": null,
+    "assist": false,
+    "storyU": false,
+    "fightHint": null,
+    "lateGame": null,
+    "midGame": null,
+    "steps": null,
+    "enemies": [],
+    "warns": [],
+    "shots": [],
+    "hazards": [],
+    "objects": [],
+    "boss": null,
+    "combo": 0,
+    "dlg": null,
+    "dwho": null,
+    "ddone": false,
+    "dpage": -1,
+    "dlen": 0,
+    "narr": null,
+    "nauto": 0,
+    "choice": null,
+    "notice": null,
+    "menu": "第1章　香港　完",
+    "menuItems": [
+      "继续下一章",
+      "选择章节"
+    ],
+    "chapter": false,
+    "qte": null,
+    "hint": null,
+    "insert": false,
+    "video": false,
+    "timer": null,
+    "gauge": null,
+    "near": null,
+    "npcs": [
+      [
+        "波鲁纳雷夫",
+        906,
+        166
+      ],
+      [
+        "路人",
+        150,
+        160
+      ],
+      [
+        "卖粥阿婆",
+        300,
+        158
+      ],
+      [
+        "大排档老板",
+        590,
+        158
+      ],
+      [
+        "算命先生",
+        760,
+        158
+      ],
+      [
+        "妇人",
+        860,
+        158
+      ]
+    ],
+    "hotspots": [
+      [
+        "霓虹招牌",
+        400,
+        60,
+        []
+      ],
+      [
+        "橱窗倒影",
+        230,
+        120,
+        [
+          "detail"
+        ]
+      ],
+      [
+        "菜单板",
+        520,
+        120,
+        []
+      ],
+      [
+        "报摊电视",
+        660,
+        150,
+        [
+          "nensha"
+        ]
+      ],
+      [
+        "招牌上的风筝",
+        860,
+        70,
+        [
+          "reach"
+        ]
+      ],
+      [
+        "往码头的路口",
+        940,
+        158,
+        []
+      ]
+    ],
+    "ts": null,
+    "flags": {
+      "planeTalk": 3,
+      "blanket": true,
+      "sensed": true,
+      "polSeen": true,
+      "kite": true,
+      "dinner": true,
+      "dinnerDone": true,
+      "garden": true,
+      "duel": true,
+      "ch1Exit": true
+    },
+    "fade": 0,
+    "okLocked": false,
+    "ctitle": "第1章　香港",
+    "dbgShot": "ch1_tbc",
+    "counts": {
+      "hit": 145,
+      "dodge": 175,
+      "whiff": 4,
+      "hurt": 66,
+      "parry": 1,
+      "evade": 233,
+      "guard": 13,
+      "special": 3,
+      "graze": 1,
+      "post_unknown": 1,
+      "rushStart": 1,
+      "rush": 1,
+      "rushHit": 11,
+      "rushEnd": 1,
+      "koBlocked": 3,
+      "qte_start": 1,
+      "qte": 1,
+      "party_join": 1,
+      "swap": 4,
+      "investigate": 3,
+      "stand_react": 2
+    },
+    "fallbacks": [
+      "towergray:cmd→needle"
+    ],
+    "missingImg": [],
+    "missingSfx": [],
+    "missingGlyph": [],
+    "missingHead": [],
+    "fps": {
+      "avg": 60,
+      "min": 59.9
+    },
+    "evTotals": {
+      "look_missing": 0,
+      "script_error": 0,
+      "video_missing": 0,
+      "api_missing": []
+    },
+    "lookStats": {
+      "total": 12,
+      "hits": 11,
+      "by": {
+        "kakyoin": 4,
+        "avdol": 1,
+        "jotaro": 4,
+        "joseph": 3
+      }
+    },
+    "walkY": [
+      150,
+      176
+    ],
+    "playerAtk": null,
+    "playerAtkT": 0.4333333333333333,
+    "playerRush": true,
+    "playerCanCancel": true
+  },
+  "loses": {
+    "b02_chariot": 2
+  },
+  "relaxed": [],
+  "audio_memory": {
+    "title": {
+      "pcmMB": 0,
+      "tracks": []
+    },
+    "chapter_1": {
+      "pcmMB": 57.5,
+      "tracks": [
+        "daily",
+        "travel",
+        "tension",
+        "battle",
+        "sad"
+      ]
+    }
+  },
+  "investigated": {
+    "1": [
+      "avdol",
+      "joseph",
+      "jotaro",
+      "kakyoin"
+    ]
+  },
+  "seconds": 675.02,
+  "chapter1_visual_contract": {
+    "free_at_map_ch1": 2092258.234,
+    "seated": [
+      {
+        "id": "passenger0",
+        "cid": "npc_passenger_a",
+        "anim": "seated",
+        "hold": false,
+        "frozen": null,
+        "remove": false,
+        "hp": 100,
+        "maxHp": 100,
+        "z": 0
+      },
+      {
+        "id": "passenger1",
+        "cid": "npc_passenger_b",
+        "anim": "seated",
+        "hold": false,
+        "frozen": null,
+        "remove": false,
+        "hp": 100,
+        "maxHp": 100,
+        "z": 0
+      },
+      {
+        "id": "passenger2",
+        "cid": "npc_passenger_c",
+        "anim": "seated",
+        "hold": false,
+        "frozen": null,
+        "remove": false,
+        "hp": 100,
+        "maxHp": 100,
+        "z": 0
+      },
+      {
+        "id": "passenger3",
+        "cid": "npc_passenger_d",
+        "anim": "seated",
+        "hold": false,
+        "frozen": null,
+        "remove": false,
+        "hp": 100,
+        "maxHp": 100,
+        "z": 0
+      },
+      {
+        "id": "passenger4",
+        "cid": "npc_passenger_a",
+        "anim": "seated",
+        "hold": false,
+        "frozen": null,
+        "remove": false,
+        "hp": 100,
+        "maxHp": 100,
+        "z": 0
+      },
+      {
+        "id": "passenger5",
+        "cid": "npc_passenger_b",
+        "anim": "seated",
+        "hold": false,
+        "frozen": null,
+        "remove": false,
+        "hp": 100,
+        "maxHp": 100,
+        "z": 0
+      },
+      {
+        "id": "passenger6",
+        "cid": "npc_passenger_c",
+        "anim": "seated",
+        "hold": false,
+        "frozen": null,
+        "remove": false,
+        "hp": 100,
+        "maxHp": 100,
+        "z": 0
+      },
+      {
+        "id": "passenger7",
+        "cid": "npc_passenger_d",
+        "anim": "seated",
+        "hold": false,
+        "frozen": null,
+        "remove": false,
+        "hp": 100,
+        "maxHp": 100,
+        "z": 0
+      }
+    ],
+    "free_at_plane_ch1": 2092258.64,
+    "blanket": true,
+    "free_plane_ch1": true,
+    "tg_intro": true,
+    "tg_card": true,
+    "tg_rooted": true,
+    "cabin_masks": true,
+    "cockpit": true,
+    "float": [
+      {
+        "id": "joseph",
+        "cid": "joseph",
+        "anim": "float",
+        "hold": true,
+        "frozen": null,
+        "remove": false,
+        "hp": 110,
+        "maxHp": 110,
+        "z": 0
+      },
+      {
+        "id": "jotaro",
+        "cid": "jotaro",
+        "anim": "float",
+        "hold": true,
+        "frozen": null,
+        "remove": false,
+        "hp": 100,
+        "maxHp": 130,
+        "z": 0
+      },
+      {
+        "id": "avdol",
+        "cid": "avdol",
+        "anim": "float",
+        "hold": true,
+        "frozen": null,
+        "remove": false,
+        "hp": 120,
+        "maxHp": 120,
+        "z": 0
+      },
+      {
+        "id": "kakyoin",
+        "cid": "kakyoin",
+        "anim": "float",
+        "hold": true,
+        "frozen": null,
+        "remove": false,
+        "hp": 36,
+        "maxHp": 100,
+        "z": 0
+      }
+    ],
+    "sea_float": true,
+    "sea_boat": true,
+    "free_at_sea_ch1": 2092338.203,
+    "free_at_hk_street_ch1": 2092338.546,
+    "free_hk_street_ch1": true,
+    "pol_enter": true,
+    "dishes": true,
+    "coin_trick": true,
+    "fire_clock": true,
+    "free_at_hk_garden_ch1": 2092480.468,
+    "statue_0": {
+      "id": "mr_statue",
+      "cid": "prop:mr_statue",
+      "anim": "idle",
+      "hold": true,
+      "frozen": 0,
+      "remove": false,
+      "hp": 100,
+      "maxHp": 100,
+      "z": 17
+    },
+    "free_hk_garden_ch1": true,
+    "garden_duel": true,
+    "statue_1": {
+      "id": "mr_statue",
+      "cid": "prop:mr_statue",
+      "anim": "idle",
+      "hold": true,
+      "frozen": 1,
+      "remove": false,
+      "hp": 100,
+      "maxHp": 100,
+      "z": 17
+    },
+    "statue_2": {
+      "id": "mr_statue",
+      "cid": "prop:mr_statue",
+      "anim": "idle",
+      "hold": true,
+      "frozen": 2,
+      "remove": false,
+      "hp": 100,
+      "maxHp": 100,
+      "z": 17
+    },
+    "pol_char": true,
+    "yes_i_am": true,
+    "bud": true,
+    "sherry": true,
+    "pol_join": true,
+    "free_at_hk_street_ch1b": 2092867.765,
+    "free_hk_street_ch1b": true,
+    "ending": true
+  },
+  "input_boundary": "所有推进、移动、攻击、QTE、失败重试均走真实键盘；只读 snapshot 和 actors。"
+}

@@ -1,0 +1,57 @@
+{
+  "id": "magred",
+  "name": "红色魔术师",
+  "work": "JoJo",
+  "image": "magred.png",
+  "cell": [82, 58],
+  "pivot": [28, 56],
+  "facing": "right",
+  "animations": {
+    "idle": {
+      "row": 0,
+      "frames": 2,
+      "fps": 6,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "Magician's Red: bird head, fireball in each hand, 2f flicker (40x56)"
+    },
+    "punch": {
+      "row": 1,
+      "frames": 2,
+      "fps": 18,
+      "kind": "oneshot",
+      "seamless": false,
+      "desc": "J1/J2 flame punch: 0 wind-up (fists burning), 1 cross punch with fire trail (64 wide, body x=20)"
+    },
+    "cast": {
+      "row": 2,
+      "frames": 2,
+      "fps": 10,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "both hands thrust forward, fire burst (64x56, body x=20)"
+    },
+    "block": {
+      "row": 3,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "guard: forearms up before the beak, small fire wall rising in front"
+    },
+    "hurt": {
+      "row": 4,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "recoil: leaning back, arms flung behind"
+    }
+  },
+  "aliases": {},
+  "expressions": [],
+  "variants": {},
+  "source": {
+    "project": "jojo",
+    "call": "game.art_stands / game.orig（import assets; assets.load_all(); from engine import sprite; sprite.get('magred.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'magred.<动作>', x, y, frame=i, flip=False)"
+  },
+  "notes": "红色魔术师（Magician's Red），主角团替身·替身。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(自定义点)=idle/punch/cast/block/hurt。替身在场景里通常以 alpha≈0.9 绘制并叠加光环（引擎的 sp.aura），图集里是不透明原图、不含光环。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "towergray",
+  "name": "灰塔",
+  "work": "JoJo",
+  "image": "towergray.png",
+  "cell": [26, 12],
+  "pivot": [8, 6],
+  "facing": "right",
+  "animations": {
+    "fly": {
+      "row": 0,
+      "frames": 2,
+      "fps": 16,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "Tower of Gray: tiny stag-beetle stand w/ mandibles + needle tongue, buzzing wings (16x12, anchor centre)"
+    },
+    "needle": {
+      "row": 1,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "Tower of Gray strike: needle tongue shot out 10px (26x12, anchor = body centre like fly)"
+    }
+  },
+  "aliases": {},
+  "expressions": [],
+  "variants": {},
+  "source": {
+    "project": "jojo",
+    "call": "game.art_stands / game.orig（import assets; assets.load_all(); from engine import sprite; sprite.get('towergray.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'towergray.<动作>', x, y, frame=i, flip=False)"
+  },
+  "notes": "灰塔（Tower of Gray），敌人·替身·替身。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：中心=fly；中心(自定义点)=needle。fly：飞行小虫；锚点=身体中心。替身在场景里通常以 alpha≈0.9 绘制并叠加光环（引擎的 sp.aura），图集里是不透明原图、不含光环。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
+}
