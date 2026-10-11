@@ -27,10 +27,14 @@ STORY_SHOTS = {
     '我的暗蓝之月': 'captain_ko', '是炸弹！': 'bomb', '这次可不算我的': 'explosion', '我爸爸在新加坡': 'drift_night',
     '像是在等我们': 'freighter_fog', '它在看报纸': 'ape_cage', '刚才还在吊车下面': 'sailor_gone', '这艘船……就是替身': 'strength_reveal',
     '替身使者是你吗': 'hold_intro', '船……变小了': 'freighter_end', '这回总该能到新加坡了': 'ch2_end',
-    # 第3章
-    '我要单人间': 'hotel_single', '想不到我会在冰箱里吧': 'devo_appear', '恨够了': 'devo_doll', '迪波再也没醒来': 'devo_end',
-    '我一个人就够了': 'devo_after', '你不是花京院': 'yellow_reveal', '黄色节制可以变成任何人': 'yellow_name',
-    '先把你知道的说出来': 'rubbersoul_beg', '两只手都是右手': 'jgeil_hint', '两只右手？': 'pol_shock', 'rerorero': 'rero', '这是我的自由': 'ch3_end',
+    # 第3章（2026-10-11 重做后的台词）
+    '终于踩到不晃的地面了': 'arrival', '你的护照呢': 'police', '我要单人间': 'hotel_single', '先把房间检查一遍': 'hotel_room',
+    '冰箱门，自己开了': 'fridge_open', '想不到我会在冰箱里吧': 'devo_appear', '恨够了': 'devo_doll', '再也没有醒来': 'devo_end',
+    '这房间是被台风刮过吗': 'devo_after', '第六天，早上': 'morning', '……吃完了': 'fake_cherry', '连核一起嚼得': 'clue_cherry',
+    '生命之火……是两层的': 'clue_life', '影子，边缘在蠕动': 'clue_shadow', '那我们去买票了': 'split', '海是绿色的': 'cable_in',
+    '你不是花京院': 'yellow_reveal', '真正的花京院，这会儿': 'yellow_name', '你的拳头……只会被我吃掉': 'yellow_vs',
+    '我投降': 'rubbersoul_beg', '两只手，都是右手': 'jgeil_hint', '两只右手？': 'pol_shock', '再陪你们一段': 'anne_stays',
+    'rerorero': 'rero', '这是我的自由': 'ch3_end',
 }
 LOSE_TWICE = {'b03_darkbluemoon', 'b05_devo'}   # 每章第一场可失败的战斗：输两次，验「放水再来」
 

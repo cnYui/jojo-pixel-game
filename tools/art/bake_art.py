@@ -48,7 +48,7 @@ ART_MODULES = ['art_heroes', 'art_stands', 'art_enemies', 'art_npc', 'art_new_gr
         'fake_tennille', 'anne', 'devo', 'rubbersoul', 'nena', 'zz', 'cameo', 'chaka', 'khan',
         'kennyg', 'nukesaku', 'wilson', 'npc_sailor', 'npc_kid', 'npc_townsfolk', 'npc_villager_f',
         'npc_islander', 'npc_dealer', 'polnareff_kid', 'jotaro_kid', 'polnareff_possessed',
-        'clay_sherry', 'clay_gold', 'clay_pol', 'atum','npc_spw','npc_merchant')
+        'clay_sherry', 'clay_gold', 'clay_pol', 'atum','npc_spw','npc_merchant','npc_bellhop')
 ] + ['art_later_creatures', 'art_later_existing', 'art_dialogue_heads', 'art_joseph']
 PROPS_MODULE = 'art_props'
 JOTARO_ADULT = False          # True = 用 art_jotaro_redraw 的成年小头承太郎（用户 2026-10-09 晚要回卡通大头，关掉）

@@ -1049,6 +1049,423 @@ def _lighter(seed=0):
     return _fin(x, .6, .0005, .03)
 
 
+# ============================================================ 第3章（新加坡）：黑檀木恶魔、黄色节制、酒店 / 街道 / 缆车 / 火车
+def _cres(x, f0, q):
+    """FFT 圆周共振带通（二阶带通的幅度响应，峰值 0 dB）：循环里要窄带（风哨）时用，首尾不留接缝。"""
+    L = len(x)
+    X = np.fft.rfft(x, axis=0)
+    f = np.fft.rfftfreq(L, 1 / SR)
+    f[0] = 1e-6
+    H = 1 / np.sqrt(1 + (q * (f / f0 - f0 / f)) ** 2)
+    H[0] = 0
+    return np.fft.irfft(X * (H[:, None] if x.ndim == 2 else H), L, axis=0)
+
+
+def _rms1(x):
+    """按 RMS 归一（混层前先把各层拉到同一尺度，增益才好读）。"""
+    return x / (np.sqrt(np.mean(np.asarray(x) ** 2)) + 1e-12)
+
+
+@reg('razor', '迪波 / 黑檀木恶魔挥剃刀：极短的细刃划空“咻”（3→10 kHz 窄带上扫）+ 刃口一下“嚓”+ 细高的金属铮鸣'
+              '（4.3–10.5 kHz，比 slash 更细、更高、更短；0.25 s，刃口在 +0.05 s）', la=-17, hit=.05)
+def _razor(seed=0):
+    rng = _rng('razor', seed)
+    n = _n(.25)
+    x = np.zeros(n)
+    sn = _n(.07)                                                   # 1. 细刃划空：窄带（q 2.6）一路往上扫
+    u = np.linspace(0, 1, sn)
+    sw = sweep(noise(sn, rng), _dsig(sn, 3000, 10000), 'bp', q=2.6) * np.sin(np.pi * u) ** 1.5 * np.sqrt(u)
+    sw += .3 * hp(noise(sn, rng), 7000) * np.sin(np.pi * u) ** 4
+    _place(x, norm(sw, 1.0), 0, .8)
+    at = _n(.05)
+    m = n - at                                                     # 2. 刃口：细高的铮鸣（短衰减）+ “嚓”
+    v = rng.uniform(.97, 1.03)
+    ring = _metal(m, np.array([4310, 6120, 8240, 10530]) * v, [.09, .06, .04, .025], [1, .7, .45, .3], rng, .003)
+    ring *= np.minimum(_t(m) / .0006, 1)
+    _place(x, norm(ring, 1.0), at, .6)
+    k = _n(.014)
+    edge = hp(noise(k, rng), 5000) * env_exp(k, .0018, .0002) + .6 * bp(noise(k, rng), 2000, 5000) * env_exp(k, .004, .0003)
+    _place(x, norm(edge, 1.0), at, .45)
+    return _fin(x, .75, .001, .04)
+
+
+@reg('doll_voice', '黑檀木恶魔（玩偶）的怪笑：尖细的“咯咯咯”越笑越快（约 10 → 22 个 / 秒，音高从 540 Hz 往上爬），'
+                   '最后一声拖长的尖“吱——”；小身体的共振峰（约 ×1.5）+ 一层越来越密的发条齿轮“嗒嗒”，不成词（0.6 s）', la=-17)
+def _doll_voice(seed=0):
+    rng = _rng('doll_voice', seed)
+    T = .6
+    out = np.zeros(_n(T + .1))
+    ons = []                                                       # 音节起点：间隔每次 ×0.86（越笑越快）
+    st, per = .015, .1
+    while st < T - .14:
+        ons.append((st, per))
+        st += per
+        per = max(.044, per * .86)
+    ons.append((st, None))                                         # 最后一声拖长的“吱——”
+    K = len(ons)
+    for i, (st, per) in enumerate(ons):
+        last = per is None
+        d = (T - st - .01) if last else per * .7
+        m = _n(d)
+        tt = _t(m)
+        u = tt / d
+        fa = (540 + 300 * i / (K - 1)) * rng.uniform(.96, 1.05)
+        if last:
+            f0 = fa * np.interp(u, [0, .15, .6, 1], [1.05, 1.32, 1.25, .95])
+            F1 = np.interp(u, [0, .3, 1], [700, 520, 480])        # “i”
+            F2 = np.interp(u, [0, .3, 1], [3000, 3400, 3300])
+            e = env_pts(m, [(0, 0), (.006, 1), (d * .5, .8), (d, 0)])
+        else:
+            f0 = fa * np.interp(u, [0, .12, 1], [1.15, 1.0, .84])  # 每个“咯”往下掉
+            F1 = np.interp(u, [0, .3, 1], [950, 800, 700])        # “e”（小身体：共振峰整体抬高）
+            F2 = np.interp(u, [0, .3, 1], [2500, 2900, 3000])
+            e = env_pts(m, [(0, 0), (.003, 1), (d * .4, .65), (d, 0)])
+        f0 = f0 * (1 + .025 * np.sin(_TAU * 34 * tt))             # 发条的抖
+        src = osc(f0, m, 'saw') + .45 * osc(f0, m, 'chip', .3) + .12 * noise(m, rng)
+        y = _formant(src, [(F1, 4, 1.0), (F2, 6, .8), (4400, 7, .35)])
+        y = sat(norm(y, 1.0) * e * 2.5, 1.8)
+        a = _n(st)
+        kn = _n(.007)
+        _place(out, bp(noise(kn, rng), 2800, 8000) * env_exp(kn, .0015, .0002), a, .5)     # “k”
+        _place(out, y, a + _n(.005), (1.0 if i % 2 == 0 else .8) * (1.15 if last else 1.0))
+    tk = np.zeros_like(out)                                        # 发条齿轮：一路“嗒嗒嗒”，越来越密
+    st, per = 0.0, .04
+    while st < T - .02:
+        m = _n(.02)
+        c = _metal(m, np.array([2900, 4650, 6800]) * rng.uniform(.97, 1.03), [.004, .003, .002], [1, .6, .4], rng, .002)
+        _place(tk, c + .4 * hp(noise(m, rng), 4000) * env_exp(m, .0008, .0001), _n(st), rng.uniform(.6, 1.0))
+        st += per
+        per = max(.025, per * .95)
+    x = bp(out + .22 * tk, 380, 9000)
+    return _fin(x, .6, .002, .04)
+
+
+@reg('doll_scurry', '玩偶在家具底下窜：木地板上细碎的小脚步（约 22 步 / 秒的“嗒嗒嗒”，带一点木头共鸣，左右脚略不同）'
+                    '+ 布料摩擦的沙沙声；轻、近、干，不加混响（0.4 s；藏身预警）', la=-21)
+def _doll_scurry(seed=0):
+    rng = _rng('doll_scurry', seed)
+    T = .4
+    n = _n(T)
+    x = np.zeros(n + _n(.06))
+    rus = np.zeros_like(x)
+    gain = lambda s: float(np.interp(s, [0, .07, .3, T], [.55, 1.0, .9, .5]))   # noqa: E731  跑近又跑开
+    st, i = .012, 0
+    while st < T - .035:
+        m = _n(.04)
+        v = rng.uniform(.92, 1.1) * (1.0 if i % 2 == 0 else 1.08)  # 左右脚略有不同
+        exc = noise(m, rng) * env_exp(m, .0012, .0001)
+        body = np.zeros(m)
+        for f, q, a in ((380, 6, .5), (870, 9, 1.0), (1650, 10, .8), (2900, 12, .45)):
+            body += a * sweep(exc, f * v, 'bp', q=q)
+        tap = .8 * norm(body, 1.0) + .5 * norm(hp(exc, 2500), 1.0)  # 木头的“嗒”+ 脚尖的“嗒”
+        _place(x, tap, _n(st), gain(st) * (1.0 if i % 2 == 0 else .78) * rng.uniform(.85, 1.0))
+        k = _n(.035)                                               # 每步带一下衣料“沙”
+        sw = bp(noise(k, rng), 1500, 6500) * np.sin(np.pi * np.linspace(0, 1, k)) ** 2
+        _place(rus, sw, _n(st) - _n(.006), gain(st) * rng.uniform(.6, 1.0))
+        st += rng.uniform(.04, .051)
+        i += 1
+    drag = bp(noise(len(x), rng), 900, 4500) * np.clip(.6 + .6 * sfx.lfo_noise(len(x), 30, rng), 0, 1.2)
+    drag *= env_pts(len(x), [(0, 0), (.04, 1), (.32, .8), (T, 0), (T + .06, 0)])
+    x = x + .35 * rus + .12 * drag
+    return _fin(lp(x, 9000), .6, .001, .03)
+
+
+@reg('fridge', '冰箱门自己打开：封条先黏一下、“啵”地脱开（低频“啵”+ 橡胶撕开的“噗”）+ 一点冷气 + 门轴一小段轻吱'
+               '+ 继电器“咔”+ 压缩机 100 Hz 的嗡（带 50 / 200 / 300 Hz，起动时音高往上爬）一小段尾巴（0.7 s，“啵”在 +0.03 s）',
+     la=-20, hit=.03)
+def _fridge(seed=0):
+    rng = _rng('fridge', seed)
+    T = .7
+    n = _n(T)
+    x = np.zeros(n)
+    m = _n(.03)                                                    # 0. 封条被吸着：几下细小的黏滑
+    _place(x, _clicks(m, 300, rng, (.3, 1.2), 800, np.linspace(.3, 1, m)), 0, .25)
+    at = _n(.03)
+    m = _n(.16)                                                    # 1. “啵”：低频“啵”+ 封条撕开的“噗”+ 门板空腔的“嘭”
+    pop = .7 * osc(_dsig(m, 280, 120), m) * env_exp(m, .03, .0012)
+    pop += .3 * osc(_dsig(m, 560, 240), m, 'tri') * env_exp(m, .02, .001)
+    pop += .6 * sweep(noise(m, rng), _dsig(m, 1500, 380), 'bp', q=2.0) * env_exp(m, .03, .0008)
+    pop += .6 * bp(noise(m, rng), 380, 1200) * env_exp(m, .04, .002)
+    pop += .08 * bp(noise(m, rng), 2500, 7000) * env_exp(m, .004, .0004)
+    _place(x, norm(sat(pop * 1.5, 1.4), 1.0), at)
+    m = _n(.35)                                                    # 2. 冷气轻轻涌出来
+    _place(x, bp(noise(m, rng), 300, 1800) * env_pts(m, [(0, 0), (.06, 1), (.35, 0)]), _n(.05), .08)
+    cn = _n(.26)                                                   # 3. 门轴：轻、短的黏滑吱声
+    ct = _t(cn)
+    rate = np.interp(ct, [0, .08, .26], [70, 120, 85]) * (1 + .12 * sfx.lfo_noise(cn, 25, rng))
+    imp = np.diff(np.floor(np.cumsum(rate) / SR), prepend=0.0) * rng.uniform(.5, 1.0, cn)
+    imp *= env_pts(cn, [(0, 0), (.04, 1), (.18, .8), (.26, 0)])
+    cr = sweep(imp, np.interp(ct, [0, .26], [1050, 1250]), 'bp', q=14) + .6 * sweep(imp, 2300, 'bp', q=16)
+    cr += .3 * sweep(imp, 3650, 'bp', q=16)
+    _place(x, norm(cr, 1.0), _n(.1), .35)
+    rl = _n(.33)                                                   # 4. 继电器“咔”+ 压缩机起动的嗡
+    m = _n(.012)
+    _place(x, hp(noise(m, rng), 1500) * env_exp(m, .002, .0002) + .5 * _metal(m, [1800, 3100], [.004, .003], [1, .6], rng),
+           rl, .25)
+    m = n - rl - _n(.005)
+    f = 100 * (1 - .12 * np.exp(-_t(m) / .05))                     # 电机转起来：音高往上爬
+    hum = .25 * osc(f * .5, m) + osc(f, m) + .6 * osc(f * 2, m) + .4 * osc(f * 3, m) + .15 * osc(f * 4, m)
+    hum += .1 * osc(f, m, 'square', .2)                            # 一点电磁“滋”
+    hum = norm(lp(hum, 1000), 1.0) * env_pts(m, [(0, 0), (.04, 1), (m / SR, .8)])
+    _place(x, hum, rl + _n(.005), .2)
+    return _fin(x, .75, .001, .12)
+
+
+@reg('slime', '黄色节制的黏液蠕动 / 甩出：先一团厚的低“咕”（60–90 Hz 喉音过低共振峰 + 三个 120–300 Hz 的厚气泡 + 次低频），'
+              '接湿黏的“啾”（高 Q 共振往上又往下扫、40–80 次 / 秒的黏滑抖动 + 一个上挑的湿泡）+ 拉丝慢慢扯长、最后两下细小的断开；'
+              '整体压在 2.2 kHz 以下：比 drain 更厚（一整团、不是细细的吸溜）、比 rero 低得多（0.5 s）', la=-18)
+def _slime(seed=0):
+    rng = _rng('slime', seed)
+    T = .5
+    n = _n(T)
+    x = np.zeros(n + _n(.05))
+    m = _n(.24)                                                    # 1. “咕”：厚、低的一团
+    tt = _t(m)
+    f0 = np.interp(tt, [0, .07, .24], [90, 70, 60]) * (1 + .08 * sfx.lfo_noise(m, 30, rng))
+    src = osc(f0, m, 'saw') + .5 * lp(noise(m, rng), 1000)
+    F1 = np.interp(tt, [0, .05, .16, .24], [200, 400, 300, 230])
+    F2 = np.interp(tt, [0, .05, .16, .24], [520, 850, 700, 560])
+    gu = norm(_formant(src, [(F1, 4, 1.0), (F2, 5, .5)]), 1.0) * env_pts(m, [(0, 0), (.012, 1), (.1, .7), (.24, 0)])
+    gu += .5 * osc(_dsig(m, 125, 55), m) * env_exp(m, .07, .005)
+    for st, f, d in ((.01, 125, .06), (.055, 170, .05), (.1, 140, .07)):     # 厚气泡：慢、低、往上挑
+        k = _n(d)
+        _place(gu, _chirp(k, f, f * 2.1, d / 2.2, attack=.004), _n(st), .45)
+    _place(x, gu, 0)
+    at = _n(.14)                                                   # 2. “啾”
+    m = _n(.24)
+    tt = _t(m)
+    fc = np.interp(tt, [0, .05, .12, .24], [350, 900, 640, 430])
+    sq = sweep(noise(m, rng), fc, 'bp', q=8.0, block=64)            # 高 Q：湿、带音高的“啾”
+    sq *= (.5 + .5 * np.clip(sfx.lfo_noise(m, 60, rng) * 2.0, -1, 1)) * env_pts(m, [(0, 0), (.015, 1), (.09, .65), (.24, 0)])
+    vo = _formant(osc(np.interp(tt, [0, .24], [80, 62]), m, 'saw'), [(fc * .8, 5, 1.0), (fc * 1.9, 6, .4)])
+    vo *= env_pts(m, [(0, 0), (.02, .8), (.14, .3), (.24, 0)])
+    wet = _chirp(_n(.06), 300, 720, .03, attack=.003)              # 一个上挑的湿泡（“啾”的尾音）
+    y = norm(sq, 1.0) + .6 * norm(vo, 1.0)
+    _place(y, wet, _n(.035), .55)
+    _place(x, y, at, .8)
+    m = _n(.17)                                                    # 3. 拉丝：细丝慢慢扯长（窄带往下滑 + 颤），最后两下断开
+    tt = _t(m)
+    st = sweep(noise(m, rng), np.interp(tt, [0, .17], [950, 420]), 'bp', q=14, block=64)
+    st *= (.6 + .4 * np.sin(_TAU * 27 * tt)) * env_pts(m, [(0, 0), (.03, 1), (.14, .6), (.17, 0)])
+    _place(x, norm(st, 1.0), _n(.29), .22)
+    for s0, f in ((.43, 820), (.455, 600)):
+        k = _n(.018)
+        _place(x, _chirp(k, f, f * .55, .006, attack=.0008), _n(s0), .25)
+    x = lp(x, 2200, 2)
+    return _fin(sat(x * 1.3, 1.5), .7, .003, .04)
+
+
+@reg('slime_absorb', '拳头打在黄色节制上被吸收：闷的湿“噗”——软起音（约 8 ms，没有高频瞬态）的低频下坠 + 泥样低通噪声'
+                     '+ 往里吞的“咕嘟”共振峰 + 一个厚气泡；1.5 kHz 以上几乎没有，一听就是“没打进去”（0.3 s）', la=-18, push=6)
+def _slime_absorb(seed=0):
+    rng = _rng('slime_absorb', seed)
+    T = .3
+    n = _n(T)
+    t = _t(n)
+    body = osc(_dsig(n, 150, 46), n) * env_pts(n, [(0, 0), (.008, 1), (.05, .55), (.15, .12), (T, 0)])
+    mud = lp(noise(n, rng), 700, 2) * env_pts(n, [(0, 0), (.007, 1), (.04, .45), (.14, 0)])
+    src = osc(np.interp(t, [0, .14], [105, 70]), n, 'saw') + .6 * lp(noise(n, rng), 1200)
+    F1 = np.interp(t, [0, .03, .14, T], [600, 500, 250, 220])      # “咕嘟”：共振峰往下吞（中频让小喇叭也听得到）
+    F2 = np.interp(t, [0, .03, .14, T], [1150, 1000, 620, 600])
+    gulp = _formant(src, [(F1, 3, 1.0), (F2, 4, .45)]) * env_pts(n, [(0, 0), (.012, .6), (.06, 1), (.15, .3), (.22, 0)])
+    x = body + .9 * norm(mud, 1.0) + .9 * norm(gulp, 1.0)
+    _place(x, _chirp(_n(.08), 160, 320, .025, attack=.006), _n(.11), .35)       # 吞进去的一个厚气泡
+    x = lp(sat(x * 1.3, 1.5), 1500, 2)
+    return _fin(x, .85, .004, .06)
+
+
+@reg('fan_loop', '酒店房间的吊扇：电机 100 Hz 低嗡（50 Hz 电网，带 50 / 200 / 300 Hz，每圈一点不平衡的起伏）+ 三片扇叶'
+                 '每圈 3 下的轻“呼——呼——”（2.25 下 / 秒，左右声道错一点相位，三片轻重略不同）+ 每圈一下极轻的松动“嗒”；'
+                 '安静不抢台词（loop=4 s，立体声，无缝）', la=-29, push=0, loop=4.0)
+def _fan_loop(loop=4.0, seed=0):
+    rng = _rng('fan_loop', seed)
+    L = _n(loop)
+    t = _t(L)
+    rot = 3 / (L / SR)                                             # 每循环正好 3 圈（4 s → 0.75 圈 / 秒）
+    bps = 3 * rot                                                  # 叶片通过：每循环正好 9 下
+    chans = []
+    for c in range(2):
+        q = t * bps + c * .1                                       # 右声道晚 1/10 片：扇叶从头顶扫过
+        blade = np.floor(q).astype(int) % 3
+        pulse = np.sin(np.pi * (q % 1.0)) ** 3 * np.array([1.0, .8, .9])[blade]   # 两片之间包络为零，轻重切换没有跳变
+        lo = _cnoise(L, rng, 1.0, 120, 700)
+        hi = _cnoise(L, rng, .5, 600, 2400)
+        chans.append(lo * (.3 + .7 * pulse) + .5 * hi * (.08 + .92 * pulse ** 1.6))
+    air = np.stack(chans, -1)
+    hum = (.5 * osc(_per(50, L), L) + osc(_per(100, L), L, ph0=.13) + .35 * osc(_per(200, L), L, ph0=.41)
+           + .2 * osc(_per(300, L), L, ph0=.77) + .06 * osc(_per(400, L), L, ph0=.2))
+    hum = _rms1(hum * (1 + .08 * np.sin(_TAU * rot * t)))
+    room = _cnoise(L, rng, 2.0, 30, 250)
+    ev = np.zeros(L + _n(.1))
+    for k in range(3):                                             # 每圈一下极轻的松动“嗒”
+        m = _n(.03)
+        tick = .6 * bp(noise(m, rng), 1200, 5000) * env_exp(m, .0015, .0002)
+        tick += _metal(m, [1650, 2780], [.008, .005], [1, .6], rng)
+        _place(ev, tick, int((k + .62) * L / 3), rng.uniform(.8, 1.0))
+    ev = _rms1(_fold(ev, L))
+    out = .5 * _rms1(air) + _st(.28 * hum + .2 * room + .022 * ev)
+    return _fin_loop(out, .34)
+
+
+def _passby(rng, T, f_lo, f_hi, d=1, bus=False):
+    """远处一辆车开过：宽带的轮胎 / 风噪“呼——”（中心频率随多普勒略降），声像从一边移到另一边，包络两头为零；
+    bus=True 再加低沉的柴油机谐波（31 Hz 一族）。返回 (m, 2)，放进循环后 _fold。"""
+    m = _n(T)
+    u = np.linspace(0, 1, m)
+    e = np.sin(np.pi * u) ** 2.5
+    dop = np.interp(u, [0, .45, .55, 1], [1.08, 1.05, .94, .9])
+    x = sweep(noise(m, rng, 'pink'), np.sqrt(f_lo * f_hi) * dop, 'bp', q=.7, block=512)
+    x = _rms1(x) * e
+    if bus:
+        f = 31 * dop
+        eng = sum(a * osc(f * h, m, ph0=rng.uniform()) for h, a in ((1, .6), (2, 1.0), (3, .7), (4, .5), (6, .3)))
+        x = x + .7 * _rms1(lp(eng, 380)) * e ** 1.3
+    p = np.interp(u, [0, 1], [-.85, .85]) * d
+    a = (p + 1) * np.pi / 4
+    return np.stack([x * np.cos(a), x * np.sin(a)], -1) * 1.4142
+
+
+def _bike_bell(rng):
+    """自行车铃“叮铃铃”：拇指拨的小铃，5 下约 22 次 / 秒的快敲 + 余振。"""
+    m = _n(.75)
+    x = np.zeros(m)
+    fs = np.array([2390, 3480, 5120, 6890]) * rng.uniform(.98, 1.02)
+    for i in range(5):
+        k = _n(.5)
+        r = _metal(k, fs, [.22, .15, .09, .06], [1, .6, .4, .25], rng, .004) * np.minimum(_t(k) / .0005, 1)
+        r += .3 * hp(noise(k, rng), 4000) * env_exp(k, .001, .0001)
+        _place(x, r, _n(i * .045), .9 if i % 2 == 0 else .7)
+    return x
+
+
+def _street_bird(rng):
+    """一只街边的鸟（鹎 / 八哥那种）“啾啾——啾”：2.2–3.9 kHz 的快速滑音 + 一点颤。"""
+    m = _n(.5)
+    x = np.zeros(m)
+    for st, f0, f1, d in ((0, 2300, 3600, .07), (.11, 2500, 3900, .06), (.3, 3400, 2200, .12)):
+        k = _n(d)
+        tt = _t(k)
+        f = np.interp(tt, [0, d * .6, d], [f0, f1, f1 * .92]) * (1 + .03 * np.sin(_TAU * 60 * tt))
+        y = (osc(f, k) + .12 * osc(2 * f, k)) * np.sin(np.pi * tt / d) ** 1.5
+        _place(x, y, _n(st))
+    return x
+
+
+@reg('city_loop', '新加坡街道环境音：远处车流的低频底（每循环慢慢起伏）+ 三辆车从远处开过（其中一辆公交带柴油机低音，'
+                  '声像从一边移到另一边）+ 远处听不清的人声嘈杂（原工程 crowd 换 seed、再圆周低通）+ 一声自行车铃、一只鸟，'
+                  '带一点骑楼墙面的回声；比 crowd_loop 更“街道”、更开阔（loop=6 s，立体声，无缝）', la=-27, push=0, loop=6.0)
+def _city_loop(loop=6.0, seed=0):
+    rng = _rng('city_loop', seed)
+    L = _n(loop)
+    chans = []
+    for _ in range(2):                                             # 1. 远处车流的底（两声道各自独立 → 开阔）
+        sw = .7 + .3 * _cmod(L, rng, (1, 2, 3))
+        chans.append((.9 * _cnoise(L, rng, 2.0, 35, 300) + .6 * _cnoise(L, rng, 1.0, 150, 1200)) * sw
+                     + .05 * _cnoise(L, rng, .3, 1800, 7000))
+    bed = _rms1(np.stack(chans, -1))
+    bab = _rms1(_cband(_amb_loop('crowd', float(loop), seed=seed + 5), 180, 1700))    # 2. 远处人声：听不清
+    cars = np.zeros((L + _n(4.0), 2))                               # 3. 开过去的车
+    for at, T, lo, hi, d, bus, g in ((.3, 2.6, 300, 2400, 1, False, .8), (2.5, 3.2, 200, 1600, -1, True, 1.0),
+                                     (4.6, 2.2, 400, 3000, 1, False, .55)):
+        _place(cars, _passby(rng, T, lo, hi, d, bus), _n(at), g)
+    cars = _fold(cars, L)
+    ev = np.zeros((L + _n(1.5), 2))                                 # 4. 一声车铃、一只鸟（远、带墙面回声）
+    _place(ev, _pan(lp(_bike_bell(rng), 5000), .55), _n(1.9), 1.0)
+    _place(ev, _pan(lp(_street_bird(rng), 6000), -.5), _n(4.1), .9)
+    ev = _fold(delay(ev, .11, .25, 2, lpf=3000), L)
+    out = .55 * bed + .35 * _rms1(cars) + .45 * bab + 1.3 * ev / (np.abs(ev).max() + 1e-9)
+    return _fin_loop(out, .31)
+
+
+def _cabin_creak(rng):
+    """缆车车厢挂架的一下轻吱嘎：比 creak 短、轻、高（小钢件 / 铝件），0.4 s。"""
+    cn, n = _n(.22), _n(.4)
+    ct = _t(cn)
+    rate = np.interp(ct, [0, .06, .22], [45, 80, 50]) * (1 + .15 * sfx.lfo_noise(cn, 25, rng))
+    imp = np.diff(np.floor(np.cumsum(rate) / SR), prepend=0.0) * rng.uniform(.4, 1.0, cn)
+    imp *= env_pts(cn, [(0, 0), (.04, 1), (.14, .8), (.22, 0)])
+    imp = np.concatenate([imp, np.zeros(n - cn)])
+    x = np.zeros(n)
+    for f, q, a in ((330, 18, .45), (560, 22, 1.0), (910, 22, .85), (1420, 20, .55), (2150, 18, .3)):
+        x += a * q / f * sweep(imp, f * rng.uniform(.98, 1.02), 'bp', q=q, block=128)
+    return sat(norm(x, 1.0) * 1.4, 1.8)
+
+
+@reg('cable_loop', '缆车车厢里：钢缆过滑轮的低嗡（52 Hz 一族谐波，每组一对差 0.5 Hz 的拍频 + 滚轮“呜噜”起伏，慢慢摇）'
+                   '+ 窗外的风（两声道独立的阵风，大风时缝隙里带 1.4 / 2.2 kHz 的细风哨）+ 两下轻轻的车厢吱嘎；'
+                   '没有地面的隆隆、风很宽 → 悬在高空的空旷感（loop=6 s，立体声，无缝）', la=-28, push=0, loop=6.0)
+def _cable_loop(loop=6.0, seed=0):
+    rng = _rng('cable_loop', seed)
+    L = _n(loop)
+    t = _t(L)
+    Ls = L / SR
+    roll = .5 + .5 * np.sin(_TAU * _per(6.5, L) * t)                # 滑轮滚过的“呜噜”
+    sway = .8 + .2 * np.sin(_TAU * (2 / Ls) * t + 1.0)              # 车厢慢慢摇：每循环 2 次
+    hum = np.zeros(L)
+    for h, a in ((1, 1.0), (2, .7), (3, .45), (4, .3), (6, .15)):
+        f = _per(52 * h, L)
+        hum += a * (osc(f, L, ph0=rng.uniform()) + .7 * osc(f + 3 / Ls, L, ph0=rng.uniform()))    # 差 0.5 Hz：每循环 3 拍
+    hum = _rms1(.6 * _rms1(hum) + .5 * _cnoise(L, rng, 1.5, 60, 400) * (.55 + .45 * roll)) * sway
+    gust = _cmod(L, rng, (1, 2, 3))
+    chans = []
+    for c in range(2):
+        g = np.clip(.55 + .45 * (.7 * gust + .3 * _cmod(L, rng, (2, 5, 7))), 0, 1)
+        lo = _cnoise(L, rng, 1.0, 150, 900) * (.5 + .5 * g)
+        hi = _cnoise(L, rng, .3, 900, 4000) * (.15 + .85 * g ** 2)
+        wh = _rms1(_cres(rng.standard_normal(L), (1380, 1460)[c], 40)) * g ** 3
+        wh2 = _rms1(_cres(rng.standard_normal(L), 2210, 50)) * g ** 4
+        chans.append(lo + .45 * hi + .22 * wh + .1 * wh2)
+    wind = _rms1(np.stack(chans, -1))
+    ev = np.zeros((L + _n(1.5), 2))
+    for at, pan in ((1.7, -.35), (4.5, .4)):
+        _place(ev, _pan(_cabin_creak(rng), pan), _n(at), rng.uniform(.8, 1.0))
+    ev = _fold(verb(ev, wet=.15, sec=.5, tau=.08, lpf=4000, seed=36), L)
+    out = .55 * wind + _st(.45 * hum) + 2.0 * ev / (np.abs(ev).max() + 1e-9)
+    return _fin_loop(out, .38)
+
+
+def _rail_clack(rng):
+    """一下车轮过钢轨接缝（在车厢里听）：车体低频“咚”+ 中频“哐”+ 一点钢轨 / 车轮的金属泛音，低通 2.8 kHz。"""
+    m = _n(.3)
+    v = rng.uniform(.93, 1.07)
+    x = .8 * osc(_dsig(m, 110 * v, 52 * v), m) * env_exp(m, .05, .0008)
+    x += 1.1 * bp(noise(m, rng), 300, 1800) * env_exp(m, .018, .0004)
+    x += .5 * bp(noise(m, rng), 150, 600) * env_exp(m, .04, .001)
+    x += .35 * _metal(m, np.array([640, 1150, 1890, 2710]) * v, [.07, .05, .035, .02], [1, .7, .5, .3], rng, .004)
+    return lp(sat(x * 1.5, 1.7), 2800)
+
+
+@reg('train_loop', '火车车厢里：车轮过钢轨接缝的“哐当—哐当”（每秒一组：近处转向架两下 + 半秒后远处转向架两下、更轻更闷；'
+                   '严格按格子排，循环里节奏接得上）+ 车厢的低频隆隆（随车轮转一点起伏）+ 一点钢轨嘶声（loop=4 s，立体声，无缝）',
+     la=-27, push=0, loop=4.0)
+def _train_loop(loop=4.0, seed=0):
+    rng = _rng('train_loop', seed)
+    L = _n(loop)
+    t = _t(L)
+    groups = max(1, int(round(loop)))                              # 每秒一组
+    per = L / groups
+    temps = [_rail_clack(rng) for _ in range(6)]
+    ev = np.zeros((L + _n(1.0), 2))
+    ph = .3                                                        # 整组往后挪 0.3 s：接缝落在远处那对之后的安静处，不切在“哐”上
+    for i in range(groups):
+        for off, g, pan, far in ((0, 1.0, -.25, False), (.14, .8, -.2, False), (.5, .7, .3, True), (.64, .6, .35, True)):
+            y = temps[int(rng.integers(6))]
+            if far:
+                y = lp(y, 1400)
+            at = int(round(i * per + (ph + off + rng.uniform(-.002, .002)) * SR))
+            _place(ev, _pan(y, pan), at, g * rng.uniform(.9, 1.0))
+    ev = _fold(ev, L)
+    wheel = .5 + .5 * np.sin(_TAU * _per(5.6, L) * t)              # 车轮每圈一点起伏
+    chans = []
+    for _ in range(2):
+        rum = .8 * _rms1(_cnoise(L, rng, 2.0, 25, 180)) + _rms1(_cnoise(L, rng, 1.0, 120, 900)) * (.8 + .2 * wheel)
+        rum += .15 * _cnoise(L, rng, .5, 900, 3000) + .05 * _cnoise(L, rng, 0.0, 2500, 6000)
+        chans.append(rum)
+    sway = .9 + .1 * np.sin(_TAU * (1 / (L / SR)) * t)
+    out = .16 * _rms1(np.stack(chans, -1)) * sway[:, None] + ev / (np.abs(ev).max() + 1e-9)
+    return _fin_loop(out, .42)
+
+
 if __name__ == '__main__':
     # 自检：把本文件登记的全部新音效各渲一次，打印时长 / 声道 / 峰值 / 感知响度
     for nm in sorted(GAME):

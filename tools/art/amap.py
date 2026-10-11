@@ -179,18 +179,28 @@ BODYW = {'jotaro': 7, 'joseph': 7, 'avdol': 7, 'kakyoin': 6, 'polnareff': 6, 'ig
 _LATER_PEOPLE = ('fake_tennille','anne','devo','rubbersoul','nena','zz','cameo','chaka','khan',
     'kennyg','nukesaku','wilson','npc_sailor','npc_kid','npc_townsfolk','npc_villager_f',
     'npc_islander','npc_dealer','polnareff_kid','jotaro_kid','polnareff_possessed',
-    'clay_sherry','clay_gold','clay_pol','atum','npc_spw','npc_merchant')
+    'clay_sherry','clay_gold','clay_pol','atum','npc_spw','npc_merchant','npc_bellhop')
 for _cid in _LATER_PEOPLE:
     AMAP[_cid] = _same('idle','walk','talk','hurt','down','portrait')
     AMAP[_cid].update(shock='hurt',getup='hurt')
 for _cid in ('devo_doll','empress','lovers','mannish','npc_cat','midler_back'):
     AMAP[_cid] = _same('idle','walk','talk','hurt','down')
 AMAP['mannish'].update(_same('laugh','cry','portrait'))
-AMAP['devo_doll'].update(attack='slash',**_same('slash','run'))
+# 恶魔娃娃（2026-10-11 重画，art_new_devo.py）：敌人出招 / 预警都播 m.body || 'cmd' → 剃刀劈砍；
+# jump（蹲下蓄力 → 腾空扑脸）要招式写 body: 'jump' 才会播；peek = 藏在家具底下只露半个头和发亮的眼睛（剧情用）
+AMAP['devo_doll'].update(attack='slash', cmd='slash', shock='hurt', getup='hurt', **_same('slash','run','jump','peek'))
 AMAP['empress'].update(attack='bite',**_same('bite',*[f'l{s}_{act}' for s in range(4) for act in ('idle','bite')]))
 AMAP['lovers'].update(_same('split'))
 AMAP['npc_cat'].update(_same('eat'))
 AMAP['rubbersoul'].update(_same('slime_idle','slime_attack'))
+# 黏液铠甲（actor.skin = 'armor'，art_new_rubbersoul.py）：atlas.js 先查 armor_<逻辑名>；
+# 通用回退表不带皮肤，所以常用逻辑名都在这里接上，不然会闪回没穿铠甲的帧。没接的（down / beg）就是铠甲散掉、露出本人。
+AMAP['rubbersoul'].update(_same('armor_idle','armor_walk','armor_attack','armor_hurt','armor_engulf'),
+    armor_run='armor_walk', armor_talk='armor_idle', armor_win='armor_idle', armor_pose='armor_idle',
+    armor_dodge={'a': 'armor_walk', 'f': 1},
+    **_many('armor_attack', 'armor_cmd', 'armor_cmd2', 'armor_slash', 'armor_punch', 'armor_whip', 'armor_windup'),
+    **_many('armor_hurt', 'armor_shock', 'armor_getup', 'armor_guard', 'armor_block'),
+    armor_special='armor_engulf', engulf='armor_engulf', whip='armor_attack')
 for _cid in ('khan','atum','empress','lovers','mannish','npc_cat'):
     AMAP[_cid]['talk']='idle'
 AMAP['empress'].update(walk='idle',l3_idle='idle',l3_bite='bite')
@@ -211,6 +221,9 @@ _EXISTING = {
 for _cid,_acts in _EXISTING.items(): AMAP.setdefault(_cid,{}).update(_same(*_acts))
 for _cid in ('jotaro','joseph','avdol','kakyoin','polnareff'):
     AMAP[_cid]['float']='float'
+# 假花京院（actor.skin = 'fake'，art_new_rubbersoul.py 从原帧换黄眼 + 下摆滴黏液派生）；原图集没有 talk，fake_talk 同样指 fake_idle
+AMAP['kakyoin'].update(_same('fake_idle','fake_walk','fake_cherry'), fake_talk='fake_idle', fake_win='fake_idle',
+                       fake_run='fake_walk')
 AMAP['grayfly']['seated']='seated'
 _PERSON_SPECIALS={
  'anne':('run','wave','angry','portrait_angry'), 'devo':('slash',),

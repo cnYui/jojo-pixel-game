@@ -645,3 +645,125 @@ def draw_photo_ape_helm(frame):
     idx = np.clip(np.floor(t + 0.5), 0, len(PHOTO_PAL) - 1).astype(int)
     out = np.array(PHOTO_PAL, np.uint8)[idx]
     return Image.fromarray(np.dstack([out, np.full((H, W), 255, np.uint8)]), 'RGBA')
+
+
+# =====================================================================================
+#  第3章（新加坡：酒店里的黑檀木恶魔、缆车里的黄色节制）新道具（2026-10-11）
+# =====================================================================================
+# 已有同名道具不能覆盖：slime_puddle（20×6 一帧）和 mirror_shard（6×6 一帧，第4章倒吊人在用）在 art_props_later.py，
+# 所以第3章的黏液滩叫 slime_pool、镜子碎片叫 mirror_piece。黏液配色和 art_new_rubbersoul.py 的黏液铠甲一致。
+PROPS += [
+    dict(spec('slime_pool', 2, 22, 7,
+              '地上的一滩黄色黏液（黄色节制）：扁平的一滩 + 中间偏左一个鼓包，深黄褐描边、左上亮边、右下暗边。'
+              '帧 0 表面一道高光 / 帧 1 高光挪开、右边鼓起一个小气泡。kind=loop、2 fps：放着会自己冒泡；'
+              '“吞掉”垃圾桶 = 在垃圾桶的 pivot 上叠这一滩（同一个 x、y+1）再把垃圾桶删掉；pivot = 底边中点'),
+         name='黄色黏液滩', kind='loop', fps=2),
+    dict(spec('trash_can', 1, 14, 18,
+              '新加坡路边的金属垃圾桶：墨绿桶身 + 竖向压筋 + 圆顶桶盖（中间一个提手）、底下一圈深色桶脚，黑描边；'
+              'pivot = 底边中点（放在人行道上，和人物同一条地面线）'), name='路边垃圾桶'),
+    dict(spec('mirror_piece', 2, 12, 14,
+              '镜子碎片（地上 / 柜门上，竖着放）：不规则尖角碎片，深灰蓝边 + 浅蓝灰镜面；左上亮边、右下暗边。'
+              '中间留一块平的镜面（x 3–8、y 5–10，全是同一个颜色）给剧情画倒影。帧 0 不反光 / '
+              '帧 1 两道白色反光斜着扫过（绕开中间平的那块）+ 两个尖角闪一下（按帧号取：glint ? 1 : 0）；pivot = 底边中点'), name='镜子碎片（第3章）'),
+    dict(spec('doll_razor', 1, 10, 4,
+              '玩偶散架后掉在地上的那把剃刀：打开的直柄剃刀横放，左边暗红木柄、右边银白刀片 + 一个白反光点，'
+              '和 devo_doll 手里的剃刀同色；pivot = 底边中点'), name='玩偶的剃刀'),
+]
+
+SLIME, SLIME_L, SLIME_H, SLIME_D, SLIME_O = (240, 206, 52), (255, 234, 112), (255, 252, 216), (200, 152, 26), (120, 80, 16)
+
+
+def _paint_blob(mask, base, lite, dark, outline):
+    """mask 内填 base，左上边 lite、右下边 dark，外面一圈 outline（4 邻接）。"""
+    H, W = mask.shape
+    a = np.zeros((H, W, 4), np.uint8)
+    a[mask] = base + (255,)
+    a[_edge(mask, (-1, -1)) | _edge(mask, (0, -1))] = lite + (255,)
+    a[_edge(mask, (1, 1)) | _edge(mask, (0, 1))] = dark + (255,)
+    a[_ring(mask)] = outline + (255,)
+    return a
+
+
+def draw_slime_pool(frame):
+    W, H = 22, 7
+    m = _ell_mask(W, H, 10.5, 4.6, 9.6, 1.7) | _ell_mask(W, H, 8.5, 3.2, 4.2, 1.6)
+    m |= _ell_mask(W, H, 16.5, 4.8, 3.2, 1.2)
+    if frame == 1:
+        m |= _ell_mask(W, H, 15.5, 2.6, 2.1, 2.1)               # 右边鼓起一个小气泡（帧 0 是平的）
+    m[0, :] = m[-1, :] = False
+    m[:, 0] = m[:, -1] = False
+    a = _paint_blob(m, SLIME, SLIME_L, SLIME_D, SLIME_O)
+    if frame == 0:
+        for x, y in ((5, 3), (6, 3), (7, 2), (11, 4)):            # 表面一道高光
+            a[y, x] = SLIME_H + (255,)
+    else:
+        for x, y in ((8, 2), (9, 2), (4, 4)):
+            a[y, x] = SLIME_H + (255,)
+        a[2, 15] = SLIME_H + (255,)                              # 气泡上的亮点 + 右下一圈暗
+        a[2, 14] = SLIME_L + (255,)
+        a[3, 17] = SLIME_D + (255,)
+    return Image.fromarray(a, 'RGBA')
+
+
+def draw_trash_can(frame):
+    im, d = canvas(14, 18)
+    G, GD, GH, GDD = (60, 122, 84), (36, 80, 56), (110, 168, 118), (24, 52, 40)
+    d.rectangle((2, 5, 11, 16), fill=G, outline=K)              # 桶身
+    for x in (4, 7, 10):                                         # 竖向压筋
+        d.line((x, 6, x, 15), fill=GD)
+    d.line((3, 6, 3, 15), fill=GH)                               # 左亮
+    d.line((5, 6, 5, 15), fill=GH)
+    d.line((11, 6, 11, 15), fill=GDD)                            # 右暗
+    d.line((2, 9, 11, 9), fill=GD)                               # 腰箍
+    d.line((3, 9, 10, 9), fill=GDD)
+    d.rectangle((1, 16, 12, 17), fill=(84, 88, 96))             # 桶脚（灰色底箍，只描左右和底）
+    d.line((1, 17, 12, 17), fill=K)
+    d.point((1, 16), fill=K)
+    d.point((12, 16), fill=K)
+    d.line((2, 16, 5, 16), fill=(132, 138, 146))
+    d.ellipse((0, 2, 13, 7), fill=GD, outline=K)                 # 圆顶桶盖
+    d.line((2, 4, 6, 3), fill=GH)
+    d.line((1, 5, 12, 5), fill=G)
+    d.line((1, 6, 12, 6), fill=GDD)
+    d.rectangle((5, 0, 8, 2), fill=(150, 156, 160), outline=K)  # 提手
+    d.line((6, 1, 7, 1), fill=GD)
+    return im
+
+
+def draw_mirror_piece(frame):
+    W, H = 12, 14
+    poly = [(2, 13), (0, 9), (1, 4), (4, 0), (6, 4), (9, 1), (11, 5), (10, 10), (7, 13)]   # 上沿两个尖角
+    mi = Image.new('L', (W, H), 0)
+    ImageDraw.Draw(mi).polygon(poly, fill=255)
+    m = np.array(mi) > 0
+    inner = m & ~_ring(~m)                                       # 往里缩 1 px 的镜面
+    a = np.zeros((H, W, 4), np.uint8)
+    a[m] = (40, 46, 66, 255)                                     # 深灰蓝边（兼描边）
+    a[inner] = (160, 182, 204, 255)                              # 浅蓝灰镜面
+    a[inner & (_edge(inner, (-1, -1)) | _edge(inner, (0, -1)))] = (206, 222, 236, 255)
+    a[inner & (_edge(inner, (1, 1)) | _edge(inner, (0, 1)))] = (112, 132, 160, 255)
+    flat = np.zeros((H, W), bool)                                # 中间那块平的（剧情画倒影）：全同色
+    flat[5:11, 3:9] = True
+    a[flat & inner] = (178, 198, 216, 255)
+    if frame == 1:                                               # 白色反光：一宽一窄两道斜带从左下扫到右上（绕开中间平的那块）
+        for x in range(W):
+            for y in range(H):
+                if inner[y, x] and not flat[y, x] and x + y in (6, 7, 10):
+                    a[y, x] = (255, 255, 255, 255) if x + y != 10 else (230, 242, 255, 255)
+        a[0, 4] = a[1, 9] = (255, 255, 255, 255)                 # 两个尖角各闪一下
+    return Image.fromarray(a, 'RGBA')
+
+
+def draw_doll_razor(frame):
+    rows = ["....KKKKKK",
+            "KKKKBWBBBK",
+            "KhHHKDDDDK",
+            "KKKK.KKKK."]
+    pal = {'K': (20, 18, 30), 'B': (212, 224, 236), 'W': (255, 255, 255), 'D': (132, 148, 168),
+           'H': (70, 36, 30), 'h': (136, 82, 58)}
+    im = Image.new('RGBA', (10, 4))
+    for y, r in enumerate(rows):
+        for x, ch in enumerate(r):
+            if ch in pal:
+                im.putpixel((x, y), pal[ch] + (255,))
+    return im

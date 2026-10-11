@@ -1,4 +1,4 @@
-"""后续非人类：娃娃、寄生替身、婴儿和猫分别使用独立比例及动作。"""
+"""后续非人类：寄生替身、婴儿和猫分别使用独立比例及动作（恶魔娃娃 devo_doll 已移到 art_new_devo.py）。"""
 import sys
 sys.dont_write_bytecode = True
 from PIL import Image, ImageDraw
@@ -61,26 +61,6 @@ def define(cid,zh,actions,draw,anchor='mb'):
         name=cid+'.'+act
         sprite.define(name,[draw(act,i) for i in range(n)],anchor='mm' if act.startswith('portrait') else anchor,fps=6 if act in ('run','walk') else 3,desc=zh+'：'+act)
         NEW.append(name)
-
-
-def doll(act,i):
-    im=Image.new('RGBA',(24 if act=='slash' else 16,16)); d=ImageDraw.Draw(im)
-    y=(i%2) if act in ('idle','run') else 0
-    d.polygon([(4,6+y),(10,6+y),(12,11),(3,11)],fill=(64,130,142),outline=K)
-    for x in (5-i%2,9+i%2): d.rectangle((x,11,x+2,14),fill=(214,192,156),outline=K)
-    d.ellipse((3,1+y,11,7+y),fill=(218,190,134),outline=K)
-    d.polygon([(2,3+y),(4,0+y),(9,0+y),(13,3+y)],fill=(94,54,40),outline=K)
-    d.point((8,4+y),fill=(216,48,56)); d.line((5,6+y,9,6+y),fill=K)
-    if act=='slash':
-        d.line((10,8,15,6+i*3),fill=K,width=3); d.line((15,6+i*3,22,1+i*10),fill=K,width=3)
-        d.line((15,6+i*3,22,1+i*10),fill=(218,226,226))
-    elif act=='hurt':
-        d.line((3,8,0,6),fill=(218,190,134),width=2); d.line((7,3,10,6),fill=K); d.line((7,6,10,3),fill=K)
-    elif act=='down':
-        im=Image.new('RGBA',(20,10)); d=ImageDraw.Draw(im)
-        d.rectangle((7,4,14,8),fill=(64,130,142),outline=K); d.line((14,6,18,8),fill=K,width=3)
-        d.ellipse((0,1,8,8),fill=(218,190,134),outline=K); d.line((3,3,6,6),fill=K); d.line((3,6,6,3),fill=K)
-    return im
 
 
 def empress(act,i):
@@ -195,7 +175,7 @@ def midler(act,i):
     return im
 
 
-define('devo_doll','恶魔娃娃',{'idle':2,'run':4,'walk':4,'talk':2,'slash':2,'hurt':1,'down':1},doll)
+# devo_doll（恶魔娃娃）2026-10-11 起在 art_new_devo.py 里画和注册（重画成诡异木偶 + 新动作 jump / peek）
 define('empress','女帝',{**{f'l{s}_idle':2 for s in range(4)},**{f'l{s}_bite':1 for s in range(4)},'idle':2,'walk':2,'talk':2,'hurt':1,'down':1,'bite':1},empress)
 define('lovers','恋人',{'idle':2,'walk':2,'talk':2,'hurt':1,'down':1,'split':1},lovers,'mm')
 define('mannish','玛尼修男孩',{'idle':2,'walk':2,'talk':2,'hurt':1,'down':1,'laugh':2,'cry':2,'portrait':2},baby)

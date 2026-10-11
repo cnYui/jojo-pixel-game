@@ -109,6 +109,9 @@ NEW_EXPORT = (
     + [_e('grunt_' + v, 'grunt', voice=v) for v in ('jotaro', 'kakyoin', 'polnareff', 'avdol', 'joseph', 'enemy', 'dio')]
     # 2026-10-10 晚第2章（南海）：猩猩叫、货轮汽笛、漩涡、海浪环境音（循环）、海鸥、船体吱嘎、打火机（tools\game_sfx.py）
     + [_e(n) for n in ('ape_screech', 'ship_horn', 'whirlpool', 'sea_loop', 'gulls', 'creak', 'lighter')]
+    # 2026-10-11 第3章（新加坡）：剃刀、玩偶怪笑 / 窜动、冰箱、黏液 / 吸收、吊扇 / 街道 / 缆车 / 火车环境音（循环）（tools\game_sfx.py）
+    + [_e(n) for n in ('razor', 'doll_voice', 'doll_scurry', 'fridge', 'slime', 'slime_absorb',
+                       'fan_loop', 'city_loop', 'cable_loop', 'train_loop')]
 )
 
 ALL_SFX = SFX_EXPORT + NEW_EXPORT

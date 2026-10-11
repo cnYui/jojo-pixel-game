@@ -399,6 +399,11 @@ class Tester:
         enemy = min(enemies, key=lambda e: abs(e[1] - s["px"]) + 2 * abs(e[2] - s["py"]))
         if tactic == 'devo':
             dx = enemy[1] - s['px']
+            # 能量满了、贴着它：U 千本刺（第3章提示：J3 / U 把藏着的玩偶逼出来）
+            if (s.get('energy') or 0) >= (s.get('energyMax') or 100) and abs(dx) < 40 and abs(enemy[2] - s['py']) < 10:
+                self.hold()
+                self.pulse('u')
+                return
             if abs(dx) < 19 and s.get('playerCanCancel') and not s.get('rootT') and not s.get('dodgeCd'):
                 self.hold(['ArrowLeft' if dx >= 0 else 'ArrowRight'])
                 self.pulse('k')
@@ -487,18 +492,31 @@ class Tester:
                     self.attack(s)
                 return True
         elif tactic == "yellow" and not h.get("water"):
+            # 2026-10-11 第3章重做：黏液吸收伤害但吸收不了冲力——站在他离窗远的那一侧打（J3 把他往窗户推），
+            #   被逼到窗边（公开提示 window）就贴近按 U；身上黏液 ≥ 3 层按 K 甩掉；掉海的外景演出期间不动
             boss = next((e for e in s.get("enemies") or [] if e[13]), None)
             if boss:
+                if h.get('falling'):
+                    self.hold()
+                    return True
+                if (h.get('slime') or 0) >= 3 and not s.get('dodgeCd'):
+                    self.hold()
+                    self.pulse('k')
+                    return True
                 if h.get('window') and abs(boss[1] - s["px"]) < 31 and abs(boss[2] - s["py"]) < 12:
                     self.hold()
                     self.pulse("u")
-                elif h.get('window'):
-                    self.move(s, boss[1] - (22 if s['px'] < boss[1] else -22), boss[2], 4)
-                else:
-                    # 先把他引向窗边，再近身抓取；U 的情境窗口来自公开战斗提示。
-                    if self.defend(s):
-                        return True
-                    self.move(s, 40, boss[2], 3)
+                    return True
+                if self.defend(s):
+                    return True
+                # 已经在出招 / 连打：接着按 J（J 三连接连按 = 欧拉连打，挪位置会把连段打断）
+                if (s.get('playerAtk') or s.get('playerRush')) and abs(boss[1] - s['px']) < 40:
+                    self.attack(s)
+                    return True
+                wx = h.get('winL', 60) if boss[1] < 160 else h.get('winR', 260)
+                side = 1 if wx < boss[1] else -1          # 站到他远离窗户的那一侧
+                if self.move(s, boss[1] + side * 20, boss[2], 4):
+                    self.attack(s, -side)
                 return True
         elif tactic == "hanged" and not h.get("phase"):
             if h.get("intercept"):
@@ -735,7 +753,8 @@ class Tester:
             if fid in ("b07_hangedman", "b08_empress", "b09a_wheelroad"):
                 continue
             # 第2章力量：主要是机关（管道要闪、吊钩紫边不可挡、打眼睛），格挡只对扔东西有用，测试器常常一次都用不上——只查闪避和连打
-            if fid == "b04_strength":
+            # 第3章黄色节制（2026-10-11 重做）：车厢里是把他推到窗边撞出去、K 甩黏液，水里限时乱打，格挡不是解法——同样只查闪避和连打
+            if fid in ("b04_strength", "b06_yellowtemperance"):
                 self.check(c.get("dodge", 0) >= 1, "coverage_dodge", fight=fid, counts=c)
                 self.check(c.get("rush", c.get("rushStart", 0)) >= 1, "coverage_rush", fight=fid, counts=c)
                 continue

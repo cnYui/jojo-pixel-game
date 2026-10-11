@@ -1338,6 +1338,86 @@
    "loop": false,
    "samples": 14112,
    "encDelay": 1105
+  },
+  "razor": {
+   "sec": 0.25,
+   "ch": 1,
+   "hit": 0.05,
+   "loop": false,
+   "samples": 11025,
+   "encDelay": 1105
+  },
+  "doll_voice": {
+   "sec": 0.6248,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 27553,
+   "encDelay": 1105
+  },
+  "doll_scurry": {
+   "sec": 0.4227,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 18641,
+   "encDelay": 1105
+  },
+  "fridge": {
+   "sec": 0.7,
+   "ch": 1,
+   "hit": 0.03,
+   "loop": false,
+   "samples": 30870,
+   "encDelay": 1105
+  },
+  "slime": {
+   "sec": 0.5032,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 22192,
+   "encDelay": 1105
+  },
+  "slime_absorb": {
+   "sec": 0.3,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 13230,
+   "encDelay": 1105
+  },
+  "fan_loop": {
+   "sec": 4.0,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": true,
+   "samples": 176400,
+   "encDelay": 1105
+  },
+  "city_loop": {
+   "sec": 6.0,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": true,
+   "samples": 264600,
+   "encDelay": 1105
+  },
+  "cable_loop": {
+   "sec": 6.0,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": true,
+   "samples": 264600,
+   "encDelay": 1105
+  },
+  "train_loop": {
+   "sec": 4.0,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": true,
+   "samples": 176400,
+   "encDelay": 1105
   }
  }
 }

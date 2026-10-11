@@ -1810,6 +1810,99 @@
    "fps": 0,
    "kind": "static",
    "desc": "念写照片：舰桥里猩猩（力量同造型）双手握船舵、窗外海平线；紫褐 7 阶单色 + 颗粒 + 暗角，不透明。S.photo({image}) 放大倍数 = floor(min(120/40, 140/36)) = 3 → 120×108（48 宽只会放大 2 倍 = 96 px，所以做 40 宽）；pivot = 中心（同原 photo）"
+  },
+  {
+   "id": "slime_pool",
+   "name": "黄色黏液滩",
+   "sprite": "prop_new.slime_pool",
+   "file": "slime_pool.png",
+   "frames": 2,
+   "size": [
+    22,
+    7
+   ],
+   "anchor": [
+    11,
+    7
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    11,
+    7
+   ],
+   "fps": 2,
+   "kind": "loop",
+   "desc": "地上的一滩黄色黏液（黄色节制）：扁平的一滩 + 中间偏左一个鼓包，深黄褐描边、左上亮边、右下暗边。帧 0 表面一道高光 / 帧 1 高光挪开、右边鼓起一个小气泡。kind=loop、2 fps：放着会自己冒泡；“吞掉”垃圾桶 = 在垃圾桶的 pivot 上叠这一滩（同一个 x、y+1）再把垃圾桶删掉；pivot = 底边中点"
+  },
+  {
+   "id": "trash_can",
+   "name": "路边垃圾桶",
+   "sprite": "prop_new.trash_can",
+   "file": "trash_can.png",
+   "frames": 1,
+   "size": [
+    14,
+    18
+   ],
+   "anchor": [
+    7,
+    18
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    7,
+    18
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "新加坡路边的金属垃圾桶：墨绿桶身 + 竖向压筋 + 圆顶桶盖（中间一个提手）、底下一圈深色桶脚，黑描边；pivot = 底边中点（放在人行道上，和人物同一条地面线）"
+  },
+  {
+   "id": "mirror_piece",
+   "name": "镜子碎片（第3章）",
+   "sprite": "prop_new.mirror_piece",
+   "file": "mirror_piece.png",
+   "frames": 2,
+   "size": [
+    12,
+    14
+   ],
+   "anchor": [
+    6,
+    14
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    14
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "镜子碎片（地上 / 柜门上，竖着放）：不规则尖角碎片，深灰蓝边 + 浅蓝灰镜面；左上亮边、右下暗边。中间留一块平的镜面（x 3–8、y 5–10，全是同一个颜色）给剧情画倒影。帧 0 不反光 / 帧 1 两道白色反光斜着扫过（绕开中间平的那块）+ 两个尖角闪一下（按帧号取：glint ? 1 : 0）；pivot = 底边中点",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "doll_razor",
+   "name": "玩偶的剃刀",
+   "sprite": "prop_new.doll_razor",
+   "file": "doll_razor.png",
+   "frames": 1,
+   "size": [
+    10,
+    4
+   ],
+   "anchor": [
+    5,
+    4
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    5,
+    4
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "玩偶散架后掉在地上的那把剃刀：打开的直柄剃刀横放，左边暗红木柄、右边银白刀片 + 一个白反光点，和 devo_doll 手里的剃刀同色；pivot = 底边中点"
   }
  ],
  "sprites": [
@@ -3621,6 +3714,99 @@
    "fps": 0,
    "kind": "static",
    "desc": "念写照片：舰桥里猩猩（力量同造型）双手握船舵、窗外海平线；紫褐 7 阶单色 + 颗粒 + 暗角，不透明。S.photo({image}) 放大倍数 = floor(min(120/40, 140/36)) = 3 → 120×108（48 宽只会放大 2 倍 = 96 px，所以做 40 宽）；pivot = 中心（同原 photo）"
+  },
+  {
+   "id": "slime_pool",
+   "name": "黄色黏液滩",
+   "sprite": "prop_new.slime_pool",
+   "file": "slime_pool.png",
+   "frames": 2,
+   "size": [
+    22,
+    7
+   ],
+   "anchor": [
+    11,
+    7
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    11,
+    7
+   ],
+   "fps": 2,
+   "kind": "loop",
+   "desc": "地上的一滩黄色黏液（黄色节制）：扁平的一滩 + 中间偏左一个鼓包，深黄褐描边、左上亮边、右下暗边。帧 0 表面一道高光 / 帧 1 高光挪开、右边鼓起一个小气泡。kind=loop、2 fps：放着会自己冒泡；“吞掉”垃圾桶 = 在垃圾桶的 pivot 上叠这一滩（同一个 x、y+1）再把垃圾桶删掉；pivot = 底边中点"
+  },
+  {
+   "id": "trash_can",
+   "name": "路边垃圾桶",
+   "sprite": "prop_new.trash_can",
+   "file": "trash_can.png",
+   "frames": 1,
+   "size": [
+    14,
+    18
+   ],
+   "anchor": [
+    7,
+    18
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    7,
+    18
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "新加坡路边的金属垃圾桶：墨绿桶身 + 竖向压筋 + 圆顶桶盖（中间一个提手）、底下一圈深色桶脚，黑描边；pivot = 底边中点（放在人行道上，和人物同一条地面线）"
+  },
+  {
+   "id": "mirror_piece",
+   "name": "镜子碎片（第3章）",
+   "sprite": "prop_new.mirror_piece",
+   "file": "mirror_piece.png",
+   "frames": 2,
+   "size": [
+    12,
+    14
+   ],
+   "anchor": [
+    6,
+    14
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    6,
+    14
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "镜子碎片（地上 / 柜门上，竖着放）：不规则尖角碎片，深灰蓝边 + 浅蓝灰镜面；左上亮边、右下暗边。中间留一块平的镜面（x 3–8、y 5–10，全是同一个颜色）给剧情画倒影。帧 0 不反光 / 帧 1 两道白色反光斜着扫过（绕开中间平的那块）+ 两个尖角闪一下（按帧号取：glint ? 1 : 0）；pivot = 底边中点",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "doll_razor",
+   "name": "玩偶的剃刀",
+   "sprite": "prop_new.doll_razor",
+   "file": "doll_razor.png",
+   "frames": 1,
+   "size": [
+    10,
+    4
+   ],
+   "anchor": [
+    5,
+    4
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    5,
+    4
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "玩偶散架后掉在地上的那把剃刀：打开的直柄剃刀横放，左边暗红木柄、右边银白刀片 + 一个白反光点，和 devo_doll 手里的剃刀同色；pivot = 底边中点"
   }
  ]
 }

@@ -3,8 +3,8 @@
   "name": "恶魔娃娃",
   "work": "JoJo",
   "image": "devo_doll.png",
-  "cell": [24, 16],
-  "pivot": [12, 16],
+  "cell": [39, 32],
+  "pivot": [20, 32],
   "facing": "right",
   "animations": {
     "idle": {
@@ -26,35 +26,51 @@
     "run": {
       "row": 2,
       "frames": 4,
-      "fps": 6,
+      "fps": 10,
       "kind": "loop",
       "seamless": true,
       "desc": "恶魔娃娃：run"
     },
-    "hurt": {
+    "jump": {
       "row": 3,
+      "frames": 2,
+      "fps": 6,
+      "kind": "oneshot",
+      "seamless": false,
+      "desc": "恶魔娃娃：jump"
+    },
+    "hurt": {
+      "row": 4,
       "frames": 1,
       "fps": 1,
       "kind": "static",
       "desc": "恶魔娃娃：hurt"
     },
     "down": {
-      "row": 4,
+      "row": 5,
       "frames": 1,
       "fps": 1,
       "kind": "static",
       "desc": "恶魔娃娃：down"
     },
-    "slash": {
-      "row": 5,
+    "peek": {
+      "row": 6,
       "frames": 2,
-      "fps": 3,
+      "fps": 2,
+      "kind": "loop",
+      "seamless": true,
+      "desc": "恶魔娃娃：peek"
+    },
+    "slash": {
+      "row": 7,
+      "frames": 2,
+      "fps": 6,
       "kind": "oneshot",
       "seamless": false,
       "desc": "恶魔娃娃：slash"
     },
     "talk": {
-      "row": 6,
+      "row": 8,
       "frames": 2,
       "fps": 3,
       "kind": "loop",
@@ -67,7 +83,7 @@
   "variants": {},
   "source": {
     "project": "jojo",
-    "call": "game.art_later_creatures（import assets; assets.load_all(); from engine import sprite; sprite.get('devo_doll.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'devo_doll.<动作>', x, y, frame=i, flip=False)"
+    "call": "game.art_new_devo（import assets; assets.load_all(); from engine import sprite; sprite.get('devo_doll.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'devo_doll.<动作>', x, y, frame=i, flip=False)"
   },
-  "notes": "恶魔娃娃（devo_doll），非人形·角色。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle/walk/run/hurt/down/slash/talk。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
+  "notes": "恶魔娃娃（devo_doll），非人形·角色。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(自定义点)=idle/walk/run/jump/hurt/down/peek/slash/talk。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
 }

@@ -1197,6 +1197,13 @@ for _key in ('yacht_deck', 'freighter_deck', 'freighter_corridor', 'underwater')
     EXPORTERS[_key] = lambda ex, _k=_key: exp_new(ex, _k)
 DEFAULT_PACK['sea_fog'] = 'ch2'
 EXPORTERS['sea_fog'] = lambda ex: exp_new(ex, 'sea_fog')
+# 2026-10-11 第3章按体验版精度重做：三张重画（tools\bg_new\singapore_street.py / singapore_hotel.py / cable_car.py，
+#   尺寸、可走带、剧情锚点照 story\stages_ch02_05.js / ch03.js；later_stages 里的旧画法留着不用），缆车外景新画 cable_view（ch3 包，
+#   模块加载时引用 cable_car.py 的车厢外观）
+for _key in ('singapore_street', 'singapore_hotel', 'cable_car'):
+    EXPORTERS[_key] = lambda ex, _k=_key: exp_new(ex, _k)
+DEFAULT_PACK['cable_view'] = 'ch3'
+EXPORTERS['cable_view'] = lambda ex: exp_new(ex, 'cable_view')
 ORDER=list(DEFAULT_PACK)
 
 

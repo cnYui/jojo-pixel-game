@@ -63,10 +63,11 @@
     bgCache[key] = spec && G.Background ? new G.Background(spec) : null;
     return bgCache[key];
   }
-  function drawBg(wg, key, t, camX = 0) {
+  // state：背景 pick / tint 图层读的键（和 stage.state 一样），插入画面要换图层时传（第3章缆车外景的 win 碎窗）
+  function drawBg(wg, key, t, camX = 0, state = {}) {
     const b = bgObj(key);
     if (!b) return false;
-    try { b.draw(wg, camX, t, {}); if (fn(b, 'drawFg')) b.drawFg(wg, camX, t, {}); } catch (e) { return false; }
+    try { b.draw(wg, camX, t, state); if (fn(b, 'drawFg')) b.drawFg(wg, camX, t, state); } catch (e) { return false; }
     return true;
   }
   // 插入画面的底：'menace' / 'radial' / 'black' / '#rrggbb' / 背景 key（'tatami_top'） / 函数 (P, t)
@@ -77,7 +78,7 @@
     if (typeof bg === 'string' && bg[0] === '#') { wg.fillStyle = bg; wg.fillRect(0, 0, 320, 180); }
     else if (bg === 'black') { /* 已经是黑的 */ }
     else if (typeof bg === 'string' && bg !== 'menace' && bg !== 'radial') {
-      if (!drawBg(wg, bg, t)) { wg.fillStyle = '#2a2018'; wg.fillRect(0, 0, 320, 180); }
+      if (!drawBg(wg, bg, t, 0, o.bgState || {})) { wg.fillStyle = '#2a2018'; wg.fillRect(0, 0, 320, 180); }
     }
     px(wg, (P) => {
       if (typeof bg === 'function') bg(P, t);

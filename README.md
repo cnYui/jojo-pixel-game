@@ -67,9 +67,9 @@
 
 | 线 | 收尾记录 | 一句话 |
 |---|---|---|
-| 第1–5章整章测试修复 | `20261010-093937-jojo-ch1-ch5-routes-wrapup_CN.md` | 第1章能打到最后一张图（含故意输重试）；~~第2章力量战管道修了没复测~~（2026-10-11 第2章整章重做、正常 / 故意输两条路线都打通）；第3–5章没跑 |
+| 第1–5章整章测试修复 | `20261010-093937-jojo-ch1-ch5-routes-wrapup_CN.md` | 第1章能打到最后一张图（含故意输重试）；~~第2章力量战管道修了没复测~~（2026-10-11 第2、3章整章重做、正常 / 故意输两条路线都打通）；第4–5章没跑 |
 | 第6章–终章整章测试修复 | `20261010-093937-jojo-ch6-final-routes-wrapup_CN.md` | 第6、8章到章末；第7章审判第二段、第9章阿努比斯没打完；第10章–终章没跑；终章 DIO 4 处改动没验证 |
-| 第2–6章背景重画 | `20261010-093937-jojo-bg-ch2-ch6-wrapup_CN.md` | 只拍了 24 张改前图，没动游戏文件。**第2章的四张（yacht_deck / freighter_deck / freighter_corridor / underwater）+ 新的 sea_fog 已在 2026-10-11 重画接入**（`tools/bg_new/ch2_preview.py` 出前后对照）；第3–6章没动 |
+| 第2–6章背景重画 | `20261010-093937-jojo-bg-ch2-ch6-wrapup_CN.md` | 只拍了 24 张改前图，没动游戏文件。**第2章的四张（yacht_deck / freighter_deck / freighter_corridor / underwater）+ 新的 sea_fog、第3章的三张（singapore_street / singapore_hotel / cable_car）+ 新的 cable_view 已在 2026-10-11 重画接入**（`tools/bg_new/ch2_preview.py` / `ch3_preview.py` 出前后对照）；第4–6章没动 |
 | 第7章–终章背景重画 | `20261010-093937-jojo-bg-ch7-final-wrapup_CN.md` | 只做了预览工具 `tools/bg_new/late_preview.py`，没动游戏文件 |
 
 ## 目录
@@ -102,6 +102,10 @@ python -B tools\dev\full\test_mid_early.py ch2 --out tools\_playtest\<名字>
 python -B tools\dev\full\dev_fight.py ch2 --entry ch2Darkmoon --out tools\_playtest\<名字>
 # 第2章背景改前 / 改后预览
 python -B tools\bg_new\ch2_preview.py after yacht_deck
+# 第3章（新加坡）：整章路线 / 单独打一战（入口 ch3Devo、ch3Yellow）/ 背景预览
+python -B tools\dev\full\test_mid_early.py ch3 --out tools\_playtest\<名字>
+python -B tools\dev\full\dev_fight.py ch3 --entry ch3Yellow --out tools\_playtest\<名字>
+python -B tools\bg_new\ch3_preview.py after singapore_street
 # 牢房探索 / 抢漫画回归
 python -B tools\dev\full\test_jail_explore.py
 python -B tools\dev\full\repro_jail_grab.py

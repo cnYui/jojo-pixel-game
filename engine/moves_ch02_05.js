@@ -24,15 +24,15 @@
   //   管道 8 → 6、吊钩 16 → 12、扔东西 10 → 8、扑抓 18 → 14（规划 §6.1 第 4 战同步改了）。
   // 机关间隔 1.2 s → 1.6 s（每碎一只眼睛再 +0.6 s）：原来 1.2 s 一下，招本身就要 0.9–1.1 s，等于一招接一招，没空在眼睛底下打一套 J3 + 连打
   kit('e_strength',650,80,['ST_PIPE','ST_HOOK','ST_THROW','ST_GRAB'],{poiseMax:50,dmgMul:()=>{const c=G.world.fight;return c&&(data(c).eyes||0)>=3?1:0;},brain(e,dt,c){if(!dt)return true;const d=data(c);e.facing=c.player.x>e.x?1:-1;if((d.eyes||0)>=3)return closeBrain(e,dt,c);if(e.cool<=0){const i=e.patternI++%3,n=['ST_PIPE','ST_HOOK','ST_THROW'][i];G.AI.tele(e,n);e.cool=2.4+(d.eyes||0)*.5;}return true;}});
-  basic('DE_RAZOR','W1',24,10,42,{sfxHit:'slash'});
-  basic('DD_ANKLE','W1',20,12,34,{root:f(20)});basic('DD_JUMP','W1',16,10,48);
+  basic('DE_RAZOR','W1',24,10,42,{sfx:'razor',sfxHit:'slash'});
+  basic('DD_ANKLE','W1',20,12,34,{root:f(20),sfx:'razor',sfxHit:'slash'});basic('DD_JUMP','W1',16,10,48,{body:'jump',sfx:'razor',sfxHit:'slash'});
   kit('e_devo',300,55,['DE_RAZOR']);
   // 玩偶钻进家具底下时头顶冒「？」（登记过的拟声字；原来写的「看玻璃碎片里的倒影！」没有预渲染图，只能记缺图、用字库硬画）
   kit('e_doll',400,105,['DD_ANKLE','DD_JUMP'],{onHitBy:(t,a,m,i)=>{if(!t.mem.hidden)return null;if(i.slot==='J3'||i.slot==='special'){t.mem.hidden=false;t.mem.revealUntil=(G.world.fight?G.world.fight.t:0)+.5;t.alpha=1;return null;}return 'evade';},brain(e,dt,c){if(!dt)return true;if(c.t>=(e.mem.hideNext||0)){e.mem.hideNext=c.t+4;e.mem.hidden=true;G.uifx.sfx('？',c.player);}const striking=e.atk&&e.atkT>=(e.atk.active?e.atk.active[0]:0);if(striking&&!e.mem.wasStriking){e.mem.hidden=false;e.mem.revealUntil=c.t+.5;}e.mem.wasStriking=!!striking;if(c.t>=(e.mem.revealUntil||0))e.mem.hidden=true;e.alpha=e.mem.hidden?0:1;if(e.tele)G.combat.fxAt('dust',{x:e.x,y:e.y,n:3,life:.15},e,.15);return closeBrain(e,dt,c);}});
-  basic('YT_WHIP','W1',24,10,60);
-  basic('YT_ENGULF','W2',45,0,30,{onHit:(e,t,c,r)=>{if(t===c.player&&!r.guard&&data(c).engulf)data(c).engulf(t);},dmg:1,guard:'none'});
+  basic('YT_WHIP','W1',24,10,60,{sfx:'slime'});
+  basic('YT_ENGULF','W2',45,0,30,{body:'engulf',sfx:'slime',onHit:(e,t,c,r)=>{if(t===c.player&&!r.guard&&data(c).engulf)data(c).engulf(t);},dmg:1,guard:'none'});
   // 甩黏液：预警一开始就在玩家脚下圈出要落黏液的地方（原来 warn 0，黏液直接落在脚下，W3 的 0.67 s 预警看不到画在哪）
-  basic('YT_SPLASH','W3',40,0,0,{melee:false,hazardAt:0,hazard:(e,c,mv)=>{const p=c.player;return {shape:'rect',x0:p.x-22,x1:p.x+22,y0:p.y-10,y1:p.y+10,warn:G.combat.warnDur(mv,c),dur:3,dmg:3,tick:.6,once:false,tag:'slime',onHit:(h,t,r)=>{if(t===p&&!r.guard)data(c).slime=Math.min(5,(data(c).slime||0)+1);}};}});
+  basic('YT_SPLASH','W3',40,0,0,{sfx:'slime',melee:false,hazardAt:0,hazard:(e,c,mv)=>{const p=c.player;return {shape:'rect',x0:p.x-22,x1:p.x+22,y0:p.y-10,y1:p.y+10,warn:G.combat.warnDur(mv,c),dur:3,dmg:3,tick:.6,once:false,tag:'slime',onHit:(h,t,r)=>{if(t===p&&!r.guard)data(c).slime=Math.min(5,(data(c).slime||0)+1);}};}});
   basic('YT_GRAB','W1',20,6,40);
   kit('e_yellow',600,70,['YT_WHIP','YT_ENGULF','YT_SPLASH'],{dmgMul:()=>{const c=G.world.fight;return data(c).water?1.5:.1;},brain:(e,dt,c)=>{e.moves=data(c).water?['YT_GRAB']:['YT_WHIP','YT_ENGULF','YT_SPLASH'];return closeBrain(e,dt,c);}});
   basic('JG_KICK','W1',20,10,40);basic('JG_DUST','W4',30,0,0,{melee:false,onStart:(e,c)=>{data(c).blindUntil=c.t+1;},hazard:(e,c)=>({shape:'rect',x0:e.x-90,x1:e.x+90,y0:140,y1:180,warn:0,dur:f(4),dmg:1})});
