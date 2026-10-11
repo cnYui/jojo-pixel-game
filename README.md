@@ -59,6 +59,8 @@
 - 体验版开关：`tools/dev/full/test_demo.py` 9 项全过（开发目录和打好的包都测过）。
 - 手机：Playwright 模拟横屏触屏（`tools/dev/full/test_touch_layout.py`）能从标题点到牢房自由走动、0 报错；真机没测。
 - **第2章（2026-10-11 按体验版精度重做完）**：正常路线 303 s 打到章末、帧率 60、没有缺图 / 缺字 / 缺音效（`tools/_playtest/c2_flow3`）；故意输路线：暗蓝之月输 2 次后有「放水再来」、力量输 1 次后重来，打到章末，0 报错（`c2_lose1`）。设计和台词见 `docs/章节素材调研/ch2_南海_节拍表.md`。
+- **第3章（2026-10-11 按体验版精度重做完）**：正常路线 231 s 0 报错（`c3_final2`）；故意输路线 330 s 0 报错（`c3_lose1`，迪波输 2 次后有「放水再来」）。设计和台词见 `docs/章节素材调研/ch3_新加坡_节拍表.md`。
+- **第4章（2026-10-11 按体验版精度重做完）**：正常路线 271 s 0 报错（`tools/dev/full/playtest_mid.py`，`c4_v2`）；故意输路线 329 s 0 报错（`c4_lose1`，倒吊人输 2 次后有「放水再来」、女帝输 1 次后重来）。设计和台词见 `docs/章节素材调研/ch4_印度_节拍表.md`。
 - 其余各章：见下面「暂停中的工作」。
 
 ## 暂停中的工作（2026-10-10 起，先做序章 + 第1章 demo）
@@ -67,9 +69,9 @@
 
 | 线 | 收尾记录 | 一句话 |
 |---|---|---|
-| 第1–5章整章测试修复 | `20261010-093937-jojo-ch1-ch5-routes-wrapup_CN.md` | 第1章能打到最后一张图（含故意输重试）；~~第2章力量战管道修了没复测~~（2026-10-11 第2、3章整章重做、正常 / 故意输两条路线都打通）；第4–5章没跑 |
+| 第1–5章整章测试修复 | `20261010-093937-jojo-ch1-ch5-routes-wrapup_CN.md` | 第1章能打到最后一张图（含故意输重试）；~~第2章力量战管道修了没复测~~（2026-10-11 第2、3、4章整章重做、正常 / 故意输两条路线都打通）；第5章没跑 |
 | 第6章–终章整章测试修复 | `20261010-093937-jojo-ch6-final-routes-wrapup_CN.md` | 第6、8章到章末；第7章审判第二段、第9章阿努比斯没打完；第10章–终章没跑；终章 DIO 4 处改动没验证 |
-| 第2–6章背景重画 | `20261010-093937-jojo-bg-ch2-ch6-wrapup_CN.md` | 只拍了 24 张改前图，没动游戏文件。**第2章的四张（yacht_deck / freighter_deck / freighter_corridor / underwater）+ 新的 sea_fog、第3章的三张（singapore_street / singapore_hotel / cable_car）+ 新的 cable_view 已在 2026-10-11 重画接入**（`tools/bg_new/ch2_preview.py` / `ch3_preview.py` 出前后对照）；第4–6章没动 |
+| 第2–6章背景重画 | `20261010-093937-jojo-bg-ch2-ch6-wrapup_CN.md` | 只拍了 24 张改前图，没动游戏文件。**第2章的四张（yacht_deck / freighter_deck / freighter_corridor / underwater）+ 新的 sea_fog、第3章的三张（singapore_street / singapore_hotel / cable_car）+ 新的 cable_view、第4章的三张（calcutta_street / india_alley / ganges_ghat）+ 新的 varanasi_street 已在 2026-10-11 重画接入**（`tools/bg_new/ch2_preview.py` / `ch3_preview.py` / `ch4_preview.py` 出前后对照）；第5–6章没动 |
 | 第7章–终章背景重画 | `20261010-093937-jojo-bg-ch7-final-wrapup_CN.md` | 只做了预览工具 `tools/bg_new/late_preview.py`，没动游戏文件 |
 
 ## 目录
@@ -106,6 +108,11 @@ python -B tools\bg_new\ch2_preview.py after yacht_deck
 python -B tools\dev\full\test_mid_early.py ch3 --out tools\_playtest\<名字>
 python -B tools\dev\full\dev_fight.py ch3 --entry ch3Yellow --out tools\_playtest\<名字>
 python -B tools\bg_new\ch3_preview.py after singapore_street
+# 第4章（印度）：整章路线（第4–9章用 playtest_mid.py）/ 单独打女帝（dev_fight 用的是通用测试器，不会打倒吊人那套倒影机关——
+#   ch4Hanged 入口给人手动调试用，自动打倒吊人请跑整章）/ 背景预览
+python -B tools\dev\full\playtest_mid.py ch4 --out tools\_playtest\<名字>
+python -B tools\dev\full\dev_fight.py ch4 --entry ch4Empress --out tools\_playtest\<名字>
+python -B tools\bg_new\ch4_preview.py after calcutta_street
 # 牢房探索 / 抢漫画回归
 python -B tools\dev\full\test_jail_explore.py
 python -B tools\dev\full\repro_jail_grab.py

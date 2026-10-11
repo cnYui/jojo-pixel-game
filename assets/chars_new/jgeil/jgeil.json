@@ -3,8 +3,8 @@
   "name": "J·凯尔",
   "work": "JoJo",
   "image": "jgeil.png",
-  "cell": [36, 52],
-  "pivot": [18, 52],
+  "cell": [76, 56],
+  "pivot": [32, 56],
   "facing": "right",
   "animations": {
     "idle": {
@@ -21,17 +21,40 @@
       "fps": 6,
       "kind": "loop",
       "seamless": true,
-      "desc": "后续补帧：jgeil.walk"
+      "desc": "佝偻着走 4 帧：两腿交替迈步（近侧在前 → 过身抬腿 → 远侧在前 → 过身抬腿），过身的帧上身抬 1 px；上身、头、两只右手照 idle（手跟着步子一上一下），裤腿从大衣下摆底下出来"
+    },
+    "throw": {
+      "row": 2,
+      "frames": 2,
+      "fps": 5,
+      "kind": "oneshot",
+      "seamless": false,
+      "desc": "0 弯腰屈膝、近侧右手在脚前地上抓一把沙土；1 直起身往前上方一甩、张开手掌，扇形沙土往前飞（脚点右 20–40 px、离地 26–51 px）"
     },
     "hurt": {
-      "row": 2,
+      "row": 3,
       "frames": 1,
       "fps": 1,
       "kind": "static",
       "desc": "J. Geil skewered: reeling back screaming, both right hands flung up (36x52, same anchor as idle)"
     },
+    "down": {
+      "row": 4,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "被刺倒地（不画血）：仰面、头朝左（叉叉眼张着嘴），长发铺在地上，两只右手（手指都朝右）一只搭在肚子上一只摊在身边，鞋尖朝上"
+    },
+    "kick": {
+      "row": 5,
+      "frames": 2,
+      "fps": 6,
+      "kind": "oneshot",
+      "seamless": false,
+      "desc": "0 提膝蓄力（大腿抬平、上身后仰、一只右手举在脸前一只甩到身后）；1 往前蹬直（鞋底朝前，鞋在脚点右 19–23 px、离地 11–19 px），两手甩到身后"
+    },
     "portrait": {
-      "row": 3,
+      "row": 6,
       "frames": 2,
       "fps": 8,
       "kind": "loop",
@@ -56,5 +79,5 @@
     "project": "jojo",
     "call": "game.art_later_existing / game.orig（import assets; assets.load_all(); from engine import sprite; sprite.get('jgeil.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'jgeil.<动作>', x, y, frame=i, flip=False)"
   },
-  "notes": "J·凯尔（J. Geil），敌人·人物·人物。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle/hurt/portrait；脚点(自定义点)=walk。idle：两只右手（两个拇指都在右侧）。hurt：被刺穿后仰尖叫，两只右手甩起。portrait* 动作是说话头像（32×32 半身）：图集里放在最后几行（按底部中点对齐，只是为了同格对齐，不代表脚点），同时逐帧导出到“头像”文件夹，见 expressions；多数 frame0=闭嘴/静态、frame1=说话/加强（具体见各自 desc），原引擎对话框打字时以 8fps 来回切换。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
+  "notes": "J·凯尔（J. Geil），敌人·人物·人物。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle/hurt/portrait；脚点(自定义点)=walk/throw/down/kick。idle：两只右手（两个拇指都在右侧）。hurt：被刺穿后仰尖叫，两只右手甩起。portrait* 动作是说话头像（32×32 半身）：图集里放在最后几行（按底部中点对齐，只是为了同格对齐，不代表脚点），同时逐帧导出到“头像”文件夹，见 expressions；多数 frame0=闭嘴/静态、frame1=说话/加强（具体见各自 desc），原引擎对话框打字时以 8fps 来回切换。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
 }

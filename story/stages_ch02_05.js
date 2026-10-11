@@ -18,9 +18,11 @@
   stage('sea_ch3','underwater',320,150,176);stage('train_ch3','train_interior',320,156,174);
   for(const id of ['sg_street_ch3','sg_hotel_ch3','cable_ch3','cableview_ch3','surface_ch3','sea_ch3','train_ch3'])ST[id].dlgPos='top';
   stage('calcutta_ch4','calcutta_street',1280,148,176);stage('alley_ch4','india_alley',320,146,176);
-  stage('varanasi_ch4','ganges_ghat',640,148,176);stage('varanasi_st_ch4','calcutta_street',640,148,176);
+  stage('varanasi_ch4','ganges_ghat',640,148,176);stage('varanasi_st_ch4','varanasi_street',640,148,176);
+  // 第4章 2026-10-11 按体验版重做：贝拿勒斯老城换成自己的 varanasi_street（原来借 calcutta_street）；人都站在画面下半，对白放上面
+  for(const id of ['calcutta_ch4','alley_ch4','varanasi_ch4','varanasi_st_ch4'])ST[id].dlgPos='top';
   stage('road_ch5','desert_highway',320,152,168);stage('cliff_ch5','desert_highway',320,148,176);
   stage('fog_ch5','fog_town',320,146,176);stage('inn_ch5','enya_inn',320,148,176);
   stage('karachi_ch5','karachi_street',640,148,176);stage('brain_ch5','brain_inside',320,130,176);
-  Object.assign(G.NAMES,{anne:'安妮',fake_tennille:'冒牌坦尼尔船长',darkbluemoon:'暗蓝之月',strength:'猩猩',devo:'被诅咒的迪波',devo_doll:'黑檀木恶魔',npc_bellhop:'门童',npc_police:'警察',rubbersoul:'拉巴索',holhorse:'荷尔·荷斯',hangedman:'倒吊人',empress:'女帝',nena:'奈娜',wheel:'命运之轮',zz:'ZZ',enya:'恩雅婆婆',justice:'正义',steelydan:'斯蒂利·丹',lovers:'恋人',npc_sailor:'船员',npc_kid:'小孩',npc_townsfolk:'居民'});
+  Object.assign(G.NAMES,{anne:'安妮',fake_tennille:'冒牌坦尼尔船长',darkbluemoon:'暗蓝之月',strength:'猩猩',devo:'被诅咒的迪波',devo_doll:'黑檀木恶魔',npc_bellhop:'门童',npc_police:'警察',npc_cow:'圣牛',rubbersoul:'拉巴索',holhorse:'荷尔·荷斯',hangedman:'倒吊人',empress:'女帝',nena:'奈娜',wheel:'命运之轮',zz:'ZZ',enya:'恩雅婆婆',justice:'正义',steelydan:'斯蒂利·丹',lovers:'恋人',npc_sailor:'船员',npc_kid:'小孩',npc_townsfolk:'居民'});
 })();

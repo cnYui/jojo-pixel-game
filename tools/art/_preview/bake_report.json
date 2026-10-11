@@ -1,5 +1,5 @@
 {
- "built": "2026-10-11T11:26:38",
+ "built": "2026-10-11T14:05:02",
  "chars_dir": "D:\\大疆\\游戏素材\\JoJo\\游戏\\assets\\chars_new",
  "props_dir": "D:\\大疆\\游戏素材\\JoJo\\游戏\\assets\\props_new",
  "new_names": [
@@ -144,6 +144,9 @@
   "iggy.dodge",
   "iggy.hurt",
   "iggy.limp_walk",
+  "jgeil.down",
+  "jgeil.kick",
+  "jgeil.throw",
   "jgeil.walk",
   "joseph.dodge",
   "joseph.float",
@@ -239,6 +242,11 @@
   "npc_cat.idle",
   "npc_cat.talk",
   "npc_cat.walk",
+  "npc_cow.down",
+  "npc_cow.hurt",
+  "npc_cow.idle",
+  "npc_cow.lick",
+  "npc_cow.walk",
   "npc_dealer.deal",
   "npc_dealer.down",
   "npc_dealer.hurt",
@@ -296,7 +304,12 @@
   "npc_passenger_d.seated",
   "npc_passenger_d.slump",
   "npc_police.idle",
+  "npc_police.india_idle",
+  "npc_police.india_run",
+  "npc_police.india_shock",
+  "npc_police.india_walk",
   "npc_police.portrait",
+  "npc_police.portrait_india",
   "npc_police.read",
   "npc_police.shock",
   "npc_police.walk",
@@ -482,6 +495,7 @@
   "npc_spw",
   "npc_merchant",
   "npc_bellhop",
+  "npc_cow",
   "empress",
   "lovers",
   "mannish",
@@ -970,27 +984,38 @@
   },
   "npc_police": {
    "cell": [
-    34,
-    48
+    44,
+    50
    ],
    "pivot": [
-    17,
-    48
+    22,
+    50
    ],
    "animations": [
     "idle",
     "walk",
     "shock",
+    "india_idle",
+    "india_run",
+    "india_shock",
+    "india_walk",
     "read",
-    "portrait"
+    "portrait",
+    "portrait_india"
    ],
    "expressions": [
-    "portrait"
+    "portrait",
+    "portrait_india"
    ],
    "aliases": {},
    "new": [
     "idle",
+    "india_idle",
+    "india_run",
+    "india_shock",
+    "india_walk",
     "portrait",
+    "portrait_india",
     "read",
     "shock",
     "walk"
@@ -2203,14 +2228,40 @@
     "walk"
    ]
   },
+  "npc_cow": {
+   "cell": [
+    76,
+    54
+   ],
+   "pivot": [
+    36,
+    54
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "lick"
+   ],
+   "expressions": [],
+   "aliases": {},
+   "new": [
+    "down",
+    "hurt",
+    "idle",
+    "lick",
+    "walk"
+   ]
+  },
   "empress": {
    "cell": [
-    32,
-    40
+    34,
+    46
    ],
    "pivot": [
     16,
-    24
+    30
    ],
    "animations": [
     "idle",
@@ -2223,6 +2274,8 @@
     "l1_idle",
     "l2_bite",
     "l2_idle",
+    "l3_bite",
+    "l3_idle",
     "portrait"
    ],
    "expressions": [
@@ -2230,8 +2283,6 @@
    ],
    "aliases": {
     "walk": "idle",
-    "l3_bite": "bite",
-    "l3_idle": "idle",
     "talk": "idle"
    },
    "new": [
@@ -2533,29 +2584,6 @@
    "new": [
     "down",
     "hurt"
-   ]
-  },
-  "jgeil": {
-   "cell": [
-    36,
-    52
-   ],
-   "pivot": [
-    18,
-    52
-   ],
-   "animations": [
-    "idle",
-    "walk",
-    "hurt",
-    "portrait"
-   ],
-   "expressions": [
-    "portrait"
-   ],
-   "aliases": {},
-   "new": [
-    "walk"
    ]
   },
   "wheel": {
@@ -2989,6 +3017,35 @@
     "attack",
     "down",
     "hurt",
+    "walk"
+   ]
+  },
+  "jgeil": {
+   "cell": [
+    76,
+    56
+   ],
+   "pivot": [
+    32,
+    56
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "throw",
+    "hurt",
+    "down",
+    "kick",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "down",
+    "kick",
+    "throw",
     "walk"
    ]
   },
@@ -4942,12 +4999,83 @@
    "fps": 0,
    "kind": "static",
    "desc": "玩偶散架后掉在地上的那把剃刀：打开的直柄剃刀横放，左边暗红木柄、右边银白刀片 + 一个白反光点，和 devo_doll 手里的剃刀同色；pivot = 底边中点"
+  },
+  {
+   "id": "tar_drum",
+   "name": "铁皮桶 / 柏油桶",
+   "sprite": "prop_new.tar_drum",
+   "file": "tar_drum.png",
+   "frames": 2,
+   "size": [
+    18,
+    22
+   ],
+   "anchor": [
+    9,
+    22
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    9,
+    22
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "路边的铁皮油桶（藏青漆 + 锈斑 + 两道滚箍，左边亮右边暗）。帧 0 = 普通桶：盖着盖子、盖上一个小桶塞；帧 1 = 柏油桶：盖子没了，黑亮的柏油从桶口鼓出来、顺着桶壁淌下四道（带紫白高光）。两帧桶身一模一样，按帧号取（剧情里念写指到那只 = 1，其他 = 0）；pivot = 底边中点",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "wood_barrel",
+   "name": "木桶",
+   "sprite": "prop_new.wood_barrel",
+   "file": "wood_barrel.png",
+   "frames": 1,
+   "size": [
+    18,
+    22
+   ],
+   "anchor": [
+    9,
+    22
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    9,
+    22
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "木桶：中间鼓、两头收的木板桶身 + 竖向板缝 + 上下两道铁箍 + 木盖，和 tar_drum 同高、同光照、同描边，可以和它摆在一起；pivot = 底边中点"
+  },
+  {
+   "id": "fruit_basket",
+   "name": "水果筐",
+   "sprite": "prop_new.fruit_basket",
+   "file": "fruit_basket.png",
+   "frames": 2,
+   "size": [
+    20,
+    12
+   ],
+   "anchor": [
+    10,
+    12
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    10,
+    12
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "水果摊上的一筐水果：竹编筐（编织纹）里堆着芒果、香蕉、青柠、石榴。帧 0 = 满的；帧 1 = 被女帝啃掉一块：右上角的芒果和香蕉没了，剩下的芒果缺一个半圆、露出黄色果肉；pivot = 底边中点",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
   }
  ],
  "verify": {
-  "frames": 1180,
+  "frames": 1213,
   "errors": 0,
-  "engine_draws": 2070,
+  "engine_draws": 2132,
   "engine_bad": 0,
   "engine_skipped_half_px_flips": 0
  },
@@ -5009,6 +5137,7 @@
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_spw.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_merchant.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_bellhop.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_cow.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\empress.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\lovers.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\mannish.png",
@@ -5020,7 +5149,6 @@
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\darkbluemoon.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\hangedman.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\holhorse.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\jgeil.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\wheel.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\enya.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\zombie.png",
@@ -5038,9 +5166,10 @@
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\dio.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\telence.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\strength.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\jgeil.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\oingo.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\holly.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\props_new.png"
  ],
- "seconds": 15.56
+ "seconds": 17.22
 }

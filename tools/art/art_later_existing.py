@@ -194,7 +194,8 @@ NEEDED={
  'iggy':{'hurt':1,'limp_walk':2}, 'starplat':{'finger':1},
  # 力量的 walk / attack / hurt / down 不走通用 action()，按原部件重摆，见下面 _strength_frames（2026-10-10）
  'darkbluemoon':{'attack':2,'hurt':1},
- 'hangedman':{'attack':2}, 'holhorse':{'hurt':1,'down':1}, 'jgeil':{'walk':4},
+ # J·凯尔的 walk 不走通用 action()（同力量：腰以下整片清空、腿只剩两根细线），见下面 _geil_frames（2026-10-11）
+ 'hangedman':{'attack':2}, 'holhorse':{'hurt':1,'down':1},
  'wheel':{'climb':1,'spray':1}, 'enya':{'cast':1,'hurt':1,'down':1}, 'zombie':{'attack':1},
  'steelydan':{'hurt':1,'down':1,'fly':1,'command':2}, 'death13':{'swing':2,'hurt':1},
  'judgement':{'attack':2}, 'highpriestess':{'attack':2}, 'fool':{'wall':1},
@@ -412,6 +413,323 @@ for _act, _frames in _strength_frames().items():
     sprite.define(_name, [p.grid() for p in _frames], pal=SE.PAL_STR, anchor=(29, 42),
                   fps=6 if _act == 'walk' else 8, desc=_ST_DESC[_act])
     NEW.append(_name)
+
+
+# =====================================================================================
+#  J·凯尔 walk / kick / throw / down（2026-10-11 第4章）
+# =====================================================================================
+# 原来的 walk 走通用 action()：腰以下整片清空、只画两根 4 px 的细腿（身体在腰那一行被切断，同力量的毛病）。
+# 这里照原工程 sprites_enemies._geil 的同一套 _Pix 部件（头、刘海、眼、咧嘴、长发、橄榄色大衣、脏衬衫、两只右手 _RHAND、
+# 裤腿、皮鞋，调色板 PAL_GEIL）重新摆姿势；_GE_IDLE 原样传进去能逐格复现原 idle 两帧（下面自检）。
+# 两只手都是右手：每只手都用同一个 _RHAND（拇指在右边），转向时两只手一起转、拇指始终朝同一边。
+# 坐标都写原 36×52 的坐标；新画布更大时整体平移 o，锚点 = 原脚点 (18, 52) + o，所以烘出来 pivot 仍是脚底。
+def _ge_rot(grid, k):
+    """_RHAND 这类字符网格逆时针转 k×90°（k=-1 = 顺时针）。"""
+    a = np.array([list(r) for r in SE.sp.g_lines(grid)])
+    return '\n'.join(''.join(r) for r in np.rot90(a, k))
+
+
+_GE_HAND = {'up': SE._RHAND, 'fwd': _ge_rot(SE._RHAND, -1), 'down': _ge_rot(SE._RHAND, 2), 'back': _ge_rot(SE._RHAND, 1)}
+# 抓了一把沙土的拳头（手背朝外、拇指压在上面，指缝漏出两粒土）
+_GE_FIST = """
+.sss.
+sssss
+sSsss
+sssSs
+.SSS.
+"""
+_GE_IDLE = dict(sway=0, hy=0, up=(0, 0), lean=0.0, squash=1.0, head=(0, 0), face='grin', legs=None, coat=None)
+
+
+def _ge_head(face, W=36, H=52):
+    """原 _geil 的头图层（36×52 坐标，画布可以更大，坐标不变）。face：grin = 原 idle；hurt = 原 hurt；ko = 叉叉眼 + 张着嘴（倒地，不画血）；
+    grit = 咧嘴更大、眼睛瞪圆（出招）。"""
+    hd = SE._Pix(W, H)
+    hd.ell(15, 7, 25, 18, 's')
+    hd.poly([(16, 14), (26, 13), (26, 17), (23, 21), (18, 20)], 's')
+    hd.dot([(26, 11), (27, 12), (27, 13)], 's')
+    hd.shade('s', 'S', d=(1, 1))
+    hd.poly([(14, 5), (22, 3), (26, 7), (24, 8), (22, 7), (21, 10), (19, 8), (18, 12), (17, 9), (15, 14)], 'n')
+    hd.shade('n', 'N', d=(-1, -1))
+    hd.rect(22, 10, 24, 11, 'w')
+    hd.dot([(23, 11)], 'e')
+    hd.dot([(22, 9), (23, 9), (24, 9)], 'k')
+    hd.dot([(19, 11)], 'e')
+    if face == 'hurt':
+        hd.rect(21, 9, 24, 12, 'w')
+        hd.dot([(22, 10)], 'e')
+        hd.dot([(21, 8), (22, 8), (23, 8)], 'k')
+        hd.rect(18, 14, 25, 19, 'k')
+        hd.rect(19, 14, 25, 14, 'w')
+        hd.rect(20, 17, 24, 18, 'r')
+        hd.dot([(17, 13), (26, 13)], 'k')
+    elif face == 'ko':
+        hd.rect(22, 9, 24, 12, 's')
+        hd.dot([(22, 10), (24, 10), (23, 11), (22, 12), (24, 12)], 'k')      # 叉叉眼（比原眼低 1 px，躺下转 90° 后不贴着头发）
+        hd.dot([(19, 11)], 'k')
+        hd.rect(19, 15, 23, 17, 'k')                                          # 张着嘴（下巴松了；不画红色，免得像血）
+        hd.rect(20, 15, 23, 15, 'w')
+    else:
+        grin_y = 15
+        if face == 'grit':
+            hd.rect(21, 9, 24, 11, 'w')                                       # 眼睛瞪圆
+            hd.dot([(23, 10)], 'e')
+            hd.dot([(21, 8), (22, 8), (23, 8), (24, 8)], 'k')
+            hd.rect(17, grin_y - 1, 25, grin_y + 2, 'w')                      # 咧到耳根
+            hd.dot([(18, grin_y - 1), (20, grin_y - 1), (22, grin_y - 1), (24, grin_y - 1),
+                    (19, grin_y + 2), (21, grin_y + 2), (23, grin_y + 2)], 'x')
+            hd.rect(18, grin_y, 25, grin_y + 1, 'k')
+            hd.dot([(19, grin_y), (21, grin_y), (23, grin_y)], 'w')
+            hd.line([(16, grin_y - 2), (17, grin_y + 3), (25, grin_y + 3), (26, grin_y - 1)], 'k')
+        else:
+            hd.rect(18, grin_y, 25, grin_y + 1, 'w')
+            hd.dot([(20, grin_y), (22, grin_y), (24, grin_y), (19, grin_y + 1), (21, grin_y + 1), (23, grin_y + 1)], 'x')
+            hd.line([(17, grin_y - 1), (18, grin_y + 2), (25, grin_y + 2), (26, grin_y)], 'k')
+            hd.dot([(17, grin_y - 1)], 'k')
+    return hd
+
+
+def _ge_arm(up, pts, hand, hxy, mv):
+    """一条手臂（橄榄色袖子，粗 1.3）+ 手：up = 朝上张开的右手（原 idle），fwd / down / back = 同一只右手转 90° / 180° / 270°，
+    fist = 抓着沙土的拳头。"""
+    arm = SE._Pix(up.w, up.h)
+    arm.seg(mv(pts), 1.3, 'o')
+    arm.shade('o', 'O', d=(1, 1))
+    up.paste(arm, ring='k')
+    if hand:
+        g = _GE_FIST if hand == 'fist' else _GE_HAND[hand]
+        up.paste(SE._Pix(up.w, up.h).stamp(g, *mv([hxy])[0]), ring='k')
+
+
+def _ge_legs(lo, legs, mv):
+    """legs = [(髋→膝→踝 的点列, 鞋 dict), …]：先画的那条在后面（远侧），后画的贴分隔线。
+    鞋 = 原 _geil 的皮鞋多边形：lx = 踝处 4 px 裤腿的左列，y = 鞋底行（原 50），tilt = 鞋尖下压 / 上翘的像素。"""
+    for i, (pts, shoe) in enumerate(legs):
+        L = SE._Pix(lo.w, lo.h)
+        L.seg(mv(pts), 2.0, 'q')
+        L.shade('q', 'Q', d=(1, 0))
+        if shoe:
+            lx, y, tilt = shoe['lx'], shoe.get('y', 50), shoe.get('tilt', 0)
+            L.poly(mv([(lx - 1, y - 4 + max(0, -tilt)), (lx + 3, y - 4), (lx + 5, y - 2 + tilt), (lx + 5, y + tilt),
+                       (lx - 1, y)]), 'h')
+            L.shade('h', 'H', d=(1, 1))
+        lo.paste(L, ring='k' if i else None)
+
+
+def _ge_pose(W=36, H=52, o=(0, 0), **kw):
+    """原 _geil 的图层顺序：腿 → 长发 → 大衣 → 衬衫 → 头 → 远侧手臂 + 手 → 近侧手臂 + 手 → 描边。
+    up = 上身整体平移；lean = 以腰线 y=41 为轴的行剪切（正 = 往前弯，头比腰多挪 lean×高度）；squash = 上身竖向压缩。
+    arms = [(点列, 手型, 手的左上角)]；默认照原 idle（hy = 两手一上一下的 1 px 晃动）。"""
+    q = dict(_GE_IDLE, **kw)
+    ox, oy = o
+    mv = lambda pts: [(x + ox, y + oy) for x, y in pts]
+    ux, uy = q['up']
+
+    def T(x, y):                                          # 上身（大衣、长发、肩）的变形：剪切 + 压缩 + 平移
+        h = 41 - y
+        return (x + ux + q['lean'] * h, 41 - h * q['squash'] + uy)
+    Tm = lambda pts: [T(x, y) for x, y in pts]
+    lo = SE._Pix(W, H)
+    if q['legs'] is None:                                 # 原 idle：两条直的裤腿 + 皮鞋
+        lo.rect(12 + ox, 37 + oy, 15 + ox, 47 + oy, 'q')
+        lo.rect(18 + ox, 37 + oy, 21 + ox, 47 + oy, 'q')
+        lo.shade('q', 'Q', d=(1, 0))
+        lo.poly(mv([(11, 46), (15, 46), (17, 48), (17, 50), (11, 50)]), 'h')
+        lo.poly(mv([(18, 46), (21, 46), (23, 48), (23, 50), (18, 50)]), 'h')
+        lo.shade('h', 'H', d=(1, 1))
+    else:
+        _ge_legs(lo, q['legs'], mv)
+    up = SE._Pix(W, H)
+    up.poly(mv(Tm(q.get('hair') or [(12, 5), (20, 3), (22, 8), (17, 10), (16, 16), (17, 24), (16, 34), (14, 37),
+                                     (12, 34), (10, 37), (8, 33), (6, 35), (5, 28), (6, 18), (8, 9)])), 'n')
+    sway = q['sway']
+    up.poly(mv(Tm(q.get('hair_tip') or [(6, 30), (5, 36 + sway), (8, 33)])), 'n')
+    up.shade('n', 'N', d=(-1, -1))
+    up.dot([(round(x), round(y)) for x, y in mv(Tm([(9, 14), (9, 15), (10, 22), (10, 23), (8, 26), (12, 28), (12, 29)]))], 'N')
+    up.poly(mv(Tm(q['coat'] or [(12, 21), (21, 20), (23, 30), (25, 41), (9, 41), (8, 30)])), 'o')
+    up.shade('o', 'O', d=(1, 1))
+    up.poly(mv(Tm([(18, 21), (22, 21), (21, 29), (19, 29)])), 'W')
+    up.shade('W', 'x', d=(1, 0))
+    up.line(mv(Tm(q.get('coat_line') or [(10, 33), (9, 41)])), 'O')
+    hx, hy0 = q['head']
+    up.paste(_ge_head(q['face'], W, H).shift(ox + hx, oy + hy0), ring='k')
+    hy = q['hy']
+    arms = q.get('arms') or [([(20, 24), (24, 32), (29, 28 - hy)], 'up', (27, 21 - hy)),
+                             ([(13, 24), (15, 31), (19, 29 + hy)], 'up', (17, 23 + hy))]
+    for arm in arms:
+        pts, hand, hxy = arm[:3]
+        sx, sy = T(*pts[0])
+        sx, sy = int(round(sx)), int(round(sy))
+        if len(arm) > 3 and arm[3] == 'abs':                 # 只把肩膀挪到变形后的位置，肘、手是写死的画面坐标
+            pts = [(sx, sy)] + list(pts[1:])
+        else:                                                # 整条手臂跟着肩膀平移（走路起伏、出招时的轻微后仰）
+            dx, dy = sx - pts[0][0], sy - pts[0][1]
+            pts = [(x + dx, y + dy) for x, y in pts]
+            hxy = (hxy[0] + dx, hxy[1] + dy)
+        _ge_arm(up, pts, hand, hxy, mv)
+    lo.paste(up)
+    for x, y, c in q.get('dots', ()):                     # 扬起的沙土团（画在描边之前，自带描边）
+        lo.dot(mv([(x, y)]), c)
+    lo.outline('k')
+    for x, y, c in q.get('dots_after', ()):               # 细沙粒（描边之后画，不描边）
+        lo.dot(mv([(x, y)]), c)
+    return lo
+
+
+def _ge_walk(f):
+    """4 帧：0 右脚（近侧）在前着地 → 1 收腿过身（近侧腿直立撑地、远侧腿屈膝抬起往前摆，上身抬 1 px）→
+    2 远侧脚在前着地 → 3 近侧腿抬起往前摆。上身、头、大衣、长发照 idle；两只右手跟着步子一上一下晃 1 px，
+    发梢在过身的帧甩一下。裤腿 4 px 宽、从大衣下摆底下出来，皮鞋照原形状。"""
+    by = (0, -1, 0, -1)[f]
+    hy = (0, 0, -1, -1)[f]
+    hip_f, hip_n = (13.5, 38 + by), (19.5, 38 + by)     # 远侧 / 近侧髋（原两条裤腿的中线）
+    if f == 0:      # 近侧在前、远侧在后
+        far = ([hip_f, (12.5, 43), (10.5, 46)], dict(lx=9, tilt=0))
+        near = ([hip_n, (21.5, 43), (23.5, 46)], dict(lx=22, tilt=0))
+    elif f == 1:    # 近侧撑地、远侧抬腿往前
+        far = ([hip_f, (16.5, 42), (15.5, 45)], dict(lx=14, y=48, tilt=1))
+        near = ([hip_n, (19.5, 43), (19.5, 46)], dict(lx=18))
+    elif f == 2:    # 远侧在前、近侧在后
+        far = ([hip_f, (15.5, 43), (17.5, 46)], dict(lx=16))
+        near = ([hip_n, (17.5, 43), (15.5, 46)], dict(lx=14))
+    else:           # 远侧撑地、近侧抬腿往前
+        far = ([hip_f, (13.5, 43), (13.5, 46)], dict(lx=12))
+        near = ([hip_n, (22.5, 42), (21.5, 45)], dict(lx=20, y=48, tilt=1))
+    return _ge_pose(up=(0, by), head=(0, by), hy=hy, sway=(0, 1, 0, 1)[f], legs=[far, near])
+
+
+_GE_W, _GE_H, _GE_O = 76, 56, (14, 4)       # 出招的大画布：原 36×52 平移 (14, 4)，锚点 = (32, 56)
+
+
+def _ge_kick(f):
+    """JG_KICK（W1 低踢）：0 提膝蓄力——近侧腿大腿抬平、小腿垂下，上身往后仰，一只右手举在脸前、一只甩到身后保持平衡
+    （两只都是掌心朝外、拇指朝右）；1 踢出——近侧腿伸直往前蹬到腰高（鞋底朝前，鞋在脚点右 19–24 px、离地 11–19 px），
+    大衣前襟被腿掀开，上身仰得更厉害，两手都甩到身后。远侧腿撑地微屈。"""
+    if f == 0:
+        coat = [(12, 21), (21, 20), (23, 30), (27, 37), (24, 40), (9, 41), (8, 30)]
+        legs = [([(13.5, 38), (13.5, 43), (12.5, 46)], dict(lx=11)),
+                ([(19.5, 37), (25.5, 37), (25.5, 43)], dict(lx=24, y=47, tilt=1))]
+        arms = [([(20, 24), (6, 22), (4, 17)], 'up', (2, 11)),
+                ([(13, 24), (24, 25), (29, 20)], 'up', (27, 14))]
+        return _ge_pose(_GE_W, _GE_H, _GE_O, up=(-1, 0), lean=-0.08, head=(-3, 0), face='grit',
+                        coat=coat, legs=legs, arms=arms, sway=1)
+    coat = [(12, 21), (21, 20), (23, 30), (29, 35), (25, 40), (9, 41), (8, 30)]
+    legs = [([(13.5, 38), (12.5, 43), (11.5, 46)], dict(lx=10)),
+            ([(19.5, 37), (27.5, 37), (35.5, 37)], None)]
+    arms = [([(20, 24), (14, 22), (8, 19)], 'back', (1, 14)),
+            ([(13, 24), (8, 29), (3, 27)], 'back', (-4, 23))]
+    pose = _ge_pose(_GE_W, _GE_H, _GE_O, up=(-2, 0), lean=-0.12, head=(-6, 0), face='grit',
+                    coat=coat, legs=legs, arms=arms, sway=2)
+    # 蹬出去的鞋：鞋底朝前竖着（原皮鞋转 90°），贴在伸直的裤腿末端
+    shoe = SE._Pix(_GE_W, _GE_H)
+    ox, oy = _GE_O
+    shoe.poly([(37 + ox, 33 + oy), (41 + ox, 33 + oy), (41 + ox, 40 + oy), (39 + ox, 41 + oy), (37 + ox, 40 + oy)], 'h')
+    shoe.shade('h', 'H', d=(1, 1))
+    pose.paste(shoe, ring='k')
+    pose.outline('k')
+    return pose
+
+
+def _ge_dust():
+    """扇形沙土（JG_DUST 扬尘）：从手掌往右前方散开，越远越散越稀；土团（2 px，自带描边）+ 细沙粒（1 px，不描边）。"""
+    import random
+    rnd = random.Random(41)
+    clumps, grains = [], []
+    for i in range(70):
+        t = rnd.random()
+        x = 39 + t * 19 + rnd.uniform(-1, 1)               # 最远到原坐标 x≈59（画布 76 宽，不出界）
+        y = 15 - t * 5 + rnd.gauss(0, 1) * (1.5 + 7 * t)
+        c = 'T' if rnd.random() < .5 else 't'
+        if t < .45 and rnd.random() < .5:
+            clumps += [(int(x), int(y), c), (int(x) + 1, int(y), c), (int(x), int(y) + 1, 'T')]
+        else:
+            grains.append((int(round(x)), int(round(y)), c))
+    return clumps, grains
+
+
+def _ge_throw(f):
+    """JG_DUST（W4 扬尘致盲）：0 弯腰——两膝弯下、上身往前压低（头低到腰高），近侧那只右手伸到脚尖前的地上抓一把沙土（握拳），
+    远侧那只右手垂在膝前；1 扬起——上身直起前倾，近侧手臂往前上方一甩、手掌张开（同一只右手转 90°，手指朝前），
+    一把沙土呈扇形往前飞（脚点右 20–40 px、离地 26–51 px），远侧手往后甩。"""
+    if f == 0:
+        legs = [([(13.5, 40), (18.5, 43), (14.5, 46)], dict(lx=13)),
+                ([(19.5, 40), (25.5, 43), (22.5, 46)], dict(lx=21))]
+        arms = [([(20, 24), (34, 37), (33, 41)], 'down', (29, 41), 'abs'),
+                ([(13, 24), (28, 38), (32, 44)], 'fist', (30, 44), 'abs')]
+        return _ge_pose(_GE_W, _GE_H, _GE_O, up=(2, 3), lean=0.6, squash=0.7, head=(19, 12), face='grit',
+                        legs=legs, arms=arms, sway=1)
+    legs = [([(13.5, 38), (11.5, 43), (10.5, 46)], dict(lx=9)),
+            ([(19.5, 38), (22.5, 43), (23.5, 46)], dict(lx=22))]
+    arms = [([(20, 24), (15, 30), (10, 33)], 'back', (3, 29)),
+            ([(13, 24), (22, 25), (31, 16)], 'fwd', (31, 13))]
+    clumps, grains = _ge_dust()
+    return _ge_pose(_GE_W, _GE_H, _GE_O, up=(1, 0), lean=0.1, head=(3, 0), face='grit', legs=legs, arms=arms,
+                    sway=1, dots=clumps, dots_after=grains)
+
+
+_GE_DW, _GE_DH = 60, 24                    # 倒地画布，锚点 = 底边中点 (30, 24)
+
+
+def _ge_down():
+    """被刺倒地（不画血）：仰面躺平、头朝左（同 avdol / kakyoin / 力量的 down），头部图层（叉叉眼 + 张着嘴）
+    逆时针转 90°（头顶朝左、脸朝上），油腻的长发在头后面的地上铺开；大衣平躺、两腿往右伸、鞋尖朝上；
+    两只右手手指都朝右摊着（同一只右手转 90°，拇指都朝下）：远侧那只搭在肚子上、近侧那只摊在身边的地上。最低像素在脚点上一行。"""
+    W, H = _GE_DW, _GE_DH
+    lo = SE._Pix(W, H)
+    lo.rect(38, 15, 51, 21, 'q')                           # 两条裤腿叠在一起平放
+    lo.shade('q', 'Q', d=(0, 1))
+    lo.line([(39, 18), (50, 18)], 'Q')
+    for x0, y0 in ((51, 9), (49, 14)):                     # 皮鞋：鞋尖朝上（原皮鞋转 90°）
+        lo.poly([(x0, y0 + 8), (x0, y0 + 2), (x0 + 2, y0), (x0 + 4, y0), (x0 + 4, y0 + 8)], 'h')
+    lo.shade('h', 'H', d=(1, 1))
+    up = SE._Pix(W, H)
+    up.poly([(0, 22), (1, 17), (4, 14), (8, 13), (12, 15), (14, 22)], 'n')     # 长发铺在头后面
+    up.poly([(0, 22), (0, 19), (3, 21)], 'n')
+    up.shade('n', 'N', d=(-1, -1))
+    up.dot([(3, 18), (4, 20), (7, 16), (9, 19), (11, 17)], 'N')
+    up.poly([(17, 13), (39, 14), (41, 22), (17, 22)], 'o')                     # 大衣平躺
+    up.shade('o', 'O', d=(1, 1))
+    up.poly([(17, 14), (22, 14), (22, 17), (17, 17)], 'W')                     # 领口的脏衬衫
+    up.shade('W', 'x', d=(0, 1))
+    up.line([(27, 21), (39, 21)], 'O')
+    hd = _ge_head('ko')
+    g = hd.a[3:22, 14:28]                                  # 头 + 刘海的包围盒（y 3–21、x 14–27）
+    r = np.rot90(g, 1)                                     # 逆时针：头顶朝左、脸朝上、下巴朝右
+    hp = SE._Pix(W, H)
+    hp.a[H - 2 - r.shape[0]:H - 2, 4:4 + r.shape[1]] = r
+    up.paste(hp, ring='k')
+    ident = lambda p: p
+    _ge_arm(up, [(24, 15), (27, 12), (29, 12)], 'fwd', (29, 9), ident)          # 远侧：搭在肚子上
+    _ge_arm(up, [(22, 18), (27, 21), (32, 21)], 'fwd', (32, 16), ident)         # 近侧：摊在身边的地上
+    lo.paste(up)
+    lo.outline('k')
+    return lo
+
+
+def _geil_frames():
+    return {'walk': [_ge_walk(f) for f in range(4)], 'kick': [_ge_kick(f) for f in range(2)],
+            'throw': [_ge_throw(f) for f in range(2)], 'down': [_ge_down()]}
+
+
+# 自检：原部件原样传进去 = 原 idle 两帧（36×52 画布、不平移）
+if _ge_pose().grid() != SE._geil(0).grid() or _ge_pose(hy=-1, sway=1).grid() != SE._geil(1).grid():
+    raise ValueError('J·凯尔部件复现不出原 idle（sprites_enemies._geil 变了？）')
+_GE_DESC = {
+    'walk': '佝偻着走 4 帧：两腿交替迈步（近侧在前 → 过身抬腿 → 远侧在前 → 过身抬腿），过身的帧上身抬 1 px；'
+            '上身、头、两只右手照 idle（手跟着步子一上一下），裤腿从大衣下摆底下出来',
+    'kick': '0 提膝蓄力（大腿抬平、上身后仰、一只右手举在脸前一只甩到身后）；1 往前蹬直（鞋底朝前，鞋在脚点右 19–23 px、离地 11–19 px），两手甩到身后',
+    'throw': '0 弯腰屈膝、近侧右手在脚前地上抓一把沙土；1 直起身往前上方一甩、张开手掌，扇形沙土往前飞（脚点右 20–40 px、离地 26–51 px）',
+    'down': '被刺倒地（不画血）：仰面、头朝左（叉叉眼张着嘴），长发铺在地上，两只右手（手指都朝右）一只搭在肚子上一只摊在身边，鞋尖朝上',
+}
+_GE_ANCHOR = {'walk': (18, 52), 'kick': (18 + _GE_O[0], 52 + _GE_O[1]), 'throw': (18 + _GE_O[0], 52 + _GE_O[1]),
+              'down': (_GE_DW // 2, _GE_DH)}
+for _act, _frames in _geil_frames().items():
+    _name = 'jgeil.' + _act
+    if _name in sprite._REG: raise ValueError('新动作与原注册冲突：' + _name)
+    sprite.define(_name, [p.grid() for p in _frames], pal=SE.PAL_GEIL, anchor=_GE_ANCHOR[_act],
+                  fps={'walk': 6, 'kick': 6, 'throw': 5, 'down': 1}[_act], desc=_GE_DESC[_act])
+    NEW.append(_name)
+ONESHOT.add('jgeil.throw')                  # 扬尘只播一遍、停在扬出去那一帧（kick / down 已在上面的 ONESHOT 里）
 
 # 规划使用原cid的形态动作；专用cid仍有全套走路和受击供世界实体使用。
 for cid,act,source in [('polnareff','kid','polnareff_kid.idle'),('jotaro','kid','jotaro_kid.idle'),('polnareff','possessed','polnareff_possessed.idle')]:

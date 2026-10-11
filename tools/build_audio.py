@@ -112,6 +112,9 @@ NEW_EXPORT = (
     # 2026-10-11 第3章（新加坡）：剃刀、玩偶怪笑 / 窜动、冰箱、黏液 / 吸收、吊扇 / 街道 / 缆车 / 火车环境音（循环）（tools\game_sfx.py）
     + [_e(n) for n in ('razor', 'doll_voice', 'doll_scurry', 'fridge', 'slime', 'slime_absorb',
                        'fan_loop', 'city_loop', 'cable_loop', 'train_loop')]
+    # 2026-10-11 第4章（印度）：跳弹、镜中闪光、警哨、牛叫 / 舔、女帝怪笑、神庙铃、雨巷 / 街市 / 河坛环境音（循环）（tools\game_sfx.py）
+    + [_e(n) for n in ('ricochet', 'mirror_flash', 'police_whistle', 'cow_moo', 'lick', 'empress_voice', 'temple_bell',
+                       'rain_loop', 'bazaar_loop', 'ghat_loop')]
 )
 
 ALL_SFX = SFX_EXPORT + NEW_EXPORT

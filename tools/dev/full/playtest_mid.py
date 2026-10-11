@@ -84,6 +84,15 @@ NO_MELEE_COVER = {'b07_hangedman', 'b08_empress', 'b09a_wheelroad', 'b11_lovers'
                   'b15a_highpriestess', 'b15b_highpriestess', 'b16a_geb', 'b16b_geb', 'b17_prophecy1', 'b17_prophecy2',
                   'b17_prophecy3', 'b19_bast', 'b20a_seth', 'b20b_seth', 'b09b_wheeloffortune', 'b10_justice', 'b13b_death13',
                   'b14b_judgement', 'b18a_anubis', 'b18b_anubis', 'b18c_anubis'}
+# 关键剧情台词出现时截图（人工看构图、遮挡、站位）：台词片段 → 截图名（2026-10-11 第4章重做时加）
+STORY_SHOTS = {
+    # 第4章
+    '这里的人比香港还多': 'c4_arrival', '怎么一下子来了这么多': 'c4_kids', '楼顶上，有个戴牛仔帽': 'c4_roof', '我更适合当老二': 'c4_holhorse',
+    '这是我妹妹的仇': 'c4_polnareff_runs', '……镜子里？': 'c4_mirror', '波鲁纳雷夫，后面': 'c4_avdol', '阿布德尔——！': 'c4_avdol_down',
+    '……拜托了': 'c4_kakyoin', '……为了雪莉': 'c4_sherry', '对不起啦，宝贝': 'c4_nena_shield', '留下了一滴血': 'c4_blood',
+    '阿布德尔不会希望我们停下来': 'c4_corner', '它、它说话了': 'c4_empress_talk', '通缉：手臂上长着怪物': 'c4_newspaper',
+    '这个外国老头是杀人犯': 'c4_murderer', '你下一句要说的是': 'c4_next_line', '一直戴着别人的样子': 'c4_nena_true', '恒河的水': 'c4_ganges',
+}
 HIDES = {'wardrobe': 155, 'aquarium': 249, 'bed': 418, 'curtain': 58, 'crate': 506, 'cupboard': 570}
 HIDE_ORDER = ['wardrobe', 'aquarium', 'bed', 'curtain', 'crate', 'cupboard']
 NAMES = {'jotaro': '承太郎', 'joseph': '乔瑟夫', 'avdol': '阿布德尔', 'kakyoin': '花京院', 'polnareff': '波鲁纳雷夫', 'iggy': '伊奇'}
@@ -144,6 +153,11 @@ class MidTester(playtest.Tester):
     def capture(self, s):
         """关键画面：每张自由走动地图、每场战斗的几个时刻、机关触发的瞬间。"""
         stage, fid, m = s.get('stage'), s.get('fightId'), self.m
+        text = (s.get('dlg') or '') + (s.get('narr') or '')
+        for key, name in STORY_SHOTS.items():
+            if key in text and ('story_' + name) not in self.taken:
+                self.page.wait_for_timeout(260)   # 对话框弹出动画放完再截
+                self.shot('story_' + name)
         if s.get('free') and not s.get('busy') and stage:
             self.after_delay('free_' + stage, True, 1.6, 'free_' + stage)
         if fid and s.get('combat') and not s.get('cine'):

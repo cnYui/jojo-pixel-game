@@ -113,7 +113,10 @@ AMAP = {
         'talk': 'idle', 'run': 'flee', 'attack': 'shoot', 'shoot': 'shoot',
         'windup': {'a': 'shoot', 'f': 0}, 'cmd': {'a': 'shoot', 'f': 0},
     },
-    'jgeil': {'talk': 'idle', 'hurt': 'hurt'},
+    # J·凯尔（2026-10-11 第4章补 walk 重画 / kick / throw / down，art_later_existing._geil_frames）：
+    # 敌人出招 / 预警都播 m.body || 'cmd'——cmd 默认接到 kick；JG_DUST 要在招式里写 body: 'throw' 才播弯腰扬土
+    'jgeil': {'talk': 'idle', 'hurt': 'hurt', 'shock': 'hurt', 'getup': 'hurt',
+              **_many('kick', 'cmd', 'cmd2', 'attack')},
     'enya': {'talk': 'idle', **_many({'a': 'idle', 'f': 1}, 'cmd', 'attack', 'special')},   # f1 举手
     'ndoul': {'talk': 'idle'},
     'oingo': {'talk': 'idle', 'hurt': 'boom'},
@@ -203,13 +206,14 @@ AMAP['rubbersoul'].update(_same('armor_idle','armor_walk','armor_attack','armor_
     armor_special='armor_engulf', engulf='armor_engulf', whip='armor_attack')
 for _cid in ('khan','atum','empress','lovers','mannish','npc_cat'):
     AMAP[_cid]['talk']='idle'
-AMAP['empress'].update(walk='idle',l3_idle='idle',l3_bite='bite')
+# l3（最大一级）2026-10-11 起有自己的帧（art_later_creatures.empress_l3），不再指到 idle / bite
+AMAP['empress'].update(walk='idle')
 AMAP['midler_back'].update(_many('idle','walk','talk','hurt','down'))
 _EXISTING = {
  'joseph':('whip','guard','dodge'), 'polnareff':('guard','dodge','kid','possessed','kneel','kick'),
  'jotaro':('kid','kick'), 'avdol':('push',), 'iggy':('hurt','dodge','limp_walk'), 'starplat':('finger',),
  'darkbluemoon':('attack','hurt'), 'strength':('walk','attack','hurt','down'),
- 'hangedman':('attack',), 'holhorse':('hurt','down'), 'jgeil':('walk',),
+ 'hangedman':('attack',), 'holhorse':('hurt','down'), 'jgeil':('walk','kick','throw','down'),
  'wheel':('climb','spray'), 'enya':('cast','hurt','down'), 'zombie':('attack',),
  'steelydan':('hurt','down','fly','command'), 'death13':('swing','hurt'),
  'judgement':('attack',), 'highpriestess':('attack',), 'fool':('claw','slam','wall'),
@@ -224,6 +228,16 @@ for _cid in ('jotaro','joseph','avdol','kakyoin','polnareff'):
 # 假花京院（actor.skin = 'fake'，art_new_rubbersoul.py 从原帧换黄眼 + 下摆滴黏液派生）；原图集没有 talk，fake_talk 同样指 fake_idle
 AMAP['kakyoin'].update(_same('fake_idle','fake_walk','fake_cherry'), fake_talk='fake_idle', fake_win='fake_idle',
                        fake_run='fake_walk')
+# 印度警察（actor.skin = 'india'，art_new_police_india.py：同一副狱警骨架换卡其制服 / 贝雷帽 / 八字胡 / lathi 竹棍）：
+# 原狱警没有 run / hurt 自己的帧（hurt → shock），这里把常用逻辑名都接到 india_*，免得闪回日本警服；
+# 对话头像是表情 portrait_india（S.say('npc_police', …, { expr: 'india' })），不走皮肤
+AMAP['npc_police'].update(_same('india_idle', 'india_walk', 'india_run', 'india_shock'),
+                          **_many('india_idle', 'india_talk', 'india_win', 'india_pose', 'india_read'),
+                          **_many('india_shock', 'india_hurt', 'india_getup', 'india_guard'),
+                          india_dodge={'a': 'india_run', 'f': 1})
+# 圣牛（art_new_npc_cow.py，第4章）：talk 指 idle；lick = 伸舌头舔
+AMAP['npc_cow'] = {**_same('idle', 'walk', 'lick', 'hurt', 'down'), 'talk': 'idle', 'run': 'walk',
+                   **_many('hurt', 'shock', 'getup')}
 AMAP['grayfly']['seated']='seated'
 _PERSON_SPECIALS={
  'anne':('run','wave','angry','portrait_angry'), 'devo':('slash',),

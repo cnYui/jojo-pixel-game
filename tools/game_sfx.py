@@ -1466,6 +1466,536 @@ def _train_loop(loop=4.0, seed=0):
     return _fin_loop(out, .42)
 
 
+# ============================================================ 第4章（印度）：皇帝的子弹、倒吊人的镜子、警哨、圣牛、女帝、神庙铃、雨巷 / 街市 / 河坛
+def _cconv(imp, ker):
+    """圆周卷积（FFT）：脉冲串 imp（L 个样本）× 短核 ker → 长度 L，核的尾巴绕回开头，首尾天然接得上。"""
+    L = len(imp)
+    k = np.zeros(L)
+    k[:min(L, len(ker))] = ker[:L]
+    return np.fft.irfft(np.fft.rfft(imp) * np.fft.rfft(k), L)
+
+
+def _poisson_imp(L, rate, rng, gamma=3.0):
+    """L 个样本里平均 rate 下 / 秒的随机脉冲，幅度 U^gamma（大多数很轻、偶尔一下重）。"""
+    imp = np.zeros(L)
+    k = rng.poisson(rate * L / SR)
+    np.add.at(imp, rng.integers(0, L, k), rng.uniform(0, 1, k) ** gamma)
+    return imp
+
+
+def _rms(x):
+    return float(np.sqrt(np.mean(np.asarray(x) ** 2)))
+
+
+def _pk1(x):
+    """按峰值归一到 1（稀疏的事件层用峰值对齐，不用 RMS：RMS 归一会把稀疏事件的峰顶得很高）。"""
+    return x / (np.abs(x).max() + 1e-12)
+
+
+def _pan_move(x, p0, p1):
+    """单声道 → 立体声，声像从 p0 匀速移到 p1（等功率）。"""
+    a = (np.linspace(p0, p1, len(x)) + 1) * np.pi / 4
+    return np.stack([x * np.cos(a), x * np.sin(a)], -1) * 1.4142
+
+
+# 黄铜铃的模态：(相对 f1 的倍数, 衰减 tau 秒, 幅度, 一对模态的拍频 Hz)。0.5 是“嗡”的低音；
+# 1.21（偏高的小三度）、1.47、2.09（偏高的八度）、2.66、3.32、4.18、5.43 都不在谐波上 = 不和谐泛音。低的响得久。
+_BELL = ((.5, 1.1, .3, .9), (1.0, .95, 1.0, 1.7), (1.21, .7, .5, 2.3), (1.47, .55, .3, 1.1), (2.09, .5, .45, 2.9),
+         (2.66, .3, .38, 3.6), (3.32, .2, .22, 1.4), (4.18, .13, .17, 4.4), (5.43, .07, .1, 5.0))
+
+
+def _bell(rng, f1, n, tau_k=1.0):
+    """敲一下黄铜铃：_BELL 的每个模态是一对差几赫兹的正弦（拍频 = 铃声“嗡——嗡——”地起伏）+ 铃舌的“叮”（高通咔 + 高频金属）。"""
+    t = _t(n)
+    x = np.zeros(n)
+    for r, tau, a, beat in _BELL:
+        f = f1 * r * rng.uniform(.997, 1.003)
+        e = np.exp(-t / (tau * tau_k))
+        for d, w in ((-.5, 1.0), (.5, .7)):
+            x += a * w * np.sin(_TAU * (f + d * beat) * t + rng.uniform(0, _TAU)) * e
+    m = min(n, _n(.03))
+    tk = hp(noise(m, rng), 2500) * env_exp(m, .0025, .0001)
+    tk += _metal(m, [5150, 7330, 9420], [.006, .004, .003], [1, .6, .4], rng)
+    x[:m] += .8 * tk
+    return x * np.minimum(t / .0006, 1)
+
+
+@reg('ricochet', '荷尔·荷斯的子弹拐弯 / 被剑弹开擦过墙的跳弹“啾——”：先一下金属撞击（高通“嗒”+ 2.9–7.5 kHz 短促金属泛音 + 几粒石屑），'
+                 '紧接着往下滑的尖啸（15 ms 内先蹿到 5.6 kHz，再一路滑到约 1.1 kHz；子弹翻滚带 47 Hz 的颤，越慢颤得越深）'
+                 '+ 跟着音高走的气流嘶声；低通 7.5 kHz + 墙面回声 + 短混响 = 隔着一段距离（0.55 s，立体声）', la=-16)
+def _ricochet(seed=0):
+    rng = _rng('ricochet', seed)
+    T = .55
+    n = _n(T)
+    x = np.zeros(n)
+    m = _n(.06)                                                    # 1. 撞击：“嗒”+ 金属“叮”+ 石屑
+    imp = hp(noise(m, rng), 2500) * env_exp(m, .0015, .0001)
+    imp += .5 * bp(noise(m, rng), 600, 3000) * env_exp(m, .006, .0002)
+    imp += .9 * _metal(m, np.array([2870, 4130, 5960, 7480]) * rng.uniform(.97, 1.03), [.016, .011, .008, .006],
+                       [1, .8, .6, .4], rng, .004) * np.minimum(_t(m) / .0004, 1)
+    imp += .3 * osc(_dsig(m, 420, 160), m) * env_exp(m, .01, .0005)
+    imp += .4 * _clicks(m, 600, rng, (.2, .8), 2000, env_exp(m, .02))
+    _place(x, norm(imp, 1.0), 0, 1.0)
+    d = .45                                                        # 2. 尖啸：先蹿高、再一路往下滑
+    m = _n(d)
+    tt = _t(m)
+    u = np.clip((tt - .015) / (d - .015), 0, 1)
+    f = np.where(tt < .015, 4600 + 1000 * tt / .015, 5600 * (1100 / 5600) ** (u ** .8))
+    tumble = np.sin(_TAU * 47 * tt + rng.uniform(0, _TAU))         # 子弹翻滚
+    f = f * (1 + (.012 + .03 * u) * tumble + .006 * sfx.lfo_noise(m, 40, rng))
+    tone = osc(f, m) + .15 * osc(2 * f, m)
+    air = sweep(noise(m, rng), f, 'bp', q=5.0, block=64)            # 气流嘶声跟着音高走
+    e = env_pts(m, [(0, 0), (.006, 1), (.05, .85), (.2, .42), (.36, .15), (d, 0)]) * (.78 + .22 * tumble)
+    _place(x, (norm(tone, 1.0) + .35 * norm(air, 1.0)) * e, _n(.006), .65)
+    x = lp(x, 7500, 2)
+    x = delay(x, .085, .22, 2, lpf=3000)                           # 巷子墙面弹回来的回声
+    x = verb(x, wet=.16, sec=.7, tau=.15, lpf=5000, seed=42, pre=.02)[:n]
+    return _fin(x, .7, .0003, .08)
+
+
+@reg('mirror_flash', '倒吊人在镜子 / 橱窗 / 水洼之间跳：一道冷光从一边扫到另一边（50 ms 往上扫的玻璃气声 + 反放的高音泛音，'
+                     '声像 −0.7 → +0.3）撞进玻璃的“叮——”（玻璃板的不和谐模态 3.1 / 5.4 / 7.3 / 10.0 / 12.1 kHz，衰减 45–160 ms；'
+                     '每条一对差 5–9 Hz 的拍频，左右声道拍得一快一慢 = 冷冷地发颤）+ 低三全音（2.2 kHz）的幽灵音比“叮”拖得久'
+                     '+ 9 kHz 以上很细的随机闪烁颗粒；1.2 kHz 以下几乎没有，比 glint 更冷、更像玻璃（0.42 s，立体声，“叮”在 +0.05 s）',
+     la=-18, hit=.05)
+def _mirror_flash(seed=0):
+    rng = _rng('mirror_flash', seed)
+    T, hit = .42, .05
+    n = _n(T)
+    x = np.zeros((n, 2))
+    pn = _n(hit)                                                   # 1. 冷光扫过（声像移动）
+    u = np.linspace(0, 1, pn)
+    sw = sweep(noise(pn, rng), _dsig(pn, 3000, 11000), 'bp', q=5.0, block=64) * u ** 4
+    rv = _ping(_n(.15), 7902, .05, .001, ((1, 1.0), (1.41, .5)))[:pn][::-1]     # 反放：音量涨进“叮”
+    _place(x, _pan_move(norm(sw, 1.0) + .6 * norm(rv, 1.0), -.7, .3), 0, .3)
+    m = n - pn                                                     # 2. 玻璃“叮——”
+    tt = _t(m)
+    ring = np.zeros((m, 2))
+    f1 = 3136.0
+    for r, tau, a, beat in ((1.0, .16, 1.0, 6.0), (1.73, .11, .5, 8.5), (2.32, .09, .6, 5.2), (3.18, .06, .35, 9.0),
+                            (3.86, .045, .25, 7.0)):
+        e = np.exp(-tt / tau) * a
+        p = rng.uniform(0, _TAU)
+        for c, k in ((0, .85), (1, 1.15)):                         # 一对模态在“叮”的瞬间同相（起音干脆），左右拍得一快一慢
+            b = beat * k
+            ring[:, c] += e * (np.sin(_TAU * (f1 * r - b / 2) * tt + p) + .8 * np.sin(_TAU * (f1 * r + b / 2) * tt + p))
+    ring *= np.minimum(tt / .0004, 1)[:, None]
+    ghost = osc(f1 / np.sqrt(2), m) * np.exp(-tt / .25) * np.minimum(tt / .03, 1)     # 低三全音的幽灵音，慢慢浮出来、拖得比“叮”久
+    tick = hp(noise(m, rng), 4000) * env_exp(m, .0008, .0001)
+    _place(x, norm(ring, 1.0) + _st(.2 * ghost + .35 * tick), pn)
+    fl = np.zeros((m, 2))                                          # 3. 很细的高频闪烁：随机的小颗粒 + 被乱门控的超高频
+    for _ in range(46):
+        st = min(m - _n(.005), int(rng.exponential(.1) * SR))
+        g = _n(rng.uniform(.002, .004))
+        grain = osc(rng.uniform(9000, 14000), g) * np.hanning(g)
+        _place(fl, _pan(grain, rng.uniform(-.8, .8)), st, rng.uniform(.3, 1.0) * np.exp(-st / SR / .14))
+    gate = (snh(m, 70, rng) > .2).astype(float)
+    fl += _st(.25 * hp(noise(m, rng), 9000) * lp(gate, 400, 1) * np.exp(-tt / .1))
+    _place(x, .22 * fl / (np.abs(fl).max() + 1e-9), pn)
+    x = hp(x, 1200, 2)
+    x = verb(x, wet=.14, sec=.6, tau=.1, lpf=12000, seed=43, pre=.008)[:n]
+    return _fin(x, .7, .0005, .08)                                 # 玻璃余音很“满”（峰均比小），峰值上限给高一点响度才够
+
+
+@reg('police_whistle', '印度警察吹哨追人：豌豆哨“哔哔——哔————”两短一长；约 2.45 kHz 的哨音被滚动的豌豆打成每秒约 34 下的颤'
+                       '（深的方形调幅 + 4.5 % 的调频，滚速带一点抖）+ 跟着音高的气声；每声起音压力上来音高先往上找、收尾往下掉；'
+                       '泛音很弱、低通 6.5 kHz、一点街面混响：响亮但不扎耳（0.85 s）', la=-17)
+def _police_whistle(seed=0):
+    rng = _rng('police_whistle', seed)
+    T = .85
+    out = np.zeros(_n(T))
+    f0 = 2450 * rng.uniform(.99, 1.01)
+    for st, d, g in ((0.0, .11, .85), (.16, .11, .85), (.33, .5, 1.0)):
+        m = _n(d)
+        tt = _t(m)
+        bend = np.interp(tt, [0, .025, d - .04, d], [.93, 1.0, 1.0, .96])
+        rate = 34 * (1 + .1 * sfx.lfo_noise(m, 8, rng))            # 豌豆滚动的速度
+        ph = _TAU * np.cumsum(rate) / SR + rng.uniform(0, _TAU)
+        f = f0 * bend * (1 + .045 * np.sin(ph))
+        am = .62 + .38 * np.tanh(2.5 * np.sin(ph + .6))            # 偏方的调幅 → “噜噜噜”
+        tone = osc(f, m) + .22 * osc(2 * f, m) + .06 * osc(3 * f, m)
+        breath = .5 * sweep(noise(m, rng), f, 'bp', q=6.0, block=64) + .1 * bp(noise(m, rng), 1000, 7000)
+        e = env_pts(m, [(0, 0), (.012, 1), (d - .03, .95), (d, 0)])
+        _place(out, (norm(tone, 1.0) * am + norm(breath, 1.0) * .3 * (.6 + .4 * am)) * e, _n(st), g)
+    out = lp(out, 6500, 2)
+    x = verb(out, wet=.12, sec=.6, tau=.12, lpf=5000, seed=44, pre=.015)[:_n(T + .08)]
+    return _fin(x, .55, .002, .06)
+
+
+@reg('cow_moo', '圣牛慵懒的一声“哞——”：先闭着嘴的鼻音“mmm”（250 Hz 鼻腔共振、高频很少），张嘴变成“ooo/uh”（F1 260→520 Hz、F2 800→1000 Hz），'
+                '最后又合上；基频 88 → 128 Hz 往上扬、慢慢落回 82 Hz，带 4.5 Hz 的懒懒的晃 + 半频喉音和气声（头尾更沙哑）'
+                '+ 胸腔的低频；1 kHz 以下为主（1.05 s）', la=-17)
+def _cow_moo(seed=0):
+    rng = _rng('cow_moo', seed)
+    T = 1.05
+    n = _n(T)
+    t = _t(n)
+    f0 = np.interp(t, [0, .12, .35, .7, .9, T], [88, 104, 128, 122, 100, 82])
+    f0 = f0 * (1 + .012 * np.sin(_TAU * 4.5 * t) + .02 * sfx.lfo_noise(n, 18, rng))
+    rasp = np.interp(t, [0, .15, .35, .8, T], [.5, .25, .15, .3, .6])
+    src = osc(f0, n, 'saw') + .4 * osc(f0, n, 'square', .3)
+    src += rasp * (.6 * osc(f0 * .5, n, 'square', .4) + .3 * noise(n, rng))
+    op = np.interp(t, [0, .12, .3, .75, .95, T], [0, 0, 1, 1, .3, 0])     # 0 = 闭嘴的“m”，1 = 张嘴
+    nasal = _formant(src, [(250, 4, 1.0), (2100, 8, .04)])
+    oral = _formant(src, [(260 + 260 * op, 4, 1.0), (800 + 200 * op, 5, .55), (2300, 7, .02 + .12 * op)])
+    y = (1 - .7 * op) * norm(nasal, 1.0) + op * norm(oral, 1.0)
+    y += .35 * norm(lp(src, 220, 2), 1.0)                         # 胸腔
+    y = sat(y * 1.4, 1.5) * env_pts(n, [(0, 0), (.08, .55), (.3, 1), (.75, .9), (.95, .4), (T, 0)])
+    y = lp(y, 3000, 2)
+    x = verb(y, wet=.1, sec=.6, tau=.12, lpf=3000, seed=45, pre=.02)[:_n(T + .05)]
+    return _fin(x, .75, .004, .08)
+
+
+@reg('lick', '牛舌头舔人：大而软的舌头“啪”地贴上来（软起音的中频拍 + 210→95 Hz 的低“噗”），往上一抹的湿拖（带通 600→2400 Hz、'
+             '黏滑的快颤 + 口水的细碎噼啪），最后舌头从皮肤上撕开的两个湿“啵”；比 slime 短得多、高一点、没有低频的一团“咕”（0.3 s）',
+     la=-19)
+def _lick(seed=0):
+    rng = _rng('lick', seed)
+    T = .3
+    x = np.zeros(_n(T + .03))
+    m = _n(.08)                                                    # 1. 贴上来：软的“啪”
+    slap = bp(noise(m, rng), 300, 2600) * env_pts(m, [(0, 0), (.002, 1), (.012, .35), (.05, .05), (.08, 0)])
+    slap += .6 * osc(_dsig(m, 210, 95), m) * env_exp(m, .02, .002)
+    _place(x, norm(slap, 1.0), 0)
+    m = _n(.17)                                                    # 2. 湿拖：往上抹
+    tt = _t(m)
+    u = tt / (m / SR)
+    sw = sweep(noise(m, rng), 600 * (2400 / 600) ** u, 'bp', q=3.5, block=64)
+    sw *= np.clip(.55 + .6 * sfx.lfo_noise(m, 140, rng), 0, 1.2) * np.sin(np.pi * u) ** 1.2
+    mouth = sweep(noise(m, rng), 450 + 450 * u, 'bp', q=7.0, block=64) * env_pts(m, [(0, 0), (.02, 1), (.12, .5), (.17, 0)])
+    spit = _clicks(m, 400, rng, (.2, .8), 1200, np.sin(np.pi * u))
+    _place(x, .7 * norm(sw, 1.0) + .45 * norm(mouth, 1.0) + .35 * norm(spit, 1.0), _n(.015), .8)
+    for s0, f, g in ((.19, 900, .22), (.212, 1500, .15)):          # 3. 撕开：两个短的湿“啵”（带一点水声）+ 一点“嚓”
+        k = _n(.02)
+        pop = _chirp(k, f, f * 1.8, .004, attack=.0008) + .6 * bp(noise(k, rng), 600, 3500) * env_exp(k, .003, .0003)
+        _place(x, pop, _n(s0), g)
+    k = _n(.006)
+    _place(x, hp(noise(k, rng), 3000) * env_exp(k, .001, .0001), _n(.188), .25)
+    x = lp(x, 6000, 2)
+    return _fin(sat(x * 1.2, 1.4), .65, .001, .03)
+
+
+@reg('empress_voice', '女帝（乔瑟夫手臂上的肉瘤）的怪笑：婴儿腔的“嘿、嘿、嘿、嘿”四声（约 9 个 / 秒，基频 410–505 Hz 先扬后落，'
+                      '每声往下掉）+ 最后一声拖长的“嘿呃——”滑进咕噜噜的气泡音；小身体的共振峰（F1 ≈ 700、F2 ≈ 2 kHz）+ 300 Hz 的鼻 / 胸腔、'
+                      '半频喉音和气声（恶毒），喉咙含着口水的快颤、两下咂嘴、口水的细碎噼啪、尾巴上冒泡；'
+                      '和 doll_voice 比：更低、更湿、更黏，不加速、没有发条声，不成词（0.62 s）', la=-17)
+def _empress_voice(seed=0):
+    rng = _rng('empress_voice', seed)
+    T = .62
+    out = np.zeros(_n(T + .05))
+    for i, (st, d, fa, cons) in enumerate(((.015, .085, 470, 'k'), (.125, .085, 550, 'h'), (.232, .08, 515, 'h'),
+                                           (.333, .08, 450, 'h'))):
+        m = _n(d)
+        tt = _t(m)
+        u = tt / d
+        f0 = fa * rng.uniform(.97, 1.03) * np.interp(u, [0, .15, 1], [1.12, 1.0, .82]) * (1 + .02 * sfx.lfo_noise(m, 50, rng))
+        src = osc(f0, m, 'saw') + .35 * osc(f0, m, 'square', .2) + .3 * noise(m, rng) + .1 * osc(f0 * .5, m, 'square', .3)
+        gurgle = 1 + .35 * sfx.lfo_noise(m, 70, rng)              # 喉咙里含着口水的快颤
+        F1 = np.interp(u, [0, .3, 1], [800, 700, 620])
+        F2 = np.interp(u, [0, .3, 1], [1900, 2150, 2050])
+        y = _formant(src * gurgle, [(F1, 4, 1.0), (F2, 5, .75), (3300, 6, .25), (300, 3, .3)])
+        y = sat(norm(y, 1.0) * env_pts(m, [(0, 0), (.004, 1), (d * .45, .7), (d, 0)]) * 2.2, 1.7)
+        a = _n(st)
+        if cons == 'k':
+            k = _n(.008)
+            _place(out, bp(noise(k, rng), 1800, 6000) * env_exp(k, .0015, .0002), a, .5)
+        else:
+            k = _n(.025)
+            _place(out, bp(noise(k, rng), 900, 4500) * np.sin(np.pi * np.linspace(0, 1, k)) ** 2, a - _n(.012), .35)
+        _place(out, y, a + _n(.004), 1.0 if i % 2 == 0 else .85)
+    st, d = .425, .19                                              # 拖长的“嘿呃——”：音高往下掉，滑进气泡音
+    m = _n(d)
+    tt = _t(m)
+    u = tt / d
+    f0 = 470 * np.interp(u, [0, .2, .55, 1], [1.05, 1.0, .55, .35])
+    voiced = osc(f0, m, 'saw') + .3 * noise(m, rng) + .3 * osc(f0 * .5, m, 'square', .3)
+    rate = np.interp(u, [0, .45, 1], [20, 70, 55]) * (1 + .3 * sfx.lfo_noise(m, 40, rng))
+    imp = np.diff(np.floor(np.cumsum(rate) / SR), prepend=0.0) * rng.uniform(.5, 1.0, m)
+    fry = lp(imp, 3000, 1)
+    w = np.clip((u - .35) / .3, 0, 1)
+    src = (1 - w) * norm(voiced, 1.0) + w * norm(fry, 1.0)
+    F1 = np.interp(u, [0, 1], [700, 450])
+    F2 = np.interp(u, [0, 1], [2000, 1300])
+    y = norm(_formant(src, [(F1, 4, 1.0), (F2, 5, .7), (300, 3, .35)]), 1.0)
+    y += .25 * norm(sfx._bubble_train(m, 45, rng, 500, 1500, amp_env=np.clip(u * 1.5, 0, 1)), 1.0)
+    y = sat(y * env_pts(m, [(0, 0), (.01, 1), (.08, .8), (d, 0)]) * 2.0, 1.6)
+    _place(out, y, _n(st), .9)
+    for s0 in (.112, .318):                                        # 两下咂嘴
+        k = _n(.02)
+        smack = hp(noise(k, rng), 2000) * env_exp(k, .0015, .0001) + .5 * _chirp(k, 1200, 2200, .005, attack=.0008)
+        _place(out, smack, _n(s0), .3)
+    wet_env = np.interp(_t(len(out)), [0, .01, .6, .62], [0, 1, 1, 0])
+    out += .3 * _clicks(len(out), 90, rng, (.15, .6), 1800, wet_env)        # 口水的细碎噼啪（只在出声的时候）
+    return _fin(bp(out, 220, 7500), .6, .002, .04)
+
+
+@reg('temple_bell', '贝拿勒斯小神庙的黄铜吊钟“叮——”：铃舌一下“叮”（高通咔 + 5–9 kHz 金属），f1 = 740 Hz 的九个模态'
+                    '（370 Hz 的“嗡”、偏高的小三度 / 八度、2.66 / 3.32 / 4.18 / 5.43 倍等不和谐泛音；每个模态一对差 1–5 Hz → 余音“嗡——嗡——”地起伏，'
+                    '低的响得久：0.5–1.1 s）+ 石头庙里的混响（1.5 s）', la=-18)
+def _temple_bell(seed=0):
+    rng = _rng('temple_bell', seed)
+    T = 1.5
+    n = _n(T)
+    x = _bell(rng, 740.0, n)
+    x = verb(x, wet=.18, sec=1.2, tau=.35, lpf=6000, seed=46, pre=.015)[:n]
+    return _fin(x, .6, .0005, .3)
+
+
+def _plink(rng, f0, d):
+    """一滴水落进水洼：Minnaert 气泡的“叮咚”——正弦往上挑（×1.5–2.2）、快衰减，前面一点撞击的沙声。"""
+    m = _n(d + .01)
+    y = _chirp(m, f0, f0 * rng.uniform(1.5, 2.2), d / 3, attack=.0015)
+    return y + .25 * bp(noise(m, rng), 1500, 6000) * env_exp(m, .002, .0002)
+
+
+def _tin_kernels(rng, k=3):
+    """雨点敲铁皮雨棚：k 个不同的核（短促金属泛音 + 敲击的“嗒”+ 铁皮的低“嘣”）。"""
+    out = []
+    for _ in range(k):
+        m = _n(.12)
+        fs = np.array([1850, 2930, 4310, 6120]) * rng.uniform(.85, 1.2)
+        y = _metal(m, fs, [.02, .015, .01, .007], [1, .7, .5, .3], rng, .006) * np.minimum(_t(m) / .0003, 1)
+        y += .5 * hp(noise(m, rng), 3000) * env_exp(m, .0012, .0001)
+        y += .35 * osc(rng.uniform(170, 260), m) * env_exp(m, .035, .0008)
+        out.append(y)
+    return out
+
+
+@reg('rain_loop', '雨中后巷的中雨：两声道独立的宽带雨幕（阵雨一样慢慢起伏）+ 打在石板上的密集雨点（约 420 下 / 秒的细碎“沙沙嗒嗒”，'
+                  '泊松脉冲圆周卷积短核）+ 左边铁皮雨棚被敲的“叮叮嗒嗒”（约 42 下 / 秒，金属泛音 + 低“嘣”）+ 右边水洼里的“叮咚”气泡'
+                  '（约 16 下 / 秒）+ 屋檐四大滴落进水洼的“咚”（带巷子回声）+ 地沟流水的低频；安静不抢台词（loop=6 s，立体声，无缝）',
+     la=-28, push=0, loop=6.0)
+def _rain_loop(loop=6.0, seed=0):
+    rng = _rng('rain_loop', seed)
+    L = _n(loop)
+    k1 = hp(noise(_n(.006), rng), 2500) * env_exp(_n(.006), .0007, .0001)       # 石板上的雨点：两种短核
+    k2 = bp(noise(_n(.02), rng), 700, 4000) * env_exp(_n(.02), .0025, .0002)
+    chans = []
+    for _ in range(2):                                             # 1. 雨幕 + 石板（两声道独立）
+        sw = np.clip(.8 + .2 * _cmod(L, rng, (1, 2, 3)), 0, 1)
+        hiss = _cnoise(L, rng, .7, 600, 11000) * sw
+        body = _cnoise(L, rng, 1.3, 150, 1500) * (.85 + .15 * sw)
+        low = _cnoise(L, rng, 2.0, 30, 220)
+        stone = _rms1(_cconv(_poisson_imp(L, 300, rng), k1) + .8 * _cconv(_poisson_imp(L, 120, rng), k2))
+        stone = np.tanh(stone / 3.0) * 3.0                         # 偶尔一下特别尖的雨点：逐点软削到 3 倍 RMS（逐点运算，不坏接缝）
+        chans.append(.5 * hiss + .3 * body + .2 * low + .55 * stone * sw)
+    bed = _rms1(np.stack(chans, -1))
+    tin = sum(_cconv(_poisson_imp(L, 14, rng, 2.0), k) for k in _tin_kernels(rng))   # 2. 铁皮雨棚（偏左）
+    tin = _rms1(tin)
+    tin = np.stack([tin, .45 * np.roll(tin, _n(.0007))], -1)
+    pud = np.zeros((L + _n(.2), 2))                                # 3. 水洼里的“叮咚”（偏右）
+    for _ in range(rng.poisson(16 * loop)):
+        f0 = rng.uniform(900, 2800)
+        _place(pud, _pan(_plink(rng, f0, rng.uniform(.012, .03)), rng.uniform(.1, .8)), int(rng.uniform(0, L)),
+               rng.uniform(.15, 1.0) ** 2)
+    pud = _pk1(_fold(pud, L))
+    drp = np.zeros((L + _n(1.0), 2))                               # 4. 屋檐大滴落进水洼
+    for at in (.55, 2.05, 3.5, 4.9):
+        m = _n(.25)
+        y = _plink(rng, rng.uniform(550, 800), .06)
+        y = np.concatenate([y, np.zeros(m - len(y))])
+        y += .4 * bp(noise(m, rng), 1000, 5000) * env_exp(m, .01, .0005)
+        for _ in range(2):
+            f0 = rng.uniform(1300, 2500)
+            _place(y, _plink(rng, f0, .015), _n(rng.uniform(.04, .15)), rng.uniform(.15, .3))
+        _place(drp, _pan(y, .25 + rng.uniform(-.1, .1)), _n(at + rng.uniform(-.08, .08)), rng.uniform(.8, 1.0))
+    drp = _fold(delay(drp, .07, .2, 2, lpf=2500), L)
+    # 稀疏层按峰值对齐到雨幕 RMS 的倍数：铁皮在自己频带的局部峰高约 5 dB、水洼“叮咚”约 4 dB、大滴 5–9 dB（tune_rain.py 量的）
+    r = .6 * _rms(bed)
+    out = .6 * bed + .45 * tin + 6.0 * r * pud + 2.4 * r * _pk1(drp)
+    return _fin_loop(out, .34)
+
+
+def _honk(rng, f1, pattern, bright=3000):
+    """汽车 / 摩托喇叭“嘀”：两个差约大三度的方波（盆形双音喇叭）过带通，按 pattern [(起点 s, 长度 s)] 按几下；每下起音音高先往上找。"""
+    out = np.zeros(_n(max(s + d for s, d in pattern) + .05))
+    f2 = f1 * rng.uniform(1.22, 1.28)
+    for s, d in pattern:
+        m = _n(d)
+        tt = _t(m)
+        bend = np.interp(tt, [0, .012, d], [.94, 1.0, .99])
+        y = osc(f1 * bend, m, 'square', .42) + .8 * osc(f2 * bend, m, 'square', .38)
+        y = bp(sat(y, 1.5), 280, bright) * env_pts(m, [(0, 0), (.006, 1), (d - .015, .9), (d, 0)])
+        _place(out, y, _n(s))
+    return out
+
+
+def _bulb_horn(rng):
+    """三轮车的橡皮球喇叭“叭——叭”：簧片锯齿、音高往下掉、鼻音共振峰，捏两下（0.5 s）。"""
+    out = np.zeros(_n(.5))
+    for s, d in ((0, .16), (.24, .22)):
+        m = _n(d)
+        tt = _t(m)
+        f = np.interp(tt, [0, .02, d], [330, 360, 280]) * rng.uniform(.97, 1.03)
+        y = _formant(osc(f, m, 'saw') + .2 * noise(m, rng), [(700, 4, 1.0), (1400, 5, .7), (2600, 6, .3)])
+        _place(out, sat(norm(y, 1.0) * 1.8, 1.6) * env_pts(m, [(0, 0), (.01, 1), (d * .6, .8), (d, 0)]), _n(s))
+    return out
+
+
+def _rick_ting(rng):
+    """加尔各答人力车夫拿小铜铃敲车把“叮、叮、叮”：三下，每下带一点敲在木把上的“嗒”（0.6 s）。"""
+    x = np.zeros(_n(.6))
+    fs = np.array([3150, 4480, 6230]) * rng.uniform(.97, 1.03)
+    for i, s in enumerate((0, .12, .24)):
+        k = _n(.3)
+        r = _metal(k, fs, [.09, .06, .04], [1, .6, .35], rng, .003) * np.minimum(_t(k) / .0005, 1)
+        r += .4 * bp(noise(k, rng), 600, 2500) * env_exp(k, .004, .0002)
+        _place(x, r, _n(s), (1.0, .8, .9)[i])
+    return x
+
+
+def _putter(rng, T, d=1):
+    """一辆两冲程机动三轮（突突车）开过：约 31 下 / 秒的“突突突”点火脉冲（带抖）过车身 / 排气管共振 + 排气嘶声；
+    多普勒让点火频率和共振一起降，声像从一边移到另一边，包络两头为零。返回 (m, 2)。"""
+    m = _n(T)
+    u = np.linspace(0, 1, m)
+    dop = np.interp(u, [0, .45, .55, 1], [1.06, 1.04, .95, .93])
+    rate = 31 * dop * (1 + .05 * sfx.lfo_noise(m, 6, rng))
+    imp = np.diff(np.floor(np.cumsum(rate) / SR), prepend=0.0) * rng.uniform(.6, 1.0, m)
+    y = np.zeros(m)
+    for f, q, a in ((95, 3, 1.0), (240, 4, .8), (520, 5, .5), (1100, 5, .25)):
+        y += a * q / f * sweep(imp, f * dop, 'bp', q=q, block=256)
+    y = _rms1(sat(norm(y, 1.0) * 1.5, 1.6)) + .3 * _rms1(bp(noise(m, rng), 800, 3000)) * (.5 + .5 * norm(lp(imp, 60, 1), 1.0))
+    y = y * np.sin(np.pi * u) ** 2.5
+    a = (np.interp(u, [0, 1], [-.85, .85]) * d + 1) * np.pi / 4
+    return np.stack([y * np.cos(a), y * np.sin(a)], -1) * 1.4142
+
+
+def _crow_caw(rng, fs=1.0):
+    """印度家鸦一声“嘎——”：沙哑的锯齿 + 半频喉音 + 大量气声，过“啊”的共振峰（1.15 / 1.75 / 2.9 kHz），音高往下掉（0.22 s）。"""
+    d = .22
+    m = _n(d)
+    tt = _t(m)
+    f0 = np.interp(tt, [0, .03, d], [520, 600, 430]) * fs * (1 + .03 * sfx.lfo_noise(m, 80, rng))
+    src = osc(f0, m, 'saw') + .7 * osc(f0 * .5, m, 'square', .35) + .9 * noise(m, rng)
+    y = _formant(src, [(1150 * fs, 4, 1.0), (1750 * fs, 5, .8), (2900 * fs, 6, .35)])
+    y = sat(norm(y, 1.0) * 2.5, 2.2) * env_pts(m, [(0, 0), (.012, 1), (.12, .75), (d, 0)])
+    return bp(y, 500, 5500)
+
+
+@reg('bazaar_loop', '加尔各答人山人海的街头：三层人声嘈杂（原工程 crowd 换 seed / 音高叠起来，比 city_loop 密、听不清）'
+                    '+ 车流低频底 + 一辆两冲程突突车和两辆车开过（声像移动）+ 五组远近不同的汽车喇叭（“嘀嘀”“嘀——”“嘀嘀嘀”）'
+                    '+ 一个橡皮球喇叭“叭——叭”、一声自行车铃、人力车夫敲铜铃“叮叮叮”+ 高处两声乌鸦“嘎、嘎”，带一点楼面回声；'
+                    '事件都比底子只高几分贝，压在台词下面（loop=6 s，立体声，无缝）', la=-26, push=0, loop=6.0)
+def _bazaar_loop(loop=6.0, seed=0):
+    rng = _rng('bazaar_loop', seed)
+    L = _n(loop)
+    chans = []
+    for _ in range(2):                                             # 1. 车流的低频底
+        sw = .75 + .25 * _cmod(L, rng, (1, 2, 3))
+        chans.append((.9 * _cnoise(L, rng, 2.0, 35, 300) + .7 * _cnoise(L, rng, 1.0, 150, 1400)) * sw
+                     + .08 * _cnoise(L, rng, .3, 1800, 7000))
+    bed = _rms1(np.stack(chans, -1))
+    bab = np.zeros((L, 2))                                         # 2. 三层人声嘈杂
+    for k, (pt, g, flip) in enumerate(((1.0, 1.0, False), (1.07, .8, True), (.94, .7, False))):
+        c = _amb_loop('crowd', float(loop), seed=seed + 31 + k, pitch=pt)
+        bab += g * _rms1(c[:, ::-1] if flip else c)
+    bab = _rms1(_cband(bab, 160, 2800))
+    veh = np.zeros((L + _n(4.0), 2))                               # 3. 开过去的车
+    _place(veh, _putter(rng, 3.0, -1), _n(.6), 1.0)
+    _place(veh, _passby(rng, 2.4, 250, 2000, 1), _n(2.9), .6)
+    _place(veh, _passby(rng, 2.8, 200, 1600, -1, True), _n(4.4), .7)
+    veh = _rms1(_fold(veh, L))
+    ev = np.zeros((L + _n(1.5), 2))                                # 4. 喇叭 / 铃 / 乌鸦
+    for at, f1, pat, pan, g, br in ((.25, 420, ((0, .09), (.14, .09)), -.6, 1.6, 4500),      # 近处：亮，高次谐波越过嘈杂的频带
+                                    (1.45, 520, ((0, .32),), .55, 1.0, 2200),               # 远处：闷
+                                    (2.35, 380, ((0, .07), (.11, .07), (.22, .1)), -.2, 1.4, 4500),
+                                    (3.8, 600, ((0, .1), (.15, .12)), .7, .9, 2200),
+                                    (5.2, 460, ((0, .14),), -.4, 1.2, 4000)):
+        _place(ev, _pan(lp(_honk(rng, f1, pat, br), br + 800), pan), _n(at), g)
+    _place(ev, _pan(lp(_bulb_horn(rng), 3500), .25), _n(4.45), .9)
+    _place(ev, _pan(lp(_bike_bell(rng), 6000), .4), _n(.9), .45)
+    _place(ev, _pan(_rick_ting(rng), -.5), _n(3.15), .5)
+    for at, fs in ((1.95, 1.0), (2.33, .96)):
+        _place(ev, _pan(lp(_crow_caw(rng, fs), 4500), -.7), _n(at), .9)
+    ev = verb(delay(ev, .12, .22, 2, lpf=2500), wet=.15, sec=.6, tau=.12, lpf=4000, seed=47)
+    ev = _fold(ev, L)
+    base = .35 * bed + .7 * bab + .35 * veh
+    out = base + 5.0 * _rms(base) * _pk1(ev)                       # 喇叭在自己频带里比嘈杂高 4–7 dB（音调性的，听得清），整体仍是底子
+    return _fin_loop(out, .34)
+
+
+def _step_lap(rng):
+    """河水拍石阶：软起音的“哗啦”（带通往下扫）+ 一点白沫 + 石阶缝里的“咕”（小空腔往上挑）+ 几滴水珠；没有船壳的“咚”。"""
+    m = _n(.55)
+    x = sweep(noise(m, rng), _dsig(m, 1400, 300), 'bp', q=1.1) * env_pts(m, [(0, 0), (.03, 1), (.1, .55), (.35, .1), (.55, 0)])
+    x += .25 * hp(noise(m, rng), 2500) * env_pts(m, [(0, 0), (.02, 1), (.08, .2), (.2, 0)])
+    k = _n(.09)
+    _place(x, _chirp(k, rng.uniform(260, 340), rng.uniform(480, 600), .03, attack=.006), _n(rng.uniform(.04, .1)), .35)
+    for _ in range(int(rng.integers(2, 5))):
+        dn = _n(rng.uniform(.015, .035))
+        f0 = rng.uniform(800, 1800)
+        _place(x, _chirp(dn, f0, f0 * rng.uniform(1.4, 2.0), dn / SR / 3, attack=.002), _n(rng.uniform(.08, .4)),
+               rng.uniform(.05, .14))
+    return x
+
+
+def _pigeon_flutter(rng, k=9, rate=9.5):
+    """一群鸽子扑棱棱飞起来：k 下翅膀拍击（每下宽带的“噗”+ 一点低中频的“扑”，约 9.5 下 / 秒，越拍越轻）。"""
+    per = 1 / rate
+    x = np.zeros(_n(per * k + .1))
+    for i in range(k):
+        m = _n(.06)
+        y = bp(noise(m, rng), 300, 4500) * env_pts(m, [(0, 0), (.004, 1), (.02, .35), (.06, 0)])
+        y += .5 * lp(noise(m, rng), 600) * env_exp(m, .015, .002)
+        _place(x, y, _n(i * per * rng.uniform(.95, 1.05)), float(np.interp(i, [0, 2, k - 1], [.8, 1.0, .35])) * rng.uniform(.8, 1.0))
+    return x
+
+
+def _pigeon_coo(rng):
+    """鸽子“咕——咕咕”：低沉的“u”（约 300 Hz，喉咙鼓着的 22 Hz 颤）三段（0.75 s）。"""
+    out = np.zeros(_n(.75))
+    for s, d, f in ((0, .3, 290), (.36, .14, 320), (.53, .18, 300)):
+        m = _n(d)
+        tt = _t(m)
+        f0 = f * np.interp(tt, [0, d * .3, d], [.9, 1.05, .92])
+        y = (osc(f0, m) + .25 * osc(2 * f0, m) + .05 * noise(m, rng)) * (1 + .25 * np.sin(_TAU * 22 * tt))
+        _place(out, lp(y, 900) * env_pts(m, [(0, 0), (d * .2, 1), (d * .7, .8), (d, 0)]), _n(s))
+    return out
+
+
+@reg('ghat_loop', '恒河河坛：河水约 2 s 一涌轻拍石阶（低沉的水流一直在 + 涌上来才有的“沙——”+ 每涌一下“哗啦”拍台阶、石缝里“咕”一声）'
+                  '+ 远处三座小庙的铜铃各响一下、更远处有人摇手铃“叮叮叮叮”（低通 + 长混响，飘在河面上）'
+                  '+ 一群鸽子扑棱棱飞过（声像从左到右）和一声“咕——咕咕”+ 隐约的人声嗡嗡（原工程 crowd 低通到 900 Hz，听不清、没有旋律，不是诵经）；'
+                  '开阔安静（loop=6 s，立体声，无缝）', la=-28, push=0, loop=6.0)
+def _ghat_loop(loop=6.0, seed=0):
+    rng = _rng('ghat_loop', seed)
+    L = _n(loop)
+    sw = .6 * _cmod(L, rng, (3,)) + .4 * _cmod(L, rng, (2, 5))    # 一个循环约 3 涌
+    sw /= np.abs(sw).max()
+    chans = []
+    for _ in range(2):                                             # 1. 河水
+        lvl = np.clip(.5 + .5 * sw + .1 * _cmod(L, rng, (4, 7, 11)), 0, 1)
+        flow = _cnoise(L, rng, 1.5, 60, 500) * (.6 + .4 * lvl)
+        wash = _cnoise(L, rng, .6, 400, 2400) * lvl ** 2
+        chans.append(.55 * flow + wash + .06 * _cnoise(L, rng, 0.0, 2000, 6000))
+    water = _rms1(np.stack(chans, -1))
+    laps = np.zeros((L + _n(1.0), 2))                              # 2. 每涌拍一下石阶
+    pk = [i for i in range(1, L - 1) if sw[i] >= sw[i - 1] and sw[i] > sw[i + 1] and sw[i] > .2]
+    for p in pk:
+        at = (p - _n(rng.uniform(.1, .25))) % L
+        _place(laps, _pan(_step_lap(rng), rng.uniform(-.5, .5)), at, rng.uniform(.75, 1.0))
+    _place(laps, _pan(_step_lap(rng), rng.uniform(-.6, .6)), int(rng.uniform(0, 1) * L), .35)
+    laps = _pk1(_fold(laps, L))
+    vo = _rms1(_cband(_amb_loop('crowd', float(loop), seed=seed + 41), 150, 900))      # 3. 远处人声嗡嗡
+    vo = vo * (.85 + .15 * _cmod(L, rng, (1, 2)))[:, None]
+    bells = np.zeros((L + _n(2.0), 2))                             # 4. 远处的铜铃
+    for at, f1, pan, g in ((.4, 1180, -.6, .8), (2.7, 930, .5, .6), (4.6, 1320, -.2, .5)):
+        _place(bells, _pan(lp(_bell(rng, f1, _n(1.6), .8), 3000), pan), _n(at), g)
+    gh = np.zeros(_n(1.4))
+    for i in range(6):                                             # 更远处有人摇手铃
+        _place(gh, _bell(rng, 1560, _n(.6), .4), _n(i * .12 + rng.uniform(0, .01)), float(np.interp(i, [0, 5], [1, .6])))
+    _place(bells, _pan(lp(gh, 2600), .7), _n(3.4), .3)
+    bells = _fold(verb(bells, wet=.35, sec=1.5, tau=.45, lpf=3000, seed=48), L)
+    birds = np.zeros((L + _n(1.5), 2))                             # 5. 鸽子
+    _place(birds, _pan_move(_pigeon_flutter(rng), -.6, .5), _n(1.3), 1.0)
+    _place(birds, _pan(_pigeon_coo(rng), .35), _n(4.2), .45)
+    birds = _fold(verb(birds, wet=.15, sec=.6, tau=.12, lpf=5000, seed=49), L)
+    base = .8 * water + .25 * vo
+    out = base + _rms(base) * (2.0 * laps + 2.6 * _pk1(bells) + 2.0 * _pk1(birds))
+    return _fin_loop(out, .32)
+
+
 if __name__ == '__main__':
     # 自检：把本文件登记的全部新音效各渲一次，打印时长 / 声道 / 峰值 / 感知响度
     for nm in sorted(GAME):

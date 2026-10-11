@@ -1204,6 +1204,10 @@ for _key in ('singapore_street', 'singapore_hotel', 'cable_car'):
     EXPORTERS[_key] = lambda ex, _k=_key: exp_new(ex, _k)
 DEFAULT_PACK['cable_view'] = 'ch3'
 EXPORTERS['cable_view'] = lambda ex: exp_new(ex, 'cable_view')
+# 2026-10-11 第4章按体验版精度重做：四张重画（tools\bg_new\calcutta_street.py / india_alley.py / varanasi_street.py / ganges_ghat.py；
+#   ganges_ghat.py 加载时引用 varanasi_street.py 的调色和建筑零件），贝拿勒斯老城不再借 calcutta_street
+for _key in ('calcutta_street', 'india_alley', 'varanasi_street', 'ganges_ghat'):
+    EXPORTERS[_key] = lambda ex, _k=_key: exp_new(ex, _k)
 ORDER=list(DEFAULT_PACK)
 
 

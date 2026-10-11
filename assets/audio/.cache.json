@@ -1,6 +1,6 @@
 {
 "ape_screech": {
-"key": "a2935ceeda87a485f59e",
+"key": "c3a763976f3a86ed013b",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -18,7 +18,7 @@
 }
 },
 "armor_off": {
-"key": "fabeb97870299ddeca73",
+"key": "81e998fac15a349e3934",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -36,7 +36,7 @@
 }
 },
 "axe_chop": {
-"key": "b94885fc39463f46f52b",
+"key": "8873385f1d829f1a146d",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -54,7 +54,7 @@
 }
 },
 "baseball_hit": {
-"key": "44666ce241a2078a6b63",
+"key": "f92c929a97a46ea2db86",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -72,7 +72,7 @@
 }
 },
 "bat_flap": {
-"key": "f4f5a56342005d91a275",
+"key": "e7636c885a163c7b9bdc",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -103,8 +103,27 @@
 "sec": 28.444444
 }
 },
+"bazaar_loop": {
+"key": "e6c0b3928dfe3566a5c3",
+"meta": {
+"ch": 2,
+"encDelay": 1105,
+"hit": 0.0,
+"loop": true,
+"samples": 264600,
+"sec": 6.0
+},
+"report": {
+"kind": "new",
+"kw": {},
+"la": -26.0,
+"peak": 0.334,
+"seam_pct": 64.9,
+"src": "bazaar_loop"
+}
+},
 "bird_screech": {
-"key": "ea15b7f3badaec316d20",
+"key": "1312a3eac50bc31e55eb",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -122,7 +141,7 @@
 }
 },
 "blip": {
-"key": "adc017d5766410fdbe30",
+"key": "a5947708d946d00b5dc5",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -140,7 +159,7 @@
 }
 },
 "blip_train": {
-"key": "38710ba135a65bd07a54",
+"key": "af0a39a13afefd9cc895",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -174,7 +193,7 @@
 }
 },
 "bubbles": {
-"key": "016f29458d377abb4d75",
+"key": "03935802e32f7ee50968",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -192,7 +211,7 @@
 }
 },
 "cable_loop": {
-"key": "ca785ea898889843c561",
+"key": "3fd70b1e01d7d3871d01",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -211,7 +230,7 @@
 }
 },
 "camera_shutter": {
-"key": "79e6d6304bf6c3d16316",
+"key": "5ba4c718f3f95ebbfe98",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -229,7 +248,7 @@
 }
 },
 "car_engine": {
-"key": "4a8d9cfd4dbe34046dfc",
+"key": "344f4b7340928366f201",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -249,7 +268,7 @@
 }
 },
 "card_flip": {
-"key": "74db7f8b9d7711879e10",
+"key": "ae5e8e3bda11d4cb1e14",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -267,7 +286,7 @@
 }
 },
 "charge": {
-"key": "1db166071aa60454c916",
+"key": "49c8e07ed0ba831c4ad5",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -285,7 +304,7 @@
 }
 },
 "city_loop": {
-"key": "d433e6c108d99fa9ed6f",
+"key": "5266c25c6d2e27e81b75",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -304,7 +323,7 @@
 }
 },
 "clang": {
-"key": "e9770a9342e08c776605",
+"key": "bc65bc9126805d84d2e2",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -322,7 +341,7 @@
 }
 },
 "clay_crumble": {
-"key": "7018943e890db790debd",
+"key": "b9917d4b9a41ac06bb93",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -340,7 +359,7 @@
 }
 },
 "clock_tick": {
-"key": "4572f66192e433ff340e",
+"key": "89ee7167081fe3f47cd2",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -358,7 +377,7 @@
 }
 },
 "coin": {
-"key": "e0348a8e925a1a04f2cb",
+"key": "d841a8966d5240d78faa",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -375,8 +394,26 @@
 "src": "coin"
 }
 },
+"cow_moo": {
+"key": "aca1340fc6fe1d52d57e",
+"meta": {
+"ch": 2,
+"encDelay": 1105,
+"hit": 0.0,
+"loop": false,
+"samples": 48510,
+"sec": 1.1
+},
+"report": {
+"kind": "new",
+"kw": {},
+"la": -17.0,
+"peak": 0.734,
+"src": "cow_moo"
+}
+},
 "crash": {
-"key": "19556a51467b754c4b02",
+"key": "5ba57e53943c6004640d",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -394,7 +431,7 @@
 }
 },
 "creak": {
-"key": "5b76d5727bdb9ce74728",
+"key": "42a61b7eb34248ef7400",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -412,7 +449,7 @@
 }
 },
 "crit": {
-"key": "7196c3c0570d6433d489",
+"key": "3745400c9bdb7fbb705b",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -430,7 +467,7 @@
 }
 },
 "crossfire": {
-"key": "8c53bd21085d90d5d6b9",
+"key": "e5b13e0bc55501c80b8f",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -448,7 +485,7 @@
 }
 },
 "crowd": {
-"key": "2d3f4097a61dee30f349",
+"key": "324c24618a27e9bb6dc8",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -468,7 +505,7 @@
 }
 },
 "crowd_loop": {
-"key": "64b089af147e30a6b42b",
+"key": "f92409dde2b2f4e8eadd",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -501,7 +538,7 @@
 }
 },
 "ding": {
-"key": "83aa0bba5243e23be33c",
+"key": "388f0f5b59247bf5d4ad",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -519,7 +556,7 @@
 }
 },
 "dodge": {
-"key": "822c03340483beb435b6",
+"key": "927bbca0d7678f2157db",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -537,7 +574,7 @@
 }
 },
 "dodge_perfect": {
-"key": "2fe9fed2c1bda47ce07c",
+"key": "3fe2fa608ee7be732a44",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -555,7 +592,7 @@
 }
 },
 "dododo": {
-"key": "b8ef780c306cf2d7cf12",
+"key": "e60defb626ceacb23d49",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -575,7 +612,7 @@
 }
 },
 "dog_bark": {
-"key": "23729d208baf650af57d",
+"key": "9658dcaf4169ad73d3f2",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -593,7 +630,7 @@
 }
 },
 "doll_scurry": {
-"key": "a5f75447757b9c0b8087",
+"key": "9fe9ba3074c15edd0e16",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -611,7 +648,7 @@
 }
 },
 "doll_voice": {
-"key": "b816587bd85a1108d5a0",
+"key": "6ae0913d3264ae81db8d",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -629,7 +666,7 @@
 }
 },
 "door": {
-"key": "ff761de3257b45af140e",
+"key": "6fa2bf7b1f9d7c71da52",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -647,7 +684,7 @@
 }
 },
 "drain": {
-"key": "a745ed4edc89236a7ca8",
+"key": "f25a2bbe16b8ffae46ed",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -665,7 +702,7 @@
 }
 },
 "drip": {
-"key": "e7fcbc06d2d9acf9d5d3",
+"key": "66c36ca48341fd6bccdd",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -683,7 +720,7 @@
 }
 },
 "emerald": {
-"key": "69bb38a05d09323ebefd",
+"key": "c4c61857bc163bf37f3e",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -701,7 +738,7 @@
 }
 },
 "emerald_shot": {
-"key": "5b854848f867b1833a2c",
+"key": "3cb0f82a9b6b0899b610",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -716,6 +753,24 @@
 "la": -17.0,
 "peak": 0.562,
 "src": "emerald_shot"
+}
+},
+"empress_voice": {
+"key": "319473890b2c4e9ee10d",
+"meta": {
+"ch": 1,
+"encDelay": 1105,
+"hit": 0.0,
+"loop": false,
+"samples": 28386,
+"sec": 0.6437
+},
+"report": {
+"kind": "new",
+"kw": {},
+"la": -17.0,
+"peak": 0.465,
+"src": "empress_voice"
 }
 },
 "ending": {
@@ -733,7 +788,7 @@
 }
 },
 "explosion": {
-"key": "50eee94c587f6b0cf42b",
+"key": "e1ff3c89acbb500df2e4",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -751,7 +806,7 @@
 }
 },
 "fan_loop": {
-"key": "10f512e60dbf3d0ce7b0",
+"key": "f702528711c73a364d63",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -770,7 +825,7 @@
 }
 },
 "fire": {
-"key": "735e4393f9ead75d374a",
+"key": "80e05e5bbbfaafbb7d33",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -790,7 +845,7 @@
 }
 },
 "fire_burst": {
-"key": "c0d91000cda3e816445a",
+"key": "493cbbedfafe3f3af4a5",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -808,7 +863,7 @@
 }
 },
 "fire_loop": {
-"key": "92e27daa799622322344",
+"key": "56e34c17ce9da6e0c55c",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -827,7 +882,7 @@
 }
 },
 "flatline": {
-"key": "7a6eb23122c8fabf5a12",
+"key": "ad135fe87ac8c9aa37b3",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -845,7 +900,7 @@
 }
 },
 "footstep0": {
-"key": "08233cd7364c8b93109e",
+"key": "3b9294379cb1a8b43fa1",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -866,7 +921,7 @@
 }
 },
 "footstep1": {
-"key": "5b986125af9a4c6f560e",
+"key": "74e4b634141d8dc9c3d6",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -887,7 +942,7 @@
 }
 },
 "footstep2": {
-"key": "4dfde966813105a2fc31",
+"key": "e68564e0ca268bf78b18",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -908,7 +963,7 @@
 }
 },
 "footstep3": {
-"key": "d54a540585cad9c48f6b",
+"key": "2429c8e0dbbd485d8dd1",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -929,7 +984,7 @@
 }
 },
 "freeze": {
-"key": "ea0be9bbafdc83afadc5",
+"key": "8928fe8aacffd4b9e660",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -947,7 +1002,7 @@
 }
 },
 "fridge": {
-"key": "e4421f28d6f07ae76315",
+"key": "9f9e6365f24653285fd1",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -965,7 +1020,7 @@
 }
 },
 "game_over_jingle": {
-"key": "1bd56131f6a14cb306e4",
+"key": "50e48fc1744711463b38",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -983,7 +1038,7 @@
 }
 },
 "genie_appear": {
-"key": "4ca3f6686230a0046276",
+"key": "6673fa00df3c52002c06",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1000,8 +1055,27 @@
 "src": "genie_appear"
 }
 },
+"ghat_loop": {
+"key": "cc0f6e9446fedcab4300",
+"meta": {
+"ch": 2,
+"encDelay": 1105,
+"hit": 0.0,
+"loop": true,
+"samples": 264600,
+"sec": 6.0
+},
+"report": {
+"kind": "new",
+"kw": {},
+"la": -28.0,
+"peak": 0.268,
+"seam_pct": 11.7,
+"src": "ghat_loop"
+}
+},
 "glass_break": {
-"key": "96197dd075504324136f",
+"key": "2495747a332a8bcf727a",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -1019,7 +1093,7 @@
 }
 },
 "glint": {
-"key": "8aabbf4b8f983ee80c7f",
+"key": "dfe0e70a2bae35c3bd0e",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1037,7 +1111,7 @@
 }
 },
 "grunt_avdol": {
-"key": "7f4683ee944392255261",
+"key": "23d7e5f0e42a06ccd4f2",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1057,7 +1131,7 @@
 }
 },
 "grunt_dio": {
-"key": "0f267d9aadae54cd68bb",
+"key": "014e2fac523e07e9b423",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1077,7 +1151,7 @@
 }
 },
 "grunt_enemy": {
-"key": "990b484da74200f611f4",
+"key": "cfd5263162d2ee59d2e9",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1097,7 +1171,7 @@
 }
 },
 "grunt_joseph": {
-"key": "e01168c5adbfbb9a3aa0",
+"key": "a28aae6e4ce91d1697a9",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1117,7 +1191,7 @@
 }
 },
 "grunt_jotaro": {
-"key": "4a75fe5a555953d1c96a",
+"key": "c9da96ea9fa8897b48b7",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1137,7 +1211,7 @@
 }
 },
 "grunt_kakyoin": {
-"key": "c9cb01b17fd2fbeda239",
+"key": "ed0aa1ca25ee802e59c4",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1157,7 +1231,7 @@
 }
 },
 "grunt_polnareff": {
-"key": "35a290a6dfc3ade8ee66",
+"key": "1a4a069262ef7be2de8f",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1177,7 +1251,7 @@
 }
 },
 "guard": {
-"key": "1924b98cb313057321af",
+"key": "140c62f64d2035416d66",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -1195,7 +1269,7 @@
 }
 },
 "guard_break": {
-"key": "a079c37eba07880829eb",
+"key": "a600cfceaab467ecba40",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -1213,7 +1287,7 @@
 }
 },
 "gulls": {
-"key": "badf2e3229cb534d3572",
+"key": "0d47c634968ca002f218",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -1231,7 +1305,7 @@
 }
 },
 "gunshot": {
-"key": "7949e3c1a0a5e6261614",
+"key": "619855accf1a730c5c15",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -1249,7 +1323,7 @@
 }
 },
 "hamon": {
-"key": "96062d7b1927b3e2d3fb",
+"key": "7d33b0b697a8f0dcd423",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1267,7 +1341,7 @@
 }
 },
 "heartbeat": {
-"key": "18782d79c37360cb3756",
+"key": "38d330f92bcf6af0f9d9",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1285,7 +1359,7 @@
 }
 },
 "heartbeat_loop": {
-"key": "6b7cc11c14b89baa4887",
+"key": "5734efcedbf3f59436bf",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1304,7 +1378,7 @@
 }
 },
 "heli": {
-"key": "72c0e8c0a791a4b17540",
+"key": "5dfa06d7ff9e998eb9ae",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1324,7 +1398,7 @@
 }
 },
 "hiero_tentacle": {
-"key": "bf3989016a3b9fd0f138",
+"key": "58974b6b5fa724b02584",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1342,7 +1416,7 @@
 }
 },
 "hora_voice": {
-"key": "c1c87b06cdcd73037e03",
+"key": "04acdb91db9284d013c5",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1362,7 +1436,7 @@
 }
 },
 "ice": {
-"key": "c94eeace17e2973b06cf",
+"key": "1013f852d9d0146a06a6",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -1380,7 +1454,7 @@
 }
 },
 "insect_buzz_loop": {
-"key": "a89efd294c39d9dc4792",
+"key": "79b996c5cbf5979675a1",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1399,7 +1473,7 @@
 }
 },
 "jingle_victory": {
-"key": "174835c6e4699f246436",
+"key": "434b8d29ab74629720b9",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1417,7 +1491,7 @@
 }
 },
 "knife_freeze": {
-"key": "d528c1115c3215df57c3",
+"key": "acaf07325e76e6ffec1b",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1435,7 +1509,7 @@
 }
 },
 "knife_hit": {
-"key": "61fa6ae7ad7f3ccb2e13",
+"key": "6039ada1c2690eae9e09",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1453,7 +1527,7 @@
 }
 },
 "knife_throw": {
-"key": "7494e04a1999bda464a8",
+"key": "55cc8cf5c6e6e04d1d14",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1471,7 +1545,7 @@
 }
 },
 "knife_volley": {
-"key": "caf9642830b891d36e11",
+"key": "d304ecd7fd5d153f2353",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1489,7 +1563,7 @@
 }
 },
 "ko_hit": {
-"key": "57746ba8e4db072fca23",
+"key": "230b2b49e6cceb1638b4",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -1507,7 +1581,7 @@
 }
 },
 "lalala": {
-"key": "2f14adb6a30c9a9d14fb",
+"key": "c81cc29e86277c474d82",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1524,8 +1598,26 @@
 "src": "lalala"
 }
 },
+"lick": {
+"key": "4a47ee5bd428e1e36eaa",
+"meta": {
+"ch": 1,
+"encDelay": 1105,
+"hit": 0.0,
+"loop": false,
+"samples": 11554,
+"sec": 0.262
+},
+"report": {
+"kind": "new",
+"kw": {},
+"la": -19.0,
+"peak": 0.44,
+"src": "lick"
+}
+},
 "lighter": {
-"key": "8328c26bb709e4275073",
+"key": "c152de52b997703de3fe",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1543,7 +1635,7 @@
 }
 },
 "magnet_clack": {
-"key": "ee5071fde5d681c17d39",
+"key": "143976213bfa5357cc24",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1561,7 +1653,7 @@
 }
 },
 "menacing": {
-"key": "a908258d36d86d58902d",
+"key": "a23dd758c7d36cf33f7f",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1581,7 +1673,7 @@
 }
 },
 "menacing4": {
-"key": "a925285ce3c06917b526",
+"key": "d90947ee4c056a1bef2c",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1601,7 +1693,7 @@
 }
 },
 "menu_cancel": {
-"key": "62291bf71f5a9a2d7759",
+"key": "19b3c3669af0aeb65d47",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1619,7 +1711,7 @@
 }
 },
 "menu_confirm": {
-"key": "dcca9f2941f0a829bd27",
+"key": "b9e87a0e35411959edf0",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1637,7 +1729,7 @@
 }
 },
 "menu_error": {
-"key": "297bfc3ab04f184ce318",
+"key": "08738c8d4a273a22e29c",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1655,7 +1747,7 @@
 }
 },
 "menu_move": {
-"key": "da41ba009762b73629fe",
+"key": "9a028afe153b49df7dbe",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1673,7 +1765,7 @@
 }
 },
 "metal_crunch": {
-"key": "5393e4cc1d80649185fb",
+"key": "911bb4878dc049db4a50",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1691,7 +1783,7 @@
 }
 },
 "metal_scrape": {
-"key": "07e7c586725d6a58786a",
+"key": "6190f67451d06c1acd6c",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1709,7 +1801,7 @@
 }
 },
 "meter_full": {
-"key": "eaa40d2d447034e9b3c4",
+"key": "5ccbe7183fde1befa972",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1727,7 +1819,7 @@
 }
 },
 "meter_tick": {
-"key": "1076b9619d8aa91e64ff",
+"key": "54ca7310ac9c2a55c0de",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1744,8 +1836,26 @@
 "src": "meter_tick"
 }
 },
+"mirror_flash": {
+"key": "2dca4708c47fdf01da1b",
+"meta": {
+"ch": 2,
+"encDelay": 1105,
+"hit": 0.05,
+"loop": false,
+"samples": 18522,
+"sec": 0.42
+},
+"report": {
+"kind": "new",
+"kw": {},
+"la": -18.0,
+"peak": 0.635,
+"src": "mirror_flash"
+}
+},
 "muda_loop": {
-"key": "06c527a77928a391287e",
+"key": "f50dfaa9f11d188ab6d8",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -1764,7 +1874,7 @@
 }
 },
 "muda_rush": {
-"key": "500739d810453650e78a",
+"key": "d05a80628c84eaf11162",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -1784,7 +1894,7 @@
 }
 },
 "muda_voice": {
-"key": "29279cc17fc081787e2c",
+"key": "db650175f3263ac0efbc",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1818,7 +1928,7 @@
 }
 },
 "ora_loop": {
-"key": "028574c6f9d5adda441b",
+"key": "ee62167c4c746138c1f2",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -1837,7 +1947,7 @@
 }
 },
 "ora_rush": {
-"key": "5ddec0fc83cd1c34e6a8",
+"key": "28ee7031eadbcf31e8ca",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -1857,7 +1967,7 @@
 }
 },
 "ora_voice": {
-"key": "cc2e5a498463b9158a65",
+"key": "ce0c0b89a025d195671d",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1877,7 +1987,7 @@
 }
 },
 "parry": {
-"key": "12085c847dd3101eecf9",
+"key": "48ec972fba111b05a82d",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -1895,7 +2005,7 @@
 }
 },
 "plane_engine": {
-"key": "ba04d6800909e3b3f6de",
+"key": "710fdb981cf49db6807f",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -1915,7 +2025,7 @@
 }
 },
 "plane_engine_loop": {
-"key": "fcda20d6ffe0d9b675d6",
+"key": "3c3daa779653aba3ffd1",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -1933,8 +2043,26 @@
 "src": "plane_engine_loop"
 }
 },
+"police_whistle": {
+"key": "bb8f18559af6509feabe",
+"meta": {
+"ch": 2,
+"encDelay": 1105,
+"hit": 0.0,
+"loop": false,
+"samples": 41013,
+"sec": 0.93
+},
+"report": {
+"kind": "new",
+"kw": {},
+"la": -17.0,
+"peak": 0.405,
+"src": "police_whistle"
+}
+},
 "pop": {
-"key": "c4c7b6b0e18ce5e4aa32",
+"key": "0f386e5e34d5fc5fb513",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1952,7 +2080,7 @@
 }
 },
 "power_up": {
-"key": "f826728010974ff158f9",
+"key": "d1139ca026b754e0d565",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1970,7 +2098,7 @@
 }
 },
 "punch0": {
-"key": "acae70b6b0a9b5dc7ffa",
+"key": "39c0ccf137bf518e6147",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -1991,7 +2119,7 @@
 }
 },
 "punch1": {
-"key": "cabcf273d00f08cec8ee",
+"key": "689f8094de5ba41e19f0",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2012,7 +2140,7 @@
 }
 },
 "punch2": {
-"key": "2874d5bd73d820b050e8",
+"key": "5676148b114f814961ea",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2033,7 +2161,7 @@
 }
 },
 "punch3": {
-"key": "cb3d3bed11a8e617fe94",
+"key": "0e6827482d78c87c91b5",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2054,7 +2182,7 @@
 }
 },
 "punch_heavy": {
-"key": "6e7e46b3fdf8e4feef22",
+"key": "9a0d5a6e6907f82a2e29",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2071,8 +2199,27 @@
 "src": "punch_heavy"
 }
 },
+"rain_loop": {
+"key": "547ebe79a3dd98539d26",
+"meta": {
+"ch": 2,
+"encDelay": 1105,
+"hit": 0.0,
+"loop": true,
+"samples": 264600,
+"sec": 6.0
+},
+"report": {
+"kind": "new",
+"kw": {},
+"la": -28.0,
+"peak": 0.253,
+"seam_pct": 64.4,
+"src": "rain_loop"
+}
+},
 "rapier_loop": {
-"key": "2a3ffb90874c0939b46c",
+"key": "6ea928a6573bf6bcf082",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2091,7 +2238,7 @@
 }
 },
 "razor": {
-"key": "690a695c27a1ad9d82f8",
+"key": "6a81b0056a5d265eee86",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2109,7 +2256,7 @@
 }
 },
 "rero": {
-"key": "18bc6ff98be202a7394e",
+"key": "6d86bc64311aad5055b2",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2126,8 +2273,26 @@
 "src": "rero"
 }
 },
+"ricochet": {
+"key": "a081f902194dda6758b4",
+"meta": {
+"ch": 2,
+"encDelay": 1105,
+"hit": 0.0,
+"loop": false,
+"samples": 24255,
+"sec": 0.55
+},
+"report": {
+"kind": "new",
+"kw": {},
+"la": -16.0,
+"peak": 0.511,
+"src": "ricochet"
+}
+},
 "roadroller": {
-"key": "df67306b6b2cf4f89d86",
+"key": "56452094e08134b82c87",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2145,7 +2310,7 @@
 }
 },
 "roar": {
-"key": "3d8f58c8b0727741f299",
+"key": "d0fe870ebea94b287cc4",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2163,7 +2328,7 @@
 }
 },
 "rumble": {
-"key": "36ae11c928d78ff67301",
+"key": "488d1c45c3ab96572ecd",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2197,7 +2362,7 @@
 }
 },
 "sand": {
-"key": "caa1a8a837907f155664",
+"key": "824f44711cce748d3004",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2215,7 +2380,7 @@
 }
 },
 "sand_storm": {
-"key": "60a4b712a39b1ab3a642",
+"key": "d2c1ee9dd2666eaa616b",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2233,7 +2398,7 @@
 }
 },
 "sax_melody": {
-"key": "08573f34012ede7ba8a4",
+"key": "4efb94ad69ecb9ba176a",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2251,7 +2416,7 @@
 }
 },
 "sea_loop": {
-"key": "c3d49c5e08526084da9a",
+"key": "24981b6ff7170ed7c7a0",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2270,7 +2435,7 @@
 }
 },
 "ship_horn": {
-"key": "40b51277bcb4fc6a5307",
+"key": "aa3ab9d4e3c82ae57f39",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2288,7 +2453,7 @@
 }
 },
 "skid": {
-"key": "04165d1dd4d985ba9aa1",
+"key": "307c71fcdc40a8f1cb36",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2306,7 +2471,7 @@
 }
 },
 "slash0": {
-"key": "26df7dc2b71488d0c1f2",
+"key": "10427d71bde3835fd75e",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2327,7 +2492,7 @@
 }
 },
 "slash1": {
-"key": "d00d07944ff288fa1195",
+"key": "eef7ee5019c837af19df",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2348,7 +2513,7 @@
 }
 },
 "slime": {
-"key": "30e99649cf8947eae9ba",
+"key": "622b3de5b87af115c80b",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2366,7 +2531,7 @@
 }
 },
 "slime_absorb": {
-"key": "d90752c3cea6f7f06596",
+"key": "9d6750df0e72d7ee0cbd",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2384,7 +2549,7 @@
 }
 },
 "sparkle": {
-"key": "9aa4137bc048651d6de2",
+"key": "c620b466cdfce421b62c",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2402,7 +2567,7 @@
 }
 },
 "splash": {
-"key": "8dd8d88d00299aa41843",
+"key": "6b71202c0461d6d2dd6d",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2420,7 +2585,7 @@
 }
 },
 "stab": {
-"key": "b17a2d16608ef05c5459",
+"key": "0f73a7a56d39b726ded8",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2438,7 +2603,7 @@
 }
 },
 "stand_recall": {
-"key": "67de0d91a38ef9f5ba36",
+"key": "462b6a88dceb82b37b2e",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2456,7 +2621,7 @@
 }
 },
 "stand_summon_chariot": {
-"key": "b23e93225ca37c6326fb",
+"key": "3124b6025ecba1be7438",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2476,7 +2641,7 @@
 }
 },
 "stand_summon_fool": {
-"key": "1dd817118d81d4b435e4",
+"key": "087c847bc3087891d919",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2496,7 +2661,7 @@
 }
 },
 "stand_summon_hiero": {
-"key": "a46b3e38afcfe663df8d",
+"key": "57562815fdeb1e0b0bdf",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2516,7 +2681,7 @@
 }
 },
 "stand_summon_purple": {
-"key": "349b57cfa636d0bee868",
+"key": "85b71215301a11756247",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2536,7 +2701,7 @@
 }
 },
 "stand_summon_red": {
-"key": "7123c502bf624071ff2a",
+"key": "1513c8c99002d5a75f37",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2556,7 +2721,7 @@
 }
 },
 "stand_summon_star": {
-"key": "af8a4b8e58bc7cee1e84",
+"key": "eb158d3341e461de7112",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2576,7 +2741,7 @@
 }
 },
 "stand_summon_world": {
-"key": "3c855c34ff840cdeccac",
+"key": "376541d8e17fe896f4d6",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2596,7 +2761,7 @@
 }
 },
 "sting_comedy": {
-"key": "5db1df5ecfc54f34d04f",
+"key": "0b43830dd6cd8f1c80cd",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2614,7 +2779,7 @@
 }
 },
 "sting_reveal": {
-"key": "270837d83330cbe30420",
+"key": "85d5b193e7bf3df1da3a",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2632,7 +2797,7 @@
 }
 },
 "sting_shock": {
-"key": "d39b74e96b921814c6c1",
+"key": "91ab7a56a591cd74cab6",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2650,7 +2815,7 @@
 }
 },
 "sub_alarm": {
-"key": "5513c2458fde836a3f47",
+"key": "6eb734d4f2e953026c63",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2668,7 +2833,7 @@
 }
 },
 "super_start": {
-"key": "6facd62aac3c53184ed8",
+"key": "24433c2185ed14ac5e13",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2686,7 +2851,7 @@
 }
 },
 "tbc": {
-"key": "45421f5eef64de0fad12",
+"key": "78fe93a6994bcba615f7",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2704,7 +2869,7 @@
 }
 },
 "teeth_crunch": {
-"key": "6817bc0fbfa29f953821",
+"key": "35587636817f35ef865f",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2719,6 +2884,24 @@
 "la": -16.0,
 "peak": 0.582,
 "src": "teeth_crunch"
+}
+},
+"temple_bell": {
+"key": "db3191437a107e6eb693",
+"meta": {
+"ch": 2,
+"encDelay": 1105,
+"hit": 0.0,
+"loop": false,
+"samples": 66150,
+"sec": 1.5
+},
+"report": {
+"kind": "new",
+"kw": {},
+"la": -18.0,
+"peak": 0.439,
+"src": "temple_bell"
 }
 },
 "tension": {
@@ -2736,7 +2919,7 @@
 }
 },
 "thud": {
-"key": "2f9bdfbfb78844fb0c33",
+"key": "e5f99b94678a11fb6b57",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2754,7 +2937,7 @@
 }
 },
 "thunder": {
-"key": "48031b083a5327e7854a",
+"key": "1d71631bcba8d13e53fc",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2772,7 +2955,7 @@
 }
 },
 "time_resume": {
-"key": "e9c4f0632f15a4590da5",
+"key": "0cbd2e5e118dd7f8aa05",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2790,7 +2973,7 @@
 }
 },
 "timestop": {
-"key": "0678a393b09f343c5b93",
+"key": "fb63e0ec94fadbfd6917",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2808,7 +2991,7 @@
 }
 },
 "timestop_hum": {
-"key": "30f8656c1d9e813eceec",
+"key": "e29818513e3538ed4d9b",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2827,7 +3010,7 @@
 }
 },
 "timestop_sp": {
-"key": "40045471b17be9ff7127",
+"key": "d8d814f01cd44935de80",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2861,7 +3044,7 @@
 }
 },
 "train_horn": {
-"key": "d88f792fd1c8711029dd",
+"key": "fa336ba1322c37c94d84",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2879,7 +3062,7 @@
 }
 },
 "train_loop": {
-"key": "b3befb75a0b399c426a3",
+"key": "222eb8634cd3e73587a1",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -2912,7 +3095,7 @@
 }
 },
 "tv_game": {
-"key": "6c5e486c0f723c0fc7df",
+"key": "be0e5aaaa83ad4a91931",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2944,7 +3127,7 @@
 }
 },
 "vine": {
-"key": "13958d3c4ce4529088ac",
+"key": "4669dd3f7be5669a737c",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2962,7 +3145,7 @@
 }
 },
 "void_eat": {
-"key": "42face43a3e7fbc5298d",
+"key": "281d2028dd60f1c301c2",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2980,7 +3163,7 @@
 }
 },
 "wall_slam": {
-"key": "a447eb78a603c0affe7b",
+"key": "ee459a835b4801259eb6",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -2998,7 +3181,7 @@
 }
 },
 "water_gush": {
-"key": "4608790bca7996b757af",
+"key": "7b77f7e4ef27e6e5e41f",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -3018,7 +3201,7 @@
 }
 },
 "water_jet": {
-"key": "6a3ecc1693418a437312",
+"key": "eda6347adc5fd62bb9d8",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -3036,7 +3219,7 @@
 }
 },
 "water_splash": {
-"key": "d0da8a6e007f0708c4be",
+"key": "6cccfe104b49095f5ea1",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -3054,7 +3237,7 @@
 }
 },
 "whirlpool": {
-"key": "d235852adc56840db410",
+"key": "585ab9f689add3b61631",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -3072,7 +3255,7 @@
 }
 },
 "whoosh": {
-"key": "573d34e0fd5c17d95397",
+"key": "4d924ce3f1969c5d6cb5",
 "meta": {
 "ch": 1,
 "encDelay": 1105,
@@ -3090,7 +3273,7 @@
 }
 },
 "wind": {
-"key": "6558aeffbaa988ec7d2c",
+"key": "dc2285e2e66364bdcdea",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -3110,7 +3293,7 @@
 }
 },
 "wind_loop": {
-"key": "98174471f3c491eaad43",
+"key": "7bda4ca9824901f18a39",
 "meta": {
 "ch": 2,
 "encDelay": 1105,
@@ -3129,7 +3312,7 @@
 }
 },
 "zoom": {
-"key": "ac251ff5240dbc5120b3",
+"key": "0753875965c9cfb84665",
 "meta": {
 "ch": 1,
 "encDelay": 1105,

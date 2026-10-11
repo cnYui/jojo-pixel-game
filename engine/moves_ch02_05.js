@@ -35,7 +35,7 @@
   basic('YT_SPLASH','W3',40,0,0,{sfx:'slime',melee:false,hazardAt:0,hazard:(e,c,mv)=>{const p=c.player;return {shape:'rect',x0:p.x-22,x1:p.x+22,y0:p.y-10,y1:p.y+10,warn:G.combat.warnDur(mv,c),dur:3,dmg:3,tick:.6,once:false,tag:'slime',onHit:(h,t,r)=>{if(t===p&&!r.guard)data(c).slime=Math.min(5,(data(c).slime||0)+1);}};}});
   basic('YT_GRAB','W1',20,6,40);
   kit('e_yellow',600,70,['YT_WHIP','YT_ENGULF','YT_SPLASH'],{dmgMul:()=>{const c=G.world.fight;return data(c).water?1.5:.1;},brain:(e,dt,c)=>{e.moves=data(c).water?['YT_GRAB']:['YT_WHIP','YT_ENGULF','YT_SPLASH'];return closeBrain(e,dt,c);}});
-  basic('JG_KICK','W1',20,10,40);basic('JG_DUST','W4',30,0,0,{melee:false,onStart:(e,c)=>{data(c).blindUntil=c.t+1;},hazard:(e,c)=>({shape:'rect',x0:e.x-90,x1:e.x+90,y0:140,y1:180,warn:0,dur:f(4),dmg:1})});
+  basic('JG_KICK','W1',20,10,40,{body:'kick'});basic('JG_DUST','W4',30,0,0,{body:'throw',melee:false,onStart:(e,c)=>{data(c).blindUntil=c.t+1;},hazard:(e,c)=>({shape:'rect',x0:e.x-90,x1:e.x+90,y0:140,y1:180,warn:0,dur:f(4),dmg:1})});
   basic('PO_SAND_KICK','W1',1,0,36,{slot:'J3',body:'cmd',dur:f(20),active:[0,f(4)],onStart:(p,c)=>{for(const r of data(c).reflections||[])if(r.kind==='eye'&&Math.abs(r.x-p.x)<56)r.closedUntil=c.t+10;G.combat.fxAt('dust',{x:p.x,y:p.y,n:12},p,.4);},melee:false});
   kit('e_jgeil',600,80,['JG_KICK','JG_DUST'],{poiseMax:40});
   basic('EMP_BITE','W1',12,4,0,{melee:false,hazard:(e,c)=>({shape:'ellipse',x:c.player.x,y:c.player.y,rx:14,ry:12,warn:0,dur:f(4),dmg:4})});

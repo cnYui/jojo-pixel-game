@@ -28,6 +28,7 @@
     "south_sea": { "place": "南海", "sub": "SOUTH CHINA SEA" },
     "singapore": { "place": "新加坡", "sub": "SINGAPORE" },
     "calcutta": { "place": "印度·加尔各答", "sub": "CALCUTTA · INDIA" },
+    "varanasi": { "place": "印度·贝拿勒斯", "sub": "BENARES · INDIA" },
     "cairo_outskirts": { "place": "埃及·开罗郊外", "sub": "CAIRO OUTSKIRTS · EGYPT" },
     "cairo": { "place": "埃及·开罗", "sub": "CAIRO · EGYPT" },
     "dio_mansion": { "place": "开罗·DIO的馆", "sub": "DIO'S MANSION · CAIRO" },

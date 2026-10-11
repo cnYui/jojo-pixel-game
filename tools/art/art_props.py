@@ -767,3 +767,164 @@ def draw_doll_razor(frame):
             if ch in pal:
                 im.putpixel((x, y), pal[ch] + (255,))
     return im
+
+
+# =====================================================================================
+#  第4章（印度：加尔各答 / 瓦拉纳西）新道具（2026-10-11）
+# =====================================================================================
+# 原来的 tar_barrel（art_props_later，16×20：灰色平涂圆桶，帧 1 只在桶脚多一摊黑）看不出是铁皮桶、柏油也看不出来，
+# 所以另画 tar_drum：两帧外形完全一样（三只桶摆在一起分不出哪只是柏油桶），帧 1 是念写指到时柏油从桶沿溢出来。
+# wood_barrel 和它同高、同一套光照（左上亮、右边暗）和描边，摆在一起不穿帮。
+# jgeil_hat 不画：J·凯尔的原图（sprites_enemies._geil：idle / hurt / 头像）不戴帽子；原片 s09 里落地的帽子是荷尔·荷斯的牛仔帽（已有 hat）。
+PROPS += [
+    dict(spec('tar_drum', 2, 18, 22,
+              '路边的铁皮油桶（藏青漆 + 锈斑 + 两道滚箍，左边亮右边暗）。帧 0 = 普通桶：盖着盖子、盖上一个小桶塞；'
+              '帧 1 = 柏油桶：盖子没了，黑亮的柏油从桶口鼓出来、顺着桶壁淌下四道（带紫白高光）。两帧桶身一模一样，'
+              '按帧号取（剧情里念写指到那只 = 1，其他 = 0）；pivot = 底边中点'), name='铁皮桶 / 柏油桶'),
+    dict(spec('wood_barrel', 1, 18, 22,
+              '木桶：中间鼓、两头收的木板桶身 + 竖向板缝 + 上下两道铁箍 + 木盖，和 tar_drum 同高、同光照、同描边，'
+              '可以和它摆在一起；pivot = 底边中点'), name='木桶'),
+    dict(spec('fruit_basket', 2, 20, 12,
+              '水果摊上的一筐水果：竹编筐（编织纹）里堆着芒果、香蕉、青柠、石榴。帧 0 = 满的；'
+              '帧 1 = 被女帝啃掉一块：右上角的芒果和香蕉没了，剩下的芒果缺一个半圆、露出黄色果肉；pivot = 底边中点'),
+         name='水果筐'),
+]
+
+
+def _ramp(t, cols):
+    """t ∈ [0, 1] 从左到右 → 四阶色（亮、底、暗、最暗）。"""
+    return cols[0] if t < .2 else cols[1] if t < .58 else cols[2] if t < .84 else cols[3]
+
+
+def draw_tar_drum(frame):
+    W, H = 18, 22
+    a = np.zeros((H, W, 4), np.uint8)
+    PAINT = [(96, 140, 162), (58, 98, 122), (40, 68, 90), (26, 44, 62)]
+    HOOP = [(178, 204, 214), (118, 160, 182), (78, 112, 134), (52, 78, 98)]
+    BASE = [(88, 124, 146), (52, 86, 108), (36, 60, 80), (24, 40, 56)]
+    RUST, RUST_D = (156, 92, 52), (108, 60, 36)
+    x0, x1, top, bot = 1, 16, 3, 20
+    nz = _noise(W, H, 23, cell=3)
+    for x in range(x0, x1 + 1):
+        t = (x - x0) / (x1 - x0)
+        for y in range(top, bot + 1):
+            c = _ramp(t, PAINT)
+            if y >= 10 and nz[y, x] > .62:                           # 下半截的锈斑
+                c = RUST if nz[y, x] < .74 else RUST_D
+            a[y, x] = c + (255,)
+    for y in (8, 14):                                                # 两道滚箍：上面一行亮、下面一行暗
+        for x in range(x0, x1 + 1):
+            a[y, x] = _ramp(max(0, (x - x0) / (x1 - x0) - .1), HOOP) + (255,)
+            a[y + 1, x] = (24, 36, 50, 255)
+    for x in range(x0, x1 + 1):                                      # 桶底一圈
+        a[bot, x] = (30, 44, 58, 255)
+        a[bot - 1, x] = _ramp((x - x0) / (x1 - x0), BASE) + (255,)
+    lid = _ell_mask(W, H, 8.5, 3.0, 7.6, 2.3)
+    rim = lid & ~_ell_mask(W, H, 8.5, 3.0, 6.4, 1.4)
+    if frame == 0:
+        a[lid] = (112, 152, 172, 255)                                # 盖子
+        a[_ell_mask(W, H, 8.5, 3.4, 5.6, 1.0) & lid] = (86, 124, 146, 255)
+        a[rim] = (150, 184, 198, 255)
+        a[rim & _edge(lid, (1, 1))] = (48, 78, 98, 255)
+        a[2, 12] = a[2, 13] = (196, 214, 222, 255)                   # 小桶塞
+        a[3, 12] = a[3, 13] = (60, 90, 110, 255)
+    else:
+        TAR, TAR_M, TAR_H, TAR_W = (20, 16, 26), (54, 44, 70), (128, 116, 158), (232, 228, 246)
+        a[rim] = (150, 184, 198, 255)
+        blob = _ell_mask(W, H, 8.5, 2.6, 6.6, 2.4)                  # 柏油从桶口鼓出来
+        a[blob] = TAR + (255,)
+        for dx, y0, y1 in ((3, 4, 8), (8, 4, 6), (12, 4, 11), (14, 4, 7)):   # 顺着桶壁往下淌
+            for y in range(y0, y1 + 1):
+                a[y, dx] = TAR + (255,)
+                if y < y1 - 1:
+                    a[y, dx + 1] = TAR + (255,)
+            a[y1, dx] = TAR_M + (255,)
+        for x, y in ((5, 1), (6, 1), (7, 1), (4, 2)):                # 亮面一道高光
+            a[y, x] = TAR_H + (255,)
+        a[1, 6] = TAR_W + (255,)
+        a[6, 3] = a[5, 8] = TAR_H + (255,)
+        a[3, 12] = a[3, 13] = TAR_M + (255,)
+    return _outline(Image.fromarray(a, 'RGBA'))
+
+
+def draw_wood_barrel(frame):
+    W, H = 18, 22
+    a = np.zeros((H, W, 4), np.uint8)
+    WOOD = [(206, 152, 92), (164, 110, 62), (122, 78, 42), (88, 54, 30)]
+    IRON = [(150, 150, 166), (96, 96, 112), (66, 66, 80), (44, 44, 56)]
+    IRON_D = [(96, 96, 112), (66, 66, 80), (44, 44, 56), (34, 34, 44)]
+    cx, top, bot = 8.5, 3, 20
+    m = np.zeros((H, W), bool)
+    for y in range(top, bot + 1):
+        hw = 6.6 + 1.5 * math.sin(math.pi * (y - top) / (bot - top))   # 中间鼓、两头收
+        for x in range(W):
+            if abs(x - cx) <= hw:
+                m[y, x] = True
+                a[y, x] = _ramp((x - (cx - hw)) / (2 * hw), WOOD) + (255,)
+        for u in (-.62, -.22, .2, .6):                               # 竖向板缝（跟着鼓肚子弯）
+            x = int(round(cx + u * hw))
+            if 0 <= x < W and m[y, x]:
+                a[y, x] = (96, 60, 32, 255)
+    for y0 in (6, 15):                                               # 上下两道铁箍
+        for y, cols in ((y0, IRON), (y0 + 1, IRON_D)):
+            xs = np.where(m[y])[0]
+            for x in xs:
+                a[y, x] = _ramp((x - xs[0]) / max(1, xs[-1] - xs[0]), cols) + (255,)
+    for x in np.where(m[bot])[0]:
+        a[bot, x] = (70, 42, 24, 255)
+    lid = _ell_mask(W, H, 8.5, 3.0, 6.9, 2.1)
+    a[lid] = (184, 134, 80, 255)
+    a[lid & _edge(lid, (1, 1))] = (110, 70, 38, 255)
+    a[lid & _edge(lid, (-1, -1))] = (222, 178, 118, 255)
+    for x in (5, 9, 12):                                             # 盖板的缝
+        if lid[3, x]:
+            a[3, x] = (138, 92, 50, 255)
+    return _outline(Image.fromarray(a, 'RGBA'))
+
+
+def draw_fruit_basket(frame):
+    W, H = 20, 12
+    a = np.zeros((H, W, 4), np.uint8)
+    WICK, WICK_D, WICK_H = (200, 152, 88), (148, 100, 52), (232, 192, 124)
+    for y in range(6, 12):                                           # 竹筐：上宽下窄，编织纹
+        inset = (y - 6) // 3
+        for x in range(1 + inset, W - 1 - inset):
+            a[y, x] = (WICK_D if (x + (y // 2) * 2) % 4 < 2 and y % 2 == 0 else WICK) + (255,)
+        xs = np.where(a[y, :, 3] > 0)[0]
+        a[y, xs[-1]] = WICK_D + (255,)                               # 右边暗
+    for x in range(0, W):                                            # 筐沿
+        a[5, x] = WICK_H + (255,)
+
+    def fruit(cx, cy, rx, ry, base, lite, dark):
+        mm = _ell_mask(W, H, cx, cy, rx, ry) & (np.arange(H)[:, None] <= 5)
+        a[mm] = base + (255,)
+        a[mm & _edge(mm, (1, 1))] = dark + (255,)
+        a[mm & _edge(mm, (-1, -1))] = lite + (255,)
+        return mm
+    MANGO = ((246, 180, 52), (255, 222, 120), (214, 110, 40))
+    LIME = ((118, 178, 62), (170, 214, 104), (70, 120, 40))
+    POME = ((206, 46, 58), (246, 112, 112), (140, 24, 40))
+    BANANA = ((250, 222, 84), (255, 246, 170), (196, 160, 40))
+    fruit(3.5, 4.0, 2.4, 1.8, *LIME)
+    fruit(7.0, 3.5, 2.6, 2.2, *POME)
+    fruit(15.5, 4.0, 2.4, 1.8, *LIME)
+    fruit(10.5, 3.0, 3.0, 2.4, *MANGO)
+    if frame == 0:
+        fruit(14.0, 2.4, 3.0, 2.2, *MANGO)
+        for x, y in ((11, 1), (12, 0), (13, 0), (14, 0), (15, 0), (16, 1), (17, 2)):   # 一挂香蕉搭在上面
+            a[y, x] = BANANA[0] + (255,)
+            a[y + 1, x] = BANANA[2] + (255,)
+        a[0, 12] = BANANA[1] + (255,)
+        a[2, 17] = (110, 80, 30, 255)
+    else:
+        # 被啃掉一块：右上的芒果和香蕉没了，剩下的芒果缺一个半圆、露出黄色果肉
+        bite = _ell_mask(W, H, 14.0, 1.2, 3.8, 3.4)
+        for x, y in ((10, 1), (11, 3), (13, 4), (16, 3)):            # 牙印：咬口边缘一排锯齿
+            bite[y, x] = True
+        hit = (a[..., 3] > 0) & bite & (np.arange(H)[:, None] <= 4)
+        a[hit] = 0
+        fruit_px = (a[..., 3] > 0) & (np.arange(H)[:, None] <= 4)
+        a[_ring(hit) & fruit_px] = (255, 236, 160, 255)              # 咬开的地方露出果肉
+        for x, y in ((15, 5), (17, 5)):                              # 掉在筐沿上的碎渣
+            a[y, x] = (255, 214, 120, 255)
+    return _outline(Image.fromarray(a, 'RGBA'))

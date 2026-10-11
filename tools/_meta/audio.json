@@ -1418,6 +1418,86 @@
    "loop": true,
    "samples": 176400,
    "encDelay": 1105
+  },
+  "ricochet": {
+   "sec": 0.55,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 24255,
+   "encDelay": 1105
+  },
+  "mirror_flash": {
+   "sec": 0.42,
+   "ch": 2,
+   "hit": 0.05,
+   "loop": false,
+   "samples": 18522,
+   "encDelay": 1105
+  },
+  "police_whistle": {
+   "sec": 0.93,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 41013,
+   "encDelay": 1105
+  },
+  "cow_moo": {
+   "sec": 1.1,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 48510,
+   "encDelay": 1105
+  },
+  "lick": {
+   "sec": 0.262,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 11554,
+   "encDelay": 1105
+  },
+  "empress_voice": {
+   "sec": 0.6437,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 28386,
+   "encDelay": 1105
+  },
+  "temple_bell": {
+   "sec": 1.5,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 66150,
+   "encDelay": 1105
+  },
+  "rain_loop": {
+   "sec": 6.0,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": true,
+   "samples": 264600,
+   "encDelay": 1105
+  },
+  "bazaar_loop": {
+   "sec": 6.0,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": true,
+   "samples": 264600,
+   "encDelay": 1105
+  },
+  "ghat_loop": {
+   "sec": 6.0,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": true,
+   "samples": 264600,
+   "encDelay": 1105
   }
  }
 }
