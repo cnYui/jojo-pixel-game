@@ -2,6 +2,8 @@
 import sys
 sys.dont_write_bytecode = True
 
+import math
+import numpy as np
 from PIL import Image, ImageDraw
 import art_common as AC
 from engine import bg_asia as A
@@ -193,3 +195,453 @@ def draw_kite(frame):
 
 import art_props_later
 PROPS += art_props_later.install(globals(), spec)
+
+
+# =====================================================================================
+#  第2章（南海：冒牌船长 / 暗蓝之月、无人货轮 / 力量）新道具（2026-10-10）
+# =====================================================================================
+# 船都朝右、pivot = 底边中点。lifeboat / rusty_boat 只画近侧船身：人物画在船后面（先画人、后画船），船身挡住腰以下。
+PROPS += [
+    dict(spec('lifeboat', 1, 112, 22,
+              '救生艇近侧船身（白舷缘 + 橙船身 + 下垂护舷绳 + 2 个桨架、2 支桨斜插进水）。pivot = 船底中点 = 吃水线；'
+              '舷缘上沿 y≈3（中）/ 1（两头）。坐人：前排脚底 = 船y−3、后排 = 船y−9，x 在 pivot ±40 内（再往外船底上翘、脚会露出来）；'
+              '6 人约 16 px 一个；水面波纹画在船y−3；整体起伏请人和船一起挪 y'), name='救生艇'),
+    dict(spec('rusty_boat', 1, 120, 34,
+              '货轮缩回原形后的小破船（配色同 rusty_freighter：灰船身 + 暗红褐船底，锈、补丁、破洞都是不透明深色），'
+              '船尾歪掉的小驾驶室（x 3–30）、船头一根弯掉的小黄吊杆。pivot = 船底中点 = 吃水线；船舷上沿 y≈13（中）/ 9（船头）。'
+              '坐人：座位区 pivot x−28 … x+44（驾驶室后面会被挡住），前排脚底 = 船y−3、后排 = 船y−8'), name='生锈小破船'),
+    dict(spec('rusty_freighter', 1, 120, 48,
+              '远景无人货轮（力量的替身船）整船侧视：灰 / 暗红褐锈船身 + 流锈 + 铆钉线、船尾脏白舰桥（黑窗、碎窗、黑烟囱褪色红道）、'
+              '褪色黄吊车、几个褪色集装箱；比 ship 暗、旧。吃水线 y=38（同 ship：底边往上 10 px，下面 10 行是水下部分）；'
+              '轮廓描黑边，缩到 0.2 倍仍是“左舰桥 / 中吊车 / 右船头上翘”'), name='无人货轮'),
+    dict(spec('cigarette', 1, 6, 3, '甲板上掐灭的烟头：白滤嘴 + 烧黑的头 + 一点烟灰，横放；pivot = 底边中点'), name='烟头'),
+    dict(spec('bomb_box', 2, 20, 16,
+              '舱底定时炸弹：木箱 + 红蓝电线缠两道 + 小计时器（红色数码）；帧 0 小红灯亮 / 帧 1 灭。'
+              'kind=loop、2 fps：当演员（prop:bomb_box）放着会自己闪；要定住就按帧号取'), name='定时炸弹木箱', kind='loop', fps=2),
+    dict(spec('photo_ape_helm', 1, 40, 36,
+              '念写照片：舰桥里猩猩（力量同造型）双手握船舵、窗外海平线；紫褐 7 阶单色 + 颗粒 + 暗角，不透明。'
+              'S.photo({image}) 放大倍数 = floor(min(120/40, 140/36)) = 3 → 120×108（48 宽只会放大 2 倍 = 96 px，所以做 40 宽）；'
+              'pivot = 中心（同原 photo）'), name='念写照片·猩猩掌舵', pivot=[20, 18]),
+]
+
+
+def _outline(im, col=K):
+    """不透明区域外面一圈描边（4 邻接），画在透明格上。"""
+    a = np.array(im)
+    a[_ring(a[..., 3] > 0)] = tuple(col) + (255,)
+    return Image.fromarray(a, 'RGBA')
+
+
+def _ring(mask):
+    g = np.zeros_like(mask)
+    g[1:, :] |= mask[:-1, :]
+    g[:-1, :] |= mask[1:, :]
+    g[:, 1:] |= mask[:, :-1]
+    g[:, :-1] |= mask[:, 1:]
+    return g & ~mask
+
+
+def _noise(w, h, seed, cell=6):
+    """平滑值噪声 [0, 1]（固定种子，每次烘出来一样）。"""
+    g = np.random.default_rng(seed).random((h // cell + 2, w // cell + 2))
+    ys, xs = np.mgrid[0:h, 0:w]
+    fx, fy = xs / cell, ys / cell
+    ix, iy = fx.astype(int), fy.astype(int)
+    tx, ty = fx - ix, fy - iy
+    tx, ty = tx * tx * (3 - 2 * tx), ty * ty * (3 - 2 * ty)
+    top = g[iy, ix] * (1 - tx) + g[iy, ix + 1] * tx
+    bot = g[iy + 1, ix] * (1 - tx) + g[iy + 1, ix + 1] * tx
+    return top * (1 - ty) + bot * ty
+
+
+def _ell_mask(w, h, cx, cy, rx, ry):
+    ys, xs = np.mgrid[0:h, 0:w]
+    return ((xs - cx) / rx) ** 2 + ((ys - cy) / ry) ** 2 <= 1.0
+
+
+def _seg_mask(w, h, pts, r):
+    ys, xs = np.mgrid[0:h, 0:w]
+    m = np.zeros((h, w), bool)
+    for (x0, y0), (x1, y1) in zip(pts, pts[1:]):
+        dx, dy = x1 - x0, y1 - y0
+        l2 = dx * dx + dy * dy or 1e-9
+        u = np.clip(((xs - x0) * dx + (ys - y0) * dy) / l2, 0, 1)
+        m |= (xs - (x0 + u * dx)) ** 2 + (ys - (y0 + u * dy)) ** 2 <= r * r
+    return m
+
+
+def _edge(mask, d):
+    """mask 里朝 d 方向一步就走出 mask 的像素（同原工程 _Pix.shade：光从左上来，d=(1,1) 是暗边、(-1,-1) 是亮边）。"""
+    h, w = mask.shape
+    nb = np.zeros_like(mask)
+    ys0, ys1 = max(0, -d[1]), min(h, h - d[1])
+    xs0, xs1 = max(0, -d[0]), min(w, w - d[0])
+    nb[ys0:ys1, xs0:xs1] = mask[ys0 + d[1]:ys1 + d[1], xs0 + d[0]:xs1 + d[0]]
+    return mask & ~nb
+
+
+def draw_lifeboat(frame):
+    W, H = 112, 22
+    a = np.zeros((H, W, 4), np.uint8)
+    ORG, ORG_HI, ORG_SH, ORG_DK = (232, 100, 30), (246, 142, 58), (184, 72, 24), (128, 48, 22)
+    WHITE, WHITE_SH = (244, 240, 230), (196, 196, 212)
+    prof, c = [], (W - 3) / 2                   # 双头船：每列 (上沿, 下沿)，两头 22% 的船底往上弯
+    for i in range(W - 2):
+        u = abs(i - c) / c
+        yt = round(4 - 3 * u ** 4)
+        t = (u - 0.78) / 0.22
+        yb = H - 2 if u <= 0.78 else round(H - 2 - (H - 3 - yt) * (1 - math.sqrt(max(0.0, 1 - t * t))))
+        prof.append((yt, yb))
+        for y in range(yt, yb + 1):
+            r = y - yt
+            col = (WHITE if r == 0 else WHITE_SH) if r <= 1 else (60, 52, 66) if r == 2 else \
+                ORG_DK if y >= yb - 1 else ORG_SH if y >= yb - 4 else ORG_HI if r == 3 else ORG
+            a[y, i + 1] = col + (255,)
+    im = _outline(Image.fromarray(a, 'RGBA'))
+    d = ImageDraw.Draw(im)
+    xs = list(range(9, W - 8, 13))              # 护舷绳：每 13 px 一个挂点，中间垂 3 px
+    for x0, x1 in zip(xs, xs[1:]):
+        pts = [(x, round(6 + 3 * math.sin(math.pi * (x - x0) / (x1 - x0)))) for x in range(x0, x1 + 1)]
+        for x, y in pts:
+            if a[min(H - 1, y + 1), x, 3]:
+                d.point((x, y + 1), fill=(150, 112, 70))
+        for x, y in pts:
+            d.point((x, y), fill=(236, 214, 150))
+    for x in xs:
+        d.rectangle((x, 5, x, 6), fill=(74, 74, 92))
+    for ox in (40, 80):                         # 桨架 + 斜插进水里的桨（往船尾拖）
+        yt = prof[ox - 1][0]
+        d.line((ox - 1, yt - 2, ox - 1, yt), fill=K)
+        d.line((ox + 1, yt - 2, ox + 1, yt), fill=K)
+        d.point((ox, yt), fill=(110, 110, 126))
+        x1, y1 = ox - 15, H - 3
+        d.line((ox, yt - 1, x1, y1), fill=K, width=3)
+        d.line((ox, yt - 1, x1, y1), fill=(216, 168, 96))
+        d.polygon([(x1 + 2, y1 - 3), (x1 - 3, y1 - 1), (x1 - 4, y1 + 2), (x1 + 1, y1 + 2)], fill=(200, 144, 72), outline=K)
+        d.point((x1 - 1, y1), fill=(216, 168, 96))
+    return im
+
+
+def _rust_hull(W, H, top, bot, rust_seed, pal, cell=5, bias=None):
+    """灰 / 暗红褐锈船身的底色 + 噪声锈斑（rusty_boat / rusty_freighter 共用一套颜色）。返回 (RGBA 数组, 船身 mask, ys)。"""
+    GREY, GREY_DK, GREY_HI, RB, RB_DK = pal
+    hull = np.zeros((H, W), bool)
+    for x in top:
+        hull[top[x]:bot[x] + 1, x] = True
+    ys = np.arange(H)[:, None]
+    yt = np.array([top.get(x, 99) for x in range(W)])[None, :]
+    yb = np.array([bot.get(x, -99) for x in range(W)])[None, :]
+    a = np.zeros((H, W, 4), np.uint8)
+    a[hull] = GREY + (255,)
+    a[hull & (ys >= yb - 5)] = RB + (255,)
+    a[hull & (ys >= yb - 1)] = RB_DK + (255,)
+    a[hull & (ys == yt)] = GREY_HI + (255,)
+    a[hull & (ys == yt + 1)] = GREY_DK + (255,)
+    r = _noise(W, H, rust_seed, cell) * 0.75 + _noise(W, H, rust_seed + 1, 2) * 0.25
+    if bias is not None:
+        r = r + bias(ys, yt, yb)
+    zone = hull & (ys > yt + 1)
+    a[zone & (r > 0.64), :3] = (148, 74, 36)
+    a[zone & (r > 0.74), :3] = (96, 46, 28)
+    a[zone & (r > 0.60) & (r <= 0.64), :3] = (186, 104, 52)
+    return a, hull, ys
+
+
+def _rust_streaks(a, top, bot, xs, seed, n=16):
+    """从舷边往下流的锈水痕，长短不一，四成带一道深色边。"""
+    rg = np.random.default_rng(seed)
+    for x in sorted(rg.choice(np.array(xs), n, replace=False)):
+        y, ln = top[x] + 2, int(rg.integers(3, 11))
+        for yy in range(y, min(bot[x] - 2, y + ln)):
+            a[yy, x, :3] = (148, 74, 36) if yy < y + ln - 2 else (186, 104, 52)
+        if rg.random() < 0.4:
+            for yy in range(y, min(bot[x] - 2, y + ln // 2)):
+                a[yy, x + 1, :3] = (96, 46, 28)
+
+
+def draw_rusty_boat(frame):
+    W, H = 120, 34
+    GREY = (88, 86, 96)
+    top, bot = {}, {}
+    for x in range(3, 117):
+        u = (x - 3) / 113
+        yt = 14 - round(1.2 * math.sin(u * math.pi))                    # 中间略塌（老船）
+        if u > 0.80:
+            yt -= round(((u - 0.80) / 0.20) ** 1.5 * 5)                  # 船头往上翘
+        yb = H - 2
+        if u > 0.84:                                                     # 往外鼓的船首柱
+            t = (u - 0.84) / 0.16
+            yb = round(H - 2 - (H - 3 - yt) * (1 - math.sqrt(max(0.0, 1 - t ** 2.2))))
+        elif u < 0.05:                                                   # 方船尾，底角圆一点
+            yb = round(H - 2 - 4 * (1 - u / 0.05) ** 2)
+        top[x], bot[x] = yt, yb
+    bias = lambda ys, yt, yb: (np.clip((ys - (yb - 10)) / 5.0, 0, 1) * 0.10 - np.clip((ys - (yb - 3)) / 3.0, 0, 1) * 0.10
+                               + (np.arange(W)[None, :] > 92) * 0.08)
+    a, hull, ys = _rust_hull(W, H, top, bot, 11, (GREY, (58, 56, 66), (118, 116, 124), (98, 46, 40), (68, 32, 30)), 5, bias)
+    for x in range(8, 110, 3):                                          # 铆钉线
+        y = top[x] + 4
+        if hull[y, x] and a[y, x, 0] == GREY[0]:
+            a[y, x, :3] = (118, 116, 124)
+    _rust_streaks(a, top, bot, list(range(6, 112)), 5)
+    for px, py, pw, ph in ((52, 18, 11, 6), (83, 19, 8, 7), (11, 18, 7, 5)):      # 补丁钢板 + 铆钉，下沿流锈
+        for y in range(py, py + ph):
+            for x in range(px, px + pw):
+                if hull[y, x]:
+                    a[y, x, :3] = (128, 126, 132) if (y in (py, py + ph - 1) or x in (px, px + pw - 1)) else (106, 104, 112)
+        for x in range(px + 1, px + pw - 1, 2):
+            for y in (py, py + ph - 1):
+                if hull[y, x]:
+                    a[y, x, :3] = (44, 42, 52)
+        for y in range(py + ph, min(H - 3, py + ph + 3)):
+            if hull[y, px + 2]:
+                a[y, px + 2, :3] = (148, 74, 36)
+    for pts in ([(38, 23), (41, 21), (44, 22), (43, 25), (40, 26)], [(74, 27), (78, 26), (79, 29), (75, 29)],
+                [(100, 18), (103, 18), (103, 21), (100, 21)], [(64, 15), (66, 15), (66, 17), (64, 17)]):
+        mm = Image.new('L', (W, H))
+        ImageDraw.Draw(mm).polygon(pts, fill=1)
+        hm = np.array(mm) > 0                                            # 破洞：深色不透明 + 一圈深锈
+        a[_ring(hm) & hull, :3] = (96, 46, 28)
+        a[hm & hull, :3] = (22, 16, 22)
+    im = Image.fromarray(a, 'RGBA')
+    d = ImageDraw.Draw(im)
+    for x in range(12, 106):                                             # 船舷上沿几处凹下去
+        if x % 11 in (3, 4, 5):
+            d.point((x, top[x]), fill=(58, 56, 66))
+    WALL, WALL_SH = (186, 176, 158), (146, 136, 120)
+    sk = lambda x, y: (x - round((14 - y) * 0.25), y)                    # 驾驶室越高越往左歪
+    cab = Image.new('RGBA', (W, H))
+    cd = ImageDraw.Draw(cab)
+    cd.polygon([sk(8, 14), sk(8, 4), sk(27, 4), sk(27, 14)], fill=WALL)
+    cd.polygon([sk(8, 14), sk(8, 4), sk(10, 4), sk(10, 14)], fill=WALL_SH)
+    cd.polygon([sk(6, 4), sk(6, 2), sk(30, 0), sk(30, 3)], fill=(70, 66, 74))             # 歪屋顶
+    cd.polygon([sk(13, 6), sk(13, 9), sk(24, 9), sk(24, 6)], fill=(30, 26, 34))           # 窗
+    cd.line([sk(19, 6), sk(19, 9)], fill=WALL_SH)
+    cd.line([sk(21, 6), sk(23, 8), sk(22, 9)], fill=(132, 146, 156))                      # 玻璃裂纹
+    for xx, l in ((12, 3), (17, 2), (23, 4), (26, 3)):
+        cd.line([sk(xx, 10), sk(xx, 10 + l)], fill=(150, 96, 62))
+    im.alpha_composite(cab)
+    d = ImageDraw.Draw(im)
+    d.polygon([(18, 1), (22, 0), (23, 4), (19, 5)], fill=(44, 40, 48))                   # 小烟囱：黑 + 褪色红道
+    d.line((19, 2, 22, 1), fill=(120, 42, 44))
+    d.line((10, 1, 9, -1), fill=(110, 108, 120))                                         # 弯掉的天线
+    d.line((108, 11, 108, 4), fill=(172, 146, 60))                                       # 船头弯掉的小黄吊杆
+    d.line((108, 4, 111, 2, 113, 3), fill=(172, 146, 60))
+    d.line((113, 4, 113, 6), fill=(70, 66, 74))
+    return _outline(im)
+
+
+def draw_rusty_freighter(frame):
+    W, H, WL = 120, 48, 38
+    GREY = (84, 82, 92)
+    top, bot = {}, {}
+    for x in range(3, 119):
+        u = (x - 3) / 115
+        yt = 25 - round(((u - 0.80) / 0.20) ** 1.3 * 9) if u > 0.80 else 23 if u < 0.05 else 25   # 船首楼上翘
+        yb = H - 1
+        if u > 0.86:
+            yb = round(H - 1 - (H - 3 - yt) * ((u - 0.86) / 0.14) ** 1.25)                     # 斜船首
+        elif u < 0.06:
+            yb = round(H - 1 - 7 * (1 - u / 0.06) ** 1.5)                                      # 船尾往里收
+        top[x], bot[x] = yt, yb
+    RUST_L, RUST, RUST_DK = (176, 98, 50), (138, 70, 36), (92, 46, 30)
+    hull = np.zeros((H, W), bool)
+    for x in top:
+        hull[top[x]:bot[x] + 1, x] = True
+    ys = np.arange(H)[:, None]
+    tops = np.array([top.get(x, 99) for x in range(W)])[None, :]
+    a = np.zeros((H, W, 4), np.uint8)
+    a[hull] = GREY + (255,)
+    a[hull & (ys >= 33)] = (96, 44, 38, 255)                             # 吃水线以上 5 行暗红褐
+    a[hull & (ys >= WL - 1) & (ys <= WL)] = (70, 32, 30, 255)
+    a[hull & (ys > WL)] = (52, 26, 28, 255)                              # 水下部分（更暗）
+    a[hull & (ys == tops)] = (112, 110, 118, 255)
+    a[hull & (ys == tops + 1)] = (56, 54, 64, 255)
+    r = _noise(W, H, 21, 6) * 0.7 + _noise(W, H, 22, 2) * 0.3 \
+        + (np.arange(W)[None, :] > 98) * 0.10 + ((ys >= 30) & (ys <= WL)) * 0.06   # 船首、吃水线附近锈更重
+    zone = hull & (ys <= WL) & (ys > tops + 1)
+    a[zone & (r > 0.66), :3] = RUST
+    a[zone & (r > 0.75), :3] = RUST_DK
+    a[zone & (r > 0.62) & (r <= 0.66), :3] = RUST_L
+    for y in (28, 32):                                                   # 铆钉线
+        for x in range(7, 112, 3):
+            if hull[y, x] and a[y, x, 0] == GREY[0]:
+                a[y, x, :3] = (112, 110, 118)
+    rg = np.random.default_rng(9)                                        # 流锈
+    for x in sorted(rg.choice(np.arange(7, 110), 22, replace=False)):
+        y, ln = top[x] + 2, int(rg.integers(4, 13))
+        for yy in range(y, min(WL, y + ln)):
+            a[yy, x, :3] = RUST if yy < y + ln - 2 else RUST_L
+    a[hull & (ys > WL) & (np.arange(W)[None, :] % 7 == 3) & (ys < WL + 4), :3] = RUST_DK
+    im = Image.fromarray(a, 'RGBA')
+    d = ImageDraw.Draw(im)
+    d.ellipse((104, 25, 107, 28), fill=(28, 20, 26))                     # 锚链孔 + 一道长锈痕
+    d.line((105, 29, 105, 36), fill=RUST)
+    d.line((106, 29, 106, 33), fill=RUST_DK)
+    up = Image.new('RGBA', (W, H))                                      # 甲板上的东西单独一层，一起描边
+    u = ImageDraw.Draw(up)
+    WHITE, WHITE_SH, WIN = (176, 168, 152), (138, 130, 118), (26, 22, 30)
+    u.rectangle((7, 13, 33, 24), fill=WHITE)                             # 舰桥：下层 + 驾驶台 + 翼桥
+    u.rectangle((9, 5, 31, 13), fill=WHITE)
+    u.rectangle((5, 5, 35, 7), fill=WHITE_SH)
+    u.rectangle((7, 13, 9, 24), fill=WHITE_SH)
+    u.rectangle((9, 5, 11, 13), fill=WHITE_SH)
+    for x in range(12, 31, 3):
+        u.rectangle((x, 9, x + 1, 11), fill=WIN)
+    for x in range(11, 33, 4):
+        u.point((x, 16), fill=WIN)
+        u.point((x, 20), fill=WIN)
+    u.line((18, 9, 19, 11), fill=(120, 132, 140))                        # 碎窗反光
+    u.line((27, 10, 28, 9), fill=(120, 132, 140))
+    for x, l in ((13, 5), (22, 7), (30, 4), (16, 3), (26, 5)):            # 舰桥锈水痕
+        u.line((x, 14, x, 14 + l), fill=(132, 96, 70))
+    u.line((20, 7, 20, 8), fill=(132, 96, 70))
+    u.polygon([(13, 5), (13, 0), (21, 0), (20, 5)], fill=(44, 40, 48))    # 烟囱：黑 + 褪色红道
+    u.line((13, 2, 20, 2), fill=(112, 40, 42))
+    u.line((28, 5, 28, 0), fill=(70, 68, 78))
+    u.line((26, 1, 30, 1), fill=(70, 68, 78))
+    for bx, by, bw, col in ((38, 18, 11, (70, 98, 96)), (38, 12, 11, (108, 58, 50)), (51, 18, 11, (76, 82, 100)),
+                            (72, 18, 12, (104, 60, 48)), (72, 12, 12, (78, 92, 104)), (85, 18, 12, (82, 100, 84))):
+        u.rectangle((bx, by, bx + bw - 1, by + 5), fill=col)             # 褪色集装箱
+        for xx in range(bx + 2, bx + bw - 1, 2):
+            u.line((xx, by + 1, xx, by + 4), fill=tuple(max(0, v - 22) for v in col))
+        u.point((bx + bw - 3, by + 4), fill=RUST)
+        u.point((bx + 1, by + 1), fill=RUST_L)
+    YEL, YEL_DK = (176, 148, 60), (110, 92, 44)                          # 褪色黄吊车：立柱 + 吊臂 + 吊钩
+    u.rectangle((64, 9, 67, 24), fill=YEL)
+    u.line((66, 9, 66, 24), fill=YEL_DK)
+    u.rectangle((62, 8, 69, 11), fill=YEL)
+    u.line((66, 9, 92, 1), fill=YEL, width=2)
+    u.line((92, 2, 92, 12), fill=(60, 56, 64))
+    u.line((90, 12, 93, 12), fill=(60, 56, 64))
+    u.point((90, 11), fill=(60, 56, 64))
+    u.line((112, 16, 112, 6), fill=(118, 116, 126))                      # 船首细桅 + 横桁
+    u.line((110, 9, 114, 9), fill=(118, 116, 126))
+    im.alpha_composite(_outline(up))
+    return _outline(im)
+
+
+def draw_cigarette(frame):
+    im, d = canvas(6, 3)
+    d.line((1, 0, 4, 0), fill=K)
+    d.line((1, 2, 4, 2), fill=K)
+    d.point((0, 1), fill=K)
+    d.line((1, 1, 2, 1), fill=(246, 242, 232))          # 白滤嘴
+    d.point((3, 1), fill=(210, 204, 192))              # 捏扁的烟纸
+    d.point((4, 1), fill=(64, 58, 66))                 # 烧黑的头
+    d.point((5, 1), fill=(150, 146, 152))              # 一点烟灰
+    d.point((5, 2), fill=(120, 116, 124))
+    return im
+
+
+def draw_bomb_box(frame):
+    im, d = canvas(20, 16)
+    d.rectangle((0, 3, 19, 15), fill=(166, 114, 64), outline=K)
+    for y in (7, 11):
+        d.line((1, y, 18, y), fill=(90, 58, 38))
+    for y in (4, 8, 12):
+        d.line((3, y, 16, y), fill=(200, 148, 88))
+    for x in (1, 17):
+        d.rectangle((x, 4, x + 1, 14), fill=(126, 84, 48))
+        d.point((x, 5), fill=(60, 52, 54))
+        d.point((x, 13), fill=(60, 52, 54))
+    RED_W, BLUE_W = (214, 46, 46), (66, 104, 214)       # 红、蓝电线各缠一道
+    d.line((0, 12, 6, 13, 13, 12, 19, 13), fill=RED_W)
+    d.line((0, 10, 5, 9, 14, 10, 19, 9), fill=BLUE_W)
+    d.rectangle((6, 2, 14, 8), fill=(54, 54, 66), outline=K)          # 计时器
+    d.rectangle((7, 4, 12, 6), fill=(30, 18, 22))
+    for x in (7, 8, 10, 11):
+        d.point((x, 4), fill=(236, 70, 60))
+        d.point((x, 6), fill=(236, 70, 60))
+    d.point((7, 5), fill=(236, 70, 60))
+    d.point((11, 5), fill=(236, 70, 60))
+    d.point((9, 5), fill=(160, 40, 40))
+    d.line((6, 6, 4, 9), fill=BLUE_W)
+    d.line((14, 6, 15, 12), fill=RED_W)
+    if frame == 0:                                      # 小红灯：亮（带一圈光）/ 灭
+        d.point((13, 1), fill=(255, 190, 180))
+        d.point((13, 2), fill=(255, 60, 52))
+        d.point((12, 1), fill=(255, 120, 110))
+        d.point((14, 1), fill=(255, 120, 110))
+    else:
+        d.point((13, 2), fill=(96, 30, 34))
+    return im
+
+
+PHOTO_PAL = [(30, 16, 28), (58, 34, 50), (90, 58, 74), (124, 86, 96), (160, 120, 120), (198, 160, 148), (234, 210, 190)]
+
+
+def draw_photo_ape_helm(frame):
+    """直接按明暗档画（0 最暗 … 6 最亮：窗外最亮、头毛中亮、脸盘暗、舵轮亮木色压在暗身子前面），
+    再加暗角 + 颗粒（固定种子），量化成 7 阶紫褐 = 念写照片的单色调。"""
+    W, H = 40, 36
+    ys, xs = np.mgrid[0:H, 0:W]
+    t = np.full((H, W), 1.6)                                           # 舰桥里面
+    t[1:9] = 5.6                                                        # 窗：天
+    t[6:9] = 6.0
+    t[9] = 5.0                                                          # 海平线
+    t[10:16] = 3.4                                                      # 海
+    rg = np.random.default_rng(3)
+    for _ in range(10):
+        y, x = int(rg.integers(11, 16)), int(rg.integers(1, 36))
+        t[y, x:x + 3] = 4.6
+    t[0] = 0.8
+    for x0 in (0, 13, 25, 38):
+        t[1:16, x0:x0 + 2] = 1.0                                        # 窗框竖条
+    t[16:18] = 1.2
+    t[16] = 2.6                                                         # 窗台亮边
+    t[18:] = 2.0                                                        # 仪表台
+
+    def fill(mask, v, sh, hi):
+        t[_ring(mask)] = 0
+        t[mask] = v
+        t[_edge(mask, (1, 1))] = sh
+        t[_edge(mask, (-1, -1))] = hi
+    fill(_ell_mask(W, H, 20, 29, 14.5, 9.5), 3.2, 2.4, 4.0)             # 肩背（背光，比头毛暗一档）
+    hair = _ell_mask(W, H, 20, 11, 9.2, 8.6)
+    for x, y in ((16, 1), (20, 0), (24, 1)):                              # 头顶三撮毛（同精灵）
+        hair[y, x] = hair[y + 1, x] = True
+    fill(hair, 4.0, 3.0, 5.0)
+    face = _ell_mask(W, H, 20, 12.3, 7.2, 6.6)                           # 大颊垫脸盘
+    t[face] = 2.0
+    t[_edge(face, (1, 1))] = 1.4
+    t[_ring(face) & hair] = 0.6
+    t[_ell_mask(W, H, 20, 15.2, 4.2, 2.9)] = 3.0                         # 口鼻
+    t[8:10, 15:26] = 0.8                                                 # 浓眉
+    t[10, 16], t[10, 17], t[10, 23], t[10, 24] = 0, 6, 6, 0             # 黄眼
+    t[13, 19] = t[13, 21] = 1.2                                          # 鼻孔
+    t[15:18, 17:24] = 0                                                  # 龇牙笑（同 idle 帧 1）
+    t[15:17, 18:23] = 6
+    t[16, 19] = t[16, 21] = 0.5
+    cx, cy = 20, 31                                                      # 船舵：轮缘 2 px + 8 根辐条伸出去当把手
+    dist = np.sqrt((xs - cx) ** 2 + (ys - cy) ** 2)
+    spokes = np.zeros((H, W), bool)
+    knobs = np.zeros((H, W), bool)
+    for k in range(8):
+        ang = k * math.pi / 4 + math.pi / 8                              # 把手错开正上方，不顶到下巴
+        spokes |= _seg_mask(W, H, [(cx, cy), (cx + math.sin(ang) * 11.0, cy - math.cos(ang) * 11.0)], 0.55)
+        knobs |= _ell_mask(W, H, cx + math.sin(ang) * 11.6, cy - math.cos(ang) * 11.6, 1.2, 1.2)
+    rim = (dist >= 7.3) & (dist <= 9.2)
+    wheel = spokes | rim | knobs | (dist <= 2.3)
+    t[(dist < 7.3) & ~wheel] = 2.0                                       # 轮子里面露出来的身子压暗，辐条才跳得出来
+    t[_ring(wheel)] = 1.0
+    t[wheel] = 4.4
+    t[rim] = 5.0
+    t[rim & (ys < cy - 1) & (xs < cx + 1)] = 6.0                          # 轮缘左上反光
+    t[rim & (ys > cy + 1) & (xs > cx - 1)] = 4.0
+    t[knobs] = 5.0
+    t[dist <= 2.3] = 3.0
+    t[dist <= 1.2] = 6.0                                                 # 铜轴心
+    for side in (-1, 1):                                                 # 两只手（暗）抓住左右两个把手，手臂从肩膀下来
+        ang = math.pi / 2 - math.pi / 8
+        hx, hy = cx + side * math.sin(ang) * 11.6, cy - math.cos(ang) * 11.6
+        arm = _seg_mask(W, H, [(cx + side * 12.5, 21.5), (hx, hy - 0.5)], 2.0) & ~wheel
+        t[_ring(arm) & ~wheel] = 0.6
+        t[arm] = 3.4
+        hand = _ell_mask(W, H, hx, hy, 2.1, 1.8)
+        t[_ring(hand)] = 0.4
+        t[hand] = 1.2
+    vig = ((xs - (W - 1) / 2) / (W / 2)) ** 2 + ((ys - (H - 1) / 2) / (H / 2)) ** 2
+    t = t - 1.1 * np.clip(vig - 0.45, 0, 1.2) + np.random.default_rng(17).normal(0, 0.2, (H, W))
+    idx = np.clip(np.floor(t + 0.5), 0, len(PHOTO_PAL) - 1).astype(int)
+    out = np.array(PHOTO_PAL, np.uint8)[idx]
+    return Image.fromarray(np.dstack([out, np.full((H, W), 255, np.uint8)]), 'RGBA')

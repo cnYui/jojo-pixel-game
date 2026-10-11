@@ -1191,6 +1191,12 @@ for _pack,_keys in _LATER_PACKS.items():
     for _key in _keys:
         DEFAULT_PACK[_key]=_pack
         EXPORTERS[_key]=lambda ex,_k=_key:bg_new('later_stages').export(ex,sys.modules[__name__],_k)
+# 2026-10-10 晚第2章按体验版精度重做：四张重画（tools\bg_new\yacht_deck.py / freighter_deck.py / freighter_corridor.py / underwater.py，
+#   尺寸、可走带、剧情锚点照 story\stages_ch02_05.js / ch02.js；later_stages 里的旧画法留着不用），漂流那一夜新画 sea_fog（ch2 包）
+for _key in ('yacht_deck', 'freighter_deck', 'freighter_corridor', 'underwater'):
+    EXPORTERS[_key] = lambda ex, _k=_key: exp_new(ex, _k)
+DEFAULT_PACK['sea_fog'] = 'ch2'
+EXPORTERS['sea_fog'] = lambda ex: exp_new(ex, 'sea_fog')
 ORDER=list(DEFAULT_PACK)
 
 

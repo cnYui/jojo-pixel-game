@@ -59,7 +59,8 @@
       "sea_day",
       "underwater",
       "freighter_deck",
-      "freighter_corridor"
+      "freighter_corridor",
+      "sea_fog"
     ],
     "music": [
       "daily",

@@ -114,7 +114,7 @@
   function hitCheck(a,m,t) {
     m=normMove(m); const o=origin(a,m),sc=a.scale || 1;
     const test=t=>{
-      if(t.breakable&&t.breakable.upward){return alive(t)&&Math.abs(t.x-o.x)<=24&&Math.abs(t.y-o.y)<=18&&['J3','rush','special'].includes(m.slot);}
+      if(t.breakable&&t.breakable.upward){return alive(t)&&Math.abs(t.x-o.x)<=24&&Math.abs(t.y-o.y)<=18&&(t.breakable.slots||['J3','rush','special']).includes(m.slot);}   // slots：哪些招能往上打到它（第2章力量的眼睛加了连打收尾 fin）
       if(!alive(t) || Math.abs((t.z||0)-(o.z||0))>m.zr)return false;
       if(m.shape && m.shape.kind==='circle')return Math.hypot(t.x-o.x,t.y-o.y)<=m.shape.r*sc+(t.bodyW||6)*(t.scale||1);
       const dx=(t.x-o.x)*(a.facing||1),bw=(t.bodyW||6)*(t.scale||1);

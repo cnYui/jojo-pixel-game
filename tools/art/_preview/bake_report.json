@@ -1,5 +1,5 @@
 {
- "built": "2026-10-10T09:57:00",
+ "built": "2026-10-11T10:15:14",
  "chars_dir": "D:\\大疆\\游戏素材\\JoJo\\游戏\\assets\\chars_new",
  "props_dir": "D:\\大疆\\游戏素材\\JoJo\\游戏\\assets\\props_new",
  "new_names": [
@@ -2423,31 +2423,6 @@
     "hurt"
    ]
   },
-  "strength": {
-   "cell": [
-    70,
-    44
-   ],
-   "pivot": [
-    29,
-    42
-   ],
-   "animations": [
-    "idle",
-    "walk",
-    "hurt",
-    "down",
-    "attack"
-   ],
-   "expressions": [],
-   "aliases": {},
-   "new": [
-    "attack",
-    "down",
-    "hurt",
-    "walk"
-   ]
-  },
   "hangedman": {
    "cell": [
     66,
@@ -2922,6 +2897,31 @@
     "down",
     "hurt",
     "punch",
+    "walk"
+   ]
+  },
+  "strength": {
+   "cell": [
+    70,
+    44
+   ],
+   "pivot": [
+    29,
+    42
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "hurt",
+    "down",
+    "attack"
+   ],
+   "expressions": [],
+   "aliases": {},
+   "new": [
+    "attack",
+    "down",
+    "hurt",
     "walk"
    ]
   },
@@ -4644,6 +4644,144 @@
    "kind": "static",
    "desc": "女教皇伪装：hatch_handle，正常／眨眼",
    "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "lifeboat",
+   "name": "救生艇",
+   "sprite": "prop_new.lifeboat",
+   "file": "lifeboat.png",
+   "frames": 1,
+   "size": [
+    112,
+    22
+   ],
+   "anchor": [
+    56,
+    22
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    56,
+    22
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "救生艇近侧船身（白舷缘 + 橙船身 + 下垂护舷绳 + 2 个桨架、2 支桨斜插进水）。pivot = 船底中点 = 吃水线；舷缘上沿 y≈3（中）/ 1（两头）。坐人：前排脚底 = 船y−3、后排 = 船y−9，x 在 pivot ±40 内（再往外船底上翘、脚会露出来）；6 人约 16 px 一个；水面波纹画在船y−3；整体起伏请人和船一起挪 y"
+  },
+  {
+   "id": "rusty_boat",
+   "name": "生锈小破船",
+   "sprite": "prop_new.rusty_boat",
+   "file": "rusty_boat.png",
+   "frames": 1,
+   "size": [
+    120,
+    34
+   ],
+   "anchor": [
+    60,
+    34
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    60,
+    34
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "货轮缩回原形后的小破船（配色同 rusty_freighter：灰船身 + 暗红褐船底，锈、补丁、破洞都是不透明深色），船尾歪掉的小驾驶室（x 3–30）、船头一根弯掉的小黄吊杆。pivot = 船底中点 = 吃水线；船舷上沿 y≈13（中）/ 9（船头）。坐人：座位区 pivot x−28 … x+44（驾驶室后面会被挡住），前排脚底 = 船y−3、后排 = 船y−8"
+  },
+  {
+   "id": "rusty_freighter",
+   "name": "无人货轮",
+   "sprite": "prop_new.rusty_freighter",
+   "file": "rusty_freighter.png",
+   "frames": 1,
+   "size": [
+    120,
+    48
+   ],
+   "anchor": [
+    60,
+    48
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    60,
+    48
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "远景无人货轮（力量的替身船）整船侧视：灰 / 暗红褐锈船身 + 流锈 + 铆钉线、船尾脏白舰桥（黑窗、碎窗、黑烟囱褪色红道）、褪色黄吊车、几个褪色集装箱；比 ship 暗、旧。吃水线 y=38（同 ship：底边往上 10 px，下面 10 行是水下部分）；轮廓描黑边，缩到 0.2 倍仍是“左舰桥 / 中吊车 / 右船头上翘”"
+  },
+  {
+   "id": "cigarette",
+   "name": "烟头",
+   "sprite": "prop_new.cigarette",
+   "file": "cigarette.png",
+   "frames": 1,
+   "size": [
+    6,
+    3
+   ],
+   "anchor": [
+    3,
+    3
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    3,
+    3
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "甲板上掐灭的烟头：白滤嘴 + 烧黑的头 + 一点烟灰，横放；pivot = 底边中点"
+  },
+  {
+   "id": "bomb_box",
+   "name": "定时炸弹木箱",
+   "sprite": "prop_new.bomb_box",
+   "file": "bomb_box.png",
+   "frames": 2,
+   "size": [
+    20,
+    16
+   ],
+   "anchor": [
+    10,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    10,
+    16
+   ],
+   "fps": 2,
+   "kind": "loop",
+   "desc": "舱底定时炸弹：木箱 + 红蓝电线缠两道 + 小计时器（红色数码）；帧 0 小红灯亮 / 帧 1 灭。kind=loop、2 fps：当演员（prop:bomb_box）放着会自己闪；要定住就按帧号取"
+  },
+  {
+   "id": "photo_ape_helm",
+   "name": "念写照片·猩猩掌舵",
+   "sprite": "prop_new.photo_ape_helm",
+   "file": "photo_ape_helm.png",
+   "frames": 1,
+   "size": [
+    40,
+    36
+   ],
+   "anchor": [
+    20,
+    18
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    20,
+    18
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "念写照片：舰桥里猩猩（力量同造型）双手握船舵、窗外海平线；紫褐 7 阶单色 + 颗粒 + 暗角，不透明。S.photo({image}) 放大倍数 = floor(min(120/40, 140/36)) = 3 → 120×108（48 宽只会放大 2 倍 = 96 px，所以做 40 宽）；pivot = 中心（同原 photo）"
   }
  ],
  "verify": {
@@ -4719,7 +4857,6 @@
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\horus.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\joseph.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\darkbluemoon.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\strength.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\hangedman.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\holhorse.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\jgeil.png",
@@ -4739,9 +4876,10 @@
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\theworld.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\dio.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\telence.png",
+  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\strength.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\oingo.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\holly.png",
   "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\props_new.png"
  ],
- "seconds": 17.98
+ "seconds": 14.75
 }

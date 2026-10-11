@@ -16,12 +16,14 @@
   //   吊钩：预警 0.75 s 期间整条过道在玩家这一条纵深画红线、头顶晃着吊钩（J25.drawPixel 画）——上下让开或者 K 闪过去（原来红线只在出手那 4f 出现）
   //   管道缠住一次就收回（consume）：原来每 20f 判一次（once:false），挣脱 QTE 时世界停着、人还站在圈里，一出 QTE 又被同一根管道抓住
   //   ——一根管道连抓 2–3 次、连按 2–3 轮（ra_ch2_r1：三次尝试 56 次挣脱 QTE、第一只眼睛还没打碎就掉了一半血）。伤害按规划改成抓住时 8
-  basic('ST_PIPE','W3',30,8,0,{melee:false,hazardAt:0,hazard:(e,c,mv)=>{const p=c.player,w=G.combat.warnDur(mv,c);G.combat.fxAt('smoke',{x:p.x,y:p.y+2,n:8,colour:'#d8dce8',life:.5,rise:18},e,w);G.audio.sfx('door',{rate:.7,vol:.5});return {shape:'ellipse',x:p.x,y:p.y,rx:16,ry:8,warn:w,dur:1,root:1,dmg:8,tag:'pipe',consume:true,onHit:(h,t,r)=>{if(t===p&&r.dmg&&!r.guard&&data(c).pipeCatch)data(c).pipeCatch(t);}};}});
-  basic('ST_HOOK','W5',45,16,0,{melee:false,hazardAt:0,hazard:(e,c,mv)=>({shape:'rect',x0:c.spec.arena[0],x1:c.spec.arena[1],y0:c.player.y-6,y1:c.player.y+6,warn:G.combat.warnDur(mv,c),dur:f(6),dmg:16,guard:'none',tag:'hook',sfx:'whoosh',sfxRate:.6})});
-  basic('ST_THROW','W4',30,10,0,{melee:false,fireAt:[f(30)],shot:{kind:'bullet',speed:180,dmg:10,reflect:true,hitR:[5,7,18],colour:'#c8a064'}});
-  basic('ST_GRAB','W2',45,18,38,{guard:'none'});
+  basic('ST_PIPE','W3',30,6,0,{melee:false,hazardAt:0,hazard:(e,c,mv)=>{const p=c.player,w=G.combat.warnDur(mv,c);G.combat.fxAt('smoke',{x:p.x,y:p.y+2,n:8,colour:'#d8dce8',life:.5,rise:18},e,w);G.audio.sfx('door',{rate:.7,vol:.5});return {shape:'ellipse',x:p.x,y:p.y,rx:16,ry:8,warn:w,dur:1,root:1,dmg:6,tag:'pipe',consume:true,onHit:(h,t,r)=>{if(t===p&&r.dmg&&!r.guard&&data(c).pipeCatch)data(c).pipeCatch(t);}};}});
+  basic('ST_HOOK','W5',45,12,0,{melee:false,hazardAt:0,hazard:(e,c,mv)=>({shape:'rect',x0:c.spec.arena[0],x1:c.spec.arena[1],y0:c.player.y-6,y1:c.player.y+6,warn:G.combat.warnDur(mv,c),dur:f(6),dmg:12,guard:'none',tag:'hook',sfx:'whoosh',sfxRate:.6})});
+  basic('ST_THROW','W4',30,8,0,{melee:false,fireAt:[f(30)],shot:{kind:'bullet',speed:180,dmg:8,reflect:true,hitR:[5,7,18],colour:'#c8a064'}});
+  basic('ST_GRAB','W2',45,14,38,{guard:'none'});
+  // 2026-10-10 晚第2章重做：自动测试 36 次只有 1 次打碎三只眼睛（每秒掉约 3 血、40 s 耗死）——间隔 1.6 → 2.4 s（每碎一只再 +0.5 s），
+  //   管道 8 → 6、吊钩 16 → 12、扔东西 10 → 8、扑抓 18 → 14（规划 §6.1 第 4 战同步改了）。
   // 机关间隔 1.2 s → 1.6 s（每碎一只眼睛再 +0.6 s）：原来 1.2 s 一下，招本身就要 0.9–1.1 s，等于一招接一招，没空在眼睛底下打一套 J3 + 连打
-  kit('e_strength',650,80,['ST_PIPE','ST_HOOK','ST_THROW','ST_GRAB'],{poiseMax:50,dmgMul:()=>{const c=G.world.fight;return c&&(data(c).eyes||0)>=3?1:0;},brain(e,dt,c){if(!dt)return true;const d=data(c);e.facing=c.player.x>e.x?1:-1;if((d.eyes||0)>=3)return closeBrain(e,dt,c);if(e.cool<=0){const i=e.patternI++%3,n=['ST_PIPE','ST_HOOK','ST_THROW'][i];G.AI.tele(e,n);e.cool=1.6+(d.eyes||0)*.6;}return true;}});
+  kit('e_strength',650,80,['ST_PIPE','ST_HOOK','ST_THROW','ST_GRAB'],{poiseMax:50,dmgMul:()=>{const c=G.world.fight;return c&&(data(c).eyes||0)>=3?1:0;},brain(e,dt,c){if(!dt)return true;const d=data(c);e.facing=c.player.x>e.x?1:-1;if((d.eyes||0)>=3)return closeBrain(e,dt,c);if(e.cool<=0){const i=e.patternI++%3,n=['ST_PIPE','ST_HOOK','ST_THROW'][i];G.AI.tele(e,n);e.cool=2.4+(d.eyes||0)*.5;}return true;}});
   basic('DE_RAZOR','W1',24,10,42,{sfxHit:'slash'});
   basic('DD_ANKLE','W1',20,12,34,{root:f(20)});basic('DD_JUMP','W1',16,10,48);
   kit('e_devo',300,55,['DE_RAZOR']);

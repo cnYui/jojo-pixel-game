@@ -199,7 +199,9 @@
       const F = f16();
       const name = o.name != null ? o.name : nameOf(who);
       const color = o.color || colorOf(who);
-      const pos = o.pos === 'top' ? 'top' : 'bottom';
+      // 没写 pos 时看地图定义的 dlgPos（第2章甲板 / 船上：人都站在画面下半、上面是空的天，对白默认放上面）
+      const st = G.world && G.world.stage, dflt = st && st.def && st.def.dlgPos;
+      const pos = (o.pos || dflt) === 'top' ? 'top' : 'bottom';
       const y0 = pos === 'top' ? BOX_Y_TOP : BOX_Y_BOTTOM;
       let pcid = null;
       if (o.portrait === false || !who) pcid = null;

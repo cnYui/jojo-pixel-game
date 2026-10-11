@@ -107,6 +107,8 @@ NEW_EXPORT = (
                        'emerald_shot', 'hiero_tentacle', 'crossfire', 'armor_off')]
     + [_e('ora_voice', n=1), _e('muda_voice', n=1), _e('hora_voice', n=1)]
     + [_e('grunt_' + v, 'grunt', voice=v) for v in ('jotaro', 'kakyoin', 'polnareff', 'avdol', 'joseph', 'enemy', 'dio')]
+    # 2026-10-10 晚第2章（南海）：猩猩叫、货轮汽笛、漩涡、海浪环境音（循环）、海鸥、船体吱嘎、打火机（tools\game_sfx.py）
+    + [_e(n) for n in ('ape_screech', 'ship_horn', 'whirlpool', 'sea_loop', 'gulls', 'creak', 'lighter')]
 )
 
 ALL_SFX = SFX_EXPORT + NEW_EXPORT

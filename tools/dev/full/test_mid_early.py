@@ -20,11 +20,13 @@ import ra_common
 
 NAMES = {'jotaro': '承太郎', 'joseph': '乔瑟夫', 'avdol': '阿布德尔', 'kakyoin': '花京院', 'polnareff': '波鲁纳雷夫', 'iggy': '伊奇', 'anne': '安妮'}
 STORY_SHOTS = {
-    # 第2章
-    '谁要你们管': 'anne_found', '有鲨鱼': 'shark', '我要去新加坡找爸爸': 'anne_join', '你摸了': 'captain_caught',
-    '先拿这个小鬼开刀': 'hostage', '我接住她了': 'anne_saved', '你这船长，到此为止': 'captain_ko', '舱底有炸弹': 'bomb',
-    '这次可不算我的': 'dinghy', '无人货轮': 'freighter_fog', '整艘船都是替身': 'strength_reveal', '生锈的小破船': 'freighter_end',
-    '这回总该能到新加坡了': 'ch2_end',
+    # 第2章（2026-10-10 晚重做后的台词）
+    '甲板上禁止吸烟。……把烟掐了': 'captain_intro', '谁要被你们关起来': 'anne_found', '这片海有鲨鱼': 'shark', '鲨鱼冲过来了': 'shark_qte',
+    '我要去新加坡，找我爸爸': 'anne_join', '我叫安妮': 'anne_name', '滤嘴上有很深的牙印': 'clue_cigarette', '绑着电线，在滴答响': 'clue_hatch',
+    '你摸了鼻子': 'captain_caught', '这丫头就去喂鲨鱼': 'hostage', '我接住她了': 'anne_saved', '承太郎被拖下去了': 'dragged',
+    '我的暗蓝之月': 'captain_ko', '是炸弹！': 'bomb', '这次可不算我的': 'explosion', '我爸爸在新加坡': 'drift_night',
+    '像是在等我们': 'freighter_fog', '它在看报纸': 'ape_cage', '刚才还在吊车下面': 'sailor_gone', '这艘船……就是替身': 'strength_reveal',
+    '替身使者是你吗': 'hold_intro', '船……变小了': 'freighter_end', '这回总该能到新加坡了': 'ch2_end',
     # 第3章
     '我要单人间': 'hotel_single', '想不到我会在冰箱里吧': 'devo_appear', '恨够了': 'devo_doll', '迪波再也没醒来': 'devo_end',
     '我一个人就够了': 'devo_after', '你不是花京院': 'yellow_reveal', '黄色节制可以变成任何人': 'yellow_name',

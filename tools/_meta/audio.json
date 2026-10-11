@@ -1282,6 +1282,62 @@
    "loop": false,
    "samples": 13230,
    "encDelay": 1105
+  },
+  "ape_screech": {
+   "sec": 0.86,
+   "ch": 1,
+   "hit": 0.335,
+   "loop": false,
+   "samples": 37926,
+   "encDelay": 1105
+  },
+  "ship_horn": {
+   "sec": 2.5,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 110250,
+   "encDelay": 1105
+  },
+  "whirlpool": {
+   "sec": 1.5,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 66150,
+   "encDelay": 1105
+  },
+  "sea_loop": {
+   "sec": 6.0,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": true,
+   "samples": 264600,
+   "encDelay": 1105
+  },
+  "gulls": {
+   "sec": 1.5,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 66150,
+   "encDelay": 1105
+  },
+  "creak": {
+   "sec": 0.8,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 35280,
+   "encDelay": 1105
+  },
+  "lighter": {
+   "sec": 0.32,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 14112,
+   "encDelay": 1105
   }
  }
 }

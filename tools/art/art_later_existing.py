@@ -192,7 +192,8 @@ NEEDED={
  # 伊奇闪避改由 art_heroes 按原工程部件画 4 帧翻滚、愚者的 claw / slam 改由 art_stands 照 _fool_frame 重画（2026-10-10：
  # 这里的通用画法 dodge 是一张剪切的待机图，claw 是待机图上贴一根线段手臂，slam 和 claw 帧 0 一模一样）
  'iggy':{'hurt':1,'limp_walk':2}, 'starplat':{'finger':1},
- 'darkbluemoon':{'attack':2,'hurt':1}, 'strength':{'walk':4,'attack':2,'hurt':1,'down':1},
+ # 力量的 walk / attack / hurt / down 不走通用 action()，按原部件重摆，见下面 _strength_frames（2026-10-10）
+ 'darkbluemoon':{'attack':2,'hurt':1},
  'hangedman':{'attack':2}, 'holhorse':{'hurt':1,'down':1}, 'jgeil':{'walk':4},
  'wheel':{'climb':1,'spray':1}, 'enya':{'cast':1,'hurt':1,'down':1}, 'zombie':{'attack':1},
  'steelydan':{'hurt':1,'down':1,'fly':1,'command':2}, 'death13':{'swing':2,'hurt':1},
@@ -218,6 +219,199 @@ for cid,acts in NEEDED.items():
         else: anchor=(ax,ay)
         sprite.define(name,frames,anchor=anchor,fps=3 if act=='float' else 6 if act in ('walk','limp_walk') else 8,desc='后续补帧：'+name)
         NEW.append(name)
+
+
+# =====================================================================================
+#  力量（猩猩）walk / attack / hurt / down（2026-10-10 重画）
+# =====================================================================================
+# 通用 action() 是照人形写的：走路把腰以下整片清空再画两根细腿（身体在腰那一行被横着切断）、攻击清掉半张脸再贴一根
+# 细线手臂、倒地是人形躺姿加黑皮鞋。这里改用原工程 sprites_enemies._strength 的同一套 _Pix 部件（头、脸盘、毛色、
+# 自动明暗、描边都照原函数），只挪四肢、让身体起伏、换表情；_ST_IDLE 原样传进去能逐格复现原 idle 两帧（下面自检）。
+# 画布 = 图集 cell 70×44、锚点 = pivot (29, 42)：idle（40×40、'mb'）的左上角落在 (9, 2)，所以烘出来 cell / pivot 不变。
+from assets import sprites_enemies as SE    # noqa: E402
+
+_ST_W, _ST_H, _ST_O = 70, 44, (9, 2)
+_ST_IDLE = dict(body=(0, 0), head=(0, 0), face='calm',
+                arm_b=[(11, 17), (6, 27), (6, 35)], hand_b=(3, 34, 8, 38),        # 远侧手臂（在身体后面）
+                arm_f=[(25, 19), (31, 27), (32, 35)], hand_f=(29, 34, 35, 38),    # 近侧手臂（最上层）
+                leg_b=[(12, 30), (10, 36)], foot_b=(8, 36, 13, 38),
+                leg_f=[(20, 31), (22, 36)], foot_f=(20, 36, 25, 38))
+_ST_FRINGE = [(4, 22), (5, 28), (7, 32), (12, 34), (16, 35), (26, 32), (6, 15), (9, 11), (14, 9)]
+
+
+def _st_face(fc, kind, o):
+    """脸盘：calm / grin 照原图；roar 张嘴龇牙（眉心压低）、hurt 眼睛挤成 > < 张嘴、ko 叉叉眼吐舌。"""
+    X = lambda x: x + o[0]
+    Y = lambda y: y + o[1]
+    fc.ell(X(22), Y(4), X(37), Y(19), 'a')
+    fc.shade('a', 'A', d=(1, 1))
+    fc.ell(X(26), Y(11), X(36), Y(18), 'b')
+    if kind == 'hurt':
+        fc.rect(X(27), Y(6), X(34), Y(7), 'A')
+        fc.dot([(X(28), Y(8)), (X(29), Y(9)), (X(28), Y(10)), (X(33), Y(8)), (X(32), Y(9)), (X(33), Y(10))], 'k')
+    elif kind == 'ko':
+        fc.rect(X(27), Y(7), X(34), Y(7), 'A')
+        for cx in (28, 34):                     # 叉叉眼（比原眼距各开 1 格，转 90° 后两只不糊成一团）
+            fc.dot([(X(cx - 1), Y(8)), (X(cx + 1), Y(8)), (X(cx), Y(9)), (X(cx - 1), Y(10)), (X(cx + 1), Y(10))], 'k')
+    else:
+        fc.rect(X(27), Y(7), X(34), Y(8), 'A')                                    # 浓眉
+        if kind == 'roar':
+            fc.dot([(X(30), Y(9)), (X(31), Y(9)), (X(34), Y(9))], 'A')            # 眉心压下来
+        fc.dot([(X(28), Y(9)), (X(32), Y(9))], 'k')
+        fc.dot([(X(29), Y(9)), (X(33), Y(9))], 'y')
+    fc.dot([(X(31), Y(12)), (X(32), Y(12))], 'A')                                 # 鼻孔
+    if kind == 'calm':
+        fc.line([(X(28), Y(15)), (X(35), Y(15))], 'k')
+        fc.dot([(X(27), Y(14)), (X(36), Y(14))], 'k')
+    elif kind == 'grin':
+        fc.rect(X(28), Y(14), X(35), Y(16), 'k')
+        fc.rect(X(29), Y(14), X(34), Y(15), 'w')
+        fc.dot([(X(30), Y(15)), (X(32), Y(15))], 'k')
+    elif kind == 'roar':
+        fc.rect(X(28), Y(13), X(35), Y(17), 'k')
+        fc.rect(X(29), Y(14), X(34), Y(14), 'w')
+        fc.rect(X(30), Y(15), X(33), Y(15), 'M')
+        fc.rect(X(29), Y(16), X(34), Y(16), 'w')
+        fc.dot([(X(31), Y(14)), (X(32), Y(16))], 'k')
+    elif kind == 'hurt':
+        fc.rect(X(29), Y(14), X(34), Y(17), 'k')
+        fc.rect(X(30), Y(15), X(33), Y(16), 'M')
+    elif kind == 'ko':
+        fc.line([(X(28), Y(15)), (X(35), Y(15))], 'k')
+        fc.dot([(X(33), Y(16)), (X(34), Y(16)), (X(33), Y(17)), (X(34), Y(17))], 'f')
+    return fc
+
+
+def _st_head(W, H, o, face):
+    hd = SE._Pix(W, H)
+    hd.ell(19 + o[0], 2 + o[1], 33 + o[0], 18 + o[1], 'O')
+    hd.dot([(x + o[0], y + o[1]) for x, y in ((22, 1), (24, 0), (26, 1), (21, 3))], 'O')
+    hd.shade('O', 'R', d=(1, 1))
+    hd.shade('O', 'o', d=(-1, -1))
+    hd.paste(_st_face(SE._Pix(W, H), face, o), ring='k')
+    return hd
+
+
+def _st_pose(W=_ST_W, H=_ST_H, o=_ST_O, **kw):
+    """原 _strength 的图层顺序：远侧手臂 → 身体（含腿）→ 头 → 近侧手臂；坐标都写 idle 坐标，整体平移 o。"""
+    q = dict(_ST_IDLE, **kw)
+    mv = lambda pts: [(x + o[0], y + o[1]) for x, y in pts]
+    bx = lambda b: (b[0] + o[0], b[1] + o[1], b[2] + o[0], b[3] + o[1])
+    bd = (q['body'][0] + o[0], q['body'][1] + o[1])
+    P, fur, ab, af = (SE._Pix(W, H) for _ in range(4))
+    fur.ell(5 + bd[0], 11 + bd[1], 28 + bd[0], 33 + bd[1], 'O')
+    fur.seg(mv(q['leg_b']), 2.2, 'O')
+    fur.seg(mv(q['leg_f']), 2.2, 'O')
+    for x, y in _ST_FRINGE:
+        fur.dot([(x + bd[0], y + bd[1]), (x - 1 + bd[0], y + 1 + bd[1])], 'O')
+    fur.shade('O', 'R', d=(1, 1), n=2)
+    fur.shade('O', 'o', d=(-1, -1))
+    fur.ell(*bx(q['foot_b']), 'A')
+    fur.ell(*bx(q['foot_f']), 'A')
+    ab.seg(mv(q['arm_b']), 2.0, 'O')
+    ab.shade('O', 'R', d=(1, 1))
+    ab.ell(*bx(q['hand_b']), 'A')
+    af.seg(mv(q['arm_f']), 2.0, 'O')
+    af.ell(*bx(q['hand_f']), 'A')
+    af.shade('O', 'R', d=(1, 1))
+    af.shade('O', 'o', d=(-1, -1))
+    P.paste(ab)
+    P.paste(fur, ring='k')
+    P.paste(_st_head(W, H, (q['head'][0] + o[0], q['head'][1] + o[1]), q['face']), ring='k')
+    P.paste(af, ring='k')
+    P.outline('k')
+    return P
+
+
+def _st_walk(f):
+    """指关节撑地走：近侧手臂 + 后腿 / 远侧手臂 + 前腿两对交替（对角步态）。每个肢体 4 个相位：
+    前伸着地 → 正下方 → 后蹬 → 抬起往前摆；抬起那一对的帧身体（连头）上浮 1 px。"""
+    ph = {'hf': f % 4, 'fb': f % 4, 'hb': (f + 2) % 4, 'ff': (f + 2) % 4}
+    amp = {'hf': 4, 'hb': 3, 'fb': 2, 'ff': 2}
+    lift_px = {'hf': 3, 'hb': 2, 'fb': 2, 'ff': 2}
+    dx = {k: (amp[k], 0, -amp[k], 0)[p] for k, p in ph.items()}
+    up = {k: lift_px[k] if p == 3 else 0 for k, p in ph.items()}
+    by = (0, -1, 0, -1)[f]
+    d, l = dx['hb'], up['hb']
+    q = dict(arm_b=[(11, 17 + by), (6 + round(d / 2) + (1 if l else 0), 27 + by - l // 2), (6 + d, 35 - l)],
+             hand_b=(3 + d, 34 - l, 8 + d, 38 - l))
+    d, l = dx['hf'], up['hf']
+    q.update(arm_f=[(25, 19 + by), (31 + round(d / 2) + (1 if l else 0), 27 + by - l // 2), (32 + d, 35 - l)],
+             hand_f=(29 + d, 34 - l, 35 + d, 38 - l))
+    d, l = dx['fb'], up['fb']
+    q.update(leg_b=[(12, 30 + by), (10 + d, 36 - l)], foot_b=(8 + d, 36 - l, 13 + d, 38 - l))
+    d, l = dx['ff'], up['ff']
+    q.update(leg_f=[(20, 31 + by), (22 + d, 36 - l)], foot_f=(20 + d, 36 - l, 25 + d, 38 - l))
+    return _st_pose(body=(0, by), head=(0, by), **q)
+
+
+def _st_down():
+    """仰面倒地、头朝左（同 avdol / kakyoin 的 down）：头部图层（叉叉眼吐舌）逆时针转 90° = 头顶朝左、脸朝上，
+    肚皮朝天、两腿翘起、远侧手臂甩在头后、近侧手臂瘫在身前地上；最低像素在 pivot 上一行。"""
+    W, H, (ox, oy) = _ST_W, _ST_H, _ST_O
+    head = _st_head(40, 40, (0, 0), 'ko').a[0:20, 19:38]             # 原头 + 脸盘的包围盒
+    rot = np.rot90(head, 1)
+    hp = SE._Pix(W, H)
+    hp.a[19 + oy:19 + oy + rot.shape[0], -4 + ox:-4 + ox + rot.shape[1]] = rot
+    P, fur, ab, af = (SE._Pix(W, H) for _ in range(4))
+    mv = lambda pts: [(x + ox, y + oy) for x, y in pts]
+    fur.ell(12 + ox, 23 + oy, 38 + ox, 38 + oy, 'O')
+    fur.seg(mv([(32, 29), (38, 23)]), 2.2, 'O')
+    fur.seg(mv([(35, 33), (43, 29)]), 2.2, 'O')
+    for x, y in ((15, 22), (21, 21), (28, 21), (34, 23)):
+        fur.dot(mv([(x, y), (x - 1, y - 1)]), 'O')
+    fur.shade('O', 'R', d=(1, 1), n=2)
+    fur.shade('O', 'o', d=(-1, -1))
+    fur.ell(36 + ox, 18 + oy, 41 + ox, 23 + oy, 'A')
+    fur.ell(42 + ox, 26 + oy, 46 + ox, 31 + oy, 'A')
+    ab.seg(mv([(13, 28), (5, 32), (-3, 35)]), 2.0, 'O')
+    ab.shade('O', 'R', d=(1, 1))
+    ab.ell(-8 + ox, 33 + oy, -3 + ox, 37 + oy, 'A')
+    af.seg(mv([(16, 30), (23, 35), (31, 36)]), 2.0, 'O')
+    af.ell(30 + ox, 34 + oy, 35 + ox, 38 + oy, 'A')
+    af.shade('O', 'R', d=(1, 1))
+    af.shade('O', 'o', d=(-1, -1))
+    P.paste(ab)
+    P.paste(fur, ring='k')
+    P.paste(hp, ring='k')
+    P.paste(af, ring='k')
+    P.outline('k')
+    return P
+
+
+def _strength_frames():
+    walk = [_st_walk(f) for f in range(4)]
+    attack = [
+        # 0 蓄力：身子往后一仰、近侧手臂把拳头抡到头顶后面、张嘴吼
+        _st_pose(body=(-1, -1), head=(-2, -1), face='roar', arm_f=[(23, 18), (15, 12), (17, 3)], hand_f=(14, -1, 20, 4),
+                 arm_b=[(10, 16), (5, 26), (5, 35)], hand_b=(2, 34, 7, 38)),
+        # 1 出拳：身子前扑、前脚踏出半步、拳头砸到身前（拳心约在 pivot 右边 28 px、离地 16 px）
+        _st_pose(body=(2, 0), head=(4, 1), face='roar', arm_f=[(28, 20), (38, 22), (46, 24)], hand_f=(44, 21, 51, 27),
+                 leg_f=[(22, 31), (25, 36)], foot_f=(23, 36, 28, 38), arm_b=[(13, 17), (8, 27), (7, 35)], hand_b=(4, 34, 9, 38)),
+    ]
+    # 受击：上身后仰、头甩到后面、眼睛挤成 > < 张嘴，远侧手臂甩上去、近侧手臂往前甩，前脚离地 1 px
+    hurt = [_st_pose(body=(-2, -1), head=(-5, -1), face='hurt', arm_f=[(22, 19), (29, 24), (37, 24)], hand_f=(36, 21, 41, 26),
+                     arm_b=[(10, 16), (4, 10), (2, 3)], hand_b=(-1, 0, 4, 5), leg_b=[(10, 29), (9, 36)], foot_b=(7, 36, 12, 38),
+                     leg_f=[(18, 30), (21, 35)], foot_f=(19, 35, 24, 37))]
+    return {'walk': walk, 'attack': attack, 'hurt': hurt, 'down': [_st_down()]}
+
+
+# 自检：原部件原样传进去 = 原 idle 两帧（40×40 画布、不平移）——保证头、脸、毛色、明暗、描边和原图是同一套
+if _st_pose(40, 40, (0, 0)).grid() != SE._strength(0).grid() or \
+        _st_pose(40, 40, (0, 0), face='grin', arm_f=[(24, 20), (18, 14), (17, 5)], hand_f=(15, 1, 20, 6)).grid() != SE._strength(1).grid():
+    raise ValueError('力量部件复现不出原 idle（sprites_enemies._strength 变了？）')
+_ST_DESC = {
+    'walk': '指关节撑地走 4 帧：近侧手臂 + 后腿 / 远侧手臂 + 前腿成对交替，抬起那一对的帧身体上浮 1 px（身体、头、毛色照 idle）',
+    'attack': '0 蓄力：后仰、拳头抡到头顶后面、张嘴吼；1 出拳：前扑、拳头砸到身前（拳心约 pivot 右 28 px、离地 16 px）',
+    'hurt': '受击后仰：头甩到后面、眼睛挤成 > <、张嘴，两臂一上一前甩开',
+    'down': '仰面倒地、头朝左（头部转 90°：叉叉眼吐舌），肚皮朝天、两腿翘起',
+}
+for _act, _frames in _strength_frames().items():
+    _name = 'strength.' + _act
+    if _name in sprite._REG: raise ValueError('新动作与原注册冲突：' + _name)
+    sprite.define(_name, [p.grid() for p in _frames], pal=SE.PAL_STR, anchor=(29, 42),
+                  fps=6 if _act == 'walk' else 8, desc=_ST_DESC[_act])
+    NEW.append(_name)
 
 # 规划使用原cid的形态动作；专用cid仍有全套走路和受击供世界实体使用。
 for cid,act,source in [('polnareff','kid','polnareff_kid.idle'),('jotaro','kid','jotaro_kid.idle'),('polnareff','possessed','polnareff_possessed.idle')]:

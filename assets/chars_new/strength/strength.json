@@ -21,21 +21,21 @@
       "fps": 6,
       "kind": "loop",
       "seamless": true,
-      "desc": "后续补帧：strength.walk"
+      "desc": "指关节撑地走 4 帧：近侧手臂 + 后腿 / 远侧手臂 + 前腿成对交替，抬起那一对的帧身体上浮 1 px（身体、头、毛色照 idle）"
     },
     "hurt": {
       "row": 2,
       "frames": 1,
       "fps": 1,
       "kind": "static",
-      "desc": "后续补帧：strength.hurt"
+      "desc": "受击后仰：头甩到后面、眼睛挤成 > <、张嘴，两臂一上一前甩开"
     },
     "down": {
       "row": 3,
       "frames": 1,
       "fps": 1,
       "kind": "static",
-      "desc": "后续补帧：strength.down"
+      "desc": "仰面倒地、头朝左（头部转 90°：叉叉眼吐舌），肚皮朝天、两腿翘起"
     },
     "attack": {
       "row": 4,
@@ -43,7 +43,7 @@
       "fps": 8,
       "kind": "oneshot",
       "seamless": false,
-      "desc": "后续补帧：strength.attack"
+      "desc": "0 蓄力：后仰、拳头抡到头顶后面、张嘴吼；1 出拳：前扑、拳头砸到身前（拳心约 pivot 右 28 px、离地 16 px）"
     }
   },
   "aliases": {},
@@ -53,5 +53,5 @@
     "project": "jojo",
     "call": "game.art_later_existing / game.orig（import assets; assets.load_all(); from engine import sprite; sprite.get('strength.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'strength.<动作>', x, y, frame=i, flip=False)"
   },
-  "notes": "力量（Strength），敌人·动物·动物。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle/down；脚点(自定义点)=walk/hurt/attack。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
+  "notes": "力量（Strength），敌人·动物·动物。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle；脚点(自定义点)=walk/hurt/down/attack。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
 }

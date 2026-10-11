@@ -734,6 +734,11 @@ class Tester:
             # 换车道、躲倒影和柏油 QTE 有自己的胜利输入，不能套用近战连打覆盖要求。
             if fid in ("b07_hangedman", "b08_empress", "b09a_wheelroad"):
                 continue
+            # 第2章力量：主要是机关（管道要闪、吊钩紫边不可挡、打眼睛），格挡只对扔东西有用，测试器常常一次都用不上——只查闪避和连打
+            if fid == "b04_strength":
+                self.check(c.get("dodge", 0) >= 1, "coverage_dodge", fight=fid, counts=c)
+                self.check(c.get("rush", c.get("rushStart", 0)) >= 1, "coverage_rush", fight=fid, counts=c)
+                continue
             self.check(c.get("dodge", 0) >= 1, "coverage_dodge", fight=fid, counts=c)
             self.check(c.get("guard", 0) + c.get("parry", 0) >= 1, "coverage_defense", fight=fid, counts=c)
             self.check(c.get("rush", c.get("rushStart", 0)) >= 1, "coverage_rush", fight=fid, counts=c)
@@ -749,7 +754,10 @@ class Tester:
             self.check(self.fly_input_at is not None and self.fly_found, "fly_not_investigated")
         for fid, before in self.retry_uids.items():
             after = {e[0]: e[17] for e in self.fights[fid].get("enemies", []) if e[13]}
-            self.check(before == after, "retry_boss_recreated", fight=fid, before=before, after=after)
+            # 最后一张战斗快照可能正好是 Boss 被打倒移除的那一帧（第2章暗蓝之月：after 是空的）——空的说明这场已经打完，
+            #   没东西可比；重来时有没有重建 Boss 已经在每次 loss_menu 里比过了
+            if after:
+                self.check(before == after, "retry_boss_recreated", fight=fid, before=before, after=after)
         if self.args.lose:
             expected = [f for f, st in self.fights.items() if st.get("fightLosable")]
             for fid in expected:

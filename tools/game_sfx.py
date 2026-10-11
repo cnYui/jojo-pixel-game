@@ -821,6 +821,234 @@ def _clang():
     return _fin(_metal(n, [830, 1420, 2260, 3400], [.1, .13, .08, .05], [1, .65, .4, .25], _rng('clang', 0)), .7, .001, .08)
 
 
+# ============================================================ 第2章（南海）：猩猩、雾中货轮、暗蓝之月、海面
+def _cnoise(L, rng, tilt=0.0, lo=None, hi=None):
+    """圆周彩色噪声：白噪声在频域乘 f^(-tilt/2)（tilt 1 = 粉、2 = 褐）再过 _cband；首尾天然接得上，std 归一。"""
+    X = np.fft.rfft(rng.standard_normal(L))
+    f = np.fft.rfftfreq(L, 1 / SR)
+    f[0] = 1.0
+    y = _cband(np.fft.irfft(X * f ** (-tilt / 2), L), lo, hi)
+    return y / (np.std(y) + 1e-9)
+
+
+def _cmod(L, rng, ks):
+    """循环内整数周期的慢起伏：几条正弦（每循环 k 次，随机相位 / 幅度）叠加，归一到 [-1, 1]。"""
+    t = _t(L)
+    Ls = L / SR
+    m = np.zeros(L)
+    for k in ks:
+        m += rng.uniform(.4, 1.0) * np.sin(_TAU * k / Ls * t + rng.uniform(0, _TAU))
+    return m / (np.abs(m).max() + 1e-9)
+
+
+@reg('ape_screech', '猩猩（力量的本体）尖叫“呜——喔！”：带喉音的低“呜”往上扬，接高亢沙哑的“喔！”'
+                    '（锯齿 + 次谐波喉音过四条共振峰，0.85 s；“喔！”在 +0.335 s）', la=-15, hit=0.335)
+def _ape_screech(seed=0):
+    rng = _rng('ape_screech', seed)
+    n = _n(.8)
+    t = _t(n)
+    f0 = np.interp(t, [0, .08, .22, .27, .31, .36, .5, .66, .8], [300, 360, 520, 560, 940, 1180, 1060, 820, 640])
+    scream = np.clip((t - .29) / .05, 0, 1)                         # 0 = “呜”，1 = “喔！”
+    f0 = f0 * (1 + .025 * sfx.lfo_noise(n, 45, rng) + .03 * scream * np.sin(_TAU * 13 * t)
+               + .02 * scream * sfx.lfo_noise(n, 140, rng))         # 嘶叫段多一层快抖（声带乱颤）
+    rasp = .25 + .5 * scream * np.interp(t, [0, .36, .55, .8], [1, 1, .7, 1])
+    growl = 1 + .45 * np.sin(_TAU * np.cumsum(f0 * .5) / SR) * (.8 - .5 * scream)    # 半频调幅 = 喉音
+    src = osc(f0, n, 'saw') + .55 * osc(f0 * .5, n, 'square', .35) * rasp + rasp * noise(n, rng)
+    src = src * growl
+    F1 = np.interp(t, [0, .28, .34, .5, .8], [430, 470, 980, 1050, 800])
+    F2 = np.interp(t, [0, .28, .34, .5, .8], [900, 950, 1550, 1700, 1400])
+    F3 = np.interp(t, [0, .3, .4, .8], [2500, 2600, 3000, 2800])
+    y = _formant(src, [(F1, 5, 1.0), (F2, 6, .75), (F3, 7, .45), (4100, 6, .2 * scream + .05)])
+    y = sat(y * 3, 2.4)
+    e = env_pts(n, [(0, 0), (.04, .35), (.2, .5), (.27, .42), (.3, .15), (.335, 1), (.52, .85), (.68, .5), (.8, 0)])
+    y = bp(y * e, 220, 6500)
+    y = verb(y, wet=.12, sec=.45, tau=.09, lpf=5000, seed=33).mean(axis=1)[:_n(.86)]
+    return _fin(y, .65, .003, .07)
+
+
+@reg('ship_horn', '雾里巨大货轮的汽笛：两个低音（≈73 / 88 Hz，各自微失谐出拍频）的簧片号角，号筒共鸣把中频顶起来，'
+                  '尾音在长混响里慢慢散开（2.5 s，立体声）', la=-18, push=4)
+def _ship_horn(seed=0):
+    rng = _rng('ship_horn', seed)
+    T, on = 2.5, 1.62                     # 总长；号角吹 1.62 s，后面是雾里的混响尾巴
+    n, m = _n(T), _n(on)
+    t = _t(m)
+    bend = (1 - .055 * np.exp(-t / .07)) * (1 - .035 * np.clip((t - 1.25) / .37, 0, 1) ** 1.5)   # 起音压力上来、收尾气压掉
+    wob = 1 + .004 * sfx.lfo_noise(m, 3, rng)
+    tone = np.zeros(m)
+    fund = np.zeros(m)
+    for f, beat, g in ((73.0, 1.1, 1.0), (88.3, 1.4, .85)):
+        for d, w in ((-.5, 1.0), (.5, .55)):                       # 一对微失谐、不等幅：拍频“哇——哇——”但不会拍到零
+            ff = (f + d * beat) * bend * wob
+            p0 = rng.uniform()
+            tone += g * w * osc(ff, m, 'square', .14, ph0=p0)      # 窄脉冲 = 簧片 / 膜片的“嗡”，谐波一路铺到 2 kHz
+            fund += g * w * osc(ff, m, ph0=p0)                     # 基频再垫一层：两条低频线稳、厚
+    body = .5 * lp(tone, 1900, 2) + 1.3 * bp(tone, 230, 480) + .8 * bp(tone, 600, 1000) + .3 * fund    # 号筒共鸣
+    body = sat(body * 1.6, 3.0)                                    # 大号角本来就“吹爆”：压扁波形，嗡得更满
+    air = bp(noise(m, rng), 500, 2600) * (.04 + .22 * np.exp(-t / .08))
+    x = (body + air) * env_pts(m, [(0, 0), (.04, .45), (.2, 1), (1.2, .93), (1.45, .4), (on, 0)])
+    x = np.concatenate([x, np.zeros(n - m)])
+    x = verb(lp(x, 2400), wet=.34, sec=2.6, tau=.8, lpf=1600, seed=31, pre=.035)[:n]
+    x = sfx._limit(norm(x, 1.0), 5.0)                              # 峰值主要来自混响的噪声样湿声：混响后再前瞻限幅
+    return _fin(x, .9, .01, .55)
+
+
+@reg('whirlpool', '暗蓝之月在水下造漩涡：越转越快的涌流（中心频率和声像都跟着绕圈）+ 低沉气泡 + 一点低频涡鸣，'
+                  '整体压在 1.4 kHz 以下的水下闷声（1.5 s，立体声）', la=-18, push=6)
+def _whirlpool(seed=0):
+    rng = _rng('whirlpool', seed)
+    T = 1.5
+    n = _n(T)
+    t = _t(n)
+    u = t / T
+    spin = 1.4 + 3.2 * np.clip(u / .75, 0, 1) ** 1.4               # 圈 / 秒：1.4 → 4.6
+    ph = _TAU * np.cumsum(spin) / SR
+    s = np.sin(ph)
+    c = 300 * (900 / 300) ** (.5 + .5 * s) * (1 + .25 * u)          # 涌流“呼——呼——”：中心频率每圈摆一次
+    flow = sweep(noise(n, rng), c, 'bp', q=1.8) + .5 * sweep(noise(n, rng), c * 1.8, 'bp', q=3.0)
+    hum = osc(48 * (1 + .5 * u), n, 'tri') * (.6 + .4 * np.sin(ph + 1.3))
+    rum = lp(noise(n, rng, 'brown'), 150) * (.65 + .35 * (.5 + .5 * s))
+    suck = osc(_dsig(n, 160, 50), n) * env_exp(n, .2, .03)          # 开头水被抽走的一下“呜”
+    env = env_pts(n, [(0, 0), (.25, 1), (1.1, .95), (T, 0)])
+    core = (flow + .25 * hum + .25 * rum) * env + .35 * suck
+    bub = sfx._bubble_train(n, 40, rng, 200, 650, amp_env=np.clip(.25 + u * 1.2, 0, 1)) * env
+    x = _pan(core, .7 * s) + _pan(bub, -.6 * s)
+    x = lp(sat(x * 1.3, 1.6), 1400)
+    x = sfx._limit(norm(verb(x, wet=.2, sec=.6, tau=.15, lpf=1400, seed=32)[:n], 1.0), 3.5)
+    return _fin(x, .85, .01, .25)
+
+
+def _lap(rng):
+    """一下浪拍船身：软起音的“噗啦”水声（带通往下扫）+ 船壳的空闷“咚”+ 几滴水珠。"""
+    m = _n(.45)
+    x = sweep(noise(m, rng), _dsig(m, 900, 220), 'bp', q=1.2) * env_pts(m, [(0, 0), (.02, 1), (.07, .5), (.3, .08), (.45, 0)])
+    x += .3 * bp(noise(m, rng), 700, 3000) * env_pts(m, [(0, 0), (.008, 1), (.04, .15), (.12, 0)])
+    x += .5 * osc(_dsig(m, 140, 85), m) * env_exp(m, .07, .01)
+    for _ in range(int(rng.integers(2, 5))):
+        dn = _n(rng.uniform(.015, .035))
+        f0 = rng.uniform(700, 1600)
+        _place(x, _chirp(dn, f0, f0 * rng.uniform(1.4, 2.0), dn / SR / 3, attack=.002), _n(rng.uniform(.06, .3)),
+               rng.uniform(.05, .15))
+    return x
+
+
+def _spray(rng):
+    """一点小水花：白沫的沙声 + 水声 + 一串水珠。"""
+    m = _n(.6)
+    x = .4 * hp(noise(m, rng), 2200) * env_pts(m, [(0, 0), (.03, 1), (.12, .4), (.6, 0)])
+    x += .6 * bp(noise(m, rng), 500, 2000) * env_pts(m, [(0, 0), (.02, 1), (.15, .2), (.5, 0)])
+    for _ in range(9):
+        dn = _n(rng.uniform(.012, .03))
+        f0 = rng.uniform(1200, 3000)
+        _place(x, _chirp(dn, f0, f0 * rng.uniform(1.3, 1.9), dn / SR / 3, attack=.001), _n(rng.uniform(.03, .45)),
+               rng.uniform(.05, .2))
+    return x
+
+
+@reg('sea_loop', '甲板 / 救生艇上的海浪环境音：约 2 s 一涌的海水沙沙（浪峰才带高频白沫）+ 浪拍船身 + 偶尔一点水花，'
+                 '安静不抢台词（loop=6 s，立体声，无缝）', la=-28, push=0, loop=6.0)
+def _sea_loop(loop=6.0, seed=0):
+    rng = _rng('sea_loop', seed)
+    L = _n(loop)
+    sw = .65 * _cmod(L, rng, (3,)) + .35 * _cmod(L, rng, (2, 5))    # 一个循环约 3 涌，不完全等距
+    sw /= np.abs(sw).max()
+    chans = []
+    for _ in range(2):
+        lvl = np.clip(.5 + .5 * sw + .12 * _cmod(L, rng, (4, 7, 11)), 0, 1)
+        low = _cnoise(L, rng, 1.0, 80, 650) * (.45 + .55 * lvl)              # 一直在的低沉海水
+        mid = _cnoise(L, rng, .5, 500, 2600) * lvl ** 2.2 * .8              # 涌上来才有的“沙——”
+        foam = _cnoise(L, rng, 0.0, 2600, 8000) * lvl ** 4 * .22            # 浪峰的白沫
+        deep = _cnoise(L, rng, 2.0, 30, 150) * .45
+        chans.append(low + mid + foam + deep)
+    out = np.stack(chans, -1)
+    ev = np.zeros((L + _n(1.0), 2))
+    pk = [i for i in range(1, L - 1) if sw[i] >= sw[i - 1] and sw[i] > sw[i + 1] and sw[i] > .2]
+    for p in pk:                                                   # 每涌拍一下船身（浪快到顶时），一半带个小回拍
+        at = (p - _n(rng.uniform(.12, .3))) % L
+        pan = rng.uniform(-.45, .45)
+        _place(ev, _pan(_lap(rng), pan), at, rng.uniform(.75, 1.0))
+        if rng.uniform() < .5:
+            _place(ev, _pan(_lap(rng), pan + rng.uniform(-.15, .15)), at + _n(rng.uniform(.2, .32)), rng.uniform(.3, .5))
+    for _ in range(2):                                             # 涌与涌之间零星的小拍
+        _place(ev, _pan(_lap(rng), rng.uniform(-.6, .6)), int(rng.uniform(0, 1) * L), rng.uniform(.25, .4))
+    big = max(pk, key=lambda i: sw[i]) if pk else L // 2
+    _place(ev, _pan(_spray(rng), rng.uniform(-.6, .6)), (big + _n(.05)) % L, .55)
+    out = .45 * out + _fold(ev, L) * 1.1
+    return _fin_loop(out, .34)
+
+
+def _gull_call(rng, fs=1.0, dur=.3):
+    """一声海鸥“kee-OW”：80 ms 挑上去、再慢慢落下的鼻音（锯齿 + 窄脉冲过 2.2 / 3.6 kHz 共振峰）+ “k” 起音。"""
+    m = _n(dur + .04)
+    t = _t(m)
+    f0 = np.interp(t, [0, .07, .11, dur * .75, dur], [880, 1600, 1560, 1000, 820]) * fs
+    f0 = f0 * (1 + .015 * np.sin(_TAU * 28 * t) + .008 * sfx.lfo_noise(m, 90, rng))
+    src = osc(f0, m, 'saw') + .5 * osc(f0, m, 'square', .25) + .15 * noise(m, rng)
+    y = sat(_formant(src, [(2200 * fs, 3, 1.0), (3600 * fs, 4, .55)]) * 2.5, 1.8)
+    y = y * env_pts(m, [(0, 0), (.015, .7), (.07, 1), (dur * .6, .8), (dur, 0), (dur + .04, 0)])
+    return y + .25 * hp(noise(m, rng), 2000) * env_exp(m, .005, .0005)
+
+
+@reg('gulls', '远处的海鸥：一只“kee-OW”两声，再远一点另一只答一声；高频被距离吃掉，带一点水面回声（1.5 s，立体声）',
+     la=-22)
+def _gulls(seed=0):
+    rng = _rng('gulls', seed)
+    n = _n(1.5)
+    x = np.zeros((_n(1.3), 2))
+    for st, fs, d, pan, g, cut in ((.03, 1.0, .3, -.45, 1.0, 3800), (.42, .95, .27, -.4, .8, 3800),
+                                   (.92, 1.13, .22, .55, .5, 2600)):
+        _place(x, _pan(lp(_gull_call(rng, fs, d), cut, 2), pan), _n(st), g)
+    x = delay(x, .23, .2, 1, lpf=2000)                            # 水面 / 船壳弹回来的远处回声
+    x = verb(x, wet=.1, sec=.7, tau=.14, lpf=3000, seed=34)[:n]
+    return _fin(x, .55, .003, .25)
+
+
+@reg('creak', '钢板船体被拧的低沉吱嘎“吱——嘎——”：不规则的黏滑摩擦脉冲（30–75 次 / 秒）激励一组慢慢漂移的钢板模态'
+              '（63 Hz–2.1 kHz，低的响得久），在空船舱里回响（0.8 s）', la=-17)
+def _creak(seed=0):
+    rng = _rng('creak', seed)
+    n, cn = _n(.8), _n(.72)
+    ct = _t(cn)
+    rate = np.interp(ct, [0, .1, .3, .36, .42, .6, .72], [34, 52, 74, 60, 66, 44, 30]) * (1 + .18 * sfx.lfo_noise(cn, 30, rng))
+    ph = np.cumsum(rate) / SR
+    imp = np.diff(np.floor(ph), prepend=0.0) * rng.uniform(.35, 1.0, cn)
+    imp *= env_pts(cn, [(0, 0), (.05, .7), (.3, 1), (.36, .3), (.42, 1), (.62, .8), (.72, 0)])     # “吱——”松一下“嘎——”
+    imp = np.concatenate([imp, np.zeros(n - cn)])
+    drift = 1 + .03 * sfx.lfo_noise(n, 2.5, rng)                   # 受力变化 → 模态整体漂移
+    x = np.zeros(n)
+    for f, q, a in ((63, 14, .5), (131, 26, 1.0), (227, 28, .95), (348, 26, .85), (509, 24, .7), (733, 22, .55),
+                    (1046, 20, .38), (1480, 18, .22), (2110, 16, .12)):
+        x += a * q / f * sweep(imp, f * drift * rng.uniform(.98, 1.02), 'bp', q=q, block=128)    # q / f：按带宽补回能量
+    grit = bp(noise(n, rng), 1200, 4500) * norm(lp(np.abs(imp), 90, 1), 1.0)
+    x = sat(norm(x, 1.0) * 1.6 + .15 * grit, 2.2)
+    x = verb(x, wet=.2, sec=1.2, tau=.32, lpf=2400, seed=35).mean(axis=1)[:n]
+    x = sfx._limit(norm(x, 1.0), 3.5)                              # 黏滑脉冲峰均比高：限幅压一点，响度才对得上老音效
+    return _fin(x, .85, .005, .08)
+
+
+@reg('lighter', '冒牌船长的 Zippo：开盖的亮金属“叮”+ 擦火轮“嚓”+ 一小下火苗“噗”（0.3 s）', la=-20)
+def _lighter(seed=0):
+    rng = _rng('lighter', seed)
+    n = _n(.32)
+    x = np.zeros(n)
+    m = _n(.2)                                                     # 1. 开盖：铰链咔 + 盖子“叮”
+    lid = _metal(m, [3150, 4620, 6240, 8100], [.07, .05, .035, .02], [1, .75, .5, .3], rng, .002)
+    lid = lid * np.minimum(_t(m) / .0005, 1) + .6 * hp(noise(m, rng), 3000) * env_exp(m, .002, .0002)
+    lid += .25 * bp(noise(m, rng), 800, 2500) * env_exp(m, .006, .0003)
+    _place(x, lid, 0)
+    m = _n(.06)                                                    # 2. 擦火轮：密集砂砾 + “嚓”
+    wheel = _clicks(m, 1500, rng, (.08, .5), 2500, np.interp(_t(m), [0, .005, .045, .06], [0, 1, .3, 0]))
+    wheel += .5 * bp(noise(m, rng), 2500, 8000) * env_pts(m, [(0, 0), (.004, 1), (.035, .25), (.06, 0)])
+    _place(x, wheel, _n(.115), .9)
+    m = _n(.17)                                                    # 3. 火苗：小“噗”+ 一点呼呼声
+    tt = _t(m)
+    puff = bp(noise(m, rng), 300, 1600) * env_pts(m, [(0, 0), (.01, 1), (.05, .35), (.17, 0)])
+    puff += .35 * osc(_dsig(m, 140, 70), m) * env_exp(m, .03, .004)
+    puff += .2 * lp(noise(m, rng), 900) * (1 + .5 * np.sin(_TAU * 14 * tt)) * env_pts(m, [(0, 0), (.03, 1), (.17, 0)])
+    _place(x, puff, _n(.15), .7)
+    return _fin(x, .6, .0005, .03)
+
+
 if __name__ == '__main__':
     # 自检：把本文件登记的全部新音效各渲一次，打印时长 / 声道 / 峰值 / 感知响度
     for nm in sorted(GAME):

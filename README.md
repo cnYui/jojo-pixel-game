@@ -58,6 +58,7 @@
 - 战斗回归：`test_combat` 14/14、`test_specials` 79/79、`test_special_visuals` 12/12（战斗美术代理最后一次烘焙之后）。
 - 体验版开关：`tools/dev/full/test_demo.py` 9 项全过（开发目录和打好的包都测过）。
 - 手机：Playwright 模拟横屏触屏（`tools/dev/full/test_touch_layout.py`）能从标题点到牢房自由走动、0 报错；真机没测。
+- **第2章（2026-10-11 按体验版精度重做完）**：正常路线 303 s 打到章末、帧率 60、没有缺图 / 缺字 / 缺音效（`tools/_playtest/c2_flow3`）；故意输路线：暗蓝之月输 2 次后有「放水再来」、力量输 1 次后重来，打到章末，0 报错（`c2_lose1`）。设计和台词见 `docs/章节素材调研/ch2_南海_节拍表.md`。
 - 其余各章：见下面「暂停中的工作」。
 
 ## 暂停中的工作（2026-10-10 起，先做序章 + 第1章 demo）
@@ -66,9 +67,9 @@
 
 | 线 | 收尾记录 | 一句话 |
 |---|---|---|
-| 第1–5章整章测试修复 | `20261010-093937-jojo-ch1-ch5-routes-wrapup_CN.md` | 第1章能打到最后一张图（含故意输重试）；第2章力量战管道修了没复测；第3–5章没跑 |
+| 第1–5章整章测试修复 | `20261010-093937-jojo-ch1-ch5-routes-wrapup_CN.md` | 第1章能打到最后一张图（含故意输重试）；~~第2章力量战管道修了没复测~~（2026-10-11 第2章整章重做、正常 / 故意输两条路线都打通）；第3–5章没跑 |
 | 第6章–终章整章测试修复 | `20261010-093937-jojo-ch6-final-routes-wrapup_CN.md` | 第6、8章到章末；第7章审判第二段、第9章阿努比斯没打完；第10章–终章没跑；终章 DIO 4 处改动没验证 |
-| 第2–6章背景重画 | `20261010-093937-jojo-bg-ch2-ch6-wrapup_CN.md` | 只拍了 24 张改前图，没动游戏文件 |
+| 第2–6章背景重画 | `20261010-093937-jojo-bg-ch2-ch6-wrapup_CN.md` | 只拍了 24 张改前图，没动游戏文件。**第2章的四张（yacht_deck / freighter_deck / freighter_corridor / underwater）+ 新的 sea_fog 已在 2026-10-11 重画接入**（`tools/bg_new/ch2_preview.py` 出前后对照）；第3–6章没动 |
 | 第7章–终章背景重画 | `20261010-093937-jojo-bg-ch7-final-wrapup_CN.md` | 只做了预览工具 `tools/bg_new/late_preview.py`，没动游戏文件 |
 
 ## 目录
@@ -95,6 +96,12 @@ python -B tools\dev\full\locked_build.py art chars ui data check
 python -B tools\dev\full\test_prologue.py prologue --out tools\_playtest\prologue
 # 第1章路线
 python -B tools\dev\full\test_ch1.py ch1
+# 第2章路线（加 --lose 故意输：暗蓝之月输两次验「放水再来」）
+python -B tools\dev\full\test_mid_early.py ch2 --out tools\_playtest\<名字>
+# 单独打第2章某一战（调数值用，不当通关证据）
+python -B tools\dev\full\dev_fight.py ch2 --entry ch2Darkmoon --out tools\_playtest\<名字>
+# 第2章背景改前 / 改后预览
+python -B tools\bg_new\ch2_preview.py after yacht_deck
 # 牢房探索 / 抢漫画回归
 python -B tools\dev\full\test_jail_explore.py
 python -B tools\dev\full\repro_jail_grab.py

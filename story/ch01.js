@@ -290,7 +290,8 @@
     if (plane) await S.animate(.9, k => { plane.x = 150 + k * 60; plane.z = 90 - k * 80; }); else await S.wait(.9);
     await S.setStage('sea_ch1', { x: 160, y: 156, music: null });
     S.impact(['invert', 'blue']); S.sfx('crash'); S.sfx('splash'); S.shake(5, .5);
-    [100, 160, 220].forEach(x => S.fx('water_splash', { x, y: 140, size: 30 }));
+    // water_splash 的 size 是倍数（1 = 34 px 水柱），原来写 30 = 一千多像素的水柱 + 九百像素的涟漪圈，天空整块被刷成平蓝（2026-10-11 发现）
+    [100, 160, 220].forEach(x => S.fx('water_splash', { x, y: 140, size: 1.6 }));
     S.sfxText('扑通——！！', { x: 320, y: 180 });
     for (const [i, cid] of crew.entries()) { const a = S.actor(cid); a.x = 90 + i * 46; a.y = 156; a.follow = null; S.pose(a, 'float'); }
     // 海面只占画面下方，底部对话框会把漂在水上的四个人整个挡住：这一段对话框也放到上面
