@@ -1,10 +1,11 @@
 r"""边打边录：测试器用真实键盘把一章从头打到尾，页面里同时录画面 + 混音、BGM、音效三条（recorder.js）。
 
     python -B tools\dev\record\record_demo.py prologue --out <目录>
-    python -B tools\dev\record\record_demo.py ch1 --out <目录>
+    python -B tools\dev\record\record_demo.py ch1 --out <目录>      （ch2 / ch3 / ch4 同理）
 
 输出：<目录>\full.webm（画面 + 混音）、bgm.webm、sfx.webm（三条同一时刻开录）、run.json（marks：剧情标记 / 战斗开始 /
-必杀 / 连打 / 弹反……的时间，单位秒，**已换算成从开录算起**）。画面上不画对话框、操作提示、目标箭头（recorder.js）。
+必杀 / 连打 / 弹反……的时间，单位秒，**已换算成从开录算起**；samples：每 0.5 秒一行 [t, 队长, 地图, 战斗, 血量,
+Boss 名, Boss 血量, 连击, 能量]，按角色 / 场景挑精彩片段用）。画面上不画对话框、操作提示、目标箭头（recorder.js）。
 用本机 http 服务打开游戏；录的时候别跑转码之类的重活（会掉帧）。
 """
 import sys
@@ -33,15 +34,32 @@ def tester_class(chapter):
     if chapter == 'prologue':
         import test_jail_shots
         return test_jail_shots.JailTester
+    if chapter in ('ch2', 'ch3'):
+        import test_mid_early
+        return test_mid_early.EarlyTester
+    if chapter == 'ch4':
+        import playtest_mid
+        return playtest_mid.MidTester
     import test_ch1
     return test_ch1.Ch1Tester
 
 
 def make_recording_tester(base):
     class Rec(base):
-        """多记几种“好看的时刻”：计数一涨就记一条 mark（必杀、连打开始、弹反、QTE……）。"""
+        """多记几种“好看的时刻”：计数一涨就记一条 mark（必杀、连打开始、弹反、QTE……）；每 0.5 秒记一行 samples。"""
+        samples = None
+        _next_sample = 0
+
         def st(self):
             s = super().st()
+            if self.samples is None:
+                self.samples = []
+            if self.elapsed() >= self._next_sample:
+                self._next_sample = self.elapsed() + 0.5
+                boss = s.get('boss') or {}
+                self.samples.append([self.elapsed(), s.get('leader'), s.get('stage'), s.get('fightId') if s.get('combat') else None,
+                                     s.get('hp'), boss.get('name'), boss.get('hp'), s.get('combo'), s.get('energy'),
+                                     1 if s.get('insert') else 0, 1 if s.get('cine') else 0])
             c = s.get('counts') or {}
             prev = getattr(self, '_prev_counts', {})
             for k in COUNT_KEYS:
@@ -63,7 +81,7 @@ class Quiet(http.server.SimpleHTTPRequestHandler):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('chapter', choices=['prologue', 'ch1'])
+    ap.add_argument('chapter', choices=['prologue', 'ch1', 'ch2', 'ch3', 'ch4'])
     ap.add_argument('--out', type=Path, required=True)
     ap.add_argument('--keep-ui', action='store_true', help='画面上保留对话框和提示')
     a = ap.parse_args()
@@ -118,8 +136,9 @@ def main():
     srv.shutdown()
     marks = [[round(m[0] + offset, 2)] + list(m[1:]) for m in t.marks]
     trace = [dict(x, t=round(x['t'] + offset, 2)) for x in t.trace]
+    samples = [[round(r[0] + offset, 2)] + r[1:] for r in (t.samples or [])]
     run = {'chapter': a.chapter, 'offset': round(offset, 3), 'length': round(rec_len, 2), 'fps': fps,
-           'marks': marks, 'trace': trace, 'errors': errors + t.errors, 'notes': t.notes}
+           'marks': marks, 'trace': trace, 'samples': samples, 'errors': errors + t.errors, 'notes': t.notes}
     (out / 'run.json').write_text(json.dumps(run, ensure_ascii=False, indent=1), encoding='utf-8')
     print(json.dumps({'len': run['length'], 'marks': len(marks), 'errors': len(run['errors']), 'fps': fps}, ensure_ascii=False))
 
