@@ -4,7 +4,8 @@
 
 **双击 `index.html` 就能玩**（Chrome / Edge；`file://` 直接打开，不用装东西、不用联网、不用开服务器）。
 
-> 标题曲是用户提供的《STAND PROUD》，商业歌曲，只适合本机自己玩，不要公开分发。
+> 完整版的标题曲是《STAND PROUD》，商业歌曲，**本仓库不包含**（`assets/audio/user/title_song.mp3`、`data/music/title_song.js` 已被 `.gitignore` 排除）。
+> 没有这两个文件时标题画面不放歌；体验版（`DEMO`）用的是原作的芯片音乐 `title`，不受影响。自己有授权的话，把歌放回这两个路径即可。
 
 ## 开始
 
