@@ -61,9 +61,10 @@
   function shotOrigin(a,m){
     const s=a.stand,f=a.facing||1,k=scOf(a);
     // bx = 枪口根部（本体 x）：弹体第一帧从这里扫到出手点，贴身的敌人也打得到（出手点在替身身前 30 多 px）
-    if(m.from==='stand'&&s&&s.visible&&s.kind==='humanoid'&&s.atlas){const top=s.atlas.topPx?s.atlas.topPx():48;return {x:s.x+f*(m.shotAhead==null?12:m.shotAhead)*k,y:a.y,z:s.z+(m.shotZ==null?top*.6:m.shotZ)*k,bx:a.x};}
+    // 招式里写的 shotAhead / shotZ 是原尺寸的像素，人物缩了 G.D.ck 倍，出手点（手的位置）也要跟着缩；缺省的 top*.6 本来就是缩过的 topPx，不再乘
+    if(m.from==='stand'&&s&&s.visible&&s.kind==='humanoid'&&s.atlas){const top=s.atlas.topPx?s.atlas.topPx():48,ck=ckv();return {x:s.x+f*(m.shotAhead==null?12:m.shotAhead)*k*ck,y:a.y,z:s.z+(m.shotZ==null?top*.6:m.shotZ*ck)*k,bx:a.x};}
     const h=(a.topPx?a.topPx():44)*k;
-    return {x:a.x+f*(m.shotAhead==null?8:m.shotAhead)*k,y:a.y,z:(a.z||0)+Math.min(h*.55,30*k),bx:a.x};
+    return {x:a.x+f*(m.shotAhead==null?8:m.shotAhead)*k*ckv(),y:a.y,z:(a.z||0)+Math.min(h*.55,30*k*ckv()),bx:a.x};
   }
   // 弹体高度落在“能打到站着的人”的带子里：updateShots 按 |弹 z − 目标 z − 20| ≤ hitR[2] 判，出手点太高会从头顶飞过去
   function hittableZ(spec,z){const rz=(spec.hitR||[8,7,18])[2];return clamp(z,20-rz+2,20+rz-2);}
@@ -78,14 +79,14 @@
       if(dur!=null)kw.t1=dur;if(kind==='thrust')Object.assign(kw,{colour:'#c8d8ff',spread:22,rate:36});else kw.reach=14;
       return fxAt('rush',Object.assign(kw,visual),a,(dur==null?CFG.rushMax:dur)+.35);
     }
-    if(kind==='fire'){const reach=(r.reach&&r.reach[1])||80;return fxAt('fire_jet',{x0:()=>standFront(a,12).x,x1:()=>a.x+f()*reach*scOf(a),y:fy,thick:1.1},a,dur==null?CFG.rushMax:dur);}
+    if(kind==='fire'){const reach=ckReach(r.reach||[0,80])[1]||80;return fxAt('fire_jet',{x0:()=>standFront(a,12).x,x1:()=>a.x+f()*reach*scOf(a),y:fy,thick:1.1},a,dur==null?CFG.rushMax:dur);}
     return null;
   }
   // 连打追身：J3 把人挑飞 / 打退 24 px 后，连打判定（白金之星 6–52）够不着，整段连打打空气、终结也落空。
   //   进连打和每一跳都看一眼正前方 reach + 48 px 内最近的敌人，比 reach − 12 远就往前滑过去（每帧最多 4 px，撞墙停）；弹体连打不追
   function chaseNeed(a,r){
     if(!r || r.shot || r.chase===false)return 0;
-    const f=a.facing||1,reach=(r.reach||[0,40])[1],dep=(r.depth||10)+6;let best=null;
+    const f=a.facing||1,reach=ckReach(r.reach||[0,40])[1],dep=(r.depth||10)+6;let best=null;
     for(const t of targets(a)){if(t.team==='object')continue;const dx=(t.x-a.x)*f;if(dx<0 || dx>reach+48 || Math.abs(t.y-a.y)>dep)continue;if(best==null || dx<best)best=dx;}
     return best==null?0:Math.max(0,best-(reach-12));
   }
@@ -97,7 +98,11 @@
   const idle = a => { a.atk=null; a.tele=null; a._preHazard=false; a.outline=null; a.auraFlame=null; a.ghostOn=false; state(a,'idle'); play(a,a.idleAnim || 'idle'); if(a.stand)a.stand.idle(); };
   const getMove = m => typeof m === 'string' ? G.MOVES[m] : m;
   const kitOf = a => Object.assign({},a.kit || G.KITS[a.cid] || {},ctx() && ctx().spec.kitOverride && ctx().spec.kitOverride[a.cid] || {});
-  function normMove(m) {return Object.assign({slot:'enemy',dur:.5,active:[0,.1],reach:[0,40],depth:8,zr:26,from:'body',dmg:0,push:0,guard:'normal',hits:1,every:0,parryBreak:true,sfxHit:'punch',fxHit:'light'},getMove(m) || {});}
+  // 人物整体缩了 G.D.ck 倍：近战 / 连打的判定距离跟着缩（≥150 的是远程光束，不缩）；_ck 标记防止规范化过的招式被再缩一次
+  const ckv = () => (G.D && G.D.ck) || 1;
+  const ckReach = r => Array.isArray(r) && r.length>1 && r[1]<150 ? r.map(v=>Math.round(v*ckv())) : r;
+  function normMove(m) {const o=normMove0(m);if(o._ck)return o;o._ck=true;if(o.melee!==false)o.reach=ckReach(o.reach);return o;}
+  function normMove0(m) {return Object.assign({slot:'enemy',dur:.5,active:[0,.1],reach:[0,40],depth:8,zr:26,from:'body',dmg:0,push:0,guard:'normal',hits:1,every:0,parryBreak:true,sfxHit:'punch',fxHit:'light'},getMove(m) || {});}
   function gainEnergy(a,n,reason) {
     if(!a || !n || enemySide(a))return;
     const old=a.energy || 0; a.energy=clamp(old+n*(a===W().player ? 1 : CFG.ally.energyMul),0,CFG.energy.max);

@@ -138,6 +138,16 @@
     if (G.lateGame) return 'late';
     return G.world && G.world.combat ? 'combat' : 'explore';
   }
+  // qte 场景按当前小游戏的玩法决定亮哪些钮：拔 / 瞄准要方向盘 + J（按住）；press 类要的是剧情指定的那个键（J / K / L / U）；其余连按 / 看时机只要 J
+  const KEY_BTN = { attack: 'j', dodge: 'k', guard: 'l', special: 'u' };
+  function qteShow(q) {
+    const show = { pad: 0, j: 0, k: 0, l: 0, u: 0, e: 1, swap: 0, pause: 1 };
+    const t = q && q.type;
+    if (t === 'pluck' || t === 'aim') { show.pad = 1; show.j = 1; }
+    else if (t === 'press') show[KEY_BTN[q.key] || 'j'] = 1;
+    else show.j = 1;
+    return show;
+  }
   const CAP = {   // 各场景下按钮下面的小字
     j: { qte: '连按' },
     e: { menu: '确认', title: '确认', qte: '确认' },
@@ -155,7 +165,7 @@
   let lastCtx = '';
   function refresh() {
     const c = context();
-    const show = Object.assign({}, SHOW[c]);
+    const show = c === 'qte' ? qteShow(G.ui.qte) : Object.assign({}, SHOW[c]);
     const lateTouch = c === 'late' && G.lateGame.touch;
     // 机关各自声明操作，避免探索层把格挡、闪避或小游戏专用 U 藏起来。
     if (lateTouch && Array.isArray(lateTouch.buttons)) {
@@ -183,6 +193,11 @@
       lastCtx = c;
       for (const n in caps) caps[n].textContent = lateTouch && lateTouch.captions && lateTouch.captions[n] ||
         (CAP[n] && CAP[n][c]) || capDefault[n];
+    }
+    if (c === 'qte') {        // 拔 / 瞄准是按住，不是连按；press 类的钮用自己原来的字
+      const q = G.ui.qte, t = q && q.type;
+      const cap = t === 'pluck' ? '按住' : t === 'aim' ? (q.throw ? '投石' : '按住') : t === 'press' ? capDefault.j : '连按';
+      if (caps.j.textContent !== cap) caps.j.textContent = cap;
     }
     el.u.classList.toggle('ready', uReady && show.u > 0);
     el.u.classList.toggle('gold', uGold);

@@ -202,7 +202,8 @@
   };
   async function spAvdol(p, C) {
     const target = C.target();
-    const ang = C.aim(target);
+    C.aim(target);                                  // 只用来把人转向最近的敌人；火焰不再朝敌人斜着飞 / 追着拐弯，沿转好后的朝向水平直飞（2026-10-11 用户要求）
+    const ang = p.facing < 0 ? Math.PI : 0;
     C.stand('cast', { dx: 12, hold: true });   // 双手前推（punch_heavy 2026-10-10 起是重拳帧；大招照旧 cast）
     C.sfx('crossfire');
     // 安卡在红色魔术师伸出的手上聚起来，再从手上飞出去（以前从阿布德尔身上、离地 24 px 飞出，大安卡整个压在他身上）
@@ -210,7 +211,7 @@
     C.fx('fire_ankh', { x: h0.x, y: h0.y - h0.z, size: 54, grow: 0.18 }, { life: 0.2 });
     await C.wait(0.18);
     const s = C.shoot(Object.assign({}, M.AV_U_ANKH, {
-      ang, homingTarget: target, visualSize: 76,
+      ang, homing: 0, hitR: [12, 14, 26], visualSize: 76,       // 不追踪；直飞靠纵深判定吃敌人，从 10 放宽到 14（和重拳的纵深一样）
       onHit: (sh, t) => {
         C.impact(['invert', 'red'], f(2), f(8));
         C.flash(f(9), 0.7, '#ffffff');

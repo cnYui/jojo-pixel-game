@@ -7,6 +7,8 @@
   const easeIn = (u) => (G.ease ? G.ease(u, 'in') : u * u * u);
   const lerp = (a, b, u) => a + (b - a) * u;
   const IDLE_DEF = { dx: -6, z: 6 };
+  // 构建时人物 / 替身整体缩了 G.D.ck 倍：所有以像素写的“替身离本体多远 / 多高 / 藤蔓多长”都在这里统一乘回去
+  const ck = () => (G.D && G.D.ck) || 1;
   const SAND = ['#f0c878', '#d8a050', '#fbe0a0'];
   const AUTO_RECALL = 2.5;          // 自由走动：亮出来以后多久没动作就收回
   const VINE_GROW = 0.1;
@@ -57,7 +59,7 @@
     idleSpot() {
       const sp = this.owner.standPos;
       const ip = (sp && (sp.dx != null || sp.z != null) ? sp : null) || this.def.idle || IDLE_DEF;
-      return { dx: ip.dx == null ? IDLE_DEF.dx : ip.dx, z: ip.z == null ? IDLE_DEF.z : ip.z };
+      return { dx: (ip.dx == null ? IDLE_DEF.dx : ip.dx) * ck(), z: (ip.z == null ? IDLE_DEF.z : ip.z) * ck() };
     }
     link() {
       const sp = this.owner.standPos;
@@ -117,6 +119,7 @@
       // 值为 undefined 的键不覆盖默认值：combat 出招时传 { dx: m.standDx }，招式没写 standDx 就是 undefined，
       // 以前会让替身 x 变成 NaN 且再也回不来（火柱之后红色魔术师消失、法皇射出的宝石 x 为 NaN）
       for (const k in o) if (o[k] !== undefined) p[k] = o[k];
+      p.dx *= ck(); p.z *= ck();
       this.mode = 'act'; this.modeT = 0;
       this.pose = pose; this.poseT = 0; this.seq = p.seq || null; this.frameOverride = null;
       this._act = p; this.dx = p.dx; this.depth = p.depth === 'back' ? -0.5 : 0.5; this.holdT = 0; this.idleT = 0;
@@ -292,8 +295,10 @@
       }
       if (u <= 0) return;
       // 从乔瑟夫伸出去的手上长（point 帧的手在身前 ≈ 12 px、离脚底 30 px；以前从胸口 6 px 处长）
-      const x0 = Math.round(ow.x + f * 12 * ow.scale - camX), y0 = Math.round(ow.y - ow.z - 30 * ow.scale - camY);
-      const x1 = Math.round(x0 + f * v.len * ow.scale * u), y1 = Math.round(y0 + v.dy * ow.scale * u);
+      // 12 / 30 / len / dy 都是原尺寸的像素，人物缩了 ck 倍，手的位置和藤蔓长度一起缩
+      const k = ow.scale * ck();
+      const x0 = Math.round(ow.x + f * 12 * k - camX), y0 = Math.round(ow.y - ow.z - 30 * k - camY);
+      const x1 = Math.round(x0 + f * v.len * k * u), y1 = Math.round(y0 + v.dy * k * u);
       if (G.FX && G.FX.vines) G.FX.vines(P, x0, y0, x1, y1, t, v.t0 - 1, v.t0 - 1, { colour: 'purple', strands: v.thorns ? 3 : 2, seed: ow.uid % 97, wiggle: 2 });
       else if (G.px && G.px.line) { G.px.line(P, x0, y0, x1, y1, '#9a4ce0', 1, 2); G.px.line(P, x0, y0 + 1, x1, y1 + 1, '#5a2a90', 1, 1); }
     }
