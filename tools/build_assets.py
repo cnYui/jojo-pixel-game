@@ -65,6 +65,21 @@ from PIL import Image, ImageDraw, ImageFont  # noqa: E402
 
 from engine.core import W, H, UW, UH, FPS, Frame  # noqa: E402
 
+# ====================================================================== 人物比例（2026-10-11）
+# 全游戏人物 / 替身 / 道具统一缩小到 CK 倍（《银魂》主角占画布高 15.7%，JoJo 原来 26%）。
+# 缩放在构建时做（art\shrink.py：多数色 + 描边优先，保持像素风），引擎不再运行时缩放。
+# 已经按缩小后尺寸画好的图集（art_chibi 画的六个主角）在自己的 json 里写 "k": 0.625，这里就不再缩。
+# 环境变量 JOJO_CK 可以临时换系数做对比（1 = 不缩）。
+CK = float(os.environ.get("JOJO_CK", "0.625"))
+SHRINK_PROP_KEEP = {"card", "coin", "chip", "photo", "photo_crew", "photo_ape_helm", "manga", "tv", "camera",
+                    "magazine", "magazine_vest", "tissue"}          # 特写 / 卡片 / 小游戏里用的，不缩
+SHRINK_SCENE_CATS = {"prop", "pose", "part", "npc"}                  # 场景专用里只缩“长在世界里”的；fx / portrait / icon 不缩
+
+
+def _shrink_mod():
+    return import_file("art_shrink", os.path.join(ART_DIR, "shrink.py"))
+
+
 if hasattr(sys.stdout, "reconfigure"):
     try:
         sys.stdout.reconfigure(encoding="utf-8")
@@ -573,7 +588,7 @@ def _idle_bbox(sheet, m):
 
 
 def step_chars(B):
-    inputs = [ATLAS, os.path.join(B.assets, "chars_new"), os.path.join(ART_DIR, "amap.py"),
+    inputs = [ATLAS, os.path.join(B.assets, "chars_new"), os.path.join(ART_DIR, "amap.py"), os.path.join(ART_DIR, "shrink.py"),
               os.path.join(B.registry, "stands.json"), os.path.join(B.registry, "ui_texts.json"),
               os.path.join(HERE, "ui_jojo.py")]
     if B.cached("chars", inputs):
@@ -605,8 +620,15 @@ def step_chars(B):
         if not os.path.exists(png):
             B.error(f"{cid}: 图集 PNG 不存在 {png}")
             continue
-        B.copy_png(png, "chars/" + cid, "core", ["chars", safe_seg(cid) + ".png"])
         sheet = Image.open(png).convert("RGBA")
+        cell, pivot = list(m["cell"]), list(m["pivot"])
+        ck = float(m.get("k") or 1.0)                  # json 里写了 k = 已经画成缩小后的尺寸，不再缩
+        if m.get("k") is None and CK != 1.0:
+            sheet, cell, pivot = _shrink_mod().shrink_sheet(sheet, cell, pivot, CK)
+            ck = CK
+            B.save_png(sheet, "chars/" + cid, "core", sub="chars")
+        else:
+            B.copy_png(png, "chars/" + cid, "core", ["chars", safe_seg(cid) + ".png"])
         if sheet.width > 4096 or sheet.height > 4096:
             report["too_big"].append(cid)
             B.error(f"{cid}: 图集 {sheet.width}×{sheet.height} 超过 4096（银魂坑 A11）")
@@ -634,9 +656,9 @@ def step_chars(B):
             size = list(ex.get("size") or Image.open(os.path.join(d, ex["files"][0])).size)
             if size != [32, 32]:
                 hsize[emo] = size
-        chars[cid] = dict(name=m.get("name", cid), image="chars/" + cid, cell=list(m["cell"]),
-                          pivot=list(m["pivot"]), animations=anims, aliases=aliases, heads=heads,
-                          headAlias=alias, headSize=hsize, _sheet=sheet, _src=src)
+        chars[cid] = dict(name=m.get("name", cid), image="chars/" + cid, cell=cell,
+                          pivot=pivot, animations=anims, aliases=aliases, heads=heads,
+                          headAlias=alias, headSize=hsize, k=round(ck, 4), _sheet=sheet, _src=src)
 
     # 场景专用的 17 张说话头像并进来（§5.3）
     scat = load_json(os.path.join(ATLAS, "场景专用", "场景专用目录.json"), {}) or {}
@@ -690,7 +712,10 @@ def step_chars(B):
             wpx = bb[2] - bb[0]
         else:
             ch["top"], wpx = int(ch["cell"][1]), 10
-        ch["bodyW"] = int(bodyw_src.get(cid, max(3, int(round(wpx * 0.3)))))
+        if cid in bodyw_src:        # 表里写的是原尺寸的判定体宽，跟着图一起缩
+            ch["bodyW"] = max(3, int(round(bodyw_src[cid] * ch.get("k", 1.0))))
+        else:
+            ch["bodyW"] = max(3, int(round(wpx * 0.3)))
         ch["kind"] = "stand" if cid in stand_ids else ("animal" if cid in ANIMAL_CIDS else "char")
         del ch["_sheet"]
         del ch["_src"]
@@ -737,15 +762,35 @@ def step_chars(B):
             st["fist"] = bool(sid in chars and "fist" in chars[sid]["animations"])
 
     B.save_meta("chars_report", report)
-    B.save_meta("chars", dict(chars=chars, heroes=heroes, speakers=speakers, stands=stands))
+    B.save_meta("chars", dict(chars=chars, heroes=heroes, speakers=speakers, stands=stands, ck=CK))
     print(f"  chars: {len(chars)} 个图集（原 {n_orig}，新 / 覆盖 {len(new_ids)}），"
           f"头像 {sum(len(c['heads']) for c in chars.values())} 种表情，heroes {len(heroes)}，stands {len(stands)}")
 
 
 # ====================================================================== props
+def _shrink_ok(pid, size, scene_cat=None):
+    """道具 / 场景小图要不要跟着人物缩：太小的（缩了就糊成点）和特写 / 卡片里用的不缩。"""
+    if CK == 1.0 or pid in SHRINK_PROP_KEEP or pid.startswith("map_"):
+        return False
+    if scene_cat is not None and scene_cat not in SHRINK_SCENE_CATS:
+        return False
+    return size[1] >= 10 or size[0] >= 24
+
+
+def _put_strip(B, src_png, key, sub, size, pivot, frames, do_shrink):
+    """存一条横向帧条（道具 / 场景小图）；do_shrink 时按 CK 缩。返回 (size, pivot, k)。"""
+    if do_shrink:
+        strip = Image.open(src_png).convert("RGBA")
+        new, nsize, npiv = _shrink_mod().shrink_strip(strip, size, pivot, int(frames), CK)
+        B.save_png(new, key, "core", sub=sub)
+        return nsize, npiv, CK
+    B.copy_png(src_png, key, "core", sub.split("/") + [safe_seg(key.split("/")[-1]) + ".png"])
+    return list(size), list(pivot), 1.0
+
+
 def step_props(B):
     pnew = os.path.join(B.assets, "props_new")
-    inputs = [os.path.join(ATLAS, "道具"), os.path.join(ATLAS, "场景专用"), pnew]
+    inputs = [os.path.join(ATLAS, "道具"), os.path.join(ATLAS, "场景专用"), pnew, os.path.join(ART_DIR, "shrink.py")]
     if B.cached("props", inputs):
         return
     B.drop_step_images("props")
@@ -753,9 +798,10 @@ def step_props(B):
     cat = load_json(os.path.join(ATLAS, "道具", "道具目录.json"), {}) or {}
     for s in cat.get("sprites", []):
         key = "props/" + s["id"]
-        B.copy_png(os.path.join(ATLAS, "道具", s["file"]), key, "core", ["props", safe_seg(s["id"]) + ".png"])
-        props[s["id"]] = dict(image=key, frames=s["frames"], size=list(s["size"]), pivot=list(s["pivot"]),
-                              fps=s.get("fps", 0), kind=s.get("kind", "static"))
+        sz, pv, k = _put_strip(B, os.path.join(ATLAS, "道具", s["file"]), key, "props", s["size"], s["pivot"],
+                               s["frames"], _shrink_ok(s["id"], s["size"]))
+        props[s["id"]] = dict(image=key, frames=s["frames"], size=sz, pivot=pv,
+                              fps=s.get("fps", 0), kind=s.get("kind", "static"), k=k)
     orig = set(props)
     nj = os.path.join(pnew, "props_new.json")
     pn = load_json(nj)
@@ -772,13 +818,18 @@ def step_props(B):
                 B.error(f"新道具 {pid} 的图不存在：{fp}")
                 continue
             key = "props/" + pid
-            B.copy_png(fp, key, "core", ["props", safe_seg(pid) + ".png"])
-            props[pid] = dict(image=key, frames=s.get("frames", 1), size=list(s["size"]),
-                              pivot=list(s.get("pivot", [s["size"][0] // 2, s["size"][1]])),
-                              fps=s.get("fps", 0), kind=s.get("kind", "static"), isNew=True)
+            piv0 = list(s.get("pivot", [s["size"][0] // 2, s["size"][1]]))
+            # 新道具 json 里自己写了 "k" = 已经按缩小后的尺寸画好
+            sz, pv, k = _put_strip(B, fp, key, "props", s["size"], piv0, s.get("frames", 1),
+                                   s.get("k") is None and _shrink_ok(pid, s["size"]))
+            props[pid] = dict(image=key, frames=s.get("frames", 1), size=sz, pivot=pv,
+                              fps=s.get("fps", 0), kind=s.get("kind", "static"), isNew=True,
+                              k=k if s.get("k") is None else float(s["k"]))
             for extra in ("type", "hp", "anchor"):
                 if extra in s:
                     props[pid][extra] = s[extra]
+            if "anchor" in s and k != 1.0 and s.get("k") is None:      # 锚点是原图像素，跟着缩
+                props[pid]["anchor"] = [int(round(v * k)) for v in s["anchor"]]
     scat = load_json(os.path.join(ATLAS, "场景专用", "场景专用目录.json"), {}) or {}
     for s in scat.get("sprites", []):
         key = "scene/" + s["id"]
@@ -786,10 +837,11 @@ def step_props(B):
         src_png = os.path.join(pnew, "scene", s["file"])
         if not os.path.exists(src_png):
             src_png = os.path.join(ATLAS, "场景专用", s["file"])
-        B.copy_png(src_png, key, "core", ["props", "scene", safe_seg(s["id"]) + ".png"])
-        scene[s["id"]] = dict(image=key, frames=s["frames"], size=list(s["size"]), pivot=list(s["pivot"]),
+        sz, pv, k = _put_strip(B, src_png, key, "props/scene", s["size"], s["pivot"], s["frames"],
+                               _shrink_ok(s["id"], s["size"], s.get("category")))
+        scene[s["id"]] = dict(image=key, frames=s["frames"], size=sz, pivot=pv,
                               fps=s.get("fps", 0), kind=s.get("kind", "static"), character=s.get("character"),
-                              category=s.get("category"), scene=s.get("scene"))
+                              category=s.get("category"), scene=s.get("scene"), k=k)
     B.save_meta("props", dict(props=props, scene=scene))
     print(f"  props: 原 {len(orig)} + 新 {len(props) - len(orig)}；scene {len(scene)}")
 
@@ -1190,6 +1242,7 @@ def assemble(B, data_dir, file_prefix="data/", packs_override=None, extra_meta=N
         packs["bg_" + short] = p
         groups.setdefault("bg_" + short, [])
     gd["packs"] = packs
+    gd["ck"] = cm.get("ck", 1.0)          # 人物缩小系数（引擎里要按它调的几处常数：血条高度、招式前伸距离……）
     gd["chars"] = cm.get("chars", {})
     gd["heroes"] = cm.get("heroes", {})
     gd["speakers"] = cm.get("speakers", {})
