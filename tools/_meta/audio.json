@@ -88,15 +88,6 @@
    "samples": 1769472,
    "sec": 40.124082
   },
-  "title_song": {
-   "file": "data/music/title_song.js",
-   "sec": 273.06,
-   "samples": 12041946,
-   "encDelay": 1105,
-   "loopStart": 0,
-   "loopEnd": 273.06,
-   "stream": true
-  },
   "travel": {
    "barSec": 1.991111,
    "beatSec": 0.497778,

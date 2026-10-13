@@ -33,7 +33,8 @@ import time  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 GAME = os.path.dirname(HERE)
-SRC = os.path.join(os.path.dirname(GAME), "源码")
+from source_workspace import SRC as SOURCE_SRC
+SRC = str(SOURCE_SRC)
 sys.path.insert(0, os.path.join(SRC, "tools"))
 sys.path.insert(0, SRC)
 

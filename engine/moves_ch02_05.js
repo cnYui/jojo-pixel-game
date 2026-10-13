@@ -4,7 +4,8 @@
   const G=window.G,M=G.MOVES,K=G.KITS,f=n=>n/60;
   const basic=(id,tier,frames,dmg,reach=48,o={})=>M[id]=Object.assign({slot:'enemy',body:'cmd',warn:{tier,dur:f(frames)},dur:f(frames+22),active:[f(frames),f(frames+4)],reach:[0,reach],depth:12,dmg,push:8,sfx:'whoosh',sfxHit:'punch',cd:1.4},o);
   const data=c=>c&&c.data||{};
-  const closeBrain=(e,dt,c)=>{if(!dt||e.rootT>0)return true;const p=c.player;e.facing=p.x>e.x?1:-1;G.AI.approach(e,p,34,dt);if(e.cool<=0&&G.combat.tokens()<2){const id=G.AI.pickMove(e,c);if(id){G.AI.tele(e,id);e.cool=.7;}}return true;};
+  // 近战停靠距离必须随人物缩放，娃娃的短射程才能命中静止玩家。
+  const closeBrain=(e,dt,c)=>{if(!dt||e.rootT>0)return true;const p=c.player;e.facing=p.x>e.x?1:-1;G.AI.approach(e,p,34*((G.D&&G.D.ck)||1),dt);if(e.cool<=0&&G.combat.tokens()<2){const id=G.AI.pickMove(e,c);if(id){G.AI.tele(e,id);e.cool=.7;}}return true;};
   const kit=(id,hp,speed,moves,o={})=>K[id]=Object.assign({hp,speed,moves,brain:closeBrain},o);
   basic('DB_CLAW','W1',24,12,48,{sfxHit:'slash'});
   basic('DB_SCALE','W4',30,8,0,{melee:false,fireAt:[f(30)],shot:{kind:'gem',n:3,spread:18,speed:200,dmg:8,hitR:[4,6,20],reflect:true,colour:'#74afd8'},shotMod:(a,c)=>({n:a.hp<=a.maxHp*.5?5:3,onHit:(s,t,r)=>{if(t===c.player&&r.dmg&&!r.guard)data(c).barnacles=Math.min(5,(data(c).barnacles||0)+1);}})});

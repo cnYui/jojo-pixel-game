@@ -10150,27 +10150,27 @@
     {
       "kind": "音效",
       "key": "punch",
-      "where": "engine/combat.js:100"
+      "where": "engine/combat.js:105"
     },
     {
       "kind": "音效",
       "key": "fire_burst",
-      "where": "engine/combat.js:270"
+      "where": "engine/combat.js:275"
     },
     {
       "kind": "界面:sfx",
       "key": "破绽！",
-      "where": "engine/combat.js:132"
+      "where": "engine/combat.js:137"
     },
     {
       "kind": "界面:sfx",
       "key": "キィン！",
-      "where": "engine/combat.js:173"
+      "where": "engine/combat.js:178"
     },
     {
       "kind": "界面:sfx",
       "key": "被劈开了！",
-      "where": "engine/combat.js:529"
+      "where": "engine/combat.js:535"
     },
     {
       "kind": "界面:sfx",
@@ -10180,17 +10180,17 @@
     {
       "kind": "角色",
       "key": "chariot",
-      "where": "engine/moves.js:318"
+      "where": "engine/moves.js:319"
     },
     {
       "kind": "角色",
       "key": "fool",
-      "where": "engine/moves.js:447"
+      "where": "engine/moves.js:448"
     },
     {
       "kind": "角色",
       "key": "fool",
-      "where": "engine/moves.js:450"
+      "where": "engine/moves.js:451"
     },
     {
       "kind": "背景",
@@ -10210,17 +10210,17 @@
     {
       "kind": "背景",
       "key": "radial",
-      "where": "engine/moves.js:298"
+      "where": "engine/moves.js:299"
     },
     {
       "kind": "背景",
       "key": "radial",
-      "where": "engine/moves.js:368"
+      "where": "engine/moves.js:369"
     },
     {
       "kind": "背景",
       "key": "radial",
-      "where": "engine/moves.js:441"
+      "where": "engine/moves.js:442"
     },
     {
       "kind": "特效",
@@ -10235,162 +10235,162 @@
     {
       "kind": "特效",
       "key": "fire_ankh",
-      "where": "engine/moves.js:210"
+      "where": "engine/moves.js:211"
     },
     {
       "kind": "特效",
       "key": "explosion",
-      "where": "engine/moves.js:218"
-    },
-    {
-      "kind": "特效",
-      "key": "fire_burst",
       "where": "engine/moves.js:219"
     },
     {
       "kind": "特效",
-      "key": "shockwave",
+      "key": "fire_burst",
       "where": "engine/moves.js:220"
     },
     {
       "kind": "特效",
+      "key": "shockwave",
+      "where": "engine/moves.js:221"
+    },
+    {
+      "kind": "特效",
       "key": "crack",
-      "where": "engine/moves.js:242"
+      "where": "engine/moves.js:243"
     },
     {
       "kind": "特效",
       "key": "fire",
-      "where": "engine/moves.js:246"
+      "where": "engine/moves.js:247"
     },
     {
       "kind": "特效",
       "key": "explosion",
-      "where": "engine/moves.js:253"
+      "where": "engine/moves.js:254"
     },
     {
       "kind": "特效",
       "key": "burst",
-      "where": "engine/moves.js:309"
+      "where": "engine/moves.js:310"
     },
     {
       "kind": "特效",
       "key": "stand_summon",
-      "where": "engine/moves.js:318"
+      "where": "engine/moves.js:319"
     },
     {
       "kind": "特效",
       "key": "slash_arc",
-      "where": "engine/moves.js:320"
+      "where": "engine/moves.js:321"
     },
     {
       "kind": "特效",
       "key": "slash_arc",
-      "where": "engine/moves.js:326"
+      "where": "engine/moves.js:327"
     },
     {
       "kind": "特效",
       "key": "wrap",
-      "where": "engine/moves.js:347"
+      "where": "engine/moves.js:348"
     },
     {
       "kind": "特效",
       "key": "hamon",
-      "where": "engine/moves.js:354"
+      "where": "engine/moves.js:355"
     },
     {
       "kind": "特效",
       "key": "vines",
-      "where": "engine/moves.js:377"
+      "where": "engine/moves.js:378"
     },
     {
       "kind": "特效",
       "key": "hamon",
-      "where": "engine/moves.js:379"
+      "where": "engine/moves.js:380"
     },
     {
       "kind": "特效",
       "key": "wrap",
-      "where": "engine/moves.js:381"
+      "where": "engine/moves.js:382"
     },
     {
       "kind": "特效",
       "key": "vines",
-      "where": "engine/moves.js:383"
+      "where": "engine/moves.js:384"
     },
     {
       "kind": "特效",
       "key": "hit_spark",
-      "where": "engine/moves.js:385"
+      "where": "engine/moves.js:386"
     },
     {
       "kind": "特效",
       "key": "stand_summon",
-      "where": "engine/moves.js:447"
+      "where": "engine/moves.js:448"
     },
     {
       "kind": "特效",
       "key": "stand_summon",
-      "where": "engine/moves.js:450"
+      "where": "engine/moves.js:451"
     },
     {
       "kind": "特效",
       "key": "burst",
-      "where": "engine/moves.js:452"
-    },
-    {
-      "kind": "特效",
-      "key": "shockwave",
       "where": "engine/moves.js:453"
     },
     {
       "kind": "特效",
       "key": "shockwave",
-      "where": "engine/moves.js:466"
+      "where": "engine/moves.js:454"
+    },
+    {
+      "kind": "特效",
+      "key": "shockwave",
+      "where": "engine/moves.js:467"
     },
     {
       "kind": "特效",
       "key": "smoke",
-      "where": "engine/moves.js:481"
+      "where": "engine/moves.js:482"
     },
     {
       "kind": "特效",
       "key": "speedlines",
-      "where": "engine/moves.js:613"
+      "where": "engine/moves.js:614"
     },
     {
       "kind": "特效",
       "key": "slash_arc",
-      "where": "engine/moves.js:885"
+      "where": "engine/moves.js:886"
     },
     {
       "kind": "特效",
       "key": "glint",
-      "where": "engine/moves.js:925"
+      "where": "engine/moves.js:926"
     },
     {
       "kind": "特效",
       "key": "burst",
-      "where": "engine/moves.js:944"
+      "where": "engine/moves.js:945"
     },
     {
       "kind": "特效",
       "key": "burst",
-      "where": "engine/moves.js:946"
+      "where": "engine/moves.js:947"
     },
     {
       "kind": "特效",
       "key": "slash_arc",
-      "where": "engine/moves.js:966"
+      "where": "engine/moves.js:967"
     },
     {
       "kind": "特效",
       "key": "sparkles",
-      "where": "engine/moves.js:979"
+      "where": "engine/moves.js:980"
     },
     {
       "kind": "特效",
       "key": "glint",
-      "where": "engine/moves.js:1006"
+      "where": "engine/moves.js:1007"
     },
     {
       "kind": "音效",
@@ -10405,72 +10405,72 @@
     {
       "kind": "音效",
       "key": "crossfire",
-      "where": "engine/moves.js:207"
+      "where": "engine/moves.js:208"
     },
     {
       "kind": "音效",
       "key": "crossfire",
-      "where": "engine/moves.js:230"
+      "where": "engine/moves.js:231"
     },
     {
       "kind": "音效",
       "key": "rumble",
-      "where": "engine/moves.js:243"
+      "where": "engine/moves.js:244"
     },
     {
       "kind": "音效",
       "key": "armor_off",
-      "where": "engine/moves.js:306"
+      "where": "engine/moves.js:307"
     },
     {
       "kind": "音效",
       "key": "rapier_loop",
-      "where": "engine/moves.js:313"
+      "where": "engine/moves.js:314"
     },
     {
       "kind": "音效",
       "key": "hamon",
-      "where": "engine/moves.js:375"
+      "where": "engine/moves.js:376"
     },
     {
       "kind": "音效",
       "key": "fire_burst",
-      "where": "engine/moves.js:482"
+      "where": "engine/moves.js:483"
     },
     {
       "kind": "音效",
       "key": "hiero_tentacle",
-      "where": "engine/moves.js:598"
+      "where": "engine/moves.js:599"
     },
     {
       "kind": "音效",
       "key": "whoosh",
-      "where": "engine/moves.js:611"
+      "where": "engine/moves.js:612"
     },
     {
       "kind": "音效",
       "key": "whoosh",
-      "where": "engine/moves.js:651"
+      "where": "engine/moves.js:652"
     },
     {
       "kind": "音效",
       "key": "hiero_tentacle",
-      "where": "engine/moves.js:786"
+      "where": "engine/moves.js:787"
     },
     {
       "kind": "音效",
       "key": "slash",
-      "where": "engine/moves.js:887"
+      "where": "engine/moves.js:888"
     },
     {
       "kind": "音效",
       "key": "armor_off",
-      "where": "engine/moves.js:943"
+      "where": "engine/moves.js:944"
     },
     {
       "kind": "音效",
       "key": "insect_buzz_loop",
-      "where": "engine/moves.js:772"
+      "where": "engine/moves.js:773"
     },
     {
       "kind": "音效",
@@ -10555,237 +10555,237 @@
     {
       "kind": "音效",
       "key": "slash0",
-      "where": "engine/moves.js:266"
+      "where": "engine/moves.js:267"
     },
     {
       "kind": "音效",
       "key": "slash1",
-      "where": "engine/moves.js:269"
+      "where": "engine/moves.js:270"
     },
     {
       "kind": "音效",
       "key": "stab",
-      "where": "engine/moves.js:273"
+      "where": "engine/moves.js:274"
     },
     {
       "kind": "音效",
       "key": "slash0",
-      "where": "engine/moves.js:273"
+      "where": "engine/moves.js:274"
     },
     {
       "kind": "音效",
       "key": "crit",
-      "where": "engine/moves.js:279"
+      "where": "engine/moves.js:280"
     },
     {
       "kind": "音效",
       "key": "slash0",
-      "where": "engine/moves.js:284"
+      "where": "engine/moves.js:285"
     },
     {
       "kind": "音效",
       "key": "ko_hit",
-      "where": "engine/moves.js:288"
+      "where": "engine/moves.js:289"
     },
     {
       "kind": "音效",
       "key": "vine",
-      "where": "engine/moves.js:340"
+      "where": "engine/moves.js:341"
     },
     {
       "kind": "音效",
       "key": "punch",
-      "where": "engine/moves.js:340"
+      "where": "engine/moves.js:341"
     },
     {
       "kind": "音效",
       "key": "vine",
-      "where": "engine/moves.js:346"
+      "where": "engine/moves.js:347"
     },
     {
       "kind": "音效",
       "key": "hamon",
-      "where": "engine/moves.js:346"
+      "where": "engine/moves.js:347"
     },
     {
       "kind": "音效",
       "key": "vine",
-      "where": "engine/moves.js:351"
+      "where": "engine/moves.js:352"
     },
     {
       "kind": "音效",
       "key": "punch_heavy",
-      "where": "engine/moves.js:351"
+      "where": "engine/moves.js:352"
     },
     {
       "kind": "音效",
       "key": "hamon",
-      "where": "engine/moves.js:358"
+      "where": "engine/moves.js:359"
     },
     {
       "kind": "音效",
       "key": "dog_bark",
-      "where": "engine/moves.js:396"
+      "where": "engine/moves.js:397"
     },
     {
       "kind": "音效",
       "key": "punch",
-      "where": "engine/moves.js:396"
+      "where": "engine/moves.js:397"
     },
     {
       "kind": "音效",
       "key": "sand",
-      "where": "engine/moves.js:406"
+      "where": "engine/moves.js:407"
     },
     {
       "kind": "音效",
       "key": "punch",
-      "where": "engine/moves.js:406"
+      "where": "engine/moves.js:407"
     },
     {
       "kind": "音效",
       "key": "sand",
-      "where": "engine/moves.js:412"
-    },
-    {
-      "kind": "音效",
-      "key": "thud",
       "where": "engine/moves.js:413"
     },
     {
       "kind": "音效",
+      "key": "thud",
+      "where": "engine/moves.js:414"
+    },
+    {
+      "kind": "音效",
       "key": "crit",
-      "where": "engine/moves.js:422"
+      "where": "engine/moves.js:423"
     },
     {
       "kind": "音效",
       "key": "thud",
-      "where": "engine/moves.js:431"
+      "where": "engine/moves.js:432"
     },
     {
       "kind": "音效",
       "key": "punch_heavy",
-      "where": "engine/moves.js:464"
-    },
-    {
-      "kind": "音效",
-      "key": "whoosh",
       "where": "engine/moves.js:465"
     },
     {
       "kind": "音效",
+      "key": "whoosh",
+      "where": "engine/moves.js:466"
+    },
+    {
+      "kind": "音效",
       "key": "charge",
-      "where": "engine/moves.js:474"
+      "where": "engine/moves.js:475"
     },
     {
       "kind": "音效",
       "key": "fire",
-      "where": "engine/moves.js:500"
+      "where": "engine/moves.js:501"
     },
     {
       "kind": "音效",
       "key": "fire",
-      "where": "engine/moves.js:522"
+      "where": "engine/moves.js:523"
     },
     {
       "kind": "音效",
       "key": "hiero_tentacle",
-      "where": "engine/moves.js:568"
+      "where": "engine/moves.js:569"
     },
     {
       "kind": "音效",
       "key": "punch",
-      "where": "engine/moves.js:568"
+      "where": "engine/moves.js:569"
     },
     {
       "kind": "音效",
       "key": "whoosh",
-      "where": "engine/moves.js:592"
+      "where": "engine/moves.js:593"
     },
     {
       "kind": "音效",
       "key": "stab",
-      "where": "engine/moves.js:685"
-    },
-    {
-      "kind": "音效",
-      "key": "whoosh",
       "where": "engine/moves.js:686"
     },
     {
       "kind": "音效",
-      "key": "stab",
-      "where": "engine/moves.js:695"
+      "key": "whoosh",
+      "where": "engine/moves.js:687"
     },
     {
       "kind": "音效",
-      "key": "whoosh",
+      "key": "stab",
       "where": "engine/moves.js:696"
     },
     {
       "kind": "音效",
+      "key": "whoosh",
+      "where": "engine/moves.js:697"
+    },
+    {
+      "kind": "音效",
       "key": "punch",
-      "where": "engine/moves.js:855"
+      "where": "engine/moves.js:856"
     },
     {
       "kind": "音效",
       "key": "stab",
-      "where": "engine/moves.js:864"
+      "where": "engine/moves.js:865"
     },
     {
       "kind": "音效",
       "key": "slash0",
-      "where": "engine/moves.js:864"
+      "where": "engine/moves.js:865"
     },
     {
       "kind": "音效",
       "key": "slash1",
-      "where": "engine/moves.js:871"
+      "where": "engine/moves.js:872"
     },
     {
       "kind": "音效",
       "key": "punch",
-      "where": "engine/moves.js:871"
+      "where": "engine/moves.js:872"
     },
     {
       "kind": "界面:sfx",
       "key": "ガシッ",
-      "where": "engine/moves.js:597"
+      "where": "engine/moves.js:598"
     },
     {
       "kind": "界面:sfx",
       "key": "破绽！",
-      "where": "engine/moves.js:618"
+      "where": "engine/moves.js:619"
     },
     {
       "kind": "界面:sfx",
       "key": "キィン！",
-      "where": "engine/moves.js:700"
+      "where": "engine/moves.js:701"
     },
     {
       "kind": "界面:sfx",
       "key": "ギュルッ",
-      "where": "engine/moves.js:785"
+      "where": "engine/moves.js:786"
     },
     {
       "kind": "界面:sfx",
       "key": "被劈开了！",
-      "where": "engine/moves.js:886"
+      "where": "engine/moves.js:887"
     },
     {
       "kind": "界面:sfx",
       "key": "残像！",
-      "where": "engine/moves.js:952"
+      "where": "engine/moves.js:953"
     },
     {
       "kind": "界面:sfx",
       "key": "破绽！",
-      "where": "engine/moves.js:978"
+      "where": "engine/moves.js:979"
     },
     {
       "kind": "界面:titles",
       "key": "w6_hg_splash",
-      "where": "engine/moves.js:560"
+      "where": "engine/moves.js:561"
     },
     {
       "kind": "界面:specials",
@@ -10805,42 +10805,42 @@
     {
       "kind": "界面:specials",
       "key": "polnareff",
-      "where": "engine/moves.js:298"
+      "where": "engine/moves.js:299"
     },
     {
       "kind": "界面:specials",
       "key": "joseph",
-      "where": "engine/moves.js:368"
+      "where": "engine/moves.js:369"
     },
     {
       "kind": "界面:specials",
       "key": "iggy",
-      "where": "engine/moves.js:441"
+      "where": "engine/moves.js:442"
     },
     {
       "kind": "角色",
       "key": "anne",
-      "where": "engine/moves_ch02_05.js:65"
+      "where": "engine/moves_ch02_05.js:66"
     },
     {
       "kind": "特效",
       "key": "smoke",
-      "where": "engine/moves_ch02_05.js:19"
+      "where": "engine/moves_ch02_05.js:20"
     },
     {
       "kind": "特效",
       "key": "dust",
-      "where": "engine/moves_ch02_05.js:31"
+      "where": "engine/moves_ch02_05.js:32"
     },
     {
       "kind": "特效",
       "key": "dust",
-      "where": "engine/moves_ch02_05.js:39"
+      "where": "engine/moves_ch02_05.js:40"
     },
     {
       "kind": "音效",
       "key": "door",
-      "where": "engine/moves_ch02_05.js:19"
+      "where": "engine/moves_ch02_05.js:20"
     },
     {
       "kind": "音效",
@@ -10855,22 +10855,12 @@
     {
       "kind": "音效",
       "key": "slash",
-      "where": "engine/moves_ch02_05.js:9"
+      "where": "engine/moves_ch02_05.js:10"
     },
     {
       "kind": "音效",
       "key": "whoosh",
-      "where": "engine/moves_ch02_05.js:20"
-    },
-    {
-      "kind": "音效",
-      "key": "razor",
-      "where": "engine/moves_ch02_05.js:27"
-    },
-    {
-      "kind": "音效",
-      "key": "slash",
-      "where": "engine/moves_ch02_05.js:27"
+      "where": "engine/moves_ch02_05.js:21"
     },
     {
       "kind": "音效",
@@ -10885,17 +10875,22 @@
     {
       "kind": "音效",
       "key": "razor",
-      "where": "engine/moves_ch02_05.js:28"
+      "where": "engine/moves_ch02_05.js:29"
     },
     {
       "kind": "音效",
       "key": "slash",
-      "where": "engine/moves_ch02_05.js:28"
+      "where": "engine/moves_ch02_05.js:29"
     },
     {
       "kind": "音效",
-      "key": "slime",
-      "where": "engine/moves_ch02_05.js:32"
+      "key": "razor",
+      "where": "engine/moves_ch02_05.js:29"
+    },
+    {
+      "kind": "音效",
+      "key": "slash",
+      "where": "engine/moves_ch02_05.js:29"
     },
     {
       "kind": "音效",
@@ -10905,17 +10900,22 @@
     {
       "kind": "音效",
       "key": "slime",
-      "where": "engine/moves_ch02_05.js:35"
+      "where": "engine/moves_ch02_05.js:34"
+    },
+    {
+      "kind": "音效",
+      "key": "slime",
+      "where": "engine/moves_ch02_05.js:36"
     },
     {
       "kind": "音效",
       "key": "explosion",
-      "where": "engine/moves_ch02_05.js:49"
+      "where": "engine/moves_ch02_05.js:50"
     },
     {
       "kind": "界面:sfx",
       "key": "？",
-      "where": "engine/moves_ch02_05.js:31"
+      "where": "engine/moves_ch02_05.js:32"
     },
     {
       "kind": "说话人",
@@ -11030,7 +11030,7 @@
     {
       "kind": "音效",
       "key": "stand_recall",
-      "where": "engine/stand.js:104"
+      "where": "engine/stand.js:106"
     },
     {
       "kind": "音效",
@@ -11066,7 +11066,7 @@
     "images": 1181,
     "fx": 101,
     "sfx": 174,
-    "music": 11,
+    "music": 10,
     "glyphs": {
       "12": 1721,
       "16": 1721

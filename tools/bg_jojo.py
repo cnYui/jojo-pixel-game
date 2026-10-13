@@ -39,7 +39,8 @@ import time  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))   # 游戏\tools
 GAME = os.path.dirname(HERE)
-WORK = os.path.dirname(GAME)
+from source_workspace import WORK as SOURCE_WORK
+WORK = str(SOURCE_WORK)
 SRC = os.path.join(WORK, '源码')
 BG_NEW = os.path.join(HERE, 'bg_new')
 PREVIEW = os.path.join(BG_NEW, '_preview')

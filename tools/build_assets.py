@@ -40,7 +40,8 @@ import zlib  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))     # 游戏\tools
 GAME = os.path.dirname(HERE)                          # 游戏
-WORK = os.path.dirname(GAME)                          # 游戏素材\JoJo
+from source_workspace import WORK as SOURCE_WORK
+WORK = str(SOURCE_WORK)
 SRC = os.path.join(WORK, "源码")
 ATLAS = os.path.join(WORK, "角色图集")
 BAKE = os.path.join(WORK, "烘焙脚本")
@@ -63,7 +64,13 @@ if HERE not in sys.path:
 import numpy as np  # noqa: E402
 from PIL import Image, ImageDraw, ImageFont  # noqa: E402
 
-from engine.core import W, H, UW, UH, FPS, Frame  # noqa: E402
+# 发布包的画布尺寸固定；打包已有资源不应要求原动画工程存在。
+W, H, UW, UH, FPS = 320, 180, 640, 360, 24
+
+
+def Frame(*args, **kwargs):
+    from engine.core import Frame as SourceFrame
+    return SourceFrame(*args, **kwargs)
 
 # ====================================================================== 人物比例（2026-10-11）
 # 全游戏人物 / 替身 / 道具统一缩小到 CK 倍（《银魂》主角占画布高 15.7%，JoJo 原来 26%）。
@@ -180,7 +187,7 @@ BG_SPEC = {
 }
 
 DEFAULT_PACKS = {
-    "title": {"bg": ["title_pyramids"], "music": ["title_song"]},
+    "title": {"bg": ["title_pyramids"], "music": ["title"]},
     "common": {"bg": ["world_map", "sky_day", "sea_day"], "music": []},
     "prologue": {"bg": ["jail_cell", "kujo_house_day", "kujo_house_night", "kujo_house_morning",
                         "kujo_bedroom_dusk", "school_gate", "school_infirmary", "dusk_gate", "tatami_top"],
@@ -243,7 +250,7 @@ M1_E = {
     "vs": ["hiero", "towergray", "chariot"],
     "panels": ["tissue_note"],
 }
-M1_F = ["title_song", "daily", "travel", "battle", "tension", "sad", "ominous"]
+M1_F = ["title", "daily", "travel", "battle", "tension", "sad", "ominous"]
 M1_G = ("punch punch_heavy whoosh slash stab thud fire fire_loop fire_burst emerald vine hamon glass_break menacing "
         "menacing4 dododo sting_reveal sting_shock sting_comedy jingle_victory tbc blip blip_train glint sparkle zoom "
         "freeze pop ding heartbeat charge power_up coin footstep door plane_engine wind crowd explosion crash splash "
@@ -1254,6 +1261,12 @@ def assemble(B, data_dir, file_prefix="data/", packs_override=None, extra_meta=N
     gd["font"] = B.load_meta("font", {}) or {}
     gd["fxtex"] = B.load_meta("fxtex", {}) or {}
     gd["audio"] = B.load_meta("audio", {"music": {}, "sfx": {}}) or {"music": {}, "sfx": {}}
+    # 用户音频可被主动移除，元数据不能继续要求加载不存在的文件。
+    title_song = gd["audio"].get("music", {}).get("title_song")
+    if title_song and not os.path.isfile(os.path.join(B.game, title_song["file"])):
+        del gd["audio"]["music"]["title_song"]
+    if "bg_title" in gd["packs"]:
+        gd["packs"]["bg_title"]["music"] = ["title_song" if "title_song" in gd["audio"].get("music", {}) else "title"]
     gd["video"] = B.load_meta("video", {}) or {}
     if extra_meta:
         gd.update(extra_meta)
@@ -1529,6 +1542,9 @@ def main(argv=None):
         if s not in STEP_ORDER:
             ap.error(f"不认识的步骤：{s}（可选 {' '.join(STEP_ORDER)}）")
     skip = {s.strip() for s in a.skip.split(",") if s.strip()}
+    source_steps = set(steps) - {"font", "data", "check"} - skip
+    if source_steps and not os.path.isfile(os.path.join(SRC, "engine", "core.py")):
+        ap.error("原素材工程不在公开仓库内。请将 JOJO_WORKSPACE 设置为包含 源码/角色图集/烘焙脚本 的目录；仅重新打包已有资源可运行 data check。")
     B = Build(force=a.force, skip=skip)
     return run_steps(B, steps)
 

@@ -930,7 +930,7 @@
   function chariotBrain(e, dt, ctx) {
     const m = e.mem, W = G.world, p = W.player;
     if (!p) return true;
-    const ph = e.phaseI || 0;   // 0 = 阶段 1；1 = 阶段 2（石像）；2 = 阶段 3（脱甲）；3 = 阶段 4（剑之结界后）
+    const ph = e.phaseI || 0, ck = (G.D && G.D.ck) || 1;   // 0 = 阶段 1；1 = 阶段 2（石像）；2 = 阶段 3（脱甲）；3 = 阶段 4（剑之结界后）
     // 阶段切换时一次性的变化（台词 / 过场在剧情 phases[].run）
     if (m.ph !== ph) {
       const prev = m.ph == null ? 0 : m.ph;
@@ -1032,14 +1032,14 @@
       if (!home) G.combat.walkTo(e, m.center, e.y, dt, e.speed);
       else { e.play(e.idleAnim); m.lungeT = (m.lungeT == null ? 1.2 : m.lungeT) - dt; }
       if (!open && G.combat.tokens() < 2) {
-        if (adx <= 64 && Math.abs(p.y - e.y) < 12 && (e.moveCd.SC_TRIPLE || 0) <= 0) { G.AI.tele(e, 'SC_TRIPLE'); e.moveCd.SC_TRIPLE = f(50); }
+        if (adx <= 64 * ck && Math.abs(p.y - e.y) < 12 && (e.moveCd.SC_TRIPLE || 0) <= 0) { G.AI.tele(e, 'SC_TRIPLE'); e.moveCd.SC_TRIPLE = f(50); }
         else if (home && m.lungeT <= 0) { m.lungeT = 2.5; G.AI.tele(e, 'SC_LUNGE'); }
       }
       return true;
     }
     // 平时：不架剑时保持 40–110 px；架剑时站定（举剑不走动，地火打得中）
     if (!m.stance) {
-      const keep = adx > 110 ? 1 : adx < 36 ? -1 : 0;
+      const keep = adx > 110 ? 1 : adx < 36 * ck ? -1 : 0;
       const gx = e.x + keep * Math.sign(dx || 1) * 20, gy = p.y;
       if (keep !== 0 || Math.abs(gy - e.y) > 3) G.combat.walkTo(e, gx, gy, dt, e.speed);
       else e.play(e.idleAnim);
@@ -1049,8 +1049,8 @@
       // 出招间隔：真人试玩时 0.6–1.1 s 太密（刚格挡完下一招已经来了，地火都来不及放），阶段 1–2 放宽到 0.8–1.3 s，脱甲后 0.5–0.9 s
       //   （收招后还会被“举剑时长”顶到更晚，见上）
       if (id) { G.AI.tele(e, id); e.cool = ph >= 2 ? G.rand(0.5, 0.9) : G.rand(0.8, 1.3); }
-      // 50–64 px 是三连刺和突进刺之间的空档：招都用不上时往前逼到 44 px（对着站着不动的人不会一直发呆）
-      else if (!m.stance && adx > 50 && adx < 64) G.combat.walkTo(e, p.x - Math.sign(dx || 1) * 44, p.y, dt, e.speed);
+      // 近战缩小而突进范围不缩时会出现空档；继续走到缩小后的近战距离，避免对静止玩家挥空。
+      else if (!m.stance && adx > 50 * ck && adx < 64) G.combat.walkTo(e, p.x - Math.sign(dx || 1) * 44 * ck, p.y, dt, e.speed);
     }
     return true;
   }

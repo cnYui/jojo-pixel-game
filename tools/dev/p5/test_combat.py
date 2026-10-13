@@ -20,12 +20,17 @@ with sync_playwright() as pw:
     page.on('pageerror',lambda e:errors.append(str(e)))
     page.goto((HERE/'arena.html').as_uri())
     page.evaluate('P5.init()')
-    for method in ['combos','dodge','guards','poise','wall','special','shots','timestop','cancellation','retry','finish']:
+    for method in ['aiRange','combos','dodge','guards','poise','wall','special','shots','timestop','cancellation','retry','finish']:
         try:
             r=page.evaluate('async(m)=>await Promise.race([P5[m](),new Promise((_,reject)=>setTimeout(()=>reject(new Error("验收超时: "+m+" "+JSON.stringify(P5.state()))),12000))])',method)
         except Exception as e:
             check(method,False,str(e))
             continue
+        if method=='aiRange':
+            check('原尺寸与缩小尺寸的近战AI都能命中静止玩家',all(v['damage']>0 for v in r),r)
+            # 独立 AI 场景会留下击退状态，后续固定帧数的连招验收需要重新加载夹具。
+            page.reload()
+            page.evaluate('P5.init()')
         if method=='combos': check('三连、连打入口、90f上限和30f冷却',r['chain']==['J1','J2','J3'] and r['entered'] and 80<=r['frames']<=90 and r['end']['cd']>.45,r)
         if method=='dodge':
             check('闪避5f无伤12f有伤、擦身3f与8f',all(v['dmg']==0 if v['n']!=12 else v['dmg']>0 for v in r['hits']) and [v['graze'] for v in r['hits']]==[1,1,0,0],r)

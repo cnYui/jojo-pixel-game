@@ -136,7 +136,8 @@ class ProTester(playtest.Tester):
             px, py = s.get('px', x), s.get('py', y)
             if min(px, x) < 184 and max(px, x) > 116 and abs(px - x) > 8:
                 if py > 156:
-                    self.move(s, px, 154, 3)
+                    # 通道要求 y ≤ 156；容差 3 会在 y=157 停住并永远重复这一步。
+                    self.move(s, px, 154, 1)
                     return False
                 if not self.move(s, x, 154, 4):
                     return False

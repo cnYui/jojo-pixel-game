@@ -499,7 +499,10 @@ class Tester:
                 if h.get('falling'):
                     self.hold()
                     return True
-                if (h.get('slime') or 0) >= 3 and not s.get('dodgeCd'):
+                # 首次沾黏液就实测一次 K，避免快速推窗路线漏掉甩黏液覆盖。
+                slime = h.get('slime') or 0
+                first_dodge = not self.coverage.get(s.get('fightId'), {}).get('dodge', 0)
+                if (slime >= 3 or slime > 0 and first_dodge) and not s.get('dodgeCd'):
                     self.hold()
                     self.pulse('k')
                     return True
