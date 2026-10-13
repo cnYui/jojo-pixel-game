@@ -414,8 +414,10 @@ class Ch1Tester(playtest.Tester):
         self.check(len(self.special.get('seated', [])) == 8, 'ch1_seated_missing')
         self.check(bool(self.special.get('blanket')), 'ch1_blanket_missing')
         self.check(len(self.special.get('float', [])) == 4, 'ch1_float_missing')
-        self.check('statue_1' in self.special, 'ch1_statue_carved_missing')
-        self.check('statue_2' in self.special, 'ch1_statue_broken_missing')
+        # --lose 只验证失败重试链路；输掉后重开可能在阶段切换前结束，石像画面由正常路线验收。
+        if not self.args.lose:
+            self.check('statue_1' in self.special, 'ch1_statue_carved_missing')
+            self.check('statue_2' in self.special, 'ch1_statue_broken_missing')
         if self.args.lose:
             for fid in LOSE_TWICE & set(self.fights):
                 self.check(self.loses.get(fid, 0) >= 2, 'lose_twice_missing', fight=fid)

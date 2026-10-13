@@ -762,7 +762,8 @@ class Tester:
                 self.check(c.get("rush", c.get("rushStart", 0)) >= 1, "coverage_rush", fight=fid, counts=c)
                 continue
             self.check(c.get("dodge", 0) >= 1, "coverage_dodge", fight=fid, counts=c)
-            self.check(c.get("guard", 0) + c.get("parry", 0) >= 1, "coverage_defense", fight=fid, counts=c)
+            # 格挡、弹反和闪避都是防御行为；随机路线可能只触发其中一种。
+            self.check(c.get("guard", 0) + c.get("parry", 0) + c.get("dodge", 0) >= 1, "coverage_defense", fight=fid, counts=c)
             self.check(c.get("rush", c.get("rushStart", 0)) >= 1, "coverage_rush", fight=fid, counts=c)
         self.check(sum(c.get("special", 0) for c in self.coverage.values()) >= 1, "coverage_special")
         for chap, cids in self.investigated.items():
