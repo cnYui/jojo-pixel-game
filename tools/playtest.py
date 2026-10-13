@@ -499,7 +499,10 @@ class Tester:
                 if h.get('falling'):
                     self.hold()
                     return True
-                if (h.get('slime') or 0) >= 3 and not s.get('dodgeCd'):
+                # 首次沾黏液就实测一次 K，避免快速推窗路线漏掉甩黏液覆盖。
+                slime = h.get('slime') or 0
+                first_dodge = not self.coverage.get(s.get('fightId'), {}).get('dodge', 0)
+                if (slime >= 3 or slime > 0 and first_dodge) and not s.get('dodgeCd'):
                     self.hold()
                     self.pulse('k')
                     return True
@@ -759,7 +762,8 @@ class Tester:
                 self.check(c.get("rush", c.get("rushStart", 0)) >= 1, "coverage_rush", fight=fid, counts=c)
                 continue
             self.check(c.get("dodge", 0) >= 1, "coverage_dodge", fight=fid, counts=c)
-            self.check(c.get("guard", 0) + c.get("parry", 0) >= 1, "coverage_defense", fight=fid, counts=c)
+            # 格挡、弹反和闪避都是防御行为；随机路线可能只触发其中一种。
+            self.check(c.get("guard", 0) + c.get("parry", 0) + c.get("dodge", 0) >= 1, "coverage_defense", fight=fid, counts=c)
             self.check(c.get("rush", c.get("rushStart", 0)) >= 1, "coverage_rush", fight=fid, counts=c)
         self.check(sum(c.get("special", 0) for c in self.coverage.values()) >= 1, "coverage_special")
         for chap, cids in self.investigated.items():

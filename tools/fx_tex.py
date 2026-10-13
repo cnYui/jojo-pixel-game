@@ -18,7 +18,8 @@ sys.dont_write_bytecode = True
 import os  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SRC = os.path.join(os.path.dirname(os.path.dirname(HERE)), "源码")
+from source_workspace import SRC as SOURCE_SRC
+SRC = str(SOURCE_SRC)
 if SRC not in sys.path:
     sys.path.insert(0, SRC)
 

@@ -120,8 +120,9 @@
   const RUSTY_SEATS = [['anne', -26, 'b'], ['joseph', -12, 'f'], ['polnareff', 2, 'b'], ['jotaro', 16, 'f'], ['avdol', 30, 'b'], ['kakyoin', 44, 'f']];
   function seat(S, bx, by, rows, back = 9) {
     for (const [cid, dx, r] of rows) {
-      const y = by - (r === 'b' ? back : 3) - (cid === 'anne' ? 6 : 0);
-      if (cid === 'anne') anneAt(S, bx + dx, y, { facing: 1 }); else place(S, cid, bx + dx, y, 1);
+      const k = (G.D && G.D.ck) || 1;   // 船道具和人物一起缩了，座位的横向间隔、前后排高度也跟着缩
+      const y = by - Math.round((r === 'b' ? back : 3) * k) - Math.round((cid === 'anne' ? 6 : 0) * k);
+      if (cid === 'anne') anneAt(S, bx + Math.round(dx * k), y, { facing: 1 }); else place(S, cid, bx + Math.round(dx * k), y, 1);
     }
   }
   const addLive = (...ps) => { const st = G.world.stage; const ids = new Set(ps.map(p => p.id)); st.props = st.props.filter(p => !ids.has(p.id)).concat(ps); };

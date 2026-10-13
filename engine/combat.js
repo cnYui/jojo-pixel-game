@@ -61,9 +61,10 @@
   function shotOrigin(a,m){
     const s=a.stand,f=a.facing||1,k=scOf(a);
     // bx = 枪口根部（本体 x）：弹体第一帧从这里扫到出手点，贴身的敌人也打得到（出手点在替身身前 30 多 px）
-    if(m.from==='stand'&&s&&s.visible&&s.kind==='humanoid'&&s.atlas){const top=s.atlas.topPx?s.atlas.topPx():48;return {x:s.x+f*(m.shotAhead==null?12:m.shotAhead)*k,y:a.y,z:s.z+(m.shotZ==null?top*.6:m.shotZ)*k,bx:a.x};}
+    // 招式里写的 shotAhead / shotZ 是原尺寸的像素，人物缩了 G.D.ck 倍，出手点（手的位置）也要跟着缩；缺省的 top*.6 本来就是缩过的 topPx，不再乘
+    if(m.from==='stand'&&s&&s.visible&&s.kind==='humanoid'&&s.atlas){const top=s.atlas.topPx?s.atlas.topPx():48,ck=ckv();return {x:s.x+f*(m.shotAhead==null?12:m.shotAhead)*k*ck,y:a.y,z:s.z+(m.shotZ==null?top*.6:m.shotZ*ck)*k,bx:a.x};}
     const h=(a.topPx?a.topPx():44)*k;
-    return {x:a.x+f*(m.shotAhead==null?8:m.shotAhead)*k,y:a.y,z:(a.z||0)+Math.min(h*.55,30*k),bx:a.x};
+    return {x:a.x+f*(m.shotAhead==null?8:m.shotAhead)*k*ckv(),y:a.y,z:(a.z||0)+Math.min(h*.55,30*k*ckv()),bx:a.x};
   }
   // 弹体高度落在“能打到站着的人”的带子里：updateShots 按 |弹 z − 目标 z − 20| ≤ hitR[2] 判，出手点太高会从头顶飞过去
   function hittableZ(spec,z){const rz=(spec.hitR||[8,7,18])[2];return clamp(z,20-rz+2,20+rz-2);}
@@ -78,14 +79,14 @@
       if(dur!=null)kw.t1=dur;if(kind==='thrust')Object.assign(kw,{colour:'#c8d8ff',spread:22,rate:36});else kw.reach=14;
       return fxAt('rush',Object.assign(kw,visual),a,(dur==null?CFG.rushMax:dur)+.35);
     }
-    if(kind==='fire'){const reach=(r.reach&&r.reach[1])||80;return fxAt('fire_jet',{x0:()=>standFront(a,12).x,x1:()=>a.x+f()*reach*scOf(a),y:fy,thick:1.1},a,dur==null?CFG.rushMax:dur);}
+    if(kind==='fire'){const reach=ckReach(r.reach||[0,80])[1]||80;return fxAt('fire_jet',{x0:()=>standFront(a,12).x,x1:()=>a.x+f()*reach*scOf(a),y:fy,thick:1.1},a,dur==null?CFG.rushMax:dur);}
     return null;
   }
   // 连打追身：J3 把人挑飞 / 打退 24 px 后，连打判定（白金之星 6–52）够不着，整段连打打空气、终结也落空。
   //   进连打和每一跳都看一眼正前方 reach + 48 px 内最近的敌人，比 reach − 12 远就往前滑过去（每帧最多 4 px，撞墙停）；弹体连打不追
   function chaseNeed(a,r){
     if(!r || r.shot || r.chase===false)return 0;
-    const f=a.facing||1,reach=(r.reach||[0,40])[1],dep=(r.depth||10)+6;let best=null;
+    const f=a.facing||1,reach=ckReach(r.reach||[0,40])[1],dep=(r.depth||10)+6;let best=null;
     for(const t of targets(a)){if(t.team==='object')continue;const dx=(t.x-a.x)*f;if(dx<0 || dx>reach+48 || Math.abs(t.y-a.y)>dep)continue;if(best==null || dx<best)best=dx;}
     return best==null?0:Math.max(0,best-(reach-12));
   }
@@ -97,7 +98,11 @@
   const idle = a => { a.atk=null; a.tele=null; a._preHazard=false; a.outline=null; a.auraFlame=null; a.ghostOn=false; state(a,'idle'); play(a,a.idleAnim || 'idle'); if(a.stand)a.stand.idle(); };
   const getMove = m => typeof m === 'string' ? G.MOVES[m] : m;
   const kitOf = a => Object.assign({},a.kit || G.KITS[a.cid] || {},ctx() && ctx().spec.kitOverride && ctx().spec.kitOverride[a.cid] || {});
-  function normMove(m) {return Object.assign({slot:'enemy',dur:.5,active:[0,.1],reach:[0,40],depth:8,zr:26,from:'body',dmg:0,push:0,guard:'normal',hits:1,every:0,parryBreak:true,sfxHit:'punch',fxHit:'light'},getMove(m) || {});}
+  // 人物整体缩了 G.D.ck 倍：近战 / 连打的判定距离跟着缩（≥150 的是远程光束，不缩）；_ck 标记防止规范化过的招式被再缩一次
+  const ckv = () => (G.D && G.D.ck) || 1;
+  const ckReach = r => Array.isArray(r) && r.length>1 && r[1]<150 ? r.map(v=>Math.round(v*ckv())) : r;
+  function normMove(m) {const o=normMove0(m);if(o._ck)return o;o._ck=true;if(o.melee!==false)o.reach=ckReach(o.reach);return o;}
+  function normMove0(m) {return Object.assign({slot:'enemy',dur:.5,active:[0,.1],reach:[0,40],depth:8,zr:26,from:'body',dmg:0,push:0,guard:'normal',hits:1,every:0,parryBreak:true,sfxHit:'punch',fxHit:'light'},getMove(m) || {});}
   function gainEnergy(a,n,reason) {
     if(!a || !n || enemySide(a))return;
     const old=a.energy || 0; a.energy=clamp(old+n*(a===W().player ? 1 : CFG.ally.energyMul),0,CFG.energy.max);
@@ -376,7 +381,8 @@
     if(a.atk){moveTick(a,dt);if(brain)brain(a,0,c);return;}
     if(a._counter){a._counter=false;a.chainT=0;G.AI.tele(a,CFG.rushCap.counter);return;}
     if(brain && brain(a,dt,c))return;
-    const t=targetOf(a);if(!alive(t))return;a.facing=t.x>a.x?1:-1;G.AI.approach(a,t,a.range || 30,dt);
+    // 近战射程缩小时，停靠距离也要缩小，避免在静止玩家面前反复挥空。
+    const t=targetOf(a);if(!alive(t))return;a.facing=t.x>a.x?1:-1;G.AI.approach(a,t,(a.range || 30)*ckv(),dt);
     if(a.cool<=0 && tokens()<CFG.maxTokens){const id=G.AI.pickMove(a,c);if(id){G.AI.tele(a,id);a.cool=.7;}}
   }
   function updateAlly(a,dt){if(W().cine || !W().combat)return;if(motionTick(a,dt))return;if(a.atk){moveTick(a,dt);return;}const t=targetOf(a);if(!t)return;a.facing=t.x>a.x?1:-1;walkTo(a,t.x-a.facing*28,t.y,dt,a.speed);if(a.cool<=0 && Math.abs(t.x-a.x)<65){a.cool=.4;a.combo=(a.combo+1)%3;startMove(a,kitOf(a).combo[a.combo]);}if(a.energy>=100 && Math.random()<CFG.ally.specialChance*dt)background(special(a));}
@@ -520,7 +526,7 @@
   function drawShot(g,s,cx,cy){if(s.image && typeof s.image==='object'){const a=G.atlas(s.image.cid);a.draw(g,s.image.logical || s.anim || 'idle',Math.floor(s.t*12),s.x-cx,s.y-s.z-cy,{flip:s.vx<0});}else {const im=G.image(s.image);if(im)g.drawImage(im,s.x-cx-im.width/2,s.y-s.z-cy-im.height/2);}}
   G.combat={CFG,updatePlayer,updateAlly,updateEnemy,updateShots,updateHazards,drawPixel,drawShot,startMove,hitCheck,hit,ko,shoot,hazard,gainEnergy,special,bossFinish,kitOf,resetActor,warnDur,fxAt,tweenTo,tokens,walkTo,ghostBurst,createC,standFront,shotOrigin,hittableZ,midY};
   G.AI={dist:(e,t)=>Math.hypot(e.x-t.x,e.y-t.y),aligned:(e,t,dy=6)=>Math.abs(e.y-t.y)<=dy,approach:(e,t,keep,dt)=>{if(Math.abs(t.x-e.x)>keep)walkTo(e,t.x-Math.sign(t.x-e.x)*keep,t.y,dt,e.speed);},kite:(e,t,keep,dt)=>walkTo(e,t.x-Math.sign(t.x-e.x)*keep,t.y,dt,e.speed),
-    pickMove(e,c){const t=targetOf(e);if(!t)return null;if(e.pattern)return this.next(e);const ids=(e.moves || []).filter(id=>{const m=getMove(id);return m && !(e.moveCd[id]>0) && (!m.range || Math.abs(e.x-t.x)>=m.range[0] && Math.abs(e.x-t.x)<=m.range[1]) && (!m.cond || m.cond(e,t,c));});let n=ids.reduce((s,id)=>s+(getMove(id).weight==null?1:getMove(id).weight),0)*Math.random();return ids.find(id=>(n-=getMove(id).weight==null?1:getMove(id).weight)<=0) || null;},
+    pickMove(e,c){const t=targetOf(e);if(!t)return null;if(e.pattern)return this.next(e);const ids=(e.moves || []).filter(id=>{const m=getMove(id),r=m && (m.melee!==false?ckReach(m.range):m.range);return m && !(e.moveCd[id]>0) && (!r || Math.abs(e.x-t.x)>=r[0] && Math.abs(e.x-t.x)<=r[1]) && (!m.cond || m.cond(e,t,c));});let n=ids.reduce((s,id)=>s+(getMove(id).weight==null?1:getMove(id).weight),0)*Math.random();return ids.find(id=>(n-=getMove(id).weight==null?1:getMove(id).weight)<=0) || null;},
     next(e){if(!e.pattern || !e.pattern.length)return null;return e.pattern[e.patternI++%e.pattern.length];},
     tele(e,id,o={}){if(!getMove(id))return null;const m=normMove(id),t=o.target || targetOf(e),d=Math.max(f(1),warnDur(m,ctx())-(e.mem.startupMinus || 0));if(t)e.facing=t.x>e.x?1:-1;let path=m.warn&&m.warn.path?m.warn.path(e,ctx()):null;if(!path && m.warn && m.warn.tier==='W4')path=[[e.x,e.y],[e.x+e.facing*(m.dash?m.dash.dist:160),t?t.y:e.y]];e._telePath=path;e.tele={move:id,t:0,dur:d,tier:m.warn&&m.warn.tier || 'W1',target:t,path,elapsed:Math.min(m.active[0],m.warn&&m.warn.dur!=null?m.warn.dur:m.active[0])};state(e,'windup');play(e,m.body || 'cmd');e.moveCd[id]=m.cd || 0;
       const tier=e.tele.tier;if(tier==='W1'||tier==='W2')e.emote={text:tier==='W1'?'!':'!!',t:d};if(tier==='W5'){e.outline='#c040ff';if(m.guard!=='parryOnly')m.guard='none';snd('menacing');}if(tier==='W6' && G.uifx)background(G.uifx.cutin({enemy:true,portrait:m.warn.portrait || e.cid,title:m.warn.title,dur:.6}));if(m.hazard && m.hazardAt===0){makeMoveHazards(e,m);e._preHazard=true;}return e.tele;},

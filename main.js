@@ -145,7 +145,9 @@
     gameScene.frozen = false;
   }
   G.goTitle = async route => {
-    reset(); G.curChapter = null; G.setScene(titleScene); G.audio.music(DEMO ? 'title' : 'title_song', { fade: 1.5 });
+    reset(); G.curChapter = null; G.setScene(titleScene);
+    // 公开包没有用户标题曲，沿用仓库内的芯片音乐。
+    G.audio.music(!DEMO && G.D.audio.music.title_song ? 'title_song' : 'title', { fade: 1.5 });
     const token = ++menuTask; titleMenu(token, route).catch(showError);
   };
   G.playFrom = async idx => {

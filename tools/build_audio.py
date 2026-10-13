@@ -33,8 +33,9 @@ import numpy as np  # noqa: E402
 
 TOOLS = os.path.dirname(os.path.abspath(__file__))
 GAME = os.path.dirname(TOOLS)
-SRC = os.path.normpath(os.path.join(GAME, '..', '源码'))
-USER_SRC = os.path.normpath(os.path.join(GAME, '..', '音频', '用户提供'))
+from source_workspace import WORK, SRC as SOURCE_SRC
+SRC = str(SOURCE_SRC)
+USER_SRC = str(WORK / '音频' / '用户提供')
 STAND_PROUD = os.path.join(USER_SRC, 'STAND_PROUD.m4a')
 
 OUT_MUSIC = os.path.join(GAME, 'assets', 'audio', 'music')
@@ -238,7 +239,7 @@ def seam_pct(x):
 
 
 # ---------------------------------------------------------------- 主流程
-def build(force=False, only=None):
+def build(force=False, only=None, include_user_audio=False):
     t0 = time.time()
     from engine import music, sfx       # noqa: E402  （SRC 已在 sys.path；import 约 5 s）
     import game_sfx                      # noqa: E402,F401  登记新音效
@@ -329,7 +330,7 @@ def build(force=False, only=None):
 
     # -------- 3. 标题曲 STAND PROUD（只在没有或 --force 时转）
     title_mp3 = os.path.join(OUT_USER, 'title_song.mp3')
-    if force or ('title_song' in want) or not os.path.exists(title_mp3):
+    if include_user_audio and (force or ('title_song' in want) or not os.path.exists(title_mp3)):
         if not os.path.exists(STAND_PROUD):
             log(f'  ! 找不到 {STAND_PROUD}，跳过标题曲')
         else:
@@ -354,6 +355,8 @@ def build(force=False, only=None):
 
     # -------- 用户提供的曲子（assets\audio\user\*.mp3）→ 音乐（长的走流式）
     for fn in sorted(os.listdir(OUT_USER)):
+        if not include_user_audio:
+            break
         if not fn.lower().endswith('.mp3'):
             continue
         name = os.path.splitext(fn)[0]
@@ -425,12 +428,13 @@ def run(args, c=None):
     ap.add_argument('--force', action='store_true', help='忽略缓存，全部重做')
     ap.add_argument('--only', nargs='*', default=None, help='只重做这些名字（音乐 / 音效 / title_song）')
     ap.add_argument('--report', action='store_true', help='打印新音效响度和接缝表')
+    ap.add_argument('--include-user-audio', action='store_true', help='仅本地显式启用用户音频；不代表已获公开分发许可')
     a = ap.parse_args(list(args or []))
     if SRC not in sys.path:
         sys.path.insert(0, SRC)
     if TOOLS not in sys.path:
         sys.path.append(TOOLS)
-    meta, report = build(force=a.force, only=a.only)
+    meta, report = build(force=a.force, only=a.only, include_user_audio=a.include_user_audio)
     if a.report:
         print_report(report)
     return meta

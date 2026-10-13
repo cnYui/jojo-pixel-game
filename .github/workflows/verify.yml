@@ -1,0 +1,127 @@
+name: 游戏验证
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: pwsh
+
+env:
+  PYTHONUTF8: '1'
+  PYTHONDONTWRITEBYTECODE: '1'
+
+jobs:
+  regression:
+    name: 资源与战斗回归
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+      - name: 安装依赖
+        run: |
+          python -m pip install -r requirements-dev.txt
+          python -m playwright install chromium
+      - name: 打包已有资源并检查
+        run: python -B tools/dev/full/locked_build.py data check
+      - name: 资源合同
+        run: python -B tools/dev/full/test_asset_contract.py --out tools/_playtest/ci-contract.json
+      - name: 图片与视频加载
+        run: python -B tools/dev/p6/test_load.py --both
+      - name: 战斗行为
+        run: python -B tools/dev/p5/test_combat.py
+      - name: 大招矩阵
+        run: python -B tools/dev/p5/test_specials.py --out tools/_playtest/ci-specials
+      - name: 桌面与触屏大招
+        run: python -B tools/dev/p5/test_special_visuals.py --out tools/_playtest/ci-visuals
+      - name: 体验版菜单与进度边界
+        run: python -B tools/dev/full/test_demo.py --out tools/_playtest/ci-demo
+      - name: 触屏布局
+        run: python -B tools/dev/full/test_touch_layout.py --out tools/_playtest/ci-touch
+      - name: 保存验证产物
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: 资源与战斗证据
+          path: |
+            tools/_playtest/
+            tools/dev/p5/_out/
+
+  routes:
+    name: 整章路线-${{ matrix.chapter }}-${{ matrix.mode }}
+    runs-on: windows-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - chapter: prologue
+            script: test_prologue.py
+            mode: normal
+            args: ''
+          - chapter: ch1
+            script: test_ch1.py
+            mode: normal
+            args: ''
+          - chapter: ch2
+            script: test_mid_early.py
+            mode: normal
+            args: ''
+          - chapter: ch3
+            script: test_mid_early.py
+            mode: normal
+            args: ''
+          - chapter: ch4
+            script: playtest_mid.py
+            mode: normal
+            args: ''
+          - chapter: ch1
+            script: test_ch1.py
+            mode: lose
+            args: --lose
+          - chapter: ch2
+            script: test_mid_early.py
+            mode: lose
+            args: --lose
+          - chapter: ch3
+            script: test_mid_early.py
+            mode: lose
+            args: --lose
+          - chapter: ch4
+            script: playtest_mid.py
+            mode: lose
+            args: --lose
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+      - name: 安装依赖
+        run: |
+          python -m pip install -r requirements-dev.txt
+          python -m playwright install chromium
+      - name: 真实键盘整章路线
+        run: python -B tools/dev/full/${{ matrix.script }} ${{ matrix.chapter }} ${{ matrix.args }} --timeout 900 --out tools/_playtest/ci-${{ matrix.chapter }}-${{ matrix.mode }}
+      - name: 保存整章证据
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: 路线-${{ matrix.chapter }}-${{ matrix.mode }}
+          path: tools/_playtest/

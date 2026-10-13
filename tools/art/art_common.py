@@ -9,11 +9,13 @@ sys.dont_write_bytecode = True          # 必须在 import 原工程之前
 
 import os
 
-ROOT = r'D:\大疆\游戏素材\JoJo'
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from source_workspace import GAME as OUTPUT_GAME, WORK as SOURCE_WORK
+ROOT = str(SOURCE_WORK)
 SRC = os.path.join(ROOT, '源码')
 BAKE_DIR = os.path.join(ROOT, '烘焙脚本')
 ATLAS_DIR = os.path.join(ROOT, '角色图集')
-GAME = os.path.join(ROOT, '游戏')
+GAME = str(OUTPUT_GAME)
 ART = os.path.dirname(os.path.abspath(__file__))
 PREVIEW = os.path.join(ART, '_preview')
 CHARS_NEW = os.path.join(GAME, 'assets', 'chars_new')

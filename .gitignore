@@ -1,5 +1,4 @@
-# 游戏目录自己的本地仓库（2026-10-10 建，只在本机，不连远程）。
-# 根仓库 D:\大疆 用 /游戏素材/ 整个忽略了这里，所以单独建仓。
+# 公开游戏仓库；原素材、用户音频、测试和发布产物保留在本地。
 # 下面这些都是测试 / 预览产出，能重新生成，不进仓库：
 tools/_playtest/
 tools/dev/*/_out/
@@ -7,3 +6,10 @@ tools/bg_new/_preview/
 tools/_build.lock
 __pycache__/
 *.pyc
+tools/dev/p5/_specials_out*/
+tools/dev/p5/_visual_out*/
+发布/
+
+# 标题曲《STAND PROUD》是商业歌曲，用户音频及其内嵌数据仅留在本地。
+assets/audio/user/
+data/music/title_song.js

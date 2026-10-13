@@ -31,7 +31,10 @@ with sync_playwright() as pw:
 
 checks = []
 for r in matrix:
-    ok = r['damage'] > 0 and r['done'] and r['result'] and r['energy'] == 0 and not r['cine'] and not r['liveShots'] and not r['fx'] and not r['errors']
+    # 安卡改为水平直飞后，纵深偏离 35 像素的目标应躲开。
+    depth_miss = r['cid'] == 'avdol' and r['mode'] == 'depth'
+    damage_ok = r['damage'] == 0 if depth_miss else r['damage'] > 0
+    ok = damage_ok and r['done'] and r['result'] and r['energy'] == 0 and not r['cine'] and not r['liveShots'] and not r['fx'] and not r['errors']
     checks.append({'name': f"{r['cid']} {r['side']} {r['mode']}", 'ok': bool(ok), 'damage': r['damage']})
 checks.extend([
     {'name': '平面最近目标', 'ok': extras['pick']['intended']},
