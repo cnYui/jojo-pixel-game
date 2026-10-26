@@ -116,6 +116,14 @@ NEW_EXPORT = (
     # 2026-10-11 第4章（印度）：跳弹、镜中闪光、警哨、牛叫 / 舔、女帝怪笑、神庙铃、雨巷 / 街市 / 河坛环境音（循环）（tools\game_sfx.py）
     + [_e(n) for n in ('ricochet', 'mirror_flash', 'police_whistle', 'cow_moo', 'lick', 'empress_voice', 'temple_bell',
                        'rain_loop', 'bazaar_loop', 'ghat_loop')]
+    # 2026-10-14 / 10-18 第5章（巴基斯坦）：汽油雨、尸体呻吟、车头打火、账单落印、汽车喇叭（tools\game_sfx.py）
+    + [_e(n) for n in ('gas_rain', 'zombie_moan', 'wheel_ignite', 'invoice_stamp', 'car_horn')]
+    # 2026-10-18 第6章（阿拉伯）：婴儿笑 / 哭、太阳热线（tools\game_sfx.py）
+    + [_e(n) for n in ('baby_laugh', 'baby_cry', 'heat_beam')]
+    # 2026-10-19 第6–11章（游玩脚本 + 素材总表 §四）：热浪、油泵、拐杖、无线电、手镯落沙、电火花、小孩哭、河岸环境音（循环）、
+    #   磁带倒卷、猫叫、灵魂被收走（tools\game_sfx.py）
+    + [_e(n) for n in ('heat_wave', 'pump', 'cane_tap', 'radio_static', 'metal_drop', 'zap', 'kid_cry',
+                       'river_loop', 'rewind', 'cat_meow', 'soul_drain')]
 )
 
 ALL_SFX = SFX_EXPORT + NEW_EXPORT

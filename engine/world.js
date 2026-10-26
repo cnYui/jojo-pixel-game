@@ -482,6 +482,7 @@
           a.z = a.fly.z + Math.round(Math.sin(a.ownT * 2.4) * (a.fly.bob || 0));
         }
         this._ghost(a);
+        if (a.rush && C.settleRush) C.settleRush(a);   // 连打被顶掉 / 被接管时立刻收尾（否则欧拉循环音一直响），见 combat.settleRush
         if (a.script) a.script(da);
         else if (a === p) { if (C.updatePlayer) C.updatePlayer(a, da); }
         else if (a.team === 'ally') { if (C.updateAlly) C.updateAlly(a, da); }

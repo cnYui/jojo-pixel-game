@@ -23,7 +23,10 @@
   function finish(){T.immune.clear();T.by=null;T.o=null;if(G.world.player)G.world.player.tsGuard=false;const r=resolveStop;resolveStop=null;if(r)r();}
   const T=G.time={active:false,phase:null,by:null,t:0,o:null,immune:new Set(),queue:new Map(),
     stop(by,o={}){
-      this.clear();generation=G.runId;this.active=true;this.by=by;this.o=Object.assign({dur:2,burst:.6,resume:.36,tint:'yellow',prewarn:true,sfx:'timestop',music:'tape',ticks:true,words:true},o);
+      this.clear();generation=G.runId;
+      // 成就要在时停「开始」就算一次（dbg.ev 那个是自然结束才发），所以这里另发一条
+      if(G.ach&&G.ach.emit)G.ach.emit('timestop',{by:by&&by.cid});
+      this.active=true;this.by=by;this.o=Object.assign({dur:2,burst:.6,resume:.36,tint:'yellow',prewarn:true,sfx:'timestop',music:'tape',ticks:true,words:true},o);
       this.o.dur=Math.max(resumeLead,this.o.dur);this.immune=new Set(o.immune||[by]);cuePlayed=false;forceResume=false;resumeAt=Infinity;
       const promise=new Promise(r=>{resolveStop=r;});
       if(this.o.prewarn){const h=cue(this.o.sfx);change('warn',h.hitIn|| (this.o.sfx==='timestop_sp'?.924:.85));}else change('burst',this.o.burst);

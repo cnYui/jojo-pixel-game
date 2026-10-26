@@ -59,7 +59,26 @@
   K.e_vanilla = { hp: 800, speed: 58, standId: 'cream', moves: ['VA_KICK', 'VA_STOMP'], brain: basic };
   punch('NK_BACK', 8, 'W1', 22, null, 34);
   K.e_nukesaku = { hp: 200, speed: 40, moves: ['NK_BACK'], brain(e, dt, c) {
-    const r = basic(e, dt, c); e.facing = -(Math.sign(c.player.x - e.x) || 1); return r;
+    // 脸和身体方向相反：走位必须按真实身体方向算，否则停靠点会随贴图朝向抖动、绕到玩家背后
+    if (!dt || !c || e.atk || e.tele || e.mem.locked) return true;
+    const bodyDir = Math.sign(c.player.x - e.x) || 1;
+    // 单独存一份稳定的“脸朝向”给 testHint 读；facing 在出招预警期间会被临时转向身体方向
+    e.mem.faceDir = -bodyDir;
+    // 停靠距离按这一招的实际射程算：combat.js 的 normMove 会把近战射程乘上人物缩放 G.D.ck（0.625），
+    // 判定盒是 round(reach[1] × ck) × 攻击者缩放 + 受击者体宽。共用 basic 的 30/38 px 是给射程 44 的招准备的；
+    // NK_BACK 射程 34 缩成 21，停在 28 px 外永远够不到（2026-10-20 探针实测：Boss 站在 27.8 px 挥空 45 s，玩家满血）。
+    const near = Math.round(M.NK_BACK.reach[1] * ((G.D && G.D.ck) || 1)) * (e.scale || 1) * .7;
+    if (Math.abs(c.player.x - e.x) > near + 4 || Math.abs(c.player.y - e.y) > 5)
+      G.combat.walkTo(e, c.player.x - bodyDir * near, c.player.y, dt, e.speed);
+    // 平时贴图保持“脸朝身体反方向”；G.AI.tele 会把 facing 转向目标（= bodyDir），
+    // 且预警 / 出招期间 brain 不再执行，所以判定盒会落在玩家所在的 bodyDir 一侧。
+    e.facing = -bodyDir;
+    if (e.cool <= 0) {
+      e.facing = bodyDir;
+      G.AI.tele(e, e.moves[e.patternI++ % e.moves.length]);
+      e.cool = 1.05;
+    }
+    return true;
   } };
   punch('TW_PUNCH', 20, 'W1', 16);
   punch('TW_KICK', 18, 'W1', 16, 'kick');

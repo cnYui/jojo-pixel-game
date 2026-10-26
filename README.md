@@ -21,7 +21,7 @@ python -m pip install -r requirements-dev.txt
 python -m playwright install chromium
 ```
 
-GitHub Actions 会检查资源打包、资源合同、战斗和大招回归，以及序章到第4章的真实键盘路线。新的验证结果见 `docs/ai/context/`；下面的历史测试状态保留其原日期，不代表当前版本全部章节已通过。
+GitHub Actions 会检查资源打包、资源合同、战斗和大招回归，以及序章到第5章的真实键盘路线。新的验证结果见 `docs/ai/context/`；下面的历史测试状态保留其原日期，不代表当前版本全部章节已通过。
 
 ## 开始
 
@@ -66,6 +66,12 @@ GitHub Actions 会检查资源打包、资源合同、战斗和大招回归，�
 | 终章 | DIO 的世界 | 直到黎明 |
 
 各章自动测试的状态见下面「测试状态」。
+
+## 当前开发范围（2026-10-14）
+
+第5章已恢复开发，补齐公路追车、悬崖汽油战、安妮告别、雾镇调查、正义反吸、卡拉奇街市、恋人三轮脑内与街头交替，以及账单结清和偷车收尾。六张背景与 ZZ 重新绘制，新增四种合成音效、命运之轮替身卡和账单标题。第6章到终章继续暂停。
+
+第5章的节拍与本轮验证记录见 `docs/ai/context/`。下面的 2026-10-10 / 2026-10-11 记录保留当时状态。
 
 ## 测试状态（2026-10-10 下午）
 
@@ -130,6 +136,10 @@ python -B tools\bg_new\ch3_preview.py after singapore_street
 python -B tools\dev\full\playtest_mid.py ch4 --out tools\_playtest\<名字>
 python -B tools\dev\full\dev_fight.py ch4 --entry ch4Empress --out tools\_playtest\<名字>
 python -B tools\bg_new\ch4_preview.py after calcutta_street
+# 第5章（巴基斯坦）：正常 / 失败重试路线和背景预览
+python -B tools\dev\full\playtest_mid.py ch5 --timeout 900 --out tools\_playtest\ch5
+python -B tools\dev\full\playtest_mid.py ch5 --lose --timeout 900 --out tools\_playtest\ch5_lose
+python -B tools\bg_new\ch5_preview.py after fog_town
 # 牢房探索 / 抢漫画回归
 python -B tools\dev\full\test_jail_explore.py
 python -B tools\dev\full\repro_jail_grab.py

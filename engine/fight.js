@@ -18,9 +18,9 @@
     const capture=a=>({a,values:Object.fromEntries(stateKeys.map(k=>[k,a[k]]))});
     const saved=members.map(capture);
     const previous={combat:W.combat,free:W.free,x0:W.stage.x0,x1:W.stage.x1,locked:G.party.locked};
-    const managed=[],listeners=new Map(),defaults=new Map();let attempt=0,assist=false,outcome=null,checkpoint=null,phaseBusy=false,storyWas=false;
+    const managed=[],listeners=new Map(),defaults=new Map();let attempt=0,assist=false,assistLevel=0,outcome=null,checkpoint=null,phaseBusy=false,storyWas=false;
     let eventDone=new Set(),hazardTicks=[],reinforceT=0,reinforceN=0;
-    const c={spec,id:spec.id,attempt,assist,wave:0,swap:!!spec.swap,lockMsg:spec.lockMsg,storyU:false,data:{},
+    const c={spec,id:spec.id,attempt,assist,assistLevel:0,wave:0,swap:!!spec.swap,lockMsg:spec.lockMsg,storyU:false,data:{},
       get t(){return W.fightT;},get player(){return W.player;},get boss(){return this.enemies().find(a=>a.boss)||null;},
       enemies(){return W.stage.actors.filter(a=>a.team==='enemy'&&!a.remove&&(managed.includes(a)||managed.includes(a._cloneOf)));},allies(){return W.stage.actors.filter(a=>a===W.player||a.team==='ally'||a.vip);},objects(){return W.stage.actors.filter(a=>a.team==='object'&&!a.remove);},
       gauge:null,hazard:o=>G.combat.hazard(o),shoot:(owner,shot,o)=>G.combat.shoot(owner,shot,o),
@@ -57,9 +57,11 @@
     }
     function setupHud(){G.hud.reset();G.hud.on=true;if(spec.steps)G.hud.steps=Object.assign({done:0},spec.steps);if(spec.timer||spec.survive){const timer=spec.timer||{};G.hud.timer={label:timer.label||'坚持',until:timer.until||spec.survive,t:0,left:timer.until||spec.survive};}if(spec.gauge){const q=Object.assign({max:100},spec.gauge);q.value=q.value==null?q.max:q.value;q.add=n=>{q.value=G.clamp(q.value+n,0,q.max);};c.gauge=q;G.hud.gauge=q;}}
     function resetAttempt(){
-      listeners.clear();outcome=null;c.attempt=attempt;c.assist=assist;c.storyU=false;storyWas=false;eventDone=new Set();hazardTicks=(spec.hazards||[]).map(()=>0);reinforceT=0;reinforceN=0;phaseBusy=false;c.data={};
+      listeners.clear();outcome=null;c.attempt=attempt;c.assist=assist;c.assistLevel=assistLevel;c.storyU=false;storyWas=false;eventDone=new Set();hazardTicks=(spec.hazards||[]).map(()=>0);reinforceT=0;reinforceN=0;phaseBusy=false;c.data={};
       W.fightT=0;W.shots=[];W.hazards=[];W.slow=1;W.cine=null;G.time.clear();G.fx.killTag('fight');for(const a of managed){a.remove=true;if(a.stand)a.stand.hide();}prepareParty();setupHud();
       if(checkpoint){W.player.x=checkpoint.px;W.player.y=checkpoint.py;W.player.energy=checkpoint.energy;}
+      // 战斗评价（story\extras.js）：每次尝试重新统计受伤 / 精准格挡 / 看穿 / 连打，只算打赢的那一次
+      if(G.EXTRA&&G.EXTRA.track)G.EXTRA.track(c);
     }
     async function paused(fn,by){
       if(!active())return;const old=W.cine;W.cine={by:by||'fight-event'};
@@ -88,22 +90,62 @@
     };
     W.ticks.push(tick);
     async function failed(){
+      // 星尘试炼（story\trial.js）失败有自己的结算（重新开始 / 重新编队 / 回标题），不弹这里的再来一次菜单
+      if(G.TRIAL&&G.TRIAL.active)return false;
       W.combat=false;W.cine={by:'failure'};G.slowAll(.3,.5);await guard(G.wait(.5,'ui'));if(!active())return false;
       W.player.state='down';W.player.play('down');G.post.filter('sepia',1,{dur:.6});G.audio.cue('game_over_jingle');
       if(G.ui.notice)await guard(G.ui.notice({text:c.failText||names(W.player)+'倒下了……',minT:1.2,auto:true}));else await guard(G.wait(1.2,'ui'));if(!active())return false;
-      const opts=['再来一次','回到标题'];if(attempt+1>=G.combat.CFG.assistAfter)opts.push('放水再来');let choice=1;try{choice=await Promise.race([G.ui.openMenu(null,opts),G.until(()=>!active()).then(()=>1)]);}catch(e){if(!G.cancelled(e))throw e;}
-      if(!active()||choice===1)return false;if(choice===2)assist=true;attempt++;G.post.filter('sepia',null);W.cine=null;return true;
+      // 放水项是否需要广告只在开菜单前问一次：supported 最长 3 秒且可能抛异常，出错一律按“没有广告”免费放水，
+      // 本地包 / 公开包 / 不在 233 乐园时不能被这一步卡住。
+      let ad=false;
+      if(attempt+1>=G.combat.CFG.assistAfter&&G.ads&&typeof G.ads.supported==='function'){
+        try{ad=await G.ads.supported();}catch(e){ad=false;}
+        if(!active())return false;
+      }
+      // 玩家关掉广告后要回到同一张菜单重选，所以“开菜单 → 处理选择”放进循环；广告播放期间只等 watch，不做别的事。
+      for(;;){
+        const opts=['再来一次','回到标题'];if(attempt+1>=G.combat.CFG.assistAfter)opts.push(ad?'看广告·放水再来':'放水再来');
+        let choice=1;try{choice=await Promise.race([G.ui.openMenu(null,opts),G.until(()=>!active()).then(()=>1)]);}catch(e){if(!G.cancelled(e))throw e;}
+        if(!active()||choice===1)return false;
+        if(choice===2){
+          if(ad){
+            let r;try{r=await G.ads.watch('assist');}catch(e){r={success:false,reason:'exception',technical:true};}
+            if(!active())return false;
+            if(r&&r.success){assist=true;assistLevel++;}
+            else if(r&&r.technical){
+              // 技术原因播不出来不能让玩家吃亏：照样放水，并明确告诉他这次是免费的。
+              assist=true;assistLevel++;
+              if(G.ui.notice)await guard(G.ui.notice({text:'广告暂时无法播放，本次免费放水',minT:1.2,auto:true}));
+              if(!active())return false;
+            }else{
+              // 玩家自己关掉 / 跳过：不放水，回到循环重新选；重开菜单前先把提示放完，免得菜单把 notice 盖住。
+              if(G.ui.notice)await guard(G.ui.notice({text:'广告没有看完，没有放水',minT:1.2,auto:true}));
+              if(!active())return false;
+              continue;
+            }
+          }else{assist=true;assistLevel++;}
+        }
+        attempt++;G.post.filter('sepia',null);W.cine=null;return true;
+      }
     }
     let result='ended';
     try{
       while(active()){
         resetAttempt();if(attempt&&spec.onRetry)await paused(()=>spec.onRetry(S,attempt,c));if(!active())break;
         if(!attempt&&spec.vs)await paused(()=>G.uifx.vs({key:spec.vs,hero:W.player.cid,enemy:spec.waves[0]&&spec.waves[0][0]&&(spec.waves[0][0].cid||spec.waves[0][0].actor),attempt:0}));if(!active())break;if(spec.vs)G.uifx.vsTag(spec.vs);
-        let lost=false;
+        let lost=false,autowinArmed=false;
         for(let wi=checkpoint?checkpoint.wave:0;wi<spec.waves.length&&active();wi++){
           c.wave=wi;W.combat=false;const spawned=spec.waves[wi].map(e=>c.spawn(e));
           if(checkpoint&&wi===checkpoint.wave){const e=checkpoint.boss;e.hp=checkpoint.hp;e.phaseI=checkpoint.i+1;for(let i=0;i<=checkpoint.i;i++){e._phaseDone.add(i);Object.assign(e,e.phases[i].set||{});} }
           if(spec.onWave)await paused(()=>spec.onWave(S,wi,spawned,attempt,c));if(!active())break;W.combat=true;G.hud.boss=c.boss;
+          // 仅 ?autotest=1 的调试开关，不是通关证据：指定战斗开场 1 秒后判胜，让测试跳过战斗直达后面的剧情。
+          // 放在第一波生成并开打之后，c.end() 会走本场战斗真正的 after 收尾；每次尝试只挂一次，多波战斗不会重复排计时。
+          if(!autowinArmed && G.dbg && G.dbg.autowin && G.dbg.autowin.has(spec.id)){
+            autowinArmed=true;
+            // 记一笔：E.won 据此不发 fight_won，免得测试判胜也刷成就
+            c.autowin=true;
+            G.defer(1.0, () => { if (active() && outcome == null) c.end(); });
+          }
           await guard(G.until(()=>outcome||(!phaseBusy&&!W.cine&&!c.enemies().some(alive))));if(!active())break;
           if(outcome==='lose'){lost=true;break;}if(outcome==='win')break;
         }
@@ -111,7 +153,7 @@
         if(!spec.waves.length){W.combat=true;await guard(G.until(()=>outcome));if(!active())break;lost=outcome==='lose';}
         if(lost){if(await failed())continue;break;}
         const finishes=c.enemies().map(e=>e._finishing).filter(Boolean);if(finishes.length)await guard(Promise.all(finishes));if(!active())break;
-        result='win';if(typeof spec.after==='function')await guard(spec.after(S,c.enemies(),attempt,c));else if(spec.after)G.audio.music(spec.after,.5);break;
+        result='win';if(G.EXTRA&&G.EXTRA.won)G.EXTRA.won(c,attempt,assist);if(typeof spec.after==='function')await guard(spec.after(S,c.enemies(),attempt,c));else if(spec.after)G.audio.music(spec.after,.5);break;
       }
     }finally{
       if(active()){
@@ -123,7 +165,11 @@
       }
       listeners.clear();const i=W.ticks.indexOf(tick);if(i>=0)W.ticks.splice(i,1);
     }
-    if(result!=='win'){if(run===G.runId&&G.goTitle)await G.goTitle();const e=new Error('战斗已经取消，剧情不能继续');e.name='RunCancelled';throw e;}
+    // 试炼里失败不换场景（TRIAL.play 接住 TrialFailed 自己弹结算），普通战斗照旧回标题
+    if(result!=='win'){
+      if(G.TRIAL&&G.TRIAL.active){const e=new Error('试炼失败');e.name='TrialFailed';throw e;}
+      if(run===G.runId&&G.goTitle)await G.goTitle();const e=new Error('战斗已经取消，剧情不能继续');e.name='RunCancelled';throw e;
+    }
     return {result,attempts:attempt+1};
   };
 })();

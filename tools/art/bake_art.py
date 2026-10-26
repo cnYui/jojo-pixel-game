@@ -50,7 +50,9 @@ ART_MODULES = ['art_heroes', 'art_stands', 'art_enemies', 'art_npc', 'art_new_gr
         'npc_islander', 'npc_dealer', 'polnareff_kid', 'jotaro_kid', 'polnareff_possessed',
         'clay_sherry', 'clay_gold', 'clay_pol', 'atum','npc_spw','npc_merchant','npc_bellhop',
         'npc_cow', 'police_india')
-] + ['art_later_creatures', 'art_later_existing', 'art_dialogue_heads', 'art_joseph']
+] + ['art_later_creatures', 'art_later_existing', 'art_dialogue_heads', 'art_joseph',
+     # 2026-10-19 第6章到终章补的动作（坐姿、捂眼、斯蒂利·丹走路、DIO 背影、假承太郎）：要用 art_joseph 的新脸，排在它后面
+     'art_c6fin_actions']
 PROPS_MODULE = 'art_props'
 JOTARO_ADULT = False          # True = 用 art_jotaro_redraw 的成年小头承太郎（用户 2026-10-09 晚要回卡通大头，关掉）
 REPORT_PATH = os.path.join(AC.PREVIEW, 'bake_report.json')

@@ -91,7 +91,9 @@ def draw(pid,fi):
         if fi:
             d.line((3,12,13,17,24,12,21,24,12,28),fill=K,width=2)
             d.polygon([(6,30),(12,25),(16,30),(13,38)],fill=(0,0,0,0))
-        if pid=='upper_tooth': im=im.transpose(Image.Transpose.FLIP_TOP_BOTTOM)
+        # 原图是尖头朝下的獠牙（上颌用）；下颌的翻过来尖头朝上。10-19 背景验收发现原来翻反了：上排尖头朝上、下排尖头朝下，
+        #   两排都是尖头扎进牙床、宽头冲着嘴里，远看像倒挂的獠牙
+        if pid=='lower_tooth': im=im.transpose(Image.Transpose.FLIP_TOP_BOTTOM)
     elif pid=='hide_wardrobe':
         d.rectangle((3,2,54,82),fill=(118,78,60),outline=K); d.rectangle((0,0,57,5),fill=(174,120,76),outline=K)
         for x in (7,29):

@@ -141,6 +141,8 @@
 <script src="data/img_core.js"></script>
 <script src="data/sfx.js"></script>
 <script src="engine/core.js"></script>
+<!-- 成就（engine/achievements.js）只依赖 G.store，紧跟着 core.js；story/extras.js 的 won 要用它 -->
+<script src="engine/achievements.js"></script>
 <script src="engine/res.js"></script>
 <script src="engine/input.js"></script>
 <script src="engine/audio.js"></script>
@@ -162,6 +164,7 @@
 <script src="engine/timestop.js"></script>
 <script src="engine/ui.js"></script>
 <script src="engine/ui_cards.js"></script>
+<script src="engine/ui_ach.js"></script>
 <script src="engine/hud.js"></script>
 <script src="engine/script.js"></script>
 <script src="engine/fight.js"></script>
@@ -174,6 +177,10 @@
 <script src="story/common.js"></script>
 <script src="story/mid_common.js"></script>
 <script src="story/late_common.js"></script>
+<script src="story/extras.js"></script>
+<!-- 成就定义（纯数据）、白金之星·世界（final.js 阶段 3 也引用它，所以排在 final.js 前面） -->
+<script src="story/achievements_def.js"></script>
+<script src="story/sptw.js"></script>
 <script src="story/prologue.js"></script>
 <script src="story/ch01.js"></script>
 <script src="story/ch02.js"></script>
@@ -187,6 +194,9 @@
 <script src="story/ch10.js"></script>
 <script src="story/ch11.js"></script>
 <script src="story/final.js"></script>
+<!-- 星尘试炼：关卡工厂登记在各章文件里，所以排在 final.js 之后、main.js 之前 -->
+<script src="story/trial.js"></script>
+<script src="story/trial_stages.js"></script>
 <script src="main.js"></script>
 </body>
 </html>

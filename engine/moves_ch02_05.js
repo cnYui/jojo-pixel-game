@@ -46,10 +46,11 @@
   basic('WF_SIDE','W4',30,8,0,{melee:false,hazard:(e,c)=>({shape:'rect',x0:c.player.x-14,x1:c.player.x+14,y0:e.y-4,y1:e.y+4,warn:0,dur:f(4),dmg:8})});
   basic('WF_DIVE','W3',45,20,0,{melee:false,hazard:(e,c)=>({shape:'ellipse',x:c.player.x,y:c.player.y,rx:28,ry:10,warn:0,dur:f(6),dmg:20,push:30})});
   basic('WF_CHARGE','W4',30,16,0,{melee:false,dash:{dist:170,time:.55,w:10,line:true},guard:'pierce'});
-  basic('WF_RAIN','W3',30,0,0,{melee:false,dur:2.5,onStart:(e,c)=>{data(c).oil=true;data(c).sparkAt=c.t+2;}});
-  basic('WF_SPARK','W2',90,40,0,{melee:false,onStart:(e,c)=>{data(c).sparkUntil=0;if(!data(c).dug){G.combat.hit(e,c.player,{slot:'enemy',dmg:40,guard:'none',reach:[0,320],sfxHit:'explosion'});}data(c).dug=false;}});
+  basic('WF_RAIN','W3',30,0,0,{melee:false,dur:2.5,sfx:'gas_rain',onStart:(e,c)=>{data(c).oil=true;data(c).sparkAt=c.t+2;}});
+  basic('WF_SPARK','W2',90,40,0,{melee:false,sfx:'wheel_ignite',onStart:(e,c)=>{data(c).sparkUntil=0;if(!data(c).dug){G.combat.hit(e,c.player,{slot:'enemy',dmg:40,guard:'none',reach:[0,320],sfxHit:'explosion'});}data(c).dug=false;}});
   kit('e_wheelroad',900,90,['WF_RAM','WF_SIDE'],{dmgMul:()=>0,brain(e,dt,c){if(!dt)return true;e.x=135+Math.sin(c.t*.8)*38;if(e.cool<=0){e.y=[152,160,168][Math.floor(c.t*1.7)%3];G.AI.tele(e,e.patternI++%2?'WF_RAM':'WF_SIDE');e.cool=1.2;}return true;}});
-  kit('e_wheel',900,95,['WF_DIVE','WF_CHARGE','WF_RAIN'],{armor:true,poiseMax:0,dmgMul:()=>{const c=G.world.fight;return c.t<data(c).flippedUntil?1.5:.5;},brain(e,dt,c){if(!dt)return true;const d=data(c);if(d.sparkAt&&c.t>=d.sparkAt&&!e.atk&&!e.tele){d.sparkAt=null;d.sparkUntil=c.t+1.5;G.AI.tele(e,'WF_SPARK');return true;}if(c.t<(d.flippedUntil||0)){e.rot=Math.PI;return true;}e.rot=0;return closeBrain(e,dt,c);}});
+  // 胜利演出仍可能结算最后几拳；掀翻加成只读取正在进行的命运之轮战。
+  kit('e_wheel',900,95,['WF_DIVE','WF_CHARGE','WF_RAIN'],{armor:true,poiseMax:0,dmgMul:()=>{const c=G.world.fight;return c&&c.id==='b09b_wheeloffortune'&&c.t<data(c).flippedUntil?1.5:.5;},brain(e,dt,c){if(!dt)return true;const d=data(c);if(d.sparkAt&&c.t>=d.sparkAt&&!e.atk&&!e.tele){d.sparkAt=null;d.sparkUntil=c.t+1.5;G.AI.tele(e,'WF_SPARK');return true;}if(c.t<(d.flippedUntil||0)){e.rot=Math.PI;return true;}e.rot=0;return closeBrain(e,dt,c);}});
   basic('ZOMBIE_GRAB','W1',24,6,32,{root:.3});
   kit('e_zombie',30,40,['ZOMBIE_GRAB'],{koStyle:'fly'});
   kit('e_enya',800,0,[],{dmgMul:()=>{const c=G.world.fight;return c&&data(c).enyaOpen>c.t?1:0;},brain:()=>true});

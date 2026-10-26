@@ -196,6 +196,10 @@
     location(key, o = {}) { return call('uifx', 'location', [key, o], undefined); },
     title(key, o = {}) { return P(call('uifx', 'title', [key, o], undefined)); },
     async chapterCard(key, o = {}) {
+      // 章节是从「G.fadeA = 1」的黑幕里开始的（main.js 进章先盖黑），而黑幕画在 UI 层之上：
+      //   篇章卡在第一次 setStage 之前放的话，整张卡都会被黑幕盖住（画面上只有一片黑）。
+      //   放卡前先把黑幕淡开，卡才看得见；已经淡开过就没有影响。
+      if (G.fadeA > 0.01) await G.fade(0, 0.4);
       this.cardOn = true;
       try { await P(call('uifx', 'chapterCard', [key, o], undefined)); } finally { this.cardOn = false; }
     },
@@ -245,8 +249,15 @@
       await call('ui', 'say', [who, text, o], P());
       if (talked && !a.remove && a.anim === 'talk') a.play(a.idleAnim || 'idle');
     },
+    // 战斗 / 操作中的小对白（第7章泥偶低语、第11章波鲁纳雷夫“这里刚才是不是来过？”、终章楼梯上 DIO 的话）：
+    //   不等确认键、不设 W.cine、不锁操作，dur 秒后自己消失；同一时间只留最新一条（旧的被换掉）。
+    //   战斗里说的话仍然走 say(..., { pos: 'bottom' })；bark 只给“不能让玩家停下来按确认”的句子。
+    bark(who, text, o = {}) {
+      const a = o.actor ? this.actor(o.actor) : (typeof who === 'string' ? this.actor(who) : null);
+      const name = o.name != null ? o.name : (a && a.name) || (who ? this.nameOf(who) : null);
+      return call('ui', 'bark', [who, text, Object.assign({}, o, { name })], undefined);
+    },
     narrate(text, o = {}) {
-      o = Object.assign({}, o);
       if (o.top) { o.pos = 'top'; delete o.top; }
       return P(call('ui', 'narrate', [text, o], undefined));
     },

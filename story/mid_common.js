@@ -32,7 +32,8 @@
   };
   M.damage = (c, dmg, guard = 'none') => G.combat.hit(null, c.player, { dmg, slot: 'enemy', guard, push: 0, sfxHit: 'thud' });
   // 热量和氧气是持续损耗；受击无敌帧不能用来抵销环境计时。
-  M.drain = (c, dmg) => { c.player.hp = Math.max(c.player.minHp || 0, c.player.hp - dmg * (c.assist ? .7 : 1)); };
+  // 放水可叠加：手工减免统一走 G.combat.assistK，第 1 档与原系数一致
+  M.drain = (c, dmg) => { c.player.hp = Math.max(c.player.minHp || 0, c.player.hp - dmg * G.combat.assistK(c, .7)); };
   M.every = (d, key, dt, seconds, fn) => { d[key] = (d[key] || 0) + dt; if (d[key] >= seconds) { d[key] %= seconds; fn(); } };
   M.busy = async (c, fn) => { const data = c.data; if (data.cine) return; data.cine = true; const old = W.cine, run = G.runId; W.cine = { by: '机关' };
     try { await fn(); } finally { if (G.runId === run && W.fight === c && c.data === data) { W.cine = old; data.cine = false; } } };

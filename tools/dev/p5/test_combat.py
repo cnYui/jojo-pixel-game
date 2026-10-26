@@ -20,7 +20,7 @@ with sync_playwright() as pw:
     page.on('pageerror',lambda e:errors.append(str(e)))
     page.goto((HERE/'arena.html').as_uri())
     page.evaluate('P5.init()')
-    for method in ['aiRange','combos','dodge','guards','poise','wall','special','shots','timestop','cancellation','retry','finish']:
+    for method in ['aiRange','combos','dodge','guards','poise','wall','special','shots','timestop','cancellation','specialEnd','dashBounds','retry','finish']:
         try:
             r=page.evaluate('async(m)=>await Promise.race([P5[m](),new Promise((_,reject)=>setTimeout(()=>reject(new Error("验收超时: "+m+" "+JSON.stringify(P5.state()))),12000))])',method)
         except Exception as e:
@@ -42,6 +42,8 @@ with sync_playwright() as pw:
         if method=='shots':check('反射/缠住、地火不可斩、危险区预警',[v['side'] for v in r['out']]==['player','enemy'] and r['out'][1]['dead'] and r['out'][1]['root']>0 and r['ground'] and not r['cut'] and r['after']<r['before'],r)
         if method=='timestop':check('2s时停冻结、队列结算与L伤害0.3',r['frozen'] and r['queued']==2 and r['hp']-r['after']==12 and r['done'] and r['guardCleared'] and r['immune']==0,r)
         if method=='cancellation':check('切场取消必杀和战斗、不留旧后台任务',not r['value'] and r['result']['cancelled'] and r['result']['name']=='RunCancelled' and r['runChanged'],r)
+        if method=='specialEnd':check('同章战斗结束后迟到的大招不锁住自由移动',not r['value'] and r['invoked']==0 and r['damage']==0 and r['cine'] is None and r['sameRun'],r)
+        if method=='dashBounds':check('左右地面突进与预警遵守场地边界，飞行俯冲保留出画路径',all(not v['outside'] and v['damage']>0 and all(v['lo']<=q[0]<=v['hi'] for q in v['path']) for v in r['rows']) and r['flightX']==360,r)
         if method=='retry':check('检查点第二阶段重试、Boss身份和放水0.7',len(set(v['e'] for v in r['seen']))==1 and r['after1']['attempt']==1 and r['after1']['hp']==100 and r['after1']['speed']==88 and r['assist'] and r['assistDmg']==14 and len(r['menus'][-1])==3,r)
         if method=='finish':check('ko/draw收尾时间轴与替身退场',all(v['done'] and v['dead'] and v['standHidden'] for v in r),r)
         page.screenshot(path=str(OUT/(method+'.png')))

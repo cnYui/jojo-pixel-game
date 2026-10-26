@@ -3,8 +3,8 @@
   "name": "花京院",
   "work": "JoJo",
   "image": "kakyoin.png",
-  "cell": [50, 51],
-  "pivot": [25, 48],
+  "cell": [54, 51],
+  "pivot": [26, 48],
   "facing": "right",
   "animations": {
     "idle": {
@@ -31,8 +31,15 @@
       "seamless": true,
       "desc": "后续补帧：kakyoin.float"
     },
-    "cast": {
+    "sit": {
       "row": 3,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "第6章到终章补帧：kakyoin.sit"
+    },
+    "cast": {
+      "row": 4,
       "frames": 2,
       "fps": 8,
       "kind": "loop",
@@ -40,7 +47,7 @@
       "desc": "Emerald Splash pose: hands joined forward; f1 coat blown back (2f)"
     },
     "cherry": {
-      "row": 4,
+      "row": 5,
       "frames": 2,
       "fps": 6,
       "kind": "loop",
@@ -48,7 +55,7 @@
       "desc": "licking a cherry \"rero rero\" (2f, alternate)"
     },
     "possessed": {
-      "row": 5,
+      "row": 6,
       "frames": 2,
       "fps": 6,
       "kind": "loop",
@@ -56,28 +63,35 @@
       "desc": "possessed by flesh bud: evil grin, claw hand, bud wriggles (2f)"
     },
     "hurt": {
-      "row": 6,
+      "row": 7,
       "frames": 1,
       "fps": 1,
       "kind": "static",
       "desc": "Kakyoin hit, recoiling back (1f)"
     },
     "down": {
-      "row": 7,
+      "row": 8,
       "frames": 1,
       "fps": 1,
       "kind": "static",
       "desc": "Kakyoin collapsed on his back, eyes closed, head LEFT (1f, 50x20)"
     },
+    "cover_eyes": {
+      "row": 9,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "第6章到终章补帧：kakyoin.cover_eyes"
+    },
     "dodge": {
-      "row": 8,
+      "row": 10,
       "frames": 1,
       "fps": 1,
       "kind": "static",
       "desc": "dodge (K): back-step, arm flung, coat tail blown back"
     },
     "fake_cherry": {
-      "row": 9,
+      "row": 11,
       "frames": 2,
       "fps": 6,
       "kind": "loop",
@@ -85,7 +99,7 @@
       "desc": "假花京院（黄色节制伪装）：fake_cherry（kakyoin.cherry 换黄眼 + 下摆滴黏液）"
     },
     "fake_idle": {
-      "row": 10,
+      "row": 12,
       "frames": 2,
       "fps": 3,
       "kind": "loop",
@@ -93,7 +107,7 @@
       "desc": "假花京院（黄色节制伪装）：fake_idle（kakyoin.idle 换黄眼 + 下摆滴黏液）"
     },
     "fake_walk": {
-      "row": 11,
+      "row": 13,
       "frames": 4,
       "fps": 8,
       "kind": "loop",
@@ -101,14 +115,14 @@
       "desc": "假花京院（黄色节制伪装）：fake_walk（kakyoin.walk 换黄眼 + 下摆滴黏液）"
     },
     "guard": {
-      "row": 12,
+      "row": 14,
       "frames": 1,
       "fps": 1,
       "kind": "static",
       "desc": "guard (L): forearms crossed in an X before the chest, braced"
     },
     "portrait": {
-      "row": 13,
+      "row": 15,
       "frames": 2,
       "fps": 8,
       "kind": "loop",
@@ -116,7 +130,7 @@
       "desc": "Kakyoin bust: curled forelock, cherry earring, green collar; f0 closed f1 talking"
     },
     "portrait_hurt": {
-      "row": 14,
+      "row": 16,
       "frames": 1,
       "fps": 1,
       "kind": "static",
@@ -147,7 +161,7 @@
   "variants": {},
   "source": {
     "project": "jojo",
-    "call": "game.art_heroes / game.art_later_existing / game.art_new_rubbersoul / game.orig（import assets; assets.load_all(); from engine import sprite; sprite.get('kakyoin.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'kakyoin.<动作>', x, y, frame=i, flip=False)"
+    "call": "game.art_c6fin_actions / game.art_heroes / game.art_later_existing / game.art_new_rubbersoul / game.orig（import assets; assets.load_all(); from engine import sprite; sprite.get('kakyoin.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'kakyoin.<动作>', x, y, frame=i, flip=False)"
   },
-  "notes": "花京院（Noriaki Kakyoin），主角团·人物。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle/walk/cast/cherry/possessed/hurt/down/dodge/fake_cherry/fake_idle/fake_walk/guard/portrait/portrait_hurt；脚点(自定义点)=float。down：仰卧倒地，头朝左。portrait* 动作是说话头像（32×32 半身）：图集里放在最后几行（按底部中点对齐，只是为了同格对齐，不代表脚点），同时逐帧导出到“头像”文件夹，见 expressions；多数 frame0=闭嘴/静态、frame1=说话/加强（具体见各自 desc），原引擎对话框打字时以 8fps 来回切换。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
+  "notes": "花京院（Noriaki Kakyoin），主角团·人物。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle/walk/cast/cherry/possessed/hurt/down/cover_eyes/dodge/fake_cherry/fake_idle/fake_walk/guard/portrait/portrait_hurt；脚点(自定义点)=float/sit。down：仰卧倒地，头朝左。portrait* 动作是说话头像（32×32 半身）：图集里放在最后几行（按底部中点对齐，只是为了同格对齐，不代表脚点），同时逐帧导出到“头像”文件夹，见 expressions；多数 frame0=闭嘴/静态、frame1=说话/加强（具体见各自 desc），原引擎对话框打字时以 8fps 来回切换。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
 }

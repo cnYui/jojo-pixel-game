@@ -1,114 +1,147 @@
 {
  "music": {
   "battle": {
-   "barSec": 1.422222,
-   "beatSec": 0.355556,
-   "bpm": 168.75,
-   "encDelay": 1105,
    "file": "data/music/battle.js",
-   "loopEnd": 28.444444,
-   "loopStart": 0,
+   "sec": 28.444444,
    "samples": 1254400,
-   "sec": 28.444444
+   "encDelay": 1105,
+   "loopStart": 0,
+   "loopEnd": 28.444444,
+   "bpm": 168.75,
+   "beatSec": 0.355556,
+   "barSec": 1.422222
+  },
+  "battle_egypt": {
+   "file": "data/music/battle_egypt.js",
+   "sec": 38.4,
+   "samples": 1693440,
+   "encDelay": 1105,
+   "loopStart": 0,
+   "loopEnd": 38.4,
+   "bpm": 150.0,
+   "beatSec": 0.4,
+   "barSec": 1.6
   },
   "boss": {
-   "barSec": 1.393197,
-   "beatSec": 0.348299,
-   "bpm": 172.2656,
-   "encDelay": 1105,
    "file": "data/music/boss.js",
-   "loopEnd": 33.436735,
-   "loopStart": 0,
+   "sec": 33.436735,
    "samples": 1474560,
-   "sec": 33.436735
+   "encDelay": 1105,
+   "loopStart": 0,
+   "loopEnd": 33.436735,
+   "bpm": 172.2656,
+   "beatSec": 0.348299,
+   "barSec": 1.393197
+  },
+  "comedy": {
+   "file": "data/music/comedy.js",
+   "sec": 34.133333,
+   "samples": 1505280,
+   "encDelay": 1105,
+   "loopStart": 0,
+   "loopEnd": 34.133333,
+   "bpm": 112.5,
+   "beatSec": 0.533333,
+   "barSec": 2.133333
   },
   "daily": {
-   "barSec": 1.814059,
-   "beatSec": 0.453515,
-   "bpm": 132.3,
-   "encDelay": 1105,
    "file": "data/music/daily.js",
-   "loopEnd": 29.024943,
-   "loopStart": 0,
+   "sec": 29.024943,
    "samples": 1280000,
-   "sec": 29.024943
+   "encDelay": 1105,
+   "loopStart": 0,
+   "loopEnd": 29.024943,
+   "bpm": 132.3,
+   "beatSec": 0.453515,
+   "barSec": 1.814059
+  },
+  "dream": {
+   "file": "data/music/dream.js",
+   "sec": 30.093061,
+   "samples": 1327104,
+   "encDelay": 1105,
+   "loopStart": 0,
+   "loopEnd": 30.093061,
+   "bpm": 95.7031,
+   "beatSec": 0.626939,
+   "barSec": 1.880816
   },
   "ending": {
-   "barSec": 2.612245,
-   "beatSec": 0.653061,
-   "bpm": 91.875,
-   "encDelay": 1105,
    "file": "data/music/ending.js",
-   "loopEnd": 41.795918,
-   "loopStart": 0,
+   "sec": 41.795918,
    "samples": 1843200,
-   "sec": 41.795918
+   "encDelay": 1105,
+   "loopStart": 0,
+   "loopEnd": 41.795918,
+   "bpm": 91.875,
+   "beatSec": 0.653061,
+   "barSec": 2.612245
   },
   "ominous": {
-   "barSec": 3.343673,
-   "beatSec": 0.835918,
-   "bpm": 71.7773,
-   "encDelay": 1105,
    "file": "data/music/ominous.js",
-   "loopEnd": 40.124082,
-   "loopStart": 0,
+   "sec": 40.124082,
    "samples": 1769472,
-   "sec": 40.124082
+   "encDelay": 1105,
+   "loopStart": 0,
+   "loopEnd": 40.124082,
+   "bpm": 71.7773,
+   "beatSec": 0.835918,
+   "barSec": 3.343673
   },
   "sad": {
-   "barSec": 2.380408,
-   "beatSec": 0.793469,
-   "bpm": 75.6173,
-   "encDelay": 1105,
    "file": "data/music/sad.js",
-   "loopEnd": 38.086531,
-   "loopStart": 0,
+   "sec": 38.086531,
    "samples": 1679616,
-   "sec": 38.086531
+   "encDelay": 1105,
+   "loopStart": 0,
+   "loopEnd": 38.086531,
+   "bpm": 75.6173,
+   "beatSec": 0.793469,
+   "barSec": 2.380408
   },
   "tension": {
-   "barSec": 2.222222,
-   "beatSec": 0.555556,
-   "bpm": 108.0,
-   "encDelay": 1105,
    "file": "data/music/tension.js",
-   "loopEnd": 35.555556,
-   "loopStart": 0,
+   "sec": 35.555556,
    "samples": 1568000,
-   "sec": 35.555556
+   "encDelay": 1105,
+   "loopStart": 0,
+   "loopEnd": 35.555556,
+   "bpm": 108.0,
+   "beatSec": 0.555556,
+   "barSec": 2.222222
   },
   "title": {
-   "barSec": 1.671837,
-   "beatSec": 0.417959,
-   "bpm": 143.5547,
-   "encDelay": 1105,
    "file": "data/music/title.js",
-   "loopEnd": 40.124082,
-   "loopStart": 0,
+   "sec": 40.124082,
    "samples": 1769472,
-   "sec": 40.124082
+   "encDelay": 1105,
+   "loopStart": 0,
+   "loopEnd": 40.124082,
+   "bpm": 143.5547,
+   "beatSec": 0.417959,
+   "barSec": 1.671837
   },
   "travel": {
-   "barSec": 1.991111,
-   "beatSec": 0.497778,
-   "bpm": 120.5357,
-   "encDelay": 1105,
    "file": "data/music/travel.js",
-   "loopEnd": 31.857778,
-   "loopStart": 0,
+   "sec": 31.857778,
    "samples": 1404928,
-   "sec": 31.857778
+   "encDelay": 1105,
+   "loopStart": 0,
+   "loopEnd": 31.857778,
+   "bpm": 120.5357,
+   "beatSec": 0.497778,
+   "barSec": 1.991111
   },
   "victory": {
-   "barSec": 1.814059,
-   "beatSec": 0.453515,
-   "bpm": 132.3,
-   "encDelay": 1105,
    "file": "data/music/victory.js",
-   "loopEnd": 21.768707,
-   "loopStart": 0,
+   "sec": 21.768707,
    "samples": 960000,
-   "sec": 21.768707
+   "encDelay": 1105,
+   "loopStart": 0,
+   "loopEnd": 21.768707,
+   "bpm": 132.3,
+   "beatSec": 0.453515,
+   "barSec": 1.814059
   }
  },
  "sfx": {
@@ -1488,6 +1521,158 @@
    "hit": 0.0,
    "loop": true,
    "samples": 264600,
+   "encDelay": 1105
+  },
+  "gas_rain": {
+   "sec": 1.2,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 52920,
+   "encDelay": 1105
+  },
+  "zombie_moan": {
+   "sec": 0.7,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 30870,
+   "encDelay": 1105
+  },
+  "wheel_ignite": {
+   "sec": 0.5,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 22050,
+   "encDelay": 1105
+  },
+  "invoice_stamp": {
+   "sec": 0.45,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 19845,
+   "encDelay": 1105
+  },
+  "car_horn": {
+   "sec": 0.4196,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 18505,
+   "encDelay": 1105
+  },
+  "baby_laugh": {
+   "sec": 0.6296,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 27767,
+   "encDelay": 1105
+  },
+  "baby_cry": {
+   "sec": 1.4495,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 63921,
+   "encDelay": 1105
+  },
+  "heat_beam": {
+   "sec": 0.55,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 24255,
+   "encDelay": 1105
+  },
+  "heat_wave": {
+   "sec": 0.9,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 39690,
+   "encDelay": 1105
+  },
+  "pump": {
+   "sec": 0.32,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 14112,
+   "encDelay": 1105
+  },
+  "cane_tap": {
+   "sec": 0.3804,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 16777,
+   "encDelay": 1105
+  },
+  "radio_static": {
+   "sec": 1.0,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 44100,
+   "encDelay": 1105
+  },
+  "metal_drop": {
+   "sec": 0.4093,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 18049,
+   "encDelay": 1105
+  },
+  "zap": {
+   "sec": 0.42,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 18522,
+   "encDelay": 1105
+  },
+  "kid_cry": {
+   "sec": 0.7,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 30870,
+   "encDelay": 1105
+  },
+  "river_loop": {
+   "sec": 6.0,
+   "ch": 2,
+   "hit": 0.0,
+   "loop": true,
+   "samples": 264600,
+   "encDelay": 1105
+  },
+  "rewind": {
+   "sec": 0.85,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 37485,
+   "encDelay": 1105
+  },
+  "cat_meow": {
+   "sec": 0.55,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 24255,
+   "encDelay": 1105
+  },
+  "soul_drain": {
+   "sec": 1.3,
+   "ch": 1,
+   "hit": 0.0,
+   "loop": false,
+   "samples": 57330,
    "encDelay": 1105
   }
  }

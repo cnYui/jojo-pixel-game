@@ -3,8 +3,8 @@
   "name": "ZZ",
   "work": "JoJo",
   "image": "zz.png",
-  "cell": [46, 50],
-  "pivot": [23, 34],
+  "cell": [57, 67],
+  "pivot": [28, 40],
   "facing": "right",
   "animations": {
     "idle": {
@@ -61,7 +61,7 @@
       "emotion": "normal",
       "frames": 2,
       "fps": 8,
-      "size": [32, 32],
+      "size": [57, 54],
       "files": ["头像/portrait_0.png", "头像/portrait_1.png"],
       "desc": "ZZ：portrait"
     }
@@ -71,5 +71,5 @@
     "project": "jojo",
     "call": "game.art_new_zz（import assets; assets.load_all(); from engine import sprite; sprite.get('zz.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'zz.<动作>', x, y, frame=i, flip=False)"
   },
-  "notes": "ZZ（zz），人物·人物。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle/walk/hurt/down/talk；中心=portrait。portrait* 动作是说话头像（32×32 半身）：图集里放在最后几行（按底部中点对齐，只是为了同格对齐，不代表脚点），同时逐帧导出到“头像”文件夹，见 expressions；多数 frame0=闭嘴/静态、frame1=说话/加强（具体见各自 desc），原引擎对话框打字时以 8fps 来回切换。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
+  "notes": "ZZ（zz），人物·人物。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle/walk/hurt/down/talk；中心=portrait。portrait* 动作是说话头像（32×32 半身）：图集里放在最后几行（按底部中点对齐，只是为了同格对齐，不代表脚点），同时逐帧导出到“头像”文件夹，见 expressions；多数 frame0=闭嘴/静态、frame1=说话/加强（具体见各自 desc），原引擎对话框打字时以 8fps 来回切换。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。个别奇数尺寸的锚点带 .5，已向左/上取整（至多 0.5px 偏差）。"
 }

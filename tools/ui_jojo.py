@@ -284,7 +284,45 @@ def render_chapter(e):
     return base, {}
 
 
+def render_god_title(e):
+    # 2026-10-19 第8–11章「金色神名卡」（规划 §6.7 / 分镜 s12 的样式）：九荣神每出一个就弹一张。
+    # 做成和 titles 同一套资源（S.title(key) 直接调用），所以把金框、上下的锯齿花边、左右两个安卡符号都画进同一张图里，
+    # 剧情不用再自己拼框；神像小图标（s12_g_*）由剧情按需要叠在卡片上方。
+    TX = _mods()[0]
+    gold, gold_d = (216, 168, 64, 255), (106, 74, 24, 255)
+    name = TX.text_img(e["text"], "bold", int(e.get("size", 44)), e.get("colour", "#ffd860"),
+                       outline=e.get("outline", "#2a1606"), owidth=int(e.get("owidth", 3)), shadow="#000000")
+    en = TX.text_img(e.get("en", ""), "bold", 14, "#f0d890", outline="#1a0e04", owidth=1) if e.get("en") else None
+    w = max(name.width, en.width if en else 0) + 96
+    h = name.height + (en.height if en else 0) + 30
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    # 底：上深蓝下近黑的竖向渐变，半透明一点，压在任何背景上都读得清
+    for y in range(h):
+        k = y / max(1, h - 1)
+        c = tuple(int(a + (b - a) * k) for a, b in zip((22, 18, 44), (8, 6, 16)))
+        d.line([(2, y), (w - 3, y)], fill=c + (236,))
+    d.rectangle([0, 0, w - 1, h - 1], outline=gold, width=2)
+    d.rectangle([5, 5, w - 6, h - 6], outline=gold_d, width=1)
+    # 上下花边：一排小三角（埃及壁画的锯齿纹）
+    for x in range(12, w - 12, 8):
+        d.polygon([(x, 6), (x + 4, 11), (x + 8, 6)], fill=gold_d)
+        d.polygon([(x, h - 7), (x + 4, h - 12), (x + 8, h - 7)], fill=gold_d)
+    # 左右各一个安卡符号（环 + T 字），金色
+    for cx in (24, w - 25):
+        cy = h // 2 - 4
+        d.ellipse([cx - 5, cy - 13, cx + 5, cy - 1], outline=gold, width=2)
+        d.line([(cx, cy - 1), (cx, cy + 15)], fill=gold, width=3)
+        d.line([(cx - 8, cy + 3), (cx + 8, cy + 3)], fill=gold, width=3)
+    im.alpha_composite(name, ((w - name.width) // 2, 13))
+    if en:
+        im.alpha_composite(en, ((w - en.width) // 2, 13 + name.height + 1))
+    return im, {}
+
+
 def render_title(e):
+    if e.get("kind") == "god":
+        return render_god_title(e)
     TX = _mods()[0]
     im = TX.text_img(e["text"], "bold", int(e.get("size", 48)), e.get("colour", "#ffe040"),
                      outline=e.get("outline", "#2a0a3a"), owidth=int(e.get("owidth", 3)),

@@ -2,7 +2,7 @@
 r"""第7章–终章背景重画（bg-late）的预览 / 前后对照工具。只写 tools\bg_new\_preview\late\（不碰 assets\、data\）。
 
     python -B tools\bg_new\late_preview.py before              # 用现在正式构建出来的 assets\bg + _meta\bg.json 拍“改前”
-    python -B tools\bg_new\late_preview.py after  [key ...]     # 跑 tools\bg_new\<key>.py（不经 bg_jojo 路由）出图层 + 预览
+    python -B tools\bg_new\late_preview.py after  [key ...]     # 使用 bg_jojo 的正式导出入口生成图层 + 预览
     python -B tools\bg_new\late_preview.py compare [key ...]    # 改前 / 改后上下对照（每个 key 一张 + 总览）
 
 预览都是 2 倍最近邻；宽地图按镜头 0 / 中间 / 最右各拍一张横着拼。after 另出一张“带人”的：
@@ -20,7 +20,11 @@ import importlib.util  # noqa: E402
 HERE = os.path.dirname(os.path.abspath(__file__))           # tools\bg_new
 TOOLS = os.path.dirname(HERE)
 GAME = os.path.dirname(TOOLS)
+if TOOLS not in sys.path:
+    sys.path.insert(0, TOOLS)
 OUT = os.path.join(HERE, '_preview', 'late')
+# 2026-10-18：预览要能看到还没验收的新背景（bg_jojo 只在 JOJO_BG_WIP=1 时让半成品走 tools\bg_new\<key>.py；正式构建不设）
+os.environ['JOJO_BG_WIP'] = '1'
 W, H = 320, 180
 
 KEYS = ['redsea_island', 'submarine', 'seabed_mouth', 'egypt_coast',
@@ -124,6 +128,54 @@ def with_people(BJ, st, images, key, scale=2, t=1.0, state=None):
     return out
 
 
+# ---------------------------------------------------------------- 锚点总图
+def _anchor_items(name, v, out):
+    """anchors 里的值：[x, y] 点、[x0, y0, x1, y1] 框、[[x, y], …] 一组点、dict（递归）；纯数字（高度线之类）跳过。"""
+    num = lambda q: isinstance(q, (int, float)) and not isinstance(q, bool)
+    if isinstance(v, dict):
+        for k2, v2 in v.items():
+            _anchor_items(name + '.' + str(k2), v2, out)
+    elif isinstance(v, (list, tuple)):
+        if len(v) == 2 and all(num(q) for q in v):
+            out.append(('pt', name, v))
+        elif len(v) == 4 and all(num(q) for q in v):
+            out.append(('box', name, v))
+        else:
+            for i, q in enumerate(v):
+                _anchor_items('%s[%d]' % (name, i), q, out)
+
+
+def anchor_sheet(BJ, st, images, key, scale=2, t=1.0):
+    """整张地图（按 320 一段拼起来，k = 1 的图层和世界坐标对齐）+ 可走带 + 每个锚点的十字和名字。"""
+    from PIL import Image, ImageDraw
+    w = st['w']
+    full = Image.new('RGBA', (w, H), (0, 0, 0, 255))
+    for cx in sorted(set(list(range(0, max(1, w - W + 1), W)) + [max(0, w - W)])):
+        full.paste(BJ.ref_render(st, images, cx, t, {}).convert('RGBA'), (cx, 0))
+    im = full.resize((w * scale, H * scale), Image.NEAREST)
+    d = ImageDraw.Draw(im)
+    f = _font(11)
+    walk = st.get('walk') or [148, 176]
+    for y in walk:
+        for xx in range(0, w * scale, 6):
+            d.point((xx, y * scale), fill=(80, 255, 120))
+    items = []
+    for k, v in (st.get('anchors') or {}).items():
+        _anchor_items(k, v, items)
+    for i, (kind, name, v) in enumerate(items):
+        col = [(255, 80, 80), (255, 220, 60), (80, 200, 255), (255, 120, 255), (120, 255, 160)][i % 5]
+        if kind == 'pt':
+            x, y = v[0] * scale, v[1] * scale
+            d.line((x - 5, y, x + 5, y), fill=col, width=2)
+            d.line((x, y - 5, x, y + 5), fill=col, width=2)
+            d.text((x + 4, y - 14 - (i % 3) * 10), name, font=f, fill=col, stroke_width=2, stroke_fill=(0, 0, 0))
+        else:
+            x0, y0, x1, y1 = [q * scale for q in v]
+            d.rectangle((x0, y0, x1, y1), outline=col, width=2)
+            d.text((x0 + 3, y0 + 2), name, font=f, fill=col, stroke_width=2, stroke_fill=(0, 0, 0))
+    return im.convert('RGB')
+
+
 # ---------------------------------------------------------------- before
 def cmd_before(keys):
     from PIL import Image
@@ -157,6 +209,13 @@ def cmd_before(keys):
 def cmd_after(keys):
     from PIL import Image
     BJ = bj()
+    # 2026-10-19：插画背景（poker_table 等）没有旧画法可退，文件还没写时没有导出函数——整章预览时跳过它们，别让同章的图跟着报错
+    skip = [k for k in keys if k not in BJ.EXPORTERS]
+    if skip:
+        print('  [after] 跳过（还没有 tools/bg_new/<key>.py）：', skip)
+        keys = [k for k in keys if k in BJ.EXPORTERS]
+        if not keys:
+            return 0
     od = os.path.join(OUT, 'after')
     os.makedirs(od, exist_ok=True)
     c = BJ.standalone_c(os.path.join(OUT, 'after_layers'))
@@ -166,7 +225,7 @@ def cmd_after(keys):
         ex.begin(key)
         t0 = time.time()
         print('  [after] %s（pack %s）' % (key, ex.pack))
-        st = BJ.exp_new(ex, key)
+        st = BJ.EXPORTERS[key](ex)
         st['pack'] = ex.pack
         stages[key] = st
         times[key] = round(time.time() - t0, 2)
@@ -182,6 +241,8 @@ def cmd_after(keys):
         for i, t in enumerate((0.0, 0.5, 1.0, 1.5)):
             fr.paste(BJ.ref_render(st, ex.images, 0, t, {}).convert('RGB'), (i * (W + 4), 0))
         fr.save(os.path.join(od, key + '_anim.png'))
+        # 2026-10-15：整张地图 + 剧情锚点（剧情的 NPC / 调查点按 anchors 摆，画背景的人和写剧情的人对同一张图）
+        anchor_sheet(BJ, st, ex.images, key).save(os.path.join(od, key + '_anchors.png'))
     bad = [(k, ch['label']) for k, r in ex.report.items() for ch in r['checks'] if not ch['ok']]
     size = {}
     for k, v in c['index'].items():

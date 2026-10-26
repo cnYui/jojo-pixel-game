@@ -255,6 +255,21 @@
     // ============================================================ 提示 / 系统框 / 菜单
     // hint(null / '') = 清掉提示（剧情里 S.hint(null) 用来收起；以前 String(null) 会显示成“null”）
     hint(text, dur = 4.5) { this.hints = text == null || text === '' ? [] : [{ text: String(text), t: 0, dur }]; },
+    // 战斗 / 操作中的小对白（第7章泥偶低语、第11章“这里刚才是不是来过？”、终章楼梯上 DIO 的话）：
+    //   和 say() 不同，它不返回 Promise、不进 update() 的阻塞分支、也不抢输入——战斗和自由走动照常进行，
+    //   dur 秒后自己消失；同一时间只留最新一条（旧的一条直接换掉，免得两句挤在屏幕下方）。
+    bark(who, text, o = {}) {
+      const F = f16();
+      if (!F) return;
+      const body = text == null ? '' : String(text);
+      const head = who ? headOf(who, o.expr) : null;
+      const sc = head ? (head.h <= 34 ? 2 : 1) : 1;
+      const hw = head ? Math.round(head.w * sc) : 0;
+      const lines = F.wrap(body, 360);
+      const w = Math.max(200, Math.max(...lines.map((l) => F.width(l))) + hw + (head ? 34 : 18));
+      this.barkBox = { who, name: o.name != null ? o.name : nameOf(who), head, sc, hw, lines, t: 0,
+        dur: Math.max(.6, o.dur || 1.6), color: o.color || colorOf(who), w: Math.min(600, w) };
+    },
     notice(o = {}) {
       return task((res) => {
         this.noticeBox = Object.assign({ t: 0, res }, o);
@@ -363,6 +378,8 @@
       if (this.insertUI && this.insertUI.t0 == null) this.insertUI.t0 = G.clk.ui;
       for (const h of this.hints) h.t += dt;
       this.hints = this.hints.filter((h) => h.t < h.dur);
+      // 小对白不阻塞任何流程：自己计时、到点消失（剧情换图 / 回标题时也不会留下一条）
+      if (this.barkBox) { this.barkBox.t += dt; if (this.barkBox.t >= this.barkBox.dur) this.barkBox = null; }
       if (this.narrOut) { this.narrOut.out += dt; if (this.narrOut.out >= 0.25) this.narrOut = null; }
       if (G.uifx && G.uifx.update) G.uifx.update(dt);
       if (G.hud && G.hud.update) G.hud.update(dt);
@@ -635,7 +652,10 @@
       }
       if (G.hud) { if (G.hud.draw) G.hud.draw(g); if (G.hud.drawMarks) G.hud.drawMarks(g); }
       if (G.uifx && G.uifx.draw) G.uifx.draw(g);
+      if (G.EXTRA && G.EXTRA.drawUI) G.EXTRA.drawUI(g);     // 战斗评价牌（story\extras.js），在提示 / 对话下面
+      if (G.ach && G.ach.drawToast) G.ach.drawToast(g);     // 成就解锁牌（engine\ui_ach.js）：不挡输入，画在评价牌上面
       for (const h of this.hints) this.drawHint(g, h);
+      if (this.barkBox) this.drawBark(g);
       if (this.narr && !this.narr.onBlack) this.drawNarr(g, this.narr, 1);
       if (this.narrOut && !this.narrOut.n.onBlack) this.drawNarr(g, this.narrOut.n, 1 - this.narrOut.out / 0.25);
       const qHold = this.qte && this.qte.hold;      // 拔肉芽钻满后剧情在说话：QTE 画在对话下面
@@ -757,6 +777,28 @@
         left -= line.length;
         if (part) F.draw(g, part, Math.round(UW / 2 - F.width(line) / 2), y0 + 8 + i * 22 + 2, '#fff', { outline: '#000' });
       });
+      g.restore();
+    },
+    // 战斗中的小对白：画面下方一条小框（头像 + 名字 + 文字），不挡上方 Boss 条 / 机关说明，也不挡下方的操作提示
+    drawBark(g) {
+      const b = this.barkBox, F = f16();
+      const a = clamp01(Math.min(b.t * 7, (b.dur - b.t) * 5));
+      if (a <= 0 || !F) return;
+      const hh = b.lines.length * 18 + 12;
+      const x0 = Math.round((UW - b.w) / 2), y0 = UH - hh - 14;
+      g.save();
+      g.globalAlpha = a;
+      this.box(g, x0, y0, x0 + b.w, y0 + hh, { fill: 'rgba(18,14,34,0.92)', border: GOLD });
+      let tx = x0 + 10;
+      if (b.head) {
+        const fw = b.hw, fh = Math.round(b.head.h * b.sc), cy = Math.round(y0 + (hh - fh) / 2);
+        g.save(); g.beginPath(); g.rect(x0 + 6, y0 + 4, fw + 2, hh - 8); g.clip();
+        if (G.ready(b.head.imgs[0])) g.drawImage(b.head.imgs[0], 0, 0, b.head.w, b.head.h, x0 + 7, cy, fw, fh);
+        g.restore();
+        tx = x0 + 12 + fw + 8;
+      }
+      if (b.name) F.draw(g, b.name, tx, y0 - 13, b.color, { outline: '#140c18' });
+      b.lines.forEach((l, i) => F.draw(g, l, tx, y0 + 8 + i * 18, '#fff', { outline: '#000' }));
       g.restore();
     },
     drawHint(g, h) {

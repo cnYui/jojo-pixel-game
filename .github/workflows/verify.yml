@@ -90,6 +90,10 @@ jobs:
             script: playtest_mid.py
             mode: normal
             args: ''
+          - chapter: ch5
+            script: playtest_mid.py
+            mode: normal
+            args: ''
           - chapter: ch1
             script: test_ch1.py
             mode: lose
@@ -103,6 +107,10 @@ jobs:
             mode: lose
             args: --lose
           - chapter: ch4
+            script: playtest_mid.py
+            mode: lose
+            args: --lose
+          - chapter: ch5
             script: playtest_mid.py
             mode: lose
             args: --lose

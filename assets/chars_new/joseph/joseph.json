@@ -39,15 +39,22 @@
       "seamless": true,
       "desc": "后续补帧：joseph.float（随新脸重算）"
     },
-    "point": {
+    "sit": {
       "row": 4,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "第6章到终章补帧：joseph.sit"
+    },
+    "point": {
+      "row": 5,
       "frames": 1,
       "fps": 1,
       "kind": "static",
       "desc": "smug wink, pointing: \"your next line is...\"（游戏层：脸照对话框头像、手臂分段）"
     },
     "camera": {
-      "row": 5,
+      "row": 6,
       "frames": 2,
       "fps": 4,
       "kind": "oneshot",
@@ -55,7 +62,7 @@
       "desc": "f0 camera raised high in gloved hand, other hand cocked; f1 Hermit Purple vines burst along the arm, karate chop smashes the camera（游戏层：脸照对话框头像）"
     },
     "shock": {
-      "row": 6,
+      "row": 7,
       "frames": 2,
       "fps": 8,
       "kind": "loop",
@@ -63,35 +70,35 @@
       "desc": "\"OH MY GOD!\": hands on head, mouth wide; f1 hat pops up, jolt"
     },
     "hurt": {
-      "row": 7,
+      "row": 8,
       "frames": 1,
       "fps": 1,
       "kind": "static",
       "desc": "hit recoil, leaning back, hat knocked up"
     },
     "lie": {
-      "row": 8,
+      "row": 9,
       "frames": 1,
       "fps": 1,
       "kind": "static",
       "desc": "lying on his back (60x20), head right, eyes closed, hat fallen beside; anchor = ground"
     },
     "dodge": {
-      "row": 9,
+      "row": 10,
       "frames": 1,
       "fps": 1,
       "kind": "static",
       "desc": "后续补帧：joseph.dodge（随新脸重算）"
     },
     "guard": {
-      "row": 10,
+      "row": 11,
       "frames": 1,
       "fps": 1,
       "kind": "static",
       "desc": "block: gloved forearm raised in front of the face, other fist at the chest"
     },
     "vine_atk": {
-      "row": 11,
+      "row": 12,
       "frames": 4,
       "fps": 15,
       "kind": "oneshot",
@@ -99,7 +106,7 @@
       "desc": "Hermit Purple throw: wind-up (glove cocked at the shoulder), fling, full extension (open glove; the vine itself is drawn by the stand), pull back"
     },
     "vine_heavy": {
-      "row": 12,
+      "row": 13,
       "frames": 4,
       "fps": 10,
       "kind": "oneshot",
@@ -107,7 +114,7 @@
       "desc": "Hermit Purple heavy lash: arm raised over the hat, lash forward with vines wrapped on the arm, hold, recover"
     },
     "vine_hold": {
-      "row": 13,
+      "row": 14,
       "frames": 2,
       "fps": 6,
       "kind": "loop",
@@ -115,7 +122,7 @@
       "desc": "holding the vine taut: arm extended, fist clenched, slight tremble"
     },
     "whip": {
-      "row": 14,
+      "row": 15,
       "frames": 2,
       "fps": 8,
       "kind": "oneshot",
@@ -123,7 +130,7 @@
       "desc": "whip: raise / lash with vines on the arm (same art as vine_heavy f0-f1)"
     },
     "portrait": {
-      "row": 15,
+      "row": 16,
       "frames": 2,
       "fps": 8,
       "kind": "loop",
@@ -131,7 +138,7 @@
       "desc": "bust: wide-brim hat, grey beard; f0 closed, f1 talking"
     },
     "portrait_shock": {
-      "row": 16,
+      "row": 17,
       "frames": 2,
       "fps": 8,
       "kind": "loop",
@@ -163,7 +170,7 @@
   "variants": {},
   "source": {
     "project": "jojo",
-    "call": "game.art_joseph / game.art_later_existing / game.orig（import assets; assets.load_all(); from engine import sprite; sprite.get('joseph.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'joseph.<动作>', x, y, frame=i, flip=False)"
+    "call": "game.art_c6fin_actions / game.art_joseph / game.art_later_existing / game.orig（import assets; assets.load_all(); from engine import sprite; sprite.get('joseph.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'joseph.<动作>', x, y, frame=i, flip=False)"
   },
-  "notes": "乔瑟夫（Joseph Joestar），主角团·人物。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle/walk/run/point/camera/shock/hurt/lie/portrait/portrait_shock；脚点(自定义点)=float/dodge/guard/vine_atk/vine_heavy/vine_hold/whip。idle：棕色手套 = 左手（义肢）。lie：仰卧，头朝右（与 avdol/kakyoin 的 down 方向相反），帽子掉在身旁；锚点=地面。portrait* 动作是说话头像（32×32 半身）：图集里放在最后几行（按底部中点对齐，只是为了同格对齐，不代表脚点），同时逐帧导出到“头像”文件夹，见 expressions；多数 frame0=闭嘴/静态、frame1=说话/加强（具体见各自 desc），原引擎对话框打字时以 8fps 来回切换。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
+  "notes": "乔瑟夫（Joseph Joestar），主角团·人物。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle/walk/run/point/camera/shock/hurt/lie/portrait/portrait_shock；脚点(自定义点)=float/sit/dodge/guard/vine_atk/vine_heavy/vine_hold/whip。idle：棕色手套 = 左手（义肢）。lie：仰卧，头朝右（与 avdol/kakyoin 的 down 方向相反），帽子掉在身旁；锚点=地面。portrait* 动作是说话头像（32×32 半身）：图集里放在最后几行（按底部中点对齐，只是为了同格对齐，不代表脚点），同时逐帧导出到“头像”文件夹，见 expressions；多数 frame0=闭嘴/静态、frame1=说话/加强（具体见各自 desc），原引擎对话框打字时以 8fps 来回切换。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
 }

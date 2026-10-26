@@ -1,7 +1,7 @@
 {
- "built": "2026-10-11T14:05:02",
- "chars_dir": "D:\\大疆\\游戏素材\\JoJo\\游戏\\assets\\chars_new",
- "props_dir": "D:\\大疆\\游戏素材\\JoJo\\游戏\\assets\\props_new",
+ "built": "2026-10-19T11:34:08",
+ "chars_dir": "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\assets\\chars_new",
+ "props_dir": "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\assets\\props_new",
  "new_names": [
   "alessi.axe",
   "alessi.beg",
@@ -30,6 +30,7 @@
   "avdol.float",
   "avdol.guard",
   "avdol.push",
+  "avdol.sit",
   "boingo.portrait",
   "boingo.scared",
   "cameo.down",
@@ -93,6 +94,7 @@
   "devo_doll.talk",
   "devo_doll.walk",
   "dio.punch",
+  "dio.sit_back",
   "empress.bite",
   "empress.down",
   "empress.hurt",
@@ -111,6 +113,11 @@
   "enya.cast",
   "enya.down",
   "enya.hurt",
+  "fake_jotaro.hurt",
+  "fake_jotaro.idle",
+  "fake_jotaro.portrait",
+  "fake_jotaro.sit",
+  "fake_jotaro.walk",
   "fake_tennille.down",
   "fake_tennille.grab",
   "fake_tennille.hurt",
@@ -151,6 +158,7 @@
   "joseph.dodge",
   "joseph.float",
   "joseph.guard",
+  "joseph.sit",
   "joseph.vine_atk",
   "joseph.vine_heavy",
   "joseph.vine_hold",
@@ -171,12 +179,14 @@
   "jotaro_kid.walk",
   "judgement.attack",
   "judgement.portrait",
+  "kakyoin.cover_eyes",
   "kakyoin.dodge",
   "kakyoin.fake_cherry",
   "kakyoin.fake_idle",
   "kakyoin.fake_walk",
   "kakyoin.float",
   "kakyoin.guard",
+  "kakyoin.sit",
   "kennyg.attack",
   "kennyg.down",
   "kennyg.hurt",
@@ -378,6 +388,7 @@
   "polnareff.kid",
   "polnareff.kneel",
   "polnareff.possessed",
+  "polnareff.sit",
   "polnareff_kid.down",
   "polnareff_kid.hide",
   "polnareff_kid.hurt",
@@ -417,6 +428,7 @@
   "steelydan.fly",
   "steelydan.hurt",
   "steelydan.portrait",
+  "steelydan.walk",
   "strength.attack",
   "strength.down",
   "strength.hurt",
@@ -502,7 +514,8 @@
   "npc_cat",
   "midler_back",
   "osiris",
-  "horus"
+  "horus",
+  "fake_jotaro"
  ],
  "redrawn_names": [
   "holly.idle",
@@ -565,22 +578,24 @@
   },
   "kakyoin": {
    "cell": [
-    50,
+    54,
     51
    ],
    "pivot": [
-    25,
+    26,
     48
    ],
    "animations": [
     "idle",
     "walk",
     "float",
+    "sit",
     "cast",
     "cherry",
     "possessed",
     "hurt",
     "down",
+    "cover_eyes",
     "dodge",
     "fake_cherry",
     "fake_idle",
@@ -595,12 +610,14 @@
    ],
    "aliases": {},
    "new": [
+    "cover_eyes",
     "dodge",
     "fake_cherry",
     "fake_idle",
     "fake_walk",
     "float",
-    "guard"
+    "guard",
+    "sit"
    ]
   },
   "avdol": {
@@ -616,6 +633,7 @@
     "idle",
     "walk",
     "float",
+    "sit",
     "cast",
     "yes",
     "hurt",
@@ -633,7 +651,8 @@
     "dodge",
     "float",
     "guard",
-    "push"
+    "push",
+    "sit"
    ]
   },
   "polnareff": {
@@ -649,6 +668,7 @@
     "idle",
     "walk",
     "float",
+    "sit",
     "crawl",
     "fight",
     "wave",
@@ -678,7 +698,8 @@
     "kick",
     "kid",
     "kneel",
-    "possessed"
+    "possessed",
+    "sit"
    ]
   },
   "iggy": {
@@ -1500,12 +1521,12 @@
   },
   "zz": {
    "cell": [
-    46,
-    50
+    57,
+    67
    ],
    "pivot": [
-    23,
-    34
+    28,
+    40
    ],
    "animations": [
     "idle",
@@ -2491,6 +2512,7 @@
     "walk",
     "run",
     "float",
+    "sit",
     "point",
     "camera",
     "shock",
@@ -2514,6 +2536,7 @@
     "dodge",
     "float",
     "guard",
+    "sit",
     "vine_atk",
     "vine_heavy",
     "vine_hold",
@@ -2663,6 +2686,7 @@
    ],
    "animations": [
     "idle",
+    "walk",
     "fly",
     "hurt",
     "down",
@@ -2678,7 +2702,8 @@
     "down",
     "fly",
     "hurt",
-    "portrait"
+    "portrait",
+    "walk"
    ]
   },
   "death13": {
@@ -2955,6 +2980,7 @@
     "hurt",
     "coffin_rise",
     "crumble",
+    "sit_back",
     "portrait",
     "portrait_rage"
    ],
@@ -2964,7 +2990,8 @@
    ],
    "aliases": {},
    "new": [
-    "punch"
+    "punch",
+    "sit_back"
    ]
   },
   "telence": {
@@ -3069,6 +3096,34 @@
    "aliases": {},
    "new": [
     "portrait"
+   ]
+  },
+  "fake_jotaro": {
+   "cell": [
+    40,
+    71
+   ],
+   "pivot": [
+    20,
+    55
+   ],
+   "animations": [
+    "idle",
+    "walk",
+    "sit",
+    "hurt",
+    "portrait"
+   ],
+   "expressions": [
+    "portrait"
+   ],
+   "aliases": {},
+   "new": [
+    "hurt",
+    "idle",
+    "portrait",
+    "sit",
+    "walk"
    ]
   },
   "holly": {
@@ -5070,106 +5125,418 @@
    "kind": "static",
    "desc": "水果摊上的一筐水果：竹编筐（编织纹）里堆着芒果、香蕉、青柠、石榴。帧 0 = 满的；帧 1 = 被女帝啃掉一块：右上角的芒果和香蕉没了，剩下的芒果缺一个半圆、露出黄色果肉；pivot = 底边中点",
    "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "spw_jeep",
+   "name": "spw_jeep",
+   "sprite": "prop_new.spw_jeep",
+   "file": "spw_jeep.png",
+   "frames": 2,
+   "size": [
+    60,
+    30
+   ],
+   "anchor": [
+    30,
+    30
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    30,
+    30
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "SPW 财团的白色吉普（朝右）：帧 0 / 1 轮毂转半格（开动时交替）。第5、8、11章、终章",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "mirror_dome",
+   "name": "mirror_dome",
+   "sprite": "prop_new.mirror_dome",
+   "file": "mirror_dome.png",
+   "frames": 5,
+   "size": [
+    42,
+    28
+   ],
+   "anchor": [
+    21,
+    28
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    21,
+    28
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "阿拉伯·法兹的镜子穹顶：0 平时（映着沙色，几乎看不见）/ 1 反光一闪 / 2 裂了一道缝 / 3、4 裂开后长出两条小腿跑（交替）。第6章",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "carousel_horse",
+   "name": "carousel_horse",
+   "sprite": "prop_new.carousel_horse",
+   "file": "carousel_horse.png",
+   "frames": 3,
+   "size": [
+    50,
+    42
+   ],
+   "anchor": [
+    25,
+    42
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    25,
+    42
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "旋转木马的木马（朝右，金杆穿过马背）：3 帧奔跑。第6章梦二",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "horse",
+   "name": "horse",
+   "sprite": "prop_new.horse",
+   "file": "horse.png",
+   "frames": 4,
+   "size": [
+    52,
+    40
+   ],
+   "anchor": [
+    26,
+    40
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    26,
+    40
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "拉马车的马（朝右）：0、1 原地刨蹄 / 2、3 奔跑。第8章阿斯旺预言 2",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "carriage",
+   "name": "carriage",
+   "sprite": "prop_new.carriage",
+   "file": "carriage.png",
+   "frames": 2,
+   "size": [
+    64,
+    44
+   ],
+   "anchor": [
+    32,
+    44
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    32,
+    44
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "两轮马车（朝右，车辕伸向右边接马）：0 正常 / 1 缰绳割断、车辕垂地。第8章阿斯旺",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "motorbike",
+   "name": "motorbike",
+   "sprite": "prop_new.motorbike",
+   "file": "motorbike.png",
+   "frames": 2,
+   "size": [
+    56,
+    32
+   ],
+   "anchor": [
+    28,
+    32
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    28,
+    32
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "承太郎骑的摩托（朝右）：0 停着 / 1 发动（车身抬 1 px + 排气）。终章",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "soul_chip",
+   "name": "soul_chip",
+   "sprite": "prop_new.soul_chip",
+   "file": "soul_chip.png",
+   "frames": 2,
+   "size": [
+    9,
+    9
+   ],
+   "anchor": [
+    4,
+    9
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    9
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "灵魂筹码：金色筹码上一张小脸（0 波鲁纳雷夫 / 1 乔瑟夫）。第10章赌局",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "anubis_icons",
+   "name": "anubis_icons",
+   "sprite": "prop_new.anubis_icons",
+   "file": "anubis_icons.png",
+   "frames": 6,
+   "size": [
+    9,
+    9
+   ],
+   "anchor": [
+    4,
+    9
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    9
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "阿努比斯记招的小图标：0 J1 / 1 J2 / 2 J3 / 3 连打 / 4 U / 5 精准格挡后的反击。第9章 HUD",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "comic_panel",
+   "name": "comic_panel",
+   "sprite": "prop_new.comic_panel",
+   "file": "comic_panel.png",
+   "frames": 13,
+   "size": [
+    68,
+    56
+   ],
+   "anchor": [
+    34,
+    56
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    34,
+    56
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "托特神漫画格（黑白网点）：0–5 第8章预言 1a 1b 2a 2b 3a 3b，6–11 第10章 4a 4b 5a 5b 6a 6b，12 大问号",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "crt_bezel",
+   "name": "crt_bezel",
+   "sprite": "prop_new.crt_bezel",
+   "file": "crt_bezel.png",
+   "frames": 1,
+   "size": [
+    320,
+    180
+   ],
+   "anchor": [
+    0,
+    0
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    0,
+    0
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "老电视机外框（屏幕区 [40,18]–[252,162] 透明，四角弧边 + 一层扫描线）：第11章赛车 / 棒球画面盖在上面"
+  },
+  {
+   "id": "race_car",
+   "name": "race_car",
+   "sprite": "prop_new.race_car",
+   "file": "race_car.png",
+   "frames": 4,
+   "size": [
+    26,
+    16
+   ],
+   "anchor": [
+    13,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    13,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "F-MEGA 赛车（从后面看）：0、1 花京院的绿车（排气闪）/ 2、3 泰伦斯的灰车。第11章",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "race_sign",
+   "name": "race_sign",
+   "sprite": "prop_new.race_sign",
+   "file": "race_sign.png",
+   "frames": 2,
+   "size": [
+    16,
+    22
+   ],
+   "anchor": [
+    8,
+    22
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    22
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "F-MEGA 赛道路边的标牌：0 黄黑箭头 / 1 彩色广告牌。剧情按透视缩放。第11章",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "bb_sprites",
+   "name": "bb_sprites",
+   "sprite": "prop_new.bb_sprites",
+   "file": "bb_sprites.png",
+   "frames": 5,
+   "size": [
+    16,
+    22
+   ],
+   "anchor": [
+    8,
+    22
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    22
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "CRT 棒球的 8 位小人：0 投手（承太郎）站 / 1 投出 / 2 打者（泰伦斯）站 / 3 挥棒 / 4 球。第11章",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
   }
  ],
  "verify": {
-  "frames": 1213,
+  "frames": 1236,
   "errors": 0,
-  "engine_draws": 2132,
+  "engine_draws": 2172,
   "engine_bad": 0,
-  "engine_skipped_half_px_flips": 0
+  "engine_skipped_half_px_flips": 2
  },
  "amap_errors": [],
  "previews": [
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\jotaro.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\kakyoin.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\avdol.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\polnareff.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\iggy.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\starplat.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\magred.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\hiero.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\chariot.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\fool.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\towergray.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_nurse.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_passenger_a.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_passenger_b.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_passenger_c.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_passenger_d.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_police.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_student_f_a.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_student_f_b.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_stewardess.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_hk_granny.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_hk_passer_b.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_hk_owner.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_hk_passer_a.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_fortune.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_student_m.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\grayfly.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\fake_tennille.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\anne.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\devo.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\devo_doll.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\rubbersoul.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\nena.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\zz.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\cameo.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\chaka.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\khan.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\kennyg.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\nukesaku.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\wilson.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_sailor.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_kid.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_townsfolk.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_villager_f.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_islander.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_dealer.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\polnareff_kid.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\jotaro_kid.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\polnareff_possessed.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\clay_sherry.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\clay_gold.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\clay_pol.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\atum.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_spw.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_merchant.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_bellhop.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_cow.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\empress.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\lovers.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\mannish.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\npc_cat.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\midler_back.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\osiris.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\horus.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\joseph.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\darkbluemoon.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\hangedman.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\holhorse.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\wheel.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\enya.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\zombie.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\steelydan.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\death13.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\judgement.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\highpriestess.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\ndoul.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\boingo.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\mariah.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\alessi.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\petshop.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\vanilla.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\theworld.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\dio.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\telence.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\strength.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\jgeil.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\oingo.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\holly.png",
-  "D:\\大疆\\游戏素材\\JoJo\\游戏\\tools\\art\\_preview\\props_new.png"
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\jotaro.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\kakyoin.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\avdol.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\polnareff.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\iggy.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\starplat.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\magred.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\hiero.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\chariot.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\fool.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\towergray.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_nurse.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_passenger_a.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_passenger_b.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_passenger_c.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_passenger_d.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_police.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_student_f_a.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_student_f_b.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_stewardess.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_hk_granny.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_hk_passer_b.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_hk_owner.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_hk_passer_a.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_fortune.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_student_m.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\grayfly.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\fake_tennille.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\anne.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\devo.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\devo_doll.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\rubbersoul.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\nena.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\zz.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\cameo.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\chaka.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\khan.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\kennyg.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\nukesaku.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\wilson.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_sailor.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_kid.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_townsfolk.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_villager_f.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_islander.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_dealer.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\polnareff_kid.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\jotaro_kid.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\polnareff_possessed.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\clay_sherry.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\clay_gold.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\clay_pol.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\atum.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_spw.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_merchant.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_bellhop.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_cow.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\empress.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\lovers.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\mannish.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\npc_cat.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\midler_back.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\osiris.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\horus.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\joseph.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\darkbluemoon.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\hangedman.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\holhorse.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\wheel.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\enya.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\zombie.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\steelydan.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\death13.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\judgement.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\highpriestess.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\ndoul.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\boingo.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\mariah.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\alessi.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\petshop.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\vanilla.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\theworld.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\dio.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\telence.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\strength.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\jgeil.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\oingo.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\fake_jotaro.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\holly.png",
+  "D:\\CodeWorkSpace\\jojo-pixel-game\\游戏\\tools\\art\\_preview\\props_new.png"
  ],
- "seconds": 17.22
+ "seconds": 18.19
 }

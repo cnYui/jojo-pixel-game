@@ -1974,6 +1974,317 @@
    "kind": "static",
    "desc": "水果摊上的一筐水果：竹编筐（编织纹）里堆着芒果、香蕉、青柠、石榴。帧 0 = 满的；帧 1 = 被女帝啃掉一块：右上角的芒果和香蕉没了，剩下的芒果缺一个半圆、露出黄色果肉；pivot = 底边中点",
    "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "spw_jeep",
+   "name": "spw_jeep",
+   "sprite": "prop_new.spw_jeep",
+   "file": "spw_jeep.png",
+   "frames": 2,
+   "size": [
+    60,
+    30
+   ],
+   "anchor": [
+    30,
+    30
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    30,
+    30
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "SPW 财团的白色吉普（朝右）：帧 0 / 1 轮毂转半格（开动时交替）。第5、8、11章、终章",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "mirror_dome",
+   "name": "mirror_dome",
+   "sprite": "prop_new.mirror_dome",
+   "file": "mirror_dome.png",
+   "frames": 5,
+   "size": [
+    42,
+    28
+   ],
+   "anchor": [
+    21,
+    28
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    21,
+    28
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "阿拉伯·法兹的镜子穹顶：0 平时（映着沙色，几乎看不见）/ 1 反光一闪 / 2 裂了一道缝 / 3、4 裂开后长出两条小腿跑（交替）。第6章",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "carousel_horse",
+   "name": "carousel_horse",
+   "sprite": "prop_new.carousel_horse",
+   "file": "carousel_horse.png",
+   "frames": 3,
+   "size": [
+    50,
+    42
+   ],
+   "anchor": [
+    25,
+    42
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    25,
+    42
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "旋转木马的木马（朝右，金杆穿过马背）：3 帧奔跑。第6章梦二",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "horse",
+   "name": "horse",
+   "sprite": "prop_new.horse",
+   "file": "horse.png",
+   "frames": 4,
+   "size": [
+    52,
+    40
+   ],
+   "anchor": [
+    26,
+    40
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    26,
+    40
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "拉马车的马（朝右）：0、1 原地刨蹄 / 2、3 奔跑。第8章阿斯旺预言 2",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "carriage",
+   "name": "carriage",
+   "sprite": "prop_new.carriage",
+   "file": "carriage.png",
+   "frames": 2,
+   "size": [
+    64,
+    44
+   ],
+   "anchor": [
+    32,
+    44
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    32,
+    44
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "两轮马车（朝右，车辕伸向右边接马）：0 正常 / 1 缰绳割断、车辕垂地。第8章阿斯旺",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "motorbike",
+   "name": "motorbike",
+   "sprite": "prop_new.motorbike",
+   "file": "motorbike.png",
+   "frames": 2,
+   "size": [
+    56,
+    32
+   ],
+   "anchor": [
+    28,
+    32
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    28,
+    32
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "承太郎骑的摩托（朝右）：0 停着 / 1 发动（车身抬 1 px + 排气）。终章",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "soul_chip",
+   "name": "soul_chip",
+   "sprite": "prop_new.soul_chip",
+   "file": "soul_chip.png",
+   "frames": 2,
+   "size": [
+    9,
+    9
+   ],
+   "anchor": [
+    4,
+    9
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    9
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "灵魂筹码：金色筹码上一张小脸（0 波鲁纳雷夫 / 1 乔瑟夫）。第10章赌局",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "anubis_icons",
+   "name": "anubis_icons",
+   "sprite": "prop_new.anubis_icons",
+   "file": "anubis_icons.png",
+   "frames": 6,
+   "size": [
+    9,
+    9
+   ],
+   "anchor": [
+    4,
+    9
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    9
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "阿努比斯记招的小图标：0 J1 / 1 J2 / 2 J3 / 3 连打 / 4 U / 5 精准格挡后的反击。第9章 HUD",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "comic_panel",
+   "name": "comic_panel",
+   "sprite": "prop_new.comic_panel",
+   "file": "comic_panel.png",
+   "frames": 13,
+   "size": [
+    68,
+    56
+   ],
+   "anchor": [
+    34,
+    56
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    34,
+    56
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "托特神漫画格（黑白网点）：0–5 第8章预言 1a 1b 2a 2b 3a 3b，6–11 第10章 4a 4b 5a 5b 6a 6b，12 大问号",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "crt_bezel",
+   "name": "crt_bezel",
+   "sprite": "prop_new.crt_bezel",
+   "file": "crt_bezel.png",
+   "frames": 1,
+   "size": [
+    320,
+    180
+   ],
+   "anchor": [
+    0,
+    0
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    0,
+    0
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "老电视机外框（屏幕区 [40,18]–[252,162] 透明，四角弧边 + 一层扫描线）：第11章赛车 / 棒球画面盖在上面"
+  },
+  {
+   "id": "race_car",
+   "name": "race_car",
+   "sprite": "prop_new.race_car",
+   "file": "race_car.png",
+   "frames": 4,
+   "size": [
+    26,
+    16
+   ],
+   "anchor": [
+    13,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    13,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "F-MEGA 赛车（从后面看）：0、1 花京院的绿车（排气闪）/ 2、3 泰伦斯的灰车。第11章",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "race_sign",
+   "name": "race_sign",
+   "sprite": "prop_new.race_sign",
+   "file": "race_sign.png",
+   "frames": 2,
+   "size": [
+    16,
+    22
+   ],
+   "anchor": [
+    8,
+    22
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    22
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "F-MEGA 赛道路边的标牌：0 黄黑箭头 / 1 彩色广告牌。剧情按透视缩放。第11章",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "bb_sprites",
+   "name": "bb_sprites",
+   "sprite": "prop_new.bb_sprites",
+   "file": "bb_sprites.png",
+   "frames": 5,
+   "size": [
+    16,
+    22
+   ],
+   "anchor": [
+    8,
+    22
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    22
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "CRT 棒球的 8 位小人：0 投手（承太郎）站 / 1 投出 / 2 打者（泰伦斯）站 / 3 挥棒 / 4 球。第11章",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
   }
  ],
  "sprites": [
@@ -3948,6 +4259,317 @@
    "fps": 0,
    "kind": "static",
    "desc": "水果摊上的一筐水果：竹编筐（编织纹）里堆着芒果、香蕉、青柠、石榴。帧 0 = 满的；帧 1 = 被女帝啃掉一块：右上角的芒果和香蕉没了，剩下的芒果缺一个半圆、露出黄色果肉；pivot = 底边中点",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "spw_jeep",
+   "name": "spw_jeep",
+   "sprite": "prop_new.spw_jeep",
+   "file": "spw_jeep.png",
+   "frames": 2,
+   "size": [
+    60,
+    30
+   ],
+   "anchor": [
+    30,
+    30
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    30,
+    30
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "SPW 财团的白色吉普（朝右）：帧 0 / 1 轮毂转半格（开动时交替）。第5、8、11章、终章",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "mirror_dome",
+   "name": "mirror_dome",
+   "sprite": "prop_new.mirror_dome",
+   "file": "mirror_dome.png",
+   "frames": 5,
+   "size": [
+    42,
+    28
+   ],
+   "anchor": [
+    21,
+    28
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    21,
+    28
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "阿拉伯·法兹的镜子穹顶：0 平时（映着沙色，几乎看不见）/ 1 反光一闪 / 2 裂了一道缝 / 3、4 裂开后长出两条小腿跑（交替）。第6章",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "carousel_horse",
+   "name": "carousel_horse",
+   "sprite": "prop_new.carousel_horse",
+   "file": "carousel_horse.png",
+   "frames": 3,
+   "size": [
+    50,
+    42
+   ],
+   "anchor": [
+    25,
+    42
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    25,
+    42
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "旋转木马的木马（朝右，金杆穿过马背）：3 帧奔跑。第6章梦二",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "horse",
+   "name": "horse",
+   "sprite": "prop_new.horse",
+   "file": "horse.png",
+   "frames": 4,
+   "size": [
+    52,
+    40
+   ],
+   "anchor": [
+    26,
+    40
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    26,
+    40
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "拉马车的马（朝右）：0、1 原地刨蹄 / 2、3 奔跑。第8章阿斯旺预言 2",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "carriage",
+   "name": "carriage",
+   "sprite": "prop_new.carriage",
+   "file": "carriage.png",
+   "frames": 2,
+   "size": [
+    64,
+    44
+   ],
+   "anchor": [
+    32,
+    44
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    32,
+    44
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "两轮马车（朝右，车辕伸向右边接马）：0 正常 / 1 缰绳割断、车辕垂地。第8章阿斯旺",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "motorbike",
+   "name": "motorbike",
+   "sprite": "prop_new.motorbike",
+   "file": "motorbike.png",
+   "frames": 2,
+   "size": [
+    56,
+    32
+   ],
+   "anchor": [
+    28,
+    32
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    28,
+    32
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "承太郎骑的摩托（朝右）：0 停着 / 1 发动（车身抬 1 px + 排气）。终章",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "soul_chip",
+   "name": "soul_chip",
+   "sprite": "prop_new.soul_chip",
+   "file": "soul_chip.png",
+   "frames": 2,
+   "size": [
+    9,
+    9
+   ],
+   "anchor": [
+    4,
+    9
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    9
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "灵魂筹码：金色筹码上一张小脸（0 波鲁纳雷夫 / 1 乔瑟夫）。第10章赌局",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "anubis_icons",
+   "name": "anubis_icons",
+   "sprite": "prop_new.anubis_icons",
+   "file": "anubis_icons.png",
+   "frames": 6,
+   "size": [
+    9,
+    9
+   ],
+   "anchor": [
+    4,
+    9
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    4,
+    9
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "阿努比斯记招的小图标：0 J1 / 1 J2 / 2 J3 / 3 连打 / 4 U / 5 精准格挡后的反击。第9章 HUD",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "comic_panel",
+   "name": "comic_panel",
+   "sprite": "prop_new.comic_panel",
+   "file": "comic_panel.png",
+   "frames": 13,
+   "size": [
+    68,
+    56
+   ],
+   "anchor": [
+    34,
+    56
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    34,
+    56
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "托特神漫画格（黑白网点）：0–5 第8章预言 1a 1b 2a 2b 3a 3b，6–11 第10章 4a 4b 5a 5b 6a 6b，12 大问号",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "crt_bezel",
+   "name": "crt_bezel",
+   "sprite": "prop_new.crt_bezel",
+   "file": "crt_bezel.png",
+   "frames": 1,
+   "size": [
+    320,
+    180
+   ],
+   "anchor": [
+    0,
+    0
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    0,
+    0
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "老电视机外框（屏幕区 [40,18]–[252,162] 透明，四角弧边 + 一层扫描线）：第11章赛车 / 棒球画面盖在上面"
+  },
+  {
+   "id": "race_car",
+   "name": "race_car",
+   "sprite": "prop_new.race_car",
+   "file": "race_car.png",
+   "frames": 4,
+   "size": [
+    26,
+    16
+   ],
+   "anchor": [
+    13,
+    16
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    13,
+    16
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "F-MEGA 赛车（从后面看）：0、1 花京院的绿车（排气闪）/ 2、3 泰伦斯的灰车。第11章",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "race_sign",
+   "name": "race_sign",
+   "sprite": "prop_new.race_sign",
+   "file": "race_sign.png",
+   "frames": 2,
+   "size": [
+    16,
+    22
+   ],
+   "anchor": [
+    8,
+    22
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    22
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "F-MEGA 赛道路边的标牌：0 黄黑箭头 / 1 彩色广告牌。剧情按透视缩放。第11章",
+   "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
+  },
+  {
+   "id": "bb_sprites",
+   "name": "bb_sprites",
+   "sprite": "prop_new.bb_sprites",
+   "file": "bb_sprites.png",
+   "frames": 5,
+   "size": [
+    16,
+    22
+   ],
+   "anchor": [
+    8,
+    22
+   ],
+   "anchor_semantic": "",
+   "pivot": [
+    8,
+    22
+   ],
+   "fps": 0,
+   "kind": "static",
+   "desc": "CRT 棒球的 8 位小人：0 投手（承太郎）站 / 1 投出 / 2 打者（泰伦斯）站 / 3 挥棒 / 4 球。第11章",
    "note": "多帧为不同状态（按序号取帧，不自动播放），见 desc"
   }
  ]

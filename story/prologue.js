@@ -1236,6 +1236,12 @@
     if (e.state !== 'hurt' && e.state !== 'broken') { e.state = 'idle'; if (e.anim !== (e.idleAnim || 'idle')) e.play(e.idleAnim || 'idle'); }
     return true;
   }
+  // 试炼里只保留机制（预警 → 26 颗水花 → 再放），台词去掉；data.final 仍然要设，e_kakyoin 的 brain 靠它判断“阶段 3 交给剧情”
+  function kakyoinPhase3NoTalk(S, e, ctx) {
+    ctx.data.final = 1;
+    S.hint('全力的绿宝石水花——宝石飞来时按住 L，用替身正面挡下来！', 8);
+    finalSplashDirector(S, e, ctx);
+  }
   async function kakyoinPhase3(S, e, ctx) {
     ctx.data.final = 1;
     const mg = S.menacing({ actor: e, n: 3 });
@@ -1302,33 +1308,50 @@
       return false;
     });
   }
-  async function fightKakyoin(S) {
+  // 花京院的台词只在这里接试炼的开关：试炼里不播，但两个阶段的机制照样跑。
+  //   从 spec 上取（ctx.spec 是 combat 手上那份，两条路径都不改它），省得为这一个开关再克隆一遍 spec
+  const isTrial = ctx => !!(ctx && ctx.spec && ctx.spec.trial);
+  const phase2Run = async (S, e, ctx) => { if (isTrial(ctx)) return; await kakyoinPhase2(S, e, ctx); };
+  const phase3Run = async (S, e, ctx) => {
+    if (isTrial(ctx)) { kakyoinPhase3NoTalk(S, e, ctx); return; }
+    await kakyoinPhase3(S, e, ctx);
+  };
+  // 星尘试炼的 b01：布景（生成花京院、亮替身）和战斗配置拆开，剧情路径和试炼共用同一份。
+  //   trial：替身卡（金色神名卡）和 VS 卡一样，试炼里不放——那是名牌之后再一个 1 s 的过场，试炼要快
+  const kakSetup = async (S, o) => {
+    if (S.actor('kakyoin_e')) return;   // 重试是同一段剧情里重开，门口那个还在，别再放一个
+    const trial = !!(o && o.trial);
     const p = S.player;
     const kak = S.spawn('kakyoin', 330, 150, { id: 'kakyoin_e', facing: -1, standPos: { dx: 20, z: 10, link: 'tendril' } });
     p.x = 150; p.y = 150; p.facing = 1;
     G.world.snapCamera && G.world.snapCamera();
     S.pose(kak, 'possessed');
-    await S.summon(kak, { rise: 16, dur: 0.35, card: { side: 'right', y: 52 } });   // y 52：开战后不压右上 Boss 血条的尾巴
-    await S.fight({
-      id: 'b01_kakyoin', arena: [40, 440], lead: 'jotaro', swap: false, lockMsg: '这一战只能由承太郎应战',
-      music: 'battle', after: null, vs: 'hiero', warnTier: 1, dmgScale: 0.8, energy: { start: 0 },
-      losable: true, coverage: true, finish: 'none',
-      waves: [[{
-        kit: 'e_kakyoin', actor: 'kakyoin_e', cid: 'kakyoin', id: 'kakyoin_e', stand: 'hiero', name: '花京院典明', boss: true,
-        hp: 600, poiseMax: 50, speed: 66, idle: 'possessed', koStyle: 'none', standPos: { dx: 20, z: 10, link: 'tendril' },
-        phases: [
-          { at: 0.5, run: kakyoinPhase2 },
-          { at: 0.2, run: kakyoinPhase3, set: { brain: holdBrain, moves: [], pattern: null } },
-        ],
-      }]],
-      onWave: async (S2, wi, spawned, attempt, ctx) => {
-        S2.unpose(spawned[0]);
-        if (attempt === 0) S2.hint('他躲在远处。靠近他的替身，触须甩过来的一瞬间按 L（精准格挡）就能抓住它！', 5);
-        else await S2.say('kakyoin', '……再来几次都一样。', { expr: 'evil', actor: spawned[0] });
-      },
-      testHint: (ctx) => ({ phase: ctx.data.final ? 3 : ((ctx.boss && ctx.boss.phaseI) || 0) + 1, final: ctx.data.phase3 || null }),
-      endWhen: (ctx) => !!ctx.data.win,
-    });
+    await S.summon(kak, { rise: 16, dur: 0.35, card: trial ? false : { side: 'right', y: 52 } });   // y 52：开战后不压右上 Boss 血条的尾巴
+  };
+  const kakSpec = o => ({ trial: !!(o && o.trial),
+    id: 'b01_kakyoin', arena: [40, 440], lead: 'jotaro', swap: false, lockMsg: '这一战只能由承太郎应战',
+    music: 'battle', after: null, vs: 'hiero', warnTier: 1, dmgScale: 0.8, energy: { start: 0 },
+    losable: true, coverage: true, finish: 'none',
+    waves: [[{
+      kit: 'e_kakyoin', actor: 'kakyoin_e', cid: 'kakyoin', id: 'kakyoin_e', stand: 'hiero', name: '花京院典明', boss: true,
+      hp: 600, poiseMax: 50, speed: 66, idle: 'possessed', koStyle: 'none', standPos: { dx: 20, z: 10, link: 'tendril' },
+      phases: [
+        { at: 0.5, run: phase2Run },
+        { at: 0.2, run: phase3Run, set: { brain: holdBrain, moves: [], pattern: null } },
+      ],
+    }]],
+    onWave: async (S2, wi, spawned, attempt, ctx) => {
+      S2.unpose(spawned[0]);
+      if (attempt === 0) S2.hint('他躲在远处。靠近他的替身，触须甩过来的一瞬间按 L（精准格挡）就能抓住它！', 5);
+      else await S2.say('kakyoin', '……再来几次都一样。', { expr: 'evil', actor: spawned[0] });
+    },
+    testHint: (ctx) => ({ phase: ctx.data.final ? 3 : ((ctx.boss && ctx.boss.phaseI) || 0) + 1, final: ctx.data.phase3 || null }),
+    // 原战斗要靠挡下 26 颗宝石才结束；试炼里改成把血打光（两阶段保留），否则这关没有终点
+    endWhen: o && o.trial ? null : (ctx) => !!ctx.data.win,
+  });
+  async function fightKakyoin(S) {
+    await kakSetup(S, { trial: false });
+    await S.fight(kakSpec({ trial: false }));
   }
 
   // ================================================================ 序-11 欧拉（照分镜 s04 5.69–8.05）→「胜负已分」→ 扛回家
@@ -1865,5 +1888,26 @@
       await resolveScene(S2);
       await departure(S2);
     }, { keepLocked: true });
+  };
+
+  // 星尘试炼的关卡工厂（序章没有挑战登记，登记在文件末尾）：剧情里的 fightKakyoin 和试炼共用下面同一份布景 / 配置
+  G.TRIAL_SRC = G.TRIAL_SRC || {};
+  G.TRIAL_SRC['b01_kakyoin'] = {
+    chapter: 'prologue', pack: '_pro',
+    setup: async S => {
+      // 试炼第 1 关进来时还没有地图（剧情是 1865 行先 setStage 再开打），所以这里自己进图；
+      //   setStage 同时把上一轮试炼留在这张图上的花京院、门的状态都清回开打前的样子
+      await S.setStage('school_pro', { x: 150, y: 150, facing: 1, music: 'battle' });
+      const st = G.world.stage;
+      if (st) { st.npcs = []; st.hotspots = []; st.triggers = []; st.onLook = null; }
+      await kakSetup(S, { trial: true });
+    },
+    spec: o => {
+      const s = kakSpec(o);
+      if (!o.trial) return s;
+      // 门口的花京院只是布景，战斗里那个是它开打时替换掉的；试炼里没有这段过场，先收掉免得站着两个花京院
+      s.onWave = async (S2, wi, spawned) => { const door = S2.actor('kakyoin_e'); if (door && door !== spawned[0]) door.remove = true; };
+      return s;
+    },
   };
 })();

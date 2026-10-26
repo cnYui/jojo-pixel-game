@@ -569,8 +569,8 @@ def direct(spec,cam,t,state):
     return out
 
 
-def export(ex,BJ,key=None):
-    key=key or ex.key; spec=make(key); arrays={}
+def export(ex,BJ,key=None,spec=None):
+    key=key or ex.key; spec=spec if spec is not None else make(key)
     def emit(L):
         typ=L['type']; name=L['name']
         if typ=='strip':

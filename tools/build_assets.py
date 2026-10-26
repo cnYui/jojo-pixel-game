@@ -79,6 +79,8 @@ def Frame(*args, **kwargs):
 # 环境变量 JOJO_CK 可以临时换系数做对比（1 = 不缩）。
 CK = float(os.environ.get("JOJO_CK", "0.625"))
 SHRINK_PROP_KEEP = {"card", "coin", "chip", "photo", "photo_crew", "photo_ape_helm", "manga", "tv", "camera",
+                    # 2026-10-19 小游戏 / 插画里用的新道具（toolsrtrt_props_c6fin.NO_SHRINK）：按最终尺寸画
+                    "soul_chip", "anubis_icons", "comic_panel", "crt_bezel", "race_car", "race_sign", "bb_sprites",
                     "magazine", "magazine_vest", "tissue"}          # 特写 / 卡片 / 小游戏里用的，不缩
 SHRINK_SCENE_CATS = {"prop", "pose", "part", "npc"}                  # 场景专用里只缩“长在世界里”的；fx / portrait / icon 不缩
 

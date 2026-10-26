@@ -111,7 +111,7 @@ def main():
         s = st()
         shot('back_title')
         check(s['max'] == 1, '进度封顶在第1章', max=s['max'])
-        check((s['menuItems'] or [])[:1] == ['继续'], '回标题有「继续」', items=s['menuItems'])
+        check((s['menuItems'] or [])[:1] == ['重温：第1章　香港'], '回标题有「重温」（最远那章打完了）', items=s['menuItems'])
         r = page.evaluate('async () => { await G.playFrom(2); return G.scene.name; }')
         check(r == 'title', '体验版里进不了第2章', scene=r)
         browser.close()

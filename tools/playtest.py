@@ -3,11 +3,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import math
 from pathlib import Path
 import re
 import sys
 import time
+import traceback
 
 STATE_JS = "() => ({...G.dbg.snapshot(),walkY:G.world.stage?[G.world.stage.yMin,G.world.stage.yMax]:null,playerAtk:G.world.player?.atk?.slot||null,playerAtkT:G.world.player?.atkT||0,playerRush:!!G.world.player?.rush,playerCanCancel:!G.world.player?.atk||G.world.player.atkT>=(G.world.player.atk.cancel??G.world.player.atk.active[1])})"
 GAME = Path(__file__).resolve().parent.parent
@@ -20,6 +22,11 @@ TACTICS = {"b00_avdol_test": "teach", "b01_kakyoin": "kakyoin", "b1a_towergray_j
            "b07_hangedman": "hanged", "b08_empress": "empress", "b09a_wheelroad": "road",
            "b09b_wheeloffortune": "wheel", "b10_justice": "justice", "b11_lovers": "lovers"}
 BAD_NOTES = {"advance_timeout", "fight_timeout", "npc_missing", "npc_not_near", "stuck_investigate"}
+
+
+def autowin_ids(args):
+    """把 --autowin 拆成 id 列表：URL、报告和提示共用同一份解析，避免三处各拆一遍出现偏差。"""
+    return [x for x in (getattr(args, "autowin", "") or "").split(",") if x]
 
 
 def chapter_of(stage):
@@ -47,6 +54,13 @@ class Tester:
         self.next_attack, self.next_defense = 0, 0
         self.guard_until = 0
         self.free_since, self.pending_qte, self.qte_seen = None, False, False
+        # 自由走动「多久没新进展」的计时器：旧写法用进图时间，进图 40 s 之后每一帧都会把调查清单清空，
+        # 一张要走很久的图（第11章游戏室）就永远走不到出口。改成只在「40 s 没有新完成的调查点」时才重来。
+        self.last_task_t = 0
+        self.hot_try = {}
+        # 「直奔出口」每张图最多按 2 次：有的出口要先做完别的事才放行（第1章香港街头「先去大排档」），
+        # 无限重按只会反复弹同一句拦路台词、把整章卡死在这张图里
+        self.exit_first = {}
         self.fly_input_at, self.idle_started, self.idle_completed = None, None, False
         self.fly_found = False
         self.mem, self.contract_missing = {}, set()
@@ -239,6 +253,10 @@ class Tester:
             if abs(m[1]) > 3:
                 keys.append("ArrowUp" if m[1] > 0 else "ArrowDown")
             self.hold(keys)
+            # aim 分两种收尾：不 throw 的靠「在准星圈里累计 3 秒」，throw 的必须自己按 J 射出去。
+            #   只挪方向键不按 J，throw 型会一直等到超时判失败（终章最后一发就是这么卡住的）。
+            if kind == "aim" and len(keys) <= 1 and m[0] * m[0] + m[1] * m[1] <= 16:
+                self.pulse("j")
         return True
 
     def qte_guard(self, s):
@@ -248,17 +266,18 @@ class Tester:
             initial = s.get("dlg")
             until = time.monotonic() + .5
             while time.monotonic() < until:
+                cur = self.st()
+                if cur.get("dlg"):
+                    if initial is None:
+                        initial = cur["dlg"]
+                    # 看到对白就停手：继续按 Enter 会把这一页翻过去，那是玩家自己按的，
+                    # 不是引擎把 QTE 的确认键漏给了对白（终章最后一发后面紧跟一句台词，就是这么误报的）
+                    self.check(cur.get("dpage") == 0, "qte_dialog_skipped",
+                               before=initial, after=cur.get("dlg"), page=cur.get("dpage"))
+                    break
                 self.pulse("Enter", .005)
                 self.page.mouse.click(640, 360)
                 self.page.wait_for_timeout(35)
-                cur = self.st()
-                if initial is None and cur.get("dlg"):
-                    initial = cur["dlg"]
-                if initial:
-                    self.check(cur.get("dlg") == initial and cur.get("dpage") == 0,
-                               "qte_dialog_skipped", before=initial, after=cur.get("dlg"), page=cur.get("dpage"))
-                    if cur.get("dlg") != initial:
-                        break
             self.marks.append([self.elapsed(), "QTE后确认键保护", "checked" if initial else "no_dialog"])
             return True
         return False
@@ -293,7 +312,13 @@ class Tester:
             self.check(self.retry_uids[fid] == uids, "retry_boss_recreated", fight=fid, before=self.retry_uids[fid], after=uids)
         if fid == "b01_kakyoin" and self.loses[fid] == 2:
             self.check(any("放水再来" in x for x in s.get("menuItems") or []), "assist_menu_missing", fight=fid)
-        self.menu("再来一次")
+        # Boss 加强（bossHpMul / bossDmgMul = 1.5）以后，测试器的固定打法在个别战斗里一直输；真人靠放水过关，
+        # 所以同一场输满 3 次后改选「放水再来」，之后每再输 2 次叠一档（放水中系数不生效，回到原版强度再减伤）。
+        n_lose = self.loses[fid]
+        if n_lose >= 3 and (n_lose - 3) % 2 == 0 and any("放水再来" in (x or "") for x in s.get("menuItems") or []):
+            self.menu("放水再来")
+        else:
+            self.menu("再来一次")
         self.next_attack = time.monotonic() + .2
         return True
 
@@ -605,11 +630,42 @@ class Tester:
                 return True
         return False
 
+    def press_hot(self, s, h, key, tasks, now, radius=2, blind_after=2.5):
+        # 走到调查点旁按 E。热点会互相重叠（第11章游戏室的门口 `门` 和 `街机` 只差 12 px，
+        # 站在两点之间按 E 会按到街机、把出口记成“已完成”，人就永远出不了门）。
+        # 所以先贴到「游戏自己说最近的就是它」再按；锚点落在可走带外面贴不到时，才兜底盲按。
+        if s.get("near") == h[0]:
+            self.hot_try.pop(key, None)
+            self.hold()
+            self.pulse("e")
+            tasks.add(key)
+            self.last_task_t = now
+            return True
+        # 兜底盲按必须**先走到**锚点附近再开始计时：原来一挂上任务就开始数 2.5 s，
+        #   横跨半张图（>200 px）的锚点在路上就被盲按、E 打空、任务记成完成，
+        #   第5章卡拉奇「问路」（x232，人从 x632 往回走）就是这么整章卡死的。
+        arrived = self.move(s, h[1], h[2], radius)
+        if not arrived:
+            self.hot_try.pop(key, None)
+            return False
+        since = self.hot_try.get(key)
+        if since is None:
+            self.hot_try[key] = now
+        elif now - since > blind_after:
+            self.hot_try.pop(key, None)
+            self.hold()
+            self.pulse("e")
+            tasks.add(key)
+            self.last_task_t = now
+            return True
+        return False
+
     def explore(self, s):
         stage, chap = s.get("stage"), chapter_of(s.get("stage"))
         now = time.monotonic()
         if self.free_since is None:
             self.free_since = now
+            self.last_task_t = now
         if stage == self.args.idle_at and not self.idle_completed:
             if self.idle_started is None:
                 self.idle_started = now
@@ -634,6 +690,18 @@ class Tester:
         tasks = self.explored.setdefault(stage, set())
         investigated = self.investigated.setdefault(chap, set())
         hots = s.get("hotspots") or []
+        # 在一张图里兜转太久（调查点特别多、走位又长）时，先直奔出口类热点：
+        # 第11章游戏室有 5 个带全标签的调查点，逐个队长 U 一遍要跨图来回十几趟，
+        # 一直排在出口前面会把整章卡死在这里。真人也是先看完再出门，这里只是把「出门」提前。
+        EXIT_WORDS = ("门", "出口", "楼梯", "出发", "继续", "往前", "去")
+        if now - self.free_since > 45 and not s.get("busy") and self.exit_first.get(stage, 0) < 2:
+            exits = [h for h in hots if any(w in h[0] for w in EXIT_WORDS)]
+            if exits:
+                ex = min(exits, key=lambda h: abs(h[1] - s["px"]) + abs(h[2] - s["py"]))
+                tasks.discard(("e", ex[0]))          # 之前按过但没反应：允许再按一次
+                if self.press_hot(s, ex, ("e", ex[0]), tasks, now):
+                    self.exit_first[stage] = self.exit_first.get(stage, 0) + 1
+                return
         tagged = [h for h in hots if h[3] and ("u", h[0], s.get("leader")) not in tasks]
         # 苍蝇必须在保护提示前由承太郎亲自发现，发现后换阿布德尔辨识。
         if stage == "bedroom_pro":
@@ -655,6 +723,7 @@ class Tester:
                     self.hold()
                     self.pulse("u")
                     tasks.add(("u", h[0], s["leader"]))
+                    self.last_task_t = now
                     investigated.add(s["leader"])
                     if stage == "bedroom_pro" and s["leader"] == "jotaro":
                         self.fly_input_at = self.elapsed()
@@ -667,21 +736,21 @@ class Tester:
             if s.get("leaderCanInvestigate"):
                 self.hold()
                 self.pulse("u")
+                self.last_task_t = now
                 investigated.add(s["leader"])
                 return
         for h in hots + (s.get("npcs") or []):
             key = ("e", h[0])
             if key in tasks:
                 continue
-            if self.move(s, h[1], h[2], 7):
-                self.hold()
-                self.pulse("e")
-                tasks.add(key)
+            self.press_hot(s, h, key, tasks, now)
             return
         self.hold(["ArrowRight"])
-        if now - self.free_since > 40:
+        # 全部调查点都做完、只剩往右走时，40 s 没新完成项才重来一遍（旧写法按进图时间算，
+        # 一张要走超过 40 s 的图会被反复清空清单，永远走不到出口）
+        if now - self.last_task_t > 40:
             tasks.clear()
-            self.free_since = now
+            self.last_task_t = now
 
     def run(self):
         if not self.enter():
@@ -785,15 +854,24 @@ class Tester:
             expected = [f for f, st in self.fights.items() if st.get("fightLosable")]
             for fid in expected:
                 self.check(self.loses.get(fid, 0) >= (2 if fid == "b01_kakyoin" else 1), "lose_route_missing", fight=fid)
+        ids = autowin_ids(self.args)
+        if ids:
+            # 自动判胜跳过了真实战斗过程，这里只留提示、不算错误，但必须让报告读者看到。
+            self.note("debug_autowin_used", ids=ids)
         for n in self.notes:
             if n["kind"] in BAD_NOTES or n["kind"] == "route_timeout":
                 self.check(False, n["kind"])
 
     def report(self):
+        ids = autowin_ids(self.args)
+        if ids:
+            # 自动判胜直达后面的战斗，路线不能当通关证据；stdout 用醒目告警，避免只在 JSON 深处才看得到。
+            print("⚠ 本次路线用了 --autowin：不是通关证据", flush=True)
         return {"errors": self.errors, "shots": self.shots, "notes": self.notes, "dialog_lines": self.lines,
                 "trace": self.trace, "marks": self.marks, "coverage": self.coverage,
                 "fallbacks": self.last_s.get("fallbacks", []), "final": self.last_s,
                 "loses": self.loses, "relaxed": sorted(self.relaxed), "audio_memory": self.mem,
+                "debug_autowin": ids,
                 "investigated": {str(k): sorted(v) for k, v in self.investigated.items()}, "seconds": self.elapsed()}
 
 
@@ -802,6 +880,8 @@ def parser():
     p.add_argument("chapter", choices=["prologue", "all", "final"] + [f"ch{i}" for i in range(1, 12)])
     p.add_argument("--until", choices=["prologue", "final"] + [f"ch{i}" for i in range(1, 12)])
     p.add_argument("--lose", action="store_true", help="可失败战故意输后重试")
+    p.add_argument("--autowin", default="", metavar="ID1,ID2",
+                   help="调试：这些战斗开打 1 s 后自动判胜，直达后面的战斗；跑出来的路线不是通关证据")
     p.add_argument("--teach-fail", action="store_true", help="教学每步先等放宽再完成")
     p.add_argument("--idle-at", help="在指定探索地图纯闲置，验证保护")
     p.add_argument("--shots-off", action="store_true", help="不截画面")
@@ -810,8 +890,49 @@ def parser():
     return p
 
 
+
+CONTAINER_CSP = ("default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; "
+                 "font-src 'self'; media-src 'self'; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'")
+
+
+def serve_pkg(root):
+    """起一个本地静态服务打开发布包目录（响应头带容器同款 CSP），返回 base url（以 / 结尾）。进程退出时随线程结束。"""
+    import functools
+    import http.server
+    import socketserver
+    import threading
+
+    class H(http.server.SimpleHTTPRequestHandler):
+        protocol_version = "HTTP/1.1"
+
+        def end_headers(self):
+            self.send_header("Content-Security-Policy", CONTAINER_CSP)
+            self.send_header("Cache-Control", "no-store")
+            super().end_headers()
+
+        def log_message(self, *a):
+            pass
+
+    class S(socketserver.ThreadingTCPServer):
+        request_queue_size = 256
+        daemon_threads = True
+        allow_reuse_address = True
+
+        def handle_error(self, *a):
+            pass
+
+    srv = S(("127.0.0.1", 0), functools.partial(H, directory=root))
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    return "http://127.0.0.1:%d/" % srv.server_address[1]
+
+
 def main():
     args = parser().parse_args()
+    autowin = (args.autowin or "").strip()
+    # 调试参数会直接拼进 URL，先在这里卡死字符集，避免逗号/问号等把查询串拼坏。
+    if autowin and not re.fullmatch(r"[A-Za-z0-9_]+(?:,[A-Za-z0-9_]+)*", autowin):
+        raise SystemExit("--autowin 只允许字母、数字、下划线和逗号分隔的战斗 id")
+    args.autowin = autowin
     from playwright.sync_api import sync_playwright
     suffix = "_lose" if args.lose else "_teach_fail" if args.teach_fail else "_idle" if args.idle_at else ""
     out = args.out or GAME / "tools" / "_playtest" / (args.chapter + suffix)
@@ -823,10 +944,21 @@ def main():
         page.on("console", lambda m: t.errors.append({"kind": "console_" + m.type, "text": m.text}) if m.type in ("error", "warning") else None)
         page.on("pageerror", lambda e: t.errors.append({"kind": "pageerror", "text": str(e), "stack": getattr(e, "stack", None)}))
         try:
-            page.goto((GAME / "index.html").as_uri() + "?autotest=1", wait_until="load")
+            # autowin 只在 autotest=1 时由游戏侧生效，这里两个参数一起带，真实路线才能直达后面的战斗。
+            url = (GAME / "index.html").as_uri() + "?autotest=1"
+            # 调试：JOJO_SERVE_ROOT=<打好的发布包目录> 时改成用本地 http 服务打开那个包（带容器同款 CSP：脚本只许外链、不许 eval），
+            #   同一套真实键盘路线就能对「打包后的代码」再跑一遍（全部章节开放的小红书包用这个验收）。
+            serve_root = os.environ.get("JOJO_SERVE_ROOT")
+            if serve_root:
+                url = serve_pkg(serve_root) + "index.html?autotest=1"
+            if autowin:
+                url += "&autowin=" + autowin
+            page.goto(url, wait_until="load")
             t.run()
         except Exception as e:
-            t.errors.append({"kind": "tester_error", "text": str(e)})
+            # 失败路线要能定位测试器自身的异常；保留完整 Python 栈，不把单独的
+            # IndexError / Playwright 错误压成无法行动的数字字符串。
+            t.errors.append({"kind": "tester_error", "text": str(e), "traceback": traceback.format_exc()})
             try:
                 t.st()
                 t.shot("exception")

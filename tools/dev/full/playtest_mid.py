@@ -78,7 +78,22 @@ MID_JS = r"""() => {
 # 每章「输两次验放水再来」的那一场（挑输得快的）
 LOSE_TWICE = {'b07_hangedman', 'b09a_wheelroad', 'b12_sun', 'b14b_judgement', 'b16a_geb', 'b18a_anubis'}
 # 输两次后选「放水再来」验证它真的生效（其余都选「再来一次」）
-PICK_ASSIST = {'b18a_anubis'}
+PICK_ASSIST = {'b09a_wheelroad', 'b14b_judgement', 'b15b_highpriestess', 'b18a_anubis'}
+# 卡住的战斗不能让整章超时：不在 PICK_ASSIST 里的场次输满这么多次后也改选「放水再来」，
+# 先把后面的战斗验出来；选没选放水都会记进 assist_picked，兜底选择再发一条
+# assist_fallback_used 提示，避免悄悄掩盖“不放水就打不过”的问题。
+ASSIST_STUCK_AFTER = 3
+# 叠到第 4 档就够了：再往上敌方伤害只压到下限，继续叠档只会拖长失败重试、没有额外验证价值。
+ASSIST_MAX_LEVEL = 4
+# 已放水后每再输 2 次再叠一档：给“放水一次仍打不过”留出继续验证的空间，又不至于每输一次就无脑叠档。
+ASSIST_RESTACK_EVERY = 2
+# 这两场是限时 / 藏身处解谜，脚本没有普通战斗的失败菜单；引擎的通用 objectFight
+# 默认会把它们标成可失败，但真实游玩不存在“再来一次”的分支，失败路线应跳过。
+NO_STANDARD_LOSE = {'b15a_highpriestess', 'b20a_seth'}
+# 审判第一段是 45 秒坚持战，泥偶会按节拍重建，重试时公开 actor 数量不保证一致。
+# 第9章小学生承太郎（b20b）在每次尝试的 setup 回调里 c.spawn 阿莱西，旧的随上一次的 managed 清理，
+# 重试后公开 uid 必然变（实测 76 → 77），场上没有重复的 Boss。
+NO_RETRY_UID_CHECK = {'b14a_judgement', 'b20b_seth'}
 # 这些场次本来就不是近战连打（解谜、载具、无替身小孩、限时求生），不套用 dodge / guard / rush 覆盖要求
 NO_MELEE_COVER = {'b07_hangedman', 'b08_empress', 'b09a_wheelroad', 'b11_lovers', 'b12_sun', 'b13a_death13', 'b14a_judgement',
                   'b15a_highpriestess', 'b15b_highpriestess', 'b16a_geb', 'b16b_geb', 'b17_prophecy1', 'b17_prophecy2',
@@ -86,6 +101,24 @@ NO_MELEE_COVER = {'b07_hangedman', 'b08_empress', 'b09a_wheelroad', 'b11_lovers'
                   'b14b_judgement', 'b18a_anubis', 'b18b_anubis', 'b18c_anubis'}
 # 关键剧情台词出现时截图（人工看构图、遮挡、站位）：台词片段 → 截图名（2026-10-11 第4章重做时加）
 STORY_SHOTS = {
+    # 第5章
+    '安妮，后座坐稳一点': 'c5_road', '它竟然沿着岩壁爬下来了': 'c5_cliff', '你、你不是已经被烧掉': 'c5_zz',
+    '你们要活着回来': 'c5_anne_wave', '脚下的影子一点都不动': 'c5_fog_shadow', '没有脉搏': 'c5_fog_clues',
+    '手上什么时候划了一道口子': 'c5_inn', '她的雾钻进了伤口': 'c5_justice_rule', '先带她离开': 'c5_captive',
+    '这里总算有人正常说话了': 'c5_karachi', '恩雅倒下了': 'c5_enya_falls', '欠下的账，最后再算': 'c5_lovers_rule',
+    '趴下，当我的桥': 'c5_bridge', '给我挠背': 'c5_scratch', '去偷那个手镯': 'c5_bracelet',
+    '账单结清': 'c5_invoice', '我、我的车': 'c5_jeep',
+    # 2026-10-18 第5章重写后补的过场（人工看构图、遮挡、站位）
+    '是汽油': 'c5_gas', '地底下，它追不上来': 'c5_jotaro_hole', '空条……承太郎': 'c5_anne_name', '雾，漫了上来': 'c5_fog_arrive',
+    '我的儿子……J·凯尔': 'c5_enya_reveal', '静静地倒了下去': 'c5_fog_clear', '自己试试“拉茶”': 'c5_chai', '一只五十卢比': 'c5_bangle',
+    '你的账单……我来结': 'c5_bill', '当 No.2……就是要跑得快': 'c5_hh_runs', '钥匙板上剩下的最后一把': 'c5_room13',
+    # 第7章（2026-10-18 重写）
+    '还有一个客人': 'c7_oldman', '可以许三个愿望': 'c7_genie', '……好久不见了': 'c7_avdol', '你、你还活着啊': 'c7_crying', '你们两个！！': 'c7_explain',
+    '刚刚眨了一下眼': 'c7_cup', '这个也算我的吗': 'c7_sink', '被吞进了一张巨大的嘴里': 'c7_mouth', '好像是个美人': 'c7_midler',
+    # 第6章（2026-10-18 重写）
+    '这回用骆驼，绝对不会坠机': 'c6_camels', '跟着骆驼的步子': 'c6_ride', '天上有两个太阳': 'c6_two_suns', '一个躲在镜子里的家伙': 'c6_sunguy',
+    '这孩子病了，村里没有医生': 'c6_mother', '五千美元': 'c6_bargain', '除了我，没人会开': 'c6_pilot', '这里是我的梦': 'c6_dream1',
+    '刻着一行字': 'c6_baby_stand', '这次是花京院的错': 'c6_crash', '你留下了记号': 'c6_camp', '这次，我带着法皇进入了梦': 'c6_dream2', '交给 SPW 吧': 'c6_end',
     # 第4章
     '这里的人比香港还多': 'c4_arrival', '怎么一下子来了这么多': 'c4_kids', '楼顶上，有个戴牛仔帽': 'c4_roof', '我更适合当老二': 'c4_holhorse',
     '这是我妹妹的仇': 'c4_polnareff_runs', '……镜子里？': 'c4_mirror', '波鲁纳雷夫，后面': 'c4_avdol', '阿布德尔——！': 'c4_avdol_down',
@@ -113,6 +146,14 @@ class MidTester(playtest.Tester):
         self.timeline = []
         self.lose_notes = []
         self.assist_seen = {}
+        # 记录哪几场真的点过「放水再来」：planned=False 是输太多次后的兜底，
+        # 这份记录会写进报告并在 validate 里发提示，不能让它悄悄掩盖“不放水过不了”。
+        self.assist_picked = {}
+        # 每次点过「放水再来」后，把这一场放进待核对集合；重开后的第一帧战斗快照核对一次就移除，
+        # 这样既确认档位真的落到引擎，又不会在后续帧重复报同一条错误。
+        self.assist_pending = set()
+        # 记录每场选完放水后的预期档位，供重开第一帧比对快照里的 assistLevel。
+        self.assist_expect = {}
 
     # ------------------------------------------------------------------ 状态
     def st(self):
@@ -135,6 +176,13 @@ class MidTester(playtest.Tester):
         fid = s.get('fightId')
         if fid and s.get('combat'):
             self.fight_t0.setdefault((fid, self.loses.get(fid, 0)), self.elapsed())
+            # 点过「放水再来」后，失败菜单期间 combat 是 false，重开后的第一帧战斗快照才为 true；
+            # 就在这一帧核对 assistLevel，确认叠加档位真的落到引擎开关上（引擎里档位是每场战斗独立的状态）。
+            # 核对后立即移除，避免同一场已经生效后后续帧重复报错；下次叠档时会重新加入。
+            if fid in self.assist_pending:
+                self.assist_pending.discard(fid)
+                self.check(s.get('assistLevel') == self.assist_expect[fid], 'assist_not_applied',
+                           fight=fid, level=s.get('assistLevel'), want=self.assist_expect[fid])
             if time.monotonic() - self.last_print > 4:
                 self.last_print = time.monotonic()
                 print(f"[{self.elapsed():.0f}s] {fid} t={s.get('fightT')} hp={s.get('hp')}/{s.get('maxHp')} en={s.get('energy')} "
@@ -181,6 +229,7 @@ class MidTester(playtest.Tester):
             ('wheel_flipped', fid == 'b09b_wheeloffortune' and h.get('flipped')),
             ('justice_open', fid == 'b10_justice' and h.get('open')),
             ('justice_inhale', fid == 'b10_justice' and h.get('inhale')),
+            ('justice_revived', fid == 'b10_justice' and (h.get('revives') or 0) > 0),
             ('lovers_street0', fid == 'b11_lovers' and h.get('phase') == 'street' and h.get('command') == 0),
             ('lovers_street1', fid == 'b11_lovers' and h.get('phase') == 'street' and h.get('command') == 1),
             ('lovers_street2', fid == 'b11_lovers' and h.get('phase') == 'street' and h.get('command') == 2),
@@ -492,7 +541,7 @@ class MidTester(playtest.Tester):
     # ------------------------------------------------------------------ 失败菜单
     def want_lose(self, s):
         fid = s.get('fightId')
-        if not self.args.lose or not fid or not s.get('fightLosable'):
+        if not self.args.lose or not fid or fid in NO_STANDARD_LOSE or not s.get('fightLosable'):
             return False
         need = 2 if fid in LOSE_TWICE else 1
         return self.loses.get(fid, 0) < need
@@ -518,8 +567,24 @@ class MidTester(playtest.Tester):
         else:
             self.check(not has_assist, 'assist_menu_too_early', fight=fid, items=items)
         self.lose_notes.append({'fight': fid, 'n': self.loses[fid], 'items': items, 't': self.elapsed()})
-        if self.loses[fid] >= 2 and fid in PICK_ASSIST and has_assist:
-            self.menu('放水再来')
+        # 放水可叠加：菜单仍会列出「放水再来」，但档位越高敌方伤害越低。
+        # 0 档按计划/兜底规则首次选；已放水后只在再输满 ASSIST_RESTACK_EVERY 次时叠一档，
+        # 且封顶 ASSIST_MAX_LEVEL，避免无限叠档把失败重试拖成没完没了。
+        level = s.get('assistLevel') or 0
+        prev = self.assist_picked.get(fid) or {}
+        if level == 0:
+            assist_due = fid in PICK_ASSIST or self.loses[fid] >= ASSIST_STUCK_AFTER
+        else:
+            assist_due = self.loses[fid] - prev.get('loses', 0) >= ASSIST_RESTACK_EVERY
+        allow_assist = has_assist and self.loses[fid] >= 2 and level < ASSIST_MAX_LEVEL and assist_due
+        if allow_assist:
+            # 菜单真的选中后才记录；planned 只在首次决定（计划内或兜底），叠档时保留原值。
+            if self.menu('放水再来'):
+                self.assist_picked[fid] = {'loses': self.loses[fid],
+                                           'planned': prev.get('planned', fid in PICK_ASSIST),
+                                           'level': level + 1}
+                self.assist_expect[fid] = level + 1
+                self.assist_pending.add(fid)
         else:
             self.menu('再来一次')
         self.next_attack = time.monotonic() + .2
@@ -536,19 +601,55 @@ class MidTester(playtest.Tester):
         keep_members = stage == 'camp_ch6'
         npcs = [n for n in s.get('npcs') or [] if keep_members or n[0] not in party_names]
         s2 = dict(s, npcs=npcs, hotspots=hots)
+        if stage == 'fog_ch5' and not flags.get('justiceStart'):
+            clues = flags.get('fogClues') or {}
+            resident = next((h for h in s.get('hotspots') or [] if h[0] == '居民'), None)
+            if resident and not (clues.get('pulse') and clues.get('shadow')):
+                cid = 'kakyoin' if not clues.get('pulse') else 'jotaro'
+                if s.get('leader') != cid:
+                    self.switch_leader(s, cid)
+                elif self.move(s, resident[1], resident[2], 5):
+                    self.hold()
+                    if not self.pressed_recently('fog_' + cid, 1):
+                        self.pulse('u')
+                return
         if stage == 'coast_ch8' and not flags.get('ch8Gum'):
-            return self.use_as(s, 'joseph', 110, 160)
+            # 口香糖小游戏在 8-03 的过场里演完（aim 由 qte 处理）；这里的兜底只是防止旗标没设上时卡死：
+            # 直接走向土路出口，让章节继续。
+            road = next((h for h in s.get('hotspots') or [] if h[0] == '土路（出发）'), None)
+            if road:
+                return self.use_as(s, s.get('leader'), road[1], road[2])
+            return
         if stage == 'luxor_ch9' and not flags.get('ch9Socket'):
-            if not self.special.get('luxor_look') and s.get('leader') == 'jotaro' and s.get('leaderCanInvestigate'):
-                if self.move(s, 720, 160, 6):
+            # 位置读热点自己的坐标（阿斯旺 / 卢克索重写后锚点变了，写死 720 / 470 会走到空气里）
+            hots = {h[0]: h for h in s.get('hotspots') or []}
+            shadow = hots.get('脚手架') or hots.get('长影子')
+            if not self.special.get('luxor_look') and shadow and s.get('leader') == 'jotaro' and s.get('leaderCanInvestigate'):
+                if self.move(s, shadow[1], shadow[2], 6):
                     self.hold()
                     self.pulse('u')
                     self.special['luxor_look'] = True
                     self.investigated.setdefault(9, set()).add('jotaro')
                 return
-            return self.use_as(s, 'joseph', 470, 160)
+            sock = hots.get('墙上插座') or hots.get('插座')
+            if sock:
+                return self.use_as(s, 'joseph', sock[1], sock[2])
+            return
         if stage == 'camp_ch6' and not flags.get('ch6Sleep'):
             return self.camp(s)
+        if stage == 'sub_ch7' and not flags.get('ch7Helm'):
+            hots = {h[0]: h for h in s.get('hotspots') or []}
+            for name in ('海图桌上的日志', '金属杯', '扳手'):
+                h = hots.get(name)
+                if h and ('e', name) not in self.explored.setdefault(stage, set()):
+                    if self.move(s, h[1], h[2], 6):
+                        self.hold()
+                        self.pulse('e')
+                        self.explored[stage].add(('e', name))
+                    return
+            helm = hots.get('操舵台（乔瑟夫）')
+            if helm:
+                return self.use_as(s, s.get('leader'), helm[1], helm[2])
         return super().explore(s2)
 
     def use_as(self, s, cid, x, y):
@@ -570,12 +671,48 @@ class MidTester(playtest.Tester):
             a = next((m for m in self.m.get('members') or [] if m['cid'] == todo[0]), None)
             if not a:
                 return
-            if self.move(s, a['x'] + (14 if (s.get('px') or 0) > a['x'] else -14), a['y'], 4):
+            # 快照已经确认进入目标队友的 findNear 范围时，直接按确认键；继续移动会把人带出互动半径。
+            if s.get('near') == NAMES.get(a['cid']):
+                self.hold()
+                if not self.pressed_recently('camp_' + todo[0], 1.0):
+                    self.pulse('e')
+                return
+            # 波鲁纳雷夫坐在乔瑟夫的下侧，篝火附近横穿会被队友的实体挡住；
+            # 先直接下到他的座位高度：玩家已经在他正上方时无需横穿队友，
+            # 这样会优先进入他的互动半径，也避免被篝火旁的乔瑟夫挡住。
+            if a['cid'] == 'polnareff':
+                if abs((s.get('py') or 0) - a['y']) > 4:
+                    self.move(s, s.get('px') or a['x'], a['y'], 2)
+                    return
+                # 若当前 x 已在同伴正上方，findNear 会按距离优先选中波鲁纳雷夫；
+                # 否则只横向移动到他侧面，不穿过其他队友。
+                side = -1 if (s.get('px') or 0) > a['x'] else 1
+                target_x = a['x'] + side * 18
+                if abs((s.get('px') or 0) - target_x) > 5:
+                    self.move(s, target_x, a['y'], 3)
+                    return
+                self.hold()
+                if not self.pressed_recently('camp_' + todo[0], 1.0):
+                    self.pulse('e')
+                return
+            # 从当前所在一侧停到同伴身边；若波鲁纳雷夫正挡在乔瑟夫左下方，
+            # 抬到可走带上沿，让 findNear 的距离优先选中乔瑟夫。
+            blocker = next((m for m in self.m.get('members') or []
+                            if m['cid'] != a['cid'] and abs(m['x'] - a['x']) < 26 and m['y'] > a['y']), None)
+            if blocker and a['cid'] == 'joseph':
+                target_x, target_y = a['x'], (s.get('walkY') or [148, 176])[0]
+            else:
+                side = -1 if (s.get('px') or 0) <= a['x'] else 1
+                target_x, target_y = a['x'] + side * 18, a['y']
+            if self.move(s, target_x, target_y, 4):
                 self.hold()
                 if not self.pressed_recently('camp_' + todo[0], 1.0):
                     self.pulse('e')
             return
-        if self.move(s, 500, 160, 6):
+        # 篝火的位置读快照里的调查点（2026-10-18 夜营背景重画后篝火在 x 300 左右，不再写死 500）
+        fire = next((h for h in s.get('hotspots') or [] if h[0] == '篝火'), None)
+        fx, fy = (fire[1], fire[2]) if fire else (500, 160)
+        if self.move(s, fx, fy, 6):
             self.hold()
             if not self.pressed_recently('camp_sleep', 1.2):
                 self.pulse('e')
@@ -614,8 +751,13 @@ class MidTester(playtest.Tester):
         fid = s.get('fightId')
         h = s.get('fightHint') or {}
         if fid == 'b09a_wheelroad':
+            # fightHint 里的 lane / bossLane 都是**车道序号 0..2**，不是 y 坐标。
+            # 原来把 bossLane 当 y 去跟 [152,160,168] 比，bossLane=0 时还被 `or 160` 变成中间道，
+            # 结果测试器一直站在没车的道上，整场 45 s 一次都没撞到 → --lose 路线报 lose_route_missing。
             lane = h.get('lane', 1)
-            want = min(range(3), key=lambda i: abs([152, 160, 168][i] - (h.get('bossLane') or 160)))
+            want = h.get('bossLane', 1)
+            if want is None:
+                want = 1
             self.hold()
             if lane != want and not self.pressed_recently('lane', .25):
                 self.pulse('ArrowDown' if want > lane else 'ArrowUp')
@@ -756,6 +898,8 @@ class MidTester(playtest.Tester):
 
     # ================================================================== 第5章
     def t_b09a_wheelroad(self, s):
+        """2026-10-18 追车改成一轮一轮：贴车冲撞（它那条道红色预警）→ 开到旁边并排（window：这时 J 才算揍中）→ 往你这条道别车。
+        躲预警：换到没有预警、最好也不是它那条的道；并排时原地连按 J。"""
         h = s.get('fightHint') or {}
         lanes = [152, 160, 168]
         lane = h.get('lane', 1)
@@ -765,24 +909,15 @@ class MidTester(playtest.Tester):
                 for i, ly in enumerate(lanes):
                     if (z.get('y0') or 0) - 1 <= ly <= (z.get('y1') or 0) + 1:
                         danger.add(i)
-        b = self.boss()
-        if b and b.get('tele') and (b['tele'].get('left') or 0) <= .5:
-            for i, ly in enumerate(lanes):
-                if abs(b['y'] - ly) <= 4:
-                    danger.add(i)
         self.hold()
         if lane in danger:
             safe = [i for i in range(3) if i not in danger]
-            if safe and not self.pressed_recently('lane', .12):
-                want = min(safe, key=lambda i: abs(i - lane))
+            better = [i for i in safe if i != h.get('bossLane')] or safe
+            if better and not self.pressed_recently('lane', .12):
+                want = min(better, key=lambda i: abs(i - lane))
                 self.pulse('ArrowDown' if want > lane else 'ArrowUp')
             return
-        want = min(range(3), key=lambda i: abs(lanes[i] - (h.get('bossLane') or 160)))
-        if want != lane and want not in danger:
-            if not self.pressed_recently('lane', .2):
-                self.pulse('ArrowDown' if want > lane else 'ArrowUp')
-            return
-        if b and abs(b['x'] - 80) < 95 and not self.pressed_recently('ram_j', .42):
+        if h.get('window') and not self.pressed_recently('ram_j', .46):
             self.pulse('j')
 
     def t_b09b_wheeloffortune(self, s):
@@ -869,15 +1004,14 @@ class MidTester(playtest.Tester):
             self.pulse(nxt)
             mem['lastDir'] = nxt
         elif cmd == 2:
-            if h.get('vendorWatching'):
+            if h.get('vendorWatching') or (h.get('vendorTurnIn') or 2) < .45:
                 self.hold()
-            elif (h.get('progress') or 0) >= .96:
+            elif (h.get('progress') or 0) >= .98:
                 self.hold()
                 if not self.pressed_recently('steal', .4):
                     self.pulse('e')
             else:
-                # 老板每 2 秒转一次头：转身前 0.25 秒停下
-                t = (self.m.get('data') or {}).get('streetT')
+                # 预留读取快照和释放按键的时间，避免在老板转头后才停车。
                 self.hold(['ArrowRight'])
         else:
             self.hold()
@@ -891,14 +1025,16 @@ class MidTester(playtest.Tester):
             return
         if self.defend_mid(s, prefer='dodge'):
             return
-        # 往右走到看得见地平线上镜子穹顶（x 530）的地方；太热就先躲进最近的阴影（岩石 100 / 330 / 570）
+        # 穹顶锚点由背景提供（当前素材是 x=160）；先靠近锚点让镜头看见它，再等反光。
         px = s.get('px') or 0
         if (h.get('heat') or 0) >= 85 and not h.get('shaded'):
-            spot = min([100, 330, 570], key=lambda x: abs(x - px))
+            spots = [100, 330, 570]
+            spot = min(spots, key=lambda x: abs(x - px))
             self.move(s, spot, 166, 6) and self.hold()
             return
         if not h.get('domeSeen'):
-            self.move(s, 392, 166, 6)
+            target = float(h.get('mirrorX') or 160)
+            self.move(s, target, 166, 6)
             return
         self.hold()
 
@@ -993,28 +1129,63 @@ class MidTester(playtest.Tester):
 
     def t_b14b_judgement(self, s):
         h = s.get('fightHint') or {}
-        if self.defend_mid(s):
-            return
+        # 本体出现后泥偶会持续扑击；优先闪出危险区，再回到本体两侧输出。
         px = s.get('px') or 0
         if not h.get('body'):
             lamp = self.actor(lambda a: a.get('id') == 'judgement_lamp')
             if lamp:
+                # U 也算灯的重击，满能量时优先用它，缩短在两只泥偶之间停留的时间。
+                if (s.get('energy') or 0) >= 100 and abs(px - lamp['x']) <= 60:
+                    self.hold()
+                    self.pulse('u')
+                    return
                 if s.get('playerAtk') or s.get('playerRush'):
                     self.attack(s)
                     return
+                # 灯的 breakable 判定以玩家脚点为中心，停在 28px 左右才能让 J3 稳定命中。
                 side = -1 if px < lamp['x'] else 1
-                if self.move(s, lamp['x'] + side * 40, lamp['y'], 3) and self.face(s, -side):
+                if self.move(s, lamp['x'] + side * 28, lamp['y'], 3) and self.face(s, -side):
                     self.hold()
                     if time.monotonic() >= self.next_attack:
                         self.pulse('j')
                         self.next_attack = time.monotonic() + (1 / 12 if int(s.get('fightT') or 0) % 4 >= 2 else .11)
                 return
+            if self.defend_mid(s, prefer='dodge', horizon=.35):
+                return
+        # 本体出现后必须持续输出；泥偶的扑击会在近身段被普通连打打断，
+        # 只在尚未现形时处理危险预警，避免反复闪避把本体战拖到玩家耗尽生命。
         b = self.boss()
         if b and b.get('cid') == 'judgement':
-            if (s.get('energy') or 0) >= 100 and abs(b['x'] - px) < 160:
+            # 现形后泥偶使用普通近战 atk 预警，defend_mid 只读危险区 / 远程弹体；
+            # 先走父类的近战判定，避免在持续输出时漏掉扑击。
+            if super().defend(s):
+                return
+            # 只有血量进入危险线时才优先正面格挡；满血阶段保持闪避和输出，避免防守把本体战拖到氧气式耗血。
+            if self.defend_mid(s, prefer='guard' if (s.get('hp') or 0) <= 50 else 'dodge', horizon=.28):
+                return
+            # 第一阶段对象已由章节代码清理；仍按 200 HP 限定当前阶段泥偶，避免旧存档/热重载残留干扰目标。
+            clay = [e for e in self.enemies(s)
+                    if str(e.get('cid', '')).startswith('clay_') and (e.get('maxHp') or 0) <= 250]
+            body = next((e for e in self.enemies(s)
+                         if e.get('cid') == 'judgement' and (e.get('maxHp') or 0) <= 1000), None)
+            b = body or b
+            if not clay and (s.get('energy') or 0) >= 100 and abs(b['x'] - px) < 160:
                 self.hold()
                 self.pulse('u')
                 return
+            # 阿布德尔的火焰对泥偶有双倍伤害；先清掉两只会持续扑击的泥偶，
+            # 再集中攻击本体，能避免它们把近身输出窗口叠成连续受伤。
+            target = min(clay, key=lambda e: abs(e['x'] - px)) if clay else b
+            if target:
+                dx = target['x'] - px
+                # 火球从替身身前飞出，站在约 90px 处即可连段命中，同时避开泥偶贴身扑击。
+                if abs(dx) > 118 or abs(target['y'] - (s.get('py') or 0)) > 8:
+                    self.move(s, target['x'] - (112 if dx > 0 else -112), target['y'], 4)
+                    return
+                self.attack(s, 1 if dx >= 0 else -1)
+                return
+            # 远离两只泥偶的贴身范围，保持基础攻击的最远有效距离；
+            # 这样仍能连击神灯本体，同时减少被夹击的时间。
             return self.melee(s, b, keep=30)
         return self.generic(s, boss_first=False)
 
@@ -1044,7 +1215,8 @@ class MidTester(playtest.Tester):
         if s.get('playerAtk'):
             self.hold()
             return
-        if self.move(s, tx - 26, 164, 3) and self.face(s, 1):
+        wall = h.get('wall')
+        if self.move(s, tx - (10 if wall else 26), 156 if wall else 164, 3) and self.face(s, 1):
             self.hold()
             if not self.pressed_recently('strike', .6):
                 self.pulse('j')
@@ -1057,14 +1229,20 @@ class MidTester(playtest.Tester):
             self.hold(getattr(self, 'guard_keys', None) or ['l'])
             return
         bite = [z for z in self.m.get('hz') or [] if z.get('tag') == 'upper_bite']
-        if bite and 0 <= (bite[0].get('left') or 9) <= .2 and now >= self.next_defense:
-            # 精准格挡窗口 0.1 s：按在咬下来前约 0.05 s
-            self.precise_guard(s, bite[0].get('left') or 0, .25)
-            self.next_defense = time.monotonic() + .5
+        if bite and 0 <= (bite[0].get('left') or 9) <= .35 and now >= self.next_defense:
+            # 上排咬合的预警只有 45 帧；提前约 0.05 秒按住 L，保证真实键盘事件落在弹反窗口。
+            self.precise_guard(s, bite[0].get('left') or 0, .42, target=.05)
+            self.next_defense = time.monotonic() + .55
             return
         # 下排牙：J3 / 连打打碎（站在牙右边面朝左，舌头往左卷正好推着人贴牙）
         lower = [a for a in self.m.get('actors') or [] if str(a.get('cid')) == 'prop:lower_tooth' and not a.get('dead') and (a.get('hp') or 0) > 0]
         if lower:
+            # 阿布德尔的 U 带 special 判定并能溅射相邻牙；开场满能量先清一轮，减少在上排咬合线前停留的时间。
+            if (s.get('energy') or 0) >= (s.get('energyMax') or 100) and not s.get('playerAtk') and not s.get('playerRush'):
+                self.hold()
+                self.pulse('u')
+                self.next_attack = now + .25
+                return
             t = min(lower, key=lambda a: abs(a['x'] - px))
             if s.get('playerAtk') or s.get('playerRush'):
                 self.attack(s)
@@ -1073,7 +1251,9 @@ class MidTester(playtest.Tester):
                 self.hold()
                 if now >= self.next_attack:
                     self.pulse('j')
-                    self.next_attack = now + 1 / 12
+                    # 白金之星的 J1→J2→J3 链需要等到上一招的取消点；过快连按会一直停在 J1，
+                    # 下排牙只会被满能量 U 偶尔溅射，海底战就会拖到氧气耗尽。
+                    self.next_attack = now + .18
             return
         # 只剩上排：站在活着的上牙下面等咬
         upper = [a for a in self.m.get('actors') or [] if str(a.get('cid')) == 'prop:upper_tooth' and not a.get('dead') and (a.get('hp') or 0) > 0]
@@ -1118,22 +1298,24 @@ class MidTester(playtest.Tester):
         h = s.get('fightHint') or {}
         px = s.get('px') or 0
         lead = s.get('leader')
+        # 站位目标全部读 testHint 里的锚点：第8章重写后阿斯旺的茶桌 / 马车 / 橘子摊都挪了位置，
+        # 以前写死的 250 / 490 / 230 / 690 是初版地图的坐标。
         if phase == 1:
             if lead != 'iggy':
                 if not self.pressed_recently('swap', 1.2):
                     self.hold()
                     self.pulse('q')
                 return
-            tx = 250
+            tx = h.get('targetX') or 250
         elif phase == 2:
             if lead != 'polnareff':
                 if not self.pressed_recently('swap', 1.2):
                     self.hold()
                     self.pulse('q')
                 return
-            tx = 490
+            tx = h.get('cartX') or h.get('targetX') or 490
         else:
-            tx = 230 if not h.get('orange') else 690
+            tx = (h.get('dropX') if h.get('orange') else h.get('orangeX')) or 230
         if self.move(s, tx, 162, 8):
             self.hold()
             if not self.pressed_recently('prophecy_e', .8):
@@ -1149,12 +1331,74 @@ class MidTester(playtest.Tester):
         return self.prophecy(s, 3)
 
     # ================================================================== 第9章
+    def anubis_special_open(self, s, boss_cid, b):
+        """U 窗口：段1按剧本 kitOverride（不耗能量）；段2没有覆盖时保留原来的满能量条件。"""
+        if abs(b['x'] - (s.get('px') or 0)) >= 220:
+            return False
+        bh = b.get('hp') or 0
+        # MID_JS 的敌人行把最大血量记作 mhp（不是 maxHp），这里两种键都兼容。
+        bm = b.get('mhp') or b.get('maxHp') or 1
+        if boss_cid == 'chaka':
+            # story/ch09.js 的 fightChaka 用 J.special(0, ...) 覆盖波鲁纳雷夫的 U：
+            # 第一个参数 0 = 不耗能量，开窗只看剧本规定的血量条件。照抄这个窗口，
+            # 就不必再等 energy>=100——记忆被挡开时能量根本涨不上去。
+            ph, pm = s.get('hp') or 0, s.get('maxHp') or 1
+            return bh <= bm * .15 or (ph <= pm * .5 and bh <= bm * .55)
+        # 段2 卡恩没有 kitOverride，U 仍是角色默认必杀（need 默认 100），
+        # 所以保留原来的能量门槛和“Boss 135 以下 / 玩家半血以下”的收尾条件。
+        return ((s.get('energy') or 0) >= 100
+                and (bh <= 135 or (s.get('hp') or 0) < .5 * (s.get('maxHp') or 1)))
+
+    def anubis_dodge_pierce(self, s, boss_x):
+        """紫光（AN_PIERCE）是 guard:'none'，格挡也会吃满伤害，只能在判定前横向闪出刀路。"""
+        px = s.get('px') or 0
+        away = 'ArrowLeft' if boss_x is not None and boss_x > px else 'ArrowRight'
+        # 照 defend_mid 的贴墙换边：横向闪避只有 48 px，朝墙闪会被挡住、仍留在刀路上。
+        x0, x1 = s.get('x0') or 0, s.get('x1') or 320
+        if away == 'ArrowLeft' and px - x0 < 40 or away == 'ArrowRight' and x1 - px < 40:
+            away = 'ArrowRight' if away == 'ArrowLeft' else 'ArrowLeft'
+        self.hold([away])
+        self.pulse('k')
+        # 和 defend_mid 的闪避分支一致：留出冷却和下一招的反应时间，避免连续重按 K 卡住闪避。
+        self.next_defense = time.monotonic() + .3
+
+    def anubis_dodge_dash(self, s):
+        """AN_DASH 是沿一条线冲刺，格挡无效，只能往上下闪出这条线（闪避纵向约 29 px）。"""
+        # 预警结束进入 atk 后 startMove 会清掉 tele，threat() / defend_mid 看不到这条冲刺，
+        # 所以这里照它的 dash 分支自己按上下方向闪，而不是调用 defend_mid 干等。
+        walk = s.get('walkY') or [148, 176]
+        py = s.get('py') or 160
+        # 往空间更大的一侧闪，避免贴边时撞墙停在冲刺线上。
+        key = 'ArrowUp' if py - walk[0] > walk[1] - py else 'ArrowDown'
+        self.hold([key])
+        self.pulse('k')
+        self.next_defense = time.monotonic() + .3
+
     def anubis(self, s, boss_cid):
         h = s.get('fightHint') or {}
-        if s.get('storyU'):
-            self.hold()
-            if not self.pressed_recently('anubis_u', .5):
-                self.pulse('u')
+        # 公开快照的 hitIn 会在刀招真正进入 active 前结束；补读 MID_JS 的 atk 时间，
+        # 在 active 前先区分招式：白光可挡，紫光 / 冲刺只能闪。
+        raw = next((a for a in self.m.get('actors') or [] if a.get('cid') == boss_cid and a.get('team') == 'enemy'), None)
+        atk = raw.get('atk') if raw else None
+        now = time.monotonic()
+        if atk:
+            left = (atk.get('a0') or 9) - (atk.get('t') or 0)
+            if 0 <= left <= .22 and now >= self.next_defense:
+                # MID_JS 的 atk.id 取自 a.atkId，就是 startMove 收到的招式 id（AN_SLASH / AN_PIERCE / AN_DASH）。
+                move_id = atk.get('id')
+                if move_id in ('AN_PIERCE', 'AN_DASH') and not s.get('dodgeCd'):
+                    # 紫光 guard:'none'、冲刺是一条线，按住 L 都会吃满伤害；闪避冷却中才退回格挡，
+                    # 至少能挡住白光，也不会空按 K 把下一次真正要闪的招卡在冷却里。
+                    if move_id == 'AN_PIERCE':
+                        self.anubis_dodge_pierce(s, (raw or {}).get('x'))
+                    else:
+                        self.anubis_dodge_dash(s)
+                    return
+                self.guard_for(s, .34, (raw or {}).get('x'))
+                return
+        # 阿努比斯的近战刀招由基础快照提供的 atk 预警，先用父类做一次近战防御；
+        # 否则只读危险区的 defend_mid 会在贴身时漏掉连续斩击。
+        if super().defend(s):
             return
         if self.defend_mid(s, prefer='dodge'):
             return
@@ -1162,7 +1406,35 @@ class MidTester(playtest.Tester):
         if not b:
             self.hold()
             return
-        self.melee(s, b, keep=28)
+        # 恰卡段的 U 是剧本必杀（不耗能量），卡恩段仍是默认必杀（要满能量）。
+        # 具体窗口交给 helper：段1对齐 story/ch09.js，段2沿用旧条件；距离与防连按两段都保留。
+        if self.anubis_special_open(s, boss_cid, b):
+            self.hold()
+            if not self.pressed_recently('anubis_special', .8):
+                self.pulse('u')
+            return
+        memory = h.get('memory')
+        if not isinstance(memory, (list, tuple)):
+            # 没有记招提示（或结构异常）的调用方不参与换招，保持原来的 melee 默认节奏。
+            self.melee(s, b, keep=28)
+            return
+        # 妖刀记住同一种招的第二次：J1/J2/J3 填满三格后，再按 J 只会被挡开并反打 10。
+        # 以 memory 内容为准而不是固定间隔：满三格时改打连打，用还没记住的“连打”挤掉最早的 J1，
+        # 记忆变成 [J2,J3,连打]，随后三连的 J1/J2/J3 又都能命中并回到满格。
+        if all(t in memory for t in ('J1', 'J2', 'J3')):
+            self.melee(s, b, keep=28, rush=True)
+            return
+        if s.get('playerRush'):
+            if '连打' in memory:
+                # 连打已经命中并推进记忆；继续按 J 会延长连打，后续每一跳都撞上已记住的“连打”，
+                # 白吃 0 伤害和反打。松手让它自然收尾，再从 J1 开始下一轮。
+                self.hold()
+            else:
+                # 普通三连的 J3 末尾也会开连打，可能比记忆快照更早；在“连打”真正进记忆之前
+                # 不能松手，否则这一轮连打可能没命中就结束，记忆既填不满也挤不掉最早的 J1。
+                self.melee(s, b, keep=28, rush=True)
+            return
+        self.melee(s, b, keep=28, rush=False)
 
     def t_b18a_anubis(self, s):
         return self.anubis(s, 'chaka')
@@ -1191,8 +1463,13 @@ class MidTester(playtest.Tester):
         if not b:
             self.hold()
             return
-        # 保持在突刺距离内（70 px），正面等它出紫色突刺
-        self.approach(s, b['x'], b['y'], keep=44) and self.face(s, 1 if b['x'] > (s.get('px') or 0) else -1) and self.hold()
+        # 保持在突刺距离内（70 px），正面等它出紫色突刺；没有突刺时继续输出，
+        # 否则旧路线只会贴身等待，阿努比斯第三战永远无法扣 Boss 血。
+        if abs(b['x'] - (s.get('px') or 0)) > 52:
+            self.approach(s, b['x'], b['y'], keep=44)
+            self.face(s, 1 if b['x'] > (s.get('px') or 0) else -1)
+            return
+        self.melee(s, b, keep=44, rush=False)
 
     def t_b19_bast(self, s):
         h = s.get('fightHint') or {}
@@ -1267,13 +1544,23 @@ class MidTester(playtest.Tester):
     def validate(self):
         super().validate()
         # 父类按 M1 的近战覆盖要求逐场检查；中段大量解谜 / 载具 / 求生战，换成只查本章是否用过三种防守 / 必杀
-        self.errors = [e for e in self.errors if not (e['kind'] in ('coverage_dodge', 'coverage_defense', 'coverage_rush') and e.get('fight') in NO_MELEE_COVER)]
+        # 第8章的三场预言是限时道具小游戏，且首段是剧情内 U 投掷；没有普通战斗覆盖统计，
+        # 也没有可切换队长的自由调查点。这里保留路线、资源、帧率和脚本旗标检查，
+        # 不把通用近战覆盖规则误报成章节失败。
+        c8_exempt = self.args.chapter == 'ch8'
+        self.errors = [e for e in self.errors if not (
+            (e['kind'] in ('coverage_dodge', 'coverage_defense', 'coverage_rush') and e.get('fight') in NO_MELEE_COVER)
+            or (c8_exempt and e['kind'] in ('coverage_special', 'coverage_investigate', 'coverage_swap', 'chapter_dodge_missing', 'chapter_defense_missing'))
+            or (e['kind'] == 'lose_route_missing' and e.get('fight') in NO_STANDARD_LOSE)
+            or (e['kind'] == 'retry_boss_recreated' and e.get('fight') in NO_RETRY_UID_CHECK)
+        )]
         tot = {}
         for c in self.coverage.values():
             for k, v in c.items():
                 tot[k] = tot.get(k, 0) + v
-        self.check(tot.get('dodge', 0) >= 1, 'chapter_dodge_missing', counts=tot)
-        self.check(tot.get('guard', 0) + tot.get('parry', 0) >= 1, 'chapter_defense_missing', counts=tot)
+        if not c8_exempt:
+            self.check(tot.get('dodge', 0) >= 1, 'chapter_dodge_missing', counts=tot)
+            self.check(tot.get('guard', 0) + tot.get('parry', 0) >= 1, 'chapter_defense_missing', counts=tot)
         if self.fps_seen:
             avgs = [r[1] for r in self.fps_seen]
             mean = sum(avgs) / len(avgs)
@@ -1281,7 +1568,27 @@ class MidTester(playtest.Tester):
             self.check(mean >= 55, 'fps_mean_below_55', mean=round(mean, 1), p5=low)
         bad = [v for k, v in self.events_seen.items() if v['kind'] in ('loop_error', 'script_error', 'api_missing', 'fx_unknown', 'fx_error', 'tpl_px_error', 'startup_error', 'look_missing', 'video_missing')]
         for v in bad:
-            self.check(False, 'game_event_' + v['kind'], **v)
+            self.check(False, 'game_event_' + v['kind'], event=v)
+        if self.args.chapter == 'ch5':
+            flags = self.st().get('flags') or {}
+            self.check(flags.get('anneLeft') is True, 'ch5_anne_not_departed')
+            self.check(len(flags.get('fogClues') or {}) >= 2, 'ch5_fog_clues_missing')
+            self.check(all((flags.get('fogClues') or {}).get(k) for k in ('pulse', 'shadow')), 'ch5_fog_investigations_missing')
+            self.check(flags.get('ch5BraceletSeen') and flags.get('ch5JeepSeen'), 'ch5_karachi_exploration_missing')
+            self.check(flags.get('ch5Bill') == 3, 'ch5_invoice_incomplete', bill=flags.get('ch5Bill'))
+            self.check(flags.get('ch5StreetResults') == [True, True, True], 'ch5_street_tasks_failed', results=flags.get('ch5StreetResults'))
+        if self.args.chapter == 'ch6':
+            flags = self.st().get('flags') or {}
+            self.check(flags.get('ch6PlaneBought') and flags.get('ch6Baby'), 'ch6_village_tasks_missing')
+            self.check(flags.get('ch6Sleep') is True, 'ch6_camp_not_finished')
+        if self.args.chapter == 'ch7':
+            flags = self.st().get('flags') or {}
+            self.check(flags.get('ch7AvdolBack') is True, 'ch7_avdol_not_back')
+            self.check(flags.get('ch7Helm') is True, 'ch7_sub_exploration_missing')
+        # 兜底放水不是错误，但必须留痕：让报告读者看到有些战斗是靠放水才推进的，避免“不放水过不了”被掩盖。
+        for fid, rec in self.assist_picked.items():
+            if not rec.get('planned'):
+                self.note('assist_fallback_used', fight=fid, loses=rec.get('loses'), level=rec.get('level'))
 
     def report(self):
         r = super().report()
@@ -1293,6 +1600,8 @@ class MidTester(playtest.Tester):
         r['game_events'] = list(self.events_seen.values())
         r['lose_notes'] = self.lose_notes
         r['assist_seen'] = self.assist_seen
+        # 哪几场真的点了「放水再来」、是计划内还是卡住兜底，都要随报告留下来。
+        r['assist_picked'] = self.assist_picked
         r['fight_start'] = {f'{k[0]}#{k[1]}': v for k, v in self.fight_t0.items()}
         r['input_boundary'] = '推进、移动、攻击、QTE、失败重试全部经真实键盘；只读 G.dbg.snapshot 与 MID_JS 的公开状态。'
         return r

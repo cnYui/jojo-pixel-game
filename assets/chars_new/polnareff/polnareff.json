@@ -31,8 +31,15 @@
       "seamless": true,
       "desc": "后续补帧：polnareff.float"
     },
-    "crawl": {
+    "sit": {
       "row": 3,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "第6章到终章补帧：polnareff.sit"
+    },
+    "crawl": {
+      "row": 4,
       "frames": 2,
       "fps": 4,
       "kind": "loop",
@@ -40,7 +47,7 @@
       "desc": "Polnareff on all fours, grimacing (humiliation gag), 2f crawl step (50x34)"
     },
     "fight": {
-      "row": 4,
+      "row": 5,
       "frames": 2,
       "fps": 4,
       "kind": "loop",
@@ -48,7 +55,7 @@
       "desc": "fencing stance: lunge, finger pointing forward, back arm arced (2f)"
     },
     "wave": {
-      "row": 5,
+      "row": 6,
       "frames": 2,
       "fps": 4,
       "kind": "loop",
@@ -56,7 +63,7 @@
       "desc": "bonus: happy goodbye wave, eyes closed grin (2f)"
     },
     "shock": {
-      "row": 6,
+      "row": 7,
       "frames": 2,
       "fps": 10,
       "kind": "loop",
@@ -64,7 +71,7 @@
       "desc": "shocked: hands on cheeks, mouth agape, hair jumps (2f jitter)"
     },
     "cry": {
-      "row": 7,
+      "row": 8,
       "frames": 2,
       "fps": 6,
       "kind": "loop",
@@ -72,42 +79,42 @@
       "desc": "comic crying: tear waterfalls, wailing (2f)"
     },
     "possessed": {
-      "row": 8,
+      "row": 9,
       "frames": 2,
       "fps": 1,
       "kind": "static",
       "desc": "剧情形态：possessed"
     },
     "hurt": {
-      "row": 9,
+      "row": 10,
       "frames": 1,
       "fps": 1,
       "kind": "static",
       "desc": "Polnareff hit, recoiling back (1f)"
     },
     "down": {
-      "row": 10,
+      "row": 11,
       "frames": 1,
       "fps": 1,
       "kind": "static",
       "desc": "knocked down on his back, head LEFT, eyes shut (60x22); anchor = ground"
     },
     "dodge": {
-      "row": 11,
+      "row": 12,
       "frames": 1,
       "fps": 1,
       "kind": "static",
       "desc": "后续补帧：polnareff.dodge"
     },
     "guard": {
-      "row": 12,
+      "row": 13,
       "frames": 1,
       "fps": 1,
       "kind": "static",
       "desc": "后续补帧：polnareff.guard"
     },
     "kick": {
-      "row": 13,
+      "row": 14,
       "frames": 2,
       "fps": 8,
       "kind": "oneshot",
@@ -115,21 +122,21 @@
       "desc": "后续补帧：polnareff.kick"
     },
     "kid": {
-      "row": 14,
+      "row": 15,
       "frames": 2,
       "fps": 1,
       "kind": "static",
       "desc": "剧情形态：kid"
     },
     "kneel": {
-      "row": 15,
+      "row": 16,
       "frames": 1,
       "fps": 1,
       "kind": "static",
       "desc": "后续补帧：polnareff.kneel"
     },
     "portrait": {
-      "row": 16,
+      "row": 17,
       "frames": 2,
       "fps": 8,
       "kind": "loop",
@@ -137,7 +144,7 @@
       "desc": "Polnareff bust: silver flat-top, black brows, blue eyes; f0 closed f1 talking"
     },
     "portrait_shock": {
-      "row": 17,
+      "row": 18,
       "frames": 2,
       "fps": 8,
       "kind": "loop",
@@ -169,7 +176,7 @@
   "variants": {},
   "source": {
     "project": "jojo",
-    "call": "game.art_heroes / game.art_later_existing / game.orig（import assets; assets.load_all(); from engine import sprite; sprite.get('polnareff.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'polnareff.<动作>', x, y, frame=i, flip=False)"
+    "call": "game.art_c6fin_actions / game.art_heroes / game.art_later_existing / game.orig（import assets; assets.load_all(); from engine import sprite; sprite.get('polnareff.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'polnareff.<动作>', x, y, frame=i, flip=False)"
   },
-  "notes": "波鲁纳雷夫（Jean Pierre Polnareff），主角团·人物。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle/walk/crawl/fight/wave/shock/cry/possessed/hurt/down/kid/kneel/portrait/portrait_shock；脚点(自定义点)=float/dodge/guard/kick。portrait* 动作是说话头像（32×32 半身）：图集里放在最后几行（按底部中点对齐，只是为了同格对齐，不代表脚点），同时逐帧导出到“头像”文件夹，见 expressions；多数 frame0=闭嘴/静态、frame1=说话/加强（具体见各自 desc），原引擎对话框打字时以 8fps 来回切换。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
+  "notes": "波鲁纳雷夫（Jean Pierre Polnareff），主角团·人物。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle/walk/crawl/fight/wave/shock/cry/possessed/hurt/down/kid/kneel/portrait/portrait_shock；脚点(自定义点)=float/sit/dodge/guard/kick。portrait* 动作是说话头像（32×32 半身）：图集里放在最后几行（按底部中点对齐，只是为了同格对齐，不代表脚点），同时逐帧导出到“头像”文件夹，见 expressions；多数 frame0=闭嘴/静态、frame1=说话/加强（具体见各自 desc），原引擎对话框打字时以 8fps 来回切换。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
 }

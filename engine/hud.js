@@ -229,6 +229,12 @@
         const prompt = (sp && sp.prompt) || '按 U！';
         f12().draw(g, prompt, 262, y0 + 30, Math.floor(G.clk.ui * 4) % 2 ? '#ffd040' : '#fff4c0', { outline: '#3a1a00' });
       }
+      // 放水是输两次后的隐藏救济，玩家需要知道自己正在放水（敌方伤害已降低），也方便测试器 / 截图核对。
+      // 画在队长面板右边、Boss 条下方（x262 / y52），避开面板阴影、剧情 U 提示和下方系统提示。
+      if (fight && fight.assist && G.combat && G.combat.CFG) {
+        const pct = Math.round((1 - G.combat.assistTotal(Math.max(1, fight.assistLevel || 1))) * 100);
+        f12().draw(g, '放水 -' + pct + '%', 262, 52, '#ffd83c', { outline: '#3a0a00' });
+      }
     },
     // ------------------------------------------------------------ 队伍行（战斗参战的其他人）
     drawAllies(g, dy) {

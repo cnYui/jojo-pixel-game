@@ -147,6 +147,7 @@
     out.fightLosable = f && f.spec ? (f.spec.losable != null ? !!f.spec.losable : !(f.spec.playerMinHp > 0)) : null;
     out.fightCoverage = f && f.spec ? f.spec.coverage !== false : null;
     out.assist = f ? !!f.assist : false;
+    out.assistLevel = f ? (f.assistLevel || 0) : 0;
     out.storyU = f ? !!f.storyU : false;
     out.fightHint = safe(() => (f && f.spec && typeof f.spec.testHint === 'function' ? f.spec.testHint(f) : null));
     // 调试数据只保留小游戏的值，避免 Actor / Canvas 的循环引用污染快照。
@@ -204,6 +205,19 @@
     out.lookStats = safe(() => (G.LOOK && G.LOOK.stats ? JSON.parse(JSON.stringify(G.LOOK.stats)) : null));
     return out;
   };
+
+  // ?autotest=1 时才认 autowin=...：按战斗 id 列表让 fight.js 在开场后自动判胜，直达后面的战斗调试（不是通关证据）。
+  // debug.js 虽然在 fight.js 之后加载，但两边都只是定义函数；这里在游戏跑起来前挂好集合，战斗开始时就读得到。
+  try {
+    const q = (location && location.search) || '';
+    if (G.dbg.autotest || /[?&]autotest=1/.test(q)) {
+      const m = q.match(/[?&]autowin=([^&]*)/);
+      if (m) {
+        const ids = m[1].split(',').map((s) => decodeURIComponent(s.trim())).filter(Boolean);
+        if (ids.length) G.dbg.autowin = new Set(ids);
+      }
+    }
+  } catch (e) { /* 没有 location 或 URL 编码坏了：当作没开 autowin */ }
 
   // 调试快捷键（?debug=1）：F2 跳到下一个战斗结束（赢）、F4 存档跳章（只在调试时挂，正常游玩不加任何监听）
   try {

@@ -146,7 +146,8 @@
       "sad",
       "travel",
       "boss",
-      "ending"
+      "ending",
+      "dream"
     ]
   },
   "ch7": {
@@ -182,7 +183,9 @@
       "sad",
       "travel",
       "boss",
-      "ending"
+      "ending",
+      "battle_egypt",
+      "comedy"
     ]
   },
   "ch9": {
@@ -201,7 +204,8 @@
       "sad",
       "travel",
       "boss",
-      "ending"
+      "ending",
+      "battle_egypt"
     ]
   },
   "ch10": {
@@ -219,7 +223,9 @@
       "sad",
       "travel",
       "boss",
-      "ending"
+      "ending",
+      "battle_egypt",
+      "comedy"
     ]
   },
   "ch11": {

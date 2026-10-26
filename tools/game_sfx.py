@@ -54,6 +54,235 @@ def reg(name, desc, la=None, push=None, loop=None, hit=None):
     return deco
 
 
+@reg('gas_rain', '汽油细雨：密集的液滴落在车身和路面，避免与普通枪声混淆', la=-23, push=0)
+def _gas_rain(seed=0):
+    rng = _rng('gas_rain', seed)
+    length = _n(1.2)
+    x = .12 * bp(noise(length, rng), 800, 4500)
+    for at in rng.uniform(0, 1.12, 32):
+        n = _n(.05)
+        drop = bp(noise(n, rng), 350, 2800) * env_exp(n, .013, .0005)
+        _place(x, drop, _n(at), rng.uniform(.12, .4))
+    return _fin(x, .6, .015, .04)
+
+
+@reg('zombie_moan', '正义操纵的尸体低声呻吟：下滑低频与气声，不使用录音', la=-24, push=0)
+def _zombie_moan(seed=0):
+    rng = _rng('zombie_moan', seed)
+    n = _n(.7)
+    t = np.arange(n) / SR
+    hz = 109 - 34*t/.7 + 6*np.sin(_TAU*6*t)
+    phase = _TAU*np.cumsum(hz)/SR
+    x = (.5*np.sin(phase) + .2*np.sin(phase*2) + .12*bp(noise(n, rng), 150, 900))
+    x *= np.sin(np.pi*t/.7) ** .65
+    return _fin(x, .58, .02, .04)
+
+
+@reg('wheel_ignite', '命运之轮车头点火：机械打火后的一小团燃烧声', la=-23, push=0)
+def _wheel_ignite(seed=0):
+    return _mix_parts(.5, [('lighter', 0, .7), ('explosion', .08, .22)])
+
+
+@reg('car_horn', '老式轿车的两短声喇叭：第5章公路上后车逼车、众人按喇叭（比列车汽笛高、短，不和 train_horn 混）', la=-21, push=0)
+def _car_horn():
+    # 两个方波略错开的“哔哔”，每声 0.16 s，中间 0.07 s 空：汽车喇叭典型的不协和双音（约 420 / 525 Hz）
+    x = np.zeros(_n(.5))
+    for at in (0.0, .23):
+        n = _n(.16)
+        tone = osc(420, n, 'square') * .5 + osc(525, n, 'square') * .4
+        _place(x, lp(tone, 2600, 2) * env_pts(n, [(0, 0), (.01, 1), (.13, .85), (.16, 0)]), _n(at), 1.0)
+    return _fin(x, .62, .005, .03)
+
+
+@reg('baby_laugh', '婴儿咯咯笑（死神13 的曼尼许男孩）：三四声上扬的短“咯”，共振峰合成，不用录音', la=-23, push=0)
+def _baby_laugh(seed=0):
+    rng = _rng('baby_laugh', seed)
+    x = np.zeros(_n(.9))
+    for i, at in enumerate((0.0, .17, .31, .47)):
+        m = _n(.13)
+        t = _t(m)
+        # 婴儿的基频高（420–560 Hz）、每声往上挑一点；喉部气声用一点噪声
+        f0 = np.interp(t, [0, .04, .13], [430 + i * 30, 560 + i * 25, 470 + i * 20]) * rng.uniform(.97, 1.03)
+        src = osc(f0, m, 'saw') + .25 * noise(m, rng)
+        v = _formant(src, [(1050, 6, 1.0), (2600, 8, .45), (3900, 10, .2)])
+        v *= np.interp(t, [0, .012, .07, .13], [0, 1, .7, 0])
+        _place(x, v, _n(at), 1.0 - i * .08)
+    return _fin(lp(x, 6000, 2), .55, .004, .05)
+
+
+@reg('baby_cry', '婴儿大哭（面具碎了以后）：“哇——啊——”两声长哭，元音从 a 滑到 e', la=-22, push=0)
+def _baby_cry(seed=0):
+    rng = _rng('baby_cry', seed)
+    x = np.zeros(_n(1.5))
+    for at, dur in ((0.0, .62), (.72, .7)):
+        m = _n(dur)
+        t = _t(m)
+        f0 = np.interp(t, [0, .08, dur * .6, dur], [380, 520, 500, 360]) * (1 + .02 * np.sin(_TAU * 7 * t))
+        src = osc(f0, m, 'saw') + .2 * noise(m, rng)
+        f1 = np.interp(t, [0, dur], [900, 700])
+        f2 = np.interp(t, [0, dur], [1500, 2100])
+        v = _formant(src, [(f1, 5, 1.0), (f2, 7, .55), (3200, 9, .25)])
+        v *= np.interp(t, [0, .03, dur * .8, dur], [0, 1, .85, 0])
+        _place(x, v, _n(at), 1.0)
+    return _fin(lp(x, 6500, 2), .6, .01, .08)
+
+
+@reg('heat_beam', '第二个太阳射下的热线：嗡的一声高温啸叫 + 沙地被烤焦的嘶嘶声', la=-22, push=0)
+def _heat_beam(seed=0):
+    rng = _rng('heat_beam', seed)
+    n = _n(.55)
+    t = _t(n)
+    hum = osc(np.interp(t, [0, .55], [880, 620]), n, 'sine') * .45 + osc(np.interp(t, [0, .55], [1320, 930]), n, 'sine') * .2
+    hiss = bp(noise(n, rng), 2500, 7000) * np.interp(t, [0, .1, .55], [0, .6, .2])
+    x = (hum + hiss) * np.interp(t, [0, .02, .35, .55], [0, 1, .7, 0])
+    return _fin(x, .6, .003, .06)
+
+
+@reg('invoice_stamp', '账单结清：落印的硬碰声和短促确认音', la=-22, push=0)
+def _invoice_stamp(seed=0):
+    return _mix_parts(.45, [('punch_heavy', 0, .42), ('ding', .08, .45)])
+
+
+# ============================================================ 2026-10-19 第6–11章新音效（游玩脚本 + 素材总表 §四）
+@reg('heat_wave', '第二个太阳的热浪：低沉的“呼——”热风往上涌 + 远处的嗡鸣（第6章太阳战每 12 s 一次；预警用前半段、音量压低）',
+     la=-22, push=0)
+def _heat_wave(seed=0):
+    rng = _rng('heat_wave', seed)
+    n = _n(.9)
+    t = _t(n)
+    # 低频的风先涌上来、中频的“呼”后到：两层带限噪声错开包络，听起来像热气一浪压过来
+    low = bp(noise(n, rng), 80, 500) * np.interp(t, [0, .45, .9], [.2, 1, .1])
+    mid = bp(noise(n, rng), 500, 2500) * np.interp(t, [0, .3, .6, .9], [0, .2, .7, 0])
+    drone = osc(np.interp(t, [0, .9], [55, 82]), n, 'sine') * .5 * np.interp(t, [0, .2, .7, .9], [0, 1, .8, 0])
+    hum = osc(np.interp(t, [0, .9], [220, 330]), n, 'sine') * .12 * np.interp(t, [0, .5, .9], [0, 1, 0])
+    return _fin(.9 * low + .6 * mid + drone + hum, .7, .01, .12)
+
+
+@reg('pump', '手摇油泵压一下：金属手柄“咔”+ 抽油的“嗤”+ 一点液体晃动（第6章亚普林村加油的节拍小游戏）', la=-22, push=0)
+def _pump(seed=0):
+    rng = _rng('pump', seed)
+    x = np.zeros(_n(.32))
+    _place(x, _metal(_n(.06), [1900, 3100], [.04, .03], [.5, .3], rng), 0, 1.0)
+    m = _n(.2)
+    t = _t(m)
+    _place(x, bp(noise(m, rng), 1500, 6000) * np.interp(t, [0, .03, .2], [0, .6, 0]), _n(.05), .8)
+    _place(x, lp(noise(m, rng), 400, 2) * np.interp(t, [0, .08, .2], [0, .7, 0]), _n(.1), .7)
+    return _fin(x, .6, .001, .03)
+
+
+@reg('cane_tap', '恩多尔的木拐杖点在硬沙上：干脆的一声“哒”，带两次很远的回声（第8章盖布神）', la=-24, push=0)
+def _cane_tap(seed=0):
+    rng = _rng('cane_tap', seed)
+    n = _n(.12)
+    t = _t(n)
+    # 木头的几个不在谐波上的模态 + 很短的擦击声；回声做低通，像从沙丘那边弹回来
+    body = (osc(720, n) * .6 + osc(1180, n) * .35 + osc(1900, n) * .15) * np.exp(-t / .025)
+    tap = body + hp(noise(n, rng), 2500) * np.exp(-t / .004) * .5
+    x = np.zeros(_n(.4))
+    _place(x, tap, 0, 1.0)
+    _place(x, lp(tap, 2000), _n(.14), .22)
+    _place(x, lp(tap, 1400), _n(.27), .08)
+    return _fin(x, .6, .0005, .05)
+
+
+@reg('radio_static', '无线电断线：带限的沙沙声忽大忽小 + 零星噼啪 + 两声短促的“嘀”（第8章直升机坠落后的无线电）', la=-26, push=0)
+def _radio_static(seed=0):
+    rng = _rng('radio_static', seed)
+    n = _n(1.0)
+    t = _t(n)
+    flutter = .55 + .45 * np.abs(np.sin(_TAU * 7 * t + 2 * np.sin(_TAU * 1.3 * t)))
+    x = bp(noise(n, rng), 400, 3200) * flutter * .7
+    crack = np.zeros(n)
+    for _ in range(14):
+        m = _n(.006)
+        _place(crack, noise(m, rng) * rng.uniform(.5, 1), int(rng.uniform(0, n - m)))
+    x += hp(crack, 1500) * .6
+    for at in (.18, .62):
+        m = _n(.07)
+        _place(x, osc(1400, m, 'square') * .25 * np.interp(_t(m), [0, .005, .06, .07], [0, 1, 1, 0]), _n(at))
+    return _fin(x * np.interp(t, [0, .05, .85, 1.0], [0, 1, .8, 0]), .5, .005, .08)
+
+
+@reg('metal_drop', '金属手镯落在沙上：两三声闷一点的“叮啷”+ 沙地的“噗”（第8章阿布德尔扔手镯当诱饵）', la=-23, push=0)
+def _metal_drop(seed=0):
+    rng = _rng('metal_drop', seed)
+    x = np.zeros(_n(.5))
+    for i, at in enumerate((0, .07, .16)):
+        ring = _metal(_n(.22), [1480 + i * 130, 2470 + i * 90, 3900], [.09, .06, .04], [.5, .3, .15], rng)
+        _place(x, lp(ring, 4200), _n(at), 1.0 - i * .25)
+    m = _n(.12)
+    _place(x, lp(noise(m, rng), 600, 2) * np.exp(-_t(m) / .03), 0, .6)
+    return _fin(x, .55, .001, .06)
+
+
+@reg('zap', '插座漏电：“滋啦”一串电火花（稀疏的高频噼啪 + 120 Hz 的嗡）+ 收尾一声小爆（第9章乔瑟夫碰插座）', la=-20, push=0)
+def _zap(seed=0):
+    rng = _rng('zap', seed)
+    n = _n(.42)
+    t = _t(n)
+    buzz = osc(120, n, 'square') * .3 * (np.sin(_TAU * 37 * t) > 0)
+    crackle = hp(noise(n, rng), 3000) * (rng.uniform(0, 1, n) > .82)
+    x = (buzz + crackle * .8) * np.interp(t, [0, .02, .3, .42], [0, 1, .6, 0])
+    m = _n(.08)
+    _place(x, lp(noise(m, rng), 900, 2) * np.exp(-_t(m) / .015), _n(.3), .9)
+    return _fin(x, .7, .001, .05)
+
+
+@reg('kid_cry', '小孩被吓哭：一声短促的“哇——”（锯齿过共振峰，基频比婴儿低，不刺耳；第9章躲猫猫被砍到、碎片小孩摔倒）',
+     la=-23, push=0)
+def _kid_cry(seed=0):
+    rng = _rng('kid_cry', seed)
+    m = _n(.7)
+    t = _t(m)
+    f0 = np.interp(t, [0, .06, .45, .7], [300, 400, 380, 280]) * (1 + .025 * np.sin(_TAU * 6 * t))
+    src = osc(f0, m, 'saw') + .15 * noise(m, rng)
+    v = _formant(src, [(np.interp(t, [0, .7], [850, 700]), 5, 1.0), (np.interp(t, [0, .7], [1300, 1700]), 7, .5),
+                       (2900, 9, .2)])
+    v *= np.interp(t, [0, .03, .5, .7], [0, 1, .8, 0])
+    return _fin(lp(v, 5000, 2), .55, .01, .1)
+
+
+@reg('rewind', '塞特神的返老还童：磁带倒卷——音高飞快往下滑的“呜——”+ 越来越密的齿轮咔嗒 + 磁带沙沙（第9章）', la=-22, push=0)
+def _rewind(seed=0):
+    rng = _rng('rewind', seed)
+    n = _n(.85)
+    t = _t(n)
+    f = np.interp(t, [0, .85], [1100, 140]) * (1 + .03 * np.sin(_TAU * 13 * t))
+    tone = lp(osc(f, n, 'saw') * .35 + osc(f * 1.5, n, 'square') * .12, 3000, 2)
+    hiss = bp(noise(n, rng), 3000, 9000) * .25
+    clicks = np.zeros(n)
+    at, gap = 0.0, .09
+    while at < .8:
+        _place(clicks, hp(noise(_n(.004), rng), 2000), _n(at), .8)
+        at, gap = at + gap, max(.025, gap * .88)
+    return _fin((tone + hiss + clicks) * np.interp(t, [0, .04, .7, .85], [0, 1, .8, 0]), .65, .003, .06)
+
+
+@reg('cat_meow', '猫叫一声“喵——”：基频先扬后落，元音从 i 滑到 ao（第10章达比的猫）', la=-24, push=0)
+def _cat_meow(seed=0):
+    rng = _rng('cat_meow', seed)
+    m = _n(.55)
+    t = _t(m)
+    f0 = np.interp(t, [0, .12, .3, .55], [520, 760, 700, 430])
+    src = osc(f0, m, 'saw') + .08 * noise(m, rng)
+    f1 = np.interp(t, [0, .15, .55], [400, 950, 700])
+    f2 = np.interp(t, [0, .15, .55], [2600, 1500, 1100])
+    v = _formant(src, [(f1, 6, 1.0), (f2, 8, .6), (3400, 10, .2)])
+    v *= np.interp(t, [0, .04, .4, .55], [0, 1, .8, 0])
+    return _fin(lp(v, 6000, 2), .5, .005, .08)
+
+
+@reg('soul_drain', '灵魂被吸进筹码 / 人偶：drain 的吸入声 + 降调的 sparkle 光点 + 收尾一声“叮”（第10章赌局、第11章游戏室）',
+     la=-21, push=0)
+def _soul_drain(seed=0):
+    def mono(y):
+        return y.mean(axis=1) if y.ndim == 2 else y
+    x = np.zeros(_n(1.3))
+    _place(x, mono(sfx.make('drain')), 0, .9)
+    _place(x, sfx._speed(mono(sfx.make('sparkle')), .7), _n(.15), .55)   # 放慢 = 降调，光点像被拖进去
+    _place(x, mono(sfx.make('ding')), _n(1.0), .4)
+    return _fin(x, .7, .002, .08)
+
 # ============================================================ 循环（圆周）工具
 def _fold(x, L):
     """把超过 L 个样本的尾巴折回开头（循环的余音）。"""
@@ -1995,6 +2224,37 @@ def _ghat_loop(loop=6.0, seed=0):
     out = base + _rms(base) * (2.0 * laps + 2.6 * _pk1(bells) + 2.0 * _pk1(birds))
     return _fin_loop(out, .32)
 
+
+def _water_bird(rng):
+    """水鸟叫两声：短促上扫的“啾、啾”（2.1→2.9 kHz + 一点二次谐波）。"""
+    out = np.zeros(_n(.34))
+    for at in (0.0, .18):
+        m = _n(.12)
+        t = _t(m)
+        f = np.interp(t, [0, .05, .12], [2100, 2900, 2500]) * rng.uniform(.97, 1.03)
+        y = (osc(f, m) + .25 * osc(2 * f, m)) * np.interp(t, [0, .01, .08, .12], [0, 1, .6, 0])
+        _place(out, y, _n(at))
+    return out
+
+
+@reg('river_loop', '尼罗河岸：宽阔的河水缓缓流（低沉的水流一直在 + 轻轻起伏的“沙——”）+ 偶尔一只水鸟叫两声；'
+                   '开阔安静（第9章河岸，loop=6 s，立体声，无缝）', la=-28, push=0, loop=6.0)
+def _river_loop(loop=6.0, seed=0):
+    rng = _rng('river_loop', seed)
+    L = _n(loop)
+    sw = _cmod(L, rng, (2, 3))
+    chans = []
+    for _ in range(2):
+        lvl = np.clip(.55 + .35 * sw + .1 * _cmod(L, rng, (5, 9)), 0, 1)
+        flow = _cnoise(L, rng, 1.5, 50, 420) * (.7 + .3 * lvl)
+        wash = _cnoise(L, rng, .6, 300, 1800) * lvl ** 2 * .7
+        chans.append(.6 * flow + wash + .04 * _cnoise(L, rng, 0.0, 1800, 5000))
+    water = _rms1(np.stack(chans, -1))
+    birds = np.zeros((L + _n(1.0), 2))
+    for at, pan in ((1.6, -.4), (4.3, .5)):
+        _place(birds, _pan(_water_bird(rng), pan), _n(at), 1.0)
+    birds = _fold(verb(birds, wet=.2, sec=.8, tau=.2, lpf=5000, seed=51), L)
+    return _fin_loop(water + _rms(water) * 1.6 * _pk1(birds), .3)
 
 if __name__ == '__main__':
     # 自检：把本文件登记的全部新音效各渲一次，打印时长 / 声道 / 峰值 / 感知响度

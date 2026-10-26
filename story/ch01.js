@@ -453,68 +453,69 @@
     st.hotspots = [['pagoda', 250, 104, '白塔', '七层塔。'], ['tiger', 44, 132, '虎像', '张着大嘴的老虎石像。'], ['lions', 90, 128, '金狮', '一对金狮子，镀金掉了一半。'], ['grotto', 160, 110, '彩绘假山洞', '洞里供着神像。']].map(([id, x, y, label, text]) => hot(id, x, y, label, [], async S => S.say(S.player.cid, text), async S => S.say(S.player.cid, text)));
     st.onLook = async (S, p) => S.say(p.cid, p.cid === 'avdol' ? '这里只有我们和他。……没有埋伏。' : '这里是一对一决斗的地方。');
   }
-  async function chariot(S) {
-    S.hint(null);
-    // 对峙站位：波鲁纳雷夫留在原地（开战前一直看得见），阿布德尔走到他对面，其余三人退到右边石阶前观战（和战斗的 bench 位置一致）。
-    //   观战的人站在场地（x ≤ 262）外面、前后错开：原来站在场地里（x 282–302），被逼到右边打的时候三个观众和三个波鲁纳雷夫挤成一团
-    const intro = S.actor('pol_garden');
-    if (intro) intro.facing = -1;
-    const bench = { kakyoin: [276, 147], jotaro: [292, 142], joseph: [306, 151] };
-    const spots = Object.assign({ avdol: [120, 152] }, bench);
+  // ---------------------------------------------------------------- 第 2 战的布景 / 配置（剧情和星尘试炼共用同一份）
+  // 对峙站位：波鲁纳雷夫留在原地（开战前一直看得见），阿布德尔走到他对面，其余三人退到右边石阶前观战（和战斗的 bench 位置一致）。
+  const chariotBench = { kakyoin: [276, 147], jotaro: [292, 142], joseph: [306, 151] };
+  async function chariotSetup(S) {
+    const bench = chariotBench, spots = Object.assign({ avdol: [120, 152] }, bench);
     await Promise.all(Object.entries(spots).map(([cid, [x, y]]) => { const a = S.actor(cid); if (!a) return null; a.follow = null; return S.walk(a, x, y, { speed: 120 }); }));
     const av = S.actor('avdol'); if (av) av.facing = 1;
     ['jotaro', 'joseph', 'kakyoin'].forEach(cid => { const a = S.actor(cid); if (a) a.facing = -1; });
-    await lines(S, [['polnareff', '来吧，占卜师。我们一对一。'], ['avdol', '乔斯达先生，请别插手。这是火与剑的较量。'], ['joseph', '……小心点。']]);
-    await S.summon('avdol', { card: true });
-    if (intro) intro.remove = true;   // 战斗里的波鲁纳雷夫在同一位置生成（VS 卡盖住替换）
-    const tips = ['银边 + 剑竖在身前 = 架剑：正面的火会被劈开、拳会被弹开。按住 L 再按 J：地火从他脚下冒出来，架剑也挡不住。',
-      '他头上冒「！」、往后拉剑的时候没在架剑：这时打他能打断。三连刺按 L 弹开任意一刺，他会僵住——连按 J 追击！',
-      '突进刺会先拉红线：上下让开（K），他冲过头收不住剑，转身连按 J 打他。按住 L 挡三连刺只漏一点血。'];
-    await S.fight({ id: 'b02_chariot', lead: 'avdol', swap: false, energy: { start: 0 }, arena: [14, 262], music: 'battle', vs: 'chariot', dmgScale: .8, finish: 'none', losable: true,   // 规划 .9：三连刺一套 21 伤太疼，.8
-      onWave: async (s, wi, es, attempt, ctx) => {
-        S.hint(attempt ? tips[(attempt - 1) % tips.length] : '他“架剑”（银边、剑竖在身前）时，正面的火会被劈开。按住 L 再按 J：从他脚下冒出地火！', 8);
-        // 剑之结界以后他打不死，只剩攒能量放 Special：地火命中额外 +8 能量（规划“地火柱照样有效，用来攒能量”；原来一发只有 2，要 25 发）
-        ctx.on('hit', ({ att, move }) => { if (att === ctx.player && move && move.fromGround && ctx.boss && ctx.boss.phaseI >= 3) G.combat.gainEnergy(att, 8, 'pillar'); });
-        // 第一次弹开他的剑：告诉玩家这就是追击的时机（他会空 0.7 s 不举剑）
-        ctx.on('parry', ({ who }) => { if (who === ctx.player && !ctx.data.punishTold && !(ctx.boss && ctx.boss.phaseI >= 3)) { ctx.data.punishTold = true; S.hint('弹开了！他僵住、剑也放下了——连按 J 打到第三下，继续按 J 接连打！', 5); } });
-      },
-      // 读招提示只各说一次：火第一次被劈开 / 拳第一次被弹开 / 血量第一次掉到 35% 以下
-      tick: ctx => {
-        const b = ctx.boss, p = ctx.player, d = ctx.data;
-        if (!b || !p) return;
-        const ph = b.phaseI || 0;
-        if ((b.mem.cuts || 0) >= 1 && !d.cutTold && ph < 3) { d.cutTold = true; S.hint('火被劈开了！他架剑时别从正面放火：按住 L 再按 J 放地火，或者等他出招（头上冒「！」）时再打。', 8); }
-        else if ((b.mem.parries || 0) >= 1 && !d.parryTold && ph < 3) { d.parryTold = true; S.hint('拳头被弹开了！架剑时正面打不进去。等他往后拉剑（「！」）时打断他，或者挡住三连刺再还手。', 8); }
-        else if (p.hp <= p.maxHp * .35 && !d.lowTold) { d.lowTold = true; S.hint('撑住！三连刺按住 L 只漏一点血；看到红线就上下让开（K），他冲过头时转身打他。', 7); }
-      },
+  }
+  // 读招提示按队长发给玩家：试炼里队长不一定是阿布德尔，所以走 s.hint
+  const chariotTipTexts = tips => ({
+    onWave: async (s, wi, es, attempt, ctx) => {
+      s.hint(attempt ? tips[(attempt - 1) % tips.length] : '他“架剑”（银边、剑竖在身前）时，正面的火会被劈开。按住 L 再按 J：从他脚下冒出地火！', 8);
+      // 剑之结界以后他打不死，只剩攒能量放 Special：地火命中额外 +8 能量（规划“地火柱照样有效，用来攒能量”；原来一发只有 2，要 25 发）
+      ctx.on('hit', ({ att, move }) => { if (att === ctx.player && move && move.fromGround && ctx.boss && ctx.boss.phaseI >= 3) G.combat.gainEnergy(att, 8, 'pillar'); });
+      // 第一次弹开他的剑：告诉玩家这就是追击的时机（他会空 0.7 s 不举剑）
+      ctx.on('parry', ({ who }) => { if (who === ctx.player && !ctx.data.punishTold && !(ctx.boss && ctx.boss.phaseI >= 3)) { ctx.data.punishTold = true; s.hint('弹开了！他僵住、剑也放下了——连按 J 打到第三下，继续按 J 接连打！', 5); } });
+    },
+    // 读招提示只各说一次：火第一次被劈开 / 拳第一次被弹开 / 血量第一次掉到 35% 以下
+    tick: ctx => {
+      const s = G.S, b = ctx.boss, p = ctx.player, d = ctx.data;
+      if (!b || !p) return;
+      const ph = b.phaseI || 0;
+      if ((b.mem.cuts || 0) >= 1 && !d.cutTold && ph < 3) { d.cutTold = true; s.hint('火被劈开了！他架剑时别从正面放火：按住 L 再按 J 放地火，或者等他出招（头上冒「！」）时再打。', 8); }
+      else if ((b.mem.parries || 0) >= 1 && !d.parryTold && ph < 3) { d.parryTold = true; s.hint('拳头被弹开了！架剑时正面打不进去。等他往后拉剑（「！」）时打断他，或者挡住三连刺再还手。', 8); }
+      else if (p.hp <= p.maxHp * .35 && !d.lowTold) { d.lowTold = true; s.hint('撑住！三连刺按住 L 只漏一点血；看到红线就上下让开（K），他冲过头时转身打他。', 7); }
+    },
+  });
+  const chariotTips = ['银边 + 剑竖在身前 = 架剑：正面的火会被劈开、拳会被弹开。按住 L 再按 J：地火从他脚下冒出来，架剑也挡不住。',
+    '他头上冒「！」、往后拉剑的时候没在架剑：这时打他能打断。三连刺按 L 弹开任意一刺，他会僵住——连按 J 追击！',
+    '突进刺会先拉红线：上下让开（K），他冲过头收不住剑，转身连按 J 打他。按住 L 挡三连刺只漏一点血。'];
+  // o.trial：星尘试炼里不再靠阿布德尔的 U 收尾——去掉 minHp 保底、去掉 avdol 的 kitOverride，HP 打光即胜（4 段阶段保留），台词全跳过
+  function chariotSpec(o) {
+    const trial = !!(o && o.trial);
+    const spec = Object.assign({ id: 'b02_chariot', lead: 'avdol', swap: false, energy: { start: 0 }, arena: [14, 262], music: 'battle', vs: 'chariot', dmgScale: .8, finish: 'none', losable: true },   // 规划 .9：三连刺一套 21 伤太疼，.8
+      chariotTipTexts(chariotTips), {
       // 剑之结界（阶段 4）以后、能量满了才亮「按 U！」：之前按 U 放的是普通的十字火焰风暴（窗口外 combat 自动用本来的必杀）
-      bench: { mode: 'stay', at: bench },
-      // targetPick：地火、安卡认真身（原来按 x 找最近的敌人，脱甲后左右两个残像离得更近，地火总烧在残像脚下）
-      kitOverride: { avdol: { targetPick: (a, c) => (c && c.boss) || null,
-        special: { need: 100, prompt: '按 U！十字火焰风暴·Special', get title() { const f = G.world.fight; return f && f.boss && f.boss.phaseI >= 3 ? 'avdol_sp' : 'avdol'; },
-        window: c => !!(c.boss && c.boss.phaseI >= 3 && c.player && c.player.energy >= 100),
-        run: async (s, p, ctx, C) => {
-          if (ctx.boss.phaseI >= 3) { await G.KITS.avdol.crossfireSp(p, C); ctx.end(); }
-          else await G.KITS.avdol.special.run(p, C);
-        } } } },
+      bench: { mode: 'stay', at: chariotBench },
       // HP 规划写 900。旧版挨打马上又举剑、追击打不出来，按真人节奏要打 3 分钟以上，降到过 600；
       //   2026-10-09 晚改成“挨打 / 被弹开后空 0.7 s 再举剑”，追击一套能打 40–60，600 太快（测试打法 1 分钟），定 750（偏离规划 §5.2.3 的数值）
-      waves: [[{ kit: 'e_polnareff', actor: 'polnareff', id: 'polnareff', x: 200, y: 150, hp: 750, poiseMax: 70, speed: 70, idle: 'fight', stand: 'chariot', boss: true, minHp: 1, koStyle: 'none', phases: [
+      waves: [[Object.assign({ kit: 'e_polnareff', actor: 'polnareff', id: 'polnareff', x: 200, y: 150, hp: 750, poiseMax: 70, speed: 70, idle: 'fight', stand: 'chariot', boss: true, minHp: trial ? 0 : 1, koStyle: trial ? 'ko' : 'none', phases: [
         { at: .6, run: async (s, e, ctx) => {
-          const statue = S.actor('mr_statue');
+          // 阶段回调的第一个参数 s 就是剧情接口：工厂化以后这个函数在闭包外，直接写 S 会抛 ReferenceError，石像雕刻整段过场（和后面的碎裂）丢掉
+          const statue = s.actor('mr_statue');
           // 不把石像角色交给 combat：它会按“击倒”把石像打飞淡出；碎掉只换成帧 2
           ctx.data.statue = { x: 44, y: 152, onBreak: () => { if (statue) statue.frozen = 2; s.sfx('glass_break'); s.fx('burst', { x: 44, y: 104, n: 14, speed: 90, gravity: 200, colours: ['#c8a070', '#8a6a48', '#e0c8a0'] }); } };
           s.fx('fire_burst', { x: 44, y: 100, size: 18 }); s.sfx('fire_burst');
-          for (let i = 0; i < 6; i++) { s.fx('slash_arc', { x: 36 + (i % 3) * 8, y: 92 + (i % 2) * 12, size: 18 }); s.sfx('slash', { seed: i % 2 }); await s.wait(.18); }
+          // 试炼里队长不是阿布德尔，他就不会放火雕石像：这段过场不演，石像直接是雕好的（突进刺照样会先刺进石像）
+          if (!trial) for (let i = 0; i < 6; i++) { s.fx('slash_arc', { x: 36 + (i % 3) * 8, y: 92 + (i % 2) * 12, size: 18 }); s.sfx('slash', { seed: i % 2 }); await s.wait(.18); }
           s.fx('dust', { x: 44, y: 116 }); s.sfxText('シュバババ', { x: 110, y: 170 });
           garden.carved = true; if (statue) { statue.frozen = 1; statue.visible = true; }
-          await lines(s, [['polnareff', '瞧，你的替身像。'], ['avdol', '……雕得不错。']]); s.hint('站到石像左边（金色箭头处）：他的突进刺会先刺进石像，卡住的时候尽情打！', 8);
+          if (!trial) await lines(s, [['polnareff', '瞧，你的替身像。'], ['avdol', '……雕得不错。']]);
+          s.hint('站到石像左边（金色箭头处）：他的突进刺会先刺进石像，卡住的时候尽情打！', 8);
         } },
-        { at: .4, run: async (s, e) => { s.sfx('armor_off'); s.fx('burst', { x: e.x, y: e.y - 30, n: 18, speed: 100, gravity: 160 }); await s.say('polnareff', '我的银色战车最快的样子，你还没见过！'); s.hint('他快了一倍，还多了两个残像：残像打不疼，脚下有影子的才是真身。', 7); } },
-        { at: .2, set: { minHp: 1 }, run: async (s, e, ctx) => { s.fx('slash_arc', { x: e.x, y: e.y - 28, size: 28 }, { life: 2 }); await lines(s, [['polnareff', '你的火，一丝也进不来！'], ['avdol', '……那就不从正面进去。']]); s.hint('他再也不会倒下：用地火（按住 L 再按 J）攒满能量，按 U——十字火焰风暴·Special 从地底下烧他！', 10); } },
-      ] }]],
+        { at: .4, run: async (s, e) => { s.sfx('armor_off'); s.fx('burst', { x: e.x, y: e.y - 30, n: 18, speed: 100, gravity: 160 }); if (!trial) await s.say('polnareff', '我的银色战车最快的样子，你还没见过！'); s.hint('他快了一倍，还多了两个残像：残像打不疼，脚下有影子的才是真身。', 7); } },
+        { at: .2, set: trial ? null : { minHp: 1 }, run: async (s, e, ctx) => {
+          s.fx('slash_arc', { x: e.x, y: e.y - 28, size: 28 }, { life: 2 });
+          if (!trial) await lines(s, [['polnareff', '你的火，一丝也进不来！'], ['avdol', '……那就不从正面进去。']]);
+          s.hint(trial ? '他的剑之结界：正面的招都会被挡开，用破防的招和大招打。' : '他再也不会倒下：用地火（按住 L 再按 J）攒满能量，按 U——十字火焰风暴·Special 从地底下烧他！', 10);
+        } },
+      ] }, trial ? { actor: undefined, id: 'polnareff_e', cid: 'polnareff' } : {})]],
       onRetry: async () => {
-        garden.carved = false; const statue = S.actor('mr_statue'); if (statue) { statue.frozen = 0; statue.visible = false; statue.remove = false; }
+        garden.carved = false; const statue = G.S.actor('mr_statue'); if (statue) { statue.frozen = 0; statue.visible = false; statue.remove = false; }
         // 脱甲后的两个残影不归战斗管理，重来时不会被收走：上一次输在阶段 3 时，下一次一开场就是三个波鲁纳雷夫一起出招
         for (const a of G.world.stage.actors) if (a._cloneOf) a.remove = true;
       },
@@ -524,6 +525,27 @@
           statueUsed: !!(b && b.mem.statueUsed), cuts: (b && b.mem.cuts) || 0, parries: (b && b.mem.parries) || 0 };
       },
     });
+    // targetPick：地火、安卡认真身（原来按 x 找最近的敌人，脱甲后左右两个残像离得更近，地火总烧在残像脚下）
+    // 阿布德尔的 Special 是剧情里的收尾手段：只有阿布德尔当队长才有，试炼里队伍由试炼统一决定，不装
+    if (!trial) spec.kitOverride = { avdol: { targetPick: (a, c) => (c && c.boss) || null,
+      special: { need: 100, prompt: '按 U！十字火焰风暴·Special', get title() { const f = G.world.fight; return f && f.boss && f.boss.phaseI >= 3 ? 'avdol_sp' : 'avdol'; },
+      window: c => !!(c.boss && c.boss.phaseI >= 3 && c.player && c.player.energy >= 100),
+      run: async (s, p, ctx, C) => {
+        if (ctx.boss.phaseI >= 3) { await G.KITS.avdol.crossfireSp(p, C); ctx.end(); }
+        else await G.KITS.avdol.special.run(p, C);
+      } } } };
+    return spec;
+  }
+  async function chariot(S) {
+    S.hint(null);
+    // 观战的人站在场地（x ≤ 262）外面、前后错开：原来站在场地里（x 282–302），被逼到右边打的时候三个观众和三个波鲁纳雷夫挤成一团
+    const intro = S.actor('pol_garden');
+    if (intro) intro.facing = -1;
+    await chariotSetup(S);
+    await lines(S, [['polnareff', '来吧，占卜师。我们一对一。'], ['avdol', '乔斯达先生，请别插手。这是火与剑的较量。'], ['joseph', '……小心点。']]);
+    await S.summon('avdol', { card: true });
+    if (intro) intro.remove = true;   // 战斗里的波鲁纳雷夫在同一位置生成（VS 卡盖住替换）
+    await S.fight(chariotSpec({ trial: false }));
     S.impact(['invert', 'red']); S.flash(.16, .7); S.shake(6, .5);
     // 焦黑的波鲁纳雷夫出现在他被烧到的位置（原来写死 x 196，和爆炸的位置对不上）；之后跪地、站起来，全程都在画面里
     const pol = S.actor('polnareff');
@@ -604,5 +626,22 @@
     setupGarden(); await S.setStage('hk_garden_ch1', { x: 100, y: 160, music: 'tension' });
     const statue = T.prop(S, 'mr_statue', 44, 133, { id: 'mr_statue', frame: 0, z: 17 }); if (statue) statue.visible = false;
     await S.run(chariot);
+  };
+
+  // 星尘试炼的关卡工厂：布景只做“开打前该有的样子”，站位交给试炼的 bench；剧情路径走 chariot()，和这里共用 chariotSpec
+  G.TRIAL_SRC = G.TRIAL_SRC || {};
+  G.TRIAL_SRC['b02_chariot'] = {
+    chapter: 'ch1', pack: '_ch1',
+    setup: async (S, o) => {
+      setupGarden();
+      garden.carved = false;
+      // 试炼里没有前一段剧情替它进图（G.DEV.ch1Chariot 是自己 setStage 的）；setStage 也把上一轮的石像、残影一起清掉
+      if (o && o.trial) await S.setStage('hk_garden_ch1', { x: 100, y: 160, music: 'battle' });
+      const st = G.world.stage;
+      if (st) st.actors = st.actors.filter(a => a.id !== 'mr_statue');
+      const statue = T.prop(S, 'mr_statue', 44, 133, { id: 'mr_statue', frame: 0, z: 17 }); if (statue) statue.visible = false;
+      G.world.snapCamera && G.world.snapCamera();
+    },
+    spec: o => chariotSpec(o),
   };
 })();

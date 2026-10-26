@@ -15,6 +15,7 @@
   let dctx = null;                 // 解码用的上下文（用户手势前是 OfflineAudioContext，之后是真的 AudioContext）
   const bufs = Object.create(null);         // 音效 → AudioBuffer
   const live = Object.create(null);         // 音效 → 正在播的 handle[]（并发上限）
+  const loops = new Set();                  // 所有 loop() 起的循环音：哪条路径漏了 stop 也能在换章 / 回标题时一次性收掉
   let groups = null;                        // 变体组：原名 → [名字…]
   const tracks = Object.create(null);       // 配乐 → { buf, used }
   const loading = Object.create(null);      // 配乐 → Promise<AudioBuffer>
@@ -516,12 +517,13 @@
       src.start(n0, lp.s);
       let stopped = false;
       src.onended = () => { try { nodes.g.disconnect(); if (nodes.p) nodes.p.disconnect(); } catch (e) { /* 已断开 */ } };
-      return {
+      const h = {
         name: real,
         get playing() { return !stopped; },
         stop(fade = 0.1) {
           if (stopped) return;
           stopped = true;
+          loops.delete(h);
           const t = now(), gp = nodes.g.gain;
           try {
             gp.cancelScheduledValues(t);
@@ -533,7 +535,12 @@
         setVol(v, ramp = 0.05) { if (!stopped) nodes.g.gain.setTargetAtTime(v, now(), Math.max(0.001, ramp / 3)); },
         setRate(r) { if (!stopped) src.playbackRate.setTargetAtTime(r, now(), 0.02); },
       };
+      loops.add(h);
+      return h;
     },
+    // 兜底：换章 / 回标题时停掉所有循环音。world 的环境声也是 loop()，stop 对已停的句柄是空操作，不冲突。
+    stopLoops(fade = 0.1) { for (const h of Array.from(loops)) h.stop(fade); loops.clear(); },
+    loopCount() { return loops.size; },      // 测试用：断言“没有孤儿循环音”
     // 立刻播，返回“击打点在多少秒后”（hit / rate）：剧情 await G.wait(h.hitIn, 'ui') 让画面落在锣声上
     cue(name, o = {}) {
       const h = this.sfx(name, o);

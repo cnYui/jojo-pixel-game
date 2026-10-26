@@ -139,24 +139,118 @@
   };
 
   // ================================================================ 存储与设置（§4.1.6）
+  // 读写都走内存镜像 mem（同步，调用方不用改）。写入时立刻落 localStorage，再异步落小红书小工具容器自带的 Storage
+  // （window.xhs.miniTool.setStorage，客户端 9.46+）：容器里的 localStorage 不保证留得住，两边都写，启动时以“最后写入时间”新的那份为准。
+  // 容器的 Storage 只有异步接口，所以启动时回读一次（hydrate），限时——接口卡住不能把游戏拦在载入界面；
+  // 用能力检测（有没有 setStorage / getStorage），不按 UA / 机型分支。任何一边写失败都不抛错，状态给存档界面看（status）。
+  const PFX = 'jojo-', STAMP_KEY = 'jojo-save-t', XHS_KEY = 'jojo-save', FLUSH_MS = 400, HYDRATE_MS = 1500, XHS_CALL_MS = 5000;
+  const mem = {};                       // 键（不带前缀）→ JSON 字符串
+  let stamp = 0;                        // 最后一次写入的时间（ms）；本机和容器各存一份，比大小决定谁覆盖谁
+  const loadHooks = [];
+  const st = { local: null, xhs: null };    // true = 最近一次写成功，false = 失败，null = 还没试过 / 没有这条通道
+  const xhsApi = () => {
+    const m = window.xhs && window.xhs.miniTool;
+    return m && typeof m.setStorage === 'function' && typeof m.getStorage === 'function' ? m : null;
+  };
+  // 容器接口可能同步抛错、返回 undefined、或者永远不返回：都当成“这次失败”，不能卡住后面的写入
+  const callXhs = (fn, ms) => new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error('timeout')), ms);
+    try { Promise.resolve(fn()).then(r => { clearTimeout(timer); resolve(r); }, e => { clearTimeout(timer); reject(e); }); }
+    catch (e) { clearTimeout(timer); reject(e); }
+  });
+  (function loadLocal() {
+    try {
+      localStorage.setItem(PFX + 'probe', '1'); localStorage.removeItem(PFX + 'probe');   // 隐私模式的 Safari 读得出、写不进：先探一下
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (k && k.indexOf(PFX) === 0 && k !== STAMP_KEY && k !== XHS_KEY) mem[k.slice(PFX.length)] = localStorage.getItem(k);
+      }
+      stamp = +localStorage.getItem(STAMP_KEY) || 0;
+      st.local = true;
+    } catch (e) { st.local = false; }
+  })();
+  const writeLocal = (key, json) => {
+    try {
+      if (json == null) localStorage.removeItem(PFX + key); else localStorage.setItem(PFX + key, json);
+      localStorage.setItem(STAMP_KEY, String(stamp));
+      st.local = true;
+    } catch (e) { st.local = false; }    // 隐私模式 / 存满了：内存里的这次有效
+  };
+  let flushTimer = 0, flushing = false, flushAgain = false, dirty = false;
+  function flush() {
+    if (flushTimer) { clearTimeout(flushTimer); flushTimer = 0; }
+    const api = xhsApi();
+    if (!api || !dirty) return;
+    if (flushing) { flushAgain = true; return; }
+    flushing = true; dirty = false;
+    callXhs(() => api.setStorage({ key: XHS_KEY, data: JSON.stringify({ v: 1, t: stamp, keys: mem }) }), XHS_CALL_MS)
+      .then(() => { st.xhs = true; }, () => { st.xhs = false; dirty = true; })    // 失败的留着：下一次写入或切后台时再试
+      .then(() => { flushing = false; if (flushAgain) { flushAgain = false; schedule(); } });
+  }
+  function schedule() {
+    if (!xhsApi()) return;
+    dirty = true;
+    if (!flushTimer) flushTimer = setTimeout(flush, FLUSH_MS);
+  }
+  const notify = () => loadHooks.forEach(fn => { try { fn(); } catch (e) { console.error(e); } });
+  let hydrating = null;
+  function hydrate() {
+    const api = xhsApi();
+    if (!api) return Promise.resolve();
+    return callXhs(() => api.getStorage({ key: XHS_KEY }), HYDRATE_MS).then(r => r, () => null).then(r => {
+      if (r) st.xhs = true;      // 能读回来就说明这条通道是通的（没写过时 data 是 null，也算）
+      let o = null;
+      try { o = r && r.data ? JSON.parse(r.data) : null; } catch (e) { o = null; }
+      const ok = o && o.v === 1 && o.keys && typeof o.keys === 'object' && +o.t > 0;
+      if (ok && +o.t > stamp) {
+        // 容器里的更新（或者本机浏览器存储被清空了）：以容器为准，整份换过来再回写本机
+        const old = Object.keys(mem);
+        old.forEach(k => { delete mem[k]; });
+        stamp = +o.t;
+        Object.keys(o.keys).forEach(k => { if (typeof o.keys[k] === 'string') mem[k] = o.keys[k]; });
+        Object.keys(mem).forEach(k => writeLocal(k, mem[k]));
+        old.forEach(k => { if (mem[k] == null) writeLocal(k, null); });    // 容器那份里没有的键（清除存档删掉的）本机也要删
+        notify();
+        if (G.dbg && G.dbg.ev) G.dbg.ev('store_hydrate', { from: 'xhs', keys: Object.keys(mem).length });
+      } else if (Object.keys(mem).length && (!ok || +o.t < stamp)) schedule();   // 本机的更新、或容器里还没有：补写过去
+    });
+  }
   G.store = {
     get(key, def) {
-      try {
-        const v = localStorage.getItem('jojo-' + key);
-        return v == null ? def : JSON.parse(v);
-      } catch (e) { return def; }
+      try { return mem[key] == null ? def : JSON.parse(mem[key]); } catch (e) { return def; }
     },
     set(key, val) {
-      try { localStorage.setItem('jojo-' + key, JSON.stringify(val)); } catch (e) { /* 隐私模式 / 存满了：这次有效 */ }
+      let json;
+      try { json = JSON.stringify(val); } catch (e) { return; }
+      if (json === undefined) return;
+      mem[key] = json; stamp = Date.now();
+      writeLocal(key, json); schedule();
     },
+    remove(key) {
+      if (mem[key] == null) return;
+      delete mem[key]; stamp = Date.now();
+      writeLocal(key, null); schedule();
+    },
+    // 启动时调一次（可重复调，只回读一次）：返回的 Promise 最多等 HYDRATE_MS，超时 / 失败都照常 resolve，游戏不会被它拦住
+    hydrate() {
+      if (!hydrating) hydrating = hydrate().then(() => {}, () => {});
+      return hydrating;
+    },
+    flush,                                                // 切后台 / 关页面前立刻写，不等 400 ms 的合并
+    onLoad(fn) { loadHooks.push(fn); },                   // 存档被换掉（容器回读、清除存档）后各模块重新读
+    reload: notify,
+    // 存放状态，给存档界面看：local / xhs = 最近一次写成功 / 失败 / 没试过（null）；hasXhs = 有没有容器存储接口
+    status() { return { local: st.local, xhs: st.xhs, hasXhs: !!xhsApi(), stamp }; },
   };
   const SET_DEF = { reduceFlash: false, musicVol: 0.8, sfxVol: 0.9, grunts: false, mashHold: false, touchSize: 1 };
   G.settings = Object.assign({}, SET_DEF);
-  (function loadSettings() {
+  function loadSettings() {
     const s = G.store.get('settings', null);
     if (!s || typeof s !== 'object') return;
     for (const k in SET_DEF) if (typeof s[k] === typeof SET_DEF[k]) G.settings[k] = s[k];
-  })();
+  }
+  loadSettings();
+  G.store.onLoad(loadSettings);
   Object.defineProperty(G.settings, 'save', {
     enumerable: false,
     value() {
@@ -176,6 +270,8 @@
       this.events.push(e);
       if (this.events.length > 400) this.events.shift();
       this.counts[type] = (this.counts[type] || 0) + 1;
+      // 成就（engine/achievements.js）只在这里借道这几种已有事件；判空 + 吞掉异常，成就出问题不能把游戏一起带走
+      if (G.ach && G.ach.dbgHook) { try { G.ach.dbgHook(type, e); } catch (err) { /* 忽略：成就记不上不挡玩法 */ } }
     },
     resetCounts() { this.counts = {}; },
     animFallbacks: new Set(), missingImg: new Set(), missingSfx: new Set(), missingGlyph: new Set(), missingHead: new Set(),

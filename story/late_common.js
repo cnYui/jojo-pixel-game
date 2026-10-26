@@ -39,6 +39,13 @@
     },
     damage(c, n, extra = {}) { return G.combat.hit(null, c.player, Object.assign({ dmg: n, push: 0, slot: 'enemy', guard: 'none', sfxHit: 'thud' }, extra)); },
     pixel(draw) { const p = { type: 'pixel', id: 'late_' + W.stage.id, x: 0, y: 0, draw }; W.stage.props.push(p); return p; },
+    // S.insert 是「整屏替换世界渲染」：world.draw 里看到 insert 就直接 return，背景、人物、道具全都不画。
+    // 机关只想在场景上叠一层滤镜 / 一层定格色时，必须先把世界自己画回来，否则整屏全黑（第11章幻觉走廊踩过）。
+    // 画完立刻把 insert 还原，引擎这一帧的绘制路径不受影响。
+    underWorld(g) {
+      const ins = W.insert; if (!ins) return;
+      W.insert = null; try { W.draw(g); } finally { W.insert = ins; }
+    },
     async view(S, o, seconds = 1) { const v = T.show(S, o); try { await S.wait(seconds); } finally { v.close(); } },
     move(p, dt, speed = 70) {
       const dx = (G.input.isDown('right') ? 1 : 0) - (G.input.isDown('left') ? 1 : 0);
@@ -72,6 +79,8 @@
       } });
       try { return await S.clash(o); } finally { ins.close(); }
     },
+    // o.draw / o.ui：画面换成别的（第11章把赛车塞进 CRT 电视机里）时整体替换绘制；
+    //   规则（三车道、加速、读心挡道、最后 15% 锁定惜败）仍由这里持有，章节只换皮。
     async runner(S, o = {}) {
       for (let attempt = 0; ; attempt++) {
         const q = { type: o.race ? 'race' : 'chase', lane: 1, hp: o.hp || 100, distance: 0,
@@ -104,7 +113,7 @@
           }
           if (s.hp <= 0) { s.done = true; s.win = false; }
           if (o.race ? s.distance >= 2400 : s.t >= 60) { s.done = true; s.win = true; s.storyLoss = !!o.race; }
-        }, (g, s) => {
+        }, o.draw || ((g, s) => {
           g.fillStyle = '#171328'; g.fillRect(0, 0, 320, 180);
           g.fillStyle = '#3b343e'; g.beginPath(); g.moveTo(128, 25); g.lineTo(192, 25); g.lineTo(320, 180); g.lineTo(0, 180); g.closePath(); g.fill();
           for (let n = 0; n < 9; n++) { const k = ((n * 25 + s.distance * .5) % 180) / 180, y = 25 + 150 * k * k;
@@ -116,9 +125,9 @@
           if (o.race) {
             g.fillStyle = '#c45a79'; g.fillRect(109 + s.enemyLane * 40, 120 - s.enemyAhead, 22, 28); }
           else { g.fillStyle = s.slow > 0 ? '#45978b' : '#ac7b42'; g.fillRect(118 + Math.floor(s.t / 8) % 3 * 40, 170 - s.behind * .15, 24, 27); }
-        }, (g, s) => { label(g, o.race ? 'F-MEGA' : '追车：坚持六十秒', o.race ? '按住 J 加速；左右换道' : '左右（或上下）换道；J 绿宝石水花让后车减速两秒'); text(g, '车况 ' + Math.max(0, s.hp), 22, 318);
+        }), o.ui || ((g, s) => { label(g, o.race ? 'F-MEGA' : '追车：坚持六十秒', o.race ? '按住 J 加速；左右换道' : '左右（或上下）换道；J 绿宝石水花让后车减速两秒'); text(g, '车况 ' + Math.max(0, s.hp), 22, 318);
           text(g, o.race ? '赛程 ' + Math.min(100, Math.floor(s.distance / 24)) + '%' : '剩余 ' + Math.ceil(Math.max(0, 60 - s.t)) + ' 秒', 610, 318, '#ffe174', 'right');
-          if (o.race && s.finalBend) text(g, '最后的弯道……他提前封住了路线！', 320, 72, '#ffad94', 'center'); });
+          if (o.race && s.finalBend) text(g, '最后的弯道……他提前封住了路线！', 320, 72, '#ffad94', 'center'); }));
         if (q.win) return q;
         await S.say(o.race ? 'kakyoin' : 'joseph', o.race ? '这次还没有跑完。再来！' : '差一点失去控制……继续追！');
       }

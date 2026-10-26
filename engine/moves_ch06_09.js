@@ -78,7 +78,7 @@
   M.JA_MAGNET_CLAP = { slot: 'fin', body: 'cmd', stand: null, dur: .5, active: [0, .1], dmg: 0,
     onStart(p, c) { const a = G.party.get(p.cid === 'joseph' ? 'avdol' : 'joseph'), e = c && c.boss;
       if (!a || !e) return;
-      if (e.hp <= e.maxHp * .5 && (p.x - e.x) * (a.x - e.x) < 0 && Math.abs(p.x - a.x) <= 120 && Math.abs((p.x + a.x) / 2 - e.x) <= 10) {
+      if ((c.data && c.data.clap) || (e.hp <= e.maxHp * .5 && (p.x - e.x) * (a.x - e.x) < 0 && Math.abs(p.x - a.x) <= 120 && Math.abs((p.x + a.x) / 2 - e.x) <= 10)) {
         G.S.word('合击！', e); G.S.fx('magnet_junk', { x: e.x, y: e.y - 20, n: 20 }); c.end();
       } else G.S.hint('先打到半血，再分站她的左右，J＋L 合击。', 5);
     } };

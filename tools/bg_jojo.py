@@ -1209,6 +1209,46 @@ EXPORTERS['cable_view'] = lambda ex: exp_new(ex, 'cable_view')
 #   ganges_ghat.py 加载时引用 varanasi_street.py 的调色和建筑零件），贝拿勒斯老城不再借 calcutta_street
 for _key in ('calcutta_street', 'india_alley', 'varanasi_street', 'ganges_ghat'):
     EXPORTERS[_key] = lambda ex, _k=_key: exp_new(ex, _k)
+for _key in ('desert_highway', 'mountain_road', 'fog_town', 'enya_inn', 'karachi_street', 'brain_inside'):
+    EXPORTERS[_key] = lambda ex, _k=_key: bg_new('ch5_scenes').export(ex, sys.modules[__name__], _k)
+# 2026-10-15 第5章到终章按体验版精度重画：每张背景一个 tools\bg_new\<key>.py（export(ex, BJ) → stage dict，同 ganges_ghat.py）。
+#   文件在就走它、不在就继续用上面的旧画法（ch5_scenes / later_stages），这样几个背景可以分头画、画完一张接一张。
+#   新加的背景 key 先在 _NEW_LATE 登记所在的包（没登记的 key 不会进构建，地图也就读不到它）。
+#   2026-10-19：_NEW_LATE 里的 key 没有旧画法可退，只在预览（JOJO_BG_WIP=1）或验收登记进 _LATE_READY、文件也在的时候
+#   才放进 DEFAULT_PACK——不然正式构建按 ORDER 逐个导出时找不到导出函数。三张插画背景（全屏 320×180，给 T.show 用）。
+_NEW_LATE = {'poker_table': 'ch10', 'cairo_map': 'ch10', 'crt_baseball': 'ch11'}
+_LATE_PACKS = {'ch5', 'ch6', 'ch7', 'ch8', 'ch9', 'ch10', 'ch11', 'final'}
+# 2026-10-18：十个背景子代理同时在 tools\bg_new 里画，正式构建（build_assets 的 bg 步）只认主代理验收过、登记在
+#   _LATE_READY 里的新背景——画到一半的文件不会混进数据包。预览工具（chapter_preview.py / late_preview.py）先设
+#   JOJO_BG_WIP=1，文件在就用，画背景的人随时能看自己的半成品。
+_LATE_READY = {
+    # 2026-10-18 验收：ch5-road 组（docs\ai\context\20261018-192447-背景交付-ch5-road.md）
+    'desert_highway', 'mountain_road', 'brain_inside',
+    # ch5-town 组（20261018-194529-背景交付-ch5-town.md）、ch6-misc 组（20261018-194601-背景交付-ch6-misc.md）
+    'fog_town', 'enya_inn', 'karachi_street', 'yaprin_village', 'cessna_cabin', 'dream_carnival',
+    # 2026-10-19 验收：desert 组（docs\ai\context\20261019-111755-背景交付-desert.md；dream_carnival 这轮只加了 checker_dark 导出，上面已登记）
+    'desert_noon', 'desert_night', 'desert_day',
+    # 2026-10-19 验收：sea 组（docs\ai\context\20261019-112813-背景交付-sea.md；验收记录 20261019-113620-背景验收-sea.md）
+    'redsea_island', 'submarine', 'seabed_mouth', 'egypt_coast',
+    # 2026-10-19 验收：egypt-town 组（docs/ai/context/20261019-114124-背景交付-egypt-town.md；验收记录 20261019-114711-背景验收-egypt-town.md）
+    'aswan_town', 'luxor_town', 'luxor_house',
+    # 2026-10-19 验收：nile 组（docs/ai/context/20261019-160529-背景交付-nile.md；验收记录 20261019-161042-背景验收-nile.md）
+    'egypt_temple', 'nile_bank', 'egypt_rail',
+    # 2026-10-19 验收：interiors 组（docs/ai/context/20261019-160828-背景交付-interiors.md；验收记录 20261019-161348-背景验收-interiors.md；三张插画 poker_table / cairo_map → ch10、crt_baseball → ch11，见 _NEW_LATE）
+    'cafe_interior', 'cairo_sewer', 'game_room', 'airport', 'poker_table', 'cairo_map', 'crt_baseball',
+    # 2026-10-19 验收：cairo 组（docs/ai/context/20261019-162218-背景交付-cairo.md；验收记录 20261019-162619-背景验收-cairo.md）
+    'cairo_day', 'cairo_street_night', 'cairo_street_dawn', 'cairo_rooftops', 'kujo_bedroom_morning',
+    # 2026-10-20 验收：mansion 组（docs/ai/context/20261020-093619-背景交付-mansion-a.md、20261020-094153-背景交付-mansion-b.md；验收记录 20261020-094445-背景验收-mansion.md）
+    'mansion_exterior', 'mansion_corridor', 'illusion_corridor', 'mansion_hall', 'mansion_tower', 'mansion_stairs',
+}
+_BG_WIP = os.environ.get('JOJO_BG_WIP') == '1'
+for _key, _pack in _NEW_LATE.items():
+    if (_BG_WIP or _key in _LATE_READY) and os.path.exists(os.path.join(BG_NEW, _key + '.py')):
+        DEFAULT_PACK.setdefault(_key, _pack)
+for _key in list(DEFAULT_PACK):
+    if DEFAULT_PACK[_key] in _LATE_PACKS and os.path.exists(os.path.join(BG_NEW, _key + '.py')) and \
+            (_BG_WIP or _key in _LATE_READY):
+        EXPORTERS[_key] = lambda ex, _k=_key: exp_new(ex, _k)
 ORDER=list(DEFAULT_PACK)
 
 

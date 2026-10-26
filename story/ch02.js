@@ -130,16 +130,23 @@
 
   // ================================================================ 第 3 战：暗蓝之月（水下）
   //   机关沿用：氧气槽、气泡柱、藤壶（L 按住刮掉）、漩涡、星之指（情境招 U）。补：半血时的一句、第一次星之指的说明。
-  G.BOSS25.darkmoon = () => J.base('b03_darkbluemoon', 'jotaro', [0, 640], {
-    vs: 'darkbluemoon', music: 'battle', gauge: { label: '氧气', max: 100, value: 100 }, bench: 'hide',
-    kitOverride: { jotaro: { dodge: { dist: 40 }, special: J.special(0, '星之指：U', c => c.data.barnacles >= 3 || c.t < c.data.openUntil, async (s, p, c, C) => {
+  // o.trial：星尘试炼里去掉关卡自带的承太郎 U（星之指），换成试炼的白金之星·世界——漩涡结束后只剩下普通输出
+  G.BOSS25.darkmoon = o => {
+    const trial = !!(o && o.trial);
+    const spec = J.base('b03_darkbluemoon', 'jotaro', [0, 640], DARKMOON(trial));
+    if (!trial) spec.kitOverride = { jotaro: { dodge: { dist: 40 }, special: J.special(0, '星之指：U', c => c.data.barnacles >= 3 || c.t < c.data.openUntil, async (s, p, c, C) => {
       c.data.barnacles = 0; c.data.fingers = (c.data.fingers || 0) + 1;
       C.stand('finger', { dur: .45 }); G.audio.sfx('stab'); G.uifx.sfx('ズガッ', p);
       C.fx('glint', { x: p.x + p.facing * 80, y: p.y - 24, size: 12 }); J.fire(p, 80, 60); await C.wait(.3);
       if (c.data.fingers === 1) G.ui.hint('星之指：手指一下子伸长，连身上的藤壶一起弹掉了！', 4);
-    }) } },
+    }) } };
+    return spec;
+  };
+  const DARKMOON = trial => ({
+    vs: 'darkbluemoon', music: 'battle', gauge: { label: '氧气', max: 100, value: 100 }, bench: 'hide',
     waves: [[{ actor: 'darkbluemoon', kit: 'e_darkmoon', boss: true, hp: 700, poiseMax: 60, speed: 90, x: 430, y: 165, pivot: 'center', fly: { z: 10, bob: 2 },
       phases: [{ at: .5, run: async (S, e, c) => {
+        if (trial) return;   // 星尘试炼里不播台词，但阶段照切（半血它就换打法）
         if (c.attempt > 0) { await S.say('fake_tennille', '藤壶会一直长下去！', { name: '冒牌坦尼尔船长', pos: 'top' }); return; }
         await S.say('fake_tennille', '藤壶会一直长，一直长……直到你在海底动弹不得！', { name: '冒牌坦尼尔船长', pos: 'top' });
         await S.say('jotaro', '……那就在长满之前，把你打上岸。', { pos: 'top' });
@@ -209,10 +216,13 @@
       phases: [{ at: .6, run: async (S, e, c) => {
         if (c.attempt > 0) return;
         S.sfx('metal_crunch', { rate: .6 }); S.shake(3, .4);
+        // 星尘试炼里只留下震动这一下（演出），台词去掉
+        if (c.spec && c.spec.trial) return;
         await S.say('jotaro', '……整艘船，都在发抖。', { pos: 'top' });
       } }, { at: .3, run: async (S, e, c) => {
         if (c.attempt > 0) return;
         S.sfx('heartbeat');
+        if (c.spec && c.spec.trial) return;
         await S.say('jotaro', '墙壁……在跳。这艘船，是活的。', { pos: 'top' });
       } }] }]],
     onWave: async (s, i, es, a, c) => {
@@ -973,8 +983,45 @@
   // 开发调参入口（只给 tools\dev\full\dev_fight.py 用，正常游戏不调用）：直接开打这一章的某一战，战斗配置和正式剧情是同一份。
   //   验收一律跑整章（test_mid_early.py），这个入口的结果不当通关证据
   G.DEV = G.DEV || {};
-  G.DEV.ch2Darkmoon = async S => { S.party(crew, { leader: 'jotaro' }); await S.setStage('underwater_ch2', { x: 150, y: 168, music: 'battle' }); await S.run(async s => { await s.fight(G.BOSS25.darkmoon()); }); };
-  G.DEV.ch2Strength = async S => { S.party(crew, { leader: 'jotaro' }); await S.setStage('hold_ch2', { x: 100, y: 160, music: 'tension' }); await S.run(async s => { await s.fight(G.BOSS25.strength()); }); };
+  // 布景和战斗配置都走 G.TRIAL_SRC（和星尘试炼共用同一份）；这里只保留 DEV 入口自己的站位
+  G.DEV.ch2Darkmoon = async S => {
+    S.party(crew, { leader: 'jotaro' });
+    await G.TRIAL_SRC['b03_darkbluemoon'].setup(S);
+    await S.setStage('underwater_ch2', { x: 150, y: 168, music: 'battle' });
+    await S.run(async s => { await s.fight(G.TRIAL_SRC['b03_darkbluemoon'].spec({ trial: false })); });
+  };
+  G.DEV.ch2Strength = async S => {
+    S.party(crew, { leader: 'jotaro' });
+    await G.TRIAL_SRC['b04_strength'].setup(S);
+    await S.setStage('hold_ch2', { x: 100, y: 160, music: 'tension' });
+    await S.run(async s => { await s.fight(G.TRIAL_SRC['b04_strength'].spec({ trial: false })); });
+  };
   // 第 4 战的隔舱壁画在货舱地图上（地图定义在 stages_ch02_05.js；进图时复制，draw 只读 W.fight）
   if (G.STAGES.hold_ch2) G.STAGES.hold_ch2.props = [bulkheads];
+
+  // 星尘试炼的关卡工厂（剧情入口 G.DEV.ch2Xxx 和试炼共用下面的布景 / 配置）
+  G.TRIAL_SRC = G.TRIAL_SRC || {};
+  // 暗蓝之月：stage 是 640 宽的水下，氧气槽和气泡柱都写在战斗 tick 里，布景只有这句话
+  G.TRIAL_SRC['b03_darkbluemoon'] = {
+    chapter: 'ch2', pack: '_ch2',
+    setup: async (S, o) => {
+      await G.MID.ensureBg('_ch2');
+      // 试炼没有 G.DEV 替它进图
+      if (o && o.trial) await S.setStage('underwater_ch2', { x: 150, y: 168, music: 'battle' });
+    },
+    spec: o => G.BOSS25.darkmoon(o),
+  };
+  // 力量：货舱 640 宽。bulkheads 是地图级道具（上面进图时复制），这里把现场的挤墙进度和墙面状态复位
+  G.TRIAL_SRC['b04_strength'] = {
+    chapter: 'ch2', pack: '_ch2',
+    setup: async (S, o) => {
+      await G.MID.ensureBg('_ch2');
+      if (G.STAGES.hold_ch2) G.STAGES.hold_ch2.props = [bulkheads];
+      if (o && o.trial) await S.setStage('hold_ch2', { x: 100, y: 160, music: 'tension' });
+      const st = G.world.stage;
+      if (st) { st.props = st.props.filter(p => p.id !== 'squeeze_walls'); st.state = Object.assign({}, st.state, { flesh: 0 }); }
+      G.world.snapCamera && G.world.snapCamera();
+    },
+    spec: o => G.BOSS25.strength(o),
+  };
 })();

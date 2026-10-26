@@ -223,6 +223,12 @@ _EXISTING = {
  'telence':('walk','punch','hurt','down')
 }
 for _cid,_acts in _EXISTING.items(): AMAP.setdefault(_cid,{}).update(_same(*_acts))
+# 2026-10-19 第6章到终章补的动作（art_c6fin_actions.py）：坐姿 / 捂眼 / 走路 / 背影都有自己的帧
+for _cid,_acts in {'joseph':('sit',),'avdol':('sit',),'kakyoin':('sit','cover_eyes'),'polnareff':('sit',),
+                   'steelydan':('walk',),'dio':('sit_back',)}.items(): AMAP.setdefault(_cid,{}).update(_same(*_acts))
+# 假承太郎（奥因哥变的）：常用逻辑名接到自己的帧，别闪回真承太郎
+AMAP['fake_jotaro'] = {**_same('idle','walk','hurt','sit','portrait'), 'talk':'idle', 'run':'walk',
+                      **_many('hurt','shock','getup','down')}
 for _cid in ('jotaro','joseph','avdol','kakyoin','polnareff'):
     AMAP[_cid]['float']='float'
 # 假花京院（actor.skin = 'fake'，art_new_rubbersoul.py 从原帧换黄眼 + 下摆滴黏液派生）；原图集没有 talk，fake_talk 同样指 fake_idle

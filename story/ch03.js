@@ -142,7 +142,8 @@
   const removeBody = () => { const b = G.S && G.S.actor('devo_body'); if (b) b.remove = true; };
   const DEVO_TAUNT = ['嘿嘿……再用力点……', '好痛……好恨啊……', '对……就是这样……再恨我一点……', '嘿嘿嘿……'];
   const DOLL_TAUNT = ['你这只法国公鸡！', '剃刀先生想你啦～', '嘻嘻嘻！在这儿哦！', '抓不到～抓不到～', '头发立那么高，是天线吗？'];
-  G.BOSS25.devo = () => J.base('b05_devo', 'polnareff', [30, 290], {
+  // o.trial：星尘试炼里不播波 2 开场那句（迪波倒地狂笑），玩偶照常从床底下钻出来
+  G.BOSS25.devo = o => J.base('b05_devo', 'polnareff', [30, 290], {
     vs: 'devo', music: 'battle', gauge: { label: '恨意', max: 100, value: 0 }, bench: 'hide',
     waves: [[{ actor: 'devo', kit: 'e_devo', boss: true, hp: 300, minHp: 1, x: 236, y: 164 }],
       [{ actor: 'devo_doll', kit: 'e_doll', boss: true, hp: 400, x: HD('hide_bed')[0], y: 166 }]],
@@ -164,7 +165,7 @@
       // 段 2：迪波倒在地上狂笑，玩偶从床底下钻出来
       const body = S.spawn('devo', d.devoX, 166, { id: 'devo_body', team: 'npc', name: '被诅咒的迪波' });
       body.facing = -1; S.pose(body, 'down'); body.talk = null; body.standReact = false;
-      await S.say('devo', '嘿嘿嘿……恨够了……去吧，我的恶魔……', { name: '被诅咒的迪波', actor: body });
+      if (!(o && o.trial)) await S.say('devo', '嘿嘿嘿……恨够了……去吧，我的恶魔……', { name: '被诅咒的迪波', actor: body });
       b.dmgOut = d.strength;
       c.gauge.label = '玩偶强度'; c.gauge.max = 1.5; c.gauge.value = d.strength;
       snd('doll_scurry', 'whoosh', { vol: .8 }, { vol: .4, rate: 2 }); snd('doll_voice', 'sting_comedy', { vol: .8 }, { vol: .5, rate: 1.6 });
@@ -255,18 +256,17 @@
     if (J.valid(c)) G.ui.hint(d.falls > 1 ? '又掉进海里了！趁黏液撑不住——J 三连接着连按，欧拉连打！' : '海水里黏液撑不住了！伤害 ×1.5——J 三连接着连按，欧拉连打！（限时）', 4);
   }
   const armorOn = b => { if (!b) return; if (hasAnim('rubbersoul', 'armor_idle')) { b.skin = 'armor'; b.outline = null; } else b.outline = '#ffe040'; };
-  G.BOSS25.yellow = () => J.base('b06_yellowtemperance', 'jotaro', [40, 280], {
+  // 战斗配置（剧情和星尘试炼共用；配置里的台词按 trial 跳过）
+  const YELLOW = trial => J.base('b06_yellowtemperance', 'jotaro', [40, 280], {
     vs: 'yellowtemperance', bench: 'hide', music: 'battle', gauge: { label: '身上的黏液', max: 5, value: 0 },
     // HP 600 → 500（几乎所有伤害都在海里打：24 s 内打完 600 太难；420 时测试器一次落水就打完了，500 大概要逼他下水两次；2026-10-11 规划 §6.2 同步改）
     waves: [[{ actor: 'rubbersoul', kit: 'e_yellow', boss: true, hp: 500, x: 200, y: 160, poiseMax: 0,
       phases: [{ at: .5, run: async (S, e, c) => {
         if (c.attempt > 0) return;
+        if (trial) return;   // 试炼里不播台词，掉下海照常
         await S.say('rubbersoul', '咕……咳咳！海水……我的黏液……！', { name: '拉巴索' });
         await S.say('jotaro', '……在水里，你什么都吃不下。');
       } }] }]],
-    kitOverride: { jotaro: { special: J.special(0, '抱住他跳窗：U', c => !!nearWin(c) && Math.abs(c.player.x - c.boss.x) <= 34, async (S, p, c) => {
-      G.uifx.sfx('ガシッ', p); await intoWater(c);
-    }) } },
     onWave: async (S, i, es, a, c) => {
       if (G.world.stage.id !== 'cable_ch3') await J.transfer(c, 'cable_ch3', 120, 220);
       c.spec.arena = [40, 280]; G.world.stage.x0 = 40; G.world.stage.x1 = 280;
@@ -326,13 +326,22 @@
       if (w && c.t >= d.glintAt) {
         d.glintAt = c.t + .6;
         G.combat.fxAt('glint', { x: CC('win_' + w)[0], y: 96, size: 12 }, p, .3);
-        if (!d.winHint) { d.winHint = true; G.ui.hint('他被逼到窗边了！J3 把他撞出去，或者贴近按 U！', 4); }
+        if (!d.winHint) { d.winHint = true; G.ui.hint(trial ? '他被逼到窗边了！J3 把他撞出去。' : '他被逼到窗边了！J3 把他撞出去，或者贴近按 U！', 4); }
       }
     },
     after: async (s, es, a, c) => { const b = es[0]; if (b) { b.skin = null; b.outline = null; } },
     testHint: c => ({ water: c.data.water, slime: c.data.slime, waterLeft: c.data.waterUntil - c.t, window: !!nearWin(c), falling: !!c.data.falling,
       bossX: c.boss && c.boss.x, winL: CC('win_l')[0], winR: CC('win_r')[0] }),
   });
+  // 星尘试炼里去掉关卡自带的承太郎 U（抱他跳窗）和海里的那两句——J3 把他推到窗边，任意角色都能撞出去
+  G.BOSS25.yellow = o => {
+    const trial = !!(o && o.trial);
+    const spec = YELLOW(trial);
+    if (!trial) spec.kitOverride = { jotaro: { special: J.special(0, '抱住他跳窗：U', c => !!nearWin(c) && Math.abs(c.player.x - c.boss.x) <= 34, async (S, p, c) => {
+      G.uifx.sfx('ガシッ', p); await intoWater(c);
+    }) } };
+    return spec;
+  };
 
   // ================================================================ 骑楼街（sg_street_ch3，singapore_street，960 宽）
   const clueN = () => Object.keys(F().c3Clues || {}).length;
@@ -866,7 +875,7 @@
     await S.until(() => !S.busy && G.world.free && (Object.keys(F().hotelClues || {}).length >= 3 || F().fridgeKnock || G.clk.world - t0 > 80));
     await S.run(async s => {
       await devoAppear(s);
-      await s.fight(G.BOSS25.devo());
+      await s.fight(G.BOSS25.devo({ trial: false }));
       await devoAfter(s);
     });
     // 第 6 天早上：骑楼街（晨光），“花京院”很怪
@@ -908,7 +917,7 @@
     await S.run(async s => {
       await cableIntro(s);
       await cableReveal(s);
-      await s.fight(G.BOSS25.yellow());
+      await s.fight(G.BOSS25.yellow({ trial: false }));
       await surfaceScene(s);
       G.party.setLeadable('kakyoin', true);
       await trainScene(s);
@@ -918,6 +927,48 @@
   // 开发调参入口（只给 tools\dev\full\dev_fight.py 用，正常游戏不调用）：直接开打这一章的某一战，战斗配置和正式剧情是同一份。
   //   验收一律跑整章（test_mid_early.py），这个入口的结果不当通关证据
   G.DEV = G.DEV || {};
-  G.DEV.ch3Devo = async S => { setupHotel(); S.party(['polnareff'], { leader: 'polnareff' }); await S.setStage('sg_hotel_ch3', { x: 145, y: 164, music: 'tension' }); await S.run(async s => { await s.fight(G.BOSS25.devo()); }); };
-  G.DEV.ch3Yellow = async S => { S.party(['jotaro'], { leader: 'jotaro' }); await S.setStage('cable_ch3', { x: 125, y: 160, music: 'tension' }); await S.run(async s => { await s.fight(G.BOSS25.yellow()); }); };
+  // 布景和战斗配置都走 G.TRIAL_SRC（和星尘试炼共用同一份）
+  G.DEV.ch3Devo = async S => {
+    S.party(['polnareff'], { leader: 'polnareff' });
+    await G.TRIAL_SRC['b05_devo'].setup(S);
+    await S.setStage('sg_hotel_ch3', { x: 145, y: 164, music: 'tension' });
+    await S.run(async s => { await s.fight(G.TRIAL_SRC['b05_devo'].spec({ trial: false })); });
+  };
+  G.DEV.ch3Yellow = async S => {
+    S.party(['jotaro'], { leader: 'jotaro' });
+    await G.TRIAL_SRC['b06_yellowtemperance'].setup(S);
+    await S.setStage('cable_ch3', { x: 125, y: 160, music: 'tension' });
+    await S.run(async s => { await s.fight(G.TRIAL_SRC['b06_yellowtemperance'].spec({ trial: false })); });
+  };
+
+  // 星尘试炼的关卡工厂（剧情入口 G.DEV.ch3Xxx 和试炼共用下面的布景 / 配置）
+  G.TRIAL_SRC = G.TRIAL_SRC || {};
+  // 黑檀木恶魔：酒店单人间的镜子碎片、冰箱 / 房间狼藉状态都是这一战判读的，进关按“睡前”复位
+  G.TRIAL_SRC['b05_devo'] = {
+    chapter: 'ch3', pack: '_ch3',
+    setup: async (S, o) => {
+      await G.MID.ensureBg('_ch3');
+      setupHotel();
+      if (o && o.trial) await S.setStage('sg_hotel_ch3', { x: 145, y: 164, music: 'tension' });
+      const st = G.world.stage;
+      if (st) st.state = Object.assign({}, st.state, { fridge: 0, mess: 0 });
+      removeBody();   // 上一轮留下的迪波尸体（玩偶段躺在地上的那个）
+      G.world.snapCamera && G.world.snapCamera();
+    },
+    spec: o => G.BOSS25.devo(o),
+  };
+  // 黄色节制：缆车车厢。窗户状态 win_l / win_r 写在 G.STAGES.cable_ch3.state 上，进图时被复制进现场，
+  //   战斗只在撞窗时把它设成 1、从来不复位——不手动清的话第二轮的窗户一开场就是破的
+  G.TRIAL_SRC['b06_yellowtemperance'] = {
+    chapter: 'ch3', pack: '_ch3',
+    setup: async (S, o) => {
+      await G.MID.ensureBg('_ch3');
+      if (G.STAGES.cable_ch3) G.STAGES.cable_ch3.state = Object.assign({}, G.STAGES.cable_ch3.state, { win_l: 0, win_r: 0 });
+      if (o && o.trial) await S.setStage('cable_ch3', { x: 125, y: 160, music: 'tension' });
+      const st = G.world.stage;
+      if (st) st.state = Object.assign({}, st.state, { win_l: 0, win_r: 0 });
+      G.world.snapCamera && G.world.snapCamera();
+    },
+    spec: o => G.BOSS25.yellow(o),
+  };
 })();

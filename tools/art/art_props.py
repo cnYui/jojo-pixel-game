@@ -928,3 +928,8 @@ def draw_fruit_basket(frame):
         for x, y in ((15, 5), (17, 5)):                              # 掉在筐沿上的碎渣
             a[y, x] = (255, 214, 120, 255)
     return _outline(Image.fromarray(a, 'RGBA'))
+
+# 2026-10-19 第6章到终章的新道具 + 皮卡 / 议员轿车 / 塞斯纳 / 立镜重画（toolsrtrt_props_c6fin.py；素材总表 §二）。
+# 放在文件最后：它会覆盖 art_props_later 装进来的同名 draw_*，必须在那之后执行。
+import art_props_c6fin  # noqa: E402
+PROPS += art_props_c6fin.install(globals(), spec)

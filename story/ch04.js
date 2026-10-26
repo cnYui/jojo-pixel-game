@@ -50,6 +50,7 @@
   const CAd = { arrive: [70, 164], spice: [250, 160], spice_vendor: [270, 154], chai: [370, 160], cow: [500, 166], taxi: [640, 152], rickshaw: [760, 152],
     shrine: [900, 150], roof: [1010, 46], alley_mouth: [1210, 152] };
   const ALd = { mirror_box: [28, 46, 68, 110], window_box: [208, 64, 288, 114], puddles: [[92, 172], [173, 172], [276, 172]], mirror: [48, 160], window: [248, 160],
+    mirror_frame: [23, 42, 73, 114], window_frame: [204, 61, 292, 118], puddle_r: [[15, 3], [16, 3], [15, 3]],
     eye_a: [120, 163], eye_b: [211, 163], entrance: [300, 160] };
   const VSd = { arrive: [40, 164], fruit: [90, 152], police: [170, 164], newspaper: [285, 152], sweets: [400, 152], temple: [495, 150], ghat_stairs: [600, 152] };
   const GHd = { arrive: [60, 160], shrine: [169, 134], barrels: [[100, 166], [325, 166], [555, 166]] };
@@ -85,11 +86,15 @@
   }
 
   // ================================================================ 第 7 战：皇帝 & 倒吊人（后巷 → 加尔各答街）
+  //   星尘试炼只取段 2（J·凯尔 600，加尔各答街 [400,720]）：hangedSpec 的 o.trial 分支会把倒吊人段整个略掉
   //   机关沿用：倒吊人只在照得到波鲁纳雷夫的倒影里（镜子、橱窗、3 个水洼、两个路人的眼睛）；打碎镜窗、踢沙让路人闭眼、
   //   花京院每 12 s 弹一枚硬币——别的倒影都照不到人时它只能跳进硬币，光路上按 J 刺中它，三次后段 2：J·凯尔躲在路人身后。
   //   荷尔·荷斯（打不死）：开枪前 0.6 s 红色弯曲虚线，子弹照这条线拐弯飞；补：开枪时他在画面边上露个头（皇帝），跳弹音。
   //   2026-10-11 补：雨（背景 key rain）、镜子 / 橱窗碎了切背景 pick、倒吊人换倒影时一声 mirror_flash、打完雨停一道光。
-  const canReflect = (r, c) => !r.dead && (!r.expires || r.expires > c.t) && !(r.closedUntil > c.t) && Math.abs(r.x - c.player.x) < r.reach;
+  // 水洼照得到人的范围是水洼周围的一圈椭圆（rx × ry，和画出来的水洼大小对得上）；其余倒影只看横向。
+  //   原来水洼也只比横向 ±20 px，不看 y：水洼画在最下面 y 172，站在 y 150 离它 20 多 px 也照得到，玩家只能猜
+  const canReflect = (r, c) => !r.dead && (!r.expires || r.expires > c.t) && !(r.closedUntil > c.t)
+    && (r.kind === 'puddle' ? Math.abs(r.x - c.player.x) < r.rx && Math.abs(r.y - c.player.y) < r.ry : Math.abs(r.x - c.player.x) < r.reach);
   const bez = (pts, u) => { const v = 1 - u; return [v * v * pts[0][0] + 2 * v * u * pts[1][0] + u * u * pts[2][0], v * v * pts[0][1] + 2 * v * u * pts[1][1] + u * u * pts[2][1]]; };
   // 倒吊人的画面：反光扫过还在的玻璃、碎掉的玻璃（背景没有碎玻璃 pick 时自己画裂纹）、藏身的那面里看得见它举刀；硬币、光路、荷尔·荷斯的红色弯曲虚线（W4 36f）
   function drawHanged(P, d, c) {
@@ -104,11 +109,23 @@
         for (let k = 0; k < 9; k++) { const a = k * .7 + .3; px.line(P, ix, iy, ix + Math.cos(a) * len, iy + Math.sin(a) * len, '#1c2230', .95); }
         continue;
       }
+      // 挨过一下的玻璃先裂开：让人看得出“打中了、再来一下就碎”（HP 20，J 一下 10）
+      if (r.obj && r.obj.hp < (r.obj.maxHp || 20)) {
+        const ix = x0 + w * .5, iy = y0 + h * .5, len = Math.max(w, h) * .32;
+        for (let q = 0; q < 6; q++) { const a = q * 1.05 + .4; px.line(P, ix, iy, ix + Math.cos(a) * len, iy + Math.sin(a) * len, '#f4fbff', .9); }
+      }
       const k = ((t * .7 + (r.kind === 'window' ? .8 : 0)) % 1.6) / 1.6;
       if (k < 1) { const sx = x0 + (w - h * .35) * k; px.line(P, sx, y1 - 2, sx + h * .35, y0 + 2, '#e8fbff', .55); px.line(P, sx + 3, y1 - 2, sx + 3 + h * .35, y0 + 2, '#ffffff', .3); }
       if (r === d.source) { px.rect(P, x0 + 1, y0 + 1, w - 2, h - 2, '#401018', .25); px.blitFrame(P, 'hangedman', d.knifeWarn > t ? 'attack' : 'idle', 0, Math.round((x0 + x1) / 2), y1 - 4, { alpha: .85 }); }
     }
-    for (const r of d.reflections) if (r.kind === 'puddle') { const x = r.x - cx; px.ellipse(P, x - 12, r.y - 2, x + 12, r.y + 2, r === d.source ? '#ff8a80' : '#88bcda', null, 1, .65); }
+    // 水洼：画出照得到人的那一圈（站进圈里才会被照，从上面绕过去 / 走远一点都是安全的），照到人的那一圈变红；
+    //   人脚下再加一圈红环，不用去看被提示框压住的水洼也知道“水洼看到我了”
+    for (const r of d.reflections) if (r.kind === 'puddle') {
+      const x = r.x - cx, on = canReflect(r, c);
+      px.ring(P, x, r.y, r.rx, 1, r === d.source ? '#ff5a4a' : on ? '#ffb0a0' : '#88bcda', on ? .95 : .4, r.ry / r.rx);
+      px.ellipse(P, x - 12, r.y - 2, x + 12, r.y + 2, r === d.source ? '#ff8a80' : '#88bcda', null, 1, .65);
+      if (on) px.ring(P, c.player.x - cx, c.player.y + 1, 9, 1, '#ff6a5a', .85, .3);
+    }
     if (d.coinUntil > t) { const x = d.coinX - cx, yy = Math.round(58 + Math.abs(Math.sin((t - d.coinAt) * 6)) * 8); px.ellipse(P, x - 3, yy - 4, x + 3, yy + 4, '#ffe273'); px.plot(P, x - 1, yy - 2, '#ffffff'); }
     if (d.lightUntil > t) px.ring(P, d.coinX - cx, 64, 6 + Math.round(Math.sin(t * 30) * 2), 1, '#fff6c0');
     if (d.gun) { const pts = d.gun.curve, a = Math.floor(t * 16) % 2 ? .9 : .55; let last = bez(pts, 0); for (let i = 1; i <= 20; i++) { const nx = bez(pts, i / 20); if (i % 2) px.line(P, last[0] - cx, last[1] - 22, nx[0] - cx, nx[1] - 22, '#ff3040', a); last = nx; } }
@@ -122,112 +139,154 @@
     a.visible = !!on; a.x = x; a.facing = x > c.player.x ? -1 : 1;
     if (on) G.S.pose(a, hasAnim('holhorse', 'shoot') ? 'shoot' : 'idle');
   }
-  async function exposeJgeil(c) {
+  // J·凯尔身前的两个路人（挡刀）和“绕到另一边再打”的提示：剧情第 2 波和星尘试炼共用
+  function guardJgeil(c, e) {
+    c.data.civilians = [G.S.spawn('npc_townsfolk', 548, 164, { id: 'jgeil_civilian0', team: 'npc' }), G.S.spawn('npc_villager_f', 655, 164, { id: 'jgeil_civilian1', team: 'npc' })];
+    e.onHitBy = (target, att) => { const n = c.data.civilians.find(a => Math.abs(a.x - target.x) <= 18 && att && (a.x - att.x) * (target.x - a.x) >= 0); if (!n) return null; att.stunT = .5; G.uifx.sfx('住手！他是无辜的！', att); return 'evade'; };
+    G.defer(2.7, () => { if (J.valid(c)) G.ui.hint('J·凯尔躲在路人身后：绕到另一边再打！', 6); }, 'world');
+  }
+  // J·凯尔登场（第 2 波）：切到加尔各答街、把两个路人放在他前面挡刀。
+  //   o.trial：星尘试炼里只打这一段，所以不切图（试炼自己把地图和血条都准备好了），也没有过场音效
+  async function exposeJgeil(c, o) {
+    const trial = !!(o && o.trial);
     if (c.data.phase || c.data.shifting) return;
     c.data.phase = 1;
     const ghost = c.boss; ghost.remove = true;
     G.world.shots = []; G.world.hazards = []; c.data.gun = null; hhPeek(c, 0, false);
     for (const a of c.data.reflectActors || []) a.remove = true;
     c.spec.arena = [400, 720];
-    if (G.STAGES.calcutta_ch4) G.STAGES.calcutta_ch4.state.rain = 1;
-    snd('mirror_flash', 'glint', { vol: .8 });
-    await J.transfer(c, 'calcutta_ch4', 460, 600);
-    if (!J.valid(c)) return;
+    if (!trial) {
+      if (G.STAGES.calcutta_ch4) G.STAGES.calcutta_ch4.state.rain = 1;
+      snd('mirror_flash', 'glint', { vol: .8 });
+      await J.transfer(c, 'calcutta_ch4', 460, 600);
+      if (!J.valid(c)) return;
+    }
     G.world.stage.state.rain = 1;
     rehide(c);
     const e = c.spawn({ actor: 'jgeil', kit: 'e_jgeil', boss: true, hp: 600, poiseMax: 40, x: 635, y: 163 });
-    c.data.civilians = [G.S.spawn('npc_townsfolk', 548, 164, { id: 'jgeil_civilian0', team: 'npc' }), G.S.spawn('npc_villager_f', 655, 164, { id: 'jgeil_civilian1', team: 'npc' })];
-    e.onHitBy = (target, att) => { const n = c.data.civilians.find(a => Math.abs(a.x - target.x) <= 18 && att && (a.x - att.x) * (target.x - a.x) >= 0); if (!n) return null; att.stunT = .5; G.uifx.sfx('住手！他是无辜的！', att); return 'evade'; };
+    guardJgeil(c, e);
     // 名牌（左下）先放完再给提示：提示框在底部，同时出会压住名牌的副标题
-    G.S.nameCard('jgeil');
-    G.defer(2.7, () => { if (J.valid(c)) G.ui.hint('J·凯尔躲在路人身后：绕到另一边再打！', 6); }, 'world');
+    if (!trial) G.S.nameCard('jgeil');
   }
-  G.BOSS25.hanged = () => J.base('b07_hangedman', 'polnareff', [24, 296], {
-    vs: 'emperor_hangedman', music: 'battle', allies: ['kakyoin'], bench: 'hide', gauge: { label: '光路截击', max: 3, value: 0 },
-    kitOverride: { polnareff: { chords: { 'dodge+attack': 'PO_SAND_KICK' } } },
-    waves: [[{ actor: 'hangedman', kit: { hp: 3, speed: 0, moves: [], brain: () => true, dmgMul: () => 0 }, boss: true, hp: 3, untargetable: true, x: 48, y: 160, alpha: 0 }]],
-    onWave: async (S, i, es, a, c) => {
-      if (G.world.stage.id !== 'alley_ch4') { c.spec.arena = [24, 296]; await J.transfer(c, 'alley_ch4', 150, 48); rehide(c); }
-      // 重试：上一次的镜窗可破坏物、路人眼睛、荷尔·荷斯的头是 S.spawn 生成的（不归战斗管），不清掉会一层层叠起来
-      for (const o of G.world.stage.actors) if (o.id && /^(reflection_|eye_|jgeil_civilian|hh_peek)/.test(o.id)) o.remove = true;
-      const st = G.world.stage; st.state.rain = 1; st.state.mirror = 0; st.state.window = 0; st.state.sunbeam = 0;
-      amb(S, 'rain_loop', 'wind_loop', .35);
-      const d = c.data;
-      Object.assign(d, { phase: 0, reflectActors: [], reflections: [], stabs: 0, nextKnife: 2, nextGun: 2.5, nextCoin: 12, lightUntil: 0, coinUntil: 0, coinAt: 0, coinCheck: 0,
-        blindUntil: 0, gun: null, knifeWarn: 0, lastSource: null, bgGlass: bgHas('india_alley', 'mirror') });
-      const kak = S.actor('kakyoin');
-      if (kak) { kak.minHp = 1; kak.hp = kak.maxHp = 100; kak.brain = () => true; kak.moves = []; kak.team = 'npc'; S.follow(kak, c.player); kak.visible = true; }
-      for (const kind of ['mirror', 'window']) {
-        const box = AL(kind + '_box'), x = AL(kind)[0];
-        const r = { kind, x, y: box[3], box, reach: 95, dead: false };
-        d.reflections.push(r);
-        const o = S.spawn('prop:mirror_shard', x, 162, { id: 'reflection_' + kind, team: 'object', hp: 20, alpha: 0, shadow: false });
-        o.breakable = { onBreak: () => {
-          r.dead = true; G.world.stage.state[kind] = 1; S.sfx('glass_break'); snd('mirror_flash', null, { vol: .6, rate: .8 });
-          for (let k = 0; k < 3; k++) d.reflections.push({ kind: 'shard', x: x + (k - 1) * 12, y: 165, reach: 18, expires: c.t + 3 });
-        } };
-        d.reflectActors.push(o);
-      }
-      for (const [x, y] of AL('puddles')) d.reflections.push({ kind: 'puddle', x, y, reach: 20 });
-      for (const [i, k] of ['eye_a', 'eye_b'].entries()) {
-        const [x, y] = AL(k);
-        d.reflections.push({ kind: 'eye', x, y: y - 18, reach: 70, closedUntil: 0 });
-        const n = S.spawn(i ? 'npc_villager_f' : 'npc_townsfolk', x, y, { id: 'eye_' + i, team: 'npc' }); n.standReact = false; n.talk = null;
-        d.reflectActors.push(n);
-      }
-      d.draw = (P, ctx) => drawHanged(P, d, ctx);
-      S.hint(a > 0 ? '碎镜窗、K+J 踢沙、离开水洼；光路出现按 J。'
-        : '倒吊人藏在倒影里！J3 碎镜窗、K+J 踢沙、离开水洼，等光路按 J。', 12);
-    },
-    tick(c, dt) {
-      const d = c.data, p = c.player;
-      if (d.phase) {
-        if (c.boss && Math.floor(c.t) % 7 < 2) { const n = d.civilians && d.civilians[Math.floor(c.t / 7) % 2]; if (n && c.boss.state === 'idle') G.combat.walkTo(c.boss, n.x + (p.x < n.x ? 14 : -14), n.y, dt, 100); }
-        return;
-      }
-      const rs = d.reflections.filter(r => canReflect(r, c));
-      d.source = rs.length ? rs[Math.floor(c.t / 3) % rs.length] : null;
-      if (d.source && d.source !== d.lastSource) snd('mirror_flash', null, { vol: .45 });
-      if (d.source) { d.lastSource = d.source; d.lastSourceX = d.source.x; }
-      if (c.t >= d.nextKnife) {
-        d.nextKnife = c.t + 2.6;
-        if (d.source) { const r = d.source; c.boss.x = r.x; d.knifeWarn = c.t + .5; G.audio.sfx('slash'); c.hazard({ owner: c.boss, shape: 'rect', x0: p.x - 14, x1: p.x + 14, y0: p.y - 8, y1: p.y + 8, warn: .5, dur: J.f(4), tier: 'W1', dmg: 14, guardSourceX: r.x, guardFromOwner: true, consume: true }); }
-      }
-      // 荷尔·荷斯：先亮 0.6 s 红色弯曲虚线（规划 W4 36f），子弹照这条线飞；走出线外、面朝枪口按住 L，或精准弹反（キィン！）
-      if (c.t >= d.nextGun && !d.gun) {
-        d.nextGun = c.t + 2.5;
-        const x = p.x < 160 ? 306 : 14, y = 164;
-        d.gun = { x, y, at: c.t + J.f(36), curve: [[x, y], [160, 115], [p.x, p.y]] };
-        hhPeek(c, x, true);
-        G.combat.fxAt('glint', { x, y: y - 22, size: 8 }, c.boss, .6); G.audio.sfx('glint', { vol: .6 });
-      }
-      if (d.gun && c.t >= d.gun.at) {
-        const g = d.gun; d.gun = null;
-        G.audio.sfx('gunshot', { vol: .7 }); snd('ricochet', null, { vol: .55 });
-        c.shoot(c.boss, { kind: 'bullet', dmg: 12, curve: g.curve, curveDur: .45, life: 1, reflect: true, guardSourceX: g.x }, { x: g.x, y: g.y, z: 22 });
-        G.defer(.5, () => { if (J.valid(c) && !c.data.gun) hhPeek(c, g.x, false); }, 'world');
-      }
-      // 硬币：弹起后在半空停 40f；0.4 s 后（硬币到顶）没有别的倒影照到人，倒吊人只能跳进硬币——光路亮 30f，这期间按 J
-      if (c.t >= d.nextCoin) { d.nextCoin = c.t + 12; d.coinX = p.x; d.coinAt = c.t; d.coinUntil = c.t + J.f(40); d.coinCheck = c.t + .4; G.audio.sfx('coin'); G.ui.hint('花京院弹起了硬币——别让别的倒影照到你！', 2.5); }
-      if (d.coinCheck && c.t >= d.coinCheck) {
-        d.coinCheck = 0;
-        if (!rs.length) { d.lightFrom = d.lastSourceX || 48; d.lightUntil = c.t + J.f(30); d.interceptUntil = c.t + J.f(30); G.audio.sfx('glint'); snd('mirror_flash', null, { vol: .8, rate: 1.2 }); G.ui.hint('光路出现！现在按 J！', 1.5); }
-        else G.ui.hint('还有倒影照到你！打碎镜窗、扬沙，走离水洼。');
-      }
-      if (d.interceptUntil > c.t && G.input.hit('attack') && Math.abs(p.x - d.coinX) <= 48) {
-        d.interceptUntil = 0; d.lightUntil = 0; d.stabs++; c.gauge.value = d.stabs; G.input.consume('attack');
-        G.combat.fxAt('shatter', { src: 'prop:mirror_shard', logical: 'idle', x: d.coinX, y: 78, pieces: 44, dur: .9 }, p, .9); G.audio.sfx('slash'); G.shake(3, .25);
-        if (d.stabs >= 3) exposeJgeil(c).catch(G.cancelIgnore);
-      }
-    },
-    after: async (S, es, a, c) => {
-      for (const n of [...(c.data.reflectActors || []), ...(c.data.civilians || [])]) n.remove = true;
-      hhPeek(c, 0, false);
-      c.data.jgeilX = es[0] ? es[0].x : 640;
-    },
-    testHint: c => ({ phase: c.data.phase, stabs: c.data.stabs, coinIn: c.data.nextCoin - c.t, intercept: c.data.interceptUntil > c.t,
-      activeReflections: (c.data.reflections || []).filter(r => canReflect(r, c)).map(r => ({ kind: r.kind, x: r.x })), reflections: c.data.reflections }),
-  });
+  // o.trial：星尘试炼只取第 2 波（倒吊人的解谜段不进试炼）——waves 只留 J·凯尔 600，
+  //   onWave 按“他已经被逼现身”的状态补齐倒吊人段里会设好的 c.data.phase / civilians，其余靠 exposeJgeil 自己建
+  function hangedSpec(o) {
+    const trial = !!(o && o.trial);
+    if (trial) {
+      return {
+        id: 'b07_hangedman', arena: [400, 720], music: 'battle', bench: 'hide',
+        // 倒吊人段整个略掉：J·凯尔直接是这一战的 Boss（原来是倒吊人被逼现身后 c.spawn 出来的）
+        waves: [[{ actor: 'jgeil', kit: 'e_jgeil', boss: true, hp: 600, poiseMax: 40, x: 635, y: 163 }]],
+        onWave: async (S, i, es, a, c) => {
+          Object.assign(c.data, { phase: 1, reflectActors: [], reflections: [], civilians: [], stabs: 0, gun: null });
+          G.world.stage.state.rain = 1;
+          guardJgeil(c, es[0]);
+        },
+        testHint: c => ({ phase: c.data.phase, civilians: (c.data.civilians || []).length }),
+      };
+    }
+    return J.base('b07_hangedman', 'polnareff', [24, 296], {
+      vs: 'emperor_hangedman', music: 'battle', allies: ['kakyoin'], bench: 'hide', gauge: { label: '光路截击', max: 3, value: 0 },
+      kitOverride: { polnareff: { chords: { 'dodge+attack': 'PO_SAND_KICK' } } },
+      waves: [[{ actor: 'hangedman', kit: { hp: 3, speed: 0, moves: [], brain: () => true, dmgMul: () => 0 }, boss: true, hp: 3, untargetable: true, x: 48, y: 160, alpha: 0 }]],
+      onWave: async (S, i, es, a, c) => {
+        if (G.world.stage.id !== 'alley_ch4') { c.spec.arena = [24, 296]; await J.transfer(c, 'alley_ch4', 150, 48); rehide(c); }
+        // 重试：上一次的镜窗可破坏物、路人眼睛、荷尔·荷斯的头是 S.spawn 生成的（不归战斗管），不清掉会一层层叠起来
+        for (const o of G.world.stage.actors) if (o.id && /^(reflection_|eye_|jgeil_civilian|hh_peek)/.test(o.id)) o.remove = true;
+        const st = G.world.stage; st.state.rain = 1; st.state.mirror = 0; st.state.window = 0; st.state.sunbeam = 0;
+        amb(S, 'rain_loop', 'wind_loop', .35);
+        const d = c.data;
+        Object.assign(d, { phase: 0, reflectActors: [], reflections: [], stabs: 0, nextKnife: 2, nextGun: 2.5, nextCoin: 12, lightUntil: 0, coinUntil: 0, coinAt: 0, coinCheck: 0,
+          blindUntil: 0, gun: null, knifeWarn: 0, lastSource: null, bgGlass: bgHas('india_alley', 'mirror') });
+        const kak = S.actor('kakyoin');
+        if (kak) { kak.minHp = 1; kak.hp = kak.maxHp = 100; kak.brain = () => true; kak.moves = []; kak.team = 'npc'; S.follow(kak, c.player); kak.visible = true; }
+        for (const kind of ['mirror', 'window']) {
+          const box = AL(kind + '_box'), x = AL(kind)[0], fr = AL(kind + '_frame');
+          const r = { kind, x, y: box[3], box, reach: 95, dead: false };
+          d.reflections.push(r);
+          const o = S.spawn('prop:mirror_shard', x, 162, { id: 'reflection_' + kind, team: 'object', hp: 20, alpha: 0, shadow: false });
+          Object.defineProperty(r, 'obj', { value: o, enumerable: false });   // testHint 把 reflections 原样交给快照，Actor 带循环引用，不能出现在可枚举字段里
+          // wall：判定 = 整块玻璃的横向范围（combat.hitCheck），不再是地面上 x 一个点 + 上下 ±6 px（站偏了怎么挥都落空）
+          o.breakable = { wall: [fr[0], fr[2]],
+            onHit: () => {
+              // 打中玻璃要有反馈：闪光落在玻璃上（命中火花只落在脚边的看不见的判定点上），裂纹由 drawHanged 画
+              snd('mirror_flash', 'glint', { vol: .5, rate: 1.4 });
+              G.combat.fxAt('glint', { x: (fr[0] + fr[2]) / 2, y: (fr[1] + fr[3]) / 2, size: 10 }, G.world.player, .25);
+            },
+            onBreak: () => {
+              r.dead = true; G.world.stage.state[kind] = 1; S.sfx('glass_break'); snd('mirror_flash', null, { vol: .6, rate: .8 });
+              for (let k = 0; k < 3; k++) d.reflections.push({ kind: 'shard', x: x + (k - 1) * 12, y: 165, reach: 18, expires: c.t + 3 });
+            } };
+          d.reflectActors.push(o);
+        }
+        // 水洼半径取背景导出的 puddle_r（画出来的大小）再放宽几 px，高度 ±10：站在水洼上方（y 比水洼小 10 px 以上）就照不到
+        for (const [i, [x, y]] of AL('puddles').entries()) { const pr = AL('puddle_r')[i] || [15, 3]; d.reflections.push({ kind: 'puddle', x, y, rx: pr[0] + 6, ry: 10 }); }
+        for (const [i, k] of ['eye_a', 'eye_b'].entries()) {
+          const [x, y] = AL(k);
+          d.reflections.push({ kind: 'eye', x, y: y - 18, reach: 70, closedUntil: 0 });
+          const n = S.spawn(i ? 'npc_villager_f' : 'npc_townsfolk', x, y, { id: 'eye_' + i, team: 'npc' }); n.standReact = false; n.talk = null;
+          d.reflectActors.push(n);
+        }
+        d.draw = (P, ctx) => drawHanged(P, d, ctx);
+        // 提示框压在画面最下面，正好盖住水洼（y 172）和人的脚，所以从 12 s 缩到 7 s，并且保持一行
+        S.hint(a > 0 ? '碎镜窗、K+J 踢沙、避开水洼；光路出现按 J。'
+          : '倒吊人藏在倒影里！连按 J 碎镜窗、K+J 踢沙、避开水洼，等光路按 J。', 7);
+      },
+      tick(c, dt) {
+        const d = c.data, p = c.player;
+        if (d.phase) {
+          if (c.boss && Math.floor(c.t) % 7 < 2) { const n = d.civilians && d.civilians[Math.floor(c.t / 7) % 2]; if (n && c.boss.state === 'idle') G.combat.walkTo(c.boss, n.x + (p.x < n.x ? 14 : -14), n.y, dt, 100); }
+          return;
+        }
+        // 镜窗判定点被推走会离开原位（命中时 shove 对所有目标都生效），每帧拉回
+        for (const r of d.reflections) if (r.obj && !r.obj.dead) r.obj.x = r.x;
+        const rs = d.reflections.filter(r => canReflect(r, c));
+        d.source = rs.length ? rs[Math.floor(c.t / 3) % rs.length] : null;
+        if (d.source && d.source !== d.lastSource) snd('mirror_flash', null, { vol: .45 });
+        if (d.source) { d.lastSource = d.source; d.lastSourceX = d.source.x; }
+        if (c.t >= d.nextKnife) {
+          d.nextKnife = c.t + 2.6;
+          if (d.source) { const r = d.source; c.boss.x = r.x; d.knifeWarn = c.t + .5; G.audio.sfx('slash'); c.hazard({ owner: c.boss, shape: 'rect', x0: p.x - 14, x1: p.x + 14, y0: p.y - 8, y1: p.y + 8, warn: .5, dur: J.f(4), tier: 'W1', dmg: 14, guardSourceX: r.x, guardFromOwner: true, consume: true }); }
+        }
+        // 荷尔·荷斯：先亮 0.6 s 红色弯曲虚线（规划 W4 36f），子弹照这条线飞；走出线外、面朝枪口按住 L，或精准弹反（キィン！）
+        if (c.t >= d.nextGun && !d.gun) {
+          d.nextGun = c.t + 2.5;
+          const x = p.x < 160 ? 306 : 14, y = 164;
+          d.gun = { x, y, at: c.t + J.f(36), curve: [[x, y], [160, 115], [p.x, p.y]] };
+          hhPeek(c, x, true);
+          G.combat.fxAt('glint', { x, y: y - 22, size: 8 }, c.boss, .6); G.audio.sfx('glint', { vol: .6 });
+        }
+        if (d.gun && c.t >= d.gun.at) {
+          const g = d.gun; d.gun = null;
+          G.audio.sfx('gunshot', { vol: .7 }); snd('ricochet', null, { vol: .55 });
+          c.shoot(c.boss, { kind: 'bullet', dmg: 12, curve: g.curve, curveDur: .45, life: 1, reflect: true, guardSourceX: g.x }, { x: g.x, y: g.y, z: 22 });
+          G.defer(.5, () => { if (J.valid(c) && !c.data.gun) hhPeek(c, g.x, false); }, 'world');
+        }
+        // 硬币：弹起后在半空停 40f；0.4 s 后（硬币到顶）没有别的倒影照到人，倒吊人只能跳进硬币——光路亮 30f，这期间按 J
+        if (c.t >= d.nextCoin) { d.nextCoin = c.t + 12; d.coinX = p.x; d.coinAt = c.t; d.coinUntil = c.t + J.f(40); d.coinCheck = c.t + .4; G.audio.sfx('coin'); G.ui.hint('花京院弹起了硬币——别让别的倒影照到你！', 2.5); }
+        if (d.coinCheck && c.t >= d.coinCheck) {
+          d.coinCheck = 0;
+          if (!rs.length) { d.lightFrom = d.lastSourceX || 48; d.lightUntil = c.t + J.f(30); d.interceptUntil = c.t + J.f(30); G.audio.sfx('glint'); snd('mirror_flash', null, { vol: .8, rate: 1.2 }); G.ui.hint('光路出现！现在按 J！', 1.5); }
+          else G.ui.hint('还有倒影照到你！打碎镜窗、扬沙，走离水洼。');
+        }
+        if (d.interceptUntil > c.t && G.input.hit('attack') && Math.abs(p.x - d.coinX) <= 48) {
+          d.interceptUntil = 0; d.lightUntil = 0; d.stabs++; c.gauge.value = d.stabs; G.input.consume('attack');
+          G.combat.fxAt('shatter', { src: 'prop:mirror_shard', logical: 'idle', x: d.coinX, y: 78, pieces: 44, dur: .9 }, p, .9); G.audio.sfx('slash'); G.shake(3, .25);
+          if (d.stabs >= 3) exposeJgeil(c, o).catch(G.cancelIgnore);
+        }
+      },
+      after: async (S, es, a, c) => {
+        for (const n of [...(c.data.reflectActors || []), ...(c.data.civilians || [])]) n.remove = true;
+        hhPeek(c, 0, false);
+        c.data.jgeilX = es[0] ? es[0].x : 640;
+      },
+      testHint: c => ({ phase: c.data.phase, stabs: c.data.stabs, coinIn: c.data.nextCoin - c.t, intercept: c.data.interceptUntil > c.t,
+        activeReflections: (c.data.reflections || []).filter(r => canReflect(r, c)).map(r => ({ kind: r.kind, x: r.x })), reflections: c.data.reflections }),
+    });
+  }
+  const HANGED = () => hangedSpec({ trial: false });
+  // 工厂化时漏了旧的直调入口：剧情（后巷伏击之后）和 G.DEV.ch4Hanged 仍按 G.BOSS25.hanged() 取配置，缺了它第 4 章在倒吊人战前就抛 TypeError 走不通。
+  G.BOSS25.hanged = HANGED;
 
   // ================================================================ 第 8 战：女帝（河坛）
   //   机关沿用：女帝长在乔瑟夫左臂上（成长 0→3 级，吃到东西 +0.3）、J 伤害 ×0.7、每 6 s 抢一次操作（左右颠倒 1 s）、两个警察追来缠人
@@ -730,6 +789,22 @@
 
   // 开发调参入口（只给 tools\dev\full\dev_fight.py 用，正常游戏不调用）
   G.DEV = G.DEV || {};
-  G.DEV.ch4Hanged = async S => { await G.MID.ensureBg('_ch4'); setupAlley(); S.party(['polnareff', 'kakyoin'], { leader: 'polnareff' }); await S.setStage('alley_ch4', { x: 150, y: 164, music: 'battle' }); await S.run(async s => { await s.fight(G.BOSS25.hanged()); }); };
+  G.DEV.ch4Hanged = async S => { await G.MID.ensureBg('_ch4'); setupAlley(); S.party(['polnareff', 'kakyoin'], { leader: 'polnareff' }); await S.setStage('alley_ch4', { x: 150, y: 164, music: 'battle' }); await S.run(async s => { await s.fight(HANGED()); }); };
   G.DEV.ch4Empress = async S => { await G.MID.ensureBg('_ch4'); S.party(['joseph'], { leader: 'joseph' }); await S.setStage('varanasi_ch4', { x: 120, y: 160, music: 'battle' }); await S.run(async s => { await s.fight(G.BOSS25.empress()); }); };
+
+  // 星尘试炼的关卡工厂：只取第 2 波 J·凯尔——倒吊人的解谜段（镜像窗、踢沙、硬币光路）不进试炼，见 hangedSpec 的 o.trial 分支
+  G.TRIAL_SRC = G.TRIAL_SRC || {};
+  G.TRIAL_SRC['b07_hangedman'] = {
+    chapter: 'ch4', pack: '_ch4',
+    setup: async (S, o) => {
+      await G.MID.ensureBg('_ch4');
+      // 只打第 2 波：直接进加尔各答街（剧情是在后巷战斗里 transfer 过来的）
+      if (o && o.trial) await S.setStage('calcutta_ch4', { x: 430, y: 164, music: 'battle' });
+      // 原战斗开打前后巷是下着雨的（雨停要等到赢了的过场里），这里手动把现场那一份补上
+      const st = G.world.stage;
+      if (st) { st.state = Object.assign({}, st.state, { rain: 1, sunbeam: 0 }); st.npcs = []; st.hotspots = []; st.triggers = []; st.onLook = null; }
+      G.world.snapCamera && G.world.snapCamera();
+    },
+    spec: o => hangedSpec(o),
+  };
 })();

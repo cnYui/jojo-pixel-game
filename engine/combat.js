@@ -20,10 +20,26 @@
     wallSlam:{minPush:40,bounce:8,sfx:'wall_slam',crack:12},
     warnTier:{1:{W1:f(24),W2:f(45),W3:1,W4:f(36),W5:f(45),W6:1},2:{W1:f(20),W2:f(40),W3:f(50),W4:f(30),W5:f(40),W6:1},3:{W1:f(18),W2:f(36),W3:f(45),W4:f(28),W5:f(36),W6:1},4:{W1:f(16),W2:f(30),W3:f(40),W4:f(24),W5:f(30),W6:1}},
     enemyDmg:{light:8,mid:12,heavy:20,super:30},maxTokens:2,cutin:.92,
-    failSlow:{k:.3,dur:.5},failSepia:.6,assistMul:.7,assistAfter:2
+    failSlow:{k:.3,dur:.5},failSepia:.6,assistMul:.7,assistStep:.8,assistFloor:.35,assistAfter:2,
+    // Boss 难度系数，要整体调 Boss 强度只改这两个数。源码默认 1 = 小红书线 V1.0.11 的强度；233 包的 1.5 不写在这里，
+    //   而是 233乐园\overlay.py 打包时只在构建副本里改写（配合「放水再来要看广告」的商业设计），两条线互不干扰。
+    //   bossHpMul 不乘 maxHp：剧本里有按绝对血量写的阶段阈值（如「Boss 血量 ≤ 650 时合击」），改 maxHp 会让阈值错位；
+    //   改为把打 Boss 的伤害除以它，血条比例、e.hp / e.maxHp 和绝对阈值都不变，等效 bossHpMul 倍血。
+    bossHpMul:1,bossDmgMul:1
   };
   const W = () => G.world, now = () => G.clk.world, ctx = () => W().fight;
   const clamp = (n,a,b) => Math.max(a,Math.min(b,n));
+  // 放水叠加：第 1 档仍是 0.7，每多选一次再乘 assistStep，最低压到 assistFloor，保证一直输的人也能把敌方伤害降到能过关。
+  function assistTotal(level) {
+    if (level <= 0) return 1;
+    return Math.max(CFG.assistFloor, CFG.assistMul * Math.pow(CFG.assistStep, level - 1));
+  }
+  // 剧情里手工乘第 1 档放水系数的旧写法改用它换算当前档位：base 是第 1 档的系数，所以 level 1 结果与旧值完全一致。
+  function assistK(c, base) {
+    if (!c || !c.assist) return 1;
+    const level = Math.max(1, c.assistLevel || 1);
+    return base * G.combat.assistTotal(level) / CFG.assistMul;
+  }
   // 擦身子弹时间的色调：替身 id → post.js 认识的时停色调（stands.json 的 impact 色；红色魔术师用 ts_red）
   const TS_TINT = {starplat:'ts_purple',hermit:'ts_purple',hiero:'ts_green',chariot:'ts_blue',fool:'ts_yellow',magred:'ts_red',theworld:'ts_yellow'};
   // 命中点高度：目标身体中段（矮的伊奇、高的波鲁纳雷夫都落在身上；以前固定脚底上 22–24 px，伊奇的火花飘在头顶上）
@@ -120,6 +136,14 @@
     m=normMove(m); const o=origin(a,m),sc=a.scale || 1;
     const test=t=>{
       if(t.breakable&&t.breakable.upward){return alive(t)&&Math.abs(t.x-o.x)<=24&&Math.abs(t.y-o.y)<=18&&(t.breakable.slots||['J3','rush','special']).includes(m.slot);}   // slots：哪些招能往上打到它（第2章力量的眼睛加了连打收尾 fin）
+      // 贴墙的大块玻璃（第4章倒吊人的镜子 / 橱窗）：画面上是墙上一整块玻璃，判定却只是地面上的一个点 + 上下 ±6 px，
+      //   站在镜子前 y 偏几个像素怎么挥都落空。改成：这一击挥出的横向范围和玻璃的横向范围有重叠就算命中，不看站在哪个 y（z 仍要对上）
+      if(t.breakable&&t.breakable.wall){
+        if(!alive(t) || Math.abs((t.z||0)-(o.z||0))>m.zr)return false;
+        const f=a.facing||1,[w0,w1]=t.breakable.wall;
+        const s0=m.shape&&m.shape.kind==='circle' ? o.x-m.shape.r*sc : o.x+f*m.reach[0]*sc,s1=m.shape&&m.shape.kind==='circle' ? o.x+m.shape.r*sc : o.x+f*m.reach[1]*sc;
+        return Math.max(s0,s1)>=w0 && Math.min(s0,s1)<=w1;
+      }
       if(!alive(t) || Math.abs((t.z||0)-(o.z||0))>m.zr)return false;
       if(m.shape && m.shape.kind==='circle')return Math.hypot(t.x-o.x,t.y-o.y)<=m.shape.r*sc+(t.bodyW||6)*(t.scale||1);
       const dx=(t.x-o.x)*(a.facing||1),bw=(t.bodyW||6)*(t.scale||1);
@@ -188,8 +212,15 @@
       if((b.filter ? !b.filter(m,info) : b.only && !(Array.isArray(b.only)?b.only:[b.only]).includes(slot)) || b.minRushHits && info.rushHits<b.minRushHits)mul=0;
     }
     if(mul<=.01){snd('clang');fxAt('clash_sparks',{cx:t.x,cy:midY(t),accent:'#c080ff'},att,.2);return {immune:true,dmg:0};}
-    const c=ctx(),side=enemySide(att)?(c?c.spec.dmgScale==null?1:c.spec.dmgScale:1)*(c&&c.assist?CFG.assistMul:1):1;
-    let dmg=Math.max(1,Math.round((m.dmg||0)*mul*(att&&att.dmgOut || 1)*(t.dmgIn || 1)*side*(att&&att.nextMul || 1)*(t.breakT>0 ? t.mem.breakMul || CFG.poise.breakMul:1)*(slot==='rush' && t.boss && t.chainT>=CFG.rushCap.after?CFG.rushCap.mul:1)*(guarded ? m.guard==='pierce' ? CFG.pierceLeak : CFG.guard.mul:queuedGuard?.3:1)));
+    const c=ctx(),side=enemySide(att)?(c?c.spec.dmgScale==null?1:c.spec.dmgScale:1)*(c&&c.assist?assistTotal(Math.max(1,c.assistLevel||1)):1):1;
+    // Boss 难度系数都并进下面同一个乘积，只四舍五入一次：玩家打 Boss 按 bossHpMul 等效加血；
+    //   敌方 Boss 出手、以及 Boss 战里由剧情机关发起（att 为空）的伤害按 bossDmgMul 加伤，小怪与玩家互伤不受影响。
+    //   放水中（c.assist）两个系数都不生效：放水要保证「一直输的人也能靠叠放水过关」（assistFloor 的承诺），
+    //   如果加强照旧叠在放水上，放水底线就从 0.35 变成 0.525，连续输的人更难过；这样放水回到原版强度再按档位减伤。
+    const boosted=!(c&&c.assist);
+    const bossHpK=boosted&&enemySide(t)&&t.boss?1/CFG.bossHpMul:1;
+    const bossDmgK=boosted&&(enemySide(att)&&att.boss || !att && slot==='enemy' && c && c.boss && (t===W().player || t.team==='ally' || t.vip))?CFG.bossDmgMul:1;
+    let dmg=Math.max(1,Math.round((m.dmg||0)*mul*(att&&att.dmgOut || 1)*(t.dmgIn || 1)*side*bossHpK*bossDmgK*(att&&att.nextMul || 1)*(t.breakT>0 ? t.mem.breakMul || CFG.poise.breakMul:1)*(slot==='rush' && t.boss && t.chainT>=CFG.rushCap.after?CFG.rushCap.mul:1)*(guarded ? m.guard==='pierce' ? CFG.pierceLeak : CFG.guard.mul:queuedGuard?.3:1)));
     if(!m.dmg)dmg=0;
     const min=Math.max(t.minHp || 0,t===W().player && c ? c.spec.playerMinHp || 0 : 0);
     t.hp=Math.max(min,t.hp-dmg);t.flash=Math.max(t.flash || 0,m.flashTarget ? m.flashTarget*7 : .9);
@@ -284,6 +315,8 @@
   }
   function startRush(a) {
     const k=kitOf(a),r=k.rush;if(!r)return false;
+    // 兜底：别覆盖掉还活着的 a.rush，否则旧的循环音句柄丢了就没人能停
+    if(a.rush)cancelRush(a);
     // 本体在连打期间摆 kit.rush.body（乔瑟夫 = cmd_hold 伸臂拽藤的循环帧）；不写还是 cmd。以前写死 cmd：二乔的甩藤 vine_atk 是一次性动作，
     //   放完停在“收势”那一帧，整段连打都定在往回拽的姿势上
     a.atk=null;state(a,'rush');play(a,r.body||'cmd');a.rush={t:0,tick:0,n:0,end:CFG.rushSustain,wordT:0,loop:r.loop && G.audio.loop?G.audio.loop(r.loop):null};if(a.stand)a.stand.act(r.pose||'rush',{dx:r.standDx==null?16:r.standDx,z:r.standZ,depth:r.standDepth,hold:true,jitter:r.jitter==null?1:r.jitter,len:r.vineLen});
@@ -294,6 +327,15 @@
   }
   function cancelRush(a){const r=a.rush;if(!r)return;if(r.loop&&r.loop.stop)r.loop.stop(.05);trimFx(r.fx);emit('rushEnd',{who:a,n:r.n});a.rush=null;a.rushCdT=CFG.rushCd;}
   function endRush(a) {if(!a.rush)return;cancelRush(a);startMove(a,kitOf(a).rush.finisher);}
+  // 连打只在“本人是队长、state 仍是 rush、没被脚本 / 过场 / 对话接管”时合法。其余情况（连打里按 L 防御、按 U 必杀、Q 换队长、
+  // 剧情接管、boss 终结 cine）rushTick 不会再被调用，a.rush.loop（ora_loop 欧拉循环音）没人停，会一直响到下次开战 resetActor。
+  // 由 world 每帧对带 rush 的角色调一次来收尾；state 还停在 rush 的要顺手 idle，否则 updatePlayer 会卡在空的 rush 分支里不动。
+  function settleRush(a){
+    if(!a.rush)return;
+    const w=W();
+    if(a===w.player && a.state==='rush' && !a.script && !a.hold && !w.cine && (w.combat||w.free) && !(G.ui && G.ui.blocking && G.ui.blocking()))return;
+    cancelRush(a);if(a.state==='rush')idle(a);
+  }
   function rushTick(a,dt,auto) {
     const r=a.rush,k=kitOf(a).rush;if(!r || !k)return;r.t+=dt;r.tick-=dt;r.wordT-=dt;
     if(!auto && G.input.take('attack',CFG.comboBuf))r.end=r.t+CFG.rushSustain;
@@ -444,7 +486,9 @@
       for(const t of targets(h.owner || {team:h.side==='enemy'?'enemy':'player'})){if(!inHazard(h,t) || h.once && h.hitSet.has(t.uid) || now()<(h.nextHit.get(t.uid) || 0))continue;const first=!h.firstT.has(t.uid);if(first)h.firstT.set(t.uid,now());const rr=hit(h.owner,t,Object.assign({slot:'enemy'},h),{src:h,hazard:true,first,parryAllowed:just && (h.parry || h.guard==='parryOnly')});if(rr.evade || rr.invuln)continue;h.hitSet.add(t.uid);h.nextHit.set(t.uid,now()+(h.tick || .2));if(rr.dmg || rr.parry){h.onHit&&h.onHit(h,t,rr);if(h.consume)h.dead=true;}}
     }w.hazards=w.hazards.filter(h=>!h.dead);}
   function point(pts,u){if(!pts || pts.length<2)return [0,0];if(pts.length===2)return [pts[0][0]+(pts[1][0]-pts[0][0])*u,pts[0][1]+(pts[1][1]-pts[0][1])*u];const v=1-u;return [v*v*pts[0][0]+2*v*u*pts[1][0]+u*u*pts[2][0],v*v*pts[0][1]+2*v*u*pts[1][1]+u*u*pts[2][1]];}
-  function beginDash(e,pts,speed,move,res){if(!pts)return;e.mem.dash={pts,t:0,dur:Math.max(f(1),Math.hypot(pts[pts.length-1][0]-pts[0][0],pts[pts.length-1][1]-pts[0][1])/speed),move,hit:new Set(),res};e.ghostOn=true;}
+  // 普通场内突进遵守移动边界；飞行俯冲的路径允许从画面外进出。
+  function dashPath(m,pts){const st=W().stage;if(!m.dash||!st||!pts)return pts;const[lo,hi]=st.bounds();return pts.map(([x,y])=>[clamp(x,lo,hi),clamp(y,st.yMin,st.yMax)]);}
+  function beginDash(e,pts,speed,move,res){pts=dashPath(move,pts);if(!pts)return;e.mem.dash={pts,t:0,dur:Math.max(f(1),Math.hypot(pts[pts.length-1][0]-pts[0][0],pts[pts.length-1][1]-pts[0][1])/speed),move,hit:new Set(),res};e.ghostOn=true;}
   function dashTick(e,dt){const d=e.mem.dash;if(!d)return;const x0=e.x,y0=e.y;d.t+=dt;const xy=point(d.pts,clamp(d.t/d.dur,0,1));e.x=xy[0];e.y=xy[1];const m=d.move;
     if(e.mem.statueLunge && Math.min(x0,e.x)<=e.mem.statueLunge.x && Math.max(x0,e.x)>=e.mem.statueLunge.x){const st=e.mem.statueLunge;e.x=st.x+e.facing*-6;e.atk=null;e.tele=null;e.mem.dash=null;e.mem.statueUsed=true;e.mem.statueLunge=null;state(e,'x_stuck');snd('clang');st.onBreak&&st.onBreak();if(st.actor){st.actor.hp=0;ko(st.actor,e);}d.res&&d.res();return;}
     for(const t of targets(e)){const dx=e.x-x0,dy=e.y-y0,u=clamp(((t.x-x0)*dx+(t.y-y0)*dy)/(dx*dx+dy*dy || 1),0,1);if(Math.hypot(t.x-(x0+dx*u),(t.y-(y0+dy*u))*1.5)>(m.dash?m.dash.w:8)+(t.bodyW || 6) || d.hit.has(t.uid))continue;d.hit.add(t.uid);hit(e,t,m,{first:true});if(!e.mem.dash)break;}
@@ -480,7 +524,8 @@
     if(need)p.energy=0;p._specialCd=use.cd || 1;state(p,'special');p.iframe=999;
     // 角色自己的必杀：本体摆出招姿势（承太郎指人、乔瑟夫伸手放藤……kit.special.pose，默认逻辑名 special）；剧情专用 U 自己摆
     if(!(story && use===s))play(p,use.pose||'special');const old=W().cine;W().cine={by:p};emit('special',{who:p});
-    try{if(G.uifx && G.uifx.cutin)await Promise.race([G.uifx.cutin({cid:p.cid,portrait:p.cid,title:use.title || use.name,colours:use.colours,bg:use.bg,dur:CFG.cutin}),G.until(()=>run!==G.runId)]);if(run!==G.runId)return false;W().cine={by:'special-run',owner:p};const C=createC(p);if(story && use===s)await Promise.race([use.run(G.S,p,c,C),G.until(()=>run!==G.runId||ctx()!==c)]);else await Promise.race([use.run(p,C),G.until(()=>run!==G.runId||ctx()!==c)]);return true;}
+    // 切入期间战斗可能已经结束；迟到的必杀不能重新锁住下一张地图。
+    try{if(G.uifx && G.uifx.cutin)await Promise.race([G.uifx.cutin({cid:p.cid,portrait:p.cid,title:use.title || use.name,colours:use.colours,bg:use.bg,dur:CFG.cutin}),G.until(()=>run!==G.runId||ctx()!==c)]);if(run!==G.runId||ctx()!==c)return false;W().cine={by:'special-run',owner:p};const C=createC(p);if(story && use===s)await Promise.race([use.run(G.S,p,c,C),G.until(()=>run!==G.runId||ctx()!==c)]);else await Promise.race([use.run(p,C),G.until(()=>run!==G.runId||ctx()!==c)]);return true;}
     catch(e){if(cancelled(e))return false;throw e;}
     finally {if(run===G.runId&&ctx()===c){p.iframe=Math.max(CFG.hurt.getupIframe,p.invuln || 0);if(!p.dead)idle(p);W().cine=old || null;}}
   }
@@ -524,11 +569,11 @@
     if(G.J25 && G.J25.drawPixel)G.J25.drawPixel(P,layer);
   }
   function drawShot(g,s,cx,cy){if(s.image && typeof s.image==='object'){const a=G.atlas(s.image.cid);a.draw(g,s.image.logical || s.anim || 'idle',Math.floor(s.t*12),s.x-cx,s.y-s.z-cy,{flip:s.vx<0});}else {const im=G.image(s.image);if(im)g.drawImage(im,s.x-cx-im.width/2,s.y-s.z-cy-im.height/2);}}
-  G.combat={CFG,updatePlayer,updateAlly,updateEnemy,updateShots,updateHazards,drawPixel,drawShot,startMove,hitCheck,hit,ko,shoot,hazard,gainEnergy,special,bossFinish,kitOf,resetActor,warnDur,fxAt,tweenTo,tokens,walkTo,ghostBurst,createC,standFront,shotOrigin,hittableZ,midY};
+  G.combat={CFG,assistTotal,assistK,updatePlayer,updateAlly,updateEnemy,updateShots,updateHazards,drawPixel,drawShot,startMove,hitCheck,hit,ko,shoot,hazard,gainEnergy,special,bossFinish,kitOf,resetActor,settleRush,cancelRush,warnDur,fxAt,tweenTo,tokens,walkTo,ghostBurst,createC,standFront,shotOrigin,hittableZ,midY};
   G.AI={dist:(e,t)=>Math.hypot(e.x-t.x,e.y-t.y),aligned:(e,t,dy=6)=>Math.abs(e.y-t.y)<=dy,approach:(e,t,keep,dt)=>{if(Math.abs(t.x-e.x)>keep)walkTo(e,t.x-Math.sign(t.x-e.x)*keep,t.y,dt,e.speed);},kite:(e,t,keep,dt)=>walkTo(e,t.x-Math.sign(t.x-e.x)*keep,t.y,dt,e.speed),
     pickMove(e,c){const t=targetOf(e);if(!t)return null;if(e.pattern)return this.next(e);const ids=(e.moves || []).filter(id=>{const m=getMove(id),r=m && (m.melee!==false?ckReach(m.range):m.range);return m && !(e.moveCd[id]>0) && (!r || Math.abs(e.x-t.x)>=r[0] && Math.abs(e.x-t.x)<=r[1]) && (!m.cond || m.cond(e,t,c));});let n=ids.reduce((s,id)=>s+(getMove(id).weight==null?1:getMove(id).weight),0)*Math.random();return ids.find(id=>(n-=getMove(id).weight==null?1:getMove(id).weight)<=0) || null;},
     next(e){if(!e.pattern || !e.pattern.length)return null;return e.pattern[e.patternI++%e.pattern.length];},
-    tele(e,id,o={}){if(!getMove(id))return null;const m=normMove(id),t=o.target || targetOf(e),d=Math.max(f(1),warnDur(m,ctx())-(e.mem.startupMinus || 0));if(t)e.facing=t.x>e.x?1:-1;let path=m.warn&&m.warn.path?m.warn.path(e,ctx()):null;if(!path && m.warn && m.warn.tier==='W4')path=[[e.x,e.y],[e.x+e.facing*(m.dash?m.dash.dist:160),t?t.y:e.y]];e._telePath=path;e.tele={move:id,t:0,dur:d,tier:m.warn&&m.warn.tier || 'W1',target:t,path,elapsed:Math.min(m.active[0],m.warn&&m.warn.dur!=null?m.warn.dur:m.active[0])};state(e,'windup');play(e,m.body || 'cmd');e.moveCd[id]=m.cd || 0;
+    tele(e,id,o={}){if(!getMove(id))return null;const m=normMove(id),t=o.target || targetOf(e),d=Math.max(f(1),warnDur(m,ctx())-(e.mem.startupMinus || 0));if(t)e.facing=t.x>e.x?1:-1;let path=m.warn&&m.warn.path?m.warn.path(e,ctx()):null;if(!path && m.warn && m.warn.tier==='W4')path=[[e.x,e.y],[e.x+e.facing*(m.dash?m.dash.dist:160),t?t.y:e.y]];path=dashPath(m,path);e._telePath=path;e.tele={move:id,t:0,dur:d,tier:m.warn&&m.warn.tier || 'W1',target:t,path,elapsed:Math.min(m.active[0],m.warn&&m.warn.dur!=null?m.warn.dur:m.active[0])};state(e,'windup');play(e,m.body || 'cmd');e.moveCd[id]=m.cd || 0;
       const tier=e.tele.tier;if(tier==='W1'||tier==='W2')e.emote={text:tier==='W1'?'!':'!!',t:d};if(tier==='W5'){e.outline='#c040ff';if(m.guard!=='parryOnly')m.guard='none';snd('menacing');}if(tier==='W6' && G.uifx)background(G.uifx.cutin({enemy:true,portrait:m.warn.portrait || e.cid,title:m.warn.title,dur:.6}));if(m.hazard && m.hazardAt===0){makeMoveHazards(e,m);e._preHazard=true;}return e.tele;},
     use:(e,id,o)=>o && o.skipWarn===false?G.AI.tele(e,id):startMove(e,id),threat:(e,p)=>p.atk && hitCheck(p,p.atk,e)?Math.max(0,p.atk.active[0]-p.atkT):-1,
     dash:(e,pts,speed,o={})=>new Promise(res=>beginDash(e,pts,speed,normMove(o.move || {dmg:0}),res)),blink(e,x,y,o={}){ghostBurst(e,3);e.x=x;e.y=y;fxAt('glint',{x,y:y-20,size:10},e,.2);word(o.word,e);},hide:(e,on,o={})=>{e.untargetable=on;e.hidden=on;e.alpha=on?o.alpha || 0:1;},summon:(spec,o)=>ctx() && ctx().spawn(Object.assign({},spec,o)),hazard,shoot,

@@ -85,8 +85,15 @@
       "seamless": false,
       "desc": "DIO shattering: 0 cracks, 1 split, 2 shards fly, 3 dust (canvas 52x64, feet aligned)"
     },
-    "portrait": {
+    "sit_back": {
       "row": 10,
+      "frames": 1,
+      "fps": 1,
+      "kind": "static",
+      "desc": "第6章到终章补帧：dio.sit_back"
+    },
+    "portrait": {
+      "row": 11,
       "frames": 2,
       "fps": 8,
       "kind": "loop",
@@ -94,7 +101,7 @@
       "desc": "DIO smug bust (0 smirk, 1 talking w/ fangs)"
     },
     "portrait_rage": {
-      "row": 11,
+      "row": 12,
       "frames": 2,
       "fps": 8,
       "kind": "loop",
@@ -126,7 +133,7 @@
   "variants": {},
   "source": {
     "project": "jojo",
-    "call": "game.art_later_existing / game.orig（import assets; assets.load_all(); from engine import sprite; sprite.get('dio.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'dio.<动作>', x, y, frame=i, flip=False)"
+    "call": "game.art_c6fin_actions / game.art_later_existing / game.orig（import assets; assets.load_all(); from engine import sprite; sprite.get('dio.<动作>').frames）；原引擎绘制：engine.sprite.draw(img, 'dio.<动作>', x, y, frame=i, flip=False)"
   },
-  "notes": "DIO，DIO 阵营·人物。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle/walk/jump/throw/pose/laugh/hurt/coffin_rise/crumble/portrait/portrait_rage；脚点(自定义点)=punch。coffin_rise：黑色剪影 + 红眼 + 脖子星形胎记的微光。portrait* 动作是说话头像（32×32 半身）：图集里放在最后几行（按底部中点对齐，只是为了同格对齐，不代表脚点），同时逐帧导出到“头像”文件夹，见 expressions；多数 frame0=闭嘴/静态、frame1=说话/加强（具体见各自 desc），原引擎对话框打字时以 8fps 来回切换。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
+  "notes": "DIO，DIO 阵营·人物。朝向：所有帧默认朝右；朝左请水平翻转（以 pivot 的 x 为轴，见 README）。锚点语义（各动作按自己的锚点对齐到 pivot）：脚点(底部中点)=idle/walk/jump/throw/pose/laugh/hurt/coffin_rise/crumble/portrait/portrait_rage；脚点(自定义点)=punch/sit_back。coffin_rise：黑色剪影 + 红眼 + 脖子星形胎记的微光。portrait* 动作是说话头像（32×32 半身）：图集里放在最后几行（按底部中点对齐，只是为了同格对齐，不代表脚点），同时逐帧导出到“头像”文件夹，见 expressions；多数 frame0=闭嘴/静态、frame1=说话/加强（具体见各自 desc），原引擎对话框打字时以 8fps 来回切换。fps 取自源码 define(fps=…) 的建议播放速度（没给的用 6），场景里实际播放速率不统一；kind（loop/oneshot/static）是按帧描述和场景用法人工标注的。"
 }

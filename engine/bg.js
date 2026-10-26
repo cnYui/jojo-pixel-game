@@ -45,7 +45,16 @@
     if (!im) return;
     const period = L.period || im.width;
     const sp = st && st.state && st.state.speed != null ? st.state.speed : 1;
-    const o = offs(camX, L.k, t * sp, L.vx, period);
+    // 2026-10-18：state.speed 按“累加走过的距离”算（原来是 t × speed，中途变速时整条路面会一下跳回去 / 往前窜一大段）。
+    //   会自己滚的图层（vx）都记上次的时刻和累计时间（从第一帧就开始记，变速那一下才不会跳）；时间倒退（换图、回放）或隔了很久（暂停）就从 t × speed 重新起算
+    let tt = t * sp;
+    if (L.vx) {
+      const m = L._spd || (L._spd = { t, acc: t * sp });
+      const dtt = t - m.t;
+      m.acc = dtt >= 0 && dtt < .5 ? m.acc + dtt * sp : t * sp;
+      m.t = t; tt = m.acc;
+    }
+    const o = offs(camX, L.k, tt, L.vx, period);
     const sh = Math.min(L.h || im.height, im.height);
     wrapDraw(g, im, o, period, L.y || 0, sh);
   };
