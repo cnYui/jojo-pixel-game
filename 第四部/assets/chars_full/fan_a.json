@@ -1,0 +1,33 @@
+{
+ "id": "fan_a",
+ "name": "女生",
+ "image": "fan_a.png",
+ "cell": [
+  48,
+  48
+ ],
+ "pivot": [
+  24,
+  48
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  },
+  "cheer": {
+   "row": 2,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
+  }
+ }
+}

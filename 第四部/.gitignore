@@ -1,0 +1,4 @@
+# 第四部：预览拼图、测试输出都能重新生成，不进仓库
+assets/preview/
+tools/dev/_out/
+__pycache__/

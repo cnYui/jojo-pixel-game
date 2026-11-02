@@ -1,0 +1,1408 @@
+{
+ "chars": {
+  "josuke": {
+   "name": "东方仗助",
+   "image": "chars/josuke",
+   "cell": [
+    44,
+    36
+   ],
+   "pivot": [
+    19,
+    34
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 2,
+     "frames": 4,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "point": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 4,
+     "frames": 2,
+     "fps": 3,
+     "kind": "oneshot"
+    },
+    "shock": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "dodge": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "guard": {
+     "row": 8,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "kick": {
+     "row": 9,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "sit": {
+     "row": 10,
+     "frames": 2,
+     "fps": 1.5,
+     "kind": "loop"
+    },
+    "down": {
+     "row": 11,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/josuke/normal_0",
+     "heads/josuke/normal_1"
+    ],
+    "rage": [
+     "heads/josuke/rage_0",
+     "heads/josuke/rage_1"
+    ],
+    "smile": [
+     "heads/josuke/smile_0",
+     "heads/josuke/smile_1"
+    ],
+    "shock": [
+     "heads/josuke/shock_0",
+     "heads/josuke/shock_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "cmd": "point",
+    "cmd2": "point",
+    "cmd_hold": "point",
+    "guard": "guard",
+    "dodge": "dodge",
+    "down": "down",
+    "hurt": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "talk": "idle",
+    "getup": "hurt",
+    "kick": "kick",
+    "sit": "sit",
+    "run": "run"
+   },
+   "top": 30,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "jotaro4": {
+   "name": "空条承太郎",
+   "image": "chars/jotaro4",
+   "cell": [
+    44,
+    36
+   ],
+   "pivot": [
+    19,
+    34
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 2,
+     "frames": 4,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "point": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 4,
+     "frames": 2,
+     "fps": 3,
+     "kind": "oneshot"
+    },
+    "shock": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "dodge": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "guard": {
+     "row": 8,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "kick": {
+     "row": 9,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "down": {
+     "row": 10,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/jotaro4/normal_0",
+     "heads/jotaro4/normal_1"
+    ],
+    "rage": [
+     "heads/jotaro4/rage_0",
+     "heads/jotaro4/rage_1"
+    ],
+    "smile": [
+     "heads/jotaro4/smile_0",
+     "heads/jotaro4/smile_1"
+    ],
+    "shock": [
+     "heads/jotaro4/shock_0",
+     "heads/jotaro4/shock_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "cmd": "point",
+    "cmd2": "point",
+    "cmd_hold": "point",
+    "guard": "guard",
+    "dodge": "dodge",
+    "down": "down",
+    "hurt": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "talk": "idle",
+    "getup": "hurt",
+    "kick": "kick",
+    "run": "run"
+   },
+   "top": 29,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "crazyd": {
+   "name": "疯狂钻石",
+   "image": "chars/crazyd",
+   "cell": [
+    73,
+    43
+   ],
+   "pivot": [
+    19,
+    40
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "rush": {
+     "row": 2,
+     "frames": 2,
+     "fps": 16,
+     "kind": "loop"
+    },
+    "block": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "pose": {
+     "row": 4,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "finger": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "fist": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "reach": {
+     "row": 8,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "upper": {
+     "row": 9,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/crazyd/normal_0",
+     "heads/crazyd/normal_1"
+    ]
+   },
+   "headAlias": {
+    "smile": "normal",
+    "rage": "normal",
+    "shock": "normal"
+   },
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "punch": "punch",
+    "punch2": "punch",
+    "punch_heavy": "upper",
+    "rush": "rush",
+    "block": "block",
+    "hurt": "hurt",
+    "special": "rush",
+    "finger": "finger"
+   },
+   "top": 35,
+   "bodyW": 6,
+   "kind": "stand"
+  },
+  "koichi": {
+   "name": "广濑康一",
+   "image": "chars/koichi",
+   "cell": [
+    20,
+    30
+   ],
+   "pivot": [
+    10,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "bow": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/koichi/normal_0",
+     "heads/koichi/normal_1"
+    ],
+    "smile": [
+     "heads/koichi/smile_0",
+     "heads/koichi/smile_1"
+    ],
+    "shock": [
+     "heads/koichi/shock_0",
+     "heads/koichi/shock_1"
+    ],
+    "rage": [
+     "heads/koichi/rage_0",
+     "heads/koichi/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "bow",
+    "hurt": "bow",
+    "run": "walk"
+   },
+   "top": 26,
+   "bodyW": 3,
+   "kind": "char"
+  },
+  "thug_a": {
+   "name": "学长A",
+   "image": "chars/thug_a",
+   "cell": [
+    32,
+    32
+   ],
+   "pivot": [
+    16,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "dodge": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "guard": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/thug_a/normal_0",
+     "heads/thug_a/normal_1"
+    ],
+    "smile": [
+     "heads/thug_a/smile_0",
+     "heads/thug_a/smile_1"
+    ],
+    "shock": [
+     "heads/thug_a/shock_0",
+     "heads/thug_a/shock_1"
+    ],
+    "rage": [
+     "heads/thug_a/rage_0",
+     "heads/thug_a/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "hurt",
+    "run": "walk"
+   },
+   "top": 26,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "thug_b": {
+   "name": "学长B",
+   "image": "chars/thug_b",
+   "cell": [
+    32,
+    32
+   ],
+   "pivot": [
+    16,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "dodge": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "guard": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/thug_b/normal_0",
+     "heads/thug_b/normal_1"
+    ],
+    "smile": [
+     "heads/thug_b/smile_0",
+     "heads/thug_b/smile_1"
+    ],
+    "shock": [
+     "heads/thug_b/shock_0",
+     "heads/thug_b/shock_1"
+    ],
+    "rage": [
+     "heads/thug_b/rage_0",
+     "heads/thug_b/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "hurt",
+    "run": "walk"
+   },
+   "top": 26,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "tomoko": {
+   "name": "东方朋子",
+   "image": "chars/tomoko",
+   "cell": [
+    43,
+    30
+   ],
+   "pivot": [
+    25,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "wave": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "faint": {
+     "row": 3,
+     "frames": 2,
+     "fps": 2,
+     "kind": "oneshot"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/tomoko/normal_0",
+     "heads/tomoko/normal_1"
+    ],
+    "smile": [
+     "heads/tomoko/smile_0",
+     "heads/tomoko/smile_1"
+    ],
+    "shock": [
+     "heads/tomoko/shock_0",
+     "heads/tomoko/shock_1"
+    ],
+    "rage": [
+     "heads/tomoko/rage_0",
+     "heads/tomoko/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "wave",
+    "special": "wave",
+    "run": "walk"
+   },
+   "top": 25,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "ryohei": {
+   "name": "东方良平",
+   "image": "chars/ryohei",
+   "cell": [
+    28,
+    32
+   ],
+   "pivot": [
+    14,
+    32
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "shock": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "read": {
+     "row": 3,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/ryohei/normal_0",
+     "heads/ryohei/normal_1"
+    ],
+    "smile": [
+     "heads/ryohei/smile_0",
+     "heads/ryohei/smile_1"
+    ],
+    "shock": [
+     "heads/ryohei/shock_0",
+     "heads/ryohei/shock_1"
+    ],
+    "rage": [
+     "heads/ryohei/rage_0",
+     "heads/ryohei/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "hurt": "shock",
+    "run": "walk"
+   },
+   "top": 27,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "angelo": {
+   "name": "片桐安十郎（送奶工）",
+   "image": "chars/angelo",
+   "cell": [
+    36,
+    38
+   ],
+   "pivot": [
+    18,
+    28
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "talk": {
+     "row": 4,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/angelo/normal_0",
+     "heads/angelo/normal_1"
+    ],
+    "smile": [
+     "heads/angelo/smile_0",
+     "heads/angelo/smile_1"
+    ],
+    "shock": [
+     "heads/angelo/shock_0",
+     "heads/angelo/shock_1"
+    ],
+    "rage": [
+     "heads/angelo/rage_0",
+     "heads/angelo/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "shock": "hurt",
+    "run": {
+     "a": "walk",
+     "f": 1.6
+    }
+   },
+   "top": 27,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "robber": {
+   "name": "劫匪",
+   "image": "chars/robber",
+   "cell": [
+    36,
+    38
+   ],
+   "pivot": [
+    18,
+    28
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "attack": {
+     "row": 4,
+     "frames": 2,
+     "fps": 6,
+     "kind": "oneshot"
+    },
+    "talk": {
+     "row": 5,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/robber/normal_0",
+     "heads/robber/normal_1"
+    ],
+    "smile": [
+     "heads/robber/smile_0",
+     "heads/robber/smile_1"
+    ],
+    "shock": [
+     "heads/robber/shock_0",
+     "heads/robber/shock_1"
+    ],
+    "rage": [
+     "heads/robber/rage_0",
+     "heads/robber/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "shock": "hurt",
+    "run": "walk"
+   },
+   "top": 27,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "clerk": {
+   "name": "店员",
+   "image": "chars/clerk",
+   "cell": [
+    20,
+    30
+   ],
+   "pivot": [
+    10,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/clerk/normal_0",
+     "heads/clerk/normal_1"
+    ],
+    "smile": [
+     "heads/clerk/smile_0",
+     "heads/clerk/smile_1"
+    ],
+    "shock": [
+     "heads/clerk/shock_0",
+     "heads/clerk/shock_1"
+    ],
+    "rage": [
+     "heads/clerk/rage_0",
+     "heads/clerk/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "idle",
+    "hurt": "idle",
+    "down": "idle"
+   },
+   "top": 26,
+   "bodyW": 3,
+   "kind": "char"
+  },
+  "fan_a": {
+   "name": "女生",
+   "image": "chars/fan_a",
+   "cell": [
+    30,
+    30
+   ],
+   "pivot": [
+    15,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "cheer": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/fan_a/normal_0",
+     "heads/fan_a/normal_1"
+    ],
+    "smile": [
+     "heads/fan_a/smile_0",
+     "heads/fan_a/smile_1"
+    ],
+    "shock": [
+     "heads/fan_a/shock_0",
+     "heads/fan_a/shock_1"
+    ],
+    "rage": [
+     "heads/fan_a/rage_0",
+     "heads/fan_a/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle"
+   },
+   "top": 25,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "fan_b": {
+   "name": "女生",
+   "image": "chars/fan_b",
+   "cell": [
+    30,
+    30
+   ],
+   "pivot": [
+    15,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "cheer": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/fan_b/normal_0",
+     "heads/fan_b/normal_1"
+    ],
+    "smile": [
+     "heads/fan_b/smile_0",
+     "heads/fan_b/smile_1"
+    ],
+    "shock": [
+     "heads/fan_b/shock_0",
+     "heads/fan_b/shock_1"
+    ],
+    "rage": [
+     "heads/fan_b/rage_0",
+     "heads/fan_b/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle"
+   },
+   "top": 25,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "flirt": {
+   "name": "搭讪的男人",
+   "image": "chars/flirt",
+   "cell": [
+    36,
+    38
+   ],
+   "pivot": [
+    18,
+    28
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/flirt/normal_0",
+     "heads/flirt/normal_1"
+    ],
+    "smile": [
+     "heads/flirt/smile_0",
+     "heads/flirt/smile_1"
+    ],
+    "shock": [
+     "heads/flirt/shock_0",
+     "heads/flirt/shock_1"
+    ],
+    "rage": [
+     "heads/flirt/rage_0",
+     "heads/flirt/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "hurt",
+    "run": "walk"
+   },
+   "top": 26,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "kid": {
+   "name": "小学生",
+   "image": "chars/kid",
+   "cell": [
+    28,
+    29
+   ],
+   "pivot": [
+    14,
+    19
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 2,
+     "frames": 4,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/kid/normal_0",
+     "heads/kid/normal_1"
+    ],
+    "smile": [
+     "heads/kid/smile_0",
+     "heads/kid/smile_1"
+    ],
+    "shock": [
+     "heads/kid/shock_0",
+     "heads/kid/shock_1"
+    ],
+    "rage": [
+     "heads/kid/rage_0",
+     "heads/kid/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "hurt"
+   },
+   "top": 18,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "aqua": {
+   "name": "水中项链",
+   "image": "chars/aqua",
+   "cell": [
+    34,
+    27
+   ],
+   "pivot": [
+    17,
+    25
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "lunge": {
+     "row": 1,
+     "frames": 2,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/aqua/normal_0",
+     "heads/aqua/normal_1"
+    ]
+   },
+   "headAlias": {
+    "smile": "normal",
+    "rage": "normal",
+    "shock": "normal"
+   },
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "walk": "idle",
+    "run": "lunge",
+    "hurt": "hurt",
+    "down": "hurt",
+    "shock": "hurt",
+    "cmd": "lunge",
+    "punch": "lunge",
+    "special": "lunge",
+    "guard": "idle",
+    "dodge": "lunge"
+   },
+   "top": 20,
+   "bodyW": 4,
+   "kind": "stand"
+  }
+ },
+ "heroes": {
+  "josuke": {
+   "cid": "josuke",
+   "cn": "东方仗助",
+   "short": "仗助",
+   "rn": "HIGASHIKATA JOSUKE",
+   "stand": "crazyd",
+   "burst": [
+    "#6a1a4a",
+    "#a8306e",
+    "#e060a0"
+   ],
+   "panel": "#2a0a20",
+   "accent": "#ff8ac0",
+   "nameColor": "#b04a8a",
+   "blipHz": 480,
+   "grunt": "grunt_jotaro"
+  },
+  "jotaro4": {
+   "cid": "jotaro4",
+   "cn": "空条承太郎",
+   "short": "承太郎",
+   "rn": "KUJO JOTARO",
+   "stand": "starplat",
+   "burst": [
+    "#241c6a",
+    "#3e32a8",
+    "#5a4ad0"
+   ],
+   "panel": "#0e0a2c",
+   "accent": "#ffe040",
+   "nameColor": "#5a6ab0",
+   "blipHz": 440,
+   "grunt": "grunt_jotaro"
+  },
+  "koichi": {
+   "cid": "koichi",
+   "cn": "广濑康一",
+   "short": "康一",
+   "rn": "HIROSE KOICHI",
+   "stand": null,
+   "burst": [
+    "#2a5a1a",
+    "#4a8a2a",
+    "#9be070"
+   ],
+   "panel": "#0e200a",
+   "accent": "#9be070",
+   "nameColor": "#5a9a3a",
+   "blipHz": 660,
+   "grunt": null
+  }
+ },
+ "speakers": {
+  "tomoko": {
+   "short": "朋子",
+   "nameColor": "#c05a7a",
+   "blipHz": 720
+  },
+  "ryohei": {
+   "short": "良平",
+   "nameColor": "#4a6aa0",
+   "blipHz": 400
+  },
+  "angelo": {
+   "short": "安杰罗",
+   "nameColor": "#5a8a9a",
+   "blipHz": 380
+  },
+  "milkman": {
+   "short": "送奶工",
+   "nameColor": "#6a7a8a",
+   "blipHz": 380
+  },
+  "aqua": {
+   "short": "水中项链",
+   "nameColor": "#3a9ac8",
+   "blipHz": 520
+  },
+  "thug_a": {
+   "short": "学长A",
+   "nameColor": "#8a5a3a",
+   "blipHz": 420
+  },
+  "thug_b": {
+   "short": "学长B",
+   "nameColor": "#6a5a7a",
+   "blipHz": 460
+  },
+  "robber": {
+   "short": "劫匪",
+   "nameColor": "#7a6a3a",
+   "blipHz": 420
+  },
+  "clerk": {
+   "short": "店员",
+   "nameColor": "#3a8a6a",
+   "blipHz": 760
+  },
+  "fan_a": {
+   "short": "女生",
+   "nameColor": "#d0608a",
+   "blipHz": 820
+  },
+  "fan_b": {
+   "short": "女生",
+   "nameColor": "#a060c0",
+   "blipHz": 860
+  },
+  "flirt": {
+   "short": "搭讪的男人",
+   "nameColor": "#7a7a6a",
+   "blipHz": 500
+  },
+  "granny": {
+   "short": "老奶奶",
+   "nameColor": "#9a7a5a",
+   "blipHz": 640
+  },
+  "kid": {
+   "short": "小学生",
+   "nameColor": "#d08a3a",
+   "blipHz": 900
+  },
+  "crazyd": {
+   "short": "疯狂钻石",
+   "nameColor": "#d0609a",
+   "blipHz": 480
+  }
+ },
+ "stands": {
+  "crazyd": {
+   "cn": "疯狂钻石",
+   "en": "CRAZY DIAMOND",
+   "owner": "josuke",
+   "aura": "#ff8ac0",
+   "card": "#ffb0d8",
+   "ghost": "#ffd0e8",
+   "impact": "pink",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -6,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "aqua": {
+   "cn": "水中项链",
+   "en": "AQUA NECKLACE",
+   "owner": "angelo",
+   "aura": "#60c8f0",
+   "card": "#a0e0ff",
+   "ghost": "#c0f0ff",
+   "impact": "blue",
+   "kind": "humanoid",
+   "idle": {
+    "dx": 0,
+    "z": 8
+   },
+   "link": null,
+   "summonSfx": null,
+   "fist": false
+  }
+ },
+ "ck": 0.625
+}

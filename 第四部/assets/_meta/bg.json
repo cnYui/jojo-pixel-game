@@ -1,0 +1,1112 @@
+{
+ "morioh_road": {
+  "pack": "prologue",
+  "w": 960,
+  "ground": 150,
+  "walk": [
+   142,
+   172
+  ],
+  "anchors": {
+   "pot": [
+    332,
+    148
+   ],
+   "window": [
+    332,
+    104
+   ],
+   "vending": [
+    531,
+    148
+   ],
+   "busstop": [
+    408,
+    146
+   ],
+   "sakura": [
+    808,
+    140
+   ],
+   "fans": [
+    600,
+    152
+   ],
+   "thug": [
+    430,
+    156
+   ],
+   "exit_x": 930,
+   "walk_x": [
+    8,
+    952
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/morioh_road/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/morioh_road/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "petals",
+    "n": 24,
+    "colors": [
+     "#f4a0be",
+     "#ffd6e4"
+    ],
+    "seed": 41,
+    "y0": -6,
+    "y1": 184,
+    "vx": -12.7,
+    "vy": 34.5,
+    "per": [
+     4,
+     7
+    ],
+    "x0": [
+     -20,
+     380
+    ],
+    "drift": 70,
+    "sway": 6,
+    "swayW": 2.3,
+    "k": 0.2,
+    "wrapX": 40
+   },
+   {
+    "type": "tint",
+    "color": "#ff8a3a",
+    "alpha": 0.16,
+    "key": "pm"
+   }
+  ],
+  "fg": []
+ },
+ "budou_gate": {
+  "pack": "prologue",
+  "w": 640,
+  "ground": 150,
+  "walk": [
+   142,
+   174
+  ],
+  "anchors": {
+   "gate": [
+    286,
+    354
+   ],
+   "plaque": [
+    276,
+    120
+   ],
+   "lean": [
+    262,
+    150
+   ],
+   "door_x": 320,
+   "walk_x": [
+    8,
+    632
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/budou_gate/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/budou_gate/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "petals",
+    "n": 24,
+    "colors": [
+     "#f4a0be",
+     "#ffd6e4"
+    ],
+    "seed": 43,
+    "y0": -6,
+    "y1": 184,
+    "vx": -12.7,
+    "vy": 34.5,
+    "per": [
+     4,
+     7
+    ],
+    "x0": [
+     -20,
+     380
+    ],
+    "drift": 70,
+    "sway": 6,
+    "swayW": 2.3,
+    "k": 0.2,
+    "wrapX": 40
+   }
+  ],
+  "fg": []
+ },
+ "supermarket": {
+  "pack": "prologue",
+  "w": 640,
+  "ground": 150,
+  "walk": [
+   140,
+   176
+  ],
+  "anchors": {
+   "soy": [
+    130,
+    150
+   ],
+   "snacks": [
+    288,
+    150
+   ],
+   "detergent": [
+    394,
+    150
+   ],
+   "tofu": [
+    474,
+    150
+   ],
+   "sink": [
+    535,
+    146
+   ],
+   "register": [
+    600,
+    150
+   ],
+   "entrance": [
+    32,
+    150
+   ],
+   "walk_x": [
+    12,
+    628
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/supermarket/room",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": []
+ },
+ "higashikata_eve": {
+  "pack": "prologue",
+  "w": 640,
+  "ground": 150,
+  "walk": [
+   144,
+   174
+  ],
+  "anchors": {
+   "door": [
+    376,
+    146
+   ],
+   "mailbox": [
+    292,
+    148
+   ],
+   "umbrella": [
+    400,
+    148
+   ],
+   "window": [
+    219,
+    104
+   ],
+   "puddle": [
+    250,
+    168
+   ],
+   "lamp": [
+    474,
+    140
+   ],
+   "crossroad": [
+    600,
+    152
+   ],
+   "gate": [
+    317,
+    148
+   ],
+   "walk_x": [
+    8,
+    632
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/higashikata_eve/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/higashikata_eve/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "tint",
+    "color": "#ff8040",
+    "alpha": 0.12
+   }
+  ],
+  "fg": []
+ },
+ "higashikata_night": {
+  "pack": "prologue",
+  "w": 640,
+  "ground": 150,
+  "walk": [
+   144,
+   174
+  ],
+  "anchors": {
+   "door": [
+    376,
+    146
+   ],
+   "mailbox": [
+    292,
+    148
+   ],
+   "umbrella": [
+    400,
+    148
+   ],
+   "window": [
+    219,
+    104
+   ],
+   "puddle": [
+    250,
+    168
+   ],
+   "lamp": [
+    474,
+    140
+   ],
+   "crossroad": [
+    600,
+    152
+   ],
+   "gate": [
+    317,
+    148
+   ],
+   "walk_x": [
+    8,
+    632
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/higashikata_night/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "stars",
+    "list": [
+     [
+      122,
+      65,
+      1.0,
+      0.0,
+      true,
+      "#ffffff"
+     ],
+     [
+      174,
+      20,
+      1.6,
+      0.7,
+      false,
+      "#ffffff"
+     ],
+     [
+      197,
+      12,
+      2.2,
+      1.4,
+      false,
+      "#ffffff"
+     ],
+     [
+      87,
+      66,
+      1.0,
+      2.0999999999999996,
+      false,
+      "#ffffff"
+     ],
+     [
+      306,
+      31,
+      1.6,
+      2.8,
+      false,
+      "#ffffff"
+     ],
+     [
+      58,
+      34,
+      2.2,
+      3.5,
+      false,
+      "#ffffff"
+     ],
+     [
+      252,
+      11,
+      1.0,
+      4.199999999999999,
+      false,
+      "#ffffff"
+     ],
+     [
+      109,
+      19,
+      1.6,
+      4.8999999999999995,
+      true,
+      "#ffffff"
+     ],
+     [
+      94,
+      57,
+      2.2,
+      5.6,
+      false,
+      "#ffffff"
+     ],
+     [
+      311,
+      31,
+      1.0,
+      6.3,
+      false,
+      "#ffffff"
+     ],
+     [
+      313,
+      48,
+      1.6,
+      7.0,
+      false,
+      "#ffffff"
+     ],
+     [
+      164,
+      69,
+      2.2,
+      7.699999999999999,
+      false,
+      "#ffffff"
+     ],
+     [
+      44,
+      51,
+      1.0,
+      8.399999999999999,
+      false,
+      "#ffffff"
+     ],
+     [
+      294,
+      34,
+      1.6,
+      9.1,
+      false,
+      "#ffffff"
+     ],
+     [
+      126,
+      22,
+      2.2,
+      9.799999999999999,
+      true,
+      "#ffffff"
+     ],
+     [
+      52,
+      13,
+      1.0,
+      10.5,
+      false,
+      "#ffffff"
+     ],
+     [
+      0,
+      45,
+      1.6,
+      11.2,
+      false,
+      "#ffffff"
+     ],
+     [
+      183,
+      66,
+      2.2,
+      11.899999999999999,
+      false,
+      "#ffffff"
+     ],
+     [
+      21,
+      5,
+      1.0,
+      12.6,
+      false,
+      "#ffffff"
+     ],
+     [
+      149,
+      20,
+      1.6,
+      13.299999999999999,
+      false,
+      "#ffffff"
+     ],
+     [
+      201,
+      9,
+      2.2,
+      14.0,
+      false,
+      "#ffffff"
+     ],
+     [
+      56,
+      62,
+      1.0,
+      14.7,
+      true,
+      "#ffffff"
+     ],
+     [
+      194,
+      4,
+      1.6,
+      15.399999999999999,
+      false,
+      "#ffffff"
+     ],
+     [
+      174,
+      8,
+      2.2,
+      16.099999999999998,
+      false,
+      "#ffffff"
+     ],
+     [
+      30,
+      40,
+      1.0,
+      16.799999999999997,
+      false,
+      "#ffffff"
+     ],
+     [
+      136,
+      55,
+      1.6,
+      17.5,
+      false,
+      "#ffffff"
+     ],
+     [
+      49,
+      31,
+      2.2,
+      18.2,
+      false,
+      "#ffffff"
+     ],
+     [
+      168,
+      35,
+      1.0,
+      18.9,
+      false,
+      "#ffffff"
+     ],
+     [
+      243,
+      6,
+      1.6,
+      19.599999999999998,
+      true,
+      "#ffffff"
+     ],
+     [
+      161,
+      42,
+      2.2,
+      20.299999999999997,
+      false,
+      "#ffffff"
+     ],
+     [
+      288,
+      23,
+      1.0,
+      21.0,
+      false,
+      "#ffffff"
+     ],
+     [
+      126,
+      22,
+      1.6,
+      21.7,
+      false,
+      "#ffffff"
+     ],
+     [
+      3,
+      11,
+      2.2,
+      22.4,
+      false,
+      "#ffffff"
+     ],
+     [
+      207,
+      34,
+      1.0,
+      23.099999999999998,
+      false,
+      "#ffffff"
+     ],
+     [
+      98,
+      66,
+      1.6,
+      23.799999999999997,
+      false,
+      "#ffffff"
+     ],
+     [
+      95,
+      15,
+      2.2,
+      24.5,
+      true,
+      "#ffffff"
+     ],
+     [
+      255,
+      69,
+      1.0,
+      25.2,
+      false,
+      "#ffffff"
+     ],
+     [
+      50,
+      59,
+      1.6,
+      25.9,
+      false,
+      "#ffffff"
+     ],
+     [
+      145,
+      7,
+      2.2,
+      26.599999999999998,
+      false,
+      "#ffffff"
+     ],
+     [
+      240,
+      31,
+      1.0,
+      27.299999999999997,
+      false,
+      "#ffffff"
+     ]
+    ],
+    "k": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/higashikata_night/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "glow",
+    "image": "bg/higashikata_night/glow",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "flicker": 0.08
+   }
+  ],
+  "fg": []
+ },
+ "higashikata_rain": {
+  "pack": "prologue",
+  "w": 640,
+  "ground": 150,
+  "walk": [
+   144,
+   174
+  ],
+  "anchors": {
+   "door": [
+    376,
+    146
+   ],
+   "mailbox": [
+    292,
+    148
+   ],
+   "umbrella": [
+    400,
+    148
+   ],
+   "window": [
+    219,
+    104
+   ],
+   "puddle": [
+    250,
+    168
+   ],
+   "lamp": [
+    474,
+    140
+   ],
+   "crossroad": [
+    600,
+    152
+   ],
+   "gate": [
+    317,
+    148
+   ],
+   "walk_x": [
+    8,
+    632
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/higashikata_rain/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/higashikata_rain/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "tint",
+    "color": "#203050",
+    "alpha": 0.12
+   }
+  ],
+  "fg": [
+   {
+    "type": "strip",
+    "image": "bg/higashikata_rain/rain",
+    "n": 10,
+    "fps": 14,
+    "screen": true,
+    "x": 0,
+    "y": 0,
+    "w": 320,
+    "h": 180,
+    "alpha": 0.8,
+    "key": "rain"
+   },
+   {
+    "type": "strip",
+    "image": "bg/higashikata_rain/splash",
+    "n": 6,
+    "fps": 12,
+    "screen": true,
+    "x": 0,
+    "y": 142,
+    "w": 320,
+    "h": 34,
+    "key": "rain"
+   }
+  ]
+ },
+ "higashikata_living": {
+  "pack": "prologue",
+  "w": 480,
+  "ground": 150,
+  "walk": [
+   142,
+   174
+  ],
+  "anchors": {
+   "humidifier": [
+    26,
+    150
+   ],
+   "sink": [
+    400,
+    146
+   ],
+   "kettle": [
+    431,
+    84
+   ],
+   "wall": [
+    159,
+    146
+   ],
+   "wallhole": [
+    159,
+    104
+   ],
+   "window": [
+    98,
+    60
+   ],
+   "glovebox": [
+    374,
+    98
+   ],
+   "glove": [
+    380,
+    146
+   ],
+   "sofa": [
+    231,
+    140
+   ],
+   "photo": [
+    229,
+    46
+   ],
+   "walk_x": [
+    10,
+    470
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/higashikata_living/room",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "strip",
+    "image": "bg/higashikata_living/winrain",
+    "n": 8,
+    "fps": 12,
+    "k": 1,
+    "x": 58,
+    "y": 26,
+    "w": 80,
+    "h": 60
+   },
+   {
+    "type": "tint",
+    "color": "#f4f8fc",
+    "alpha": 0.62,
+    "key": "fog"
+   }
+  ],
+  "fg": []
+ },
+ "angelo_rain": {
+  "pack": "prologue",
+  "w": 1280,
+  "ground": 150,
+  "walk": [
+   144,
+   176
+  ],
+  "anchors": {
+   "rock": [
+    1068,
+    150
+   ],
+   "stop": [
+    990,
+    146
+   ],
+   "puddle": [
+    420,
+    172
+   ],
+   "start": [
+    60,
+    160
+   ],
+   "end": [
+    1240,
+    160
+   ],
+   "walk_x": [
+    8,
+    1272
+   ],
+   "booth": [
+    599,
+    146
+   ],
+   "vending": [
+    937,
+    148
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/angelo_rain/far",
+    "k": 0.4,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/angelo_rain/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "tint",
+    "color": "#203050",
+    "alpha": 0.14
+   }
+  ],
+  "fg": [
+   {
+    "type": "strip",
+    "image": "bg/angelo_rain/rain",
+    "n": 10,
+    "fps": 14,
+    "screen": true,
+    "x": 0,
+    "y": 0,
+    "w": 320,
+    "h": 180,
+    "alpha": 0.85,
+    "key": "rain"
+   },
+   {
+    "type": "strip",
+    "image": "bg/angelo_rain/splash",
+    "n": 6,
+    "fps": 12,
+    "screen": true,
+    "x": 0,
+    "y": 142,
+    "w": 320,
+    "h": 34,
+    "key": "rain"
+   }
+  ]
+ },
+ "angelo_after": {
+  "pack": "prologue",
+  "w": 1280,
+  "ground": 150,
+  "walk": [
+   144,
+   176
+  ],
+  "anchors": {
+   "rock": [
+    1068,
+    150
+   ],
+   "stop": [
+    990,
+    146
+   ],
+   "puddle": [
+    420,
+    172
+   ],
+   "start": [
+    60,
+    160
+   ],
+   "end": [
+    1240,
+    160
+   ],
+   "walk_x": [
+    8,
+    1272
+   ],
+   "booth": [
+    599,
+    146
+   ],
+   "vending": [
+    937,
+    148
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/angelo_after/far",
+    "k": 0.4,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/angelo_after/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": []
+ },
+ "morioh_map": {
+  "pack": "prologue",
+  "w": 320,
+  "ground": 170,
+  "walk": [
+   160,
+   170
+  ],
+  "anchors": {
+   "school": [
+    170,
+    70
+   ],
+   "home": [
+    118,
+    126
+   ],
+   "station": [
+    203,
+    62
+   ],
+   "sea": [
+    280,
+    140
+   ],
+   "gate": [
+    170,
+    70
+   ],
+   "market": [
+    96,
+    112
+   ],
+   "rock": [
+    236,
+    120
+   ]
+  },
+  "layers": [
+   {
+    "type": "static",
+    "image": "bg/morioh_map/map"
+   }
+  ],
+  "fg": []
+ },
+ "title_morioh": {
+  "pack": "title",
+  "w": 320,
+  "ground": 170,
+  "walk": [
+   160,
+   176
+  ],
+  "anchors": {},
+  "layers": [
+   {
+    "type": "static",
+    "image": "bg/title_morioh/far"
+   },
+   {
+    "type": "clouds",
+    "clouds": [],
+    "span": 520
+   },
+   {
+    "type": "static",
+    "image": "bg/title_morioh/near"
+   },
+   {
+    "type": "petals",
+    "n": 30,
+    "colors": [
+     "#f0a0a8",
+     "#ffd0b8"
+    ],
+    "seed": 45,
+    "y0": -6,
+    "y1": 184,
+    "vx": -12.7,
+    "vy": 34.5,
+    "per": [
+     4,
+     7
+    ],
+    "x0": [
+     -20,
+     380
+    ],
+    "drift": 70,
+    "sway": 6,
+    "swayW": 2.3,
+    "k": 0,
+    "wrapX": 40
+   }
+  ],
+  "fg": []
+ }
+}

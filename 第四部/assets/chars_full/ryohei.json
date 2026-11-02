@@ -1,0 +1,39 @@
+{
+ "id": "ryohei",
+ "name": "东方良平",
+ "image": "ryohei.png",
+ "cell": [
+  44,
+  50
+ ],
+ "pivot": [
+  22,
+  50
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  },
+  "shock": {
+   "row": 2,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "read": {
+   "row": 3,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  }
+ }
+}
