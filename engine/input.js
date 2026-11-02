@@ -138,6 +138,9 @@
       this.log = {};
       for (const a in holders) holders[a].clear();
       pending.length = 0;
+      // 触屏层自己记着哪些手指按着；这里清空了 holders 却不告诉它，它会以为方向还按着，
+      // 之后滑动只发“变化”不再重发按下，方向盘就失灵。让它也复位（它推回来的 up 落在空 holders 上，无害）
+      if (G.touch && typeof G.touch.reset === 'function') G.touch.reset();
     },
   });
   function record(a, now) {
