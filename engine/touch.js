@@ -35,6 +35,7 @@
     e: root.querySelector('.tc-e'), u: root.querySelector('.tc-u'), swap: $('tc-swap'), pause: $('tc-pause'), full: $('tc-full'),
   };
   const releasers = [];
+  const upHooks = [];       // document 上兜底收到的抬起 / 取消，交给各按钮和方向盘自己认领
 
   // 每个按钮自己记着哪几根手指按着它：方向盘 + 出拳 + 闪避同时按没问题
   [el.j, el.k, el.l, el.e, el.u, el.swap, el.pause].forEach((b) => {
@@ -43,9 +44,19 @@
     b.addEventListener('pointerdown', (e) => {
       e.preventDefault();
       try { b.setPointerCapture(e.pointerId); } catch (err) { /* 合成事件没有对应的指针 */ }
+      // 真机上抬起事件可能丢（iOS 边缘手势、来电、切应用），ids 里会残留已不存在的指针；
+      // 没有任何指针被捕获说明它们都已失效，先清掉，免得之后松手时 ids 还不空、按钮一直按着
+      const had = ids.size > 0;
+      for (const id of ids) {
+        let alive = false;
+        try { alive = b.hasPointerCapture(id); } catch (err) { /* 老浏览器没有这个接口 */ }
+        if (!alive) ids.delete(id);
+      }
+      const was = ids.size > 0;
+      if (had && !was) I.release(a, src);      // 先补发残留的松手，下面的按下才会算成新的一下（hits）
       ids.add(e.pointerId);
       b.classList.add('on');
-      I.press(a, src);
+      if (!was) I.press(a, src);
       buzz();
     });
     const up = (e) => {
@@ -54,6 +65,7 @@
       I.release(a, src);
     };
     ['pointerup', 'pointercancel', 'lostpointercapture'].forEach((n) => b.addEventListener(n, up));
+    upHooks.push((e) => { if (ids.has(e.pointerId)) up(e); });
     releasers.push(() => { if (ids.size) I.release(a, src); ids.clear(); b.classList.remove('on'); });
   });
 
@@ -90,23 +102,40 @@
     padSet(dir);
   }
   el.pad.addEventListener('pointerdown', (e) => {
-    if (padId != null) return;
     e.preventDefault();
+    // 旧手指的抬起事件丢了时 padId 会一直留着：以前这里直接 return，之后的触摸全被忽略、方向永久卡住。
+    // 方向盘只有一根手指在用，所以新按下一律先把旧指针当松手处理，再接管新指针
+    if (padId != null) padUp();
     padId = e.pointerId;
     try { el.pad.setPointerCapture(e.pointerId); } catch (err) { /* 同上 */ }
     el.pad.classList.add('on');
     padMove(e);
   });
   el.pad.addEventListener('pointermove', (e) => { if (e.pointerId === padId) padMove(e); });
-  const padUp = (e) => {
+  function padUp(e) {        // 用 function 声明：上面 pointerdown 里要提前调用
     if (e && e.pointerId !== padId) return;
     padId = null;
     el.pad.classList.remove('on');
     knob.style.transform = '';
     padSet({});
-  };
+  }
   ['pointerup', 'pointercancel', 'lostpointercapture'].forEach((n) => el.pad.addEventListener(n, padUp));
+  upHooks.push((e) => { if (padId != null && e.pointerId === padId) padUp(e); });
   releasers.push(() => padUp());
+
+  // 兜底：指针捕获在部分内置浏览器（微信等）里不可靠，抬起可能没派到方向盘 / 按钮本身，
+  // 在 document 捕获阶段再认领一次（重复收到无害：up / padUp 都会先核对指针编号）
+  ['pointerup', 'pointercancel'].forEach((n) => document.addEventListener(n, (e) => upHooks.forEach((f) => f(e)), true));
+  // 全部松开：切后台、锁屏、来电、控制中心拉下来时，系统通常不会给正在按的手指发抬起
+  let resetting = false;
+  T.reset = () => {
+    if (resetting) return;   // input.js 的 clear 会回调这里；防止将来有人在 releasers 里又调 clear 形成递归
+    resetting = true;
+    try { releasers.forEach((f) => f()); } finally { resetting = false; }
+  };
+  document.addEventListener('visibilitychange', () => { if (document.hidden) T.reset(); });
+  addEventListener('pagehide', () => T.reset());
+  addEventListener('blur', () => T.reset());
 
   // ---------------------------------------------------------------- 按场景显隐（1 = 亮，0.4 / 0.6 = 暗着但还能按，0 = 藏起来、手指能穿过去点到画面）
   const SHOW = {
