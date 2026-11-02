@@ -60,7 +60,8 @@
     const opts = m.options.map(String);
     const pick = (label) => opts.findIndex((o) => o.indexOf(label) >= 0);
     let want = -1;
-    if (m.title === '' && pick('从序章开始') >= 0) {
+    // 标题菜单没有标题：openMenu 把空串存成 null，所以这里不能写 === ''（之前一直没等就进了序章，录像开头看不到标题）
+    if (!m.title && pick('从序章开始') >= 0) {
       if (B.finished) return;                       // 打完了：停在标题
       if (B.titleSeen == null) B.titleSeen = now();
       if (now() - B.titleSeen < (cfg.titleWait || 0)) return;   // 录视频：先让标题画面停几秒

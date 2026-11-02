@@ -646,10 +646,11 @@
       if (this.choiceBox) this.drawChoice(g);
       if (this.noticeBox) this.drawNotice(g);
       if (this.qte && !qHold) this.drawQte(g);
-      if (G.uifx && G.uifx.drawCard) G.uifx.drawCard(g);
     },
     drawTop(g) {
       g.imageSmoothingEnabled = false;
+      // 篇章卡画在黑幕上面：开章时 playFrom 先把 fadeA 置 1，画在 draw() 里会被黑幕整张盖住，开头只剩三秒黑屏
+      if (G.uifx && G.uifx.drawCard) G.uifx.drawCard(g);
       if (this.narr && this.narr.onBlack) this.drawNarr(g, this.narr, 1);
       if (this.narrOut && this.narrOut.n.onBlack) this.drawNarr(g, this.narrOut.n, 1 - this.narrOut.out / 0.25);
       if (this.menu) this.drawMenu(g);
