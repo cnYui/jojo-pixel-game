@@ -15,7 +15,7 @@
   const F = () => G.flags;
   const now = () => (G.clk ? G.clk.world : 0);
   const f = (n) => n / 60;
-  const NAME_TOP = 24;           // 名牌放左上（UI y）：后面紧跟底部对话框时用
+  const NAME_TOP = 100;          // 名牌、替身卡、地点卡的 UI y：对白框在上面（y 12–92），卡片放在它正下方，不互相压
   const KO_MSG = '康一：「诶？我？我不行啦……」';
   // 队伍池里的那个人（以后入队还是同一个 Actor：不会出现两个康一）
   const pool = (cid) => G.party._actor(cid);
@@ -62,7 +62,7 @@
     S.spawn('thug_b', ROAD.thugB[0], ROAD.thugB[1], { id: 'thug_b', facing: -1, name: '学长B' });
     snapTo(ko);
     await S.fadeIn(0.6);
-    S.location('morioh');
+    S.location('morioh', { y: NAME_TOP });
     S.walk(ko, 186, 160, { speed: 30 }).catch(G.cancelIgnore);
     await S.narrate('1999 年 4 月。我叫广濑康一，今天是我上高中的第一天。', { pos: 'top' });
     await S.narrate('我住的小镇叫杜王町。平平凡凡，什么事也不会发生——那时我是这么想的。', { pos: 'top' });
@@ -126,7 +126,7 @@
     await S.say('josuke', '……你刚才说，我的头发怎么样？', { expr: 'rage' });
     await punchThug(S, p, ta);
     S.nameCard('josuke', { y: NAME_TOP });
-    S.standCard('crazyd');
+    S.standCard('crazyd', { y: NAME_TOP });
     S.cue('sting_reveal');
     await S.wait(0.8);
     await S.say('josuke', '啊……打过头了。');
@@ -241,7 +241,7 @@
     const ko = S.actor('koichi');
     const jt = S.spawn('jotaro4', 262, 150, { id: 'jotaro4', facing: -1, name: '空条承太郎' });
     const fan = S.spawn('fan_a', 430, 156, { id: 'fan_a', facing: -1 });
-    S.location('budou');
+    S.location('budou', { y: NAME_TOP });
     if (ko) { ko.follow = null; S.walk(ko, 190, 162, { speed: 62 }).catch(G.cancelIgnore); }
     await S.walk(p, 214, 158, { speed: 62 });
     S.face(p, 1);
@@ -390,7 +390,7 @@
     const p = S.player;
     p.visible = true;
     await S.setStage('market_pro', { x: 34, y: 160, facing: 1, music: 'daily' });
-    S.location('market');
+    S.location('market', { y: NAME_TOP });
     shop = P4().shopList(['酱油', '豆腐', '洗洁精']);
     S.hint('把妈妈清单上的东西拿齐（走到货架前按 E）', 7);
   }
@@ -493,7 +493,7 @@
     const milk = T().prop(S, 'milk', 400, 155, { id: 'milk', frame: 0, z: 12 });
     snapTo({ x: 390 });
     await S.fadeIn(0.5);
-    S.location('higashikata');
+    S.location('higashikata', { y: NAME_TOP });
     S.sfx('ding', 0.6);
     await S.say('angelo', '您好，送牛奶的。', { name: '送奶工' });
     await S.say('tomoko', '我们家订的不是这个牌子……而且瓶盖松了。换一瓶吧。');
@@ -655,7 +655,7 @@
     S.mark('pro_vapor_face');
     await S.say('angelo', '嘿嘿……你就是那个警察的外孙？', { name: '安杰罗（水汽里的声音）', expr: 'smile' });
     S.nameCard('angelo', { y: NAME_TOP });
-    S.standCard('aqua');
+    S.standCard('aqua', { y: NAME_TOP });
     S.cue('sting_reveal');
     await S.wait(1.6);
     await S.vs({ key: 'aqua', hero: 'josuke', enemy: { cid: 'aqua', anim: 'idle' } });
@@ -708,10 +708,9 @@
     await S.say('angelo', '他说他是杜王町的人！我只知道这些！', { expr: 'shock' });
     S.mark('pro_bow_arrow');
     // 一个打着伞的小学生路过；安杰罗偷偷让水中项链从水洼溜出去，扑向他
-    const kid = S.spawn('kid', p.x + 26, 170, { id: 'kid', facing: 1 });
-    const umb = T().prop(S, 'umbrella', kid.x, kid.y, { id: 'umb', z: 24 });
+    const kid = S.spawn('kid', p.x - 40, 170, { id: 'kid', facing: 1 });
+    const umb = T().prop(S, 'umbrella', kid.x, kid.y + 0.5, { id: 'umb', z: 24 });
     stick(umb, kid, 0, 24, { flip: false });
-    kid.x = p.x - 40;
     await S.walk(kid, p.x + 30, 170, { speed: 30 });
     const aq = S.spawn('aqua', an.x - 10, 172, { id: 'aqua_sneak', facing: -1, alpha: 0 });
     aq.z = 2;

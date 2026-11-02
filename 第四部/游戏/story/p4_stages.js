@@ -14,8 +14,12 @@
 
   const ST = G.STAGES;
   const walls = (xa, xb, w) => [{ x0: -40, x1: xa, y0: 0, y1: 240 }, { x0: xb, x1: w + 40, y0: 0, y1: 240 }];
+  // dlgPos 'top'：第四部的图人都站在画面最下面一条（可走带 y 142–176），底部对话框正好把说话的人整个盖住，
+  //   所以对白放上面（engine/ui.js makeDlg 读它；第三部第2–4章的船上、街上也是这么做的）。
+  //   战斗里上面是血条和进度 HUD，对白又都是在战斗暂停时说的，所以打架时放回下面（dlgPosFight）
   const base = (id, bg, w, o = {}) => Object.assign({
     id, bg, x0: 0, x1: w, camX: 0, music: 'daily', props: [], npcs: [], hotspots: [], triggers: [], obstacles: walls(8, w - 8, w),
+    dlgPos: 'top', dlgPosFight: 'bottom',
   }, o);
 
   // 节拍 1：杜王町俯视地图（篇章卡之后的日历地图画在插入画面上，这张图只是让世界有个地方站）

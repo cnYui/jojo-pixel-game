@@ -405,6 +405,34 @@ def higashikata_near(var):
     return near
 
 
+def lamp_glow(w, bulb, ground):
+    """路灯光晕（引擎用 lighter 叠加，颜色本身就是亮度）：灯泡一圈晕、往下一道淡淡的光锥、地上一摊光。
+    强度场分 6 档、用 4×4 Bayer 抖动过渡：一整块实心圆叠上去会像个肥皂泡，抖动出来的渐变才像光"""
+    bx, by = bulb
+    yy, xx = np.mgrid[0:180, 0:w].astype(float)
+    # 灯泡周围：横 22、竖 18 的椭圆，往外衰减
+    r = np.sqrt(((xx - bx) / 22) ** 2 + ((yy - by) / 18) ** 2)
+    f = np.clip(1 - r, 0, 1) ** 1.6
+    # 光锥：灯泡到地面，越往下越宽、越淡，两边 6 px 羽化
+    t = np.clip((yy - by) / max(1, ground - by), 0, 1)
+    half = 5 + 30 * t
+    edge = np.clip((half - np.abs(xx - bx)) / 6, 0, 1)
+    cone = np.where((yy > by) & (yy <= ground + 2), 0.22 * (1 - 0.35 * t) * edge, 0)
+    # 地上的光斑
+    d = np.sqrt(((xx - bx) / 36) ** 2 + ((yy - ground) / 8) ** 2)
+    pool = 0.45 * np.clip(1 - d, 0, 1) ** 1.2
+    f = np.clip(f + cone + pool, 0, 1)
+    levels = 6
+    bay = np.tile(BAYER, (180 // 4 + 1, w // 4 + 1))[:180, :w]
+    fq = np.floor(f * levels + bay) / levels
+    fq = np.clip(fq, 0, 1)
+    col = np.array([160, 136, 68], float)
+    a = np.zeros((180, w, 4), np.uint8)
+    a[..., :3] = np.clip(fq[..., None] * col, 0, 255).astype(np.uint8)
+    a[..., 3] = np.where(fq > 0, 255, 0).astype(np.uint8)
+    return Image.fromarray(a, 'RGBA')
+
+
 def higashikata_variant(var):
     W = 640
     if var == 'eve':
@@ -453,11 +481,7 @@ def higashikata_variant(var):
                                     alpha=(190, 130), seed=33)
         layers['splash'] = splash_strip(320, 34, n=6, count=14, col='#c8d4e8', seed=34)
     if var == 'night':
-        glow = new(W, 180)
-        gd = ImageDraw.Draw(glow)
-        for r, al in ((30, 50), (20, 70), (11, 110)):
-            ellipse(gd, (474 - r, 64 - r * .6, 474 + r, 64 + r * 1.6), (110, 96, 50, al))
-        layers['glow'] = glow
+        layers['glow'] = lamp_glow(W, (479, 62), 153)
         meta['layers'].append({'type': 'glow', 'image': f'bg/{key}/glow', 'k': 1, 'x': 0, 'y': 0, 'flicker': 0.08})
         stars = [[int(x), int(y), 1 + (i % 3) * .6, i * .7, i % 7 == 0, '#ffffff'] for i, (x, y) in
                  enumerate(zip(np.random.RandomState(4).randint(0, 320, 40), np.random.RandomState(5).randint(4, 70, 40)))]

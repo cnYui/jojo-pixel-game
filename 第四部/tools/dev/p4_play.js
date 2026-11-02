@@ -22,6 +22,8 @@ const [VW, VH] = opt('--size', RECORD ? '1920x1080' : '960x540').split('x').map(
 const MAX_GAME_MIN = parseFloat(opt('--max-min', '45'));
 const SHOTS = !flag('--no-shots');
 const TITLE_WAIT = parseFloat(opt('--title-wait', RECORD ? '4' : '0.5'));
+const STOP_AFTER = parseFloat(opt('--stop-after', '0'));      // 试录用：实时模式下录这么多秒就停
+const DLG_SHOTS = parseInt(opt('--dlg-shots', '0'), 10);        // 每隔几句对白截一张（看对白框的排版）
 const REC_JS = path.resolve(__dirname, '..', '..', '..', 'tools', 'dev', 'record', 'recorder.js');
 
 fs.mkdirSync(OUT, { recursive: true });
@@ -53,11 +55,11 @@ const STATE = () => {
   const s = G.dbg.snapshot(), b = window.__bot || {};
   return {
     clk: Math.round(G.clk.ui * 10) / 10, scene: s.scene, stage: s.stage, free: s.free, busy: s.busy, combat: s.combat,
-    fightId: s.fightId, fightHint: s.fightHint, hp: s.hp, leader: s.leader, px: s.px, py: s.py, dlg: s.dlg, narr: s.narr, notice: s.notice,
+    fightId: s.fightId, fightHint: s.fightHint, hp: s.hp, leader: s.leader, px: s.px, py: s.py, dlg: s.dlg, ddone: s.ddone, narr: s.narr, notice: s.notice,
     menu: s.menu, menuItems: s.menuItems, qte: s.qte && s.qte.type, hint: s.hint, timer: s.timer, gauge: s.gauge,
     missingImg: s.missingImg, missingGlyph: s.missingGlyph, missingHead: s.missingHead, missingSfx: s.missingSfx, fallbacks: s.fallbacks,
     evTotals: s.evTotals, loopErrors: (G.dbg.events || []).filter((e) => /error/.test(e.type)).map((e) => e.type + ':' + (e.msg || e.where || '')),
-    marks: window.__marks.splice(0), botNotes: (b.notes || []).splice(0), botErr: b.err || null, finished: !!b.finished,
+    marks: window.__marks.splice(0), botNotes: (b.notes || []).splice(0), botErr: b.err || null, finished: !!b.finished, fps: s.fps,
   };
 };
 
@@ -114,8 +116,13 @@ const STATE = () => {
       if (s.fightId) { report.fights.push({ t: s.clk, id: s.fightId }); log('fight', s.fightId); await shot(s.fightId + '_start'); }
       lastFight = s.fightId; lastProgress = s.clk;
     }
+    if (RECORD && Date.now() - (report.fpsT || 0) > 10000) { report.fpsT = Date.now(); (report.fpsLog = report.fpsLog || []).push([s.clk, s.fps]); log('fps', JSON.stringify(s.fps), 'stage', s.stage); }
     if (s.fightId && s.clk - lastProgressT > 10) { lastProgressT = s.clk; log('  ', s.fightId, JSON.stringify(s.fightHint), 'hp', s.hp, 'gauge', JSON.stringify(s.gauge), 'timer', s.timer); }
     if (s.dlg || s.narr) lastProgress = Math.max(lastProgress, s.clk - 0);   // 对话在走也算进展
+    if (DLG_SHOTS && s.dlg && s.ddone && s.dlg !== report.lastDlg) {
+      report.lastDlg = s.dlg; report.dlgN = (report.dlgN || 0) + 1;
+      if (report.dlgN % DLG_SHOTS === 1) await shot('dlg' + report.dlgN);
+    }
     // 拟声字没有专门的图时引擎用字库画（ui_cards.js drawWord），不算缺图
     for (const k of ['missingImg', 'missingGlyph', 'missingHead', 'missingSfx', 'fallbacks']) {
       const v = (s[k] || []).filter((x) => !/^ui\/sfx\//.test(x));
@@ -123,6 +130,7 @@ const STATE = () => {
     }
     if (s.loopErrors.length) report.loopErrors = s.loopErrors;
     if (s.finished && s.scene === 'title') { report.end = { ok: true, t: s.clk }; log('结束：回到标题'); break; }
+    if (STOP_AFTER && (Date.now() - t0) / 1000 > STOP_AFTER) { report.end = { ok: false, why: 'stop_after', t: s.clk }; log('试录到点'); break; }
     if (s.clk > MAX_GAME_MIN * 60) { report.end = { ok: false, why: 'max_time', state: s }; log('超时'); break; }
     if (s.clk - lastProgress > 150) { report.end = { ok: false, why: 'stall', state: s }; log('卡住', JSON.stringify(s)); await shot('stall'); break; }
   }

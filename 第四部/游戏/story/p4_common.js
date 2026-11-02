@@ -203,6 +203,7 @@
     st.h = P4.overlay((g) => {
       const W = G.world;
       if (!W || W.insert || (G.S && G.S.cardOn)) return;
+      if (G.ui.dlg && G.ui.dlg.y0 < 100) return;      // 对白框在上面的时候让开（两个框叠在右上角很乱）
       const rows = st.items.length + (st.extra ? 1 : 0);
       const x0 = 492, y0 = 10, x1 = 630, y1 = y0 + 28 + rows * 18;
       G.ui.box(g, x0, y0, x1, y1, { fill: 'rgba(250,244,226,0.94)' });

@@ -162,10 +162,18 @@
   // 第 ⑥ 步的剧情 U：多拉拉拉冲上去，命中前一帧全屏灰阶 0.6 s（时停），承太郎已经站在仗助背后，拳头落空
   async function finaleTs(S, p, ctx, C) {
     const jt = S.actor('jotaro4');
+    ctx.data.uUsed = true;          // 窗口关上：「按 U！」提示和金色 U 钮不再亮着
     S.hint(null);
     if (ctx.data.demo) ctx.data.demo.label = null;
-    if (jt) p.facing = jt.x < p.x ? -1 : 1;
-    if (jt) await C.dash(jt.x - p.facing * 34, jt.y, f(8));
+    const st = G.world.stage;
+    const [lo, hi] = st.bounds ? st.bounds() : [st.x0 + 10, st.x1 - 10];
+    if (jt) {
+      // 冲到承太郎面前；时停后他要站到仗助“背后” 26 px 处。背后那一侧没地方了（贴着场地边）就从另一侧冲过去，
+      //   不然夹紧以后承太郎会和仗助叠在同一个位置，把仗助整个挡住
+      p.facing = jt.x < p.x ? -1 : 1;
+      if (jt.x - p.facing * 34 - p.facing * 26 < lo || jt.x - p.facing * 34 - p.facing * 26 > hi) p.facing = -p.facing;
+      await C.dash(G.clamp(jt.x - p.facing * 34, lo, hi), jt.y, f(8));
+    }
     C.stand('rush', { dx: 16, jitter: 1 });
     await C.rush(0.5, { dmg: false, tick: f(12), word: 'DORA', visual: { reach: 26, spread: 30, rate: 45, scale: 1.2, big: 0.25 } });
     S.sfx('timestop', 0.9);
@@ -173,9 +181,8 @@
     G.hitStopAll(0.5);
     await S.wait(0.6, 'ui');
     if (jt) {
-      const st = G.world.stage;
       jt.atk = null; jt.tele = null; jt.state = 'idle'; jt.play('idle');
-      jt.x = G.clamp(p.x - p.facing * 26, st.x0 + 10, st.x1 - 10); jt.y = p.y + 2; jt.facing = p.facing;
+      jt.x = G.clamp(p.x - p.facing * 26, lo, hi); jt.y = p.y + 2; jt.facing = p.facing;
       if (jt.stand) jt.stand.recall({ instant: true });
     }
     S.filter('gray', null);
@@ -199,7 +206,7 @@
       energy: { start: 0 },
       steps: { n: 6, label: '承太郎的试探' },
       kitOverride: { josuke: { parryWin: f(10), special: { need: 100, title: 'josuke', bg: 'radial', colours: ['#6a1a4a', '#3a0a28', '#a8306e'],
-        window: (c) => c.data.step === 6, prompt: '按 U！', run: finaleTs } } },
+        window: (c) => c.data.step === 6 && !c.data.uUsed, prompt: '按 U！', run: finaleTs } } },
       // boss: true 只为不画头顶小血条（HUD 这一战显示教学进度格）；9999 血 + 最低 1 血：怎么打也打不倒
       waves: [[{ kit: 'e_jotaro4_test', actor: 'jotaro4', cid: 'jotaro4', id: 'jotaro4', name: '空条承太郎', x: P1.jt[0], y: P1.jt[1],
         boss: true, hp: 9999, minHp: 1, idle: 'idle' }]],

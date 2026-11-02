@@ -200,7 +200,9 @@
       const name = o.name != null ? o.name : nameOf(who);
       const color = o.color || colorOf(who);
       // 没写 pos 时看地图定义的 dlgPos（第2章甲板 / 船上：人都站在画面下半、上面是空的天，对白默认放上面）
-      const st = G.world && G.world.stage, dflt = st && st.def && st.def.dlgPos;
+      const st = G.world && G.world.stage, def = st && st.def;
+      // 第四部：平时对白在上面（人站在画面最下面），打架时 HUD 占着上面，就用 dlgPosFight（战斗里的对白都在暂停中）
+      const dflt = def && (G.world.combat && def.dlgPosFight ? def.dlgPosFight : def.dlgPos);
       const pos = (o.pos || dflt) === 'top' ? 'top' : 'bottom';
       const y0 = pos === 'top' ? BOX_Y_TOP : BOX_Y_BOTTOM;
       let pcid = null;
@@ -770,7 +772,10 @@
       const hh = lines.length * 20 + 16;
       let y;
       const hudBottom = G.hud && G.hud.on ? G.hud.topBottom() : 0;
-      if (S) y = Math.max(64, hudBottom + 6);
+      // 对白框在上面时（第四部），提示挪到对白框正下方，不然两个框叠在一起
+      const topDlg = !!(this.dlg && this.dlg.pos === 'top'), belowDlg = BOX_Y_TOP + BOX_H + 10;
+      if (S) y = Math.max(64, hudBottom + 6, topDlg ? belowDlg : 0);
+      else if (topDlg) y = belowDlg;
       else if (this.dlg || this.choiceBox) y = 64;
       else y = UH - hh - 12;
       const x = Math.round((UW - w) / 2);
