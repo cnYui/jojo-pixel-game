@@ -1,0 +1,94 @@
+{
+ "props": {
+  "bow_arrow": {
+   "image": "props/bow_arrow",
+   "frames": 1,
+   "size": [
+    16,
+    16
+   ],
+   "pivot": [
+    8,
+    16
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "arrow": {
+   "image": "props/arrow",
+   "frames": 2,
+   "size": [
+    14,
+    5
+   ],
+   "pivot": [
+    7,
+    5
+   ],
+   "fps": 8,
+   "kind": "loop",
+   "k": 1.0
+  },
+  "brick": {
+   "image": "props/brick",
+   "frames": 1,
+   "size": [
+    8,
+    5
+   ],
+   "pivot": [
+    4,
+    5
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "photo_torn": {
+   "image": "props/photo_torn",
+   "frames": 1,
+   "size": [
+    14,
+    5
+   ],
+   "pivot": [
+    7,
+    5
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "missile_debris": {
+   "image": "props/missile_debris",
+   "frames": 2,
+   "size": [
+    8,
+    5
+   ],
+   "pivot": [
+    4,
+    5
+   ],
+   "fps": 4,
+   "kind": "loop",
+   "k": 1.0
+  },
+  "photo_family": {
+   "image": "props/photo_family",
+   "frames": 1,
+   "size": [
+    40,
+    32
+   ],
+   "pivot": [
+    20,
+    16
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  }
+ }
+}
