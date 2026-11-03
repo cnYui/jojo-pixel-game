@@ -854,4 +854,9 @@
       await beatAfterRain(S2);
     }, { keepLocked: true });
   };
+  // 整章测试（tools/dev/p4_play.js）对照的剧情标记：打一遍下来这些都要出现，缺了就算没通过
+  G.STORY.prologue.marks = ['pro_calendar', 'pro_road_jotaro', 'pro_josuke_enter', 'pro_hair1', 'pro_nose_fixed', 'pro_pot', 'pro_gate',
+    'pro_hair2', 'pro_ts_dodge', 'pro_photo', 'pro_tomoko_throw', 'pro_hair3', 'pro_robber_down', 'pro_knife_horn', 'pro_sink_face',
+    'pro_milk', 'pro_night', 'pro_silhouette', 'pro_ryohei_cap', 'pro_rain3', 'pro_puddle_face', 'pro_vapor_face', 'pro_glove',
+    'pro_aqua_trapped', 'pro_angelo_caught', 'pro_bow_arrow', 'pro_angelo_rock', 'pro_tbc'];
 })();
