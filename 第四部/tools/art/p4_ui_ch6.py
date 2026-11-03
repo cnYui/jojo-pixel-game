@@ -59,8 +59,13 @@ def main():
         'kira_pov': U.save('title/kira_pov', U.big('吉良视角', 24, ('#f0e4ff', '#b8a0e0'), edge='#1a0a24', edge_w=2)),
         'three_days': U.save('title/three_days', U.big('三天后', 30, ('#fff4d6', '#f0c870'), edge='#2a1a0a', edge_w=2)),
     }
+    # 拟声字（S.sfxText）：和序章 DORA 同一个画法，颜色换成丰收的黄 / 杀手皇后的粉
+    sfx = {}
+    for i, w in enumerate(('啪', '嘶啦', '叮', '咔嚓', '削！', '唰', '咚', '！')):
+        cols = ('#fff6c0', '#ffd83c', '#c89a20') if w in ('叮', '咔嚓') else ('#e8f0ff', '#a8c8ff', '#5a7ad0') if w == '削！' else ('#fff0f4', '#f2a8c4', '#c86a96')
+        sfx[w] = U.save('sfx/ch6_%d' % i, U.big(w, 26 if len(w) == 1 else 24, cols, edge='#2a0a34', shadow='#12041a', edge_w=3, shadow_d=(2, 2)))
     mp = {'stamp_199906': U.save('map/stamp_199906', stamp('6月'))}
-    U.chapter_ui('ch6', map=mp, namecards=namecards, standcards=standcards, locations=locations, vs=vs, titles=titles)
+    U.chapter_ui('ch6', map=mp, namecards=namecards, standcards=standcards, locations=locations, vs=vs, titles=titles, sfx=sfx)
     print('第6章 UI：名牌', len(namecards), '替身卡', len(standcards), '地点卡', len(locations), 'VS', len(vs), '小卡', len(titles))
 
 

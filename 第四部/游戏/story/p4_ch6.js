@@ -15,14 +15,14 @@
   const NAME_TOP = 100;
   // 别章画的人：正式图合进来了就用正式的，没有才用本章的临时图（第6章开发脚本 §0）
   const has = (cid) => !!(G.D && G.D.chars && G.D.chars[cid]);
-  const OKU = () => (has('okuyasu') ? 'okuyasu' : 'tmp6_okuyasu');
+  const OKU = () => 'okuyasu';
   const JOS = () => (has('joseph_old') ? 'joseph_old' : 'tmp6_joseph');
   const ROHAN = 'rohan';
   G.P4CH6CID = { OKU, JOS };
 
   Object.assign(G.NAMES, {
     shigechi: '重清', harvest: '丰收', kira: '吉良', killerqueen: '杀手皇后', reimi: '铃美', arnold: '阿诺德',
-    tmp6_okuyasu: '亿泰', okuyasu: '亿泰', rohan: '露伴', tmp6_joseph: '乔瑟夫', joseph_old: '乔瑟夫',
+    okuyasu: '亿泰', rohan: '露伴', tmp6_joseph: '乔瑟夫', joseph_old: '乔瑟夫',
   });
 
   // ================================================================ 地图（交接说明 docs/第6章_背景.md）
@@ -423,7 +423,6 @@
     const p = S.player, ok = S.actor(OKU());
     const sg = S.actor('shigechi_roof') || S.spawn('shigechi', p.x + 30, 156, { id: 'shigechi_roof', facing: -1, name: '重清' });
     const ck = T().prop(S, 'check', p.x + 8, p.y + 0.5, { id: 'check2', frame: 0, z: 22 });
-    await S.say('josuke', '……重清。看好了。', { expr: 'rage' });
     S.sfx('glass_break', 0.4); S.sfx('card_flip', 0.9);
     T().setFrame(ck, 1);
     S.sfxText('嘶啦', ck, { dur: 0.8 });

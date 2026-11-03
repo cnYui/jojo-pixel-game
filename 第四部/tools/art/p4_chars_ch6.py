@@ -1,6 +1,6 @@
 # 第6章的新角色：矢安宫重清 / 丰收、吉良吉影（西装）/ 杀手皇后、杉本铃美、阿诺德（第四部/docs/第6章_开发脚本.md §4）。
 #   做法和 p4_chars.py 一样：拿第三部的全尺寸图集换色、改发型，再用第三部的 shrink.py 缩成游戏尺寸。配色照 TV 动画第四部（JoJo Wiki 配色表）。
-#   另有几张临时图（tmp6_*）：亿泰、轰炸空间、乔瑟夫分别由第2、2、4章画（露伴第5章已经画好，合进来了），那边合进来之前本章先用这几张顶着，合进来以后删掉。
+#   另有几张临时图（tmp6_*）：乔瑟夫由第4章画（露伴第5章、亿泰第2章已经画好，合进来了），那边合进来之前本章先用这几张顶着，合进来以后删掉。
 #   用法：python3 第四部/tools/art/p4_chars_ch6.py [cid ...]      输出 assets/chars/<cid>.png、assets/heads/<cid>/…、assets/_meta/chars_ch6.json
 import os
 import sys
@@ -352,37 +352,6 @@ def build_arnold():
 
 
 # ============================================================ 临时图（别章的人合进来之前顶着用，合进来以后删）
-def build_tmp_okuyasu():
-    # 第2章画正式的：这里只是承太郎的身子换一身灰蓝校服、浅色寸头
-    cmap = {(84, 98, 168): (88, 96, 120), (43, 49, 96): (52, 58, 78), (24, 26, 56): (30, 34, 48), (28, 28, 52): (36, 38, 54),
-            (48, 48, 78): (64, 70, 92), (44, 196, 168): (70, 70, 80)}
-    hair = {(24, 26, 56): (120, 104, 84), (28, 28, 52): (92, 78, 62)}
-    e = C.build_recolor('tmp6_okuyasu', '虹村亿泰', 'jotaro',
-                        [('idle', 'idle', 2, 'loop'), ('walk', 'walk', 8, 'loop'), ('run', 'run', 10, 'loop'), ('point', 'point', 4, 'loop'),
-                         ('pose', 'pose', 3, 'oneshot'), ('shock', 'shock', 1, 'static'), ('hurt', 'hurt', 1, 'static'), ('dodge', 'dodge', 1, 'static'),
-                         ('guard', 'guard', 1, 'static'), ('kick', 'kick', 8, 'oneshot'), ('down', 'down', 1, 'static')],
-                        cmap=cmap, hair=hair, heads_from='portrait', amap=dict(C.AMAP_HUMAN, kick='kick', run='run'), bodyW=4)
-    return e
-
-
-def build_tmp_thehand():
-    cmap = {'#bab2ff': '#dfe6f4', '#8a80ec': '#9cb0d8', '#5242ae': '#46609e', '#33257a': '#28386a',
-            '#5a56a0': '#e8e8f0', '#2c2852': '#a8a8b8', '#17132e': '#3a3a50',
-            '#ff8a78': '#f0d050', '#ec3040': '#d0a020', '#98182c': '#8a6a10',
-            '#fff6b4': '#ffffff', '#ffd83c': '#e8e8f0', '#c08a18': '#8888a0', '#b69ec6': '#c8d0e0'}
-    im, m = C.base('starplat')
-    sh = C.Sheet('tmp6_thehand', '轰炸空间', m['cell'], m['pivot'])
-    for anim, a in m['animations'].items():
-        if anim.startswith('portrait'):
-            continue
-        sh.add(anim, [C.recolor(f, cmap) for f in C.frames('starplat', anim)], a.get('fps', 6), a.get('kind', 'loop'))
-    sh.heads = {'normal': [C.recolor(f, cmap) for f in C.heads('starplat')['portrait']]}
-    e = C.save(sh, amap={'punch': 'punch', 'punch2': 'punch', 'punch_heavy': 'upper', 'rush': 'rush', 'block': 'block', 'hurt': 'hurt',
-                         'special': 'rush', 'finger': 'finger'}, kind='stand', bodyW=6)
-    e['headAlias'] = {'smile': 'normal', 'rage': 'normal', 'shock': 'normal'}
-    return e
-
-
 def build_tmp_joseph():
     # 第4章画正式的：第三部乔瑟夫，头发、胡子换白
     cmap = {'#4e3018': '#d8d8dc', '#6a3e20': '#b8b8c0', '#8e5a30': '#ececf0'}
@@ -394,15 +363,13 @@ def build_tmp_joseph():
 
 BUILDERS = {'shigechi': build_shigechi, 'harvest': build_harvest, 'kira': build_kira, 'killerqueen': build_killerqueen,
             'reimi': build_reimi, 'arnold': build_arnold,
-            'tmp6_okuyasu': build_tmp_okuyasu, 'tmp6_thehand': build_tmp_thehand, 'tmp6_joseph': build_tmp_joseph}
+            'tmp6_joseph': build_tmp_joseph}
 
 HEROES = {
     'shigechi': dict(cid='shigechi', cn='矢安宫重清', short='重清', rn='YANGU SHIGEKIYO', stand='harvest',
                      burst=['#2a6a2a', '#4a9a3a', '#ffd83c'], panel='#0e200a', accent='#ffd83c', nameColor='#5a9a3a', blipHz=700, grunt=None),
     'harvest': dict(cid='harvest', cn='丰收', short='丰收', rn='HARVEST', stand=None,
                     burst=['#6a4a10', '#c89a20', '#ffe070'], panel='#2a1e06', accent='#ffd83c', nameColor='#c8a020', blipHz=1100, grunt=None),
-    'tmp6_okuyasu': dict(cid='tmp6_okuyasu', cn='虹村亿泰', short='亿泰', rn='NIJIMURA OKUYASU', stand='tmp6_thehand',
-                         burst=['#1a2a5a', '#3a4a8a', '#8aa0e0'], panel='#0a1028', accent='#9ab0f0', nameColor='#5a70b0', blipHz=380, grunt='grunt_jotaro'),
 }
 SPEAKERS = {
     'reimi': dict(short='铃美', nameColor='#d870a0', blipHz=820),
@@ -416,8 +383,6 @@ STANDS = {
                     impact='pink', kind='humanoid', idle={'dx': -8, 'z': 0}, link=None, summonSfx=None, fist=False),
     'killerqueen': dict(cn='杀手皇后', en='KILLER QUEEN', owner='kira', aura='#e8a0c0', card='#f2c4d2', ghost='#f8dce6',
                         impact='pink', kind='humanoid', idle={'dx': -6, 'z': 6}, link=None, summonSfx='stand_summon_star', fist=True),
-    'tmp6_thehand': dict(cn='轰炸空间', en='THE HAND', owner='tmp6_okuyasu', aura='#9ab0f0', card='#c8d4f4', ghost='#e0e8ff',
-                         impact='blue', kind='humanoid', idle={'dx': -6, 'z': 6}, link=None, summonSfx='stand_summon_star', fist=True),
 }
 
 
