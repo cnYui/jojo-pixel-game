@@ -46,6 +46,12 @@
    "frames": 1,
    "fps": 1,
    "kind": "static"
+  },
+  "cmd": {
+   "row": 6,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
   }
  }
 }

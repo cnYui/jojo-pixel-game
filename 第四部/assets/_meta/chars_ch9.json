@@ -53,6 +53,12 @@
      "frames": 2,
      "fps": 3,
      "kind": "loop"
+    },
+    "cmd": {
+     "row": 7,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
     }
    },
    "aliases": {},
@@ -83,7 +89,9 @@
     "run": {
      "a": "walk",
      "f": 1.6
-    }
+    },
+    "point": "cmd",
+    "punch": "cmd"
    },
    "top": 26,
    "bodyW": 4,
@@ -136,6 +144,12 @@
      "frames": 1,
      "fps": 1,
      "kind": "static"
+    },
+    "cmd": {
+     "row": 6,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
     }
    },
    "aliases": {},
@@ -167,7 +181,8 @@
      "a": "walk",
      "f": 1.6
     },
-    "bed": "down"
+    "bed": "down",
+    "point": "cmd"
    },
    "top": 26,
    "bodyW": 4,

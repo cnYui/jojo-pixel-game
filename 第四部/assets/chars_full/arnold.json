@@ -28,6 +28,12 @@
    "frames": 1,
    "fps": 1,
    "kind": "static"
+  },
+  "bite": {
+   "row": 3,
+   "frames": 2,
+   "fps": 6,
+   "kind": "loop"
   }
  }
 }

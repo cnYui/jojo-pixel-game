@@ -49,7 +49,9 @@
     sfxHit: 'blip', word: null });
   const mkKit = { hp: 100, speed: 66, standId: null, combo: ['MK_POKE', 'MK_POKE', 'MK_POKE'], rush: null,
     guard: { pose: 'guard' }, guardAttack: null, chords: {}, parry: {}, dodge: {}, special: null, explore: { pose: 'point' }, grunt: null };
-  K.mikitaka = K.mikitaka || mkKit;
+  // 第9章给未起隆登记过一个不打架的最小 kit（只有 hp、speed，没有 combo）。合并以后它比本章先载入，
+  //   用 || 会把本章的 kit 挡掉，第15战他当队友时 updateAlly 读 combo 就报错：没有 combo 就换成本章的
+  if (!K.mikitaka || !K.mikitaka.combo) K.mikitaka = Object.assign({}, K.mikitaka, mkKit);
   K.mikitaka_tmp = mkKit;
 
   // ======================================================================= 客串：喷上裕也（公路之星）

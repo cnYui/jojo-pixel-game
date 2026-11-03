@@ -249,7 +249,8 @@
     },
     "cmd": "point",
     "special": "pose",
-    "down": "hurt"
+    "down": "hurt",
+    "punch": "point"
    },
    "top": 29,
    "bodyW": 4,
@@ -443,6 +444,12 @@
      "frames": 1,
      "fps": 1,
      "kind": "static"
+    },
+    "bite": {
+     "row": 3,
+     "frames": 2,
+     "fps": 6,
+     "kind": "loop"
     }
    },
    "aliases": {},

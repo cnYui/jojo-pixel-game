@@ -246,7 +246,9 @@ def build_kira():
     if len(rg) == 1:
         rg = rg * 2
     sh.heads = {'normal': nm, 'smile': [HD.smile(f) for f in nm], 'shock': [HD.shock(f, i) for i, f in enumerate(nm)], 'rage': rg}
-    e = C.save(sh, amap={'talk': 'idle', 'shock': 'hurt', 'run': {'a': 'walk', 'f': 1.6}, 'cmd': 'point', 'special': 'pose', 'down': 'hurt'}, bodyW=4)
+    # punch → point：point 本来就是迪奥出拳那几帧；第7章战斗里吉良要出拳（kira.play('punch')、e_kira 的 body）
+    e = C.save(sh, amap={'talk': 'idle', 'shock': 'hurt', 'run': {'a': 'walk', 'f': 1.6}, 'cmd': 'point', 'special': 'pose', 'down': 'hurt',
+                         'punch': 'point'}, bodyW=4)
     e['headAlias'] = {}
     return e
 
@@ -341,7 +343,8 @@ def build_arnold():
     im, m = C.base('iggy')
     cell, piv = [48, 44], [24, 44]
     sh = C.Sheet('arnold', '阿诺德', cell, piv)
-    for a, na, fps, kind in [('idle', 'idle', 2, 'loop'), ('run', 'run', 10, 'loop'), ('sit', 'sit', 1, 'static')]:
+    # bite：终章阿诺德咬住吉良的袖子（伊奇底子本来就有咬人的两帧）
+    for a, na, fps, kind in [('idle', 'idle', 2, 'loop'), ('run', 'run', 10, 'loop'), ('sit', 'sit', 1, 'static'), ('bite', 'bite', 6, 'loop')]:
         sh.add(na, [scale(C.recolor(f, ARNOLD), 1.35, cell, piv) for f in C.frames('iggy', a)], fps, kind)
     hd = C.heads('iggy')
     nm = [C.recolor(f, ARNOLD) for f in hd['portrait']]

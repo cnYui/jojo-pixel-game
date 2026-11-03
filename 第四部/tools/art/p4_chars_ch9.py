@@ -36,8 +36,11 @@ def build_mikitaka():
     return C.build_recolor('mikitaka', '支仓未起隆', 'kakyoin',
                            [('idle', 'idle', 2, 'loop'), ('walk', 'walk', 8, 'loop'), ('hurt', 'hurt', 1, 'static'),
                             ('down', 'down', 1, 'static'), ('dodge', 'dodge', 1, 'static'), ('guard', 'guard', 1, 'static'),
-                            ('float', 'float', 3, 'loop')],
-                           cmap=dict(cmap, **hair), amap={'talk': 'idle', 'shock': 'hurt', 'run': {'a': 'walk', 'f': 1.6}}, bodyW=4)
+                            ('float', 'float', 3, 'loop'),
+                            # 花京院指挥法皇的 cast → cmd：第10章第15战未起隆当队友，比划（MK_POKE 的 body 是 cmd）、变形时要这个动作
+                            ('cast', 'cmd', 4, 'loop')],
+                           cmap=dict(cmap, **hair), amap={'talk': 'idle', 'shock': 'hurt', 'run': {'a': 'walk', 'f': 1.6},
+                                                          'point': 'cmd', 'punch': 'cmd'}, bodyW=4)
 
 
 def build_yuya():
@@ -46,8 +49,11 @@ def build_yuya():
     hair = {'#b8402e': '#2a2632', '#e8734c': '#8a8a96', '#78221e': '#141018'}
     return C.build_recolor('yuya', '喷上裕也', 'kakyoin',
                            [('idle', 'idle', 2, 'loop'), ('walk', 'walk', 8, 'loop'), ('hurt', 'hurt', 1, 'static'),
-                            ('down', 'down', 1, 'static'), ('dodge', 'dodge', 1, 'static'), ('guard', 'guard', 1, 'static')],
-                           cmap=dict(cmap, **hair), amap={'talk': 'idle', 'shock': 'hurt', 'run': {'a': 'walk', 'f': 1.6}, 'bed': 'down'},
+                            ('down', 'down', 1, 'static'), ('dodge', 'dodge', 1, 'static'), ('guard', 'guard', 1, 'static'),
+                            # 花京院指挥法皇的 cast → cmd：第10章裕也当队友，公路之星踢人时本体摆指挥的样子（招式 body 是 cmd）
+                            ('cast', 'cmd', 4, 'loop')],
+                           cmap=dict(cmap, **hair), amap={'talk': 'idle', 'shock': 'hurt', 'run': {'a': 'walk', 'f': 1.6}, 'bed': 'down',
+                                                          'point': 'cmd'},
                            bodyW=4)
 
 

@@ -52,6 +52,12 @@
    "frames": 2,
    "fps": 3,
    "kind": "loop"
+  },
+  "cmd": {
+   "row": 7,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
   }
  }
 }
