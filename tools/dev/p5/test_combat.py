@@ -20,7 +20,7 @@ with sync_playwright() as pw:
     page.on('pageerror',lambda e:errors.append(str(e)))
     page.goto((HERE/'arena.html').as_uri())
     page.evaluate('P5.init()')
-    for method in ['aiRange','combos','dodge','guards','poise','wall','special','shots','timestop','cancellation','retry','finish']:
+    for method in ['aiRange','combos','dodge','guards','poise','wall','special','shots','timestop','cancellation','retry','finish','rushLoop']:
         try:
             r=page.evaluate('async(m)=>await Promise.race([P5[m](),new Promise((_,reject)=>setTimeout(()=>reject(new Error("验收超时: "+m+" "+JSON.stringify(P5.state()))),12000))])',method)
         except Exception as e:
@@ -44,6 +44,10 @@ with sync_playwright() as pw:
         if method=='cancellation':check('切场取消必杀和战斗、不留旧后台任务',not r['value'] and r['result']['cancelled'] and r['result']['name']=='RunCancelled' and r['runChanged'],r)
         if method=='retry':check('检查点第二阶段重试、Boss身份和放水0.7',len(set(v['e'] for v in r['seen']))==1 and r['after1']['attempt']==1 and r['after1']['hp']==100 and r['after1']['speed']==88 and r['assist'] and r['assistDmg']==14 and len(r['menus'][-1])==3,r)
         if method=='finish':check('ko/draw收尾时间轴与替身退场',all(v['done'] and v['dead'] and v['standHidden'] for v in r),r)
+        if method=='rushLoop':
+            # 七个场景都要真进了连打、打断以后没有还在响的拳声循环、没有挂着的旧连打；换人要真换成花京院，Boss 战要真被连打打赢
+            byName={v['name']:v for v in r}
+            check('连打被格挡/必杀/换人/演出/战斗结束/Boss收尾打断后拳声循环都收掉',len(byName)==7 and all(v['rushing'] and not v['live'] and not v.get('liveInCine') and not v['stale'] for v in r) and byName['swap'].get('leader')=='kakyoin' and byName['bossKo'].get('result')=='win' and byName['bossKo'].get('bossDead'),r)
         page.screenshot(path=str(OUT/(method+'.png')))
     diagnostics=page.evaluate('P5.diagnostics()')
     page.wait_for_timeout(100)

@@ -20,4 +20,30 @@ async timestop(){const{p,e}=reset();await hold('guard',true);let done=false;cons
 async cancellation(){let{p}=reset();p.energy=100;const q=C.special(p);await step(3);G.cancelRun();W.cine=null;await step(8);const value=await q;const before=G.runId;const r=G.S.fight({id:'p5cancel',lead:'jotaro',arena:[0,320],waves:[[{cid:'avdol',kit:{hp:200,brain:()=>true},boss:true}]]}).then(result=>({result}),error=>({cancelled:G.cancelled(error),name:error.name}));await step(15);G.cancelRun();W.fight=null;W.cine=null;await step(8);const result=await r;return{value,result,runChanged:G.runId>before};},
 async retry(){const{p,e}=reset();e.remove=true;W.fight=null;const spec={id:'p5retry',lead:'jotaro',arena:[0,320],checkpoint:true,waves:[[{cid:'avdol',kit:{hp:200,brain:()=>true},boss:true,phases:[{at:.5,set:{speed:88},checkpoint:true}]}]]};G.ui.choices=[0,2];const seen=[];spec.onWave=(S,wi,es,attempt,c)=>{seen.push({attempt,e:es[0].uid,hp:es[0].hp,phase:es[0].phaseI});c.on('phase',()=>{});};let result;const q=G.S.fight(spec).then(v=>result=v);await step(20);const boss=W.fight.boss;boss.hp=90;await step(20);p.hp=0;await step(180);const after1={attempt:W.fight&&W.fight.attempt,hp:boss.hp,speed:boss.speed};p.hp=0;await step(180);const assist=W.fight&&W.fight.assist;const hp=p.hp;poke(boss,p,{dmg:20});const assistDmg=hp-p.hp;W.fight.end();await step(30);await q;return{seen,after1,assist,assistDmg,result,menus:G.ui.menuCalls.slice(-2)};},
 async finish(){const out=[];for(const style of['ko','draw']){const{p,e}=reset();let done=false;const q=C.bossFinish(e,p,{style}).then(()=>done=true);await step(260);await q;out.push({style,done,dead:e.dead,standHidden:!e.stand.visible,log:G.__audioLog.filter(v=>v[0]==='title'||v[1]==='jingle_victory')});}return out;},
+// 连打拳声（kit.rush.loop）只在 rushTick 到点收尾时停。连打被格挡、必杀、换人、演出、战斗结束打断，或者身上挂着没收掉的旧连打又开新连打，循环都要有人收，不然拳声一直响（第四部试玩实测，第三部是同一份代码）。
+//   包住 G.audio.loop 记每条循环有没有 stop；每个场景打断以后等一会儿再看。stale = 人已经不在连打状态、a.rush 还挂着
+async rushLoop(){const out=[],orig=G.audio.loop;let loops=[];
+G.audio.loop=function(n){const h=orig.apply(this,arguments),rec={n,stopped:false};loops.push(rec);const s=h.stop;h.stop=function(){rec.stopped=true;return s.apply(this,arguments);};return h;};
+const live=()=>loops.filter(v=>!v.stopped).map(v=>v.n);
+// 玩家连打时一直在连按 J：每 6 帧按一下（连打 12 帧没按就自己收尾）
+const mash=async n=>{for(let i=0;i<n;i++){if(i%6===0)G.input.inject('attack');await step();}};
+// 和 combos 一样的三连接连打入口，再连按 12 帧把连打撑住
+const rush=async p=>{await tap('attack');await step(7);await tap('attack',3);await step(7);await tap('attack',3);await step(8);await tap('attack');await step(21);await mash(12);return p.state==='rush'&&!!p.rush;};
+try{for(const name of['guard','special','swap','cine','fightEnd','bossKo','stale']){
+const{p,e}=reset();loops=[];const r={name};let boss=null;
+if(name==='swap')G.party.set(['jotaro','kakyoin'],{leader:'jotaro'});
+// 修之前格挡就会留下这种：人已经站回来了，a.rush 和它的拳声循环还挂着，下一次连打直接覆盖 a.rush，旧循环的句柄就丢了
+if(name==='stale')p.rush={t:0,tick:0,n:0,end:1,wordT:0,loop:G.audio.loop('ora_loop')};
+// 真开一场 Boss 战（生产 fight.js），用连打打死它：收尾演出里连打不再推进，演完战斗随即结束，修之前之后的剧情里拳声一直响
+if(name==='bossKo'){e.remove=true;W.fight=null;G.S.fight({id:'p5rushko',lead:'jotaro',arena:[0,320],finish:'ko',waves:[[{cid:'avdol',kit:{hp:200,brain:()=>true},boss:true}]]}).then(v=>r.result=v.result||v);await step(20);boss=W.fight.boss;}
+r.rushing=await rush(p);
+if(name==='guard'){await hold('guard',true,20);await hold('guard',false);}
+else if(name==='special'){p.energy=100;await tap('special');}
+else if(name==='swap'){r.swapped=G.party.setLeader('kakyoin');r.leader=W.player.cid;}
+else if(name==='cine'){W.cine={by:'p5'};await step(30);r.liveInCine=live();W.cine=null;}
+else if(name==='fightEnd'){W.combat=false;W.free=false;}
+else if(name==='bossKo'){boss.x=p.x+p.facing*30;boss.y=p.y;boss.hp=1;await mash(200);r.bossDead=boss.dead;r.combat=W.combat;}
+await step(name==='special'?300:60);
+r.state=p.state;r.stale=!!p.rush&&p.state!=='rush';r.live=live();out.push(r);}}
+finally{G.audio.loop=orig;}return out;},
 diagnostics(){return{missingImg:[...G.dbg.missingImg],events:G.dbg.events.filter(v=>v.type==='loop_error')}}};})();

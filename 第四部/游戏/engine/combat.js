@@ -509,6 +509,9 @@
   }
   async function bossFinish(e,att,o={style:'ko'}){
     if(e._koDone)return;e._koDone=true;e.dead=true;e.atk=null;e.tele=null;cancelRush(e);const w=W(),old=w.cine,run=G.runId,c=ctx(),valid=()=>run===G.runId&&ctx()===c,guard=async p=>{try{await Promise.race([Promise.resolve(p),G.until(()=>!valid())]);return valid();}catch(e){if(cancelled(e))return false;throw e;}};w.cine={by:'finish'};
+    // 用连打打死的：拳声和拳影在这里就收（收尾演出里 rushTick 不跑，演完战斗随即结束，以前拳声就一直响下去）。本体和替身保持连打的样子，
+    //   下面收尾的那一轮替身连打直接接上；留给 updatePlayer 收的话会先放回站立，替身闪一下、本体从指挥的姿势变成站着
+    if(att && att.rush){cancelRush(att);if(att.state==='rush'){att.atk=null;att.ghostOn=false;state(att,'idle');}}
     G.hitStopAll(f(18));G.post.impactSeq(o.style==='draw'?['invert']:['invert',att&&att.stand?({starplat:'purple',hiero:'green',magred:'red',chariot:'blue'}[att.stand.id] || 'purple'):'purple'],f(2),0,{force:true});
     if(G.S && G.S.zoom && !await guard(G.S.zoom(1.35,e,-28,.2)))return;if(!valid())return;G.flash(f(8),.5);G.slowAll(.25,.6);e.ghostOn=true;ghostBurst(e,3);play(e,'hurt');
     const x=e.x,dir=att?att.facing:1;const flight=new Promise(res=>w.anims.push({t:0,dur:.6,fn:u=>{if(valid()){e.x=x+dir*35*u;e.z=24*Math.sin(Math.PI*u);}},res}));
