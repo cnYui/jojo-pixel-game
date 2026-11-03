@@ -1,0 +1,51 @@
+{
+ "id": "toyohiro",
+ "name": "钢田一丰大",
+ "image": "toyohiro.png",
+ "cell": [
+  58,
+  62
+ ],
+ "pivot": [
+  29,
+  46
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  },
+  "hurt": {
+   "row": 2,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "down": {
+   "row": 3,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "kick": {
+   "row": 4,
+   "frames": 2,
+   "fps": 6,
+   "kind": "oneshot"
+  },
+  "talk": {
+   "row": 5,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
+  }
+ }
+}
