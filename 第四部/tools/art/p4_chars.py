@@ -224,7 +224,27 @@ GOLD = [(255, 216, 60), (200, 154, 32)]
 JH = dict(o=O, d=(18, 14, 26), m=(36, 30, 54), l=(66, 58, 100), x=(122, 114, 176))
 # 校服：比承太郎的藏青更亮一点、更偏蓝紫
 JOSUKE_COAT = {(84, 98, 168): (104, 102, 200), (43, 49, 96): (54, 52, 118), (24, 26, 56): (30, 28, 70),
-               (28, 28, 52): (34, 30, 66), (48, 48, 78): (58, 54, 98)}
+               (28, 28, 52): (34, 30, 66), (48, 48, 78): (58, 54, 98),
+               (74, 63, 102): (222, 186, 62), (51, 42, 74): (164, 126, 34)}      # 里面的衬衫：动画里是黄的
+SHOE_L, SHOE_D = (138, 90, 52), (90, 54, 30)
+
+
+def shoes(f, light, dark):
+    """鞋：亮棕全换；暗棕只换挨着亮棕（2 格内）的——腰带也是暗棕，别换到"""
+    a = np.array(f.convert('RGBA'))
+    lm = comp(f, [SHOE_L])
+    near = lm.copy()
+    for _ in range(2):
+        n = near.copy()
+        n[1:, :] |= near[:-1, :]
+        n[:-1, :] |= near[1:, :]
+        n[:, 1:] |= near[:, :-1]
+        n[:, :-1] |= near[:, 1:]
+        near = n
+    dm = comp(f, [SHOE_D]) & near
+    a[lm] = (*light, 255)
+    a[dm] = (*dark, 255)
+    return Image.fromarray(a, 'RGBA')
 
 
 def face_box(img, top_rows=24, skin=None):
@@ -322,6 +342,7 @@ JEYE = (92, 94, 224)
 
 def josuke_body(f, collar=True):
     f = recolor(f, JOSUKE_COAT)
+    f = shoes(f, (118, 74, 150), (72, 42, 98))          # 鞋：动画里是紫的
     f = recolor(f, {(44, 196, 168): JEYE})
     fb = face_box(f)
     f = josuke_head(f)
@@ -345,6 +366,7 @@ def build_josuke():
     down = []
     for f in frames('jotaro', 'down'):
         f = recolor(f, JOSUKE_COAT)
+        f = shoes(f, (118, 74, 150), (72, 42, 98))
         f = recolor(f, {(44, 196, 168): JEYE})
         r = f.rotate(-90, expand=True)
         r = josuke_head(r, top_rows=30)
@@ -357,7 +379,7 @@ def build_josuke():
 # ============================================================ 空条承太郎（第四部白衣版）
 WHITE = {(84, 98, 168): (255, 255, 250), (43, 49, 96): (236, 232, 222), (48, 48, 78): (206, 200, 190),
          (24, 26, 56): (168, 162, 156), (28, 28, 52): (140, 134, 132),
-         (74, 63, 102): (40, 64, 70), (51, 42, 74): (26, 42, 48)}      # 里面的衬衫：深青
+         (74, 63, 102): (98, 62, 136), (51, 42, 74): (64, 38, 94)}      # 里面的衬衫：动画第一套是紫的
 HAIR_BLACK = {(24, 26, 56): (30, 26, 34), (28, 28, 52): (22, 18, 26)}
 
 
@@ -426,12 +448,13 @@ def build_recolor(cid, name, src, anims, cmap, hair=None, skin=None, heads_from=
     return e
 
 
+# 疯狂钻石：动画配色——皮肤三文鱼粉（漫画是艳粉）、眼睛深蓝；头盔和护甲浅蓝两边一样
 def build_crazyd():
-    cmap = {'#bab2ff': '#ffc8e6', '#8a80ec': '#f08cc4', '#5242ae': '#bc5292', '#33257a': '#7c2a64',
+    cmap = {'#bab2ff': '#ffc4c4', '#8a80ec': '#f2909a', '#5242ae': '#c45a72', '#33257a': '#7c2c4a',
             '#5a56a0': '#9ae6f8', '#2c2852': '#4cacdc', '#17132e': '#225e90',
             '#ff8a78': '#a8eaff', '#ec3040': '#56b8e6', '#98182c': '#2c6ea2',
             '#fff6b4': '#f0fcff', '#ffd83c': '#9ee4f4', '#c08a18': '#3e92c0',
-            '#b69ec6': '#f4bcd8'}
+            '#b69ec6': '#f6c0c8', '#40f0e0': '#3a5ad0'}
     im, m = base('starplat')
     sh = Sheet('crazyd', '疯狂钻石', m['cell'], m['pivot'])
     for anim, a in m['animations'].items():
@@ -450,11 +473,111 @@ def build_crazyd():
 BLOND = {(28, 26, 34): (222, 210, 150), (12, 10, 16): (170, 150, 92), (58, 54, 68): (246, 238, 196), (18, 19, 24): (190, 172, 110)}
 
 
+# 康一：照 TV 动画第四部的配色——灰白（略带冷色的银灰）头发、绿色立领校服配金扣、棕鞋、蓝眼睛；
+#   发型是第四部前段“往后梳、微微带卷”的样子：前额露出来，头顶前沿翘起一道浪，后脑几道弯的发缕。
+K_HAIR = {'L': (236, 238, 244), 'B': (198, 200, 212), 'S': (154, 156, 174), 'M': (174, 176, 192)}
+GREY = {(28, 26, 34): K_HAIR['B'], (12, 10, 16): K_HAIR['S'], (58, 54, 68): K_HAIR['L'], (18, 19, 24): K_HAIR['M']}
+K_UNI = {'#22242e': '#3d5c47', '#3a3e4e': '#5a7f62', '#121318': '#22362a'}
+K_EYE = {'#2a1e1a': '#2e4c8c'}
+K_SKIN, K_SKIN2 = (246, 196, 154), (216, 148, 108)
+
+# 全尺寸身体帧的头发（相对“发顶描边那一行的上一行、头左缘描边”这个锚点；. 不动，o 描边，D/F 皮肤）
+K_BODY_HAIR = [
+    '........ooo.....',
+    '.....oooLLLoo...',
+    '...ooBBLLBBBBo..',
+    '..oBBLLBBSBBBBo.',
+    '.oBLLBBSBBBBBBBo',
+    'oBBBSBBBBSBBBBBo',
+    'oSBBSBBBSBBDDDDo',
+    'oSBBBBBSDDDDDDDo',
+]
+
+
+def _paint(a, x0, y0, rows):
+    pal = {'o': (26, 16, 32), 'D': K_SKIN, 'F': K_SKIN2}
+    pal.update(K_HAIR)
+    h, w = a.shape[:2]
+    for j, r in enumerate(rows):
+        for i, ch in enumerate(r):
+            x, y = x0 + i, y0 + j
+            if ch == '.' or not (0 <= x < w and 0 <= y < h):
+                continue
+            a[y, x] = (*pal[ch], 255)
+
+
+def koichi_hair(f):
+    """身体帧：找到头发块，按模板重画成往后梳的微卷发；低头（bow）帧头发是歪的，只换色加两道发缕"""
+    a = np.array(f.convert('RGBA'))
+    hair = np.zeros(a.shape[:2], bool)
+    for c in K_HAIR.values():
+        hair |= (a[..., 0] == c[0]) & (a[..., 1] == c[1]) & (a[..., 2] == c[2]) & (a[..., 3] > 0)
+    ys, xs = np.nonzero(hair)
+    if not len(ys):
+        return f
+    top = ys.min()
+    row = xs[ys == top + 3]
+    if len(row) and xs[ys == top].min() - row.min() >= 4:     # 正常站姿：发顶在头中间偏右
+        x0 = row.min() - 1
+        _paint(a, x0, top - 2, K_BODY_HAIR)
+    else:
+        for (dy, dx) in ((2, 3), (3, 6), (4, 2)):
+            y, x = top + dy, xs[ys == top].min() + dx
+            if hair[y, x]:
+                a[y, x] = (*K_HAIR['S'], 255)
+    return Image.fromarray(a, 'RGBA')
+
+
+def koichi_portrait(f):
+    """头像 32×32：前额再露出一点、前沿翘起往后梳，后脑加几道弯发缕"""
+    a = np.array(f.convert('RGBA'))
+    L_, B_, S_, M_ = (K_HAIR[k] for k in 'LBSM')
+    sk = K_SKIN
+    o = (26, 16, 32)
+
+    def px(x, y, c):
+        a[y, x] = (*c, 255)
+    # 发际线往后、前沿往后梳：额头露到第 6 行，头顶前方是一道往后翻的浪（亮面在上、暗面在下）
+    for y, xs in ((6, range(15, 22)), (7, range(13, 23)), (8, range(13, 24))):
+        for x in xs:
+            px(x, y, sk)
+    for x in range(14, 22):
+        px(x, 5, B_)
+    for x, y in ((17, 4), (18, 4), (19, 4), (20, 4), (21, 4), (22, 5), (23, 5)):
+        px(x, y, L_)
+    for x, y in ((22, 6), (23, 6), (24, 6), (24, 7)):
+        px(x, y, B_)
+    for x, y in ((14, 5), (15, 5), (24, 8)):
+        px(x, y, S_)
+    for x, y in ((24, 5), (25, 6), (25, 7), (25, 8)):
+        px(x, y, o)
+    # 往后梳的弯发缕（暗线，带一点 S 形）
+    for pts in (((14, 3), (13, 4), (12, 5), (11, 6), (11, 7), (10, 8)),
+                ((19, 2), (18, 3), (16, 3), (15, 4), (14, 5)),
+                ((8, 6), (7, 7), (7, 8)),
+                ((10, 10), (11, 11), (12, 12))):
+        for x, y in pts:
+            if a[y, x][3]:
+                px(x, y, S_)
+    for x, y in ((9, 4), (10, 3), (12, 2), (13, 2), (20, 3), (21, 3)):
+        px(x, y, M_)
+    # 后脑的卷：描边做两个小弧
+    for x, y in ((3, 8), (3, 9), (3, 10)):
+        px(x, y, o)
+    for x, y in ((4, 8), (4, 9), (4, 10)):
+        px(x, y, B_)
+    px(4, 9, S_)
+    return Image.fromarray(a, 'RGBA')
+
+
 def build_koichi():
+    def fix_head(f):
+        return head_recolor(f, K_EYE, None, 24)
     e = build_recolor('koichi', '广濑康一', 'npc_student_m',
                       [('idle', 'idle', 2, 'loop'), ('walk', 'walk', 8, 'loop'), ('bow', 'bow', 1, 'static')],
-                      cmap={'#22242e': '#262a40', '#3a3e4e': '#3e4462', '#121318': '#151726'},
-                      hair=BLOND, amap={'talk': 'idle', 'shock': 'bow', 'hurt': 'bow', 'run': 'walk'}, bodyW=3)
+                      cmap=K_UNI, hair=GREY, frame_fn=lambda f: koichi_hair(fix_head(f)),
+                      head_edit=lambda f: koichi_portrait(recolor(f, K_EYE, (0, 0, 32, 18))),
+                      amap={'talk': 'idle', 'shock': 'bow', 'hurt': 'bow', 'run': 'walk'}, bodyW=3)
     return e
 
 
@@ -472,33 +595,166 @@ BLACK_UNI = {'#2f9e56': '#2c2c3a', '#1a6038': '#1c1c26', '#62c874': '#4c4c62', '
 NAVY_UNI = {'#2f9e56': '#2e2c52', '#1a6038': '#1c1a36', '#62c874': '#4a4882', '#0f4028': '#100f20', '#50b848': '#3a386a'}
 
 
+# 朋子：动画第一套——黑发带紫色高光、齐下巴直发、白发带；红外套、浅蓝 / 深蓝的连衣裙、浅灰丝袜；眼睛棕色
+TOMOKO_HAIR = [(48, 38, 58), (96, 74, 128), (28, 20, 36)]       # 中、亮、暗
+
+
+def tomoko_frame(f, portrait=False):
+    a = np.array(f.convert('RGBA'))
+    hm = comp(f, TOMOKO_HAIR)
+    ys, xs = np.nonzero(hm)
+    if len(ys):
+        top = ys.min()
+        # 白发带：头发顶往下第 2 行（头像第 3 行），沿着头发横过去，下沿一行浅灰做阴影
+        by = top + (3 if portrait else 2)
+        band = hm[by].copy()
+        a[by][band] = (244, 244, 250, 255)
+        sh = hm[by + 1] & band
+        if portrait:
+            a[by + 1][sh] = (200, 202, 214, 255)
+    out = Image.fromarray(a, 'RGBA')
+    if not portrait:
+        # 丝袜：裙摆（白边）以下的腿换成浅灰
+        b = np.array(out)
+        hem = comp(out, [(255, 255, 255)])
+        hy = np.nonzero(hem.any(axis=1))[0]
+        if len(hy):
+            y0 = hy.max() + 1
+            leg = comp(out, SKIN)
+            leg[:y0, :] = False
+            b[leg & comp(out, [SKIN[0]])] = (206, 208, 218, 255)
+            b[leg & comp(out, [SKIN[1]])] = (164, 166, 180, 255)
+            out = Image.fromarray(b, 'RGBA')
+    return out
+
+
 def build_tomoko():
-    cmap = {'#f8e08e': '#5c3a2a', '#fff6cc': '#86583e', '#d2a650': '#3c2418',
-            '#c6daf4': '#d4a2c8', '#8ea8d6': '#9e6a9a', '#a6c6ea': '#bc88b4', '#6f93c9': '#7c4c7c', '#e4eefa': '#ecc8e4',
-            '#f592be': '#3e4468', '#c95f8f': '#2a2e4c', '#e0506a': '#525a88', '#ffc8de': '#6a729c', '#3c8ad8': '#6a4a8a'}
+    cmap = {'#f8e08e': '#30263a', '#fff6cc': '#604a80', '#d2a650': '#1c1424',
+            '#c6daf4': '#d84a4a', '#8ea8d6': '#a02c38', '#a6c6ea': '#c03a42', '#6f93c9': '#7a1e2a', '#e4eefa': '#ec7a6e',
+            '#f592be': '#3e6ab8', '#c95f8f': '#26407a', '#e0506a': '#3a3a4a', '#ffc8de': '#7aa6e0', '#3c8ad8': '#6a4030'}
     return build_recolor('tomoko', '东方朋子', 'holly',
                          [('idle', 'idle', 2, 'loop'), ('walk', 'walk', 8, 'loop'), ('wave', 'wave', 4, 'loop'), ('faint', 'faint', 2, 'oneshot')],
-                         cmap=cmap, amap={'talk': 'idle', 'shock': 'wave', 'special': 'wave', 'run': 'walk'}, bodyW=4)
+                         cmap=cmap, frame_fn=tomoko_frame, head_edit=lambda f: tomoko_frame(f, True),
+                         amap={'talk': 'idle', 'shock': 'wave', 'special': 'wave', 'run': 'walk'}, bodyW=4)
 
 
 def ryohei_head(f):
-    # 白胡子 + 两鬓白发（头像 32×32 的固定位置）
+    # 两鬓白发（头像 32×32 的固定位置）；官方没有胡子，不画
     a = np.array(f.convert('RGBA'))
-    for x in range(15, 23):
-        a[18, x] = (196, 196, 204, 255)
-    for x in range(16, 22):
-        a[19, x] = (150, 150, 162, 255) if a[19, x][3] else a[19, x]
-    a[17, 20] = (216, 148, 108, 255)
     for y, x in ((15, 12), (16, 13), (9, 15), (9, 16)):
         a[y, x] = (216, 148, 108, 255)
     return Image.fromarray(a, 'RGBA')
+
+
+def ryohei_frame(f):
+    """动画配色：制服扣子银色（帽徽保持金色）、领带蓝色"""
+    fb = face_box(f)
+    y0 = fb[3] + 1 if fb else 0
+    f = recolor(f, {'#ffd83c': '#dfe2ea', '#c89a20': '#a4a8b6'}, (0, y0, f.width, f.height))
+    return recolor(f, {'#7a1c28': '#2c4c9c'})
 
 
 def build_ryohei():
     grey = {(28, 26, 32): (150, 150, 160), (12, 10, 16): (112, 112, 124), (56, 52, 62): (196, 196, 206)}
     return build_recolor('ryohei', '东方良平', 'npc_police',
                          [('idle', 'idle', 2, 'loop'), ('walk', 'walk', 8, 'loop'), ('shock', 'shock', 1, 'static'), ('read', 'read', 2, 'loop')],
-                         cmap={}, hair=grey, head_edit=ryohei_head, amap={'talk': 'idle', 'hurt': 'shock', 'run': 'walk'}, bodyW=4)
+                         cmap={}, hair=grey, frame_fn=ryohei_frame, head_edit=lambda f: ryohei_frame(ryohei_head(f)),
+                         amap={'talk': 'idle', 'hurt': 'shock', 'run': 'walk'}, bodyW=4)
+
+
+# 安杰罗（扮成送奶工）：动画配色——灰发、白皙皮肤、淡紫衬衫、青绿色背带工装裤和棒球帽、红灰色鞋
+A_SKIN = [(198, 142, 98), (146, 96, 68)]
+A_HAT = ['#e6e8ee', '#ffffff', '#a6aab8', '#6ab0e0', '#c2c6d2']
+A_TEAL = {'#e6e8ee': '#3a9490', '#ffffff': '#6cc4bc', '#a6aab8': '#246a68', '#6ab0e0': '#f0ecd6', '#c2c6d2': '#2e807c'}
+A_SHIRT = {'#e6e8ee': '#c8b4e2', '#ffffff': '#e6dcf6', '#a6aab8': '#9a86ba', '#c2c6d2': '#b0a0cc', '#6ab0e0': '#e6dcf6'}
+A_PANTS = {'#1c1b26': '#2e7a78', '#242230': '#246260', '#3a78b0': '#1e5654', '#c2c6d2': '#4a9e98'}
+A_BODY = {'#1e1a22': '#9a9aa8', '#464254': '#c4c4d0', '#c68e62': '#f2d4bc', '#926044': '#d4a48c'}
+
+
+ANGELO_FACE = {
+    6:  '        ohhhhhhhhhhhho        ',
+    7:  '        ohhHhhhhhhhhhhho      ',
+    8:  '      oohHhhhhhhosssssso.     ',
+    9:  '      oohhhhhhhosssssssso     ',
+    10: '      oohhhhhhossssssssso     ',
+    11: '      oohhhhhhsoooossooooo    ',
+    12: '      oohhhhhhsswossswosso    ',
+    13: '      oohhhhoossssssssssso    ',
+    14: '      ooooooddssssssssssso.   ',
+    15: '        odddossssssssssssoo.  ',
+    16: '        odddsssssssssssssso.  ',
+    17: '        odddssssssssssssso..  ',
+    18: '         oddssssssssommmso..  ',
+    19: '          osssssssssssssso..  ',
+    20: '          ossssssssssssoo..   ',
+    21: '          oosssssoooooo...    ',
+}
+
+
+def angelo_frame(f, portrait=False):
+    fb = face_box(f, 24 if not portrait else 32, A_SKIN)
+    if not fb:
+        return recolor(f, A_BODY)
+    fx0, fy0, fx1, fy1 = fb
+    a = np.array(f.convert('RGBA'))
+    h, w = a.shape[:2]
+    # 1) 帽子：脸顶以上的白帽子 → 青绿棒球帽；原来是高高的筒帽，削掉上面三行，前面加帽檐
+    hat = comp(f, A_HAT, (0, 0, w, fy0 - 1))
+    ys, xs = np.nonzero(hat)
+    out = Image.fromarray(a, 'RGBA')
+    if len(ys):
+        top, bot = ys.min(), ys.max()
+        if bot - top >= 3:
+            cut = bot - 3
+            x0, x1 = xs.min() - 1, xs.max() + 1
+            a[:cut + 1, x0:x1 + 1] = (0, 0, 0, 0)
+            a[cut, x0 + 1:x1] = (26, 16, 32, 255)
+            ex = xs[ys == bot].max()
+            for k in range(1, 4):                               # 帽檐往前伸 3 格
+                a[bot, ex + k] = (*rgb('#246a68'), 255)
+                a[bot + 1, ex + k] = (26, 16, 32, 255)
+            a[bot - 1, ex + 1:ex + 4] = (26, 16, 32, 255)
+            a[bot, ex + 4] = (26, 16, 32, 255)
+        out = recolor(Image.fromarray(a, 'RGBA'), A_TEAL, (0, 0, w, fy0 - 1))
+    # 2) 衬衫淡紫；裤子、腰带、裤缝青绿
+    out = recolor(out, A_PANTS, (0, fy1 + 1, w, h))
+    out = recolor(out, A_SHIRT, (0, fy1 + 1, w, h))
+    if not portrait:
+        # 背带裤的护胸：腰带往上 5 行、躯干中间一块；两条背带到肩
+        b = np.array(out)
+        belt = comp(out, ['#1e5654'], (0, fy1 + 1, w, h))
+        by = np.nonzero(belt.sum(axis=1) >= 4)[0]
+        if len(by):
+            y1 = by.min()
+            bx = np.nonzero(belt[y1])[0]
+            cx0, cx1 = bx.min() + 2, bx.max() - 2
+            shirt = comp(out, list(A_SHIRT.values()))
+            for y in range(y1 - 5, y1):
+                for x in range(cx0, cx1 + 1):
+                    if shirt[y, x]:
+                        b[y, x] = (*rgb('#3a9490' if x > cx0 else '#2e807c'), 255)
+            for y in range(fy1 + 2, y1 - 5):
+                for x in (cx0, cx1):
+                    if shirt[y, x]:
+                        b[y, x] = (*rgb('#2e807c'), 255)
+        out = Image.fromarray(b, 'RGBA')
+        # 鞋：最底下两行的深色换成红灰
+        bb = out.getbbox()
+        out = recolor(out, {'#2e7a78': '#8a5454', '#246260': '#6a3c40', '#5c5c70': '#a06a6a'}, (0, bb[3] - 2, w, bb[3]))
+    out = recolor(out, A_BODY)
+    if portrait:
+        # 原图是戴墨镜、留胡子的门童脸，安杰罗没有胡子：头像的脸整块重画（x 从 1 起）
+        b = np.array(out)
+        pal = {'o': (20, 18, 30), 'h': rgb('#9a9aa8'), 'H': rgb('#c4c4d0'), 's': rgb('#f2d4bc'), 'd': rgb('#d4a48c'),
+               'w': rgb('#f0ecd6'), 'm': rgb('#c08a80')}
+        for y, r in ANGELO_FACE.items():
+            for i, ch in enumerate(r):
+                x = 1 + i
+                if ch == ' ':
+                    continue
+                b[y, x] = (0, 0, 0, 0) if ch == '.' else (*pal[ch], 255)
+        out = Image.fromarray(b, 'RGBA')
+    return out
 
 
 def build_angelo():
@@ -507,7 +763,8 @@ def build_angelo():
     return build_recolor('angelo', '片桐安十郎（送奶工）', 'npc_bellhop',
                          [('idle', 'idle', 2, 'loop'), ('walk', 'walk', 8, 'loop'), ('hurt', 'hurt', 1, 'static'), ('down', 'down', 1, 'static'),
                           ('talk', 'talk', 4, 'loop')],
-                         cmap=cmap, skin=[(198, 142, 98), (146, 96, 68)], amap={'shock': 'hurt', 'run': {'a': 'walk', 'f': 1.6}}, bodyW=4)
+                         cmap=cmap, skin=A_SKIN, frame_fn=angelo_frame, head_edit=lambda f: angelo_frame(f, True),
+                         amap={'shock': 'hurt', 'run': {'a': 'walk', 'f': 1.6}}, bodyW=4)
 
 
 def build_robber():

@@ -1,0 +1,63 @@
+{
+ "id": "koichi_ex",
+ "name": "广濑康一",
+ "image": "koichi_ex.png",
+ "cell": [
+  48,
+  48
+ ],
+ "pivot": [
+  24,
+  48
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  },
+  "bow": {
+   "row": 2,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "cmd": {
+   "row": 3,
+   "frames": 2,
+   "fps": 6,
+   "kind": "loop"
+  },
+  "hurt": {
+   "row": 4,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "down": {
+   "row": 5,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "dodge": {
+   "row": 6,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "guard": {
+   "row": 7,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  }
+ }
+}

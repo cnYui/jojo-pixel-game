@@ -323,6 +323,1000 @@
    "top": 26,
    "bodyW": 4,
    "kind": "stand"
+  },
+  "tamami": {
+   "name": "小林玉美",
+   "image": "chars/tamami",
+   "cell": [
+    54,
+    39
+   ],
+   "pivot": [
+    19,
+    37
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 2,
+     "frames": 4,
+     "fps": 13,
+     "kind": "loop"
+    },
+    "cover_ears": {
+     "row": 3,
+     "frames": 2,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "cry": {
+     "row": 4,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "wave": {
+     "row": 6,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "fall": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "crawl": {
+     "row": 8,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "kneel": {
+     "row": 9,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "bow": {
+     "row": 10,
+     "frames": 2,
+     "fps": 3,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/tamami/normal_0",
+     "heads/tamami/normal_1"
+    ],
+    "smile": [
+     "heads/tamami/smile_0",
+     "heads/tamami/smile_1"
+    ],
+    "rage": [
+     "heads/tamami/rage_0",
+     "heads/tamami/rage_1"
+    ],
+    "shock": [
+     "heads/tamami/shock_0",
+     "heads/tamami/shock_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "cmd": "wave",
+    "cmd2": "wave",
+    "cmd_hold": "wave",
+    "guard": "cover_ears",
+    "dodge": "hurt",
+    "down": "fall",
+    "hurt": "hurt",
+    "special": "wave",
+    "win": "wave",
+    "talk": "idle",
+    "getup": "hurt",
+    "shock": "cover_ears",
+    "run": "run"
+   },
+   "top": 28,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "hazamada": {
+   "name": "间田敏和",
+   "image": "chars/hazamada",
+   "cell": [
+    32,
+    32
+   ],
+   "pivot": [
+    16,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 2,
+     "frames": 4,
+     "fps": 13,
+     "kind": "loop"
+    },
+    "smirk": {
+     "row": 3,
+     "frames": 2,
+     "fps": 3,
+     "kind": "loop"
+    },
+    "point": {
+     "row": 4,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "shock": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "knocked": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/hazamada/normal_0",
+     "heads/hazamada/normal_1"
+    ],
+    "smile": [
+     "heads/hazamada/smile_0",
+     "heads/hazamada/smile_1"
+    ],
+    "rage": [
+     "heads/hazamada/rage_0",
+     "heads/hazamada/rage_1"
+    ],
+    "shock": [
+     "heads/hazamada/shock_0",
+     "heads/hazamada/shock_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "cmd": "point",
+    "cmd2": "point",
+    "cmd_hold": "point",
+    "guard": "shock",
+    "dodge": "shock",
+    "down": "knocked",
+    "hurt": "shock",
+    "special": "point",
+    "win": "smirk",
+    "talk": "idle",
+    "getup": "shock",
+    "shock": "shock",
+    "run": "run"
+   },
+   "top": 26,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "surface_doll": {
+   "name": "表面",
+   "image": "chars/surface_doll",
+   "cell": [
+    44,
+    36
+   ],
+   "pivot": [
+    19,
+    34
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "jump": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "fall": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {},
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "run": "walk",
+    "down": "fall",
+    "hurt": "hurt",
+    "dodge": "jump",
+    "shock": "hurt"
+   },
+   "top": 27,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "surface": {
+   "name": "表面",
+   "image": "chars/surface",
+   "cell": [
+    44,
+    36
+   ],
+   "pivot": [
+    19,
+    34
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 2,
+     "frames": 4,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "point": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 4,
+     "frames": 2,
+     "fps": 3,
+     "kind": "oneshot"
+    },
+    "shock": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "dodge": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "guard": {
+     "row": 8,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "kick": {
+     "row": 9,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "sit": {
+     "row": 10,
+     "frames": 2,
+     "fps": 1.5,
+     "kind": "loop"
+    },
+    "down": {
+     "row": 11,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/surface/normal_0",
+     "heads/surface/normal_1"
+    ],
+    "rage": [
+     "heads/surface/rage_0",
+     "heads/surface/rage_1"
+    ],
+    "smile": [
+     "heads/surface/smile_0",
+     "heads/surface/smile_1"
+    ],
+    "shock": [
+     "heads/surface/shock_0",
+     "heads/surface/shock_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "cmd": "point",
+    "cmd2": "point",
+    "cmd_hold": "point",
+    "guard": "guard",
+    "dodge": "dodge",
+    "down": "down",
+    "hurt": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "talk": "idle",
+    "getup": "hurt",
+    "kick": "kick",
+    "sit": "sit",
+    "run": "run"
+   },
+   "top": 30,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "surface_cut": {
+   "name": "表面",
+   "image": "chars/surface_cut",
+   "cell": [
+    44,
+    36
+   ],
+   "pivot": [
+    19,
+    34
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 2,
+     "frames": 4,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "point": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 4,
+     "frames": 2,
+     "fps": 3,
+     "kind": "oneshot"
+    },
+    "shock": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "dodge": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "guard": {
+     "row": 8,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "kick": {
+     "row": 9,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "sit": {
+     "row": 10,
+     "frames": 2,
+     "fps": 1.5,
+     "kind": "loop"
+    },
+    "down": {
+     "row": 11,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/surface_cut/normal_0",
+     "heads/surface_cut/normal_1"
+    ],
+    "rage": [
+     "heads/surface_cut/rage_0",
+     "heads/surface_cut/rage_1"
+    ],
+    "smile": [
+     "heads/surface_cut/smile_0",
+     "heads/surface_cut/smile_1"
+    ],
+    "shock": [
+     "heads/surface_cut/shock_0",
+     "heads/surface_cut/shock_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "cmd": "point",
+    "cmd2": "point",
+    "cmd_hold": "point",
+    "guard": "guard",
+    "dodge": "dodge",
+    "down": "down",
+    "hurt": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "talk": "idle",
+    "getup": "hurt",
+    "kick": "kick",
+    "sit": "sit",
+    "run": "run"
+   },
+   "top": 30,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "hirose_mom": {
+   "name": "康一的妈妈",
+   "image": "chars/hirose_mom",
+   "cell": [
+    43,
+    30
+   ],
+   "pivot": [
+    25,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "cry": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "wave": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/hirose_mom/normal_0",
+     "heads/hirose_mom/normal_1"
+    ],
+    "smile": [
+     "heads/hirose_mom/smile_0",
+     "heads/hirose_mom/smile_1"
+    ],
+    "shock": [
+     "heads/hirose_mom/shock_0",
+     "heads/hirose_mom/shock_1"
+    ],
+    "rage": [
+     "heads/hirose_mom/rage_0",
+     "heads/hirose_mom/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "run": "walk",
+    "shock": "cry",
+    "hurt": "cry",
+    "down": "cry"
+   },
+   "top": 25,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "ayana": {
+   "name": "广濑绫那",
+   "image": "chars/ayana",
+   "cell": [
+    30,
+    30
+   ],
+   "pivot": [
+    15,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "cry": {
+     "row": 2,
+     "frames": 2,
+     "fps": 3,
+     "kind": "loop"
+    },
+    "cheer": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/ayana/normal_0",
+     "heads/ayana/normal_1"
+    ],
+    "smile": [
+     "heads/ayana/smile_0",
+     "heads/ayana/smile_1"
+    ],
+    "shock": [
+     "heads/ayana/shock_0",
+     "heads/ayana/shock_1"
+    ],
+    "rage": [
+     "heads/ayana/rage_0",
+     "heads/ayana/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "run": "walk",
+    "shock": "cry",
+    "hurt": "cry",
+    "down": "cry"
+   },
+   "top": 25,
+   "bodyW": 3,
+   "kind": "char"
+  },
+  "biker_a": {
+   "name": "飙车族A",
+   "image": "chars/biker_a",
+   "cell": [
+    44,
+    36
+   ],
+   "pivot": [
+    19,
+    34
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 2,
+     "frames": 4,
+     "fps": 11,
+     "kind": "loop"
+    },
+    "point": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "kick": {
+     "row": 5,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "down": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/biker_a/normal_0",
+     "heads/biker_a/normal_1"
+    ],
+    "rage": [
+     "heads/biker_a/rage_0",
+     "heads/biker_a/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "cmd": "point",
+    "cmd2": "point",
+    "cmd_hold": "point",
+    "down": "down",
+    "hurt": "hurt",
+    "talk": "idle",
+    "getup": "hurt",
+    "kick": "kick",
+    "run": "run",
+    "shock": "hurt"
+   },
+   "top": 30,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "biker_b": {
+   "name": "飙车族B",
+   "image": "chars/biker_b",
+   "cell": [
+    44,
+    36
+   ],
+   "pivot": [
+    19,
+    34
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 2,
+     "frames": 4,
+     "fps": 11,
+     "kind": "loop"
+    },
+    "point": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "kick": {
+     "row": 5,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "down": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/biker_b/normal_0",
+     "heads/biker_b/normal_1"
+    ],
+    "rage": [
+     "heads/biker_b/rage_0",
+     "heads/biker_b/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "cmd": "point",
+    "cmd2": "point",
+    "cmd_hold": "point",
+    "down": "down",
+    "hurt": "hurt",
+    "talk": "idle",
+    "getup": "hurt",
+    "kick": "kick",
+    "run": "run",
+    "shock": "hurt"
+   },
+   "top": 30,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "yukako_sil": {
+   "name": "？？？",
+   "image": "chars/yukako_sil",
+   "cell": [
+    30,
+    30
+   ],
+   "pivot": [
+    15,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {},
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle"
+   },
+   "top": 26,
+   "bodyW": 3,
+   "kind": "char"
+  },
+  "koichi_bike": {
+   "name": "广濑康一",
+   "image": "chars/koichi_bike",
+   "cell": [
+    36,
+    31
+   ],
+   "pivot": [
+    17,
+    30
+   ],
+   "animations": {
+    "ride": {
+     "row": 0,
+     "frames": 4,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "idle": {
+     "row": 1,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {},
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "walk": "ride",
+    "run": "ride"
+   },
+   "top": 29,
+   "bodyW": 6,
+   "kind": "char"
+  },
+  "koichi": {
+   "name": "广濑康一",
+   "image": "chars/koichi_ex",
+   "cell": [
+    30,
+    30
+   ],
+   "pivot": [
+    15,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "bow": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "cmd": {
+     "row": 3,
+     "frames": 2,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "dodge": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "guard": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "run": "walk",
+    "shock": "hurt",
+    "hurt": "hurt",
+    "down": "down",
+    "getup": "hurt",
+    "dodge": "dodge",
+    "guard": "guard",
+    "block": "guard",
+    "cmd": "cmd",
+    "cmd2": "cmd",
+    "cmd_hold": "cmd",
+    "special": "cmd",
+    "win": "cmd",
+    "shoot": "cmd"
+   },
+   "top": 27,
+   "bodyW": 3,
+   "kind": "char"
   }
  },
  "heroes": {
@@ -357,6 +1351,81 @@
    "short": "回音",
    "nameColor": "#2a9a6a",
    "blipHz": 900
+  },
+  "tamami": {
+   "short": "玉美",
+   "nameColor": "#6a74c0",
+   "blipHz": 360
+  },
+  "thelock": {
+   "short": "锁",
+   "nameColor": "#8a90a8",
+   "blipHz": 300
+  },
+  "hazamada": {
+   "short": "间田",
+   "nameColor": "#2a8a88",
+   "blipHz": 480
+  },
+  "surface": {
+   "short": "表面",
+   "nameColor": "#a8783c",
+   "blipHz": 440
+  },
+  "surface_cut": {
+   "short": "表面",
+   "nameColor": "#a8783c",
+   "blipHz": 440
+  },
+  "surface_doll": {
+   "short": "表面",
+   "nameColor": "#a8783c",
+   "blipHz": 440
+  },
+  "hirose_mom": {
+   "short": "康一妈妈",
+   "nameColor": "#d07a4a",
+   "blipHz": 700
+  },
+  "ayana": {
+   "short": "绫那",
+   "nameColor": "#e0709a",
+   "blipHz": 820
+  },
+  "biker_a": {
+   "short": "飙车族A",
+   "nameColor": "#9a9aa4",
+   "blipHz": 360
+  },
+  "biker_b": {
+   "short": "飙车族B",
+   "nameColor": "#7a4a8a",
+   "blipHz": 340
+  },
+  "yukako_sil": {
+   "short": "？？？",
+   "nameColor": "#5a4a7a",
+   "blipHz": 760
+  },
+  "koichi_bike": {
+   "short": "康一",
+   "nameColor": "#4a8a5a",
+   "blipHz": 640
+  },
+  "phone_voice": {
+   "short": "电话里的声音",
+   "nameColor": "#9aa0b4",
+   "blipHz": 300
+  },
+  "hotel_front": {
+   "short": "酒店前台",
+   "nameColor": "#8a7a5a",
+   "blipHz": 740
+  },
+  "classmate": {
+   "short": "同学",
+   "nameColor": "#6a8aa0",
+   "blipHz": 560
   }
  },
  "stands": {
@@ -392,6 +1461,40 @@
    },
    "link": null,
    "summonSfx": "stand_summon_star",
+   "fist": false
+  },
+  "thelock": {
+   "cn": "锁",
+   "en": "THE LOCK",
+   "owner": "tamami",
+   "aura": "#a0a8c8",
+   "card": "#c8d0e8",
+   "ghost": "#e0e4f0",
+   "impact": "blue",
+   "kind": "object",
+   "idle": {
+    "dx": 0,
+    "z": 0
+   },
+   "link": null,
+   "summonSfx": null,
+   "fist": false
+  },
+  "surface": {
+   "cn": "表面",
+   "en": "SURFACE",
+   "owner": "hazamada",
+   "aura": "#d8a868",
+   "card": "#e8c890",
+   "ghost": "#f4e0c0",
+   "impact": "orange",
+   "kind": "object",
+   "idle": {
+    "dx": 0,
+    "z": 0
+   },
+   "link": null,
+   "summonSfx": null,
    "fist": false
   }
  }

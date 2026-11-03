@@ -1,0 +1,27 @@
+{
+ "id": "koichi_bike",
+ "name": "广濑康一",
+ "image": "koichi_bike.png",
+ "cell": [
+  56,
+  48
+ ],
+ "pivot": [
+  27,
+  47
+ ],
+ "animations": {
+  "ride": {
+   "row": 0,
+   "frames": 4,
+   "fps": 10,
+   "kind": "loop"
+  },
+  "idle": {
+   "row": 1,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  }
+ }
+}
