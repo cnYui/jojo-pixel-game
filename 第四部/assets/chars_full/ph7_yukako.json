@@ -1,0 +1,39 @@
+{
+ "id": "ph7_yukako",
+ "name": "山岸由花子（占位）",
+ "image": "ph7_yukako.png",
+ "cell": [
+  70,
+  66
+ ],
+ "pivot": [
+  33,
+  50
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 1,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  },
+  "hurt": {
+   "row": 2,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "down": {
+   "row": 3,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  }
+ }
+}

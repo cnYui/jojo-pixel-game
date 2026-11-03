@@ -1,0 +1,146 @@
+{
+ "namecards": {
+  "aya": {
+   "image": "ui/namecard/aya",
+   "w": 268,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  },
+  "tailor": {
+   "image": "ui/namecard/tailor",
+   "w": 150,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  }
+ },
+ "standcards": {
+  "cinderella": {
+   "image": "ui/standcard/cinderella",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "echoes3": {
+   "image": "ui/standcard/echoes3",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "sha": {
+   "image": "ui/standcard/sha",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "ph7_killerqueen": {
+   "image": "ui/standcard/ph7_killerqueen",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  }
+ },
+ "locations": {
+  "salon": {
+   "image": "ui/location/salon",
+   "w": 194,
+   "h": 54,
+   "x": 24,
+   "y": 25
+  },
+  "ch7_cafe": {
+   "image": "ui/location/ch7_cafe",
+   "w": 271,
+   "h": 53,
+   "x": 24,
+   "y": 25
+  },
+  "tailor": {
+   "image": "ui/location/tailor",
+   "w": 164,
+   "h": 53,
+   "x": 24,
+   "y": 25
+  }
+ },
+ "vs": {
+  "sha": {
+   "name": {
+    "image": "ui/vs/sha_name",
+    "w": 247,
+    "h": 49
+   },
+   "en": {
+    "image": "ui/vs/sha_en",
+    "w": 169,
+    "h": 11
+   },
+   "tag": {
+    "image": "ui/vs/sha_tag",
+    "w": 195,
+    "h": 34
+   },
+   "colours": [
+    "#4a0a14",
+    "#14040a"
+   ]
+  },
+  "kira": {
+   "name": {
+    "image": "ui/vs/kira_name",
+    "w": 167,
+    "h": 47
+   },
+   "en": {
+    "image": "ui/vs/kira_en",
+    "w": 111,
+    "h": 13
+   },
+   "tag": {
+    "image": "ui/vs/kira_tag",
+    "w": 195,
+    "h": 34
+   },
+   "colours": [
+    "#4a0a14",
+    "#14040a"
+   ]
+  }
+ },
+ "titles": {
+  "days_later": {
+   "image": "ui/title/days_later",
+   "w": 94,
+   "h": 34
+  },
+  "kira_pov": {
+   "image": "ui/title/kira_pov",
+   "w": 178,
+   "h": 35
+  },
+  "next_day": {
+   "image": "ui/title/next_day",
+   "w": 94,
+   "h": 34
+  }
+ },
+ "specials": {
+  "koichi_act3": {
+   "image": "ui/special/koichi_act3",
+   "w": 218,
+   "h": 42
+  }
+ },
+ "map": {
+  "stamp_199907": {
+   "image": "ui/map/stamp_199907",
+   "w": 67,
+   "h": 53
+  }
+ }
+}

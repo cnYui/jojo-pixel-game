@@ -1,0 +1,57 @@
+{
+ "id": "kawajiri",
+ "name": "川尻浩作",
+ "image": "kawajiri.png",
+ "cell": [
+  65,
+  66
+ ],
+ "pivot": [
+  26,
+  64
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  },
+  "punch": {
+   "row": 2,
+   "frames": 2,
+   "fps": 8,
+   "kind": "oneshot"
+  },
+  "throw": {
+   "row": 3,
+   "frames": 2,
+   "fps": 8,
+   "kind": "oneshot"
+  },
+  "pose": {
+   "row": 4,
+   "frames": 2,
+   "fps": 3,
+   "kind": "oneshot"
+  },
+  "laugh": {
+   "row": 5,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
+  },
+  "hurt": {
+   "row": 6,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  }
+ }
+}
