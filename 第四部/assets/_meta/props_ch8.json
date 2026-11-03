@@ -1,0 +1,109 @@
+{
+ "props": {
+  "polaroid": {
+   "image": "props/polaroid",
+   "frames": 1,
+   "size": [
+    14,
+    11
+   ],
+   "pivot": [
+    7,
+    11
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "ghost_photo": {
+   "image": "props/ghost_photo",
+   "frames": 2,
+   "size": [
+    12,
+    13
+   ],
+   "pivot": [
+    6,
+    13
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "arrow2": {
+   "image": "props/arrow2",
+   "frames": 1,
+   "size": [
+    26,
+    10
+   ],
+   "pivot": [
+    13,
+    10
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "teacup": {
+   "image": "props/teacup",
+   "frames": 1,
+   "size": [
+    11,
+    7
+   ],
+   "pivot": [
+    5,
+    7
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "jk": {
+   "image": "props/jk",
+   "frames": 3,
+   "size": [
+    10,
+    9
+   ],
+   "pivot": [
+    5,
+    9
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "jk_big": {
+   "image": "props/jk_big",
+   "frames": 3,
+   "size": [
+    34,
+    30
+   ],
+   "pivot": [
+    17,
+    30
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "vtape": {
+   "image": "props/vtape",
+   "frames": 1,
+   "size": [
+    12,
+    7
+   ],
+   "pivot": [
+    6,
+    7
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  }
+ }
+}
