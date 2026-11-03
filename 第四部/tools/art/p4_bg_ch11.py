@@ -1,11 +1,12 @@
 # 第四部第11章（川尻家 / 败者食尘）的背景，全部程序绘制，画法和零件沿用序章（p4_bg.py / p4_bglib.py）和第2章（p4_bg_ch2.py）。
-#   本章新画 2 张：
+#   本章新画 3 张：
 #     morning_corner   640  住宅区的街口，7 月早上的光（邮筒、电线杆、路边大钟、カーブミラー、往里走的小巷）。第 18 战。
 #                          钟的指针是 pick 层，key 'clock' = 当天的分钟数（7:00 = 420 … 8:30 = 510，每 5 分钟一张）。
 #     street_crossing  960  商店街到大马路的十字路口（第 17 战段 A）：左边一排铺面，中间横穿的大路 + 斑马线 + 两组红绿灯，
 #                          右边写字楼、长围墙、邮局、去杜王大酒店的路牌。红绿灯是 pick 层，key 'signal'：0 行人红灯 / 1 行人绿灯。
 #   本章直接沿用、不复制的背景：morioh_map（序章）、kawajiri_house（第8章，早 / 夜用它自己的开关层）、ghost_alley（第6章）。
-#   rohan_house 的脚手架版要等第5章的露伴宅合进来再叠（见 第四部/docs/第11章_背景.md）。
+#     rohan_house_scaffold 480  第5章露伴宅（p4_bg_ch5.rohan_house_layers）+ 修缮用的脚手架、防护网、“工事中”牌。
+#                          第5章分支没合进来时跳过这张；要重画就 PYTHONPATH 指到有 p4_bg_ch5.py 的目录。
 #   输出 第四部/assets/bg/<key>/<层>.png + 第四部/assets/_meta/bg_ch11.json（build_p4.py 会把 _meta/bg_*.json 并进 bg）。
 #   用法：python3 第四部/tools/art/p4_bg_ch11.py [key ...]      预览图：第四部/assets/preview/bg_<key>.png（不进游戏包）
 #   终章要的“街口雨天版”可以 import 本文件的 corner_near(var='rain')。
@@ -15,7 +16,7 @@ import os
 import sys
 
 import numpy as np
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageDraw
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import p4lib as LIB  # noqa: E402
@@ -24,213 +25,7 @@ from p4_bg import preview, save_layers, sky_far  # noqa: E402
 
 PACK = 'ch11'
 
-# ------------------------------------------------------------ 下面这些小零件抄自 p4_bg_ch2.py（第2章分支还没合，不能 import）
-
-# 3×5 的大写字母（招牌、门牌用；数字用 p4_bglib.DIG）
-LET = {'A': ['010', '101', '111', '101', '101'], 'B': ['110', '101', '110', '101', '110'], 'C': ['011', '100', '100', '100', '011'],
-       'D': ['110', '101', '101', '101', '110'], 'E': ['111', '100', '110', '100', '111'], 'F': ['111', '100', '110', '100', '100'],
-       'G': ['011', '100', '101', '101', '011'], 'H': ['101', '101', '111', '101', '101'], 'I': ['111', '010', '010', '010', '111'],
-       'K': ['101', '101', '110', '101', '101'], 'L': ['100', '100', '100', '100', '111'], 'M': ['10001', '11011', '10101', '10001', '10001'],
-       'N': ['1001', '1101', '1011', '1001', '1001'], 'O': ['010', '101', '101', '101', '010'], 'P': ['110', '101', '110', '100', '100'],
-       'R': ['110', '101', '110', '101', '101'], 'S': ['011', '100', '010', '001', '110'], 'T': ['111', '010', '010', '010', '010'],
-       'U': ['101', '101', '101', '101', '111'], 'V': ['101', '101', '101', '101', '010'], 'Y': ['101', '101', '010', '010', '010'],
-       '-': ['000', '000', '111', '000', '000'], ' ': ['000'] * 5, '.': ['000', '000', '000', '000', '010']}
-
-
-def letters(d, x, y, text, col, gap=1):
-    """3×5 小字（M、N 宽一点）：字母 + 数字混排"""
-    cx = x
-    for ch in text:
-        g = LET.get(ch) or DIG.get(ch) or ['000'] * 5
-        for r, row in enumerate(g):
-            for c, v in enumerate(row):
-                if v == '1':
-                    px(d, cx + c, y + r, col)
-        cx += len(g[0]) + gap
-    return cx - x - gap
-
-
-def text_w(text, gap=1):
-    return sum(len((LET.get(ch) or DIG.get(ch) or ['000'])[0]) + gap for ch in text) - gap
-
-
-def clock_face(d, cx, cy, r, hh, mm, rim='#7a5434', face='#f6f0e0', hand='#2a2a30', tick='#a8a090'):
-    """挂钟：hh:mm（时针按分钟往前走一点）"""
-    ellipse(d, (cx - r - 2, cy - r - 2, cx + r + 2, cy + r + 2), rim)
-    ellipse(d, (cx - r, cy - r, cx + r, cy + r), face)
-    for i in range(12):
-        a = i * math.pi / 6
-        px(d, cx + (r - 1) * math.sin(a), cy - (r - 1) * math.cos(a), tick if i % 3 else hand)
-    am = mm / 60 * 2 * math.pi
-    ah = (hh % 12 + mm / 60) / 12 * 2 * math.pi
-    line(d, (cx, cy, cx + (r - 2) * math.sin(am), cy - (r - 2) * math.cos(am)), hand)
-    line(d, (cx, cy, cx + (r - 4) * math.sin(ah), cy - (r - 4) * math.cos(ah)), hand)
-    px(d, cx, cy, '#c83a34')
-
-
-def poly(d, pts, col):
-    d.polygon([(int(round(x)), int(round(y))) for x, y in pts], fill=C(col))
-
-def kanji(im, x, y, text, col, vertical=False, size=12):
-    """文泉驿点阵正黑 12 px 点阵字（招牌用）；vertical = 竖排。返回 (宽, 高)"""
-    if vertical:
-        cy, w = y, 0
-        for ch in text:
-            m = LIB.text_mask(ch, LIB.WQY, size, index=1)
-            im.paste(C(col), (int(x + (size - m.width) // 2), int(cy)), m)
-            cy += m.height + 1
-            w = max(w, m.width)
-        return w, cy - y - 1
-    m = LIB.text_mask(text, LIB.WQY, size, index=1)
-    im.paste(C(col), (int(x), int(y)), m)
-    return m.width, m.height
-
-
-def kanji_size(text, size=12):
-    m = LIB.text_mask(text, LIB.WQY, size, index=1)
-    return m.width, m.height
-
-
-def facade(im, x0, x1, top, G, wall, trim, seed=0, win='#9cc0d4', floors=2, sign_y=None):
-    """铺面房的上半截：外墙（贴砖的横纹）、每层一排窗、楼顶的女儿墙。返回招牌带的 y"""
-    d = ImageDraw.Draw(im)
-    rng = np.random.RandomState(seed)
-    rect(d, (x0, top, x1, G), wall)
-    for yy in range(top + 3, G, 3):
-        line(d, (x0, yy, x1, yy), mix(wall, '#000000', .06))
-    rect(d, (x0, top - 3, x1, top), trim)
-    line(d, (x0, top - 3, x1, top - 3), mix(trim, '#ffffff', .3))
-    line(d, (x0, top + 1, x1, top + 1), mix(wall, '#000000', .2))
-    rect(d, (x1 - 2, top, x1, G), mix(wall, '#000000', .14))
-    sy = sign_y or (G - 62)
-    fh = (sy - top - 6) // max(1, floors - 1) if floors > 1 else 0
-    for f in range(floors - 1):
-        wy = top + 6 + f * fh
-        n = max(1, (x1 - x0 - 10) // 30)
-        gap = (x1 - x0 - n * 22) // (n + 1)
-        for i in range(n):
-            wx = x0 + gap + i * (22 + gap)
-            curtain = ['#e8d8b0', '#c8d8e8', None, '#f0c8c8'][rng.randint(4)]
-            window(d, (wx, wy, wx + 22, wy + min(18, fh - 8)), frame='#f4f2ec', glass=(win, mix(win, '#ffffff', .4)), curtain=curtain)
-            if rng.rand() < .35:                                                 # 晾的毛巾 / 空调外机
-                rect(d, (wx + 4, wy + min(18, fh - 8) + 3, wx + 18, wy + min(18, fh - 8) + 4), '#8a8a90')
-            elif rng.rand() < .4:
-                rect(d, (wx + 24, wy + 6, wx + 31, wy + 12), '#e4e4de')
-                ellipse(d, (wx + 25, wy + 7, wx + 29, wy + 11), '#a4a4a8')
-    return sy
-
-
-def signboard(im, x0, x1, y, h, bg, edge, text=None, col='#ffffff', latin=None):
-    d = ImageDraw.Draw(im)
-    rect(d, (x0, y, x1, y + h), edge)
-    rect(d, (x0 + 1, y + 1, x1 - 1, y + h - 1), bg)
-    line(d, (x0 + 1, y + 1, x1 - 1, y + 1), mix(bg, '#ffffff', .3))
-    if text:
-        tw, th = kanji_size(text)
-        kanji(im, (x0 + x1) // 2 - tw // 2, y + (h - th) // 2 + 1, text, col)
-    if latin:
-        letters(d, (x0 + x1) // 2 - text_w(latin) // 2, y + (h - 5) // 2 + 1, latin, col)
-
-
-def awning(im, x0, x1, y, depth, cols, scallop=True):
-    """遮阳篷：正面看是一条往外斜的条纹带 + 下摆的波浪边"""
-    d = ImageDraw.Draw(im)
-    for i in range(depth):
-        for x in range(x0 - i // 3, x1 + i // 3 + 1):
-            k = ((x - x0 + 200) // 6) % 2
-            px(d, x, y + i, mix(cols[k], '#000000', .08 * (i / depth)))
-    if scallop:
-        for x in range(x0 - depth // 3, x1 + depth // 3, 6):
-            ellipse(d, (x, y + depth - 2, x + 5, y + depth + 2), cols[((x - x0 + 200) // 6) % 2])
-    line(d, (x0, y, x1, y), mix(cols[0], '#ffffff', .4))
-
-
-def crate_stack(d, x, g, n, col='#e8c030', bottle='#6a3a1e'):
-    """啤酒箱（塑料筐）一摞，每箱露出一排瓶颈"""
-    for k in range(n):
-        y = g - (k + 1) * 9
-        rect(d, (x, y, x + 20, y + 8), col)
-        rect(d, (x + 2, y + 3, x + 18, y + 6), mix(col, '#000000', .25))
-        line(d, (x, y, x + 20, y), mix(col, '#ffffff', .35))
-        for bx in range(x + 2, x + 19, 3):
-            rect(d, (bx, y - 3, bx + 1, y), bottle)
-            px(d, bx, y - 4, '#d8c070')
-
-
-def fruit_display(d, x0, x1, g, seed=0):
-    """果蔬店门口一层层的木箱：橙、苹果、香蕉、西瓜，插着价签"""
-    rng = np.random.RandomState(seed)
-    fruits = [('#f08a20', '#f8b050'), ('#d83a34', '#f06a5a'), ('#f0d040', '#f8e888'), ('#4a9a40', '#70c060'),
-              ('#8a3a8a', '#b060b0'), ('#e8e0a0', '#f8f4d0')]
-    for tier, (y, ix) in enumerate(((g - 8, 0), (g - 16, 6), (g - 24, 12))):
-        for x in range(x0 + ix, x1 - ix - 14, 16):
-            rect(d, (x, y, x + 14, y + 7), '#a87a4a')
-            line(d, (x, y, x + 14, y), '#c89a62')
-            line(d, (x, y + 4, x + 14, y + 4), '#8a6038')
-            fc = fruits[rng.randint(len(fruits))]
-            for fx in range(x + 1, x + 13, 3):
-                ellipse(d, (fx, y - 3, fx + 3, y), fc[0])
-                px(d, fx + 1, y - 3, fc[1])
-            rect(d, (x + 5, y - 7, x + 10, y - 4), '#f6f4ee')                    # 价签
-            line(d, (x + 6, y - 6, x + 9, y - 6), '#d83a34')
-            line(d, (x + 7, y - 4, x + 7, y - 2), '#8a6038')
-
-
-def lamp_post(im, x, g, h=88):
-    """商店街的街灯：细杆、顶上的灯罩、往右伸出一根挂竖幅的横杆"""
-    d = ImageDraw.Draw(im)
-    top = g - h
-    rect(d, (x - 1, top, x + 1, g), '#5a6a5e')
-    line(d, (x - 1, top, x - 1, g), '#7a8a7e')
-    rect(d, (x - 3, g - 4, x + 3, g), '#4a564e')
-    rect(d, (x - 6, top - 6, x + 6, top - 1), '#4a564e')
-    poly(d, [(x - 5, top - 1), (x + 5, top - 1), (x + 3, top + 6), (x - 3, top + 6)], '#f4f0dc')
-    line(d, (x - 5, top - 1, x + 5, top - 1), '#3a443e')
-    rect(d, (x - 1, top + 6, x + 1, top + 7), '#4a564e')
-    rect(d, (x + 1, top + 14, x + 12, top + 15), '#5a6a5e')                  # 竖幅横杆
-    return (x + 2, top + 16)
-
-
-def paving(im, x0, x1, y0, y1):
-    """商店街的地砖：米色砖错缝，每隔几排一道红砖带"""
-    d = ImageDraw.Draw(im)
-    rect(d, (x0, y0, x1, y1), '#cdbea6')
-    row = 0
-    y = y0
-    h = 4
-    while y < y1:
-        red = row % 5 == 2
-        col = '#b98c74' if red else '#cdbea6'
-        rect(d, (x0, y, x1, min(y1, y + h)), col)
-        line(d, (x0, y + h, x1, y + h), '#b0a08a' if not red else '#94705c')
-        bw = 12 + h * 2
-        for x in range(x0 - (row % 2) * bw // 2, x1, bw):
-            line(d, (x, y, x, y + h - 1), '#b4a48e' if not red else '#9a7660')
-        y += h + 1
-        row += 1
-        h = min(7, h + (1 if row % 2 else 0))
-    noise_specks(im, (x0, y0, x1, y1), ['#bcac94', '#d8cab4'], int((x1 - x0) * (y1 - y0) / 20), y0 + 3)
-    d = ImageDraw.Draw(im)
-    line(d, (x0, y0, x1, y0), '#8e826e')
-
-
-def shop_front(im, x0, x1, G, frame='#6a5a48', glass=('#a8c8d8', '#d0e4ec'), door_at=None, door_w=16):
-    """一楼铺面：玻璃橱窗 + 玻璃门，返回橱窗的框"""
-    d = ImageDraw.Draw(im)
-    top = G - 46
-    rect(d, (x0, top, x1, G), frame)
-    rect(d, (x0 + 2, top + 2, x1 - 2, G - 6), glass[0])
-    for i in range(x0 + 4, x1 - 4, 9):
-        line(d, (i, top + 3, i + 5, top + 8), glass[1])
-    rect(d, (x0, G - 6, x1, G), mix(frame, '#000000', .2))
-    if door_at is not None:
-        rect(d, (door_at - 1, top + 1, door_at + door_w + 1, G - 1), frame)
-        rect(d, (door_at + 1, top + 4, door_at + door_w - 1, G - 2), mix(glass[0], '#000000', .15))
-        line(d, (door_at + door_w // 2, top + 4, door_at + door_w // 2, G - 2), frame)
-        rect(d, (door_at + door_w // 2 - 3, top + 22, door_at + door_w // 2 - 2, top + 28), '#d8d8dc')
-        rect(d, (door_at + door_w // 2 + 2, top + 22, door_at + door_w // 2 + 3, top + 28), '#d8d8dc')
-    return (x0 + 2, top + 2, x1 - 2, G - 6)
-
+from p4_bg_ch2 import letters, poly, kanji, kanji_size, facade, signboard, awning, lamp_post, shop_front  # noqa: E402  招牌字、铺面这些零件和第2章共用
 
 
 # ============================================================ 共用
@@ -953,14 +748,123 @@ def street_crossing():
     return meta
 
 
-SCENES = {'morning_corner': morning_corner, 'street_crossing': street_crossing}
+# ============================================================ 露伴宅修缮版 rohan_house_scaffold（480 宽，第5章 rohan_house + 脚手架）
+#   乙雅三来看第9章那场火之后的修缮：右翼（二楼工作室凸窗到右端）搭着钢管脚手架，最右一跨挂着防护网，
+#   梯子靠在左边那根立杆上，院墙上挂“工事中”的牌子。脚手架在院墙栏杆后面（栏杆重新盖一遍）。
+#   底图从第5章的 p4_bg_ch5.rohan_house_layers() 来；第5章分支没合进来时跳过这张（保留已经生成的文件）。
+SCAF_X = (278, 356, 412)                 # 三根立杆
+SCAF_Y = (32, 92, 118)                   # 横杆（避开凸窗 RH_STUDY 的 y 38–89）
+
+
+def scaffold_layer(W=480):
+    im = new(W, 180)
+    d = ImageDraw.Draw(im)
+    x0, x1 = SCAF_X[0], SCAF_X[-1]
+    top, base = SCAF_Y[0] - 4, 128
+    # 防护网（最右一跨）：抖动的灰蓝网，墙面透出来一半
+    for y in range(SCAF_Y[0], 120):
+        for x in range(SCAF_X[1] + 2, SCAF_X[2] - 1):
+            if (x + y) % 2 == 0:
+                px(d, x, y, '#6a8aa0' if (y // 6) % 2 else '#5e7e94')
+    for y in range(SCAF_Y[0], 120, 12):                                       # 网的绑绳
+        line(d, (SCAF_X[1] + 2, y, SCAF_X[2] - 2, y), '#4a6478')
+    # 斜撑（右跨里一根，左跨下半一根）
+    line(d, (SCAF_X[1], SCAF_Y[1], SCAF_X[2], SCAF_Y[0]), '#8a9098')
+    line(d, (SCAF_X[0], SCAF_Y[2], SCAF_X[1], SCAF_Y[1]), '#8a9098')
+    # 立杆
+    for x in SCAF_X:
+        rect(d, (x - 1, top, x, base), '#9aa0a8')
+        line(d, (x - 1, top, x - 1, base), '#c4c8ce')
+        rect(d, (x - 3, base - 2, x + 2, base), '#6a6e74')                    # 底座
+    # 横杆 + 踏板（钢踏板，带一排孔）；右跨中间多一道横杆
+    for y in SCAF_Y:
+        line(d, (x0 - 4, y, x1 + 4, y), '#8a9098')
+        rect(d, (x0 - 2, y - 3, x1 + 2, y - 1), '#a8a69c')
+        line(d, (x0 - 2, y - 3, x1 + 2, y - 3), '#c8c6bc')
+        for x in range(x0, x1, 4):
+            px(d, x, y - 2, '#7a786e')
+    line(d, (SCAF_X[1], 62, SCAF_X[2] + 4, 62), '#8a9098')
+    rect(d, (SCAF_X[1], 59, SCAF_X[2] + 2, 61), '#a8a69c')
+    for y in SCAF_Y + (62,):                                                  # 扣件
+        for x in SCAF_X:
+            if y == 62 and x == SCAF_X[0]:
+                continue
+            rect(d, (x - 2, y - 1, x + 1, y + 1), '#5a5e66')
+    # 顶上的扶手栏杆
+    line(d, (x0 - 2, SCAF_Y[0] - 10, x1 + 2, SCAF_Y[0] - 10), '#8a9098')
+    for x in SCAF_X:
+        rect(d, (x - 1, SCAF_Y[0] - 10, x, SCAF_Y[0]), '#9aa0a8')
+    # 梯子（靠在左立杆，从下层踏板到地）
+    lx = SCAF_X[0] + 6
+    for xx in (lx, lx + 7):
+        line(d, (xx, SCAF_Y[1] - 2, xx + 3, base - 1), '#c8a050')
+    for y in range(SCAF_Y[1] + 2, base - 1, 5):
+        k = (y - SCAF_Y[1]) / (base - SCAF_Y[1])
+        line(d, (lx + 3 * k, y, lx + 7 + 3 * k, y), '#a88038')
+    # 院子里堆着的钢管 + 一袋水泥
+    for i in range(4):
+        line(d, (300, 126 - i * 2, 346, 124 - i * 2), '#9aa0a8')
+        px(d, 300, 126 - i * 2, '#5a5e66')
+    rect(d, (384, 120, 396, 127), '#d8d0bc')
+    line(d, (384, 120, 396, 120), '#ece4d0')
+    return im
+
+
+def koji_sign(im, x, y):
+    """院墙栏杆上挂的“工事中”牌：黄底，黑红字，两角绑着铁丝"""
+    d = ImageDraw.Draw(im)
+    tw, th = kanji_size('工事中', 10)
+    w = tw + 6
+    rect(d, (x, y, x + w, y + th + 6), '#2a2a30')
+    rect(d, (x + 1, y + 1, x + w - 1, y + th + 5), '#f4d040')
+    kanji(im, x + 3, y + 3, '工事中', '#c82a2a', size=10)
+    d = ImageDraw.Draw(im)
+    for xx in (x + 1, x + w - 1):
+        px(d, xx, y - 1, '#6a6a70')
+    return (x + w // 2, y + th + 6)
+
+
+def rohan_house_scaffold():
+    try:
+        from p4_bg_ch5 import RH_STUDY, rh_fence, rohan_house_layers
+    except ImportError:
+        print('  跳过 rohan_house_scaffold：第5章的 p4_bg_ch5.py 还没合进来')
+        return None
+    W = 480
+    far, near, _win, _ = rohan_house_layers()
+    near.alpha_composite(scaffold_layer(W))
+    fence = rh_fence(new(W, 180))                                               # 栏杆盖回脚手架前面
+    near.alpha_composite(fence)
+    koji_sign(near, 366, 110)
+    layers = {'far': far, 'near': near}
+    sx, sy = (RH_STUDY[0] + RH_STUDY[2]) // 2, (RH_STUDY[1] + RH_STUDY[3]) // 2
+    meta = dict(pack=PACK, w=W, ground=150, walk=[142, 176],
+                anchors=dict(gate=[240, 148], gate_in=[240, 140], porch=[240, 128], nameplate=[202, 117], mailbox=[280, 115],
+                             study_window=[sx, sy], study_window_box=list(RH_STUDY), house_box=[64, 8, 416, 128],
+                             scaffold_box=[SCAF_X[0] - 4, SCAF_Y[0] - 10, SCAF_X[2] + 4, 128], scaffold_deck=[317, SCAF_Y[1] - 3],
+                             ladder=[SCAF_X[0] + 10, 128], koji_sign=[380, 110], pole=[132, 148], walk_x=[8, 472]),
+                layers=[{'type': 'pano', 'image': 'bg/rohan_house_scaffold/far', 'k': 0.5, 'x': 0, 'y': 0},
+                        {'type': 'pano', 'image': 'bg/rohan_house_scaffold/near', 'k': 1, 'x': 0, 'y': 0},
+                        {'type': 'tint', 'color': '#ff8a3a', 'alpha': 0.16, 'key': 'pm'}],
+                fg=[])
+    pv = far.resize((W, 180), Image.NEAREST)
+    pv.alpha_composite(near)
+    preview('rohan_house_scaffold', {'room': pv}, ['room'], W)
+    save_layers('rohan_house_scaffold', layers, meta)
+    return meta
+
+
+SCENES = {'morning_corner': morning_corner, 'street_crossing': street_crossing, 'rohan_house_scaffold': rohan_house_scaffold}
 
 
 def main(keys):
     path = os.path.join(LIB.META, 'bg_ch11.json')
     allm = LIB.load_json(path, {}) or {}
     for k in (keys or list(SCENES)):
-        allm[k] = SCENES[k]()
+        m = SCENES[k]()
+        if m is None:                       # 依赖别章脚本、那一章还没合进来：保留已生成的
+            continue
+        allm[k] = m
         print('背景', k)
     with open(path, 'w', encoding='utf-8') as fh:
         json.dump(allm, fh, ensure_ascii=False, indent=1)

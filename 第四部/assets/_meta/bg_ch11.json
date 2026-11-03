@@ -265,5 +265,101 @@
    }
   ],
   "fg": []
+ },
+ "rohan_house_scaffold": {
+  "pack": "ch11",
+  "w": 480,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "gate": [
+    240,
+    148
+   ],
+   "gate_in": [
+    240,
+    140
+   ],
+   "porch": [
+    240,
+    128
+   ],
+   "nameplate": [
+    202,
+    117
+   ],
+   "mailbox": [
+    280,
+    115
+   ],
+   "study_window": [
+    318,
+    63
+   ],
+   "study_window_box": [
+    290,
+    46,
+    346,
+    80
+   ],
+   "house_box": [
+    64,
+    8,
+    416,
+    128
+   ],
+   "scaffold_box": [
+    274,
+    22,
+    416,
+    128
+   ],
+   "scaffold_deck": [
+    317,
+    89
+   ],
+   "ladder": [
+    288,
+    128
+   ],
+   "koji_sign": [
+    380,
+    110
+   ],
+   "pole": [
+    132,
+    148
+   ],
+   "walk_x": [
+    8,
+    472
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/rohan_house_scaffold/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/rohan_house_scaffold/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "tint",
+    "color": "#ff8a3a",
+    "alpha": 0.16,
+    "key": "pm"
+   }
+  ],
+  "fg": []
  }
 }
