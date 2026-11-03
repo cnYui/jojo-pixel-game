@@ -1,0 +1,57 @@
+{
+ "id": "biker_b",
+ "name": "飙车族B",
+ "image": "biker_b.png",
+ "cell": [
+  68,
+  57
+ ],
+ "pivot": [
+  29,
+  54
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  },
+  "run": {
+   "row": 2,
+   "frames": 4,
+   "fps": 11,
+   "kind": "loop"
+  },
+  "point": {
+   "row": 3,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
+  },
+  "hurt": {
+   "row": 4,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "kick": {
+   "row": 5,
+   "frames": 2,
+   "fps": 8,
+   "kind": "oneshot"
+  },
+  "down": {
+   "row": 6,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  }
+ }
+}

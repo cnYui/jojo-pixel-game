@@ -1,0 +1,39 @@
+{
+ "id": "ayana",
+ "name": "广濑绫那",
+ "image": "ayana.png",
+ "cell": [
+  48,
+  48
+ ],
+ "pivot": [
+  24,
+  48
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  },
+  "cry": {
+   "row": 2,
+   "frames": 2,
+   "fps": 3,
+   "kind": "loop"
+  },
+  "cheer": {
+   "row": 3,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
+  }
+ }
+}
