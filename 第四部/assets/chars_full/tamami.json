@@ -1,0 +1,81 @@
+{
+ "id": "tamami",
+ "name": "小林玉美",
+ "image": "tamami.png",
+ "cell": [
+  86,
+  61
+ ],
+ "pivot": [
+  30,
+  58
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  },
+  "run": {
+   "row": 2,
+   "frames": 4,
+   "fps": 13,
+   "kind": "loop"
+  },
+  "cover_ears": {
+   "row": 3,
+   "frames": 2,
+   "fps": 6,
+   "kind": "loop"
+  },
+  "cry": {
+   "row": 4,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
+  },
+  "hurt": {
+   "row": 5,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "wave": {
+   "row": 6,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
+  },
+  "fall": {
+   "row": 7,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "crawl": {
+   "row": 8,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
+  },
+  "kneel": {
+   "row": 9,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "bow": {
+   "row": 10,
+   "frames": 2,
+   "fps": 3,
+   "kind": "loop"
+  }
+ }
+}

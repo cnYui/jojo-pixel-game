@@ -1,0 +1,21 @@
+{
+ "id": "yukako_sil",
+ "name": "？？？",
+ "image": "yukako_sil.png",
+ "cell": [
+  48,
+  48
+ ],
+ "pivot": [
+  24,
+  48
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  }
+ }
+}

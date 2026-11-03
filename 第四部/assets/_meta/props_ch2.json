@@ -14,6 +14,276 @@
    "fps": 1,
    "kind": "static",
    "k": 1.0
+  },
+  "lock_s": {
+   "image": "props/lock_s",
+   "frames": 7,
+   "size": [
+    17,
+    19
+   ],
+   "pivot": [
+    8,
+    19
+   ],
+   "fps": 10,
+   "kind": "static",
+   "k": 1.0
+  },
+  "lock_m": {
+   "image": "props/lock_m",
+   "frames": 7,
+   "size": [
+    19,
+    22
+   ],
+   "pivot": [
+    9,
+    22
+   ],
+   "fps": 10,
+   "kind": "static",
+   "k": 1.0
+  },
+  "lock_l": {
+   "image": "props/lock_l",
+   "frames": 7,
+   "size": [
+    22,
+    27
+   ],
+   "pivot": [
+    11,
+    27
+   ],
+   "fps": 10,
+   "kind": "static",
+   "k": 1.0
+  },
+  "bike_koichi": {
+   "image": "props/bike_koichi",
+   "frames": 2,
+   "size": [
+    28,
+    18
+   ],
+   "pivot": [
+    14,
+    18
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "paper_bag": {
+   "image": "props/paper_bag",
+   "frames": 2,
+   "size": [
+    18,
+    14
+   ],
+   "pivot": [
+    9,
+    14
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "ink": {
+   "image": "props/ink",
+   "frames": 3,
+   "size": [
+    18,
+    6
+   ],
+   "pivot": [
+    9,
+    6
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "toy_cat": {
+   "image": "props/toy_cat",
+   "frames": 1,
+   "size": [
+    12,
+    11
+   ],
+   "pivot": [
+    6,
+    11
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "wallet": {
+   "image": "props/wallet",
+   "frames": 1,
+   "size": [
+    9,
+    6
+   ],
+   "pivot": [
+    4,
+    6
+   ],
+   "fps": 6,
+   "kind": "static",
+   "k": 1.0
+  },
+  "photo_hz": {
+   "image": "props/photo_hz",
+   "frames": 1,
+   "size": [
+    13,
+    10
+   ],
+   "pivot": [
+    6,
+    10
+   ],
+   "fps": 6,
+   "kind": "static",
+   "k": 1.0
+  },
+  "pen": {
+   "image": "props/pen",
+   "frames": 1,
+   "size": [
+    11,
+    3
+   ],
+   "pivot": [
+    5,
+    3
+   ],
+   "fps": 6,
+   "kind": "static",
+   "k": 1.0
+  },
+  "cutter": {
+   "image": "props/cutter",
+   "frames": 1,
+   "size": [
+    9,
+    4
+   ],
+   "pivot": [
+    4,
+    4
+   ],
+   "fps": 6,
+   "kind": "static",
+   "k": 1.0
+  },
+  "bottle": {
+   "image": "props/bottle",
+   "frames": 1,
+   "size": [
+    6,
+    12
+   ],
+   "pivot": [
+    3,
+    12
+   ],
+   "fps": 6,
+   "kind": "static",
+   "k": 1.0
+  },
+  "glass_shard": {
+   "image": "props/glass_shard",
+   "frames": 2,
+   "size": [
+    4,
+    4
+   ],
+   "pivot": [
+    2,
+    4
+   ],
+   "fps": 6,
+   "kind": "loop",
+   "k": 1.0
+  },
+  "payphone": {
+   "image": "props/payphone",
+   "frames": 1,
+   "size": [
+    10,
+    18
+   ],
+   "pivot": [
+    5,
+    18
+   ],
+   "fps": 6,
+   "kind": "static",
+   "k": 1.0
+  },
+  "motorbike_a": {
+   "image": "props/motorbike_a",
+   "frames": 2,
+   "size": [
+    36,
+    22
+   ],
+   "pivot": [
+    18,
+    22
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "motorbike_b": {
+   "image": "props/motorbike_b",
+   "frames": 2,
+   "size": [
+    36,
+    22
+   ],
+   "pivot": [
+    18,
+    22
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "ambulance": {
+   "image": "props/ambulance",
+   "frames": 2,
+   "size": [
+    54,
+    28
+   ],
+   "pivot": [
+    27,
+    28
+   ],
+   "fps": 4,
+   "kind": "loop",
+   "k": 1.0
+  },
+  "wire_glow": {
+   "image": "props/wire_glow",
+   "frames": 2,
+   "size": [
+    14,
+    12
+   ],
+   "pivot": [
+    7,
+    12
+   ],
+   "fps": 3,
+   "kind": "loop",
+   "k": 1.0
   }
  }
 }
