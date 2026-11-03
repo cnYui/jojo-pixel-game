@@ -1,0 +1,123 @@
+{
+ "namecards": {
+  "fin_kira": {
+   "image": "ui/namecard/fin_kira",
+   "w": 171,
+   "h": 48,
+   "x": 24,
+   "y": 265
+  },
+  "fin_okuyasu": {
+   "image": "ui/namecard/fin_okuyasu",
+   "w": 183,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  },
+  "fin_hayato": {
+   "image": "ui/namecard/fin_hayato",
+   "w": 196,
+   "h": 48,
+   "x": 24,
+   "y": 265
+  },
+  "fin_rohan": {
+   "image": "ui/namecard/fin_rohan",
+   "w": 184,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  },
+  "fin_reimi": {
+   "image": "ui/namecard/fin_reimi",
+   "w": 161,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  },
+  "paramedic": {
+   "image": "ui/namecard/paramedic",
+   "w": 173,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  }
+ },
+ "standcards": {
+  "fin_kq": {
+   "image": "ui/standcard/fin_kq",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "fin_straycat": {
+   "image": "ui/standcard/fin_straycat",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "fin_echoes3": {
+   "image": "ui/standcard/fin_echoes3",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "fin_thehand": {
+   "image": "ui/standcard/fin_thehand",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  }
+ },
+ "vs": {
+  "kq_final": {
+   "name": {
+    "image": "ui/vs/kq_final_name",
+    "w": 288,
+    "h": 48
+   },
+   "en": {
+    "image": "ui/vs/kq_final_en",
+    "w": 216,
+    "h": 13
+   },
+   "tag": {
+    "image": "ui/vs/kq_final_tag",
+    "w": 195,
+    "h": 34
+   },
+   "colours": [
+    "#3a0810",
+    "#0a0204"
+   ]
+  }
+ },
+ "map": {
+  "stamp_0716": {
+   "image": "ui/map/stamp_19990716",
+   "w": 85,
+   "h": 54
+  },
+  "stamp_late": {
+   "image": "ui/map/stamp_1999late",
+   "w": 67,
+   "h": 54
+  }
+ },
+ "titles": {
+  "fin_late": {
+   "image": "ui/title/fin_late",
+   "w": 172,
+   "h": 35
+  },
+  "fin_end": {
+   "image": "ui/title/fin_end",
+   "w": 68,
+   "h": 70
+  }
+ }
+}

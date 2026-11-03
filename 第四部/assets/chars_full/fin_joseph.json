@@ -1,0 +1,39 @@
+{
+ "id": "fin_joseph",
+ "name": "乔瑟夫·乔斯达",
+ "image": "fin_joseph.png",
+ "cell": [
+  82,
+  57
+ ],
+ "pivot": [
+  30,
+  54
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 6,
+   "kind": "loop"
+  },
+  "shock": {
+   "row": 2,
+   "frames": 2,
+   "fps": 1,
+   "kind": "static"
+  },
+  "point": {
+   "row": 3,
+   "frames": 1,
+   "fps": 4,
+   "kind": "oneshot"
+  }
+ }
+}
