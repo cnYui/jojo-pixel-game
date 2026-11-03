@@ -128,5 +128,36 @@
    "w": 123,
    "h": 36
   }
+ },
+ "specials": {
+  "photo8": {
+   "image": "ui/special/photo8",
+   "w": 105,
+   "h": 49
+  }
+ },
+ "map8": {
+  "stamp": {
+   "image": "ui/map/stamp_199907",
+   "w": 67,
+   "h": 53
+  }
+ },
+ "sfx": {
+  "砰": {
+   "image": "ui/sfx/ch8_pon",
+   "w": 37,
+   "h": 35
+  },
+  "沙沙": {
+   "image": "ui/sfx/ch8_shasha",
+   "w": 48,
+   "h": 27
+  },
+  "诶嘿": {
+   "image": "ui/sfx/ch8_ehe",
+   "w": 52,
+   "h": 29
+  }
  }
 }

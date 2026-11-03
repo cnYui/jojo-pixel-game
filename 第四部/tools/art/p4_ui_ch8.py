@@ -4,8 +4,31 @@
 import os
 import sys
 
+import numpy as np
+from PIL import Image, ImageDraw
+
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import p4_ui as U  # noqa: E402
+
+
+def stamp(y, m, rel):
+    t1 = U.big(y, 14, ('#d82a2a', '#d82a2a'), edge='#d82a2a', shadow=None, edge_w=0)
+    t2 = U.big(m, 20, ('#d82a2a', '#d82a2a'), edge='#d82a2a', shadow=None, edge_w=0)
+    W = max(t1.width, t2.width) + 14
+    H = t1.height + t2.height + 12
+    im = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rounded_rectangle((0, 0, W - 1, H - 1), radius=5, outline=U.LIB.hexc('#d82a2a'), width=2)
+    im.alpha_composite(t1, ((W - t1.width) // 2, 5))
+    im.alpha_composite(t2, ((W - t2.width) // 2, 6 + t1.height))
+    a = np.array(im)
+    rng = np.random.RandomState(17)
+    on = a[..., 3] > 0
+    drop = (rng.rand(*on.shape) < .12) & on
+    a[drop, 3] = 0
+    a[on & ~drop, 3] = 225
+    im = Image.fromarray(a, 'RGBA').rotate(-8, resample=Image.NEAREST, expand=True)
+    return U.save(rel, im)
 
 
 def main():
@@ -35,7 +58,18 @@ def main():
         'janken': U.save('title/janken', U.big('猜拳小子来了', 30, ('#f0ecff', '#a898ec'), edge='#140c28', edge_w=2)),
         'that_night': U.save('title/that_night', U.big('那天夜里', 30, ('#e8ecff', '#a8b4e8'), edge='#0a0a20', edge_w=2)),
     }
-    U.chapter_ui('ch8', namecards=namecards, standcards=standcards, locations=locations, vs=vs, titles=titles)
+    specials = {'photo8': U.save('special/photo8', U.big('咔嚓！', 42, ('#ffffff', '#e8e0d0', '#b8a888'),
+                                                        edge='#2a1a0a', shadow='#12080a', edge_w=3, shadow_d=(3, 3)))}
+    # 第8章的日历红章是 7 月（序章那枚是 4 月）：照 p4_ui.map_parts 的画法另画一枚，挂在 map8 下面，本章自己的日历用
+    map8 = {'stamp': stamp('1999年', '7月', 'map/stamp_199907')}
+    # 拟声字（S.sfxText 用的图）：吉广摔出相框「砰」、川尻家报纸「沙沙」、透明的静「诶嘿」
+    sfx = {
+        '砰': U.save('sfx/ch8_pon', U.big('砰', 30, ('#fff4e0', '#e0c090', '#a07840'), edge='#20160c', edge_w=3, shadow_d=(2, 2))),
+        '沙沙': U.save('sfx/ch8_shasha', U.big('沙沙', 22, ('#f0f0f0', '#c8c8c8'), edge='#202020', edge_w=2)),
+        '诶嘿': U.save('sfx/ch8_ehe', U.big('诶嘿', 24, ('#f0f8ff', '#b8dcff', '#80b0e8'), edge='#102040', edge_w=2)),
+    }
+    U.chapter_ui('ch8', namecards=namecards, standcards=standcards, locations=locations, vs=vs, titles=titles,
+                 specials=specials, map8=map8, sfx=sfx)
     print('第8章 UI：', ' '.join(list(namecards) + list(standcards) + list(locations) + list(vs) + list(titles)))
 
 
