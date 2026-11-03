@@ -66,6 +66,8 @@ def main():
     cm = meta('chars', {})
     pm = meta('props', {})
     bgm = meta('bg', {})
+    for fp in sorted(glob.glob(os.path.join(L.META, 'bg_*.json'))):
+        bgm.update(L.load_json(fp, {}) or {})
     uim = meta('ui', {})
     font = meta('font', {})
 
