@@ -249,7 +249,8 @@
       P4().text(g, '天堂之门　剩下 ' + left + ' / 3', 320, 34, left <= 1 ? '#ff8a8a' : '#c8f0d0', 12, 'center');
       // 键位
       P4().text(g, '← 石头　↑ 剪刀　→ 布', 320, 330, '#fff4d6', 12, 'center');
-      if (!r || r.t0 == null || W.cine) return;
+      // 出手以后的结果（双方的手、谁赢）在结算演出里也要看得见：只在还没出手时被演出挡住
+      if (!r || r.t0 == null || (W.cine && !r.show)) return;
       const el = c.t - r.t0;
       const shake = el < THROW && !r.show ? Math.round(Math.sin(el * 18) * 3) : 0;
       // 露伴的手（左，朝右）、大柳的手（右，朝左）：没出手前都攥着拳头晃
