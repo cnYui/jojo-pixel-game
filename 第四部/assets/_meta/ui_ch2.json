@@ -1,0 +1,61 @@
+{
+ "namecards": {
+  "okuyasu": {
+   "image": "ui/namecard/okuyasu",
+   "w": 221,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  }
+ },
+ "standcards": {
+  "thehand": {
+   "image": "ui/standcard/thehand",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "echoes1": {
+   "image": "ui/standcard/echoes1",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  }
+ },
+ "specials": {
+  "okuyasu": {
+   "image": "ui/special/okuyasu",
+   "w": 191,
+   "h": 50
+  },
+  "koichi": {
+   "image": "ui/special/koichi",
+   "w": 106,
+   "h": 50
+  }
+ },
+ "sfx": {
+  "咚！": {
+   "image": "ui/sfx/echo_0",
+   "w": 29,
+   "h": 23
+  },
+  "嗡——": {
+   "image": "ui/sfx/echo_1",
+   "w": 55,
+   "h": 23
+  },
+  "叮铃铃": {
+   "image": "ui/sfx/echo_2",
+   "w": 57,
+   "h": 24
+  },
+  "啪！": {
+   "image": "ui/sfx/echo_3",
+   "w": 29,
+   "h": 23
+  }
+ }
+}
