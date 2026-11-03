@@ -1,0 +1,45 @@
+{
+ "id": "oyanagi",
+ "name": "大柳贤",
+ "image": "oyanagi.png",
+ "cell": [
+  42,
+  46
+ ],
+ "pivot": [
+  21,
+  30
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  },
+  "run": {
+   "row": 2,
+   "frames": 4,
+   "fps": 10,
+   "kind": "loop"
+  },
+  "hurt": {
+   "row": 3,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "talk": {
+   "row": 4,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
+  }
+ }
+}
