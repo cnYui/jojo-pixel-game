@@ -1,0 +1,647 @@
+{
+ "chars": {
+  "shigechi": {
+   "name": "矢安宫重清",
+   "image": "chars/shigechi",
+   "cell": [
+    28,
+    29
+   ],
+   "pivot": [
+    14,
+    19
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 2,
+     "frames": 4,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "talk": {
+     "row": 5,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "crawl": {
+     "row": 6,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "cry": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/shigechi/normal_0",
+     "heads/shigechi/normal_1"
+    ],
+    "smile": [
+     "heads/shigechi/smile_0",
+     "heads/shigechi/smile_1"
+    ],
+    "shock": [
+     "heads/shigechi/shock_0",
+     "heads/shigechi/shock_1"
+    ],
+    "rage": [
+     "heads/shigechi/rage_0",
+     "heads/shigechi/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "talk",
+    "shock": "hurt",
+    "hurt": "hurt",
+    "down": "down",
+    "run": "run",
+    "cmd": "talk",
+    "special": "talk"
+   },
+   "top": 19,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "harvest": {
+   "name": "丰收",
+   "image": "chars/harvest",
+   "cell": [
+    14,
+    17
+   ],
+   "pivot": [
+    7,
+    16
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 2,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "carry": {
+     "row": 2,
+     "frames": 2,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/harvest/normal_0",
+     "heads/harvest/normal_1"
+    ]
+   },
+   "headAlias": {
+    "smile": "normal",
+    "rage": "normal",
+    "shock": "normal"
+   },
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "run": "walk",
+    "hurt": "hurt",
+    "down": "hurt",
+    "shock": "hurt",
+    "cmd": "carry",
+    "punch": "walk",
+    "special": "walk",
+    "guard": "idle",
+    "dodge": "walk"
+   },
+   "top": 14,
+   "bodyW": 2,
+   "kind": "stand"
+  },
+  "kira": {
+   "name": "吉良吉影",
+   "image": "chars/kira",
+   "cell": [
+    42,
+    42
+   ],
+   "pivot": [
+    17,
+    40
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "point": {
+     "row": 2,
+     "frames": 2,
+     "fps": 6,
+     "kind": "oneshot"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 3,
+     "kind": "oneshot"
+    },
+    "laugh": {
+     "row": 4,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "throw": {
+     "row": 6,
+     "frames": 2,
+     "fps": 6,
+     "kind": "oneshot"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/kira/normal_0",
+     "heads/kira/normal_1"
+    ],
+    "smile": [
+     "heads/kira/smile_0",
+     "heads/kira/smile_1"
+    ],
+    "shock": [
+     "heads/kira/shock_0",
+     "heads/kira/shock_1"
+    ],
+    "rage": [
+     "heads/kira/rage_0",
+     "heads/kira/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "hurt",
+    "run": {
+     "a": "walk",
+     "f": 1.6
+    },
+    "cmd": "point",
+    "special": "pose",
+    "down": "hurt"
+   },
+   "top": 29,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "killerqueen": {
+   "name": "杀手皇后",
+   "image": "chars/killerqueen",
+   "cell": [
+    49,
+    40
+   ],
+   "pivot": [
+    17,
+    37
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "rush": {
+     "row": 2,
+     "frames": 2,
+     "fps": 16,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "crack": {
+     "row": 5,
+     "frames": 2,
+     "fps": 6,
+     "kind": "oneshot"
+    },
+    "fist": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "kick": {
+     "row": 7,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/killerqueen/normal_0",
+     "heads/killerqueen/normal_1"
+    ]
+   },
+   "headAlias": {
+    "smile": "normal",
+    "rage": "normal",
+    "shock": "normal"
+   },
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "punch": "punch",
+    "punch2": "punch",
+    "punch_heavy": "kick",
+    "rush": "rush",
+    "block": "pose",
+    "hurt": "hurt",
+    "special": "pose",
+    "finger": "punch"
+   },
+   "top": 35,
+   "bodyW": 6,
+   "kind": "stand"
+  },
+  "reimi": {
+   "name": "杉本铃美",
+   "image": "chars/reimi",
+   "cell": [
+    30,
+    30
+   ],
+   "pivot": [
+    15,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "cheer": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "down": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/reimi/normal_0",
+     "heads/reimi/normal_1"
+    ],
+    "smile": [
+     "heads/reimi/smile_0",
+     "heads/reimi/smile_1"
+    ],
+    "shock": [
+     "heads/reimi/shock_0",
+     "heads/reimi/shock_1"
+    ],
+    "rage": [
+     "heads/reimi/rage_0",
+     "heads/reimi/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "idle",
+    "hurt": "idle",
+    "run": "walk",
+    "cmd": "cheer"
+   },
+   "top": 25,
+   "bodyW": 3,
+   "kind": "char"
+  },
+  "arnold": {
+   "name": "阿诺德",
+   "image": "chars/arnold",
+   "cell": [
+    30,
+    28
+   ],
+   "pivot": [
+    15,
+    28
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 1,
+     "frames": 4,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "sit": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/arnold/normal_0",
+     "heads/arnold/normal_1"
+    ]
+   },
+   "headAlias": {
+    "smile": "normal",
+    "rage": "normal",
+    "shock": "normal"
+   },
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "walk": "run",
+    "shock": "sit",
+    "hurt": "sit",
+    "down": "sit"
+   },
+   "top": 21,
+   "bodyW": 5,
+   "kind": "char"
+  },
+  "tmp6_joseph": {
+   "name": "乔瑟夫·乔斯达",
+   "image": "chars/tmp6_joseph",
+   "cell": [
+    52,
+    36
+   ],
+   "pivot": [
+    19,
+    34
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "point": {
+     "row": 2,
+     "frames": 1,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "shock": {
+     "row": 3,
+     "frames": 2,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/tmp6_joseph/normal_0",
+     "heads/tmp6_joseph/normal_1"
+    ],
+    "smile": [
+     "heads/tmp6_joseph/smile_0",
+     "heads/tmp6_joseph/smile_1"
+    ],
+    "shock": [
+     "heads/tmp6_joseph/shock_0",
+     "heads/tmp6_joseph/shock_1"
+    ],
+    "rage": [
+     "heads/tmp6_joseph/rage_0",
+     "heads/tmp6_joseph/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "run": "walk",
+    "cmd": "point"
+   },
+   "top": 30,
+   "bodyW": 4,
+   "kind": "char"
+  }
+ },
+ "heroes": {
+  "shigechi": {
+   "cid": "shigechi",
+   "cn": "矢安宫重清",
+   "short": "重清",
+   "rn": "YANGU SHIGEKIYO",
+   "stand": "harvest",
+   "burst": [
+    "#2a6a2a",
+    "#4a9a3a",
+    "#ffd83c"
+   ],
+   "panel": "#0e200a",
+   "accent": "#ffd83c",
+   "nameColor": "#5a9a3a",
+   "blipHz": 700,
+   "grunt": null
+  },
+  "harvest": {
+   "cid": "harvest",
+   "cn": "丰收",
+   "short": "丰收",
+   "rn": "HARVEST",
+   "stand": null,
+   "burst": [
+    "#6a4a10",
+    "#c89a20",
+    "#ffe070"
+   ],
+   "panel": "#2a1e06",
+   "accent": "#ffd83c",
+   "nameColor": "#c8a020",
+   "blipHz": 1100,
+   "grunt": null
+  }
+ },
+ "speakers": {
+  "reimi": {
+   "short": "铃美",
+   "nameColor": "#d870a0",
+   "blipHz": 820
+  },
+  "arnold": {
+   "short": "阿诺德",
+   "nameColor": "#b08850",
+   "blipHz": 300
+  },
+  "kira": {
+   "short": "吉良",
+   "nameColor": "#8c76b8",
+   "blipHz": 420
+  },
+  "killerqueen": {
+   "short": "杀手皇后",
+   "nameColor": "#d48aa6",
+   "blipHz": 460
+  },
+  "tmp6_joseph": {
+   "short": "乔瑟夫",
+   "nameColor": "#6a8a5a",
+   "blipHz": 360
+  }
+ },
+ "stands": {
+  "harvest": {
+   "cn": "丰收",
+   "en": "HARVEST",
+   "owner": "shigechi",
+   "aura": "#ffd83c",
+   "card": "#ffe070",
+   "ghost": "#fff0a0",
+   "impact": "pink",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 0
+   },
+   "link": null,
+   "summonSfx": null,
+   "fist": false
+  },
+  "killerqueen": {
+   "cn": "杀手皇后",
+   "en": "KILLER QUEEN",
+   "owner": "kira",
+   "aura": "#e8a0c0",
+   "card": "#f2c4d2",
+   "ghost": "#f8dce6",
+   "impact": "pink",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -6,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  }
+ }
+}

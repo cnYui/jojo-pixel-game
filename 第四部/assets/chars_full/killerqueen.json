@@ -1,0 +1,63 @@
+{
+ "id": "killerqueen",
+ "name": "杀手皇后",
+ "image": "killerqueen.png",
+ "cell": [
+  76,
+  62
+ ],
+ "pivot": [
+  26,
+  58
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 4,
+   "fps": 6,
+   "kind": "loop"
+  },
+  "punch": {
+   "row": 1,
+   "frames": 3,
+   "fps": 12,
+   "kind": "oneshot"
+  },
+  "rush": {
+   "row": 2,
+   "frames": 2,
+   "fps": 16,
+   "kind": "loop"
+  },
+  "pose": {
+   "row": 3,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
+  },
+  "hurt": {
+   "row": 4,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "crack": {
+   "row": 5,
+   "frames": 2,
+   "fps": 6,
+   "kind": "oneshot"
+  },
+  "fist": {
+   "row": 6,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "kick": {
+   "row": 7,
+   "frames": 2,
+   "fps": 8,
+   "kind": "oneshot"
+  }
+ }
+}

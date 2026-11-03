@@ -1,0 +1,124 @@
+{
+ "props": {
+  "paperbag": {
+   "image": "props/paperbag",
+   "frames": 1,
+   "size": [
+    14,
+    12
+   ],
+   "pivot": [
+    7,
+    12
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "coin": {
+   "image": "props/coin",
+   "frames": 1,
+   "size": [
+    6,
+    6
+   ],
+   "pivot": [
+    3,
+    6
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "coin100": {
+   "image": "props/coin100",
+   "frames": 1,
+   "size": [
+    6,
+    6
+   ],
+   "pivot": [
+    3,
+    6
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "lottery": {
+   "image": "props/lottery",
+   "frames": 2,
+   "size": [
+    12,
+    7
+   ],
+   "pivot": [
+    6,
+    7
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "check": {
+   "image": "props/check",
+   "frames": 2,
+   "size": [
+    14,
+    8
+   ],
+   "pivot": [
+    7,
+    8
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "button": {
+   "image": "props/button",
+   "frames": 1,
+   "size": [
+    7,
+    7
+   ],
+   "pivot": [
+    3,
+    7
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "sandwich": {
+   "image": "props/sandwich",
+   "frames": 1,
+   "size": [
+    10,
+    7
+   ],
+   "pivot": [
+    5,
+    7
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "newspaper": {
+   "image": "props/newspaper",
+   "frames": 1,
+   "size": [
+    12,
+    9
+   ],
+   "pivot": [
+    6,
+    9
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  }
+ }
+}

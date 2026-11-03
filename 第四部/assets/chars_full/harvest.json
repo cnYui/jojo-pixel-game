@@ -1,0 +1,39 @@
+{
+ "id": "harvest",
+ "name": "丰收",
+ "image": "harvest.png",
+ "cell": [
+  22,
+  26
+ ],
+ "pivot": [
+  11,
+  25
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 2,
+   "fps": 10,
+   "kind": "loop"
+  },
+  "carry": {
+   "row": 2,
+   "frames": 2,
+   "fps": 10,
+   "kind": "loop"
+  },
+  "hurt": {
+   "row": 3,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  }
+ }
+}
