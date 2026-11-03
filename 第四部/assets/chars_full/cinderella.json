@@ -1,0 +1,39 @@
+{
+ "id": "cinderella",
+ "name": "灰姑娘",
+ "image": "cinderella.png",
+ "cell": [
+  81,
+  60
+ ],
+ "pivot": [
+  29,
+  56
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 5,
+   "kind": "loop"
+  },
+  "cast": {
+   "row": 1,
+   "frames": 2,
+   "fps": 8,
+   "kind": "oneshot"
+  },
+  "block": {
+   "row": 2,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "hurt": {
+   "row": 3,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  }
+ }
+}

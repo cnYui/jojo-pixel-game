@@ -1,0 +1,63 @@
+{
+ "id": "ph7_killerqueen",
+ "name": "杀手皇后（占位）",
+ "image": "ph7_killerqueen.png",
+ "cell": [
+  116,
+  68
+ ],
+ "pivot": [
+  30,
+  64
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 4,
+   "fps": 6,
+   "kind": "loop"
+  },
+  "punch": {
+   "row": 1,
+   "frames": 3,
+   "fps": 12,
+   "kind": "oneshot"
+  },
+  "rush": {
+   "row": 2,
+   "frames": 2,
+   "fps": 16,
+   "kind": "loop"
+  },
+  "block": {
+   "row": 3,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "pose": {
+   "row": 4,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
+  },
+  "hurt": {
+   "row": 5,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "reach": {
+   "row": 6,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "upper": {
+   "row": 7,
+   "frames": 3,
+   "fps": 12,
+   "kind": "oneshot"
+  }
+ }
+}

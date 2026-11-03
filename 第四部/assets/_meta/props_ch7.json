@@ -1,0 +1,94 @@
+{
+ "props": {
+  "lipstick": {
+   "image": "props/lipstick",
+   "frames": 1,
+   "size": [
+    5,
+    9
+   ],
+   "pivot": [
+    2,
+    9
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "coin_bomb": {
+   "image": "props/coin_bomb",
+   "frames": 2,
+   "size": [
+    7,
+    7
+   ],
+   "pivot": [
+    3,
+    7
+   ],
+   "fps": 8,
+   "kind": "loop",
+   "k": 1.0
+  },
+  "cig": {
+   "image": "props/cig",
+   "frames": 2,
+   "size": [
+    9,
+    3
+   ],
+   "pivot": [
+    4,
+    3
+   ],
+   "fps": 6,
+   "kind": "loop",
+   "k": 1.0
+  },
+  "heart": {
+   "image": "props/heart",
+   "frames": 1,
+   "size": [
+    9,
+    8
+   ],
+   "pivot": [
+    4,
+    8
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "gold_trail": {
+   "image": "props/gold_trail",
+   "frames": 2,
+   "size": [
+    7,
+    7
+   ],
+   "pivot": [
+    3,
+    7
+   ],
+   "fps": 10,
+   "kind": "loop",
+   "k": 1.0
+  },
+  "face_big": {
+   "image": "props/face_big",
+   "frames": 6,
+   "size": [
+    90,
+    114
+   ],
+   "pivot": [
+    45,
+    114
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  }
+ }
+}
