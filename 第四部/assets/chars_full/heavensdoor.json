@@ -1,0 +1,57 @@
+{
+ "id": "heavensdoor",
+ "name": "天堂之门",
+ "image": "heavensdoor.png",
+ "cell": [
+  40,
+  46
+ ],
+ "pivot": [
+  18,
+  44
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 4,
+   "fps": 6,
+   "kind": "loop"
+  },
+  "punch": {
+   "row": 1,
+   "frames": 3,
+   "fps": 10,
+   "kind": "oneshot"
+  },
+  "upper": {
+   "row": 2,
+   "frames": 3,
+   "fps": 10,
+   "kind": "oneshot"
+  },
+  "rush": {
+   "row": 3,
+   "frames": 2,
+   "fps": 14,
+   "kind": "loop"
+  },
+  "block": {
+   "row": 4,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "hurt": {
+   "row": 5,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "write": {
+   "row": 6,
+   "frames": 2,
+   "fps": 8,
+   "kind": "loop"
+  }
+ }
+}
