@@ -1,0 +1,79 @@
+{
+ "props": {
+  "fin_straycat": {
+   "image": "props/fin_straycat",
+   "frames": 3,
+   "size": [
+    16,
+    18
+   ],
+   "pivot": [
+    8,
+    18
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "fin_shard": {
+   "image": "props/fin_shard",
+   "frames": 1,
+   "size": [
+    6,
+    6
+   ],
+   "pivot": [
+    3,
+    6
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "fin_lighter": {
+   "image": "props/fin_lighter",
+   "frames": 2,
+   "size": [
+    6,
+    11
+   ],
+   "pivot": [
+    3,
+    11
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "fin_photo": {
+   "image": "props/fin_photo",
+   "frames": 2,
+   "size": [
+    18,
+    22
+   ],
+   "pivot": [
+    9,
+    11
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "fin_wallet": {
+   "image": "props/fin_wallet",
+   "frames": 1,
+   "size": [
+    10,
+    7
+   ],
+   "pivot": [
+    5,
+    7
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "id": "fin_arnold",
+ "name": "阿诺德",
+ "image": "fin_arnold.png",
+ "cell": [
+  32,
+  32
+ ],
+ "pivot": [
+  16,
+  32
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 10,
+   "kind": "loop"
+  },
+  "sit": {
+   "row": 2,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "bite": {
+   "row": 3,
+   "frames": 2,
+   "fps": 6,
+   "kind": "oneshot"
+  }
+ }
+}
