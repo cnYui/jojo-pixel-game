@@ -67,7 +67,7 @@
       g.fillStyle = '#3a2410'; g.fillRect(x0 + 52, y0 + 98, 236, 6);
       const showRohan = d.phase !== 'rohanRoll';
       const rv = showRohan ? d.rohan : [1 + (Math.floor(G.clk.ui * 12) % 6), 1 + (Math.floor(G.clk.ui * 9 + 2) % 6), 1 + (Math.floor(G.clk.ui * 11 + 4) % 6)];
-      text(g, '露伴', x0 + 14, y0 + 34, '#d8c8ff', 12);
+      text(g, d.phase === 'rohanRoll' || d.phase === 'rohanShow' ? '露伴' : '仗助', x0 + 14, y0 + 34, d.phase === 'rohanRoll' || d.phase === 'rohanShow' ? '#d8c8ff' : '#ffd0e8', 12);
       if (d.phase === 'rohanRoll' || d.phase === 'rohanShow') rv.forEach((v, i) => die(g, x0 + 110 + i * 44, y0 + 56, v, false));
       else {
         text(g, '露伴：' + hand(d.rohan).name, x0 + 170, y0 + 22, '#d8c8ff', 12, 'center');
