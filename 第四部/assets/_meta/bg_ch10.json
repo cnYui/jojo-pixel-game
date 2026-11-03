@@ -1,0 +1,393 @@
+{
+ "transmission_tower": {
+  "pack": "ch10",
+  "w": 320,
+  "h": 540,
+  "y0": -360,
+  "camY": [
+   -360,
+   0
+  ],
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "tower": [
+    160,
+    146
+   ],
+   "sign": [
+    48,
+    146
+   ],
+   "path": [
+    60,
+    166
+   ],
+   "bucket": [
+    85,
+    146
+   ],
+   "tent": [
+    130,
+    42
+   ],
+   "stove": [
+    182,
+    42
+   ],
+   "robe": [
+    96,
+    -62
+   ],
+   "tank": [
+    177,
+    -12
+   ],
+   "windmill": [
+    235,
+    -250
+   ],
+   "top": [
+    160,
+    -300
+   ],
+   "wire_out": [
+    [
+     268,
+     -45
+    ],
+    [
+     260,
+     -129
+    ],
+    [
+     252,
+     -213
+    ]
+   ],
+   "wire_end": [
+    [
+     320,
+     -1
+    ],
+    [
+     320,
+     -65
+    ],
+    [
+     320,
+     -128
+    ]
+   ],
+   "leg_l": [
+    68,
+    150
+   ],
+   "leg_r": [
+    252,
+    150
+   ],
+   "beams": [
+    [
+     74,
+     246,
+     96
+    ],
+    [
+     83,
+     237,
+     42
+    ],
+    [
+     91,
+     229,
+     -12
+    ]
+   ],
+   "arms": [
+    [
+     48,
+     272,
+     -66
+    ],
+    [
+     56,
+     264,
+     -150
+    ],
+    [
+     64,
+     256,
+     -234
+    ]
+   ],
+   "top_deck": [
+    134,
+    186,
+    -300
+   ],
+   "walk_x": [
+    8,
+    312
+   ]
+  },
+  "layers": [
+   {
+    "type": "tall",
+    "ky": 0.4,
+    "layers": [
+     {
+      "type": "pano",
+      "image": "bg/transmission_tower/far",
+      "k": 0,
+      "x": 0,
+      "y": -144
+     }
+    ]
+   },
+   {
+    "type": "tall",
+    "ky": 1,
+    "layers": [
+     {
+      "type": "pano",
+      "image": "bg/transmission_tower/near",
+      "k": 1,
+      "x": 0,
+      "y": -360
+     },
+     {
+      "type": "strip",
+      "image": "bg/transmission_tower/windmill",
+      "n": 4,
+      "fps": 10,
+      "w": 17,
+      "h": 17,
+      "x": 222,
+      "y": -263,
+      "k": 1
+     }
+    ]
+   },
+   {
+    "type": "tint",
+    "color": "#ff8a3a",
+    "alpha": 0.16,
+    "key": "pm"
+   }
+  ],
+  "fg": []
+ },
+ "miyamoto_house": {
+  "pack": "ch10",
+  "w": 480,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "shoji": [
+    58,
+    148
+   ],
+   "window": [
+    173,
+    76
+   ],
+   "desk": [
+    264,
+    148
+   ],
+   "shelf": [
+    319,
+    148
+   ],
+   "table": [
+    94,
+    150
+   ],
+   "shredder": [
+    424,
+    150
+   ],
+   "slot": [
+    424,
+    80
+   ],
+   "feed": [
+    378,
+    72
+   ],
+   "bin": [
+    424,
+    122
+   ],
+   "walk_x": [
+    8,
+    380
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/miyamoto_house/room",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "strip",
+    "image": "bg/miyamoto_house/shred",
+    "n": 4,
+    "fps": 12,
+    "w": 104,
+    "h": 76,
+    "x": 362,
+    "y": 72,
+    "k": 1,
+    "key": "shred"
+   },
+   {
+    "type": "tint",
+    "color": "#ff8a3a",
+    "alpha": 0.12,
+    "key": "pm"
+   }
+  ],
+  "fg": []
+ },
+ "paper_world": {
+  "pack": "ch10",
+  "w": 480,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "paper_a": [
+    160,
+    120
+   ],
+   "paper_b": [
+    320,
+    120
+   ],
+   "house_l": [
+    50,
+    146
+   ],
+   "tree": [
+    236,
+    146
+   ],
+   "house_r": [
+    370,
+    146
+   ],
+   "crease_x": [
+    120,
+    240,
+    360
+   ],
+   "crease_y": [
+    60,
+    120
+   ],
+   "walk_x": [
+    8,
+    472
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/paper_world/paper",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "strip",
+    "image": "bg/paper_world/notes",
+    "n": 8,
+    "fps": 4,
+    "w": 480,
+    "h": 180,
+    "x": 0,
+    "y": 0,
+    "k": 1
+   }
+  ],
+  "fg": []
+ },
+ "library": {
+  "pack": "ch10",
+  "w": 320,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "window": [
+    153,
+    60
+   ],
+   "sun": [
+    170,
+    160
+   ],
+   "table": [
+    120,
+    146
+   ],
+   "display": [
+    280,
+    148
+   ],
+   "book": [
+    280,
+    98
+   ],
+   "sign": [
+    280,
+    76
+   ],
+   "shelf_l": [
+    60,
+    146
+   ],
+   "shelf_r": [
+    216,
+    146
+   ],
+   "walk_x": [
+    8,
+    312
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/library/room",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/library/book",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "key": "book"
+   }
+  ],
+  "fg": []
+ }
+}

@@ -1,0 +1,616 @@
+{
+ "rohan_parlor": {
+  "pack": "ch9",
+  "w": 480,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "door": [
+    33,
+    148
+   ],
+   "window": [
+    118,
+    146
+   ],
+   "curtain": [
+    72,
+    100
+   ],
+   "fireplace": [
+    226,
+    146
+   ],
+   "painting": [
+    226,
+    50
+   ],
+   "mantel_clock": [
+    226,
+    76
+   ],
+   "table": [
+    280,
+    150
+   ],
+   "dice_bowl": [
+    280,
+    128
+   ],
+   "chair_l": [
+    242,
+    148
+   ],
+   "chair_r": [
+    318,
+    148
+   ],
+   "sofa": [
+    375,
+    146
+   ],
+   "bookshelf": [
+    455,
+    146
+   ],
+   "clock": [
+    420,
+    146
+   ],
+   "chandelier": [
+    300,
+    24
+   ],
+   "walk_x": [
+    8,
+    472
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/rohan_parlor/room",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "glow",
+    "image": "bg/rohan_parlor/glow",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "flicker": 0.03
+   },
+   {
+    "type": "image",
+    "image": "bg/rohan_parlor/scorch",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "key": "fire"
+   },
+   {
+    "type": "strip",
+    "image": "bg/rohan_parlor/fire_cur",
+    "n": 8,
+    "fps": 10,
+    "x": 62,
+    "y": 38,
+    "key": "fire"
+   },
+   {
+    "type": "strip",
+    "image": "bg/rohan_parlor/fire_big",
+    "n": 8,
+    "fps": 11,
+    "x": 13,
+    "y": 60,
+    "key": "fire"
+   },
+   {
+    "type": "strip",
+    "image": "bg/rohan_parlor/fire_low",
+    "n": 8,
+    "fps": 9,
+    "x": 0,
+    "y": 112,
+    "key": "fire"
+   },
+   {
+    "type": "strip",
+    "image": "bg/rohan_parlor/smoke",
+    "n": 10,
+    "fps": 6,
+    "x": 0,
+    "y": 4,
+    "key": "fire"
+   },
+   {
+    "type": "glow",
+    "image": "bg/rohan_parlor/fire_glow",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "flicker": 0.25,
+    "key": "fire"
+   },
+   {
+    "type": "tint",
+    "color": "#ff6a20",
+    "alpha": 0.14,
+    "key": "fire"
+   }
+  ],
+  "fg": []
+ },
+ "route_tunnel": {
+  "pack": "ch9",
+  "w": 960,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "sign": [
+    96,
+    70
+   ],
+   "phone1": [
+    190,
+    146
+   ],
+   "hydrant1": [
+    222,
+    146
+   ],
+   "phone2": [
+    710,
+    146
+   ],
+   "hydrant2": [
+    742,
+    146
+   ],
+   "fan1": [
+    220,
+    17
+   ],
+   "fan2": [
+    640,
+    17
+   ],
+   "room_door": [
+    494,
+    146
+   ],
+   "room_in": [
+    494,
+    138
+   ],
+   "km600": [
+    310,
+    66
+   ],
+   "km300": [
+    570,
+    66
+   ],
+   "km50": [
+    830,
+    66
+   ],
+   "exit": [
+    930,
+    150
+   ],
+   "lane_far": [
+    0,
+    150
+   ],
+   "lane_near": [
+    0,
+    170
+   ],
+   "walk_x": [
+    8,
+    952
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/route_tunnel/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "image",
+    "image": "bg/route_tunnel/room",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "key": "room"
+   },
+   {
+    "type": "glow",
+    "image": "bg/route_tunnel/room_glow",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "flicker": 0.1,
+    "key": "room"
+   },
+   {
+    "type": "glow",
+    "image": "bg/route_tunnel/glow",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "flicker": 0.05
+   },
+   {
+    "type": "glow",
+    "image": "bg/route_tunnel/exit",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "tint",
+    "color": "#ff9a30",
+    "alpha": 0.07
+   }
+  ],
+  "fg": []
+ },
+ "national_road": {
+  "pack": "ch9",
+  "w": 960,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "lane_top": [
+    0,
+    144
+   ],
+   "lane_mid": [
+    0,
+    158
+   ],
+   "lane_bot": [
+    0,
+    172
+   ],
+   "lane_lines": [
+    151,
+    165
+   ],
+   "guardrail": [
+    0,
+    122
+   ],
+   "walk_x": [
+    8,
+    952
+   ]
+  },
+  "layers": [
+   {
+    "type": "wrap",
+    "image": "bg/national_road/sky",
+    "k": 0.05,
+    "vx": 6,
+    "y": 0
+   },
+   {
+    "type": "wrap",
+    "image": "bg/national_road/sea",
+    "k": 0.2,
+    "vx": 36,
+    "y": 0
+   },
+   {
+    "type": "wrap",
+    "image": "bg/national_road/shore",
+    "k": 0.55,
+    "vx": 120,
+    "y": 0
+   },
+   {
+    "type": "wrap",
+    "image": "bg/national_road/near",
+    "k": 1,
+    "vx": 260,
+    "y": 0
+   },
+   {
+    "type": "tint",
+    "color": "#ff9040",
+    "alpha": 0.16,
+    "key": "pm"
+   }
+  ],
+  "fg": []
+ },
+ "hospital_corridor": {
+  "pack": "ch9",
+  "w": 640,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "door_301": [
+    47,
+    146
+   ],
+   "door_302": [
+    147,
+    146
+   ],
+   "door_303": [
+    317,
+    146
+   ],
+   "door_304": [
+    417,
+    146
+   ],
+   "door_305": [
+    517,
+    146
+   ],
+   "plate_304": [
+    454,
+    66
+   ],
+   "window": [
+    242,
+    146
+   ],
+   "bench": [
+    242,
+    146
+   ],
+   "extinguisher": [
+    104,
+    146
+   ],
+   "wheelchair": [
+    374,
+    146
+   ],
+   "nurse_station": [
+    605,
+    146
+   ],
+   "walk_x": [
+    8,
+    632
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/hospital_corridor/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "glow",
+    "image": "bg/hospital_corridor/glow",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "flicker": 0.02
+   },
+   {
+    "type": "tint",
+    "color": "#ff9040",
+    "alpha": 0.14,
+    "key": "pm"
+   }
+  ],
+  "fg": []
+ },
+ "hospital_room": {
+  "pack": "ch9",
+  "w": 320,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "door": [
+    30,
+    148
+   ],
+   "bed": [
+    165,
+    150
+   ],
+   "bed_pillow": [
+    128,
+    102
+   ],
+   "chart": [
+    219,
+    118
+   ],
+   "drip": [
+    226,
+    146
+   ],
+   "tv": [
+    98,
+    92
+   ],
+   "flowers": [
+    109,
+    88
+   ],
+   "call_button": [
+    121,
+    74
+   ],
+   "window": [
+    277,
+    146
+   ],
+   "chair": [
+    283,
+    148
+   ],
+   "curtain": [
+    72,
+    146
+   ],
+   "walk_x": [
+    54,
+    312
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/hospital_room/room",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "glow",
+    "image": "bg/hospital_room/glow",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "tint",
+    "color": "#ff8a40",
+    "alpha": 0.08
+   }
+  ],
+  "fg": []
+ },
+ "kawajiri_attic": {
+  "pack": "ch9",
+  "w": 320,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "window": [
+    160,
+    80
+   ],
+   "sunspot": [
+    169,
+    156
+   ],
+   "hatch": [
+    60,
+    160
+   ],
+   "boxes": [
+    30,
+    146
+   ],
+   "suitcase": [
+    89,
+    146
+   ],
+   "fan": [
+    57,
+    110
+   ],
+   "chest": [
+    230,
+    146
+   ],
+   "birdcage": [
+    230,
+    100
+   ],
+   "rug_roll": [
+    274,
+    146
+   ],
+   "bulb": [
+    200,
+    76
+   ],
+   "beam": [
+    160,
+    54
+   ],
+   "walk_x": [
+    16,
+    304
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/kawajiri_attic/room",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "image",
+    "image": "bg/kawajiri_attic/bulb",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "key": "lamp"
+   },
+   {
+    "type": "glow",
+    "image": "bg/kawajiri_attic/lamp",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "flicker": 0.06,
+    "key": "lamp"
+   },
+   {
+    "type": "glow",
+    "image": "bg/kawajiri_attic/glow",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "flicker": 0.03
+   },
+   {
+    "type": "strip",
+    "image": "bg/kawajiri_attic/dust",
+    "n": 12,
+    "fps": 4,
+    "x": 142,
+    "y": 64,
+    "k": 1
+   },
+   {
+    "type": "tint",
+    "color": "#2a1a3a",
+    "alpha": 0.12
+   }
+  ],
+  "fg": []
+ }
+}
