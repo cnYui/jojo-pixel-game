@@ -2,3 +2,6 @@
 assets/preview/
 tools/dev/_out/
 __pycache__/
+
+# 整套字体（p4lib.gfont_full 自动下载，十几 MB），不进仓库
+tools/art/fonts/*-full.ttf
