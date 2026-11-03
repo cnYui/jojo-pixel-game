@@ -1,0 +1,637 @@
+{
+ "higashikata_tvnight": {
+  "pack": "ch4",
+  "w": 480,
+  "ground": 150,
+  "walk": [
+   142,
+   174
+  ],
+  "anchors": {
+   "tv": [
+    325,
+    84
+   ],
+   "tv_front": [
+    322,
+    148
+   ],
+   "console": [
+    325,
+    143
+   ],
+   "pad": [
+    293,
+    157
+   ],
+   "socket": [
+    289,
+    124
+   ],
+   "sofa": [
+    231,
+    140
+   ],
+   "photo": [
+    229,
+    46
+   ],
+   "window": [
+    98,
+    60
+   ],
+   "kitchen": [
+    410,
+    146
+   ],
+   "switch": [
+    159,
+    84
+   ],
+   "walk_x": [
+    10,
+    470
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/higashikata_tvnight/room",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "glow",
+    "image": "bg/higashikata_tvnight/glow",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "flicker": 0.18
+   },
+   {
+    "type": "pano",
+    "image": "bg/higashikata_tvnight/lit",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "key": "lamp"
+   },
+   {
+    "type": "strip",
+    "image": "bg/higashikata_tvnight/screen",
+    "n": 4,
+    "fps": 5,
+    "k": 1,
+    "x": 310,
+    "y": 72,
+    "w": 31,
+    "h": 25
+   },
+   {
+    "type": "strip",
+    "image": "bg/higashikata_tvnight/snow",
+    "n": 6,
+    "fps": 15,
+    "k": 1,
+    "x": 310,
+    "y": 72,
+    "w": 31,
+    "h": 25,
+    "key": "snow"
+   }
+  ],
+  "fg": []
+ },
+ "open_field": {
+  "pack": "ch4",
+  "w": 640,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "pipes": [
+    85,
+    146
+   ],
+   "meet": [
+    220,
+    148
+   ],
+   "bike": [
+    300,
+    150
+   ],
+   "cable": [
+    450,
+    160
+   ],
+   "cable_box": [
+    447,
+    162
+   ],
+   "sign": [
+    486,
+    146
+   ],
+   "drum": [
+    533,
+    146
+   ],
+   "gravel": [
+    565,
+    146
+   ],
+   "tree": [
+    600,
+    146
+   ],
+   "poles_far": [
+    0,
+    84
+   ],
+   "walk_x": [
+    8,
+    632
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/open_field/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/open_field/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "image",
+    "image": "bg/open_field/cable",
+    "k": 1,
+    "x": 396,
+    "y": 146,
+    "key": "cable"
+   },
+   {
+    "type": "glow",
+    "image": "bg/open_field/spark",
+    "k": 1,
+    "x": 380,
+    "y": 128,
+    "flicker": 0.5,
+    "key": "cable"
+   }
+  ],
+  "fg": []
+ },
+ "morioh_harbor": {
+  "pack": "ch4",
+  "w": 960,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "warehouse": [
+    70,
+    146
+   ],
+   "shutter": [
+    180,
+    146
+   ],
+   "containers": [
+    340,
+    146
+   ],
+   "crane": [
+    495,
+    146
+   ],
+   "forklift": [
+    628,
+    150
+   ],
+   "forklift_batt": [
+    622,
+    133
+   ],
+   "tyre": [
+    618,
+    143
+   ],
+   "grates": [
+    [
+     96,
+     158
+    ],
+    [
+     232,
+     168
+    ],
+    [
+     372,
+     154
+    ],
+    [
+     520,
+     166
+    ],
+    [
+     688,
+     156
+    ],
+    [
+     836,
+     168
+    ]
+   ],
+   "lamps": [
+    [
+     163,
+     48
+    ],
+    [
+     423,
+     48
+    ],
+    [
+     713,
+     48
+    ],
+    [
+     913,
+     48
+    ]
+   ],
+   "lamp_feet": [
+    [
+     151,
+     148
+    ],
+    [
+     411,
+     148
+    ],
+    [
+     701,
+     148
+    ],
+    [
+     901,
+     148
+    ]
+   ],
+   "quay_edge": [
+    700,
+    128
+   ],
+   "fish_boxes": [
+    770,
+    146
+   ],
+   "ship_gangway": [
+    764,
+    150
+   ],
+   "ship": [
+    860,
+    70
+   ],
+   "sea": [
+    700,
+    110
+   ],
+   "walk_x": [
+    8,
+    952
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/morioh_harbor/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "wrap",
+    "image": "bg/morioh_harbor/waves",
+    "k": 0.5,
+    "vx": 4,
+    "y": 98
+   },
+   {
+    "type": "image",
+    "image": "bg/morioh_harbor/ship",
+    "k": 1,
+    "x": 760,
+    "y": 28,
+    "key": "ship"
+   },
+   {
+    "type": "pano",
+    "image": "bg/morioh_harbor/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pick",
+    "key": "tyre",
+    "images": [
+     "bg/morioh_harbor/tyre0",
+     "bg/morioh_harbor/tyre1"
+    ],
+    "k": 1,
+    "x": 608,
+    "y": 134
+   },
+   {
+    "type": "glow",
+    "image": "bg/morioh_harbor/fglow",
+    "k": 1,
+    "x": 588,
+    "y": 112,
+    "flicker": 0.4,
+    "key": "forklift"
+   }
+  ],
+  "fg": []
+ },
+ "spw_ship": {
+  "pack": "ch4",
+  "w": 640,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "stern": [
+    46,
+    146
+   ],
+   "flag": [
+    19,
+    46
+   ],
+   "generator": [
+    190,
+    146
+   ],
+   "gen_meter": [
+    212,
+    102
+   ],
+   "gen_top": [
+    190,
+    94
+   ],
+   "cable": [
+    300,
+    142
+   ],
+   "crates": [
+    288,
+    146
+   ],
+   "buoy": [
+    340,
+    146
+   ],
+   "cabin": [
+    470,
+    146
+   ],
+   "cabin_door": [
+    466,
+    146
+   ],
+   "bridge": [
+    476,
+    40
+   ],
+   "bow": [
+    600,
+    146
+   ],
+   "winch": [
+    596,
+    140
+   ],
+   "joseph": [
+    520,
+    148
+   ],
+   "crew": [
+    [
+     250,
+     146
+    ],
+    [
+     360,
+     146
+    ],
+    [
+     420,
+     146
+    ]
+   ],
+   "captain": [
+    530,
+    146
+   ],
+   "walk_x": [
+    8,
+    632
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/spw_ship/far",
+    "k": 0.4,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "wrap",
+    "image": "bg/spw_ship/waves",
+    "k": 0.4,
+    "vx": 10,
+    "y": 96
+   },
+   {
+    "type": "pano",
+    "image": "bg/spw_ship/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "glow",
+    "image": "bg/spw_ship/gglow",
+    "k": 1,
+    "x": 130,
+    "y": 70,
+    "flicker": 0.45,
+    "key": "gen"
+   }
+  ],
+  "fg": []
+ },
+ "park_pond": {
+  "pack": "ch4",
+  "w": 480,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "entrance": [
+    16,
+    146
+   ],
+   "bench": [
+    82,
+    146
+   ],
+   "lamp": [
+    124,
+    146
+   ],
+   "bin": [
+    135,
+    146
+   ],
+   "sign": [
+    177,
+    146
+   ],
+   "pond_edge": [
+    [
+     230,
+     146
+    ],
+    [
+     320,
+     146
+    ],
+    [
+     410,
+     146
+    ]
+   ],
+   "pond": [
+    320,
+    126
+   ],
+   "splash": [
+    322,
+    124
+   ],
+   "lily": [
+    [
+     236,
+     128
+    ],
+    [
+     380,
+     124
+    ]
+   ],
+   "leaves": [
+    [
+     60,
+     160
+    ],
+    [
+     220,
+     158
+    ],
+    [
+     270,
+     166
+    ],
+    [
+     400,
+     162
+    ]
+   ],
+   "puddles": [
+    [
+     150,
+     164
+    ],
+    [
+     330,
+     170
+    ]
+   ],
+   "walk_x": [
+    8,
+    472
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/park_pond/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/park_pond/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "strip",
+    "image": "bg/park_pond/pond",
+    "n": 4,
+    "fps": 3,
+    "k": 1,
+    "x": 198,
+    "y": 110,
+    "w": 248,
+    "h": 28
+   },
+   {
+    "type": "glow",
+    "image": "bg/park_pond/red",
+    "k": 1,
+    "x": 294,
+    "y": 116,
+    "key": "red"
+   },
+   {
+    "type": "strip",
+    "image": "bg/park_pond/ring",
+    "n": 6,
+    "fps": 8,
+    "k": 1,
+    "x": 292,
+    "y": 116,
+    "w": 60,
+    "h": 16,
+    "key": "ring"
+   }
+  ],
+  "fg": []
+ }
+}

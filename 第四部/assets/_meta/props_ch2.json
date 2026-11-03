@@ -1,0 +1,19 @@
+{
+ "props": {
+  "echoes_egg": {
+   "image": "props/echoes_egg",
+   "frames": 4,
+   "size": [
+    18,
+    21
+   ],
+   "pivot": [
+    9,
+    21
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  }
+ }
+}
