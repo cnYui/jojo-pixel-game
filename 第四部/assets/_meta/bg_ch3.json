@@ -1,0 +1,564 @@
+{
+ "budogaoka_classroom": {
+  "pack": "ch3",
+  "w": 320,
+  "ground": 150,
+  "walk": [
+   142,
+   174
+  ],
+  "anchors": {
+   "blackboard": [
+    64,
+    146
+   ],
+   "podium": [
+    62,
+    146
+   ],
+   "desk": [
+    189,
+    148
+   ],
+   "bento": [
+    189,
+    116
+   ],
+   "window": [
+    176,
+    146
+   ],
+   "window2": [
+    270,
+    146
+   ],
+   "lockers": [
+    220,
+    146
+   ],
+   "door_l": [
+    10,
+    156
+   ],
+   "walk_x": [
+    10,
+    310
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/budogaoka_classroom/room",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "glow",
+    "image": "bg/budogaoka_classroom/sun",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "alpha": 1
+   },
+   {
+    "type": "petals",
+    "n": 14,
+    "colors": [
+     "#fff0c8",
+     "#ffd890"
+    ],
+    "seed": 51,
+    "y0": 40,
+    "y1": 70,
+    "vx": -6,
+    "k": 0.1
+   },
+   {
+    "type": "tint",
+    "color": "#ff9040",
+    "alpha": 0.08
+   }
+  ],
+  "fg": []
+ },
+ "seaside_villa_out": {
+  "pack": "ch3",
+  "w": 640,
+  "ground": 150,
+  "walk": [
+   144,
+   176
+  ],
+  "anchors": {
+   "villa_door": [
+    176,
+    146
+   ],
+   "villa_window": [
+    103,
+    70
+   ],
+   "gate": [
+    170,
+    148
+   ],
+   "mailbox": [
+    135,
+    148
+   ],
+   "sea": [
+    405,
+    146
+   ],
+   "booth": [
+    513,
+    148
+   ],
+   "sign": [
+    489,
+    148
+   ],
+   "start": [
+    24,
+    160
+   ],
+   "walk_x": [
+    8,
+    632
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/seaside_villa_out/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/seaside_villa_out/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": []
+ },
+ "cape_cliff": {
+  "pack": "ch3",
+  "w": 320,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "edge": [
+    236,
+    160
+   ],
+   "edge_far": [
+    226,
+    146
+   ],
+   "crack": [
+    216,
+    164
+   ],
+   "pine": [
+    34,
+    150
+   ],
+   "sign": [
+    122,
+    148
+   ],
+   "rocks": [
+    292,
+    172
+   ],
+   "sea": [
+    150,
+    100
+   ],
+   "start": [
+    40,
+    160
+   ],
+   "walk_x": [
+    8,
+    234
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/cape_cliff/far",
+    "k": 0,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/cape_cliff/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "strip",
+    "image": "bg/cape_cliff/foam",
+    "n": 6,
+    "fps": 5,
+    "k": 1,
+    "x": 256,
+    "y": 150,
+    "w": 64,
+    "h": 30
+   }
+  ],
+  "fg": []
+ },
+ "seaside_villa": {
+  "pack": "ch3",
+  "w": 640,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "door": [
+    57,
+    148
+   ],
+   "knob": [
+    57,
+    93
+   ],
+   "umbrella": [
+    14,
+    148
+   ],
+   "mirror": [
+    109,
+    58
+   ],
+   "shoebox": [
+    107,
+    148
+   ],
+   "stairs": [
+    150,
+    148
+   ],
+   "stairs_top": [
+    250,
+    40
+   ],
+   "handrail": [
+    200,
+    92
+   ],
+   "closet": [
+    213,
+    148
+   ],
+   "painting": [
+    172,
+    41
+   ],
+   "table": [
+    348,
+    150
+   ],
+   "dinner": [
+    348,
+    108
+   ],
+   "window_dining": [
+    320,
+    62
+   ],
+   "sideboard": [
+    390,
+    148
+   ],
+   "photo": [
+    402,
+    78
+   ],
+   "bookshelf": [
+    463,
+    148
+   ],
+   "desk": [
+    535,
+    148
+   ],
+   "schedule": [
+    529,
+    60
+   ],
+   "chair": [
+    535,
+    150
+   ],
+   "window": [
+    607,
+    148
+   ],
+   "walk_x": [
+    8,
+    632
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/seaside_villa/room",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "image",
+    "image": "bg/seaside_villa/shoebox",
+    "k": 1,
+    "x": 90,
+    "y": 112,
+    "key": "shoebox"
+   },
+   {
+    "type": "image",
+    "image": "bg/seaside_villa/chair",
+    "k": 1,
+    "x": 518,
+    "y": 96,
+    "key": "chair"
+   },
+   {
+    "type": "image",
+    "image": "bg/seaside_villa/hair_walls",
+    "k": 1,
+    "x": 0,
+    "y": 8,
+    "key": "hair_walls"
+   },
+   {
+    "type": "image",
+    "image": "bg/seaside_villa/hair_door",
+    "k": 1,
+    "x": 20,
+    "y": 24,
+    "key": "hair_door"
+   },
+   {
+    "type": "image",
+    "image": "bg/seaside_villa/hair_stairs",
+    "k": 1,
+    "x": 132,
+    "y": 14,
+    "key": "hair_stairs"
+   },
+   {
+    "type": "image",
+    "image": "bg/seaside_villa/hair_window",
+    "k": 1,
+    "x": 574,
+    "y": 12,
+    "key": "hair_window"
+   }
+  ],
+  "fg": []
+ },
+ "trattoria": {
+  "pack": "ch3",
+  "w": 480,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "entrance": [
+    32,
+    148
+   ],
+   "window": [
+    92,
+    60
+   ],
+   "menu": [
+    168,
+    52
+   ],
+   "table": [
+    228,
+    150
+   ],
+   "seat": [
+    198,
+    152
+   ],
+   "seat2": [
+    268,
+    152
+   ],
+   "table_l": [
+    118,
+    150
+   ],
+   "table_r": [
+    318,
+    150
+   ],
+   "winerack": [
+    328,
+    146
+   ],
+   "pass_window": [
+    387,
+    64
+   ],
+   "counter": [
+    387,
+    148
+   ],
+   "kitchen_door": [
+    443,
+    148
+   ],
+   "walk_x": [
+    8,
+    472
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/trattoria/room",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "glow",
+    "image": "bg/trattoria/glow",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "alpha": 0.7,
+    "flicker": 0.06
+   }
+  ],
+  "fg": []
+ },
+ "trattoria_kitchen": {
+  "pack": "ch3",
+  "w": 480,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "door": [
+    24,
+    148
+   ],
+   "sink": [
+    80,
+    148
+   ],
+   "faucet": [
+    84,
+    82
+   ],
+   "sign": [
+    80,
+    48
+   ],
+   "counter": [
+    178,
+    148
+   ],
+   "board": [
+    148,
+    94
+   ],
+   "stove": [
+    296,
+    148
+   ],
+   "pot": [
+    281,
+    70
+   ],
+   "oven": [
+    375,
+    148
+   ],
+   "oven_mouth": [
+    375,
+    86
+   ],
+   "fridge": [
+    454,
+    148
+   ],
+   "patrol_x": [
+    200,
+    370
+   ],
+   "walk_x": [
+    8,
+    472
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/trattoria_kitchen/room",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "strip",
+    "image": "bg/trattoria_kitchen/fire",
+    "n": 6,
+    "fps": 8,
+    "k": 1,
+    "x": 359,
+    "y": 84,
+    "w": 32,
+    "h": 16
+   },
+   {
+    "type": "glow",
+    "image": "bg/trattoria_kitchen/glow",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "alpha": 0.8,
+    "flicker": 0.25
+   },
+   {
+    "type": "strip",
+    "image": "bg/trattoria_kitchen/steam",
+    "n": 8,
+    "fps": 6,
+    "k": 1,
+    "x": 261,
+    "y": 32,
+    "w": 40,
+    "h": 36,
+    "alpha": 0.85
+   }
+  ],
+  "fg": []
+ }
+}
