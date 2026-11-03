@@ -1,0 +1,57 @@
+{
+ "id": "hazamada",
+ "name": "间田敏和",
+ "image": "hazamada.png",
+ "cell": [
+  50,
+  51
+ ],
+ "pivot": [
+  25,
+  48
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  },
+  "run": {
+   "row": 2,
+   "frames": 4,
+   "fps": 13,
+   "kind": "loop"
+  },
+  "smirk": {
+   "row": 3,
+   "frames": 2,
+   "fps": 3,
+   "kind": "loop"
+  },
+  "point": {
+   "row": 4,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
+  },
+  "shock": {
+   "row": 5,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "knocked": {
+   "row": 6,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  }
+ }
+}

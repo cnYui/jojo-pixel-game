@@ -4,8 +4,6 @@
 #   echoes2    回音 ACT2（自己画：橄榄绿装甲、黄眼、白护膝白靴、长尾巴上亮下深灰）
 #   tonio      东尼欧·特拉萨迪（底子：第三部的厨师 npc_hk_owner；棕发、白色厨师服、红领带、黄徽章、高帽）
 #   pearljam   珍珠果酱（一群蔬菜一样的小家伙）
-#   koichi_x   康一的战斗附加帧（cmd / hurt / down / guard / dodge / push）：直接从当前游戏尺寸的 chars/koichi.png 派生，
-#              所以 PR #6 改了康一的配色以后重跑一次本脚本（python3 p4_chars_ch3.py koichi_x）就跟着变
 #   亿泰、回音 ACT1 用第2章画的（okuyasu / echoes1）
 #   用法：python3 第四部/tools/art/p4_chars_ch3.py [cid ...]   → 元数据写 assets/_meta/chars_ch3.json
 import os
@@ -445,61 +443,7 @@ def build_pearljam():
 
 
 # ============================================================ 康一的战斗附加帧（从游戏尺寸的 chars/koichi.png 派生）
-def build_koichi_x():
-    meta = L.load_json(os.path.join(L.META, 'chars.json'))['chars']['koichi']
-    sheet = Image.open(os.path.join(L.ASSETS, 'chars', 'koichi.png')).convert('RGBA')
-    cw, ch = meta['cell']
-    px, py = meta['pivot']
-
-    def fr(anim, i=0):
-        a = meta['animations'][anim]
-        return sheet.crop((i * cw, a['row'] * ch, (i + 1) * cw, (a['row'] + 1) * ch))
-
-    def shifted(f, dx, dy):
-        c = Image.new('RGBA', f.size, (0, 0, 0, 0))
-        c.alpha_composite(f, (max(0, dx), max(0, dy)), (max(0, -dx), max(0, -dy)))
-        return c
-    idle0, walk1, bow = fr('idle'), fr('walk', 1), fr('bow')
-    # cmd：往前伸手（身前胸口高度加一条两格的手臂）
-    a = arr(idle0)
-    bb = _bbox(a[..., 3] > 0)
-    yh = bb[1] + int((bb[3] - bb[1]) * 0.45)
-    skin = tuple(int(v) for v in a[bb[1] + 4, (bb[0] + bb[2]) // 2][:3]) if a[bb[1] + 4, (bb[0] + bb[2]) // 2][3] else (246, 196, 154)
-    for x in range(bb[2] + 1, bb[2] + 4):
-        if x < cw:
-            a[yh, x] = (*skin, 255)
-            a[yh - 1, x] = (*O, 255)
-            a[yh + 1, x] = (*O, 255)
-    if bb[2] + 4 < cw:
-        a[yh, bb[2] + 4] = (*O, 255)
-    cmd = img(a)
-    hurt = shifted(bow, -1, 0)
-    guard = shifted(bow, 0, 1)
-    dodge = shifted(walk1, -2, 1)
-    # 躺倒：整张图顺时针转 90°，头朝左贴在脚点那一行
-    r = idle0.rotate(90, expand=True)
-    rb = _bbox(arr(r)[..., 3] > 0)
-    down = Image.new('RGBA', (cw, ch), (0, 0, 0, 0))
-    crop = r.crop(rb)
-    down.alpha_composite(crop, (max(0, px - crop.width // 2), max(0, py - crop.height)))
-    rows = [('cmd', [cmd], 1, 'static'), ('hurt', [hurt], 1, 'static'), ('down', [down], 1, 'static'), ('guard', [guard], 1, 'static'),
-            ('dodge', [dodge], 1, 'static'), ('push', [fr('walk', 0), fr('walk', 2)], 4, 'loop'), ('special', [cmd], 1, 'static'),
-            ('win', [cmd], 1, 'static')]
-    W = cw * 2
-    out = Image.new('RGBA', (W, ch * len(rows)), (0, 0, 0, 0))
-    anims = {}
-    for i, (name, frs, fps, kind) in enumerate(rows):
-        for j, f in enumerate(frs):
-            out.alpha_composite(f, (j * cw, i * ch))
-        anims[name] = dict(row=i, frames=len(frs), fps=fps, kind=kind)
-    p = os.path.join(L.ASSETS, 'chars', 'koichi_x.png')
-    out.save(p)
-    return dict(name='广濑康一', image='chars/koichi_x', cell=[cw, ch], pivot=[px, py], animations=anims, aliases={}, heads={}, headAlias={},
-                headSize={}, k=meta.get('k', 0.625), amap={'getup': 'hurt', 'shock': 'hurt', 'block': 'guard'}, top=meta.get('top', 26),
-                bodyW=meta.get('bodyW', 3), kind='char')
-
-
-BUILDERS = {'yukako': build_yukako, 'echoes2': build_echoes2, 'tonio': build_tonio, 'pearljam': build_pearljam, 'koichi_x': build_koichi_x}
+BUILDERS = {'yukako': build_yukako, 'echoes2': build_echoes2, 'tonio': build_tonio, 'pearljam': build_pearljam}
 
 # 说话人 / 替身表（第3章新加的人）
 HEROES = {}
@@ -521,7 +465,7 @@ def main(ids):
     path = os.path.join(L.META, 'chars_ch3.json')
     meta = L.load_json(path, {}) or {}
     meta.setdefault('chars', {})
-    for old in ('okuyasu_tmp', 'echoes1_tmp'):
+    for old in ('okuyasu_tmp', 'echoes1_tmp', 'koichi_x'):   # 康一的战斗帧第2章已补进本体（chars/koichi_ex）
         meta['chars'].pop(old, None)
     for cid in ids or BUILDERS:
         meta['chars'][cid] = BUILDERS[cid]()

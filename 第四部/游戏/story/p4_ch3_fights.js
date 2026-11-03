@@ -18,10 +18,9 @@
 
   C3.OKU = () => 'okuyasu';
   C3.ECH1 = () => 'echoes1';
-  // 康一：战斗附加帧（cmd / hurt / down / guard / dodge / push）+ 回音（act 1 / 2）
+  // 康一：换上回音（act 1 / 2）。战斗动作用第2章补的康一本体（chars/koichi_ex：cmd、hurt、down、dodge、guard）
   C3.koichiGear = (a, act) => {
     if (!a) return a;
-    if (G.D.chars && G.D.chars.koichi_x && !a.alt.some((at) => at.id === 'koichi_x')) a.alt.push(G.atlas('koichi_x'));
     if (act) {
       const sid = act === 2 ? 'echoes2' : C3.ECH1();
       if (a.standId !== sid || !a.stand) a.setStand(sid);
@@ -153,7 +152,7 @@
       d[which + 'Moved'] = true;
       p.facing = to < pr.x ? -1 : 1;
       p.x = pr.x - p.facing * 16; p.y = Math.max(p.y, 150);
-      S.pose(p, 'push');
+      S.pose(p, 'guard');
       S.sfx('metal_scrape', 0.6);
       const x0 = pr.x, px0 = p.x, dur = Math.max(0.6, Math.abs(x0 - to) / 160);
       await S.animate(dur, (k) => { pr.x = G.lerp(x0, to, k); p.x = G.lerp(px0, to - p.facing * 16, k); if (Math.random() < 0.15) S.sfx('footstep0', 0.3); });
@@ -444,7 +443,7 @@
     S.hint(null);
     const yk = S.actor('yukako');
     return S.fight({
-      id: 'b05_lovedeluxe', arena: [24, 600], lead: 'koichi', swap: false, music: 'battle', after: null, dmgScale: 0.9, losable: true,
+      id: 'b05_lovedeluxe', arena: [24, 600], lead: 'koichi', swap: false, music: 'battle', after: null, dmgScale: 0.7, losable: true,
       energy: { start: 0 },
       kitOverride: { koichi: Object.assign({}, K.koichi_act2, {
         special: { need: 0, window: (c) => !!c.data.tether && !c.data.uUsed, prompt: '按 U！烧断发丝', colours: ['#3a4a1a', '#1a2408', '#6a8a2a'], bg: 'radial', run: burnTether },
