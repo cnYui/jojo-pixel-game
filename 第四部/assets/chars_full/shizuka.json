@@ -1,0 +1,27 @@
+{
+ "id": "shizuka",
+ "name": "乔斯达·静",
+ "image": "shizuka.png",
+ "cell": [
+  34,
+  30
+ ],
+ "pivot": [
+  17,
+  29
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "cry": {
+   "row": 1,
+   "frames": 2,
+   "fps": 6,
+   "kind": "loop"
+  }
+ }
+}

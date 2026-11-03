@@ -1,0 +1,113 @@
+{
+ "namecards": {
+  "otoishi": {
+   "image": "ui/namecard/otoishi",
+   "w": 204,
+   "h": 48,
+   "x": 24,
+   "y": 265
+  },
+  "joseph_old": {
+   "image": "ui/namecard/joseph_old",
+   "w": 229,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  },
+  "shizuka": {
+   "image": "ui/namecard/shizuka",
+   "w": 222,
+   "h": 50,
+   "x": 24,
+   "y": 265
+  }
+ },
+ "standcards": {
+  "rhcp": {
+   "image": "ui/standcard/rhcp",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "hermit": {
+   "image": "ui/standcard/hermit",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "achtung": {
+   "image": "ui/standcard/achtung",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  }
+ },
+ "locations": {
+  "field": {
+   "image": "ui/location/field",
+   "w": 149,
+   "h": 52,
+   "x": 24,
+   "y": 25
+  },
+  "harbor": {
+   "image": "ui/location/harbor",
+   "w": 134,
+   "h": 52,
+   "x": 24,
+   "y": 25
+  },
+  "ship": {
+   "image": "ui/location/ship",
+   "w": 194,
+   "h": 52,
+   "x": 24,
+   "y": 25
+  },
+  "park": {
+   "image": "ui/location/park",
+   "w": 150,
+   "h": 52,
+   "x": 24,
+   "y": 25
+  }
+ },
+ "vs": {
+  "rhcp": {
+   "name": {
+    "image": "ui/vs/rhcp_name",
+    "w": 87,
+    "h": 48
+   },
+   "en": {
+    "image": "ui/vs/rhcp_en",
+    "w": 179,
+    "h": 11
+   },
+   "tag": {
+    "image": "ui/vs/rhcp_tag",
+    "w": 144,
+    "h": 34
+   },
+   "colours": [
+    "#8a5a0a",
+    "#2a1804"
+   ]
+  }
+ },
+ "titles": {
+  "days_later": {
+   "image": "ui/title/days_later",
+   "w": 94,
+   "h": 34
+  },
+  "night_tv": {
+   "image": "ui/title/night_tv",
+   "w": 124,
+   "h": 36
+  }
+ }
+}
