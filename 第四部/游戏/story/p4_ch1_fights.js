@@ -389,9 +389,9 @@
     let group = [pick];
     if (kind === 'soldier') {
       // 同一排（y 差 3 以内）的一起开火
-      group = all.filter((a) => a.cid === 'badco_soldier' && Math.abs(a.y - pick.y) <= 3).slice(0, 6);
+      group = all.filter((a) => a.cid === 'badco_soldier' && Math.abs(a.y - pick.y) <= 3).slice(0, 4);
     }
-    const tgt = ko && Math.random() < 0.5 ? ko : player();
+    const tgt = ko && Math.random() < 0.35 ? ko : player();
     for (const a of group) {
       a.mem.tgt = tgt;
       a.mem.order = kind === 'soldier' ? (o.sweep ? 'BC_SWEEP' : 'BC_VOLLEY') : kind === 'tank' ? 'BC_SHELL' : (o.snipe ? 'BC_SNIPE' : 'BC_MISSILE');
@@ -489,7 +489,7 @@
     uN = 0;
     const res = await S.fight({
       id: 'b02_badcompany_a', arena: H1.arena, lead: 'josuke', swap: false, lockMsg: '康一动不了：只能仗助挡在前面',
-      music: 'battle', after: null, dmgScale: 0.9, losable: true, energy: { start: 0 }, vip: 'koichi', vipHp: 60,
+      music: 'battle', after: null, dmgScale: 0.9, losable: true, energy: { start: 0 }, vip: 'koichi', vipHp: 90,
       waves: [
         formation(380, 146, 5, 4),
         formation(400, 148, 5, 2),
@@ -521,7 +521,7 @@
         }
         ctx.data.vT = 1.4;
       },
-      tick: (c, dt) => { volleyTick(S, c, dt, { vip: true, gap: c.wave === 0 ? 1.3 : 1.7 }); mineTick(S, c, dt); swatMissiles(S, c, null); },
+      tick: (c, dt) => { volleyTick(S, c, dt, { vip: true, gap: c.wave === 0 ? 1.7 : 1.9 }); mineTick(S, c, dt); swatMissiles(S, c, null); },
     });
     if (fx2H) { fx2H.close(); fx2H = null; }
     clearUnits();

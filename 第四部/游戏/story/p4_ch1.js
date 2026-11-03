@@ -181,6 +181,7 @@
     if (ar) ar.remove = true;
     Object.assign(ko, { x: 112, y: 168 });
     S.music('battle', 0.3);
+    focus(null);
     await S.vs({ key: 'thehand', hero: 'josuke', enemy: { cid: 'okuyasu', anim: 'pose' } });
     G.uifx.vsTag('thehand');
   }
@@ -324,6 +325,7 @@
     ok.visible = false;
     S.party(['josuke', 'koichi'], { leader: 'josuke' });
     S.leadable('koichi', false, { msg: KO_MSG });
+    focus(null);
     S.music('battle', 0.3);
     await S.vs({ key: 'badcompany', hero: 'josuke', enemy: { cid: 'keicho', anim: 'point' } });
     G.uifx.vsTag('badcompany');
@@ -377,7 +379,7 @@
   async function beatKeichoDown(S) {
     const p = S.player, kc = S.actor('keicho'), ko = S.actor('koichi');
     S.state('holes', 1);
-    if (kc) { kc.team = 'npc'; kc.brain = null; kc.play('hurt'); await S.wait(0.4); kc.play('sit'); }
+    if (kc) { kc.team = 'npc'; kc.brain = null; S.pose(kc, 'hurt'); await S.wait(0.4); S.pose(kc, 'sit'); }
     S.mark('ch1_keicho_down');
     await S.say('keicho', '……被我自己的导弹。', { expr: 'shock' });
     await S.say('josuke', '箭在哪？交出来，我把它毁掉。');
@@ -408,6 +410,7 @@
     await S.say('koichi', '怪、怪物……！', { expr: 'shock' });
     S.music('sad', 0.8);
     const kc = place(S, 'keicho', 40, 152, 1);
+    S.unpose(kc);
     await S.walk(kc, 74, 152, { speed: 40 });
     await S.say('keicho', '别碰他。……那是我爸。');
     // 往事：黑底剪影 + 形兆的旁白
@@ -541,12 +544,12 @@
     await S.title('ch1_home', { y: 110 });
     await S.narrate('那天回家的路上，天已经快黑了。', { pos: 'top' });
     if (ko) {
-      const e = egg(S, ko.x - 5, ko.y + 0.5, 14);
+      const e = egg(S, ko.x - 8, ko.y + 1, 3);           // 抱在胸前（蛋有 18×21，比头大）
       S.sfx('sparkle', 0.4);
       await S.say('koichi', '……我是不是也，变得和他们一样了？');
       // 蛋的特写（蛋上的花纹微微一亮）
-      await S.zoom(2.6, ko.x - 5, ko.y - 22, 0.4);
-      S.fx('glint', { x: ko.x - 5, y: ko.y - 22, size: 6 }, { life: 0.5 });
+      await S.zoom(2.6, ko.x - 8, ko.y - 14, 0.4);
+      S.fx('glint', { x: ko.x - 8, y: ko.y - 16, size: 6 }, { life: 0.5 });
       S.sfx('glint', 0.6);
       await S.wait(1.2);
       await S.zoom(1, null, null, 0.3);

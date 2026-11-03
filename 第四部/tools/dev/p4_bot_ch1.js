@@ -106,6 +106,16 @@
   // 第 2 战 段 1：先打兵（小兵一拳一个），导弹来了打下来
   B.fights.b02_badcompany_a = (ctx) => {
     if (swat()) return;
+    // 有一排兵瞄着康一：回去挡在他前面按住 L
+    const ko = enemy('koichi'), p = P();
+    const aimKo = ko && ko.hp < (ctx.spec.vipHp || ko.maxHp) * 0.6 && ctx.enemies().some((a) => a.tele && a.mem && a.mem.tgt === ko);
+    if (aimKo || (B.fight.coverT && now() < B.fight.coverT)) {
+      if (aimKo) B.fight.coverT = now() + 0.7;
+      if (!go(ko.x + 16, ko.y, 4)) return;
+      if (!face(1)) return;
+      hold(['guard']);
+      return;
+    }
     brawl(ctx, nearest(ctx));
   };
 
