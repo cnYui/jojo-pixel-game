@@ -691,94 +691,6 @@
    "bodyW": 6,
    "kind": "stand"
   },
-  "tmp6_rohan": {
-   "name": "岸边露伴",
-   "image": "chars/tmp6_rohan",
-   "cell": [
-    32,
-    32
-   ],
-   "pivot": [
-    16,
-    30
-   ],
-   "animations": {
-    "idle": {
-     "row": 0,
-     "frames": 2,
-     "fps": 2,
-     "kind": "loop"
-    },
-    "walk": {
-     "row": 1,
-     "frames": 4,
-     "fps": 8,
-     "kind": "loop"
-    },
-    "hurt": {
-     "row": 2,
-     "frames": 1,
-     "fps": 1,
-     "kind": "static"
-    },
-    "down": {
-     "row": 3,
-     "frames": 1,
-     "fps": 1,
-     "kind": "static"
-    },
-    "dodge": {
-     "row": 4,
-     "frames": 1,
-     "fps": 1,
-     "kind": "static"
-    },
-    "guard": {
-     "row": 5,
-     "frames": 1,
-     "fps": 1,
-     "kind": "static"
-    },
-    "point": {
-     "row": 6,
-     "frames": 2,
-     "fps": 4,
-     "kind": "loop"
-    }
-   },
-   "aliases": {},
-   "heads": {
-    "normal": [
-     "heads/tmp6_rohan/normal_0",
-     "heads/tmp6_rohan/normal_1"
-    ],
-    "smile": [
-     "heads/tmp6_rohan/smile_0",
-     "heads/tmp6_rohan/smile_1"
-    ],
-    "shock": [
-     "heads/tmp6_rohan/shock_0",
-     "heads/tmp6_rohan/shock_1"
-    ],
-    "rage": [
-     "heads/tmp6_rohan/rage_0",
-     "heads/tmp6_rohan/rage_1"
-    ]
-   },
-   "headAlias": {},
-   "headSize": {},
-   "k": 0.625,
-   "amap": {
-    "talk": "idle",
-    "shock": "hurt",
-    "run": "walk",
-    "cmd": "point",
-    "special": "point"
-   },
-   "top": 26,
-   "bodyW": 4,
-   "kind": "char"
-  },
   "tmp6_joseph": {
    "name": "乔瑟夫·乔斯达",
    "image": "chars/tmp6_joseph",
@@ -905,23 +817,6 @@
    "nameColor": "#5a70b0",
    "blipHz": 380,
    "grunt": "grunt_jotaro"
-  },
-  "tmp6_rohan": {
-   "cid": "tmp6_rohan",
-   "cn": "岸边露伴",
-   "short": "露伴",
-   "rn": "KISHIBE ROHAN",
-   "stand": null,
-   "burst": [
-    "#1a4a2a",
-    "#2f8a5a",
-    "#9ae0b0"
-   ],
-   "panel": "#0a2014",
-   "accent": "#9ae0b0",
-   "nameColor": "#2f8a5a",
-   "blipHz": 520,
-   "grunt": null
   }
  },
  "speakers": {

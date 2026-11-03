@@ -1,6 +1,6 @@
 # 第6章的新角色：矢安宫重清 / 丰收、吉良吉影（西装）/ 杀手皇后、杉本铃美、阿诺德（第四部/docs/第6章_开发脚本.md §4）。
 #   做法和 p4_chars.py 一样：拿第三部的全尺寸图集换色、改发型，再用第三部的 shrink.py 缩成游戏尺寸。配色照 TV 动画第四部（JoJo Wiki 配色表）。
-#   另有几张临时图（tmp6_*）：亿泰、轰炸空间、露伴、乔瑟夫分别由第2、2、5、4章画，那边合进来之前本章先用这几张顶着，合进来以后删掉。
+#   另有几张临时图（tmp6_*）：亿泰、轰炸空间、乔瑟夫分别由第2、2、4章画（露伴第5章已经画好，合进来了），那边合进来之前本章先用这几张顶着，合进来以后删掉。
 #   用法：python3 第四部/tools/art/p4_chars_ch6.py [cid ...]      输出 assets/chars/<cid>.png、assets/heads/<cid>/…、assets/_meta/chars_ch6.json
 import os
 import sys
@@ -383,16 +383,6 @@ def build_tmp_thehand():
     return e
 
 
-def build_tmp_rohan():
-    # 第5章画正式的：花京院的身子换成绿发、深绿上衣
-    cmap = {'#2f9e56': '#2a3a3a', '#1a6038': '#1a2626', '#62c874': '#44585a', '#0f4028': '#101818', '#50b848': '#3a4c4e',
-            '#b8402e': '#2f8a5a', '#e8734c': '#4cb47a', '#78221e': '#1c5a3a', '#9a4ce0': '#e8e0c0'}
-    return C.build_recolor('tmp6_rohan', '岸边露伴', 'kakyoin',
-                           [('idle', 'idle', 2, 'loop'), ('walk', 'walk', 8, 'loop'), ('hurt', 'hurt', 1, 'static'), ('down', 'down', 1, 'static'),
-                            ('dodge', 'dodge', 1, 'static'), ('guard', 'guard', 1, 'static'), ('cast', 'point', 4, 'loop')],
-                           cmap=cmap, amap={'talk': 'idle', 'shock': 'hurt', 'run': 'walk', 'cmd': 'point', 'special': 'point'}, bodyW=4)
-
-
 def build_tmp_joseph():
     # 第4章画正式的：第三部乔瑟夫，头发、胡子换白
     cmap = {'#4e3018': '#d8d8dc', '#6a3e20': '#b8b8c0', '#8e5a30': '#ececf0'}
@@ -404,7 +394,7 @@ def build_tmp_joseph():
 
 BUILDERS = {'shigechi': build_shigechi, 'harvest': build_harvest, 'kira': build_kira, 'killerqueen': build_killerqueen,
             'reimi': build_reimi, 'arnold': build_arnold,
-            'tmp6_okuyasu': build_tmp_okuyasu, 'tmp6_thehand': build_tmp_thehand, 'tmp6_rohan': build_tmp_rohan, 'tmp6_joseph': build_tmp_joseph}
+            'tmp6_okuyasu': build_tmp_okuyasu, 'tmp6_thehand': build_tmp_thehand, 'tmp6_joseph': build_tmp_joseph}
 
 HEROES = {
     'shigechi': dict(cid='shigechi', cn='矢安宫重清', short='重清', rn='YANGU SHIGEKIYO', stand='harvest',
@@ -413,8 +403,6 @@ HEROES = {
                     burst=['#6a4a10', '#c89a20', '#ffe070'], panel='#2a1e06', accent='#ffd83c', nameColor='#c8a020', blipHz=1100, grunt=None),
     'tmp6_okuyasu': dict(cid='tmp6_okuyasu', cn='虹村亿泰', short='亿泰', rn='NIJIMURA OKUYASU', stand='tmp6_thehand',
                          burst=['#1a2a5a', '#3a4a8a', '#8aa0e0'], panel='#0a1028', accent='#9ab0f0', nameColor='#5a70b0', blipHz=380, grunt='grunt_jotaro'),
-    'tmp6_rohan': dict(cid='tmp6_rohan', cn='岸边露伴', short='露伴', rn='KISHIBE ROHAN', stand=None,
-                       burst=['#1a4a2a', '#2f8a5a', '#9ae0b0'], panel='#0a2014', accent='#9ae0b0', nameColor='#2f8a5a', blipHz=520, grunt=None),
 }
 SPEAKERS = {
     'reimi': dict(short='铃美', nameColor='#d870a0', blipHz=820),
