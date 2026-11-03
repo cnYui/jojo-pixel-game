@@ -10,9 +10,10 @@
   Object.assign(B.plan, {
     alley_ch6: [
       // 第一次自由走动：露伴先读（读不了），再和铃美说话
-      { id: 'read_ghost', go: [282, 154], act: 'special', done: () => F().ch6ReadGhost },
-      { id: 'talk_reimi', go: [282, 154], act: 'ok', done: () => F().ch6TalkReimi },
+      { id: 'read_ghost', go: [294, 154], act: 'special', done: () => F().ch6ReadGhost },
+      { id: 'talk_reimi', go: [294, 154], act: 'ok', done: () => F().ch6TalkReimi },
       // 「不能回头」：先往前走一段，故意回一次头（被拖回去），再一路走出去
+      { id: 'wait_ex', done: () => F().ch6ExOn },
       { id: 'walk_on', go: [470, 154], done: () => F().ch6Dragged || (P() && P().x >= 465) },
       { id: 'look_back', go: [440, 154], done: () => F().ch6Dragged },
       { id: 'exit', go: [614, 154], done: () => F().ch6AlleyOut },

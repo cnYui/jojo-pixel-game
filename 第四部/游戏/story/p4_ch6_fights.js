@@ -58,6 +58,7 @@
     for (const m of members()) if (m !== p0) Object.assign(m, { x: AX.start - 22, y: 162, facing: 1 });
     S.state('dark', 0); S.state('hands', 0);
     S.mark('ex_alley_start');
+    F().ch6ExOn = true;
     S.hint('往右走到出口（→）。千万别回头：别按 ←', 7);
     const other = (p) => (p.cid === ROHAN ? 'koichi' : ROHAN);
     async function dragBack(S2) {
