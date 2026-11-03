@@ -70,6 +70,13 @@ def main():
         bgm.update(L.load_json(fp, {}) or {})
     uim = meta('ui', {})
     font = meta('font', {})
+    # 各章自己的元数据（第四部/docs/分章开发约定.md）：chars_chN.json / props_chN.json / ui_chN.json 深合并进来。
+    #   每章只写自己的文件，几条分支就不会同时改 chars.json、props.json、ui.json（这几份是各自生成脚本整份重写的）
+    def parts(name, into):
+        for fp in sorted(glob.glob(os.path.join(L.META, name + '_*.json'))):
+            into = deep_merge(into, L.load_json(fp, {}) or {})
+        return into
+    cm, pm, uim = parts('chars', cm), parts('props', pm), parts('ui', uim)
 
     gd = dict(v=1, built=time.strftime('%Y-%m-%dT%H:%M:%S'), img={}, packsLoaded={}, packKeys={})
     groups = {'core': []}
@@ -88,6 +95,9 @@ def main():
         if key.startswith('bg/'):
             bk = key.split('/')[1]
             pack = 'bg_' + (bgm.get(bk, {}).get('pack') or 'prologue')
+        elif key.startswith('ui/chapter/'):
+            # 篇章卡（640×360，一张二十来 KB）跟着那一章的背景包走：开章时 playFrom 先载 bg_<章>，开机不用把 13 张都载上
+            pack = 'bg_' + key.split('/')[2]
         with open(fp, 'rb') as fh:
             gd['img'][key] = 'data:image/png;base64,' + base64.b64encode(fh.read()).decode('ascii')
         for g in groups.values():
@@ -127,7 +137,8 @@ def main():
     gd['video'] = {}
     # 4) 分包
     packs = {'core': {'file': 'data/img_core.js'}}
-    shorts = sorted({(st.get('pack') or 'prologue') for st in bgm.values()} | {'common', 'title', 'prologue'})
+    shorts = sorted({(st.get('pack') or 'prologue') for st in bgm.values()} | {'common', 'title', 'prologue'}
+                    | {g[3:] for g in groups if g.startswith('bg_')})
     for short in shorts:
         packs['bg_' + short] = {'file': f'data/img_bg_{short}.js',
                                 'bg': sorted(k for k, st in bgm.items() if (st.get('pack') or 'prologue') == short)}

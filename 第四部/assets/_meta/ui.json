@@ -2,15 +2,15 @@
  "logo": {
   "main": {
    "image": "ui/logo_main",
-   "w": 245,
-   "h": 86
+   "w": 246,
+   "h": 85
   }
  },
  "namecards": {
   "josuke": {
    "image": "ui/namecard/josuke",
    "w": 211,
-   "h": 48,
+   "h": 49,
    "x": 24,
    "y": 265
   },
@@ -31,7 +31,7 @@
   "tomoko": {
    "image": "ui/namecard/tomoko",
    "w": 137,
-   "h": 48,
+   "h": 49,
    "x": 24,
    "y": 265
   },
@@ -70,14 +70,14 @@
   "morioh": {
    "image": "ui/location/morioh",
    "w": 261,
-   "h": 53,
+   "h": 52,
    "x": 24,
    "y": 25
   },
   "budou": {
    "image": "ui/location/budou",
    "w": 188,
-   "h": 52,
+   "h": 51,
    "x": 24,
    "y": 25
   },
@@ -101,6 +101,66 @@
    "image": "ui/chapter/prologue",
    "w": 640,
    "h": 360
+  },
+  "ch1": {
+   "image": "ui/chapter/ch1",
+   "w": 640,
+   "h": 360
+  },
+  "ch2": {
+   "image": "ui/chapter/ch2",
+   "w": 640,
+   "h": 360
+  },
+  "ch3": {
+   "image": "ui/chapter/ch3",
+   "w": 640,
+   "h": 360
+  },
+  "ch4": {
+   "image": "ui/chapter/ch4",
+   "w": 640,
+   "h": 360
+  },
+  "ch5": {
+   "image": "ui/chapter/ch5",
+   "w": 640,
+   "h": 360
+  },
+  "ch6": {
+   "image": "ui/chapter/ch6",
+   "w": 640,
+   "h": 360
+  },
+  "ch7": {
+   "image": "ui/chapter/ch7",
+   "w": 640,
+   "h": 360
+  },
+  "ch8": {
+   "image": "ui/chapter/ch8",
+   "w": 640,
+   "h": 360
+  },
+  "ch9": {
+   "image": "ui/chapter/ch9",
+   "w": 640,
+   "h": 360
+  },
+  "ch10": {
+   "image": "ui/chapter/ch10",
+   "w": 640,
+   "h": 360
+  },
+  "ch11": {
+   "image": "ui/chapter/ch11",
+   "w": 640,
+   "h": 360
+  },
+  "final": {
+   "image": "ui/chapter/final",
+   "w": 640,
+   "h": 360
   }
  },
  "vs": {
@@ -113,7 +173,7 @@
    "en": {
     "image": "ui/vs/aqua_en",
     "w": 127,
-    "h": 14
+    "h": 13
    },
    "tag": {
     "image": "ui/vs/aqua_tag",
@@ -163,12 +223,12 @@
   "DORA!": {
    "image": "ui/sfx/dora_1",
    "w": 96,
-   "h": 30
+   "h": 29
   },
   "DORA!!": {
    "image": "ui/sfx/dora_2",
    "w": 112,
-   "h": 31
+   "h": 32
   },
   "DORA!!!": {
    "image": "ui/sfx/dora_3",
@@ -185,7 +245,7 @@
   "night": {
    "image": "ui/title/night",
    "w": 123,
-   "h": 35
+   "h": 36
   },
   "rain3": {
    "image": "ui/title/rain3",
@@ -196,10 +256,10 @@
  "hair": {
   "plate": {
    "image": "ui/hair/plate",
-   "w": 228,
+   "w": 229,
    "h": 44,
    "slot": [
-    170,
+    171,
     4,
     27,
     36
@@ -209,52 +269,52 @@
    {
     "image": "ui/hair/d0",
     "w": 20,
-    "h": 26
+    "h": 27
    },
    {
     "image": "ui/hair/d1",
     "w": 18,
-    "h": 26
+    "h": 27
    },
    {
     "image": "ui/hair/d2",
     "w": 19,
-    "h": 26
+    "h": 27
    },
    {
     "image": "ui/hair/d3",
     "w": 19,
-    "h": 26
+    "h": 27
    },
    {
     "image": "ui/hair/d4",
     "w": 22,
-    "h": 26
+    "h": 27
    },
    {
     "image": "ui/hair/d5",
     "w": 20,
-    "h": 26
+    "h": 27
    },
    {
     "image": "ui/hair/d6",
     "w": 20,
-    "h": 26
+    "h": 27
    },
    {
     "image": "ui/hair/d7",
     "w": 19,
-    "h": 26
+    "h": 27
    },
    {
     "image": "ui/hair/d8",
     "w": 19,
-    "h": 26
+    "h": 27
    },
    {
     "image": "ui/hair/d9",
     "w": 20,
-    "h": 26
+    "h": 27
    }
   ]
  },
