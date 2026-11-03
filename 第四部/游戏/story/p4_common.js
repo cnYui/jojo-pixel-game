@@ -159,7 +159,7 @@
     const keys = Object.keys(CAL), gray = [];
     for (const k of keys) { if (k === key) break; for (const p of CAL[k].pins) gray.push(p); }
     const m = ui().map || {};
-    const pins = c.pins.map((p, i) => ({ p, xy: an[p.at] || [160, 90], t0: 0.5 + i * 0.45 }));
+    const pins = c.pins.map((p, i) => ({ p, xy: p.xy || an[p.at] || [160, 90], t0: 0.5 + i * 0.45 }));
     const stampAt = 0.5 + pins.length * 0.45 + 0.25;
     const h = P4.overlay((g, t) => {
       const pin = (xy, im, dy = 0) => {
@@ -167,7 +167,7 @@
         const meta = m.pin || { ax: 5, ay: 15 };
         g.drawImage(im, Math.round(xy[0] * 2 - meta.ax * 2), Math.round(xy[1] * 2 - meta.ay * 2 + dy), im.width * 2, im.height * 2);
       };
-      for (const q of gray) pin(an[q.at] || [160, 90], img(m.pin_gray && m.pin_gray.image));
+      for (const q of gray) pin(q.xy || an[q.at] || [160, 90], img(m.pin_gray && m.pin_gray.image));
       for (const q of pins) {
         const u = (t - q.t0) / 0.3;
         if (u < 0) continue;
@@ -177,7 +177,7 @@
         if (u >= 1) text(g, q.p.label, Math.round(q.xy[0] * 2 + 12), Math.round(q.xy[1] * 2 - 34), '#fff4d6', 12, 'left', '#2a0a1a');
       }
       if (t >= stampAt) {
-        const sm = m.stamp, sim = sm && img(sm.image);
+        const sm = (c.stamp && m[c.stamp]) || m.stamp, sim = sm && img(sm.image);
         if (sim) {
           const u = Math.min(1, (t - stampAt) / 0.14), sc = 1.9 - 0.9 * ease(u);
           const w = Math.round(sm.w * sc), hh = Math.round(sm.h * sc), cx = 534, cy = 262;
