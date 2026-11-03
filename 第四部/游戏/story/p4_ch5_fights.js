@@ -99,7 +99,7 @@
     if (p.stand) p.stand.act('write', { dx: 12, dur: 0.5 });
     S.sfx('card_flip', 0.8);
     const line = { up: '不能攻击岸边露伴', fwd: '往后飞', down: '睡觉' }[k];
-    S.sfxText('「' + line + '」', t, { dur: 1.2 });
+    S.emote(t, '「' + line + '」', 1.2, '#f0d070');
     if (k === 'up') { t.mem.noAtkUntil = now + 6; t.atk = null; t.tele = null; }
     else if (k === 'down') { t.stunT = Math.max(t.stunT || 0, 2); t.atk = null; t.tele = null; bookOn(t, 2); }
     else G.combat.hit(p, t, { slot: 'special', dmg: 12, push: 90, guard: 'none', sfxHit: 'wall_slam', fxHit: 'heavy' });
@@ -481,7 +481,15 @@
         if (!d.melt) { d.melt = true; S.hint('飞镖打中了：被打中的地方在“溶解”，每秒 −2。仗助治不了自己！', 6); }
         S.sfxText('滋……', p, { dur: 0.8 });
       }
-      if (e.t && e.t.cid === 'rat_a' && e.t.hp <= 0) d.ratDown = true;
+      // 平时打中只是擦过去：它吱一声换个地方躲（真正打死它是在最后的对射里）
+      if (e.t && e.t.cid === 'rat_a' && !d.duel) {
+        const r = e.t, m = r.mem;
+        d.grazes = (d.grazes || 0) + 1;
+        S.sfx('doll_scurry', 0.7); S.emote(r, '吱！', 0.6);
+        let n; do { n = Math.floor(Math.random() * S8.hides.length); } while (n === (m.spot || 0));
+        m.spot = n; m.mode = 'run'; m.t = 0; r.play('walk');
+        if (d.grazes === 1) S.hint('擦过去了……它太小了。拿着平底锅，等它正面出来！', 5);
+      }
     });
     S.hint('J 弹钢珠（远程）。老鼠躲在家具后面，探出头瞄准时才打得到。灶台上有只平底锅（走过去按 E）', 9);
   }
@@ -517,7 +525,7 @@
       }
     }
     // 最后的对射：拿着锅、弹开过一次（或者拿锅以后 10 s）→ 它跳上桌子正面对射
-    if (rat && rat.hp > 0 && d.pan && !d.duel && (d.deflects >= 1 || c.t - d.panT > 10) && rat.mem.mode === 'hide') {
+    if (rat && rat.hp > 0 && d.pan && !d.duel && (d.deflects >= 1 || d.grazes >= 2 || c.t - d.panT > 10) && rat.mem.mode === 'hide') {
       d.duel = true;
       cine(c, () => ratDuel(S, c, rat));
     }
@@ -569,7 +577,7 @@
       id: 'b08a_ratt', arena: S8.arena, lead: 'josuke', swap: false, lockMsg: '仗助一个人', music: 'battle', after: null,
       dmgScale: 1.0, losable: true, energy: { start: 0 }, bench: { mode: 'hide' },
       kitOverride: { josuke: { combo: ['CD_BALL', 'CD_BALL', 'CD_BALL'], rush: null } },
-      waves: [[{ kit: 'e_rat', cid: 'rat_a', id: 'rat_a', name: '老鼠', x: S8.hides[0].x, y: S8.hides[0].y, hp: 1, bodyW: 4 }]],
+      waves: [[{ kit: 'e_rat', cid: 'rat_a', id: 'rat_a', name: '老鼠', x: S8.hides[0].x, y: S8.hides[0].y, hp: 1, minHp: 1, bodyW: 4 }]],
       testHint: (ctx) => { const r = G.S.actor('rat_a'), d = ctx.data; return { pan: !!d.pan, melt: !!d.melt, deflects: d.deflects || 0, duel: !!d.duel, rat: r ? r.mem.mode : null, hp: Math.round(player().hp) }; },
       onWave: async (S2, wi, spawned, attempt, ctx) => {
         const p = player();

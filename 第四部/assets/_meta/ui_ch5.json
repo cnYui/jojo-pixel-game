@@ -1,0 +1,158 @@
+{
+ "namecards": {
+  "rohan": {
+   "image": "ui/namecard/rohan",
+   "w": 137,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  }
+ },
+ "standcards": {
+  "heavensdoor": {
+   "image": "ui/standcard/heavensdoor",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "ratt": {
+   "image": "ui/standcard/ratt",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  }
+ },
+ "locations": {
+  "rohan_house": {
+   "image": "ui/location/rohan_house",
+   "w": 134,
+   "h": 51,
+   "x": 24,
+   "y": 25
+  },
+  "farm": {
+   "image": "ui/location/farm",
+   "w": 223,
+   "h": 50,
+   "x": 24,
+   "y": 25
+  }
+ },
+ "vs": {
+  "heavensdoor": {
+   "name": {
+    "image": "ui/vs/heavensdoor_name",
+    "w": 165,
+    "h": 48
+   },
+   "en": {
+    "image": "ui/vs/heavensdoor_en",
+    "w": 124,
+    "h": 12
+   },
+   "tag": {
+    "image": "ui/vs/heavensdoor_tag",
+    "w": 193,
+    "h": 34
+   },
+   "colours": [
+    "#4a3a10",
+    "#1a1206"
+   ]
+  },
+  "ratt": {
+   "name": {
+    "image": "ui/vs/ratt_name",
+    "w": 94,
+    "h": 39
+   },
+   "en": {
+    "image": "ui/vs/ratt_en",
+    "w": 39,
+    "h": 11
+   },
+   "tag": {
+    "image": "ui/vs/ratt_tag",
+    "w": 181,
+    "h": 34
+   },
+   "colours": [
+    "#4a1a3a",
+    "#1a0814"
+   ]
+  }
+ },
+ "titles": {
+  "next_day": {
+   "image": "ui/title/next_day",
+   "w": 94,
+   "h": 34
+  },
+  "days_later": {
+   "image": "ui/title/days_later",
+   "w": 94,
+   "h": 34
+  },
+  "snow_memory": {
+   "image": "ui/title/snow_memory",
+   "w": 214,
+   "h": 37
+  }
+ },
+ "sfx": {
+  "叮": {
+   "image": "ui/sfx/ch5_0",
+   "w": 30,
+   "h": 28
+  },
+  "锵": {
+   "image": "ui/sfx/ch5_1",
+   "w": 31,
+   "h": 30
+  },
+  "锵！": {
+   "image": "ui/sfx/ch5_2",
+   "w": 42,
+   "h": 30
+  },
+  "唰": {
+   "image": "ui/sfx/ch5_3",
+   "w": 30,
+   "h": 30
+  },
+  "唰！": {
+   "image": "ui/sfx/ch5_4",
+   "w": 40,
+   "h": 30
+  },
+  "啪啦": {
+   "image": "ui/sfx/ch5_5",
+   "w": 56,
+   "h": 31
+  },
+  "啪啦啪啦": {
+   "image": "ui/sfx/ch5_6",
+   "w": 108,
+   "h": 31
+  },
+  "天堂之门！": {
+   "image": "ui/sfx/ch5_7",
+   "w": 118,
+   "h": 30
+  },
+  "滋……": {
+   "image": "ui/sfx/ch5_8",
+   "w": 81,
+   "h": 30
+  }
+ },
+ "map": {
+  "stamp_ch5": {
+   "image": "ui/map/stamp_199906",
+   "w": 67,
+   "h": 53
+  }
+ }
+}
