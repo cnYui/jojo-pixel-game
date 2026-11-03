@@ -86,6 +86,24 @@ def gfont(family, weight, text, name=None):
     return path
 
 
+def gfont_full(family, weight):
+    """整套字体（不取子集）：缓存在 tools/art/fonts/，不进仓库（十几 MB）。
+    按字取子集的话，子集一变（各章加了新名字、新标题）同一个字画出来会差一两个像素，几条分支各画各的就会互相改到对方的图；
+    整套字体每个环境下载的是同一份，画出来一模一样。"""
+    os.makedirs(FONTS, exist_ok=True)
+    path = os.path.join(FONTS, family.replace(' ', '') + '-' + str(weight) + '-full.ttf')
+    if os.path.exists(path):
+        return path
+    q = urllib.parse.urlencode({'family': f'{family}:wght@{weight}'})
+    css = urllib.request.urlopen('https://fonts.googleapis.com/css2?' + q, timeout=60).read().decode('utf-8')
+    url = css.split('url(')[1].split(')')[0]
+    data = urllib.request.urlopen(url, timeout=300).read()
+    with open(path + '.tmp', 'wb') as fh:
+        fh.write(data)
+    os.replace(path + '.tmp', path)
+    return path
+
+
 def text_mask(text, font_path, size, index=0, bold=0, spacing=0):
     """一行文字的 1 bit 蒙版（不抗锯齿）；bold = 往右 / 下各加粗几 px。"""
     f = ImageFont.truetype(font_path, size, index=index)

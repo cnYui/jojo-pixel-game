@@ -4,7 +4,11 @@
 //   用法：
 //     node 第四部/tools/dev/p4_play.js --out 输出目录 [--read 0.25] [--fail-chase 2] [--size 960x540]
 //     node 第四部/tools/dev/p4_play.js --record 输出目录/序章.webm --size 1920x1080 --read 1
+//     node 第四部/tools/dev/p4_play.js --chapter ch2 --out 输出目录      只跑一章（标题停一下就直接进这一章，打完回标题）
 //   输出：剧情标记截图（编号_标记.png）、report.json（标记、战斗、机器人日志、报错、缺图缺字、连打拳声漏停 rushLoopLeaks）。
+//   这一章在 G.STORY.<章>.marks 里列了应有的剧情标记时，缺的记在 missingMarks。
+//   退出码：整章打完、没报错、没缺图缺字、没漏停、标记齐 → 0，否则 1（最后一行写着哪里不对）。
+//   各章机器人的任务单和打法在 p4_bot_<章>.js，这里自动注入（第四部/docs/分章开发约定.md）。
 'use strict';
 const fs = require('fs');
 const path = require('path');
@@ -24,6 +28,7 @@ const SHOTS = !flag('--no-shots');
 const TITLE_WAIT = parseFloat(opt('--title-wait', RECORD ? '4' : '0.5'));
 const STOP_AFTER = parseFloat(opt('--stop-after', '0'));      // 试录用：实时模式下录这么多秒就停
 const DLG_SHOTS = parseInt(opt('--dlg-shots', '0'), 10);        // 每隔几句对白截一张（看对白框的排版）
+const CHAPTER = opt('--chapter', null);                          // 只跑一章：ch1 … ch11、final（不给就从标题选「从序章开始」）
 const REC_JS = path.resolve(__dirname, '..', '..', '..', 'tools', 'dev', 'record', 'recorder.js');
 
 fs.mkdirSync(OUT, { recursive: true });
@@ -116,8 +121,9 @@ const STATE = () => {
   await page.keyboard.press('Shift');
   await page.waitForTimeout(300);
   await page.evaluate(PAGE_HELPERS);
-  await page.evaluate((c) => { window.__botCfg = c; }, { read: READ, failChase: FAIL_CHASE, assist: true, titleWait: TITLE_WAIT });
+  await page.evaluate((c) => { window.__botCfg = c; }, { read: READ, failChase: FAIL_CHASE, assist: true, titleWait: TITLE_WAIT, chapter: CHAPTER });
   await page.addScriptTag({ path: path.join(__dirname, 'p4_bot.js') });
+  for (const f of fs.readdirSync(__dirname).filter((n) => /^p4_bot_.+\.js$/.test(n)).sort()) await page.addScriptTag({ path: path.join(__dirname, f) });
   if (RECORD) {
     await page.evaluate(() => { window.__recCleanUI = false; });
     await page.addScriptTag({ path: REC_JS });
@@ -130,6 +136,17 @@ const STATE = () => {
     await page.screenshot({ path: fp });
   };
   if (!RECORD) await shot('title');
+  if (CHAPTER) {
+    // 只跑一章：标题停一会儿（录像要看得到标题），再直接进这一章
+    if (RECORD) await page.waitForTimeout(TITLE_WAIT * 1000); else await page.evaluate((n) => window.__run(n), Math.max(1, Math.round(TITLE_WAIT * 60)));
+    const ok = await page.evaluate((k) => {
+      const i = G.CHAPTERS.findIndex((c) => c.key === k);
+      if (i < 0 || !G.CHAPTERS[i].run) return false;
+      window.__bot.started = true; G.playFrom(i); return true;
+    }, CHAPTER);
+    if (!ok) throw new Error('没有 ' + CHAPTER + ' 这一章，或者还没注册 G.STORY.' + CHAPTER);
+    log('直接进章', CHAPTER);
+  }
   const t0 = Date.now();
   for (;;) {
     if (RECORD) await page.waitForTimeout(250);
@@ -176,8 +193,22 @@ const STATE = () => {
     log('录屏结束', JSON.stringify(recFiles));
   }
   report.hair = await page.evaluate(() => G.store.get('p4-hair', []));
+  report.chapter = CHAPTER || 'prologue';
+  report.expectedMarks = await page.evaluate((k) => { const r = G.STORY[k]; return (r && r.marks) || null; }, report.chapter);
+  if (report.expectedMarks) { const seen = new Set(report.marks.map((m) => m.mark)); report.missingMarks = report.expectedMarks.filter((m) => !seen.has(m)); }
+  const bad = [];
+  if (!report.end || !report.end.ok) bad.push('没打完：' + (report.end ? report.end.why : '?'));
+  if (report.errors.length + report.console.length) bad.push('报错 ' + (report.errors.length + report.console.length));
+  if (report.botErr) bad.push('机器人出错');
+  if (Object.keys(report.missing).length) bad.push('缺图缺字 ' + Object.keys(report.missing).join(','));
+  if (report.loopErrors) bad.push('主循环报错');
+  if (report.rushLoopLeaks.length) bad.push('拳声漏停 ' + report.rushLoopLeaks.length);
+  if (report.missingMarks && report.missingMarks.length) bad.push('缺标记 ' + report.missingMarks.join(','));
+  report.ok = !bad.length; report.bad = bad;
   fs.writeFileSync(path.join(OUT, 'report.json'), JSON.stringify(report, null, 2));
   log('报告', path.join(OUT, 'report.json'), '标记', report.marks.length, '报错', report.errors.length + report.console.length, '拳声漏停', report.rushLoopLeaks.length);
+  log(report.ok ? '通过' : '没通过：' + bad.join('；'));
+  process.exitCode = report.ok ? 0 : 1;
   await browser.close();
   srv.close();
 })().catch((e) => { console.error(e); process.exit(1); });
