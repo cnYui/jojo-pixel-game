@@ -1,0 +1,51 @@
+{
+ "id": "rhcp",
+ "name": "辣妹",
+ "image": "rhcp.png",
+ "cell": [
+  56,
+  50
+ ],
+ "pivot": [
+  26,
+  48
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  },
+  "dash": {
+   "row": 1,
+   "frames": 2,
+   "fps": 12,
+   "kind": "loop"
+  },
+  "punch": {
+   "row": 2,
+   "frames": 3,
+   "fps": 14,
+   "kind": "oneshot"
+  },
+  "hurt": {
+   "row": 3,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "hand": {
+   "row": 4,
+   "frames": 2,
+   "fps": 10,
+   "kind": "loop"
+  },
+  "rust": {
+   "row": 5,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  }
+ }
+}

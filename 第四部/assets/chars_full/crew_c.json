@@ -1,0 +1,39 @@
+{
+ "id": "crew_c",
+ "name": "船员",
+ "image": "crew_c.png",
+ "cell": [
+  56,
+  60
+ ],
+ "pivot": [
+  28,
+  44
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  },
+  "talk": {
+   "row": 2,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
+  },
+  "hurt": {
+   "row": 3,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  }
+ }
+}
