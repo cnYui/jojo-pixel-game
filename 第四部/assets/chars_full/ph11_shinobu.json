@@ -1,0 +1,27 @@
+{
+ "id": "ph11_shinobu",
+ "name": "川尻忍（占位）",
+ "image": "ph11_shinobu.png",
+ "cell": [
+  68,
+  48
+ ],
+ "pivot": [
+  40,
+  48
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "id": "ph11_okuyasu",
+ "name": "虹村亿泰（占位）",
+ "image": "ph11_okuyasu.png",
+ "cell": [
+  50,
+  51
+ ],
+ "pivot": [
+  25,
+  48
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  },
+  "hurt": {
+   "row": 2,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "down": {
+   "row": 3,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  }
+ }
+}

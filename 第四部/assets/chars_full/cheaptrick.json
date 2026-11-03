@@ -1,0 +1,33 @@
+{
+ "id": "cheaptrick",
+ "name": "Cheap Trick",
+ "image": "cheaptrick.png",
+ "cell": [
+  26,
+  30
+ ],
+ "pivot": [
+  13,
+  29
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 3,
+   "kind": "loop"
+  },
+  "talk": {
+   "row": 1,
+   "frames": 2,
+   "fps": 6,
+   "kind": "loop"
+  },
+  "look": {
+   "row": 2,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  }
+ }
+}

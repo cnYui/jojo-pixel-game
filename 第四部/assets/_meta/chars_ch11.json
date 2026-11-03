@@ -1,0 +1,707 @@
+{
+ "chars": {
+  "kinoto": {
+   "name": "乙雅三",
+   "image": "chars/kinoto",
+   "cell": [
+    20,
+    30
+   ],
+   "pivot": [
+    10,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/kinoto/normal_0",
+     "heads/kinoto/normal_1"
+    ],
+    "smile": [
+     "heads/kinoto/smile_0",
+     "heads/kinoto/smile_1"
+    ],
+    "shock": [
+     "heads/kinoto/shock_0",
+     "heads/kinoto/shock_1"
+    ],
+    "rage": [
+     "heads/kinoto/rage_0",
+     "heads/kinoto/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "idle",
+    "run": "walk",
+    "hurt": "idle",
+    "down": "idle"
+   },
+   "top": 26,
+   "bodyW": 3,
+   "kind": "char"
+  },
+  "cheaptrick": {
+   "name": "Cheap Trick",
+   "image": "chars/cheaptrick",
+   "cell": [
+    18,
+    20
+   ],
+   "pivot": [
+    9,
+    19
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 3,
+     "kind": "loop"
+    },
+    "talk": {
+     "row": 1,
+     "frames": 2,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "look": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/cheaptrick/normal_0",
+     "heads/cheaptrick/normal_1"
+    ]
+   },
+   "headAlias": {
+    "smile": "normal",
+    "rage": "normal",
+    "shock": "normal"
+   },
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "hurt": "look",
+    "down": "look",
+    "shock": "look",
+    "cmd": "talk",
+    "punch": "talk",
+    "special": "talk",
+    "guard": "idle",
+    "dodge": "idle"
+   },
+   "top": 17,
+   "bodyW": 3,
+   "kind": "stand"
+  },
+  "ph11_hayato": {
+   "name": "川尻早人（占位）",
+   "image": "chars/ph11_hayato",
+   "cell": [
+    28,
+    29
+   ],
+   "pivot": [
+    14,
+    19
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 2,
+     "frames": 4,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "talk": {
+     "row": 5,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/ph11_hayato/normal_0",
+     "heads/ph11_hayato/normal_1"
+    ],
+    "smile": [
+     "heads/ph11_hayato/smile_0",
+     "heads/ph11_hayato/smile_1"
+    ],
+    "shock": [
+     "heads/ph11_hayato/shock_0",
+     "heads/ph11_hayato/shock_1"
+    ],
+    "rage": [
+     "heads/ph11_hayato/rage_0",
+     "heads/ph11_hayato/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "shock": "hurt",
+    "guard": "down",
+    "dodge": "run"
+   },
+   "top": 18,
+   "bodyW": 3,
+   "kind": "char"
+  },
+  "ph11_kosaku": {
+   "name": "川尻浩作（占位）",
+   "image": "chars/ph11_kosaku",
+   "cell": [
+    20,
+    30
+   ],
+   "pivot": [
+    10,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/ph11_kosaku/normal_0",
+     "heads/ph11_kosaku/normal_1"
+    ],
+    "smile": [
+     "heads/ph11_kosaku/smile_0",
+     "heads/ph11_kosaku/smile_1"
+    ],
+    "shock": [
+     "heads/ph11_kosaku/shock_0",
+     "heads/ph11_kosaku/shock_1"
+    ],
+    "rage": [
+     "heads/ph11_kosaku/rage_0",
+     "heads/ph11_kosaku/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "idle",
+    "run": "walk",
+    "hurt": "idle",
+    "down": "idle"
+   },
+   "top": 26,
+   "bodyW": 3,
+   "kind": "char"
+  },
+  "ph11_shinobu": {
+   "name": "川尻忍（占位）",
+   "image": "chars/ph11_shinobu",
+   "cell": [
+    43,
+    30
+   ],
+   "pivot": [
+    25,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/ph11_shinobu/normal_0",
+     "heads/ph11_shinobu/normal_1"
+    ],
+    "smile": [
+     "heads/ph11_shinobu/smile_0",
+     "heads/ph11_shinobu/smile_1"
+    ],
+    "shock": [
+     "heads/ph11_shinobu/shock_0",
+     "heads/ph11_shinobu/shock_1"
+    ],
+    "rage": [
+     "heads/ph11_shinobu/rage_0",
+     "heads/ph11_shinobu/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "idle",
+    "run": "walk",
+    "hurt": "idle"
+   },
+   "top": 25,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "ph11_rohan": {
+   "name": "岸边露伴（占位）",
+   "image": "chars/ph11_rohan",
+   "cell": [
+    32,
+    32
+   ],
+   "pivot": [
+    16,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "point": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "guard": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "dodge": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/ph11_rohan/normal_0",
+     "heads/ph11_rohan/normal_1"
+    ],
+    "smile": [
+     "heads/ph11_rohan/smile_0",
+     "heads/ph11_rohan/smile_1"
+    ],
+    "shock": [
+     "heads/ph11_rohan/shock_0",
+     "heads/ph11_rohan/shock_1"
+    ],
+    "rage": [
+     "heads/ph11_rohan/rage_0",
+     "heads/ph11_rohan/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "hurt",
+    "run": "walk",
+    "pose": "point"
+   },
+   "top": 26,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "ph11_okuyasu": {
+   "name": "虹村亿泰（占位）",
+   "image": "chars/ph11_okuyasu",
+   "cell": [
+    32,
+    32
+   ],
+   "pivot": [
+    16,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/ph11_okuyasu/normal_0",
+     "heads/ph11_okuyasu/normal_1"
+    ],
+    "smile": [
+     "heads/ph11_okuyasu/smile_0",
+     "heads/ph11_okuyasu/smile_1"
+    ],
+    "shock": [
+     "heads/ph11_okuyasu/shock_0",
+     "heads/ph11_okuyasu/shock_1"
+    ],
+    "rage": [
+     "heads/ph11_okuyasu/rage_0",
+     "heads/ph11_okuyasu/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "hurt",
+    "run": "walk"
+   },
+   "top": 26,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "ph11_reimi": {
+   "name": "杉本铃美（占位）",
+   "image": "chars/ph11_reimi",
+   "cell": [
+    30,
+    30
+   ],
+   "pivot": [
+    15,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/ph11_reimi/normal_0",
+     "heads/ph11_reimi/normal_1"
+    ],
+    "smile": [
+     "heads/ph11_reimi/smile_0",
+     "heads/ph11_reimi/smile_1"
+    ],
+    "shock": [
+     "heads/ph11_reimi/shock_0",
+     "heads/ph11_reimi/shock_1"
+    ],
+    "rage": [
+     "heads/ph11_reimi/rage_0",
+     "heads/ph11_reimi/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "idle",
+    "run": "walk",
+    "hurt": "idle"
+   },
+   "top": 25,
+   "bodyW": 3,
+   "kind": "char"
+  },
+  "ph11_killerq": {
+   "name": "杀手皇后（占位）",
+   "image": "chars/ph11_killerq",
+   "cell": [
+    73,
+    43
+   ],
+   "pivot": [
+    19,
+    40
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "block": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "reach": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/ph11_killerq/normal_0",
+     "heads/ph11_killerq/normal_1"
+    ]
+   },
+   "headAlias": {
+    "smile": "normal",
+    "rage": "normal",
+    "shock": "normal"
+   },
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "punch": "punch",
+    "block": "block",
+    "hurt": "block",
+    "special": "pose",
+    "rush": "punch"
+   },
+   "top": 35,
+   "bodyW": 6,
+   "kind": "stand"
+  }
+ },
+ "speakers": {
+  "kinoto": {
+   "short": "乙雅三",
+   "nameColor": "#b8704e",
+   "blipHz": 430
+  },
+  "cheaptrick": {
+   "short": "Cheap Trick",
+   "nameColor": "#8a80b0",
+   "blipHz": 980
+  },
+  "ph11_kosaku": {
+   "short": "爸爸",
+   "nameColor": "#7a5a9a",
+   "blipHz": 420
+  },
+  "ph11_shinobu": {
+   "short": "妈妈",
+   "nameColor": "#c86a7a",
+   "blipHz": 740
+  },
+  "ph11_reimi": {
+   "short": "铃美",
+   "nameColor": "#d080a0",
+   "blipHz": 800
+  },
+  "ph11_okuyasu": {
+   "short": "亿泰",
+   "nameColor": "#5a5a8a",
+   "blipHz": 420
+  },
+  "ph11_killerq": {
+   "short": "杀手皇后",
+   "nameColor": "#c06a9a",
+   "blipHz": 500
+  }
+ },
+ "heroes": {
+  "ph11_hayato": {
+   "cid": "ph11_hayato",
+   "cn": "川尻早人",
+   "short": "早人",
+   "rn": "KAWAJIRI HAYATO",
+   "stand": null,
+   "burst": [
+    "#5a3a0a",
+    "#a86a2a",
+    "#e8b860"
+   ],
+   "panel": "#20140a",
+   "accent": "#d2e86a",
+   "nameColor": "#c8682e",
+   "blipHz": 700,
+   "grunt": null
+  },
+  "ph11_rohan": {
+   "cid": "ph11_rohan",
+   "cn": "岸边露伴",
+   "short": "露伴",
+   "rn": "KISHIBE ROHAN",
+   "stand": null,
+   "burst": [
+    "#1a4a32",
+    "#2e6a4e",
+    "#f0d070"
+   ],
+   "panel": "#0a2016",
+   "accent": "#f0d070",
+   "nameColor": "#3e8a62",
+   "blipHz": 580,
+   "grunt": null
+  }
+ },
+ "stands": {
+  "cheaptrick": {
+   "cn": "Cheap Trick",
+   "en": "CHEAP TRICK",
+   "owner": "kinoto",
+   "aura": "#a898d0",
+   "card": "#c8c0e8",
+   "ghost": "#dcd6f0",
+   "impact": "blue",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -4,
+    "z": 18
+   },
+   "link": null,
+   "summonSfx": null,
+   "fist": false
+  },
+  "ph11_killerq": {
+   "cn": "杀手皇后",
+   "en": "KILLER QUEEN",
+   "owner": "ph11_kosaku",
+   "aura": "#e898c0",
+   "card": "#f8c0dc",
+   "ghost": "#fbe0ee",
+   "impact": "pink",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -6,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  }
+ }
+}

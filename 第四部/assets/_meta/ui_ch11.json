@@ -1,0 +1,186 @@
+{
+ "namecards": {
+  "kinoto": {
+   "image": "ui/namecard/kinoto",
+   "w": 248,
+   "h": 48,
+   "x": 24,
+   "y": 265
+  },
+  "ph11_hayato": {
+   "image": "ui/namecard/ph11_hayato",
+   "w": 233,
+   "h": 48,
+   "x": 24,
+   "y": 265
+  },
+  "ph11_rohan": {
+   "image": "ui/namecard/ph11_rohan",
+   "w": 137,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  },
+  "ph11_kosaku": {
+   "image": "ui/namecard/ph11_kosaku",
+   "w": 124,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  },
+  "ph11_reimi": {
+   "image": "ui/namecard/ph11_reimi",
+   "w": 231,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  }
+ },
+ "standcards": {
+  "cheaptrick": {
+   "image": "ui/standcard/cheaptrick",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "btd": {
+   "image": "ui/standcard/btd",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "ph11_killerq": {
+   "image": "ui/standcard/ph11_killerq",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  }
+ },
+ "locations": {
+  "kawajiri": {
+   "image": "ui/location/kawajiri",
+   "w": 164,
+   "h": 52,
+   "x": 24,
+   "y": 25
+  },
+  "rohanhouse": {
+   "image": "ui/location/rohanhouse",
+   "w": 176,
+   "h": 51,
+   "x": 24,
+   "y": 25
+  },
+  "alley11": {
+   "image": "ui/location/alley11",
+   "w": 134,
+   "h": 53,
+   "x": 24,
+   "y": 25
+  },
+  "corner11": {
+   "image": "ui/location/corner11",
+   "w": 151,
+   "h": 52,
+   "x": 24,
+   "y": 25
+  }
+ },
+ "vs": {
+  "cheaptrick": {
+   "name": {
+    "image": "ui/vs/cheaptrick_name",
+    "w": 247,
+    "h": 50
+   },
+   "en": {
+    "image": "ui/vs/cheaptrick_en",
+    "w": 101,
+    "h": 11
+   },
+   "tag": {
+    "image": "ui/vs/cheaptrick_tag",
+    "w": 182,
+    "h": 34
+   },
+   "colours": [
+    "#3a2a6a",
+    "#140c2a"
+   ]
+  }
+ },
+ "titles": {
+  "c11_night": {
+   "image": "ui/title/c11_night",
+   "w": 123,
+   "h": 36
+  },
+  "c11_loop1": {
+   "image": "ui/title/c11_loop1",
+   "w": 249,
+   "h": 35
+  },
+  "c11_loop2": {
+   "image": "ui/title/c11_loop2",
+   "w": 195,
+   "h": 34
+  },
+  "c11_loop3": {
+   "image": "ui/title/c11_loop3",
+   "w": 196,
+   "h": 35
+  },
+  "c11_loop4": {
+   "image": "ui/title/c11_loop4",
+   "w": 225,
+   "h": 35
+  }
+ },
+ "map": {
+  "stamp_ch11": {
+   "image": "ui/map/stamp_199907",
+   "w": 67,
+   "h": 53
+  }
+ },
+ "sfx": {
+  "天堂之门": {
+   "image": "ui/sfx/c11_hd",
+   "w": 120,
+   "h": 32
+  },
+  "叮": {
+   "image": "ui/sfx/c11_ding",
+   "w": 43,
+   "h": 33
+  },
+  "露伴老师——": {
+   "image": "ui/sfx/c11_voice0",
+   "w": 98,
+   "h": 22
+  },
+  "掉东西了哦——": {
+   "image": "ui/sfx/c11_voice1",
+   "w": 115,
+   "h": 22
+  },
+  "岸边先生？": {
+   "image": "ui/sfx/c11_voice2",
+   "w": 76,
+   "h": 22
+  },
+  "回头看看嘛……": {
+   "image": "ui/sfx/c11_voice3",
+   "w": 115,
+   "h": 21
+  },
+  "你的速写本……": {
+   "image": "ui/sfx/c11_voice4",
+   "w": 116,
+   "h": 21
+  }
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "id": "ph11_killerq",
+ "name": "杀手皇后（占位）",
+ "image": "ph11_killerq.png",
+ "cell": [
+  116,
+  68
+ ],
+ "pivot": [
+  30,
+  64
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 4,
+   "fps": 6,
+   "kind": "loop"
+  },
+  "punch": {
+   "row": 1,
+   "frames": 3,
+   "fps": 12,
+   "kind": "oneshot"
+  },
+  "block": {
+   "row": 2,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "pose": {
+   "row": 3,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
+  },
+  "reach": {
+   "row": 4,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  }
+ }
+}
