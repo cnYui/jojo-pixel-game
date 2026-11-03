@@ -1,0 +1,85 @@
+{
+ "namecards": {
+  "keicho": {
+   "image": "ui/namecard/keicho",
+   "w": 199,
+   "h": 48,
+   "x": 24,
+   "y": 265
+  }
+ },
+ "standcards": {
+  "badcompany": {
+   "image": "ui/standcard/badcompany",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  }
+ },
+ "locations": {
+  "nijimura": {
+   "image": "ui/location/nijimura",
+   "w": 164,
+   "h": 52,
+   "x": 24,
+   "y": 25
+  }
+ },
+ "vs": {
+  "thehand": {
+   "name": {
+    "image": "ui/vs/thehand_name",
+    "w": 167,
+    "h": 48
+   },
+   "en": {
+    "image": "ui/vs/thehand_en",
+    "w": 77,
+    "h": 11
+   },
+   "tag": {
+    "image": "ui/vs/thehand_tag",
+    "w": 219,
+    "h": 34
+   },
+   "colours": [
+    "#1a2a6a",
+    "#0a1238"
+   ]
+  },
+  "badcompany": {
+   "name": {
+    "image": "ui/vs/badcompany_name",
+    "w": 126,
+    "h": 47
+   },
+   "en": {
+    "image": "ui/vs/badcompany_en",
+    "w": 109,
+    "h": 11
+   },
+   "tag": {
+    "image": "ui/vs/badcompany_tag",
+    "w": 207,
+    "h": 34
+   },
+   "colours": [
+    "#2a3a10",
+    "#101806"
+   ]
+  }
+ },
+ "titles": {
+  "ch1_past": {
+   "image": "ui/title/ch1_past",
+   "w": 93,
+   "h": 35
+  },
+  "ch1_home": {
+   "image": "ui/title/ch1_home",
+   "w": 125,
+   "h": 35
+  }
+ }
+}
