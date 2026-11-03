@@ -1,0 +1,141 @@
+{
+ "id": "yukako",
+ "name": "山岸由花子",
+ "image": "yukako.png",
+ "cell": [
+  48,
+  48
+ ],
+ "pivot": [
+  24,
+  48
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  },
+  "run": {
+   "row": 2,
+   "frames": 4,
+   "fps": 13,
+   "kind": "loop"
+  },
+  "cmd": {
+   "row": 3,
+   "frames": 2,
+   "fps": 6,
+   "kind": "loop"
+  },
+  "hurt": {
+   "row": 4,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "down": {
+   "row": 5,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "blush": {
+   "row": 6,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
+  },
+  "grey_idle": {
+   "row": 7,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "grey_walk": {
+   "row": 8,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  },
+  "grey_run": {
+   "row": 9,
+   "frames": 4,
+   "fps": 13,
+   "kind": "loop"
+  },
+  "grey_cmd": {
+   "row": 10,
+   "frames": 2,
+   "fps": 6,
+   "kind": "loop"
+  },
+  "grey_hurt": {
+   "row": 11,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "grey_down": {
+   "row": 12,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "grey_blush": {
+   "row": 13,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
+  },
+  "white_idle": {
+   "row": 14,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "white_walk": {
+   "row": 15,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  },
+  "white_run": {
+   "row": 16,
+   "frames": 4,
+   "fps": 13,
+   "kind": "loop"
+  },
+  "white_cmd": {
+   "row": 17,
+   "frames": 2,
+   "fps": 6,
+   "kind": "loop"
+  },
+  "white_hurt": {
+   "row": 18,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "white_down": {
+   "row": 19,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "white_blush": {
+   "row": 20,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
+  }
+ }
+}

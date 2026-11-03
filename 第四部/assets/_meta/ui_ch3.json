@@ -1,0 +1,87 @@
+{
+ "namecards": {
+  "yukako": {
+   "image": "ui/namecard/yukako",
+   "w": 174,
+   "h": 48,
+   "x": 24,
+   "y": 265
+  },
+  "tonio": {
+   "image": "ui/namecard/tonio",
+   "w": 244,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  }
+ },
+ "standcards": {
+  "lovedeluxe": {
+   "image": "ui/standcard/lovedeluxe",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "echoes2": {
+   "image": "ui/standcard/echoes2",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "pearljam": {
+   "image": "ui/standcard/pearljam",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  }
+ },
+ "locations": {
+  "villa": {
+   "image": "ui/location/villa",
+   "w": 134,
+   "h": 52,
+   "x": 24,
+   "y": 25
+  },
+  "trattoria": {
+   "image": "ui/location/trattoria",
+   "w": 150,
+   "h": 52,
+   "x": 24,
+   "y": 25
+  }
+ },
+ "vs": {
+  "lovedeluxe": {
+   "name": {
+    "image": "ui/vs/lovedeluxe_name",
+    "w": 165,
+    "h": 48
+   },
+   "en": {
+    "image": "ui/vs/lovedeluxe_en",
+    "w": 103,
+    "h": 11
+   },
+   "tag": {
+    "image": "ui/vs/lovedeluxe_tag",
+    "w": 219,
+    "h": 34
+   },
+   "colours": [
+    "#4a2a7a",
+    "#1a0c34"
+   ]
+  }
+ },
+ "map_ch3": {
+  "stamp": {
+   "image": "ui/map/stamp_199905",
+   "w": 67,
+   "h": 51
+  }
+ }
+}
