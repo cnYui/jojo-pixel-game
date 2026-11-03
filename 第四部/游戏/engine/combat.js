@@ -325,7 +325,9 @@
   function dodge(a) {
     const d=Object.assign({},CFG.dodge,kitOf(a).dodge),i=G.input;let x=(i.isDown('right')?1:0)-(i.isDown('left')?1:0),y=(i.isDown('down')?1:0)-(i.isDown('up')?1:0);if(!x&&!y)x=-a.facing;
     if(a.controlReverseUntil>now())x=-x;
-    const len=Math.hypot(x,y)||1;a._dodge={x:x/len*d.dist,y:y/len*d.dist*d.yMul,dur:d.dur,t:0,u:0};a.atk=null;cancelRush(a);a.iframe=d.iframe;a.dodgeCd=d.cd;a.dodgeT0=now();a.grazed=false;a.ghostOn=true;state(a,'dodge');play(a,'dodge');snd('dodge');if(G.fx)G.fx.dustAt(a.x,a.y,-x,4);emit('dodge',{who:a});
+    const len=Math.hypot(x,y)||1;a._dodge={x:x/len*d.dist,y:y/len*d.dist*d.yMul,dur:d.dur,t:0,u:0};a.atk=null;cancelRush(a);a.iframe=d.iframe;a.dodgeCd=d.cd;a.dodgeT0=now();a.grazed=false;a.ghostOn=true;state(a,'dodge');play(a,'dodge');snd('dodge');if(G.fx)G.fx.dustAt(a.x,a.y,-x,4);
+    // 第四部：kit.dodge.onStart（亿泰的“削步”在起点和落点各留一道黑缝、不拖残影）
+    if(d.onStart)d.onStart(a,a._dodge);emit('dodge',{who:a});
   }
   function motionTick(a,dt) {
     if(a._push){const p=a._push,before=a.x;W().move(a,p.v*Math.min(dt,p.left),0);p.left-=dt;if(Math.abs(a.x-before)<Math.abs(p.v*dt)*.5 && p.mag>=40 && now()>=(a._wallNext || 0)){a._wallNext=now()+1;W().move(a,-Math.sign(p.v)*8,0);snd('wall_slam');fxAt('crack',{x:a.x,y:a.y-20,size:12},a,.4);G.shake(3,.2);a.stunT=Math.max(a.stunT,f(12));p.left=0;}if(p.left<=0)a._push=null;}

@@ -1,0 +1,494 @@
+{
+ "nijimura_yard": {
+  "pack": "ch1",
+  "w": 640,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "gate": [
+    110,
+    146
+   ],
+   "gate_in": [
+    110,
+    132
+   ],
+   "nameplate": [
+    81,
+    102
+   ],
+   "window": [
+    225,
+    60
+   ],
+   "street": [
+    40,
+    150
+   ],
+   "wall_corner": [
+    204,
+    146
+   ],
+   "rubble": [
+    206,
+    134
+   ],
+   "rack": [
+    264,
+    146
+   ],
+   "pot_1": [
+    244,
+    128
+   ],
+   "pot_2": [
+    282,
+    128
+   ],
+   "pot_3": [
+    251,
+    118
+   ],
+   "pot_4": [
+    275,
+    118
+   ],
+   "pot_5": [
+    258,
+    108
+   ],
+   "pot_6": [
+    269,
+    108
+   ],
+   "door": [
+    421,
+    146
+   ],
+   "porch": [
+    421,
+    130
+   ],
+   "drum": [
+    520,
+    146
+   ],
+   "tree": [
+    600,
+    146
+   ],
+   "walk_x": [
+    8,
+    632
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/nijimura_yard/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/nijimura_yard/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "strip",
+    "image": "bg/nijimura_yard/foxtail",
+    "n": 4,
+    "fps": 3,
+    "x": 206,
+    "y": 95,
+    "k": 1
+   },
+   {
+    "type": "image",
+    "image": "bg/nijimura_yard/figure",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "key": "figure"
+   },
+   {
+    "type": "pick",
+    "images": [
+     "bg/nijimura_yard/gate_closed",
+     "bg/nijimura_yard/gate_open"
+    ],
+    "key": "gate",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pick",
+    "images": [
+     "bg/nijimura_yard/pots_0",
+     "bg/nijimura_yard/pots_1",
+     "bg/nijimura_yard/pots_2",
+     "bg/nijimura_yard/pots_3",
+     "bg/nijimura_yard/pots_4",
+     "bg/nijimura_yard/pots_5",
+     "bg/nijimura_yard/pots_6"
+    ],
+    "values": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
+    "key": "pots_gone",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "tint",
+    "color": "#ff8a3a",
+    "alpha": 0.16,
+    "key": "pm"
+   }
+  ],
+  "fg": []
+ },
+ "nijimura_hall": {
+  "pack": "ch1",
+  "w": 640,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "entry": [
+    32,
+    148
+   ],
+   "entry_in": [
+    32,
+    138
+   ],
+   "koichi": [
+    64,
+    156
+   ],
+   "coat": [
+    84,
+    146
+   ],
+   "painting": [
+    138,
+    70
+   ],
+   "window_1": [
+    210,
+    72
+   ],
+   "side_door": [
+    284,
+    146
+   ],
+   "mirror": [
+    362,
+    74
+   ],
+   "table": [
+    363,
+    146
+   ],
+   "vase": [
+    358,
+    142
+   ],
+   "clock": [
+    426,
+    146
+   ],
+   "window_2": [
+    490,
+    72
+   ],
+   "frame": [
+    552,
+    146
+   ],
+   "arch": [
+    614,
+    146
+   ],
+   "walk_x": [
+    8,
+    632
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/nijimura_hall/room",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "image",
+    "image": "bg/nijimura_hall/holes",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "key": "holes"
+   },
+   {
+    "type": "glow",
+    "image": "bg/nijimura_hall/glow",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "flicker": 0.05
+   },
+   {
+    "type": "strip",
+    "image": "bg/nijimura_hall/dust",
+    "n": 12,
+    "fps": 5,
+    "x": 192,
+    "y": 59,
+    "k": 1
+   }
+  ],
+  "fg": []
+ },
+ "nijimura_stairs": {
+  "pack": "ch1",
+  "w": 480,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "door_1f": [
+    46,
+    146
+   ],
+   "foot": [
+    104,
+    146
+   ],
+   "stair_bottom": [
+    110,
+    134
+   ],
+   "stair_top": [
+    290,
+    80
+   ],
+   "stair_mid": [
+    200,
+    102
+   ],
+   "under_door": [
+    240,
+    146
+   ],
+   "window": [
+    182,
+    70
+   ],
+   "landing": [
+    400,
+    80
+   ],
+   "landing_l": [
+    306,
+    80
+   ],
+   "landing_r": [
+    440,
+    80
+   ],
+   "door_2f": [
+    333,
+    80
+   ],
+   "door_2f_open": [
+    393,
+    80
+   ],
+   "ladder": [
+    457,
+    80
+   ],
+   "hatch": [
+    458,
+    4
+   ],
+   "kitchen": [
+    403,
+    146
+   ],
+   "walk_x": [
+    8,
+    472
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/nijimura_stairs/room",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "image",
+    "image": "bg/nijimura_stairs/holes",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "key": "holes"
+   },
+   {
+    "type": "glow",
+    "image": "bg/nijimura_stairs/glow",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "flicker": 0.04
+   },
+   {
+    "type": "strip",
+    "image": "bg/nijimura_stairs/dust",
+    "n": 12,
+    "fps": 5,
+    "x": 133,
+    "y": 50,
+    "k": 1
+   }
+  ],
+  "fg": []
+ },
+ "nijimura_attic": {
+  "pack": "ch1",
+  "w": 320,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "hatch": [
+    48,
+    150
+   ],
+   "hatch_up": [
+    48,
+    140
+   ],
+   "boxes": [
+    96,
+    146
+   ],
+   "trunk": [
+    138,
+    146
+   ],
+   "futon": [
+    176,
+    148
+   ],
+   "box": [
+    219,
+    146
+   ],
+   "box_inside": [
+    219,
+    118
+   ],
+   "photo": [
+    226,
+    150
+   ],
+   "chair": [
+    254,
+    146
+   ],
+   "outlet": [
+    262,
+    118
+   ],
+   "outlet_floor": [
+    262,
+    146
+   ],
+   "window": [
+    160,
+    72
+   ],
+   "sun": [
+    183,
+    160
+   ],
+   "walk_x": [
+    24,
+    296
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/nijimura_attic/room",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "glow",
+    "image": "bg/nijimura_attic/glow",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "flicker": 0.04
+   },
+   {
+    "type": "strip",
+    "image": "bg/nijimura_attic/dust",
+    "n": 12,
+    "fps": 5,
+    "x": 146,
+    "y": 59,
+    "k": 1
+   },
+   {
+    "type": "glow",
+    "image": "bg/nijimura_attic/spark_glow",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "flicker": 0.6,
+    "key": "spark"
+   },
+   {
+    "type": "strip",
+    "image": "bg/nijimura_attic/spark",
+    "n": 4,
+    "fps": 14,
+    "x": 248,
+    "y": 104,
+    "k": 1,
+    "key": "spark"
+   }
+  ],
+  "fg": []
+ }
+}
