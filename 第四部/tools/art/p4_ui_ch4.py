@@ -32,8 +32,20 @@ def main():
     titles = {
         'days_later': U.save('title/days_later', U.big('几天后', 30, ('#fff4e0', '#f0c890'), edge='#20140a', edge_w=2)),
         'night_tv': U.save('title/night_tv', U.big('那天深夜', 30, ('#e8ecff', '#a8b4e8'), edge='#0a0a20', edge_w=2)),
+        # 引擎的 Boss 收尾演出（combat.bossFinish）找 ui.titles.saiki：第四部第一次用到，在这里补（照第三部的「再起不能」）
+        'saiki': U.save('title/saiki', U.big('再起不能', 44, ('#fff4c0', '#ffd040', '#f0902a'), edge='#3a0a0a', shadow='#12041a', edge_w=3,
+                                             shadow_d=(3, 3))),
     }
-    U.chapter_ui('ch4', namecards=namecards, standcards=standcards, locations=locations, vs=vs, titles=titles)
+    # 拟声字（S.sfxText 用；金黄 = 辣妹的电，蓝 = 水，白 = 其他）
+    words = [('削', 30, ('#e8f0ff', '#8cb6ff', '#3462d0')), ('1/3', 24, ('#e8f0ff', '#8cb6ff', '#3462d0')),
+             ('2/3', 24, ('#e8f0ff', '#8cb6ff', '#3462d0')), ('3/3', 26, ('#e8f0ff', '#8cb6ff', '#3462d0')),
+             ('咔', 28, ('#ffffff', '#e0e0e8', '#a0a0b0')), ('×1.5', 22, ('#fff8c0', '#ffd040', '#e09020')),
+             ('电力回满！', 24, ('#fff8c0', '#ffd040', '#e09020')), ('夹住了！', 26, ('#ffffff', '#f0e0c0', '#c0a070')),
+             ('砰！', 32, ('#fff4e0', '#ffb060', '#e05a20')), ('哇——', 24, ('#ffffff', '#ffe0f0', '#e0a0c0')),
+             ('啊嚏！', 24, ('#ffffff', '#ffe0f0', '#e0a0c0')), ('扑通', 28, ('#e8f8ff', '#7ccaf4', '#3a8ac8'))]
+    sfx = {w: U.save('sfx/ch4_%d' % i, U.big(w, size, fill, edge='#130b20', shadow='#0a0412', edge_w=2, shadow_d=(2, 2)))
+           for i, (w, size, fill) in enumerate(words)}
+    U.chapter_ui('ch4', namecards=namecards, standcards=standcards, locations=locations, vs=vs, titles=titles, sfx=sfx)
     print('第4章 UI：', len(namecards), len(standcards), len(locations), len(vs), len(titles))
 
 

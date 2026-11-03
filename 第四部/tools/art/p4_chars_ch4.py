@@ -424,104 +424,18 @@ def build_shizuka():
     return e
 
 
-# ============================================================ 亿泰 / 轰炸空间：临时占位（第2章的正式图合进来以后删掉）
-OKU_COAT = {(84, 98, 168): (60, 66, 92), (43, 49, 96): (34, 38, 56), (24, 26, 56): (20, 22, 34),
-            (28, 28, 52): (24, 24, 36), (48, 48, 78): (44, 46, 64)}
-OH = dict(d=(46, 46, 54), m=(78, 78, 90), l=(120, 120, 134))
-
-
-def okuyasu_head(img, top_rows=24):
-    fb = C.face_box(img, top_rows)
-    if not fb:
-        return img
-    fx0, fy0, fx1, fy1 = fb
-    a = np.array(img.convert('RGBA'))
-    h, w = a.shape[:2]
-    old = C.comp(img, C.NAVY + C.GOLD + [O], (fx0 - 13, 0, fx1 + 4, fy1 + 1))
-    yy, xx = np.mgrid[0:h, 0:w]
-    old &= ~((xx > fx1) & (yy > fy0))
-    a[old] = (0, 0, 0, 0)
-    # 平头：比脸宽一点的圆顶，前额往上竖一点点刺
-    cx, cy = fx0 + 3.0, fy0 + 0.5
-    skull = (((xx - cx) / 8.5) ** 2 + ((yy - cy) / 6.0) ** 2 <= 1) & (yy <= fy0 + 1)
-    back = (xx >= fx0 - 5) & (xx <= fx0 + 1) & (yy >= fy0) & (yy <= fy0 + 5)
-    spikes = np.zeros_like(skull)
-    for k in range(4):
-        sx = int(cx - 4 + k * 3)
-        for dy in range(2):
-            y = int(cy - 6 - dy)
-            if 0 <= y < h and 0 <= sx + dy < w:
-                spikes[y, sx + dy] = True
-    mask = skull | back | spikes
-    skin = C.comp(Image.fromarray(a, 'RGBA'), C.SKIN + C.EYES)
-    mask &= ~(skin & (yy >= fy0))
-    a[mask] = (*OH['m'], 255)
-    a[mask & (yy <= cy - 4)] = (*OH['l'], 255)
-    a[mask & (xx < fx0)] = (*OH['d'], 255)
-    return C.reoutline(Image.fromarray(a, 'RGBA'))
-
-
-def okuyasu_body(f):
-    f = C.recolor(f, OKU_COAT)
-    fb = C.face_box(f)
-    f = okuyasu_head(f)
-    if fb:
-        fx0, fy0, fx1, fy1 = fb
-        # 金链子换成领口的 ¥ $ 徽章（两个金点）
-        box = (fx0, fy1 + 1, fx1 + 4, fy1 + 12)
-        f = C.recolor(f, {(255, 216, 60): (34, 38, 56), (200, 154, 32): (20, 22, 34)}, box)
-        f = C.put(f, [(fx1 - 3, fy1 + 3), (fx1, fy1 + 3)], (255, 216, 60))
-    return f
-
-
-def build_okuyasu_ph():
-    im, m = C.base('jotaro')
-    sh = C.Sheet('okuyasu_ph', '虹村亿泰', m['cell'], m['pivot'])
-    for anim, fps, kind in [('idle', 2, 'loop'), ('walk', 8, 'loop'), ('run', 10, 'loop'), ('point', 4, 'loop'), ('pose', 3, 'oneshot'),
-                            ('shock', 1, 'static'), ('hurt', 1, 'static'), ('dodge', 1, 'static'), ('guard', 1, 'static'),
-                            ('kick', 8, 'oneshot'), ('down', 1, 'static')]:
-        sh.add(anim, [okuyasu_body(f) for f in C.frames('jotaro', anim)], fps, kind)
-    grey = {C.JH['d']: (40, 40, 48), C.JH['m']: (70, 70, 82), C.JH['l']: (110, 110, 124), C.JH['x']: (150, 150, 166)}
-    hd = HD.josuke()
-    sh.heads = {k: [C.recolor(C.recolor(f, grey), {C.JEYE: (60, 60, 70)}) for f in v] for k, v in hd.items()}
-    return C.save(sh, amap=dict(C.AMAP_HUMAN, kick='kick', run='run'), bodyW=4)
-
-
-def build_thehand_ph():
-    cmap = {'#bab2ff': '#d8e6ff', '#8a80ec': '#7c9ce8', '#5242ae': '#3e5cae', '#33257a': '#24346e',
-            '#5a56a0': '#f0f0f8', '#2c2852': '#a8b0c8', '#17132e': '#4a5470',
-            '#ff8a78': '#ffe070', '#ec3040': '#e0b030', '#98182c': '#9a7418',
-            '#fff6b4': '#ffffff', '#ffd83c': '#c8d4ec', '#c08a18': '#6a7aa0', '#b69ec6': '#c0ccec'}
-    im, m = C.base('starplat')
-    sh = C.Sheet('thehand_ph', '轰炸空间', m['cell'], m['pivot'])
-    for anim, a in m['animations'].items():
-        if anim.startswith('portrait'):
-            continue
-        sh.add(anim, [C.recolor(f, cmap) for f in C.frames('starplat', anim)], a.get('fps', 6), a.get('kind', 'loop'))
-    sh.heads = {'normal': [C.recolor(f, cmap) for f in C.heads('starplat')['portrait']]}
-    e = C.save(sh, amap={'punch': 'punch', 'punch2': 'punch', 'punch_heavy': 'upper', 'rush': 'rush', 'block': 'block', 'hurt': 'hurt',
-                         'special': 'rush', 'finger': 'finger'}, kind='stand', bodyW=6)
-    e['headAlias'] = {'smile': 'normal', 'rage': 'normal', 'shock': 'normal'}
-    return e
-
-
 BUILDERS = {
     'joseph_old': build_joseph_old, 'hermit': build_hermit, 'otoishi': build_otoishi, 'crew_oto': build_crew_oto,
     'rhcp': build_rhcp, 'shizuka': build_shizuka, 'spw_a': build_spw, 'captain': build_captain, 'fisher': build_fisher,
     'crew_a': lambda: build_crew('crew_a', '船员', ('#2a2420', '#1a1410')),
     'crew_b': lambda: build_crew('crew_b', '船员', ('#6a4a2a', '#4a321a')),
     'crew_c': lambda: build_crew('crew_c', '船员', ('#3a3a44', '#26262e')),
-    'okuyasu_ph': build_okuyasu_ph, 'thehand_ph': build_thehand_ph,
 }
 
 HEROES = {
     'joseph_old': dict(cid='joseph_old', cn='乔瑟夫·乔斯达', short='乔瑟夫', rn='JOSEPH JOESTAR', stand='hermit',
                        burst=['#4a1a2a', '#7a2a3e', '#c080ff'], panel='#1a0814', accent='#c080ff', nameColor='#8a3a5a',
                        blipHz=360, grunt=None),
-    # 占位：正式的 okuyasu 由第2章写（heroes.okuyasu）
-    'okuyasu_ph': dict(cid='okuyasu_ph', cn='虹村亿泰', short='亿泰', rn='NIJIMURA OKUYASU', stand='thehand_ph',
-                       burst=['#1a2a5a', '#2a4a9a', '#6a9ae0'], panel='#0a1028', accent='#6a9ae0', nameColor='#4a6ab0',
-                       blipHz=380, grunt='grunt_jotaro'),
 }
 SPEAKERS = {
     'otoishi': dict(short='音石明', nameColor='#8a6ab8', blipHz=560),
@@ -540,8 +454,6 @@ STANDS = {
                    impact='purple', kind='vine', idle=None, link=None, summonSfx='stand_summon_purple', fist=False),
     'rhcp': dict(cn='辣妹', en='RED HOT CHILI PEPPER', owner='otoishi', aura='#ffd040', card='#ffe070', ghost='#fff0a0',
                  impact='yellow', kind='humanoid', idle={'dx': 0, 'z': 4}, link=None, summonSfx=None, fist=False),
-    'thehand_ph': dict(cn='轰炸空间', en='THE HAND', owner='okuyasu_ph', aura='#6a9ae0', card='#a0c0f0', ghost='#c8dcff',
-                       impact='blue', kind='humanoid', idle={'dx': -6, 'z': 6}, link=None, summonSfx='stand_summon_star', fist=True),
 }
 
 
