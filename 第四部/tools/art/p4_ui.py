@@ -17,15 +17,10 @@ PREV = os.path.join(LIB.ASSETS, 'preview')
 INK = '#130b20'           # 第三部 UI 字的描边色
 META = {}
 
-# 用到的大字全列在这里：Google Fonts 只按这些字取一次子集
-BIG_TEXT = ('不灭钻石JOJO的奇妙冒险东方仗助空条承太郎广濑康一东方朋子良平片桐安十郎（安杰罗）'
-            '『疯狂钻石』水中项链CRAZYDIAMONDAQUANECKLACE1999年日本·杜王町葡萄丘高中超市东方家'
-            '序章仗助登场PROLOGUEMORIOH多拉拉！DORA……误会？MISUNDERSTANDINGVS/校门那天夜里三天后，雨'
-            '发型记录第次1234567890M县S市月HIGASHIKATARESIDENCEBUDOUGAOKAHIGHSCHOOLSUPERMARKET-·!')
-
 
 def noto():
-    return LIB.gfont('Noto Sans SC', 900, BIG_TEXT)
+    # 用整套字体：各章画新名字、新标题不用管字够不够，几条分支画出来的字也一模一样（p4lib.gfont_full）
+    return LIB.gfont_full('Noto Sans SC', 900)
 
 
 def save(rel, im, **extra):
@@ -112,25 +107,27 @@ NAMECARDS = {
 }
 
 
+def namecard(cid, name, col, desc):
+    """一张名牌（左下）：各章新角色也用它画（第四部/docs/分章开发约定.md）"""
+    n = big(name, 20, ('#ffffff', '#ece6f6'), shadow=None, edge_w=2)
+    s = small(desc)
+    bar_w = max(n.width + 30, 120)
+    W = max(bar_w, s.width) + 4
+    H = n.height + 4 + 3 + 3 + s.height
+    im = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+    im.alpha_composite(n, (0, 0))
+    d = ImageDraw.Draw(im)
+    y = n.height + 3
+    d.rectangle((0, y, bar_w, y + 2), fill=LIB.hexc(col))
+    d.line((0, y, bar_w, y), fill=LIB.hexc('#ffffff', 160))
+    for k in range(8):                                   # 尾巴渐隐
+        d.point((bar_w + 2 + k * 2, y + 1), fill=LIB.hexc(col, 200 - k * 24))
+    im.alpha_composite(s, (0, y + 6))
+    return save('namecard/' + cid, im, x=24, y=265)
+
+
 def namecards():
-    out = {}
-    for cid, (name, col, desc) in NAMECARDS.items():
-        n = big(name, 20, ('#ffffff', '#ece6f6'), shadow=None, edge_w=2)
-        s = small(desc)
-        bar_w = max(n.width + 30, 120)
-        W = max(bar_w, s.width) + 4
-        H = n.height + 4 + 3 + 3 + s.height
-        im = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-        im.alpha_composite(n, (0, 0))
-        d = ImageDraw.Draw(im)
-        y = n.height + 3
-        d.rectangle((0, y, bar_w, y + 2), fill=LIB.hexc(col))
-        d.line((0, y, bar_w, y), fill=LIB.hexc('#ffffff', 160))
-        for k in range(8):                                   # 尾巴渐隐
-            d.point((bar_w + 2 + k * 2, y + 1), fill=LIB.hexc(col, 200 - k * 24))
-        im.alpha_composite(s, (0, y + 6))
-        out[cid] = save('namecard/' + cid, im, x=24, y=265)
-    META['namecards'] = out
+    META['namecards'] = {cid: namecard(cid, *v) for cid, v in NAMECARDS.items()}
 
 
 # ================================================================ 替身卡（右上，平行四边形底）
@@ -140,21 +137,23 @@ STANDCARDS = {
 }
 
 
+def standcard(sid, cn, en, fill, border, bg):
+    """一张替身卡（右上）"""
+    W, H = 192, 63
+    im = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    poly = [(14, 1), (W - 1, 1), (W - 14, H - 2), (1, H - 2)]
+    d.polygon(poly, fill=LIB.hexc(bg, 235))
+    d.line(poly + [poly[0]], fill=LIB.hexc(border), width=2)
+    n = big(cn, 22, fill, edge=INK, shadow=None, edge_w=2)
+    e = latin(en, 11)
+    im.alpha_composite(n, ((W - n.width) // 2, 5))
+    im.alpha_composite(e, ((W - e.width) // 2, 5 + n.height + 2))
+    return save('standcard/' + sid, im, side='right', y=40)
+
+
 def standcards():
-    out = {}
-    for sid, (cn, en, fill, border, bg) in STANDCARDS.items():
-        W, H = 192, 63
-        im = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-        d = ImageDraw.Draw(im)
-        poly = [(14, 1), (W - 1, 1), (W - 14, H - 2), (1, H - 2)]
-        d.polygon(poly, fill=LIB.hexc(bg, 235))
-        d.line(poly + [poly[0]], fill=LIB.hexc(border), width=2)
-        n = big(cn, 22, fill, edge=INK, shadow=None, edge_w=2)
-        e = latin(en, 11)
-        im.alpha_composite(n, ((W - n.width) // 2, 5))
-        im.alpha_composite(e, ((W - e.width) // 2, 5 + n.height + 2))
-        out[sid] = save('standcard/' + sid, im, side='right', y=40)
-    META['standcards'] = out
+    META['standcards'] = {sid: standcard(sid, *v) for sid, v in STANDCARDS.items()}
 
 
 # ================================================================ 地点卡（左上）
@@ -166,27 +165,47 @@ LOCATIONS = {
 }
 
 
+def location(key, cn, en):
+    """一张地点卡（左上）"""
+    n = big(cn, 24, ('#ffffff', '#f0eaf8'), shadow=None, edge_w=2)
+    e = small(en, color='#ffe8a8')
+    bar = max(n.width + 24, 130)
+    W = max(bar, e.width) + 4
+    H = n.height + 3 + 4 + 4 + e.height
+    im = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+    im.alpha_composite(n, (4, 0))
+    d = ImageDraw.Draw(im)
+    y = n.height + 3
+    d.rectangle((0, y, bar, y + 3), fill=LIB.hexc('#f0b838'))
+    d.line((0, y, bar, y), fill=LIB.hexc('#ffe48a'))
+    im.alpha_composite(e, (6, y + 7))
+    return save('location/' + key, im, x=24, y=25)
+
+
 def locations():
-    out = {}
-    for key, (cn, en) in LOCATIONS.items():
-        n = big(cn, 24, ('#ffffff', '#f0eaf8'), shadow=None, edge_w=2)
-        e = small(en, color='#ffe8a8')
-        bar = max(n.width + 24, 130)
-        W = max(bar, e.width) + 4
-        H = n.height + 3 + 4 + 4 + e.height
-        im = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-        im.alpha_composite(n, (4, 0))
-        d = ImageDraw.Draw(im)
-        y = n.height + 3
-        d.rectangle((0, y, bar, y + 3), fill=LIB.hexc('#f0b838'))
-        d.line((0, y, bar, y), fill=LIB.hexc('#ffe48a'))
-        im.alpha_composite(e, (6, y + 7))
-        out[key] = save('location/' + key, im, x=24, y=25)
-    META['locations'] = out
+    META['locations'] = {key: location(key, *v) for key, v in LOCATIONS.items()}
 
 
-# ================================================================ 篇章卡（640×360：粉紫漩涡 + 中间暗带 + 文字）
-def chapter_prologue():
+# ================================================================ 篇章卡（640×360：两色漩涡 + 中间暗带 + 文字）
+# 13 段一次画齐（章节表和 main.js 一致），各章线程不用自己画。漩涡两色每章换一组，终章回到序章的粉紫
+CHAPTER_CARDS = [
+    ('prologue', '序章', '杜王町', '仗助登场', 'PROLOGUE · MORIOH', ('#2a0a28', '#621e5c')),
+    ('ch1', '第1章', '虹村家', '弓与箭', 'CHAPTER 1 · NIJIMURA HOUSE', ('#0c1428', '#24406a')),
+    ('ch2', '第2章', '葡萄丘高中', '锁与表面', 'CHAPTER 2 · BUDOUGAOKA HIGH', ('#0a2414', '#1e5a32')),
+    ('ch3', '第3章', '海边别墅', '由花子与意大利菜', 'CHAPTER 3 · SEASIDE VILLA', ('#2a0a16', '#64203e')),
+    ('ch4', '第4章', '杜王港', '辣妹与透明宝宝', 'CHAPTER 4 · MORIOH PORT', ('#0a1c2a', '#1e4e64')),
+    ('ch5', '第5章', '露伴宅', '漫画家与猎鼠', 'CHAPTER 5 · ROHAN KISHIBE', ('#1a0c2a', '#40206a')),
+    ('ch6', '第6章', '幽灵小路', '丰收与纽扣', 'CHAPTER 6 · GHOST ALLEY', ('#24180a', '#5e461e')),
+    ('ch7', '第7章', '商店街', '灰姑娘与枯萎穿心攻击', 'CHAPTER 7 · SHOPPING STREET', ('#2a0a22', '#5e1e50')),
+    ('ch8', '第8章', '吉良家旧宅', '原子心之父', 'CHAPTER 8 · THE KIRA HOUSE', ('#14121a', '#3c3850')),
+    ('ch9', '第9章', '国道隧道', '宇宙人、公路之星与猫草', 'CHAPTER 9 · ROUTE TUNNEL', ('#0c0c2a', '#24246c')),
+    ('ch10', '第10章', '送电铁塔', '铁塔与谜', 'CHAPTER 10 · THE POWER TOWER', ('#0a2424', '#1e5858')),
+    ('ch11', '第11章', '川尻家', '败者食尘', 'CHAPTER 11 · KAWAJIRI HOUSE', ('#2a0c0a', '#5e201a')),
+    ('final', '终章', '杜王町', '钻石是不会碎的', 'FINALE · MORIOH', ('#2a0a28', '#621e5c')),
+]
+
+
+def chapter_card(key, label, title, sub, en, cols):
     W, H = 640, 360
     yy, xx = np.mgrid[0:H, 0:W].astype(float)
     cx, cy = W / 2, H / 2
@@ -195,7 +214,7 @@ def chapter_prologue():
     band = (r / 140.0 - th / (2 * np.pi)) % 1.0
     BAY = np.array([[0, 8, 2, 10], [12, 4, 14, 6], [3, 11, 1, 9], [15, 7, 13, 5]]) / 16.0
     thr = BAY[(yy.astype(int)) % 4, (xx.astype(int)) % 4]
-    A, B = np.array(LIB.hexc('#2a0a28')[:3]), np.array(LIB.hexc('#621e5c')[:3])
+    A, B = np.array(LIB.hexc(cols[0])[:3]), np.array(LIB.hexc(cols[1])[:3])
     # 两色硬边漩涡，交界 0.06 宽的一圈用 4×4 抖动过渡（第三部篇章卡同样做法）
     t = band
     k = np.clip((t - 0.47) / 0.06, 0, 1) * (t < 0.75) + np.clip((1.0 - t) / 0.06, 0, 1) * (t >= 0.75)
@@ -219,10 +238,10 @@ def chapter_prologue():
     d = ImageDraw.Draw(im)
     d.line((0, 102, W, 102), fill=LIB.hexc('#e8c8e0'))
     d.line((0, 257, W, 257), fill=LIB.hexc('#e8c8e0'))
-    a = big('序章', 20, ('#ffffff', '#ece6f6'), shadow=None)
-    b = big('杜王町', 44, ('#fff0a8', '#ffc83c', '#f08a2a'), edge='#2a0a34', shadow='#12041a', edge_w=3, shadow_d=(3, 3))
-    c = big('仗助登场', 20, ('#ffffff', '#ece6f6'), shadow=None)
-    e = latin('PROLOGUE · MORIOH', 11, color='#ffd860')
+    a = big(label, 20, ('#ffffff', '#ece6f6'), shadow=None)
+    b = big(title, 44, ('#fff0a8', '#ffc83c', '#f08a2a'), edge='#2a0a34', shadow='#12041a', edge_w=3, shadow_d=(3, 3))
+    c = big(sub, 20, ('#ffffff', '#ece6f6'), shadow=None)
+    e = latin(en, 11, color='#ffd860')
     gap = 22
     tw = a.width + gap + b.width
     x0 = (W - tw) // 2
@@ -230,33 +249,39 @@ def chapter_prologue():
     im.alpha_composite(b, (x0 + a.width + gap, 150 - b.height // 2))
     im.alpha_composite(c, ((W - c.width) // 2, 192))
     im.alpha_composite(e, ((W - e.width) // 2, 228))
-    META['chapters'] = {'prologue': save('chapter/prologue', im)}
+    return save('chapter/' + key, im)
+
+
+def chapter_cards():
+    META['chapters'] = {c[0]: chapter_card(*c) for c in CHAPTER_CARDS}
 
 
 # ================================================================ VS 卡的字（人物和底色由引擎现场画）
 def vs_cards():
-    out = {}
     specs = {
         'aqua': ('水中项链', 'AQUA NECKLACE', 'VS 安杰罗 / 杜王町·东方家', ('#e8f8ff', '#7ccaf4', '#3a8ac8'), '#3aa0e0',
                  ['#1a5a8a', '#0a2a48']),
         'misunderstand': ('……误会？', 'MISUNDERSTANDING', 'VS 空条承太郎 / 葡萄丘高中·校门', ('#f0eaff', '#a898f0', '#6a58c8'),
                           '#7a68e0', ['#3a2a8a', '#160c40']),
     }
-    for key, (cn, en, tag, fill, edge_col, cols) in specs.items():
-        n = big(cn, 40, fill, edge=INK, shadow='#0a0412', edge_w=3, shadow_d=(3, 3))
-        e = latin(en, 12)
-        t = small(tag, color='#ffffff')
-        TW, TH = t.width + 34, 34
-        tag_im = Image.new('RGBA', (TW, TH), (0, 0, 0, 0))
-        d = ImageDraw.Draw(tag_im)
-        poly = [(12, 2), (TW - 1, 2), (TW - 13, TH - 3), (0, TH - 3)]
-        d.polygon(poly, fill=LIB.hexc('#140c1e', 235))
-        d.line(poly + [poly[0]], fill=LIB.hexc(edge_col), width=2)
-        d.polygon([(4, 4), (10, 4), (3, TH - 5), (-2, TH - 5)], fill=LIB.hexc(edge_col))
-        tag_im.alpha_composite(t, ((TW - t.width) // 2 + 2, (TH - t.height) // 2))
-        out[key] = {'name': save(f'vs/{key}_name', n), 'en': save(f'vs/{key}_en', e), 'tag': save(f'vs/{key}_tag', tag_im),
-                    'colours': cols}
-    META['vs'] = out
+    META['vs'] = {key: vs_card(key, *v) for key, v in specs.items()}
+
+
+def vs_card(key, cn, en, tag, fill, edge_col, cols):
+    """VS 卡的三块字（名字、英文、标签）；人物和底色由引擎现场画。各章的对手也用它"""
+    n = big(cn, 40, fill, edge=INK, shadow='#0a0412', edge_w=3, shadow_d=(3, 3))
+    e = latin(en, 12)
+    t = small(tag, color='#ffffff')
+    TW, TH = t.width + 34, 34
+    tag_im = Image.new('RGBA', (TW, TH), (0, 0, 0, 0))
+    d = ImageDraw.Draw(tag_im)
+    poly = [(12, 2), (TW - 1, 2), (TW - 13, TH - 3), (0, TH - 3)]
+    d.polygon(poly, fill=LIB.hexc('#140c1e', 235))
+    d.line(poly + [poly[0]], fill=LIB.hexc(edge_col), width=2)
+    d.polygon([(4, 4), (10, 4), (3, TH - 5), (-2, TH - 5)], fill=LIB.hexc(edge_col))
+    tag_im.alpha_composite(t, ((TW - t.width) // 2 + 2, (TH - t.height) // 2))
+    return {'name': save(f'vs/{key}_name', n), 'en': save(f'vs/{key}_en', e), 'tag': save(f'vs/{key}_tag', tag_im),
+            'colours': cols}
 
 
 # ================================================================ 必杀切入字、DORA 拟声字、小卡
@@ -361,8 +386,19 @@ def preview():
     can.save(os.path.join(PREV, 'ui.png'))
 
 
+def chapter_ui(key, **sections):
+    """各章自己的 UI 元数据写 _meta/ui_<key>.json（build_p4.py 深合并进 ui）。sections 例：
+    namecards={'okuyasu': namecard('okuyasu', '虹村亿泰', '#3a5ab0', '…')}, standcards={…}, locations={…}, vs={…}"""
+    path = os.path.join(LIB.META, f'ui_{key}.json')
+    meta = LIB.load_json(path, {}) or {}
+    for sec, items in sections.items():
+        meta.setdefault(sec, {}).update(items)
+    LIB.save_json(path, meta)
+    return meta
+
+
 def main():
-    for f in (logo, namecards, standcards, locations, chapter_prologue, vs_cards, specials_and_words, hair_record, map_parts):
+    for f in (logo, namecards, standcards, locations, chapter_cards, vs_cards, specials_and_words, hair_record, map_parts):
         f()
     path = os.path.join(LIB.META, 'ui.json')
     LIB.save_json(path, META)

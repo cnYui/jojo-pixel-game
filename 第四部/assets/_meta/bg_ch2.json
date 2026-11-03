@@ -1,0 +1,509 @@
+{
+ "hirose_living": {
+  "pack": "ch2",
+  "w": 320,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "door": [
+    27,
+    148
+   ],
+   "door_in": [
+    27,
+    140
+   ],
+   "clock": [
+    76,
+    60
+   ],
+   "breadbox": [
+    74,
+    146
+   ],
+   "sofa": [
+    164,
+    146
+   ],
+   "shelf": [
+    226,
+    146
+   ],
+   "window": [
+    281,
+    60
+   ],
+   "sun": [
+    200,
+    158
+   ],
+   "walk_x": [
+    52,
+    312
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/hirose_living/room",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "image",
+    "image": "bg/hirose_living/door_open",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "key": "door"
+   },
+   {
+    "type": "glow",
+    "image": "bg/hirose_living/glow",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "flicker": 0.04
+   },
+   {
+    "type": "strip",
+    "image": "bg/hirose_living/dust",
+    "n": 12,
+    "fps": 5,
+    "x": 195,
+    "y": 27,
+    "k": 1
+   },
+   {
+    "type": "tint",
+    "color": "#ff9a40",
+    "alpha": 0.06
+   }
+  ],
+  "fg": []
+ },
+ "budogaoka_hall": {
+  "pack": "ch2",
+  "w": 640,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "door_a1": [
+    30,
+    146
+   ],
+   "door_a2": [
+    232,
+    146
+   ],
+   "lockers": [
+    133,
+    146
+   ],
+   "hazamada_locker": [
+    147,
+    146
+   ],
+   "board": [
+    271,
+    146
+   ],
+   "hydrant": [
+    314,
+    146
+   ],
+   "door_b1": [
+    362,
+    146
+   ],
+   "window_b": [
+    468,
+    146
+   ],
+   "empty_seat": [
+    507,
+    74
+   ],
+   "door_b2": [
+    586,
+    146
+   ],
+   "stairs": [
+    628,
+    146
+   ],
+   "walk_x": [
+    8,
+    632
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/budogaoka_hall/room",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "image",
+    "image": "bg/budogaoka_hall/locker_open",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "key": "locker"
+   }
+  ],
+  "fg": []
+ },
+ "morioh_shopping_street": {
+  "pack": "ch2",
+  "w": 960,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "bookstore": [
+    58,
+    146
+   ],
+   "grocer": [
+    178,
+    146
+   ],
+   "barber": [
+    300,
+    146
+   ],
+   "liquor": [
+    400,
+    146
+   ],
+   "crates": [
+    364,
+    146
+   ],
+   "alley": [
+    482,
+    146
+   ],
+   "electronics": [
+    560,
+    146
+   ],
+   "tvwall": [
+    548,
+    112
+   ],
+   "cake": [
+    690,
+    146
+   ],
+   "shoes": [
+    806,
+    146
+   ],
+   "ramen": [
+    910,
+    146
+   ],
+   "exit_x": 948,
+   "walk_x": [
+    8,
+    952
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/morioh_shopping_street/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/morioh_shopping_street/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "strip",
+    "image": "bg/morioh_shopping_street/tv",
+    "n": 8,
+    "fps": 1.5,
+    "x": 504,
+    "y": 96,
+    "k": 1
+   },
+   {
+    "type": "strip",
+    "image": "bg/morioh_shopping_street/barber",
+    "n": 8,
+    "fps": 6,
+    "x": 322,
+    "y": 94,
+    "k": 1
+   },
+   {
+    "type": "strip",
+    "image": "bg/morioh_shopping_street/banner",
+    "n": 4,
+    "fps": 2.5,
+    "x": 121,
+    "y": 67,
+    "k": 1
+   },
+   {
+    "type": "strip",
+    "image": "bg/morioh_shopping_street/banner",
+    "n": 4,
+    "fps": 2.5,
+    "x": 333,
+    "y": 67,
+    "k": 1
+   },
+   {
+    "type": "strip",
+    "image": "bg/morioh_shopping_street/banner",
+    "n": 4,
+    "fps": 2.5,
+    "x": 484,
+    "y": 67,
+    "k": 1
+   },
+   {
+    "type": "strip",
+    "image": "bg/morioh_shopping_street/banner",
+    "n": 4,
+    "fps": 2.5,
+    "x": 755,
+    "y": 67,
+    "k": 1
+   },
+   {
+    "type": "tint",
+    "color": "#ff8a3a",
+    "alpha": 0.14,
+    "key": "pm"
+   }
+  ],
+  "fg": []
+ },
+ "rail_crossing": {
+  "pack": "ch2",
+  "w": 320,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "signal_l": [
+    112,
+    146
+   ],
+   "signal_r": [
+    208,
+    146
+   ],
+   "lamp_l": [
+    112,
+    84
+   ],
+   "lamp_r": [
+    208,
+    84
+   ],
+   "tracks": [
+    160,
+    158
+   ],
+   "stop_l": [
+    96,
+    156
+   ],
+   "stop_r": [
+    224,
+    156
+   ],
+   "wire": [
+    150,
+    72
+   ],
+   "kiosk": [
+    270,
+    146
+   ],
+   "sign": [
+    64,
+    146
+   ],
+   "walk_x": [
+    8,
+    312
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/rail_crossing/far",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/rail_crossing/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pick",
+    "images": [
+     "bg/rail_crossing/arm_up",
+     "bg/rail_crossing/arm_down"
+    ],
+    "key": "gate",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "strip",
+    "image": "bg/rail_crossing/alarm",
+    "n": 2,
+    "fps": 2,
+    "w": 320,
+    "h": 180,
+    "x": 0,
+    "y": 0,
+    "k": 1,
+    "key": "alarm"
+   },
+   {
+    "type": "tint",
+    "color": "#ff8a3a",
+    "alpha": 0.16,
+    "key": "pm"
+   }
+  ],
+  "fg": []
+ },
+ "morioh_grand_hotel": {
+  "pack": "ch2",
+  "w": 480,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "hotel_door": [
+    151,
+    146
+   ],
+   "canopy": [
+    151,
+    78
+   ],
+   "lounge": [
+    46,
+    146
+   ],
+   "flags": [
+    254,
+    146
+   ],
+   "tree": [
+    300,
+    146
+   ],
+   "cafe_window": [
+    364,
+    146
+   ],
+   "cafe_door": [
+    435,
+    146
+   ],
+   "table1": [
+    344,
+    150
+   ],
+   "table2": [
+    398,
+    150
+   ],
+   "sign": [
+    461,
+    82
+   ],
+   "walk_x": [
+    8,
+    472
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/morioh_grand_hotel/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/morioh_grand_hotel/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "strip",
+    "image": "bg/morioh_grand_hotel/flag_navy",
+    "n": 6,
+    "fps": 7,
+    "x": 238,
+    "y": 49,
+    "k": 1
+   },
+   {
+    "type": "strip",
+    "image": "bg/morioh_grand_hotel/flag_jp",
+    "n": 6,
+    "fps": 8,
+    "x": 254,
+    "y": 49,
+    "k": 1
+   },
+   {
+    "type": "strip",
+    "image": "bg/morioh_grand_hotel/flag_wine",
+    "n": 6,
+    "fps": 9,
+    "x": 270,
+    "y": 49,
+    "k": 1
+   },
+   {
+    "type": "tint",
+    "color": "#ff8a3a",
+    "alpha": 0.16,
+    "key": "pm"
+   }
+  ],
+  "fg": []
+ }
+}
