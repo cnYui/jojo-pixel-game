@@ -119,5 +119,59 @@
    "w": 68,
    "h": 70
   }
+ },
+ "specials": {
+  "fin_okuyasu": {
+   "image": "ui/special/fin_okuyasu",
+   "w": 191,
+   "h": 49
+  }
+ },
+ "sfx": {
+  "削！": {
+   "image": "ui/sfx/fin_kezuru",
+   "w": 48,
+   "h": 37
+  },
+  "啪！": {
+   "image": "ui/sfx/fin_pa",
+   "w": 44,
+   "h": 35
+  },
+  "……": {
+   "image": "ui/sfx/fin_dots",
+   "w": 52,
+   "h": 12
+  },
+  "嗖——": {
+   "image": "ui/sfx/fin_whoosh",
+   "w": 78,
+   "h": 33
+  },
+  "滑开了……": {
+   "image": "ui/sfx/fin_slip",
+   "w": 105,
+   "h": 27
+  },
+  "砰": {
+   "image": "ui/sfx/fin_bang",
+   "w": 34,
+   "h": 33
+  },
+  "3 FREEZE！": {
+   "image": "ui/sfx/fin_freeze",
+   "w": 156,
+   "h": 31
+  },
+  "ORA!": {
+   "image": "ui/sfx/fin_ora",
+   "w": 85,
+   "h": 33
+  },
+  "汪！": {
+   "image": "ui/sfx/fin_woof",
+   "w": 42,
+   "h": 32
+  }
  }
 }

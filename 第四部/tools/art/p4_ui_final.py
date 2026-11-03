@@ -55,7 +55,20 @@ def main():
         'fin_late': U.save('title/fin_late', U.big('1999年 夏末', 30, ('#fff4d6', '#f0c890'), edge='#20100a', edge_w=2)),
         'fin_end': U.save('title/fin_end', U.big('完', 64, ('#fff4d6', '#ffd040', '#f0902a'), edge='#20100a', edge_w=3)),
     }
-    meta = U.chapter_ui('final', namecards=namecards, standcards=standcards, vs=vs, map=maps, titles=titles)
+    specials = {'fin_okuyasu': U.save('special/fin_okuyasu', U.big('削掉吧！！', 42, ('#f0f8ff', '#8ab0ff', '#4a70d0'), edge='#0a1230',
+                                                         shadow='#04081a', edge_w=3, shadow_d=(3, 3)))}
+    # 拟声字（S.sfxText 用的图）：粉色 = 杀手皇后那边，蓝 = 亿泰，金 = ACT3，白 = 其它
+    words = [('削！', 'sfx/fin_kezuru', ('#f0f8ff', '#8ab0ff', '#4a70d0'), '#0a1230', 30),
+             ('啪！', 'sfx/fin_pa', ('#ffe8f0', '#f08cb4', '#c04a7a'), '#2a0614', 28),
+             ('……', 'sfx/fin_dots', ('#e8f0ff', '#a8b8d8'), '#10141e', 24),
+             ('嗖——', 'sfx/fin_whoosh', ('#ffe8f0', '#f08cb4', '#c04a7a'), '#2a0614', 26),
+             ('滑开了……', 'sfx/fin_slip', ('#e8f8ff', '#9ad0f0'), '#0a1a2a', 20),
+             ('砰', 'sfx/fin_bang', ('#fff4d6', '#e0c090'), '#20100a', 28),
+             ('3 FREEZE！', 'sfx/fin_freeze', ('#fff8c0', '#ffd040', '#e0a020'), '#1a1004', 30),
+             ('ORA!', 'sfx/fin_ora', ('#e8e4ff', '#a898ff', '#6a50e0'), '#0e0a2c', 32),
+             ('汪！', 'sfx/fin_woof', ('#fff4d6', '#f0d0a0'), '#20100a', 26)]
+    sfx = {w: U.save(key, U.big(w, size, fill, edge=edge, edge_w=3, shadow_d=(2, 2))) for w, key, fill, edge, size in words}
+    meta = U.chapter_ui('final', sfx=sfx, namecards=namecards, standcards=standcards, vs=vs, map=maps, titles=titles, specials=specials)
     print('UI：', {k: list(v) for k, v in meta.items()})
 
 
