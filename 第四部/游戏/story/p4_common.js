@@ -75,6 +75,34 @@
     },
   };
 
+  // 亿泰：轰炸空间一抹（tags 'erase'、'pull'）：削开 / 拉过来以后发生什么由调查点自己的 look 演；对着空地按 U 就是空挥一下，留一道黑缝
+  G.LOOK.okuyasu = {
+    tags: ['erase', 'pull'], cd: 1, miss: '……削哪儿好呢？',
+    run: async (S, p, h) => {
+      const at = spot(h);
+      if (at) S.face(p, at.x > p.x ? 1 : at.x < p.x ? -1 : p.facing);
+      await S.summon(p, { dur: 0.14, rise: 4 });
+      S.standAct(p, 'erase', { dx: 18, z: 4, dur: 0.6 });
+      S.sfx('whoosh', 0.7);
+      const x = at ? at.x : p.x + p.facing * 30, y = at ? at.y : p.y;
+      S.fx('erase_seam', { x, y, h: 28, dur: 0.8 }, { life: 0.8 });
+      await S.wait(0.4);
+    },
+  };
+  // 康一：回音（tags 'listen'、'sound'）：listen = 尾巴贴到墙上听，sound = 往东西上贴一个拟声字；贴完以后的事由调查点的 look 演
+  G.LOOK.koichi = {
+    tags: ['listen', 'sound'], cd: 1, miss: '……什么声音都没有。',
+    run: async (S, p, h) => {
+      const at = spot(h);
+      if (at) S.face(p, at.x > p.x ? 1 : at.x < p.x ? -1 : p.facing);
+      await S.summon(p, { dur: 0.14, rise: 6 });
+      S.standAct(p, 'shoot', { dx: 14, z: 12, dur: 0.6 });
+      S.sfx('whoosh', 0.5, 1.4);
+      if (at) S.fx('glint', { x: at.x, y: at.y - 6, size: 6 }, { life: 0.4 });
+      await S.wait(0.45);
+    },
+  };
+
   // ================================================================ 仗助发型记录（开发脚本 §4）
   //   剧情里有人说仗助的头发 → 画面定格 0.4 s → 金色小牌从上面滑进来「东方仗助 发型记录 第 N 次」+ 盖章音，停 1.2 s。
   //   存档只记“第几次已经发生过”（数字列表）：同一条重玩不会再记一次（“读档以后不重复记”）
