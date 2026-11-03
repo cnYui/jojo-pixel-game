@@ -21,6 +21,8 @@
     id, bg, x0: 0, x1: w, camX: 0, music: 'daily', props: [], npcs: [], hotspots: [], triggers: [], obstacles: walls(8, w - 8, w),
     dlgPos: 'top', dlgPosFight: 'bottom',
   }, o);
+  // 各章的地图写在各章自己的 story/p4_chN.js 里，用同一套 base / walls（第四部/docs/分章开发约定.md）
+  G.p4Stage = { base, walls };
 
   // 节拍 1：杜王町俯视地图（篇章卡之后的日历地图画在插入画面上，这张图只是让世界有个地方站）
   ST.map_pro = base('map_pro', 'morioh_map', 320, { yMin: 160, yMax: 170, music: null, obstacles: [] });

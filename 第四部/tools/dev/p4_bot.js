@@ -2,13 +2,16 @@
 //   每一步逻辑开头（G.input.beginStep 之前）看一眼局面，往输入队列里塞按键：走的是和键盘、触屏同一条路
 //   （G.input.press / release / inject），不直接改游戏状态，所以它能打通 = 玩家照着提示也能打通。
 //   window.__botCfg：read 读对话的速度倍数（录视频用 1，测试用 0.2）；failChase 段 2 故意失败几次（测“放水再来”）；
-//   assist 失败菜单里有「放水再来」就选它。
+//   assist 失败菜单里有「放水再来」就选它；chapter 只跑一章时由 p4_play.js 直接进章，标题菜单不选。
+//   各章的任务单和打法写在 p4_bot_<章>.js（p4_play.js 自动注入）：往 window.__bot.plan 加地图任务单，往 window.__bot.fights
+//   挂 战斗 id → function (ctx, api)，api 是下面这些小工具（hold / tap / pulse / after / go / face / enemy / toHit / attackRhythm …）。
+//   各章不用改这个文件（第四部/docs/分章开发约定.md）。
 'use strict';
 (() => {
   if (window.__bot) return;
   const G = window.G, I = G.input;
   const cfg = Object.assign({ read: 1, failChase: 0, assist: true }, window.__botCfg || {});
-  const B = (window.__bot = { cfg, notes: [], held: new Set(), err: null, finished: false, started: false, task: null, fight: {} });
+  const B = (window.__bot = { cfg, notes: [], held: new Set(), err: null, finished: false, started: false, task: null, fight: {}, fights: {} });
   const held = B.held;
   const F = () => G.flags || {};
   const W = () => G.world;
@@ -63,13 +66,16 @@
     // 标题菜单没有标题：openMenu 把空串存成 null，所以这里不能写 === ''（之前一直没等就进了序章，录像开头看不到标题）
     if (!m.title && pick('从序章开始') >= 0) {
       if (B.finished) return;                       // 打完了：停在标题
+      if (cfg.chapter) return;                      // 只跑一章：p4_play.js 直接 G.playFrom 进章
       if (B.titleSeen == null) B.titleSeen = now();
       if (now() - B.titleSeen < (cfg.titleWait || 0)) return;   // 录视频：先让标题画面停几秒
       want = pick('从序章开始');
     } else if (/完$/.test(m.title || '')) {
       if (!B.finished) note('chapter_end', { title: m.title });
       B.finished = true;
+      // 下一章做好以后第一项是「继续下一章」：测一章就停在这一章，选「选择章节」同样回到标题
       want = pick('返回标题');
+      if (want < 0) want = pick('选择章节');
     } else if (pick('再来一次') >= 0) {
       const a = pick('放水再来');
       want = cfg.assist && a >= 0 ? a : pick('再来一次');
@@ -138,6 +144,7 @@
       { id: 'puddle', go: [250, 166], act: 'special', done: () => F().puddle },
     ],
   };
+  B.plan = PLAN;             // 各章的 p4_bot_<章>.js 往这里加自己地图的任务单
   const progress = {};       // 地图 → 第几个任务
   function roam(dt) {
     const st = W().stage, p = P();
@@ -322,8 +329,11 @@
     if (id === 'b_pro1_jotaro') fightJotaro(ctx);
     else if (id === 'b_pro2_aqua') fightAqua(ctx);
     else if (id === 'b_pro2_chase') fightChase(ctx);
+    else if (B.fights[id]) B.fights[id](ctx, B.api);
     else hold([]);
   }
+  // 给各章打法用的小工具（p4_bot_<章>.js 里的 function (ctx, api)）
+  B.api = { G, I, B, W, P, F, now, note, hold, tap, pulse, after, clearTimer, go, face, enemy, toHit, attackRhythm };
 
   B.frame = 0;
   function step(dt) {

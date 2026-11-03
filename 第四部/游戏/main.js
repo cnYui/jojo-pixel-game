@@ -161,6 +161,20 @@
     G.audio.music('title', { fade: 1.5 });
     const token = ++menuTask; titleMenu(token, route).catch(showError);
   };
+  // 一章的地图常借别章的背景（学校走廊、商店街、杜王大酒店……），背景图按章分包，只载 bg_<本章> 会缺图。
+  //   按地图 id 的后缀（_pro / _chN / _fin）找出这一章的地图，看它们的背景在哪个包里，一起载入；
+  //   剧情里中途换的背景（地图 id 对不上的）在 G.STORY.chN.packs 里补，比如 ['bg_ch2']
+  const SUFFIX = { prologue: '_pro', final: '_fin' };
+  function chapterPacks(c) {
+    const suf = SUFFIX[c.key] || '_' + c.key, want = new Set((c.run && c.run.packs) || []);
+    const packs = (G.D && G.D.packs) || {};
+    for (const st of Object.values(G.STAGES || {})) {
+      if (!st || !st.id || !st.id.endsWith(suf) || typeof st.bg !== 'string') continue;
+      for (const [name, p] of Object.entries(packs)) if (p.bg && p.bg.indexOf(st.bg) >= 0) want.add(name);
+    }
+    want.delete('bg_common'); want.delete('bg_' + c.key);
+    return [...want];
+  }
   G.playFrom = async idx => {
     const c = G.CHAPTERS[idx];
     if (transitioning || !c || !c.run) return;
@@ -169,6 +183,7 @@
     const id = G.runId;
     try {
       G.audio.stopMusic(.8); await G.res.loadPack('bg_common'); await G.res.loadPack('bg_' + c.key);
+      for (const p of chapterPacks(c)) await G.res.loadPack(p);
       G.audio.releaseExcept(c.music); G.audio.prefetch(c.music.slice(0, 2)); transitioning = false;
       await c.run(G.S);
       if (id !== G.runId) return;
