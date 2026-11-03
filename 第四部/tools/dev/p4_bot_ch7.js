@@ -69,31 +69,35 @@
     const p = P(), sha = enemy('sha');
     if (!p || !sha) return hold([]);
     const fb = B.fight;
-    if (ctx.gauge && ctx.gauge.value >= 100 && !ctx.data.uUsed) {
+    if (ctx.data.full && !ctx.data.uUsed) {
       hold([]);
       if (now() - (fb.uT || -9) > 0.5) { fb.uT = now(); tap('special'); }
       return;
     }
     if (sha.mem && sha.mem.armed > 0) {
-      // 红圈：往远处躲
-      const away = p.x >= sha.x ? 'right' : 'left';
-      hold([away]);
-      if (Math.abs(sha.x - p.x) < 34 && now() - (fb.dodgeT || -9) > 0.6) { fb.dodgeT = now(); tap('dodge'); }
+      // 红圈：往远处走
+      hold([p.x >= sha.x ? 'right' : 'left']);
       return;
     }
+    // 贴在它“行进方向”的背后打（它去撞热源时不会回头）
+    const tg = ctx.data.shaTarget, dir = tg && tg.x != null ? (tg.x >= sha.x ? 1 : -1) : (sha.facing || 1);
     const dx = sha.x - p.x, dy = sha.y - p.y;
-    if (Math.abs(dx) < 26 && Math.abs(dy) < 8) {
-      const dir = dx > 0 ? 1 : -1;
-      if (p.facing !== dir) { hold([dir > 0 ? 'right' : 'left']); return; }
+    const behind = (p.x - sha.x) * dir < 0;
+    if (Math.abs(dx) < 30 && Math.abs(dy) < 8 && behind) {
+      // 太贴了拳头打不到（判定从身前 6 px 起）：先退半步
+      if (Math.abs(dx) < 12) { hold([dx > 0 ? 'left' : 'right']); return; }
+      const fd = dx > 0 ? 1 : -1;
+      if (p.facing !== fd) { hold([fd > 0 ? 'right' : 'left']); return; }
       hold([]);
       attackRhythm(0.22);
       return;
     }
-    const tx = sha.x - (sha.facing || 1) * 20;
+    const tx = sha.x - dir * 22;
     const keys = [];
     if (Math.abs(tx - p.x) > 4) keys.push(tx > p.x ? 'right' : 'left');
     if (Math.abs(dy) > 3) keys.push(dy > 0 ? 'down' : 'up');
     hold(keys);
+    void tap;
   };
 
   // 段 C：站在康一和吉良之间打吉良；硬币红圈闪开；满能量放时停

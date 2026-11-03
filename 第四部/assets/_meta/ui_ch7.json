@@ -142,5 +142,42 @@
    "w": 67,
    "h": 53
   }
+ },
+ "sfx": {
+  "看这边！": {
+   "image": "ui/sfx/ch7_look",
+   "w": 75,
+   "h": 28
+  },
+  "嘀": {
+   "image": "ui/sfx/ch7_beep",
+   "w": 28,
+   "h": 29
+  },
+  "锵！": {
+   "image": "ui/sfx/ch7_clang",
+   "w": 40,
+   "h": 31
+  },
+  "沉！": {
+   "image": "ui/sfx/ch7_heavy",
+   "w": 44,
+   "h": 31
+  },
+  "咚——！": {
+   "image": "ui/sfx/ch7_freeze",
+   "w": 115,
+   "h": 40
+  },
+  "咚": {
+   "image": "ui/sfx/ch7_kick",
+   "w": 29,
+   "h": 29
+  },
+  "ORA!!": {
+   "image": "ui/sfx/ch7_ora",
+   "w": 98,
+   "h": 33
+  }
  }
 }

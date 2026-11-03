@@ -65,8 +65,20 @@ def main():
         'koichi_act3': U.save('special/koichi_act3', U.big('3 FREEZE！', 42, ('#f0fff8', '#7af0b8', '#1ec080'),
                                                            edge='#06241a', shadow='#020c08', edge_w=3, shadow_d=(3, 3))),
     }
+    # 拟声字（S.sfxText 用）：坦克的尖声、爆炸前的“嘀”、拳头打在装甲上、ACT3 让它变重、3 FREEZE 压进地面、承太郎收尾的一拳
+    def word(name, w, size, cols, edge):
+        return U.save('sfx/' + name, U.big(w, size, cols, edge=edge, shadow='#0a0610', edge_w=3, shadow_d=(2, 2)))
+    sfx = {
+        '看这边！': word('ch7_look', '看这边！', 20, ('#ffffff', '#c8d8ff', '#8cacf0'), '#0a1030'),
+        '嘀': word('ch7_beep', '嘀', 22, ('#ffffff', '#ffe0e0', '#ff8a8a'), '#300a0a'),
+        '锵！': word('ch7_clang', '锵！', 24, ('#ffffff', '#e0e4f0', '#a0a8c0'), '#14141e'),
+        '沉！': word('ch7_heavy', '沉！', 26, ('#f0fff8', '#7af0b8', '#1ec080'), '#06241a'),
+        '咚——！': word('ch7_freeze', '咚——！', 34, ('#f0fff8', '#7af0b8', '#1ec080'), '#06241a'),
+        '咚': word('ch7_kick', '咚', 22, ('#fff4e0', '#e8c890', '#b08a50'), '#20140a'),
+        'ORA!!': word('ch7_ora', 'ORA!!', 32, ('#f0f0ff', '#bab2ff', '#8a80ec'), '#17132e'),
+    }
     U.chapter_ui('ch7', namecards=namecards, standcards=standcards, locations=locations, vs=vs, titles=titles, specials=specials,
-                 map={'stamp_199907': stamp('7月')})
+                 map={'stamp_199907': stamp('7月')}, sfx=sfx)
     print('第7章 UI：', ' '.join(list(namecards) + list(standcards) + list(locations) + list(vs) + list(titles) + list(specials)))
 
 

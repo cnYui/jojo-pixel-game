@@ -31,18 +31,21 @@
 
   // ================================================================ 招式组
   // 回音 ACT3（康一）：近身拳三连，伤害偏低；没有连打（设计文档 3.3）。U「3 FREEZE」由段 B 用 kitOverride 按重量条开窗
+  // 爆炸的击退都压在 24 以下：引擎里 push ≥ 24 会打出倒地（down），康一的图没有倒地动作
   const E3 = '#7af0b8';
-  M.E3_J1 = Object.assign({}, M.SP_J1, { dmg: 4, accent: E3, poiseDmg: 4 });
-  M.E3_J2 = Object.assign({}, M.SP_J2, { dmg: 4, accent: E3, poiseDmg: 4 });
-  M.E3_J3 = Object.assign({}, M.SP_J3, { dmg: 6, accent: E3, word: null, launch: null, push: 10, poiseDmg: 10 });
-  K.koichi_act3 = {
-    hp: 100, speed: 68, standId: 'echoes3', combo: ['E3_J1', 'E3_J2', 'E3_J3'],
-    guard: { pose: 'block' }, guardAttack: null, chords: {}, parry: { effect: 'reflect' }, dodge: {}, explore: { pose: 'punch' }, grunt: null,
-  };
+  //   出拳的是 ACT3，康一本人站着指挥（body 'idle'：康一的图只有 idle / walk / bow，没有出拳的身体动作）
+  M.E3_J1 = Object.assign({}, M.SP_J1, { body: 'idle', dmg: 4, accent: E3, poiseDmg: 4 });
+  M.E3_J2 = Object.assign({}, M.SP_J2, { body: 'idle', dmg: 4, accent: E3, poiseDmg: 4 });
+  M.E3_J3 = Object.assign({}, M.SP_J3, { body: 'idle', dmg: 6, accent: E3, word: null, launch: null, push: 10, poiseDmg: 10 });
+  // 照分章约定从 ACT2（第3章）/ ACT1（第2章）派生：闪避、格挡、替身调查沿用，换掉招式和替身
+  K.koichi_act3 = Object.assign({}, K.koichi_act2 || K.koichi || {}, {
+    hp: 100, speed: 68, standId: 'echoes3', combo: ['E3_J1', 'E3_J2', 'E3_J3'], rush: null, special: null,
+    guardAttack: null, chords: {}, grunt: null,
+  });
 
   // 枯萎穿心攻击：打不坏（伤害倍率 0、最低血量锁死），挨打只被推开；怎么追由 ctx.data.shaTarget 决定（各段 tick 每帧算好）
   K.e_sha = {
-    hp: 9999, speed: 36, moves: [], koStyle: 'none', idle: 'idle', armor: true, dmgMul: () => 0,
+    hp: 9999, speed: 36, moves: [], koStyle: 'none', idle: 'idle', armor: true, dmgMul: () => 0.02,   // 0 会被引擎当成“免疫”直接返回、不发 hit 事件（engine/combat.js hit）；0.02 = 每下 1 点，挨打时再补满
     brain(e, dt, ctx) {
       const d = ctx ? ctx.data : {}, m = e.mem, st = G.world.stage;
       if (!st) return true;
@@ -124,12 +127,12 @@
     c.data.heats = (c.data.heats || []).filter((h) => h.key || h.on);
   }
   // 坦克挑目标：离它 280 px 以内亮着的热源（最近的）> 3 s 内出过拳的人 > 默认目标
-  function pickTarget(c, sha, people, fallback) {
+  function pickTarget(c, sha, people, fallback, range = 280) {
     let best = null, bd = 1e9;
     for (const h of c.data.heats || []) {
       if (!h.on) continue;
       const dd = Math.abs(h.x - sha.x);
-      if (dd < 280 && dd < bd) { bd = dd; best = h; }
+      if (dd < range && dd < bd) { bd = dd; best = h; }
     }
     if (best) return best;
     for (const a of people) if (a && c.t - (a._ch7Hot == null ? -9 : a._ch7Hot) < 3) return a;
@@ -144,7 +147,7 @@
     S.sfx('skid', 0.5);
     S.sfxText('看这边！', sha, { dur: 0.7 });
     const x = sha.x, y = sha.y;
-    G.combat.hazard({ shape: 'ellipse', x, y, rx: 30, ry: 12, warn: 0.35, dur: 0.1, dmg: 26, push: 34, owner: sha, side: 'enemy', guard: 'normal',
+    G.combat.hazard({ shape: 'ellipse', x, y, rx: 30, ry: 12, warn: 0.35, dur: 0.1, dmg: 26, push: 22, owner: sha, side: 'enemy', guard: 'normal',
       onActive: () => {
         S.sfx('explosion', 0.9);
         S.fx('explosion', { x, y: y - 10, size: 1.1 }, { life: 0.6 });
@@ -160,14 +163,14 @@
       if (tgt && tgt.cig) { tgt.on = false; if (tgt.prop) tgt.prop.remove = true; m.pant = 2; }
     }, 'world');
   }
-  function shaTick(S, c, dt, people, fallback) {
+  function shaTick(S, c, dt, people, fallback, range) {
     const sha = S.actor('sha'), d = c.data;
     if (!sha) return;
     const m = sha.mem;
     if (m.cool > 0) m.cool -= dt;
     if (m.pant > 0) m.pant -= dt;
     if (m.armed > 0 || d.frozen) return;
-    const tgt = pickTarget(c, sha, people, fallback);
+    const tgt = pickTarget(c, sha, people, fallback, range);
     if (tgt !== d.shaTarget) {
       if (d.shaTarget && tgt) S.emote(sha, '看这边！', 0.8, '#c8d8ff');
       d.shaTarget = tgt;
@@ -252,7 +255,7 @@
       },
       tick: (c, dt) => aTick(S, c, dt),
     });
-    for (const a of G.world.stage.actors) if (a.id && a.id.indexOf('cig') === 0) a.remove = true;
+    for (const a of G.world.stage.actors) if (a.id && (a.id.indexOf('cig') === 0 || a.id === 'sha')) a.remove = true;
     return res;
   };
 
@@ -260,13 +263,15 @@
   // 段 B　康一 + 回音 ACT3：3 FREEZE（b11b_sha）
   // =====================================================================================================================
   const B = { arena: [140, 860], koichi: [520, 160], sha: [330, 156] };
-  async function spFreeze(p, C) {
+  // 引擎有两种调法：剧情窗口里是 run(S, p, ctx, C)，平时是 run(p, C)（engine/combat.js special）
+  async function spFreeze(...args) {
+    const C = args[args.length - 1], p = args.length >= 4 ? args[1] : args[0];
     const c = G.world.fight, S = G.S, sha = S.actor('sha');
     if (!c) return;
     c.data.uUsed = true;
     S.hint(null);
     if (sha) {
-      C.aim(sha);
+      p.facing = sha.x >= p.x ? 1 : -1;
       if (Math.abs(sha.x - p.x) > 40) await C.dash(sha.x - p.facing * 26, sha.y, f(8));
     }
     C.stand('punch', { dx: 18 });
@@ -280,7 +285,7 @@
       S.fx('burst', { x: sha.x, y: sha.y, n: 12, speed: 30, colours: ['#6a6a74', '#3a3a44'], gravity: 120, life: 0.7 });
       S.sfx('wall_slam', 1); S.sfx('rumble', 0.8);
       S.sfxText('咚——！', sha, { dur: 1.2 });
-      C.shake(6, f(30));
+      S.shake(6, 0.5);
       S.mark('b11b_freeze');
     }
     await C.wait(0.9);
@@ -289,39 +294,45 @@
   function bSetup(S, c) {
     const d = c.data, p = player(), jt = member('jotaro4');
     heatsInit(S, c);
-    d.heatI = 0; d.heatT = 4;
+    d.heatI = 0; d.heatT = 2;
     if (jt) { const xy = at('jotaro_down', [620, 168]); jt.x = xy[0]; jt.y = xy[1]; jt.hold = true; S.pose(jt, 'down'); }
     if (p.setStand && !p.stand) p.setStand('echoes3');
     c.on('hit', (e) => {
       const sha = S.actor('sha');
+      d.hitAll = (d.hitAll || 0) + 1; d.lastT = e.t && e.t.id;
       if (!sha || e.t !== sha) return;
       shaOnHit(S, c, e, 0.4);
       if (!c.gauge || d.frozen) return;
-      let add = e.slot === 'J3' ? 14 : 7;
+      let add = e.slot === 'J3' ? 10 : 5;
       if (sha.mem.pant > 0) add += 5;
       if (c.attempt >= 1 || c.assist) add += 3;
       c.gauge.add(add);
       if (e.slot === 'J3') { S.sfxText('沉！', sha, { dur: 0.6 }); sha.mem.slowT = 1; }
-      if (c.gauge.value >= 100 && !d.fullTold) { d.fullTold = true; S.sfx('meter_full', 0.8); S.hint('重量满了：按 U，3 FREEZE！', 30); }
+      // 满了就锁住不再掉（不然每秒掉 3，满格只停一帧，按 U 的窗口抓不住）
+      if (c.gauge.value >= 100 && !d.full) { d.full = true; S.sfx('meter_full', 0.8); S.hint('重量满了：按 U，3 FREEZE！', 30); }
     });
     S.hint('回音 ACT3：J 打它让它变重（第三下最重）。它去撞热源的时候从后面打！', 8);
   }
   function bTick(S, c, dt) {
     const d = c.data, p = player(), sha = S.actor('sha');
     if (!p || !sha) return;
-    // 热源轮着亮：6 s 一个
-    d.heatT -= dt;
-    if (d.heatT <= 0) {
-      d.heatT = 6;
-      const hs = d.heats.filter((h) => h.key && !h.on && h.cd <= 0);
-      if (hs.length) heatOn(S, c, hs[d.heatI++ % hs.length], 8);
+    // 热源轮着亮，总有一个亮着：坦克去撞热源的时候，就是康一从背后打它的时候（上一个炸掉 1.5 s 后亮下一个）
+    if (!d.heats.some((h) => h.key && h.on)) {
+      d.heatT -= dt;
+      if (d.heatT <= 0) {
+        d.heatT = 1.5;
+        const hs = d.heats.filter((h) => h.key && h.cd <= 0 && Math.abs(h.x - sha.x) > 120);
+        const pool = hs.length ? hs : d.heats.filter((h) => h.key);
+        const h = pool[d.heatI++ % pool.length];
+        h.cd = 0;
+        heatOn(S, c, h, 12);
+      }
     }
     heatTick(S, c, dt);
     const w = c.gauge ? c.gauge.value : 0;
     d.shaSpeed = 40 * Math.max(0.3, 1 - w / 140) * (sha.mem.slowT > 0 ? 0.5 : 1);
     if (sha.mem.slowT > 0) sha.mem.slowT -= dt;
-    if (w < 100) d.fullTold = false;
-    shaTick(S, c, dt, [p], p);
+    shaTick(S, c, dt, [p], p, 900);
   }
   R.fightB = async function (S) {
     S.hint(null);
@@ -331,12 +342,12 @@
     const res = await S.fight({
       id: 'b11b_sha', arena: B.arena, lead: 'koichi', swap: false, lockMsg: '承太郎倒下了……只能靠康一', allies: [],
       music: 'battle', after: null, dmgScale: 1.0, losable: true, energy: { start: 0 }, coverage: false,
-      gauge: { max: 100, value: 0, label: '重量', color: '#7af0b8', rate: () => -3 },
+      gauge: { max: 100, value: 0, label: '重量', color: '#7af0b8', rate: (c) => (c.data.full ? 0 : -3) },
       bench: { mode: 'stay', at: { jotaro4: at('jotaro_down', [620, 168]) } },
       kitOverride: { koichi: { special: { need: 0, title: 'koichi_act3', bg: 'radial', colours: ['#0e5a3a', '#06241a', '#1ec080'],
-        window: (c) => !!c.gauge && c.gauge.value >= 100 && !c.data.uUsed, prompt: '按 U！', run: spFreeze } } },
+        window: (c) => !!c.data.full && !c.data.uUsed, prompt: '按 U！', run: spFreeze } } },
       waves: [[{ kit: 'e_sha', cid: 'sha', id: 'sha', name: '枯萎穿心攻击', x: B.sha[0], y: B.sha[1], boss: true, hp: 9999, minHp: 9000 }]],
-      testHint: (ctx) => ({ weight: ctx.gauge ? Math.round(ctx.gauge.value) : 0, frozen: !!ctx.data.frozen, blasts: ctx.data.blasts || 0 }),
+      testHint: (ctx) => { const p = player(), sh = G.S.actor('sha'); return { weight: ctx.gauge ? Math.round(ctx.gauge.value) : 0, frozen: !!ctx.data.frozen, blasts: ctx.data.blasts || 0, hits: ctx.data.hitAll || 0, dx: sh ? Math.round(sh.x - p.x) : null }; },
       onWave: async (S2, wi, spawned, attempt, ctx) => {
         const p = player();
         p.x = B.koichi[0]; p.y = B.koichi[1]; p.facing = -1;
@@ -345,6 +356,8 @@
       tick: (c, dt) => bTick(S, c, dt),
     });
     if (ko) ko.kit = oldKit;
+    // 打完把这一段的坦克收掉（不然下一段 S.actor('sha') 会拿到上一段留下的那只）
+    for (const a of G.world.stage.actors) if (a.id === 'sha') a.remove = true;
     return res;
   };
 
@@ -360,7 +373,7 @@
     const coin = T().prop(S, 'coin_bomb', kira.x, kira.y, { id: 'coin' + T().count('coin'), z: 24, frame: 0 });
     if (coin) S.arc(coin, x, y, 24, 0.4, { z1: 0 }).then(() => { if (coin) { coin.frozen = null; coin.hold = false; coin.play('idle'); } }, G.cancelIgnore);
     if (!c.data.coinTold) { c.data.coinTold = true; S.hint('杀手皇后碰过的硬币就是炸弹：红圈里快闪开（K）！', 5); }
-    G.combat.hazard({ shape: 'ellipse', x, y, rx: 26, ry: 10, warn: 1.0, dur: 0.1, dmg: 18, push: 26, owner: kira, side: 'enemy', guard: 'normal',
+    G.combat.hazard({ shape: 'ellipse', x, y, rx: 26, ry: 10, warn: 1.0, dur: 0.1, dmg: 18, push: 22, owner: kira, side: 'enemy', guard: 'normal',
       onActive: () => {
         S.sfx('explosion', 0.8);
         S.fx('explosion', { x, y: y - 8, size: 0.9 }, { life: 0.5 });

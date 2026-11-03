@@ -70,11 +70,13 @@
     mapA.ch7_tailor = mapA.ch7_tailor || [188, 100];
     const old = ui.stamp;
     if (ui.stamp_199907) ui.stamp = ui.stamp_199907;
+    // 叠加层每帧都读 ui.map.stamp：关掉日历以后再换回序章的红章
     let cal = null;
-    try { cal = await P4().calendar(S, 'ch7', { hold: 1.8 }); } finally { ui.stamp = old; }
-    S.mark('ch7_calendar');
-    await S.fadeOut(0.45);
-    if (cal) cal.close();
+    try {
+      cal = await P4().calendar(S, 'ch7', { hold: 1.8 });
+      S.mark('ch7_calendar');
+      await S.fadeOut(0.45);
+    } finally { if (cal) cal.close(); ui.stamp = old; }
   }
 
   // ================================================================ 节拍 2 灰姑娘美容院：由花子换脸
@@ -340,6 +342,7 @@
   async function lookFace(S, n) {
     puzzle.seen[n] = true;
     puzzle.last = n;
+    S.hint(null);
     S.sfx('card_flip', 0.6);
     // 大特写：左边放大 4 倍的脸，右边「康一的记忆」逐条对照
     const h = T().show(S, { bg: '#2a0c1c', vignette: 0.5, parts: [{ kind: 'sprite', cid: 'prop:face_big', frame: n - 1, x: 96, y: 148, scale: 1 }] });
@@ -562,7 +565,8 @@
     await S.walk(kira, 470, 158, { speed: 14 });
     S.mark('ch7_kira_pulled');
     await S.say(cid('kira'), '……真是个让人不愉快的小鬼。', { expr: 'rage', actor: kira, name: '吉良' });
-    S.nameCard(cid('kira'), { y: NAME_TOP });
+    // 吉良的名牌归第6章：合进来了才放（占位人物没有名牌）
+    if (((G.D.ui && G.D.ui.namecards) || {})[cid('kira')]) S.nameCard(cid('kira'), { y: NAME_TOP });
     S.standCard(cid('killerqueen'), { y: NAME_TOP });
     S.cue('sting_reveal');
     await S.wait(1.0);
