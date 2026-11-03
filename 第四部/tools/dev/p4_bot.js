@@ -329,6 +329,7 @@
   function step(dt) {
     B.frame++;
     tickPulses();
+    if (B.manual) { hold([]); return; }            // 测试脚本自己按键时把机器人关掉（p4_rush_loop.js）
     if (G.scene && G.scene.name === 'title' && !G.ui.menu) { hold([]); return; }
     if (uiStep()) return;
     const w = W();

@@ -128,6 +128,8 @@
     hasOver: () => G.world.hasOver(), drawOver: g => G.world.drawOver(g),
   };
   async function pause() {
+    // 暂停后世界不再更新，连打停在半空、拳声循环却照响（暂停菜单里一直是连打声）：先把主控的连打收掉
+    if (G.world.player && G.combat && G.combat.stopRush) G.combat.stopRush(G.world.player);
     gameScene.frozen = true;
     for (;;) {
       const i = await G.ui.openMenu('暂停', ['继续', '发型记录', '操作说明', '设置', '返回标题'], { escIndex: 0 });
@@ -140,6 +142,8 @@
     gameScene.frozen = false;
   }
   function reset() {
+    // 回标题 / 换章会把整个世界丢掉：谁身上还挂着连打，拳声循环的句柄跟着丢，就在标题画面里一直响。先记下场景，世界清空后再收
+    const oldStage = G.world.stage;
     G.cancelRun(); G.S.busy = false; G.S.cardOn = false; G.S.ambient(null); G.S._filters.clear(); G.ui.reset(); G.party.reset(); G.post.clear(); G.fx.clear();
     if (G.time && G.time.clear) G.time.clear();
     if (G.P4 && G.P4.clearOverlays) G.P4.clearOverlays();
@@ -148,6 +152,8 @@
     G.world.focus = null; G.world.slow = 1; G.lateGame = null; G.midGame = null;
     G.world.zoom = null; G.cam.zoom = null; G.cam.x = 0; G.cam.y = 0; G.cam.shakeDur = 0;
     G.slowAllK = 1; G.slowAllT = 0; G.hitStopAll_t = 0; G.fadeA = 0; G.flags = {}; G.input.clear();
+    // 战斗已经清空（W.fight = null），收连打时发的 rushEnd 不会再进到剧情的监听里
+    if (oldStage && G.combat && G.combat.stopRush) for (const a of oldStage.actors) G.combat.stopRush(a);
     gameScene.frozen = false;
   }
   G.goTitle = async route => {

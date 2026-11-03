@@ -94,7 +94,8 @@
   function trimFx(e){if(!e||e.dead)return;const el=Math.max(0,((G.clk&&G.clk[e.clock])||0)-e.t0);if(e.name==='rush'){e.kw.t1=el;e.life=el+.35;}else e.life=el;}
   const play = (a,name,o) => a.play && a.play(name,o);
   // 离开格挡（松手、被打、闪避、出招）时收掉格挡特效（阿布德尔的火墙等，kit.guard.fx）
-  const state = (a,s) => {if(a._guardFx && s!=='guard'){if(G.fx)G.fx.kill(a._guardFx);a._guardFx=null;}a.state=s; a.stateT=0;};
+  // 离开连打也一样：拳声循环只在 rushTick 到点收尾时停，连打中按 L 格挡、按 U 放必杀切走了状态，连打就没人收，拳声一直响（用户实测）
+  const state = (a,s) => {if(a._guardFx && s!=='guard'){if(G.fx)G.fx.kill(a._guardFx);a._guardFx=null;}if(a.rush && s!=='rush')cancelRush(a);a.state=s; a.stateT=0;};
   const idle = a => { a.atk=null; a.tele=null; a._preHazard=false; a.outline=null; a.auraFlame=null; a.ghostOn=false; state(a,'idle'); play(a,a.idleAnim || 'idle'); if(a.stand)a.stand.idle(); };
   const getMove = m => typeof m === 'string' ? G.MOVES[m] : m;
   const kitOf = a => Object.assign({},a.kit || G.KITS[a.cid] || {},ctx() && ctx().spec.kitOverride && ctx().spec.kitOverride[a.cid] || {});
@@ -284,6 +285,8 @@
   }
   function startRush(a) {
     const k=kitOf(a),r=k.rush;if(!r)return false;
+    // 身上还挂着没收掉的连打就先收：直接覆盖 a.rush 会把旧拳声循环的句柄丢掉，那条声音就再也停不掉了
+    if(a.rush)cancelRush(a);
     // 本体在连打期间摆 kit.rush.body（乔瑟夫 = cmd_hold 伸臂拽藤的循环帧）；不写还是 cmd。以前写死 cmd：二乔的甩藤 vine_atk 是一次性动作，
     //   放完停在“收势”那一帧，整段连打都定在往回拽的姿势上
     a.atk=null;state(a,'rush');play(a,r.body||'cmd');a.rush={t:0,tick:0,n:0,end:CFG.rushSustain,wordT:0,loop:r.loop && G.audio.loop?G.audio.loop(r.loop):null};if(a.stand)a.stand.act(r.pose||'rush',{dx:r.standDx==null?16:r.standDx,z:r.standZ,depth:r.standDepth,hold:true,jitter:r.jitter==null?1:r.jitter,len:r.vineLen});
@@ -294,6 +297,13 @@
   }
   function cancelRush(a){const r=a.rush;if(!r)return;if(r.loop&&r.loop.stop)r.loop.stop(.05);trimFx(r.fx);emit('rushEnd',{who:a,n:r.n});a.rush=null;a.rushCdT=CFG.rushCd;}
   function endRush(a) {if(!a.rush)return;cancelRush(a);startMove(a,kitOf(a).rush.finisher);}
+  // 连打推进不下去时用：收掉连打（停拳声、收拳影）。换人、暂停、回标题、演出插进来都走这里
+  //   人和替身还是连打的样子才放回站立：演出 / 剧情可能在这一帧之前已经给人摆了别的姿势，不能盖掉
+  function stopRush(a) {
+    if(!a || !a.rush)return;const k=kitOf(a).rush || {};cancelRush(a);if(a.state!=='rush')return;
+    a.atk=null;a.ghostOn=false;state(a,'idle');if(a.anim===(k.body || 'cmd'))play(a,a.idleAnim || 'idle');
+    if(a.stand && a.stand.mode==='act' && a.stand.pose===(k.pose || 'rush'))a.stand.idle();
+  }
   function rushTick(a,dt,auto) {
     const r=a.rush,k=kitOf(a).rush;if(!r || !k)return;r.t+=dt;r.tick-=dt;r.wordT-=dt;
     if(!auto && G.input.take('attack',CFG.comboBuf))r.end=r.t+CFG.rushSustain;
@@ -336,6 +346,9 @@
   // 第四部加的 a.noGuard：仗助“发型暴走”时不会格挡（序1 教学的前两步），按住 L 也不进格挡
   function updatePlayer(a,dt) {
     const w=W(),i=G.input,k=kitOf(a);guardPress(a);
+    // 连打只靠下面的 rushTick 推进、到点收尾。这一帧走不到 rushTick（演出插进来、战斗在连打中结束、剧情定住人、state 被别处直接改掉）
+    //   就当场收掉，不然拳声循环没人停：水中项链的结局就是连打时它钻进嘴里、战斗随即结束，之后整段过场一直是连打声
+    if(a.rush && (a.state!=='rush' || a.hold || w.cine || !w.combat && (!w.free || G.ui && G.ui.blocking && G.ui.blocking())))stopRush(a);
     if(motionTick(a,dt) || a.hold || a.state==='special')return;
     if(w.cine)return;
     if(!w.combat && (!w.free || G.ui && G.ui.blocking && G.ui.blocking()))return;
@@ -386,7 +399,8 @@
     const t=targetOf(a);if(!alive(t))return;a.facing=t.x>a.x?1:-1;G.AI.approach(a,t,(a.range || 30)*ckv(),dt);
     if(a.cool<=0 && tokens()<CFG.maxTokens){const id=G.AI.pickMove(a,c);if(id){G.AI.tele(a,id);a.cool=.7;}}
   }
-  function updateAlly(a,dt){if(W().cine || !W().combat)return;if(motionTick(a,dt))return;if(a.atk){moveTick(a,dt);return;}const t=targetOf(a);if(!t)return;a.facing=t.x>a.x?1:-1;walkTo(a,t.x-a.facing*28,t.y,dt,a.speed);if(a.cool<=0 && Math.abs(t.x-a.x)<65){a.cool=.4;a.combo=(a.combo+1)%3;startMove(a,kitOf(a).combo[a.combo]);}if(a.energy>=100 && Math.random()<CFG.ally.specialChance*dt)background(special(a));}
+  // 队友从不连打（rushTick 只在 updatePlayer 里跑）：连打中被换下来的旧队长身上要是还挂着连打，这里收掉
+  function updateAlly(a,dt){if(a.rush)stopRush(a);if(W().cine || !W().combat)return;if(motionTick(a,dt))return;if(a.atk){moveTick(a,dt);return;}const t=targetOf(a);if(!t)return;a.facing=t.x>a.x?1:-1;walkTo(a,t.x-a.facing*28,t.y,dt,a.speed);if(a.cool<=0 && Math.abs(t.x-a.x)<65){a.cool=.4;a.combo=(a.combo+1)%3;startMove(a,kitOf(a).combo[a.combo]);}if(a.energy>=100 && Math.random()<CFG.ally.specialChance*dt)background(special(a));}
   function walkTo(a,x,y,dt,speed){const dx=x-a.x,dy=y-a.y,d=Math.hypot(dx,dy);if(d<1){play(a,a.idleAnim || 'idle');return;}const step=Math.min(d,(speed || a.speed)*dt);W().move(a,dx/d*step,dy/d*step*.6);a.facing=dx<0?-1:1;play(a,'walk');}
   function tweenTo(a,x,y,dur){const x0=a.x,y0=a.y,run=G.runId;return guardedWait(Promise.race([new Promise(res=>W().anims.push({t:0,dur,fn:u=>{if(run!==G.runId)return;a.x=x0+(x-x0)*u;a.y=y0+(y-y0)*u;},res})),G.until(()=>run!==G.runId)]));}
   function ghostBurst(a,n){a.ghostOn=true;for(let i=0;i<n;i++)a.ghosts.push({x:a.x,y:a.y,z:a.z,t:a.ownT,anim:a.anim,frame:a.frameIndex?a.frameIndex():0,facing:a.facing,skin:a.skin,scale:a.scale});}
@@ -525,7 +539,7 @@
     if(G.J25 && G.J25.drawPixel)G.J25.drawPixel(P,layer);
   }
   function drawShot(g,s,cx,cy){if(s.image && typeof s.image==='object'){const a=G.atlas(s.image.cid);a.draw(g,s.image.logical || s.anim || 'idle',Math.floor(s.t*12),s.x-cx,s.y-s.z-cy,{flip:s.vx<0});}else {const im=G.image(s.image);if(im)g.drawImage(im,s.x-cx-im.width/2,s.y-s.z-cy-im.height/2);}}
-  G.combat={CFG,updatePlayer,updateAlly,updateEnemy,updateShots,updateHazards,drawPixel,drawShot,startMove,hitCheck,hit,ko,shoot,hazard,gainEnergy,special,bossFinish,kitOf,resetActor,warnDur,fxAt,tweenTo,tokens,walkTo,ghostBurst,createC,standFront,shotOrigin,hittableZ,midY};
+  G.combat={CFG,updatePlayer,updateAlly,updateEnemy,updateShots,updateHazards,drawPixel,drawShot,startMove,hitCheck,hit,ko,shoot,hazard,gainEnergy,special,bossFinish,kitOf,resetActor,stopRush,warnDur,fxAt,tweenTo,tokens,walkTo,ghostBurst,createC,standFront,shotOrigin,hittableZ,midY};
   G.AI={dist:(e,t)=>Math.hypot(e.x-t.x,e.y-t.y),aligned:(e,t,dy=6)=>Math.abs(e.y-t.y)<=dy,approach:(e,t,keep,dt)=>{if(Math.abs(t.x-e.x)>keep)walkTo(e,t.x-Math.sign(t.x-e.x)*keep,t.y,dt,e.speed);},kite:(e,t,keep,dt)=>walkTo(e,t.x-Math.sign(t.x-e.x)*keep,t.y,dt,e.speed),
     pickMove(e,c){const t=targetOf(e);if(!t)return null;if(e.pattern)return this.next(e);const ids=(e.moves || []).filter(id=>{const m=getMove(id),r=m && (m.melee!==false?ckReach(m.range):m.range);return m && !(e.moveCd[id]>0) && (!r || Math.abs(e.x-t.x)>=r[0] && Math.abs(e.x-t.x)<=r[1]) && (!m.cond || m.cond(e,t,c));});let n=ids.reduce((s,id)=>s+(getMove(id).weight==null?1:getMove(id).weight),0)*Math.random();return ids.find(id=>(n-=getMove(id).weight==null?1:getMove(id).weight)<=0) || null;},
     next(e){if(!e.pattern || !e.pattern.length)return null;return e.pattern[e.patternI++%e.pattern.length];},

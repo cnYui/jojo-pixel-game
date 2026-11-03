@@ -4,7 +4,7 @@
 //   用法：
 //     node 第四部/tools/dev/p4_play.js --out 输出目录 [--read 0.25] [--fail-chase 2] [--size 960x540]
 //     node 第四部/tools/dev/p4_play.js --record 输出目录/序章.webm --size 1920x1080 --read 1
-//   输出：剧情标记截图（编号_标记.png）、report.json（标记、战斗、机器人日志、报错、缺图缺字）。
+//   输出：剧情标记截图（编号_标记.png）、report.json（标记、战斗、机器人日志、报错、缺图缺字、连打拳声漏停 rushLoopLeaks）。
 'use strict';
 const fs = require('fs');
 const path = require('path');
@@ -28,7 +28,7 @@ const REC_JS = path.resolve(__dirname, '..', '..', '..', 'tools', 'dev', 'record
 
 fs.mkdirSync(OUT, { recursive: true });
 const report = { started: new Date().toISOString(), mode: RECORD ? 'record' : 'fast', read: READ, failChase: FAIL_CHASE,
-  marks: [], stages: [], fights: [], notes: [], errors: [], console: [], missing: {}, end: null };
+  marks: [], stages: [], fights: [], notes: [], errors: [], console: [], missing: {}, rushLoopLeaks: [], end: null };
 const log = (...a) => console.log('[' + ((Date.now() - T0) / 1000).toFixed(1) + 's]', ...a);
 const T0 = Date.now();
 
@@ -37,6 +37,36 @@ const PAGE_HELPERS = () => {
   window.__marks = [];
   const om = G.S.mark;
   G.S.mark = function (n) { window.__marks.push([Math.round(G.clk.ui * 10) / 10, n]); return om.apply(this, arguments); };
+  // 连打拳声漏停（用户实测：欧拉 / 多拉的拳声停不下来）：记下每条连打用的循环音效，谁都不在连打了它还在响就记一笔
+  const rushNames = new Set(Object.values(G.KITS || {}).map((k) => k && k.rush && k.rush.loop).filter(Boolean));
+  window.__rushLoops = [];
+  const ol = G.audio.loop;
+  G.audio.loop = function (name) {
+    const h = ol.apply(this, arguments);
+    if (rushNames.has(name) && h && h.stop) {
+      const rec = { name, h, t: Math.round(G.clk.ui * 10) / 10, live: true, flagged: false };
+      const os = h.stop; h.stop = function () { rec.live = false; return os.apply(this, arguments); };
+      window.__rushLoops.push(rec);
+    }
+    return h;
+  };
+  window.__rushLeaks = () => {
+    // 算“正在连打”的只有 rushTick 这一帧跑得到的：人在 rush 状态、没被定住、没有演出、在战斗里或自由走动。
+    //   过场里人还摆着 rush 状态也算漏（rushTick 不跑，拳声就一直响到下一场战斗）
+    const W = G.world, st = W.stage, ticking = !W.cine && (W.combat || W.free);
+    const owned = new Set((st ? st.actors : []).filter((a) => ticking && a.state === 'rush' && a.rush && !a.hold).map((a) => a.rush.loop));
+    const out = [];
+    for (const r of window.__rushLoops) {
+      if (!r.live || r.flagged) continue;
+      if (owned.has(r.h)) { r.bad = 0; continue; }
+      // 连着两次看到才算：演出开始、战斗结束可能刚好落在这一帧之后，引擎下一帧自己会收
+      if ((r.bad = (r.bad || 0) + 1) < 2) continue;
+      r.flagged = true;
+      out.push({ name: r.name, opened: r.t, seen: Math.round(G.clk.ui * 10) / 10, stage: st ? st.id || null : null, fight: G.world.fight ? G.world.fight.id : null });
+    }
+    window.__rushLoops = window.__rushLoops.filter((r) => r.live);
+    return out;
+  };
   const ch = new MessageChannel();
   const yieldTask = () => new Promise((r) => { ch.port1.onmessage = () => r(); ch.port2.postMessage(0); });
   // 推进 frames 帧；途中出了新的剧情标记就提前停（好让外面截图截到那一刻）
@@ -60,6 +90,7 @@ const STATE = () => {
     missingImg: s.missingImg, missingGlyph: s.missingGlyph, missingHead: s.missingHead, missingSfx: s.missingSfx, fallbacks: s.fallbacks,
     evTotals: s.evTotals, loopErrors: (G.dbg.events || []).filter((e) => /error/.test(e.type)).map((e) => e.type + ':' + (e.msg || e.where || '')),
     marks: window.__marks.splice(0), botNotes: (b.notes || []).splice(0), botErr: b.err || null, finished: !!b.finished, fps: s.fps,
+    rushLeaks: window.__rushLeaks ? window.__rushLeaks() : [],
   };
 };
 
@@ -129,6 +160,7 @@ const STATE = () => {
       if (v.length) report.missing[k] = v;
     }
     if (s.loopErrors.length) report.loopErrors = s.loopErrors;
+    for (const r of s.rushLeaks) { report.rushLoopLeaks.push(r); log('连打拳声漏停', JSON.stringify(r)); }
     if (s.finished && s.scene === 'title') { report.end = { ok: true, t: s.clk }; log('结束：回到标题'); break; }
     if (STOP_AFTER && (Date.now() - t0) / 1000 > STOP_AFTER) { report.end = { ok: false, why: 'stop_after', t: s.clk }; log('试录到点'); break; }
     if (s.clk > MAX_GAME_MIN * 60) { report.end = { ok: false, why: 'max_time', state: s }; log('超时'); break; }
@@ -145,7 +177,7 @@ const STATE = () => {
   }
   report.hair = await page.evaluate(() => G.store.get('p4-hair', []));
   fs.writeFileSync(path.join(OUT, 'report.json'), JSON.stringify(report, null, 2));
-  log('报告', path.join(OUT, 'report.json'), '标记', report.marks.length, '报错', report.errors.length + report.console.length);
+  log('报告', path.join(OUT, 'report.json'), '标记', report.marks.length, '报错', report.errors.length + report.console.length, '拳声漏停', report.rushLoopLeaks.length);
   await browser.close();
   srv.close();
 })().catch((e) => { console.error(e); process.exit(1); });
