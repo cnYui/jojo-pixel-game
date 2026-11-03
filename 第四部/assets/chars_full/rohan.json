@@ -1,0 +1,87 @@
+{
+ "id": "rohan",
+ "name": "岸边露伴",
+ "image": "rohan.png",
+ "cell": [
+  86,
+  61
+ ],
+ "pivot": [
+  30,
+  58
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  },
+  "run": {
+   "row": 2,
+   "frames": 4,
+   "fps": 12,
+   "kind": "loop"
+  },
+  "point": {
+   "row": 3,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
+  },
+  "pose": {
+   "row": 4,
+   "frames": 2,
+   "fps": 3,
+   "kind": "loop"
+  },
+  "shock": {
+   "row": 5,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
+  },
+  "hurt": {
+   "row": 6,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "dodge": {
+   "row": 7,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "guard": {
+   "row": 8,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "kneel": {
+   "row": 9,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "write": {
+   "row": 10,
+   "frames": 3,
+   "fps": 6,
+   "kind": "loop"
+  },
+  "down": {
+   "row": 11,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  }
+ }
+}
