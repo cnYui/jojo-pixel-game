@@ -242,6 +242,21 @@
     g.globalAlpha = ga;
   };
 
+  // tall：竖向卷动的一组图层（第10章送电铁塔）：先按镜头 camY·ky 往上平移，再照常画 layers 里的每一层
+  //   世界 y 和平常一样（地面 150）；镜头往上卷时 stage.camY 取负数（铁塔：0 … −360）
+  T.tall = (g, L, camX, t, st) => {
+    const cy = G.cam && G.cam.y != null ? G.cam.y : (st && st.camY) || 0;
+    const ky = L.ky == null ? 1 : L.ky;
+    g.save();
+    g.translate(0, -Math.round(cy * ky));
+    for (const S of L.layers || []) {
+      if (S.key && S.type !== 'pick' && S.type !== 'tint' && !(st && st.state && st.state[S.key])) continue;
+      const fn = T[S.type];
+      if (fn) fn(g, S, camX, t, st);
+    }
+    g.restore();
+  };
+
   // ------------------------------------------------------------------ Background
   const badTypes = new Set();
   class Background {
