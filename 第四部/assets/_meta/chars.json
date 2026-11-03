@@ -407,7 +407,7 @@
     "hurt": "bow",
     "run": "walk"
    },
-   "top": 26,
+   "top": 27,
    "bodyW": 3,
    "kind": "char"
   },
@@ -780,7 +780,7 @@
      "f": 1.6
     }
    },
-   "top": 27,
+   "top": 26,
    "bodyW": 4,
    "kind": "char"
   },
