@@ -1,4 +1,5 @@
-// 第四部的招式组：仗助·疯狂钻石、白衣承太郎，以及序章三个对手（承太郎的试探、水中项链、逃跑的安杰罗）的 brain。
+// 第四部的招式组：仗助·疯狂钻石、白衣承太郎、亿泰·轰炸空间、康一·回音 ACT1（第2章起），以及序章三个对手（承太郎的试探、水中项链、逃跑的安杰罗）的 brain。
+//   亿泰、康一第一次能操作是第2章，后面各章都要用，所以和仗助放在一起（分章开发约定第 5 节）；回音 ACT2 / ACT3 由第一次出现的章自己派生。
 //   仗助的数值照搬第三部承太郎（开发脚本 §0：“战斗数值全部用第三部现成的”），只换粉色和 DORA 字；走速 66（承太郎 64）。
 //   敌方的大段剧情机关（水汽、钻嘴、手套、障碍物）写在 story/p4_prologue.js 的战斗 tick 里，这里只管“它自己怎么动、怎么出招”。
 'use strict';
@@ -56,6 +57,199 @@
     G.time.stop(p, { tint: 'blue', sfx: 'timestop_sp', burst: 0.4, dur: 1, resume: 0.36, words: false,
       lines: { start: 'jotaro_ts', end: 'jotaro_resume' } });
     await C.wait(0.05);
+  }
+
+  // ======================================================================= 削过的黑缝（轰炸空间的招都留这一道）
+  //   竖着的一道黑色裂口、两边一圈淡蓝的光：先“唰”地拉开（前 12%），70% 以后变细淡出。y 是脚底，往上画 h px
+  if (G.FX && G.FX._SIG) {
+    G.FX.erase_seam = function (P, x, y, t, t0, kw) {
+      kw = kw || {};
+      const dur = kw.dur == null ? 1 : kw.dur, u = (t - t0) / dur;
+      if (u < 0 || u >= 1) return;
+      const px = G.px, h = kw.h || 30, open = Math.min(1, u / 0.12), w = u < 0.7 ? 2 : 1, a = u < 0.7 ? 1 : (1 - u) / 0.3;
+      const X = Math.round(x), top = Math.round(y - h * open), bot = Math.round(y);
+      for (let yy = top; yy <= bot; yy++) {
+        const j = ((yy * 7) & 3) === 0 ? 1 : 0;           // 边上一点锯齿
+        px.rect(P, X - w - 1 + j, yy, 1, 1, '#b8d4ff', a * 0.9);
+        px.rect(P, X - w + j, yy, w * 2, 1, '#06060c', a);
+        px.rect(P, X + w + j, yy, 1, 1, '#b8d4ff', a * 0.9);
+      }
+    };
+    G.FX._SIG.erase_seam = ['x', 'y', 't', 't0'];
+  }
+  const seam = (x, y, by, o = {}) => {
+    if (G.fx) G.fx.spawn('erase_seam', { x, y, h: o.h || 30, dur: o.dur || 1 }, { life: o.dur || 1, by });
+  };
+
+  // ======================================================================= 虹村亿泰 · 轰炸空间（设计文档 3.3「亿泰 · 轰炸空间」）
+  //   HP 140、走速 62（第2章开发脚本 §0）。J1 / J2 右手横扫、反手（和白金之星 J1 / J2 同档）；
+  //   J3「削」：右手掌一抹，伤害 22、无视格挡，削过的地方留一道黑缝 1 s；J3 后连按：左拳连打，终结是一次削；
+  //   按住 L 按 J「拉近」：削掉中间的空间，把面前 120 px 内最近的敌人（或者挂了 pullable 的道具）拉到跟前、硬直 18f，接 J3 是固定连段；
+  //   K「削步」：削掉面前的空间瞬移 64 px，代替普通闪避，无敌帧一样；U：切入 → 连削三次，每次先拉近再削，最后一下削掉它脚下的地面让它摔倒。
+  //   各章的情境招（削地面露出电缆、削掉空气炸弹、把猫草拉开……）写在各章自己的战斗文件里（kitOverride / 道具的 onPulled）
+  const TH = '#8cb6ff', TH2 = '#3462d0';
+  M.TH_J1 = Object.assign({}, M.SP_J1, { accent: TH });
+  M.TH_J2 = Object.assign({}, M.SP_J2, { accent: TH });
+  const SEAM_FX = (dx, h) => [{ name: 'erase_seam', dx, kw: { h, dur: 1 }, life: 1 }];
+  M.TH_J3 = {
+    slot: 'J3', body: 'cmd', stand: 'erase', standSeq: [[0, f(8)], [1, f(16)], [2, 99]], standDx: 22, dur: f(30), active: [f(9), f(13)],
+    from: 'body', reach: [6, 48], depth: 9, dmg: 22, push: 4, guard: 'none', energy: 3, poiseDmg: 30, stopAll: f(6), link: f(13), cancel: f(13),
+    step: 2, sfx: 'whoosh', sfxRate: 0.7, sfxHit: 'punch_heavy', sfxVol: 0.8, fxHit: 'heavy', accent: TH, shake: [3, f(12)], bump: 0.06,
+    activeFx: SEAM_FX(14, 30),
+  };
+  // 连打终结：一次削（6 / 4 / 24，无视格挡）
+  M.TH_FIN = {
+    slot: 'fin', body: 'cmd', stand: 'erase', standSeq: [[1, f(10)], [2, 99]], standDx: 24, dur: f(34), active: [f(6), f(10)],
+    from: 'body', reach: [6, 54], depth: 10, dmg: 18, push: 12, guard: 'none', energy: 4, poiseDmg: 25, stopAll: f(8), link: 99, cancel: f(10),
+    step: 4, sfx: 'whoosh', sfxRate: 0.65, sfxHit: 'crit', fxHit: 'finisher', accent: TH2, shake: [3, f(15)], bump: 0.08, flashTarget: f(2),
+    activeFx: SEAM_FX(16, 34),
+  };
+  // 拉近：判定不靠近战框，onStart 里自己找人
+  function pullPick(a, range) {
+    const st = G.world && G.world.stage, dir = a.facing || 1;
+    if (!st) return null;
+    const foe = a.team === 'enemy';
+    let best = null, bd = Infinity;
+    for (const t of st.actors) {
+      if (!t || t === a || t.remove || t.dead || t.hp <= 0 || t.untargetable || t.visible === false) continue;
+      const ok = foe ? (t === G.world.player || t.team === 'ally') : (t.team === 'enemy' || (t.team === 'object' && t.pullable));
+      if (!ok) continue;
+      const dx = (t.x - a.x) * dir, dy = Math.abs(t.y - a.y);
+      if (dx < 8 || dx > range || dy > 16) continue;
+      const d = dx + dy * 2;
+      if (d < bd) { bd = d; best = t; }
+    }
+    return best;
+  }
+  function pullTo(a, t, gap = 24, dur = 0.12) {
+    const st = G.world.stage, dir = a.facing || 1;
+    let x = a.x + dir * gap, y = a.y;
+    if (st && st.bounds) { const [lo, hi] = st.bounds(); x = G.clamp(x, lo, hi); y = G.clamp(y, st.yMin, st.yMax); }
+    seam(t.x, t.y, a, { h: 32 });
+    if (G.combat.ghostBurst) G.combat.ghostBurst(t, 2);
+    t.stunT = Math.max(t.stunT || 0, f(18));
+    if (t.onPulled) t.onPulled(a);
+    return G.combat.tweenTo(t, x, y, dur);
+  }
+  M.TH_PULL = {
+    slot: 'guardAttack', body: 'cmd', stand: 'pull', standDx: 18, dur: f(20), active: [f(5), f(7)], melee: false, cd: 0.6, energy: 0,
+    sfx: 'whoosh', sfxRate: 0.55, accent: TH,
+    onStart(a) {
+      const t = pullPick(a, 120);
+      if (t) pullTo(a, t);
+      else seam(a.x + (a.facing || 1) * 40, a.y, a, { h: 26, dur: 0.6 });
+    },
+  };
+  // 削步：起点、落点各一道黑缝，不拖残影（像是空间被削掉、人直接到了那边）
+  function eraseStep(a, d) {
+    seam(a.x, a.y, a, { h: 30, dur: 0.6 });
+    seam(a.x + d.x, a.y + d.y, a, { h: 30, dur: 0.6 });
+    a.ghostOn = false;
+  }
+  M.TH_U_CUT = {
+    slot: 'special', body: 'cmd', stand: 'erase', dur: f(20), active: [0, f(4)], from: 'body', reach: [0, 60], depth: 14,
+    dmg: 25, push: 2, energy: 0, poiseDmg: 40, stopAll: 0, guard: 'none', sfxHit: 'punch_heavy', fxHit: 'heavy', accent: TH, shake: [3, f(12)],
+  };
+  M.TH_U_FIN = Object.assign({}, M.TH_U_CUT, {
+    dmg: 40, push: 30, launch: { z: 10, t: f(36) }, poiseDmg: 999, sfxHit: 'ko_hit', fxHit: 'finisher', accent: TH2, bump: 0.2, flashTarget: f(2),
+  });
+  K.okuyasu = {
+    hp: 140, speed: 62, standId: 'thehand',
+    combo: ['TH_J1', 'TH_J2', 'TH_J3'],
+    rush: {
+      tick: f(4), dmg: 4, push: 1, reach: [6, 52], depth: 10, loop: 'ora_loop', word: null,
+      fx: 'fists', fist: 'thehand', accent: '#a8c8ff', hitSfx: 'punch', finisher: 'TH_FIN',
+    },
+    guard: { pose: 'block' }, guardAttack: 'TH_PULL', chords: {}, parry: { effect: 'reflect' },
+    dodge: { dist: 64, dur: f(5), iframe: f(10), cd: f(30), onStart: eraseStep },
+    special: { name: '轰炸空间', title: 'okuyasu', bg: 'radial', colours: ['#1c3a8a', '#0a1430', '#3462d0'], run: spOkuyasu, pose: 'cmd' },
+    explore: { pose: 'erase' }, grunt: 'grunt_jotaro',
+  };
+  // 连削三次：拉近 0.1 s → 削（判定在身前 0–60 px）→ 停一下；第三下削掉脚下的地面，对手摔出去
+  async function spOkuyasu(p, C) {
+    for (let i = 0; i < 3; i++) {
+      const t = C.target(220), last = i === 2;
+      if (!t) break;
+      C.aim(t);
+      C.stand('pull', { dx: 18 });
+      C.sfx('whoosh', { rate: 0.55 });
+      await pullTo(p, t, 26, 0.1);
+      if (!C.valid()) return;
+      C.stand('erase', { dx: 22, seq: [[1, f(6)], [2, 99]] });
+      C.sfx('whoosh', { rate: 0.7 });
+      seam(p.x + p.facing * 30, p.y, p, { h: 36 });
+      const hit = C.hitArea(C.front(0, 64, 14), last ? 'TH_U_FIN' : 'TH_U_CUT');
+      if (hit.length) {
+        if (last) {
+          G.combat.fxAt('crack', { x: hit[0].x, y: hit[0].y, size: 16 }, p, 1.5);     // crack 默认不会自己消失
+          C.impact(['invert', 'blue'], f(2), f(12));
+          C.stopAll(f(12) + 0.2);
+          C.shake(6, f(30));
+        } else { C.impact('invert', f(2)); C.shake(3, f(12)); }
+      }
+      await C.wait(last ? 0.5 : 0.3);
+    }
+  }
+
+  // ======================================================================= 广濑康一 · 回音 ACT1（设计文档 3.3「康一 · 回音」；第2章第 3 战起能用）
+  //   HP 90、走速 68。J：往前射一个拟声字（「咚！」「嗡——」「叮铃铃」「啪！」轮着来），伤害很低；贴中以后 3 s 内每秒被吵得顿一下（硬直 10f）。
+  //   ACT1 打不出拳：没有连打。K 闪避、L 格挡照通用；U「大音量」：身边 160 px 的敌人全被吵得硬直 1.5 s（Boss 0.8 s），再吵 3 s。
+  //   ACT2（尾巴抽打、声音陷阱）由第3章派生 K.koichi_act2，ACT3（近身拳、3 FREEZE）由第7章派生 K.koichi_act3
+  const EC = '#7cf0b0';
+  const ECHO_IMG = ['ui/sfx/echo_0', 'ui/sfx/echo_1', 'ui/sfx/echo_2', 'ui/sfx/echo_3'];
+  function noisy(t, sec = 3) {
+    const run = G.runId, m = t.mem || (t.mem = {});
+    m.noisyUntil = G.clk.world + sec;
+    if (m.noisyLoop) return;
+    m.noisyLoop = true;
+    (async () => {
+      try {
+        while (G.runId === run && !t.dead && t.hp > 0 && G.clk.world < m.noisyUntil) {
+          await G.wait(1, 'world');
+          if (G.runId !== run || t.dead || t.hp <= 0) break;
+          t.stunT = Math.max(t.stunT || 0, f(10));
+          if (G.fx) G.fx.spawn('glint', { x: t.x, y: t.y - 30, size: 5 }, { life: 0.25, by: t });
+        }
+      } catch (e) { if (!(G.cancelled && G.cancelled(e))) throw e; } finally { m.noisyLoop = false; }
+    })();
+  }
+  const echoShot = (dmg, push, stop) => ({
+    kind: 'img', image: ECHO_IMG[0], n: 1, speed: 230, life: 0.7, range: 150, hitR: [6, 8, 22], dmg, push, energy: 2,
+    stop, slot: 'shot', reflect: false, accent: EC, onHit: (s, t, r) => { if (r && r.dmg) noisy(t); },
+  });
+  const nextWord = (a) => { a.mem.echoN = ((a.mem.echoN == null ? -1 : a.mem.echoN) + 1) % ECHO_IMG.length; return { image: ECHO_IMG[a.mem.echoN] }; };
+  M.EC_J1 = {
+    slot: 'J1', body: 'cmd', stand: 'shoot', standDx: 6, standZ: 14, dur: f(18), active: [f(6), f(8)], melee: false, from: 'stand',
+    fireAt: [f(6)], link: f(10), cancel: f(10), shotAhead: 10, shotZ: 8, shot: echoShot(3, 4, f(2)), shotMod: nextWord,
+    sfx: 'whoosh', sfxRate: 1.4, energy: 0, accent: EC,
+  };
+  M.EC_J2 = Object.assign({}, M.EC_J1, { slot: 'J2' });
+  M.EC_J3 = Object.assign({}, M.EC_J1, { slot: 'J3', dur: f(24), link: f(14), cancel: f(14), shot: echoShot(5, 10, f(4)), sfxRate: 1.1 });
+  M.EC_U = {
+    slot: 'special', body: 'cmd', dur: f(20), active: [0, f(4)], from: 'body', reach: [0, 160], depth: 30,
+    dmg: 12, push: 8, energy: 0, poiseDmg: 40, guard: 'none', sfxHit: 'punch', fxHit: 'light', accent: EC,
+  };
+  K.koichi = {
+    hp: 90, speed: 68, standId: 'echoes1',
+    combo: ['EC_J1', 'EC_J2', 'EC_J3'],
+    rush: null,
+    guard: { pose: 'block' }, guardAttack: null, chords: {}, parry: { effect: 'root', dur: f(24) }, dodge: {},
+    special: { name: '回音', title: 'koichi', bg: 'radial', colours: ['#1c6a40', '#0a3a20', '#2a8a50'], run: spKoichi, pose: 'cmd' },
+    explore: { pose: 'shoot' }, grunt: null,
+    noisy,      // 各章的情境招也要“吵得顿一下”时用：G.KITS.koichi.noisy(敌人, 秒数)
+  };
+  async function spKoichi(p, C) {
+    C.stand('shoot', { dx: 8, z: 14 });
+    C.sfx('whoosh', { rate: 0.5 });
+    C.fx('shockwave', { x: p.x, y: p.y - 20, r_max: 160, dur: 0.5, colour: '#9cf0c0' });
+    const hit = C.hitArea({ x0: p.x - 160, x1: p.x + 160, y0: p.y - 30, y1: p.y + 30 }, 'EC_U');
+    for (const t of hit) {
+      t.stunT = Math.max(t.stunT || 0, t.boss ? 0.8 : 1.5);
+      noisy(t, 3);
+      C.word('咚！', t);
+    }
+    if (hit.length) C.shake(3, f(18));
+    await C.wait(0.6);
   }
 
   // ======================================================================= 序1 承太郎的试探（开发脚本 §3 序1）
