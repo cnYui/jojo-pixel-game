@@ -1,0 +1,139 @@
+{
+ "props": {
+  "ch9_sneaker": {
+   "image": "props/ch9_sneaker",
+   "frames": 1,
+   "size": [
+    14,
+    9
+   ],
+   "pivot": [
+    7,
+    9
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "ch9_candle": {
+   "image": "props/ch9_candle",
+   "frames": 3,
+   "size": [
+    7,
+    11
+   ],
+   "pivot": [
+    3,
+    11
+   ],
+   "fps": 6,
+   "kind": "loop",
+   "k": 1.0
+  },
+  "ch9_foot": {
+   "image": "props/ch9_foot",
+   "frames": 1,
+   "size": [
+    10,
+    8
+   ],
+   "pivot": [
+    5,
+    8
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "ch9_car": {
+   "image": "props/ch9_car",
+   "frames": 3,
+   "size": [
+    26,
+    12
+   ],
+   "pivot": [
+    13,
+    12
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "ch9_truck": {
+   "image": "props/ch9_truck",
+   "frames": 1,
+   "size": [
+    34,
+    13
+   ],
+   "pivot": [
+    17,
+    13
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "ch9_cone": {
+   "image": "props/ch9_cone",
+   "frames": 1,
+   "size": [
+    7,
+    8
+   ],
+   "pivot": [
+    3,
+    8
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "ch9_bubble": {
+   "image": "props/ch9_bubble",
+   "frames": 2,
+   "size": [
+    13,
+    13
+   ],
+   "pivot": [
+    6,
+    13
+   ],
+   "fps": 8,
+   "kind": "loop",
+   "k": 1.0
+  },
+  "ch9_dish": {
+   "image": "props/ch9_dish",
+   "frames": 1,
+   "size": [
+    10,
+    5
+   ],
+   "pivot": [
+    5,
+    5
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "ch9_flowers": {
+   "image": "props/ch9_flowers",
+   "frames": 1,
+   "size": [
+    7,
+    8
+   ],
+   "pivot": [
+    3,
+    8
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  }
+ }
+}
