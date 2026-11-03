@@ -59,7 +59,22 @@ def main():
     }
     mp = {'stamp': U.save('map/stamp_199907', stamp('7月')),
           'place': U.save('map/place_ch10', U.small('杜王町 郊外', color='#5a4a34', edge='#f4ead2'))}
-    U.chapter_ui('ch10', namecards=namecards, standcards=standcards, locations=locations, vs=vs, map_ch10=mp)
+    # 拟声字（S.sfxText / 招式的 word 都查 ui.sfx 里的字图）：金属声灰绿、谜的纸白黄、公路之星粉、喊声红
+    W = {
+        '锵': 'm', '锵！': 'm', '锵！！': 'm', '咔咔咔': 'm', '融进铁架': 'm', '弹回来了！': 'm', '砰！': 'm', '磁铁！': 'c', '嘀嘀——': 'c',
+        '嗡——': 'c', '火！': 'r', '蝎子！': 'p', '电！': 'p', '唰': 'p', '嗅': 'h', '吸养分': 'h', '咚': 'h', '咚！': 'h', '咚!!': 'h',
+        'DORARARA': 'd', '（咬住嘴唇）': 's', '（抓住书包带）': 's',
+    }
+    COL = {'m': (('#f4fff0', '#a8d8a0', '#5a8a5a'), '#0a1a0c'), 'c': (('#f0ffff', '#a0e0e0', '#4aa0b0'), '#081a2a'),
+           'r': (('#fff4c0', '#ffa040', '#e04a1a'), '#2a0a04'), 'p': (('#fffaf0', '#f0e0b0', '#c0a060'), '#1a120a'),
+           'h': (('#ffe8f4', '#ff9ccc', '#e05aa0'), '#2a0a34'), 'd': (('#ffe8f4', '#ff9ccc', '#e05aa0'), '#2a0a34'),
+           's': (('#ffffff', '#e0e0f0'), '#1a1a2a')}
+    sfx = {}
+    for i, (w, k) in enumerate(W.items()):
+        cols, edge = COL[k]
+        size = 14 if k == 's' else 22 if len(w) >= 4 else 28
+        sfx[w] = U.save('sfx/ch10_%02d' % i, U.big(w, size, cols, edge=edge, shadow='#12041a', edge_w=3, shadow_d=(2, 2)))
+    U.chapter_ui('ch10', sfx=sfx, namecards=namecards, standcards=standcards, locations=locations, vs=vs, map_ch10=mp)
     print('第10章 UI：名牌', list(namecards), '替身卡', list(standcards), '地点', list(locations), 'VS', list(vs))
 
 
