@@ -367,6 +367,7 @@
         if (!m.fear && m.fearIn <= 0) { m.fear = true; m.fearLeft = 2.5; e.emote = { text: '（闭上一只眼）', t: 2, color: '#ffe0f0' }; }
         if (m.fear) { m.fearLeft -= dt; if (m.fearLeft <= 0) { m.fear = false; m.sniffed = false; m.fearIn = 4 + Math.random() * 2; } }
       }
+      if (m.hopT) m.hopT = Math.max(0, m.hopT - dt) || 0;
       if (e.state !== 'idle' && e.state !== 'walk') return true;
       e.facing = p.x > e.x ? 1 : -1;
       // 闭眼的那 2.5 s 他僵在原地（怕得动不了）：这就是打他的机会
@@ -374,7 +375,12 @@
       // 拉开 80 px：离太近就往后跳
       const dx = Math.abs(p.x - e.x);
       const keep = m.terrified ? 50 : 80;
-      if (dx < keep - 20 || dx > keep + 30 || Math.abs(p.y - e.y) > 6) G.combat.walkTo(e, G.clamp(p.x + (e.x < p.x ? -keep : keep), st.x0 + 10, st.x1 - 10), p.y, dt, e.speed);
+      if (dx < keep - 20 || dx > keep + 30 || Math.abs(p.y - e.y) > 6) {
+        // 不往墙角里缩：靠墙了就从玩家头顶跳到另一边去（免得被堵在角落里谁都动不了）
+        let tx = p.x + (e.x < p.x ? -keep : keep);
+        if ((tx < st.x0 + 30 || tx > st.x1 - 30) && !m.hopT) { m.hopT = 2.5; G.S.fx('burst', { x: e.x, y: e.y - 16, n: 8, speed: 30, colours: ['#fbf8ef', '#ddd6c4'], life: 0.5 }); tx = p.x + (e.x < p.x ? keep : -keep); e.x = G.clamp(tx, st.x0 + 30, st.x1 - 30); G.S.sfx('whoosh', 0.5); }
+        G.combat.walkTo(e, G.clamp(tx, st.x0 + 30, st.x1 - 30), p.y, dt, e.speed);
+      }
       else { if (e.state === 'walk') e.state = 'idle'; e.play('idle'); }
       m.gap = (m.gap == null ? 1.6 : m.gap) - dt;
       if (m.gap > 0 || G.combat.tokens() >= 2 || m.fear) return true;

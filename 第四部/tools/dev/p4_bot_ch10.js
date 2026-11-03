@@ -31,7 +31,7 @@
     const st = A.W().stage;
     const tx = G.clamp(e.x + side * gap, st.x0 + 6, st.x1 - 6);
     const adx = Math.abs(e.x - p.x);
-    if (!p.atk && !p.rush && (adx > gap + 16 || adx < 8 || Math.abs(p.y - e.y) > 4)) { A.go(tx, e.y, 5); return; }
+    if (!p.atk && !p.rush && (adx > gap + 16 || adx < 3 || Math.abs(p.y - e.y) > 4)) { A.go(tx, e.y, 5); return; }
     if (!p.atk && !p.rush && !A.face(e.x > p.x ? 1 : -1)) return;
     A.hold([]);
     if ((fb.taps || 0) >= 3 && A.now() - fb.lastJ < 0.7) return;
@@ -119,7 +119,6 @@
     if (d.needFix) { A.hold(['guard']); A.after('fixBook', 0.35, () => A.tap('attack')); return; }
     if (d.finishing) return A.hold([]);
     if (dodgeIf(te, 160)) return;
-    A.after('dbg3', 2, () => A.note('dbg', { p: [Math.round(p.x), Math.round(p.y), p.state, p.facing, !!p.atk, !!p.rush], te: [Math.round(te.x), te.state, te.hp], held: [...B.held], st: [A.W().stage.x0, A.W().stage.x1], ctl: p.controlReverseUntil }));
     brawl(te, 22);
   };
 })();
