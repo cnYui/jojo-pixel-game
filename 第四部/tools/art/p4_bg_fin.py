@@ -2,7 +2,7 @@
 #   输出 第四部/assets/bg/<key>/<层>.png + 第四部/assets/_meta/bg_fin.json（build_p4.py 会把 _meta/bg_*.json 并进 bg.json）。
 #   用法：python3 第四部/tools/art/p4_bg_fin.py [key ...]      预览图：第四部/assets/preview/bg_<key>.png（不进游戏包）
 #   图层 pack 一律 'final'（打包成 data/img_bg_final.js，进终章时才加载）。
-#   变体（雨天街口、幽灵小路冷 / 暖、川尻家傍晚、港口夏末）从别章已经画好的图层调色生成，存成本章 pack 里的新 key；
+#   变体（雨天街口、幽灵小路冷 / 暖、港口夏末）从别章已经画好的图层调色生成，存成本章 pack 里的新 key；
 #   别章的图还没进仓库时跳过并打印提示，等那几章的背景合进来以后再跑一遍本脚本即可。
 import math
 import os
@@ -858,8 +858,8 @@ VARIANTS = {
     'morning_corner_rain': ('morning_corner', 'rain', ()),                 # 第11章的早上街口 → 雨天（段 A）
     'ghost_alley_cold': ('ghost_alley', 'cold', ()),                       # 第6章的幽灵小路 → 冷色（吉良的最后）
     'ghost_alley_dawn': ('ghost_alley', 'dawn', ()),                       # → 天亮的暖色（铃美升天）
-    'kawajiri_house_dusk': ('kawajiri_house', 'dusk', ('kawajiri_house_eve', 'kawajiri_house_evening', 'kawajiri_eve')),  # 第8章 → 傍晚
     'morioh_harbor_late': ('morioh_harbor', 'late', ()),                   # 第4章的杜王港 → 夏末（送乔瑟夫和承太郎）
+    # 川尻家傍晚不用另做：第8章的 kawajiri_house 自带 key 'dusk'（state.dusk = 1）
 }
 MODES = {
     'rain': dict(mul=(.62, .66, .76), add=(0, 4, 12), desat=.3, tint=('#203050', .14)),
