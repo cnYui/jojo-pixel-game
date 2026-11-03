@@ -1,0 +1,269 @@
+{
+ "morning_corner": {
+  "pack": "ch11",
+  "w": 640,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "clock": [
+    398,
+    54
+   ],
+   "clock_base": [
+    398,
+    146
+   ],
+   "postbox": [
+    359,
+    146
+   ],
+   "shop": [
+    300,
+    146
+   ],
+   "shop_window": [
+    303,
+    128
+   ],
+   "mirror": [
+    270,
+    146
+   ],
+   "alley": [
+    206,
+    146
+   ],
+   "alley_far": [
+    206,
+    116
+   ],
+   "gate_a": [
+    71,
+    146
+   ],
+   "gate_b": [
+    530,
+    146
+   ],
+   "vending": [
+    589,
+    146
+   ],
+   "apartment": [
+    618,
+    146
+   ],
+   "pole_l": [
+    132,
+    146
+   ],
+   "pole_r": [
+    572,
+    146
+   ],
+   "walk_x": [
+    8,
+    632
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/morning_corner/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/morning_corner/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pick",
+    "images": [
+     "bg/morning_corner/clock_0700",
+     "bg/morning_corner/clock_0705",
+     "bg/morning_corner/clock_0710",
+     "bg/morning_corner/clock_0715",
+     "bg/morning_corner/clock_0720",
+     "bg/morning_corner/clock_0725",
+     "bg/morning_corner/clock_0730",
+     "bg/morning_corner/clock_0735",
+     "bg/morning_corner/clock_0740",
+     "bg/morning_corner/clock_0745",
+     "bg/morning_corner/clock_0750",
+     "bg/morning_corner/clock_0755",
+     "bg/morning_corner/clock_0800",
+     "bg/morning_corner/clock_0805",
+     "bg/morning_corner/clock_0810",
+     "bg/morning_corner/clock_0815",
+     "bg/morning_corner/clock_0820",
+     "bg/morning_corner/clock_0825",
+     "bg/morning_corner/clock_0830"
+    ],
+    "values": [
+     420,
+     425,
+     430,
+     435,
+     440,
+     445,
+     450,
+     455,
+     460,
+     465,
+     470,
+     475,
+     480,
+     485,
+     490,
+     495,
+     500,
+     505,
+     510
+    ],
+    "key": "clock",
+    "k": 1,
+    "x": 387,
+    "y": 43
+   },
+   {
+    "type": "tint",
+    "color": "#ffb060",
+    "alpha": 0.1,
+    "key": "dawn"
+   },
+   {
+    "type": "tint",
+    "color": "#1a2040",
+    "alpha": 0.35,
+    "key": "dark"
+   }
+  ],
+  "fg": []
+ },
+ "street_crossing": {
+  "pack": "ch11",
+  "w": 960,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "pharmacy": [
+    50,
+    146
+   ],
+   "camera_shop": [
+    148,
+    146
+   ],
+   "camera_window": [
+    130,
+    112
+   ],
+   "flower": [
+    250,
+    146
+   ],
+   "bank": [
+    352,
+    146
+   ],
+   "atm": [
+    382,
+    146
+   ],
+   "signal_l": [
+    400,
+    146
+   ],
+   "signal_r": [
+    580,
+    146
+   ],
+   "crosswalk": [
+    404,
+    576
+   ],
+   "road_far": [
+    490,
+    104
+   ],
+   "office": [
+    640,
+    146
+   ],
+   "office_door": [
+    640,
+    146
+   ],
+   "wall": [
+    720,
+    830
+   ],
+   "phone": [
+    752,
+    146
+   ],
+   "hotel_sign": [
+    637,
+    146
+   ],
+   "post": [
+    896,
+    146
+   ],
+   "postbox": [
+    923,
+    146
+   ],
+   "exit_x": 944,
+   "walk_x": [
+    8,
+    952
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/street_crossing/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/street_crossing/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pick",
+    "images": [
+     "bg/street_crossing/sig_red",
+     "bg/street_crossing/sig_green"
+    ],
+    "key": "signal",
+    "k": 1,
+    "x": 344,
+    "y": 0
+   },
+   {
+    "type": "tint",
+    "color": "#ff8a3a",
+    "alpha": 0.16,
+    "key": "pm"
+   }
+  ],
+  "fg": []
+ }
+}
