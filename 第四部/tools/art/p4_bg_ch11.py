@@ -1,11 +1,12 @@
 # 第四部第11章（川尻家 / 败者食尘）的背景，全部程序绘制，画法和零件沿用序章（p4_bg.py / p4_bglib.py）和第2章（p4_bg_ch2.py）。
-#   本章新画 2 张：
+#   本章新画 3 张：
 #     morning_corner   640  住宅区的街口，7 月早上的光（邮筒、电线杆、路边大钟、カーブミラー、往里走的小巷）。第 18 战。
 #                          钟的指针是 pick 层，key 'clock' = 当天的分钟数（7:00 = 420 … 8:30 = 510，每 5 分钟一张）。
 #     street_crossing  960  商店街到大马路的十字路口（第 17 战段 A）：左边一排铺面，中间横穿的大路 + 斑马线 + 两组红绿灯，
 #                          右边写字楼、长围墙、邮局、去杜王大酒店的路牌。红绿灯是 pick 层，key 'signal'：0 行人红灯 / 1 行人绿灯。
 #   本章直接沿用、不复制的背景：morioh_map（序章）、kawajiri_house（第8章，早 / 夜用它自己的开关层）、ghost_alley（第6章）。
-#   rohan_house 的脚手架版要等第5章的露伴宅合进来再叠（见 第四部/docs/第11章_背景.md）。
+#     rohan_house_scaffold 480  第5章露伴宅（p4_bg_ch5.rohan_house_layers）+ 修缮用的脚手架、防护网、“工事中”牌。
+#                          第5章分支没合进来时跳过这张；要重画就 PYTHONPATH 指到有 p4_bg_ch5.py 的目录。
 #   输出 第四部/assets/bg/<key>/<层>.png + 第四部/assets/_meta/bg_ch11.json（build_p4.py 会把 _meta/bg_*.json 并进 bg）。
 #   用法：python3 第四部/tools/art/p4_bg_ch11.py [key ...]      预览图：第四部/assets/preview/bg_<key>.png（不进游戏包）
 #   终章要的“街口雨天版”可以 import 本文件的 corner_near(var='rain')。
@@ -953,14 +954,123 @@ def street_crossing():
     return meta
 
 
-SCENES = {'morning_corner': morning_corner, 'street_crossing': street_crossing}
+# ============================================================ 露伴宅修缮版 rohan_house_scaffold（480 宽，第5章 rohan_house + 脚手架）
+#   乙雅三来看第9章那场火之后的修缮：右翼（二楼工作室凸窗到右端）搭着钢管脚手架，最右一跨挂着防护网，
+#   梯子靠在左边那根立杆上，院墙上挂“工事中”的牌子。脚手架在院墙栏杆后面（栏杆重新盖一遍）。
+#   底图从第5章的 p4_bg_ch5.rohan_house_layers() 来；第5章分支没合进来时跳过这张（保留已经生成的文件）。
+SCAF_X = (278, 356, 412)                 # 三根立杆
+SCAF_Y = (32, 92, 118)                   # 横杆（避开凸窗 RH_STUDY 的 y 38–89）
+
+
+def scaffold_layer(W=480):
+    im = new(W, 180)
+    d = ImageDraw.Draw(im)
+    x0, x1 = SCAF_X[0], SCAF_X[-1]
+    top, base = SCAF_Y[0] - 4, 128
+    # 防护网（最右一跨）：抖动的灰蓝网，墙面透出来一半
+    for y in range(SCAF_Y[0], 120):
+        for x in range(SCAF_X[1] + 2, SCAF_X[2] - 1):
+            if (x + y) % 2 == 0:
+                px(d, x, y, '#6a8aa0' if (y // 6) % 2 else '#5e7e94')
+    for y in range(SCAF_Y[0], 120, 12):                                       # 网的绑绳
+        line(d, (SCAF_X[1] + 2, y, SCAF_X[2] - 2, y), '#4a6478')
+    # 斜撑（右跨里一根，左跨下半一根）
+    line(d, (SCAF_X[1], SCAF_Y[1], SCAF_X[2], SCAF_Y[0]), '#8a9098')
+    line(d, (SCAF_X[0], SCAF_Y[2], SCAF_X[1], SCAF_Y[1]), '#8a9098')
+    # 立杆
+    for x in SCAF_X:
+        rect(d, (x - 1, top, x, base), '#9aa0a8')
+        line(d, (x - 1, top, x - 1, base), '#c4c8ce')
+        rect(d, (x - 3, base - 2, x + 2, base), '#6a6e74')                    # 底座
+    # 横杆 + 踏板（钢踏板，带一排孔）；右跨中间多一道横杆
+    for y in SCAF_Y:
+        line(d, (x0 - 4, y, x1 + 4, y), '#8a9098')
+        rect(d, (x0 - 2, y - 3, x1 + 2, y - 1), '#a8a69c')
+        line(d, (x0 - 2, y - 3, x1 + 2, y - 3), '#c8c6bc')
+        for x in range(x0, x1, 4):
+            px(d, x, y - 2, '#7a786e')
+    line(d, (SCAF_X[1], 62, SCAF_X[2] + 4, 62), '#8a9098')
+    rect(d, (SCAF_X[1], 59, SCAF_X[2] + 2, 61), '#a8a69c')
+    for y in SCAF_Y + (62,):                                                  # 扣件
+        for x in SCAF_X:
+            if y == 62 and x == SCAF_X[0]:
+                continue
+            rect(d, (x - 2, y - 1, x + 1, y + 1), '#5a5e66')
+    # 顶上的扶手栏杆
+    line(d, (x0 - 2, SCAF_Y[0] - 10, x1 + 2, SCAF_Y[0] - 10), '#8a9098')
+    for x in SCAF_X:
+        rect(d, (x - 1, SCAF_Y[0] - 10, x, SCAF_Y[0]), '#9aa0a8')
+    # 梯子（靠在左立杆，从下层踏板到地）
+    lx = SCAF_X[0] + 6
+    for xx in (lx, lx + 7):
+        line(d, (xx, SCAF_Y[1] - 2, xx + 3, base - 1), '#c8a050')
+    for y in range(SCAF_Y[1] + 2, base - 1, 5):
+        k = (y - SCAF_Y[1]) / (base - SCAF_Y[1])
+        line(d, (lx + 3 * k, y, lx + 7 + 3 * k, y), '#a88038')
+    # 院子里堆着的钢管 + 一袋水泥
+    for i in range(4):
+        line(d, (300, 126 - i * 2, 346, 124 - i * 2), '#9aa0a8')
+        px(d, 300, 126 - i * 2, '#5a5e66')
+    rect(d, (384, 120, 396, 127), '#d8d0bc')
+    line(d, (384, 120, 396, 120), '#ece4d0')
+    return im
+
+
+def koji_sign(im, x, y):
+    """院墙栏杆上挂的“工事中”牌：黄底，黑红字，两角绑着铁丝"""
+    d = ImageDraw.Draw(im)
+    tw, th = kanji_size('工事中', 10)
+    w = tw + 6
+    rect(d, (x, y, x + w, y + th + 6), '#2a2a30')
+    rect(d, (x + 1, y + 1, x + w - 1, y + th + 5), '#f4d040')
+    kanji(im, x + 3, y + 3, '工事中', '#c82a2a', size=10)
+    d = ImageDraw.Draw(im)
+    for xx in (x + 1, x + w - 1):
+        px(d, xx, y - 1, '#6a6a70')
+    return (x + w // 2, y + th + 6)
+
+
+def rohan_house_scaffold():
+    try:
+        from p4_bg_ch5 import RH_STUDY, rh_fence, rohan_house_layers
+    except ImportError:
+        print('  跳过 rohan_house_scaffold：第5章的 p4_bg_ch5.py 还没合进来')
+        return None
+    W = 480
+    far, near, _win, _ = rohan_house_layers()
+    near.alpha_composite(scaffold_layer(W))
+    fence = rh_fence(new(W, 180))                                               # 栏杆盖回脚手架前面
+    near.alpha_composite(fence)
+    koji_sign(near, 366, 110)
+    layers = {'far': far, 'near': near}
+    sx, sy = (RH_STUDY[0] + RH_STUDY[2]) // 2, (RH_STUDY[1] + RH_STUDY[3]) // 2
+    meta = dict(pack=PACK, w=W, ground=150, walk=[142, 176],
+                anchors=dict(gate=[240, 148], gate_in=[240, 140], porch=[240, 128], nameplate=[202, 117], mailbox=[280, 115],
+                             study_window=[sx, sy], study_window_box=list(RH_STUDY), house_box=[64, 8, 416, 128],
+                             scaffold_box=[SCAF_X[0] - 4, SCAF_Y[0] - 10, SCAF_X[2] + 4, 128], scaffold_deck=[317, SCAF_Y[1] - 3],
+                             ladder=[SCAF_X[0] + 10, 128], koji_sign=[380, 110], pole=[132, 148], walk_x=[8, 472]),
+                layers=[{'type': 'pano', 'image': 'bg/rohan_house_scaffold/far', 'k': 0.5, 'x': 0, 'y': 0},
+                        {'type': 'pano', 'image': 'bg/rohan_house_scaffold/near', 'k': 1, 'x': 0, 'y': 0},
+                        {'type': 'tint', 'color': '#ff8a3a', 'alpha': 0.16, 'key': 'pm'}],
+                fg=[])
+    pv = far.resize((W, 180), Image.NEAREST)
+    pv.alpha_composite(near)
+    preview('rohan_house_scaffold', {'room': pv}, ['room'], W)
+    save_layers('rohan_house_scaffold', layers, meta)
+    return meta
+
+
+SCENES = {'morning_corner': morning_corner, 'street_crossing': street_crossing, 'rohan_house_scaffold': rohan_house_scaffold}
 
 
 def main(keys):
     path = os.path.join(LIB.META, 'bg_ch11.json')
     allm = LIB.load_json(path, {}) or {}
     for k in (keys or list(SCENES)):
-        allm[k] = SCENES[k]()
+        m = SCENES[k]()
+        if m is None:                       # 依赖别章脚本、那一章还没合进来：保留已生成的
+            continue
+        allm[k] = m
         print('背景', k)
     with open(path, 'w', encoding='utf-8') as fh:
         json.dump(allm, fh, ensure_ascii=False, indent=1)
