@@ -1,0 +1,570 @@
+{
+ "chars": {
+  "mikitaka": {
+   "name": "支仓未起隆",
+   "image": "chars/mikitaka",
+   "cell": [
+    32,
+    32
+   ],
+   "pivot": [
+    16,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "dodge": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "guard": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "float": {
+     "row": 6,
+     "frames": 2,
+     "fps": 3,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/mikitaka/normal_0",
+     "heads/mikitaka/normal_1"
+    ],
+    "smile": [
+     "heads/mikitaka/smile_0",
+     "heads/mikitaka/smile_1"
+    ],
+    "shock": [
+     "heads/mikitaka/shock_0",
+     "heads/mikitaka/shock_1"
+    ],
+    "rage": [
+     "heads/mikitaka/rage_0",
+     "heads/mikitaka/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "hurt",
+    "run": {
+     "a": "walk",
+     "f": 1.6
+    }
+   },
+   "top": 26,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "yuya": {
+   "name": "喷上裕也",
+   "image": "chars/yuya",
+   "cell": [
+    32,
+    32
+   ],
+   "pivot": [
+    16,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "dodge": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "guard": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/yuya/normal_0",
+     "heads/yuya/normal_1"
+    ],
+    "smile": [
+     "heads/yuya/smile_0",
+     "heads/yuya/smile_1"
+    ],
+    "shock": [
+     "heads/yuya/shock_0",
+     "heads/yuya/shock_1"
+    ],
+    "rage": [
+     "heads/yuya/rage_0",
+     "heads/yuya/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "hurt",
+    "run": {
+     "a": "walk",
+     "f": 1.6
+    },
+    "bed": "down"
+   },
+   "top": 26,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "hayato": {
+   "name": "川尻早人",
+   "image": "chars/hayato",
+   "cell": [
+    28,
+    29
+   ],
+   "pivot": [
+    14,
+    19
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 2,
+     "frames": 4,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/hayato/normal_0",
+     "heads/hayato/normal_1"
+    ],
+    "smile": [
+     "heads/hayato/smile_0",
+     "heads/hayato/smile_1"
+    ],
+    "shock": [
+     "heads/hayato/shock_0",
+     "heads/hayato/shock_1"
+    ],
+    "rage": [
+     "heads/hayato/rage_0",
+     "heads/hayato/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "hurt"
+   },
+   "top": 18,
+   "bodyW": 3,
+   "kind": "char"
+  },
+  "highway": {
+   "name": "公路之星",
+   "image": "chars/highway",
+   "cell": [
+    73,
+    43
+   ],
+   "pivot": [
+    19,
+    40
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "rush": {
+     "row": 2,
+     "frames": 2,
+     "fps": 16,
+     "kind": "loop"
+    },
+    "block": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "pose": {
+     "row": 4,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "finger": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "fist": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "reach": {
+     "row": 8,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "upper": {
+     "row": 9,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/highway/normal_0",
+     "heads/highway/normal_1"
+    ]
+   },
+   "headAlias": {
+    "smile": "normal",
+    "rage": "normal",
+    "shock": "normal"
+   },
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "punch": "punch",
+    "punch2": "punch",
+    "punch_heavy": "upper",
+    "rush": "rush",
+    "block": "block",
+    "hurt": "hurt",
+    "special": "rush",
+    "finger": "finger",
+    "walk": "idle",
+    "talk": "idle",
+    "down": "hurt",
+    "cmd": "punch",
+    "reach": "reach"
+   },
+   "top": 35,
+   "bodyW": 6,
+   "kind": "stand"
+  },
+  "straycat": {
+   "name": "猫草",
+   "image": "chars/straycat",
+   "cell": [
+    22,
+    26
+   ],
+   "pivot": [
+    11,
+    25
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "puff": {
+     "row": 1,
+     "frames": 2,
+     "fps": 6,
+     "kind": "oneshot"
+    },
+    "shoot": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "sleep": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/straycat/normal_0",
+     "heads/straycat/normal_1"
+    ],
+    "rage": [
+     "heads/straycat/rage_0",
+     "heads/straycat/rage_1"
+    ]
+   },
+   "headAlias": {
+    "smile": "normal",
+    "shock": "rage"
+   },
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "walk": "idle",
+    "run": "idle",
+    "hurt": "sleep",
+    "down": "sleep",
+    "shock": "puff",
+    "cmd": "shoot",
+    "special": "shoot",
+    "guard": "idle",
+    "dodge": "idle"
+   },
+   "top": 23,
+   "bodyW": 4,
+   "kind": "char",
+   "shadow": false
+  },
+  "nurse9": {
+   "name": "护士",
+   "image": "chars/nurse9",
+   "cell": [
+    30,
+    30
+   ],
+   "pivot": [
+    15,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/nurse9/normal_0",
+     "heads/nurse9/normal_1"
+    ],
+    "smile": [
+     "heads/nurse9/smile_0",
+     "heads/nurse9/smile_1"
+    ],
+    "shock": [
+     "heads/nurse9/shock_0",
+     "heads/nurse9/shock_1"
+    ],
+    "rage": [
+     "heads/nurse9/rage_0",
+     "heads/nurse9/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle"
+   },
+   "top": 27,
+   "bodyW": 4,
+   "kind": "char"
+  }
+ },
+ "heroes": {
+  "hayato": {
+   "cid": "hayato",
+   "cn": "川尻早人",
+   "short": "早人",
+   "rn": "KAWAJIRI HAYATO",
+   "stand": null,
+   "burst": [
+    "#4a3a1a",
+    "#8a6a2a",
+    "#d0a050"
+   ],
+   "panel": "#1a1408",
+   "accent": "#d4782e",
+   "nameColor": "#b06a2a",
+   "blipHz": 820,
+   "grunt": null
+  },
+  "mikitaka": {
+   "cid": "mikitaka",
+   "cn": "支仓未起隆",
+   "short": "未起隆",
+   "rn": "HAZEKURA MIKITAKA",
+   "stand": null,
+   "burst": [
+    "#1a2248",
+    "#2c3a78",
+    "#c8a040"
+   ],
+   "panel": "#0e1430",
+   "accent": "#e6dcb4",
+   "nameColor": "#6a7ac0",
+   "blipHz": 560,
+   "grunt": null
+  },
+  "yuya": {
+   "cid": "yuya",
+   "cn": "喷上裕也",
+   "short": "裕也",
+   "rn": "FUNGAMI YUYA",
+   "stand": "highway",
+   "burst": [
+    "#3a1a2a",
+    "#80203e",
+    "#f07a9c"
+   ],
+   "panel": "#1a0a14",
+   "accent": "#f07a9c",
+   "nameColor": "#c0507a",
+   "blipHz": 500,
+   "grunt": null
+  }
+ },
+ "speakers": {
+  "straycat": {
+   "short": "猫草",
+   "nameColor": "#8aa0c4",
+   "blipHz": 900
+  },
+  "nurse9": {
+   "short": "护士",
+   "nameColor": "#d08aa8",
+   "blipHz": 780
+  },
+  "highway": {
+   "short": "公路之星",
+   "nameColor": "#e0608a",
+   "blipHz": 520
+  }
+ },
+ "stands": {
+  "highway": {
+   "cn": "公路之星",
+   "en": "HIGHWAY STAR",
+   "owner": "yuya",
+   "aura": "#f07a9c",
+   "card": "#ffb0c8",
+   "ghost": "#ffd0dc",
+   "impact": "pink",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -6,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": null,
+   "fist": true
+  }
+ }
+}
