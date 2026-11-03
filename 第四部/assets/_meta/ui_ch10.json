@@ -1,0 +1,141 @@
+{
+ "namecards": {
+  "toyohiro": {
+   "image": "ui/namecard/toyohiro",
+   "w": 138,
+   "h": 48,
+   "x": 24,
+   "y": 265
+  },
+  "terunosuke": {
+   "image": "ui/namecard/terunosuke",
+   "w": 137,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  },
+  "mikitaka_tmp": {
+   "image": "ui/namecard/mikitaka_tmp",
+   "w": 139,
+   "h": 50,
+   "x": 24,
+   "y": 265
+  },
+  "yuya_tmp": {
+   "image": "ui/namecard/yuya_tmp",
+   "w": 127,
+   "h": 48,
+   "x": 24,
+   "y": 265
+  }
+ },
+ "standcards": {
+  "superfly": {
+   "image": "ui/standcard/superfly",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "enigma": {
+   "image": "ui/standcard/enigma",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "earthwind_tmp": {
+   "image": "ui/standcard/earthwind_tmp",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "highway_tmp": {
+   "image": "ui/standcard/highway_tmp",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  }
+ },
+ "locations": {
+  "tower": {
+   "image": "ui/location/tower",
+   "w": 198,
+   "h": 52,
+   "x": 24,
+   "y": 25
+  },
+  "miyamoto": {
+   "image": "ui/location/miyamoto",
+   "w": 150,
+   "h": 53,
+   "x": 24,
+   "y": 25
+  },
+  "library": {
+   "image": "ui/location/library",
+   "w": 175,
+   "h": 53,
+   "x": 24,
+   "y": 25
+  }
+ },
+ "vs": {
+  "superfly": {
+   "name": {
+    "image": "ui/vs/superfly_name",
+    "w": 180,
+    "h": 50
+   },
+   "en": {
+    "image": "ui/vs/superfly_en",
+    "w": 78,
+    "h": 11
+   },
+   "tag": {
+    "image": "ui/vs/superfly_tag",
+    "w": 217,
+    "h": 34
+   },
+   "colours": [
+    "#1e5a2a",
+    "#0a2a12"
+   ]
+  },
+  "enigma": {
+   "name": {
+    "image": "ui/vs/enigma_name",
+    "w": 47,
+    "h": 47
+   },
+   "en": {
+    "image": "ui/vs/enigma_en",
+    "w": 59,
+    "h": 11
+   },
+   "tag": {
+    "image": "ui/vs/enigma_tag",
+    "w": 229,
+    "h": 34
+   },
+   "colours": [
+    "#5a3a1a",
+    "#24140a"
+   ]
+  }
+ },
+ "map_ch10": {
+  "stamp": {
+   "image": "ui/map/stamp_199907",
+   "w": 67,
+   "h": 53
+  },
+  "place": {
+   "image": "ui/map/place_ch10",
+   "w": 69,
+   "h": 14
+  }
+ }
+}

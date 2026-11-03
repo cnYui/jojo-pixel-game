@@ -1,0 +1,69 @@
+{
+ "id": "yuya_tmp",
+ "name": "喷上裕也",
+ "image": "yuya_tmp.png",
+ "cell": [
+  86,
+  61
+ ],
+ "pivot": [
+  30,
+  58
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  },
+  "fight": {
+   "row": 2,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
+  },
+  "kick": {
+   "row": 3,
+   "frames": 2,
+   "fps": 8,
+   "kind": "oneshot"
+  },
+  "shock": {
+   "row": 4,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
+  },
+  "hurt": {
+   "row": 5,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "down": {
+   "row": 6,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "dodge": {
+   "row": 7,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "guard": {
+   "row": 8,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  }
+ }
+}
