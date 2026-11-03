@@ -1,0 +1,676 @@
+{
+ "rohan_house": {
+  "pack": "ch5",
+  "w": 480,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "gate": [
+    240,
+    148
+   ],
+   "gate_in": [
+    240,
+    140
+   ],
+   "porch": [
+    240,
+    128
+   ],
+   "nameplate": [
+    202,
+    117
+   ],
+   "mailbox": [
+    280,
+    115
+   ],
+   "climb_window": [
+    317,
+    146
+   ],
+   "climb_window_box": [
+    304,
+    92,
+    330,
+    118
+   ],
+   "study_window": [
+    318,
+    63
+   ],
+   "study_window_box": [
+    290,
+    46,
+    346,
+    80
+   ],
+   "house_box": [
+    64,
+    8,
+    416,
+    128
+   ],
+   "pole": [
+    132,
+    148
+   ],
+   "walk_x": [
+    8,
+    472
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/rohan_house/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/rohan_house/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "image",
+    "image": "bg/rohan_house/window_open",
+    "k": 1,
+    "x": 301,
+    "y": 90,
+    "key": "window"
+   },
+   {
+    "type": "tint",
+    "color": "#ff8a3a",
+    "alpha": 0.16,
+    "key": "pm"
+   }
+  ],
+  "fg": []
+ },
+ "rohan_studio": {
+  "pack": "ch5",
+  "w": 480,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "door": [
+    24,
+    148
+   ],
+   "door_in": [
+    24,
+    140
+   ],
+   "shelves": [
+    98,
+    146
+   ],
+   "window_l": [
+    198,
+    64
+   ],
+   "window_r": [
+    266,
+    64
+   ],
+   "desk": [
+    234,
+    146
+   ],
+   "chair": [
+    236,
+    146
+   ],
+   "lamp": [
+    200,
+    80
+   ],
+   "board": [
+    336,
+    70
+   ],
+   "cabinet": [
+    396,
+    146
+   ],
+   "manuscripts": [
+    396,
+    92
+   ],
+   "bust": [
+    448,
+    146
+   ],
+   "painting": [
+    449,
+    46
+   ],
+   "hole": [
+    398,
+    66
+   ],
+   "rubble": [
+    400,
+    140
+   ],
+   "walk_x": [
+    44,
+    472
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/rohan_studio/room",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "image",
+    "image": "bg/rohan_studio/hole",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "key": "hole"
+   },
+   {
+    "type": "glow",
+    "image": "bg/rohan_studio/glow",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "flicker": 0.03
+   },
+   {
+    "type": "image",
+    "image": "bg/rohan_studio/pages",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "key": "pages"
+   },
+   {
+    "type": "tint",
+    "color": "#ff8a3a",
+    "alpha": 0.14,
+    "key": "pm"
+   }
+  ],
+  "fg": []
+ },
+ "irrigation_ditch": {
+  "pack": "ch5",
+  "w": 640,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "sluice": [
+    120,
+    146
+   ],
+   "sluice_wheel": [
+    120,
+    69
+   ],
+   "bridge": [
+    254,
+    146
+   ],
+   "tracks_start": [
+    286,
+    146
+   ],
+   "tracks_end": [
+    440,
+    146
+   ],
+   "trap": [
+    362,
+    150
+   ],
+   "camera": [
+    528,
+    150
+   ],
+   "drain": [
+    474,
+    146
+   ],
+   "drain_pipe": [
+    474,
+    106
+   ],
+   "ditch_y": [
+    120,
+    138
+   ],
+   "walk_x": [
+    8,
+    632
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/irrigation_ditch/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/irrigation_ditch/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "strip",
+    "image": "bg/irrigation_ditch/water0",
+    "n": 6,
+    "fps": 6,
+    "w": 320,
+    "h": 10,
+    "x": 0,
+    "y": 128,
+    "k": 1
+   },
+   {
+    "type": "strip",
+    "image": "bg/irrigation_ditch/water1",
+    "n": 6,
+    "fps": 6,
+    "w": 320,
+    "h": 10,
+    "x": 320,
+    "y": 128,
+    "k": 1
+   },
+   {
+    "type": "strip",
+    "image": "bg/irrigation_ditch/drip",
+    "n": 4,
+    "fps": 8,
+    "w": 9,
+    "x": 470,
+    "y": 113,
+    "k": 1
+   },
+   {
+    "type": "tint",
+    "color": "#ff8a3a",
+    "alpha": 0.16,
+    "key": "pm"
+   }
+  ],
+  "fg": []
+ },
+ "farmhouse": {
+  "pack": "ch5",
+  "w": 480,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "back_door": [
+    24,
+    148
+   ],
+   "window": [
+    81,
+    52
+   ],
+   "sink": [
+    74,
+    146
+   ],
+   "stove": [
+    171,
+    146
+   ],
+   "pan": [
+    164,
+    96
+   ],
+   "cupboard": [
+    213,
+    146
+   ],
+   "fridge": [
+    258,
+    146
+   ],
+   "under_fridge": [
+    258,
+    134
+   ],
+   "table": [
+    340,
+    150
+   ],
+   "under_table": [
+    340,
+    140
+   ],
+   "chair_l": [
+    292,
+    146
+   ],
+   "chair_r": [
+    388,
+    146
+   ],
+   "fallen_chair": [
+    410,
+    158
+   ],
+   "woodbox": [
+    445,
+    146
+   ],
+   "raincoat": [
+    440,
+    70
+   ],
+   "walk_x": [
+    44,
+    472
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/farmhouse/room",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pick",
+    "images": [
+     "bg/farmhouse/pan",
+     "bg/farmhouse/pan_none"
+    ],
+    "key": "pan",
+    "k": 1,
+    "x": 156,
+    "y": 93
+   },
+   {
+    "type": "glow",
+    "image": "bg/farmhouse/glow",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "flicker": 0.03
+   },
+   {
+    "type": "tint",
+    "color": "#ff9a40",
+    "alpha": 0.08
+   }
+  ],
+  "fg": []
+ },
+ "farm_out": {
+  "pack": "ch5",
+  "w": 480,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "house_door": [
+    103,
+    146
+   ],
+   "porch": [
+    103,
+    140
+   ],
+   "window_l": [
+    46,
+    86
+   ],
+   "laundry": [
+    252,
+    146
+   ],
+   "laundry_line": [
+    252,
+    80
+   ],
+   "doghouse": [
+    239,
+    146
+   ],
+   "dog_bowl": [
+    275,
+    141
+   ],
+   "milk_cans": [
+    204,
+    146
+   ],
+   "barn": [
+    393,
+    146
+   ],
+   "barn_door": [
+    393,
+    120
+   ],
+   "silo": [
+    455,
+    80
+   ],
+   "fence": [
+    358,
+    146
+   ],
+   "cans": [
+    [
+     318,
+     118
+    ],
+    [
+     334,
+     118
+    ],
+    [
+     350,
+     118
+    ],
+    [
+     366,
+     118
+    ],
+    [
+     382,
+     118
+    ],
+    [
+     398,
+     118
+    ]
+   ],
+   "hay": [
+    438,
+    146
+   ],
+   "walk_x": [
+    8,
+    472
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/farm_out/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/farm_out/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pick",
+    "images": [
+     "bg/farm_out/cans_up",
+     "bg/farm_out/cans_shot"
+    ],
+    "key": "cans",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "tint",
+    "color": "#ff8a3a",
+    "alpha": 0.16,
+    "key": "pm"
+   }
+  ],
+  "fg": []
+ },
+ "hillside": {
+  "pack": "ch5",
+  "w": 960,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "pond": [
+    143,
+    146
+   ],
+   "pond_edge": [
+    262,
+    148
+   ],
+   "pond_water": [
+    143,
+    130
+   ],
+   "tracks_end": [
+    266,
+    150
+   ],
+   "tracks_start": [
+    300,
+    150
+   ],
+   "slope_foot": [
+    300,
+    146
+   ],
+   "rat_hide": [
+    778,
+    85
+   ],
+   "walk_x": [
+    8,
+    952
+   ],
+   "r1": [
+    352,
+    132
+   ],
+   "r2": [
+    430,
+    124
+   ],
+   "r3": [
+    512,
+    126
+   ],
+   "r4": [
+    590,
+    118
+   ],
+   "reflect_rock": [
+    668,
+    112
+   ],
+   "r6": [
+    744,
+    108
+   ],
+   "r7": [
+    812,
+    94
+   ],
+   "r8": [
+    900,
+    96
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/hillside/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/hillside/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "strip",
+    "image": "bg/hillside/pond",
+    "n": 6,
+    "fps": 4,
+    "w": 198,
+    "h": 16,
+    "x": 44,
+    "y": 122,
+    "k": 1
+   },
+   {
+    "type": "tint",
+    "color": "#ff8a3a",
+    "alpha": 0.16,
+    "key": "pm"
+   }
+  ],
+  "fg": [
+   {
+    "type": "pano",
+    "image": "bg/hillside/fg",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ]
+ }
+}
