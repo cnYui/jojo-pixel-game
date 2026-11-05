@@ -1,0 +1,45 @@
+{
+ "id": "echoes2",
+ "name": "回音 ACT2",
+ "image": "echoes2.png",
+ "cell": [
+  46,
+  46
+ ],
+ "pivot": [
+  24,
+  44
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 4,
+   "fps": 6,
+   "kind": "loop"
+  },
+  "punch": {
+   "row": 1,
+   "frames": 2,
+   "fps": 12,
+   "kind": "oneshot"
+  },
+  "cast": {
+   "row": 2,
+   "frames": 2,
+   "fps": 6,
+   "kind": "loop"
+  },
+  "block": {
+   "row": 3,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "hurt": {
+   "row": 4,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  }
+ }
+}

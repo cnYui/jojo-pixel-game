@@ -1,0 +1,275 @@
+{
+ "props": {
+  "pot": {
+   "image": "props/pot",
+   "frames": 2,
+   "size": [
+    14,
+    14
+   ],
+   "pivot": [
+    7,
+    14
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "humidifier": {
+   "image": "props/humidifier",
+   "frames": 3,
+   "size": [
+    14,
+    16
+   ],
+   "pivot": [
+    7,
+    16
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "wallhole": {
+   "image": "props/wallhole",
+   "frames": 1,
+   "size": [
+    26,
+    24
+   ],
+   "pivot": [
+    12,
+    11
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "glovebox": {
+   "image": "props/glovebox",
+   "frames": 2,
+   "size": [
+    11,
+    9
+   ],
+   "pivot": [
+    5,
+    9
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "glove_icon": {
+   "image": "props/glove_icon",
+   "frames": 1,
+   "size": [
+    13,
+    14
+   ],
+   "pivot": [
+    6,
+    14
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "milk": {
+   "image": "props/milk",
+   "frames": 2,
+   "size": [
+    8,
+    13
+   ],
+   "pivot": [
+    4,
+    13
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "cap": {
+   "image": "props/cap",
+   "frames": 1,
+   "size": [
+    12,
+    8
+   ],
+   "pivot": [
+    6,
+    8
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "umbrella": {
+   "image": "props/umbrella",
+   "frames": 1,
+   "size": [
+    21,
+    18
+   ],
+   "pivot": [
+    10,
+    18
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "trash": {
+   "image": "props/trash",
+   "frames": 2,
+   "size": [
+    18,
+    14
+   ],
+   "pivot": [
+    9,
+    14
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "bike": {
+   "image": "props/bike",
+   "frames": 2,
+   "size": [
+    28,
+    18
+   ],
+   "pivot": [
+    14,
+    18
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "police_bike": {
+   "image": "props/police_bike",
+   "frames": 1,
+   "size": [
+    28,
+    18
+   ],
+   "pivot": [
+    14,
+    18
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "rock": {
+   "image": "props/rock",
+   "frames": 2,
+   "size": [
+    42,
+    30
+   ],
+   "pivot": [
+    21,
+    30
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "knife": {
+   "image": "props/knife",
+   "frames": 2,
+   "size": [
+    16,
+    7
+   ],
+   "pivot": [
+    8,
+    7
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "photo": {
+   "image": "props/photo",
+   "frames": 3,
+   "size": [
+    42,
+    50
+   ],
+   "pivot": [
+    20,
+    24
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "item_soy": {
+   "image": "props/item_soy",
+   "frames": 1,
+   "size": [
+    6,
+    11
+   ],
+   "pivot": [
+    3,
+    11
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "item_tofu": {
+   "image": "props/item_tofu",
+   "frames": 1,
+   "size": [
+    8,
+    8
+   ],
+   "pivot": [
+    4,
+    8
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "item_soap": {
+   "image": "props/item_soap",
+   "frames": 1,
+   "size": [
+    7,
+    10
+   ],
+   "pivot": [
+    3,
+    10
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "item_snack": {
+   "image": "props/item_snack",
+   "frames": 1,
+   "size": [
+    8,
+    9
+   ],
+   "pivot": [
+    4,
+    9
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  }
+ },
+ "scene": {}
+}

@@ -1,0 +1,45 @@
+{
+ "id": "sha",
+ "name": "枯萎穿心攻击",
+ "image": "sha.png",
+ "cell": [
+  34,
+  28
+ ],
+ "pivot": [
+  17,
+  26
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 3,
+   "fps": 10,
+   "kind": "loop"
+  },
+  "boom": {
+   "row": 2,
+   "frames": 2,
+   "fps": 8,
+   "kind": "loop"
+  },
+  "hurt": {
+   "row": 3,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "stuck": {
+   "row": 4,
+   "frames": 2,
+   "fps": 3,
+   "kind": "loop"
+  }
+ }
+}

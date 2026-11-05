@@ -1,0 +1,120 @@
+{
+ "namecards": {
+  "mikitaka": {
+   "image": "ui/namecard/mikitaka",
+   "w": 206,
+   "h": 50,
+   "x": 24,
+   "y": 265
+  },
+  "yuya": {
+   "image": "ui/namecard/yuya",
+   "w": 221,
+   "h": 48,
+   "x": 24,
+   "y": 265
+  },
+  "hayato": {
+   "image": "ui/namecard/hayato",
+   "w": 196,
+   "h": 48,
+   "x": 24,
+   "y": 265
+  }
+ },
+ "standcards": {
+  "highway": {
+   "image": "ui/standcard/highway",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  }
+ },
+ "locations": {
+  "rohan9": {
+   "image": "ui/location/rohan9",
+   "w": 194,
+   "h": 52,
+   "x": 24,
+   "y": 25
+  },
+  "tunnel9": {
+   "image": "ui/location/tunnel9",
+   "w": 152,
+   "h": 52,
+   "x": 24,
+   "y": 25
+  },
+  "hospital9": {
+   "image": "ui/location/hospital9",
+   "w": 175,
+   "h": 51,
+   "x": 24,
+   "y": 25
+  },
+  "kawajiri9": {
+   "image": "ui/location/kawajiri9",
+   "w": 164,
+   "h": 52,
+   "x": 24,
+   "y": 25
+  }
+ },
+ "vs": {
+  "dice9": {
+   "name": {
+    "image": "ui/vs/dice9_name",
+    "w": 167,
+    "h": 47
+   },
+   "en": {
+    "image": "ui/vs/dice9_en",
+    "w": 114,
+    "h": 11
+   },
+   "tag": {
+    "image": "ui/vs/dice9_tag",
+    "w": 183,
+    "h": 34
+   },
+   "colours": [
+    "#5a3a10",
+    "#2a1806"
+   ]
+  },
+  "highway": {
+   "name": {
+    "image": "ui/vs/highway_name",
+    "w": 166,
+    "h": 48
+   },
+   "en": {
+    "image": "ui/vs/highway_en",
+    "w": 115,
+    "h": 11
+   },
+   "tag": {
+    "image": "ui/vs/highway_tag",
+    "w": 192,
+    "h": 34
+   },
+   "colours": [
+    "#7a1a3e",
+    "#2a0814"
+   ]
+  }
+ },
+ "titles": {
+  "days9": {
+   "image": "ui/title/days9",
+   "w": 94,
+   "h": 34
+  },
+  "interlude9": {
+   "image": "ui/title/interlude9",
+   "w": 243,
+   "h": 36
+  }
+ }
+}

@@ -1,0 +1,179 @@
+{
+ "namecards": {
+  "shigechi": {
+   "image": "ui/namecard/shigechi",
+   "w": 174,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  },
+  "reimi": {
+   "image": "ui/namecard/reimi",
+   "w": 172,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  },
+  "kira": {
+   "image": "ui/namecard/kira",
+   "w": 227,
+   "h": 48,
+   "x": 24,
+   "y": 265
+  }
+ },
+ "standcards": {
+  "harvest": {
+   "image": "ui/standcard/harvest",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "killerqueen": {
+   "image": "ui/standcard/killerqueen",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  }
+ },
+ "locations": {
+  "ghost_alley": {
+   "image": "ui/location/ghost_alley",
+   "w": 134,
+   "h": 53,
+   "x": 24,
+   "y": 25
+  },
+  "bank": {
+   "image": "ui/location/bank",
+   "w": 150,
+   "h": 51,
+   "x": 24,
+   "y": 25
+  },
+  "jhs": {
+   "image": "ui/location/jhs",
+   "w": 188,
+   "h": 52,
+   "x": 24,
+   "y": 25
+  }
+ },
+ "vs": {
+  "harvest": {
+   "name": {
+    "image": "ui/vs/harvest_name",
+    "w": 86,
+    "h": 48
+   },
+   "en": {
+    "image": "ui/vs/harvest_en",
+    "w": 70,
+    "h": 11
+   },
+   "tag": {
+    "image": "ui/vs/harvest_tag",
+    "w": 219,
+    "h": 34
+   },
+   "colours": [
+    "#6a4a10",
+    "#2a1e06"
+   ]
+  },
+  "killerqueen": {
+   "name": {
+    "image": "ui/vs/killerqueen_name",
+    "w": 167,
+    "h": 47
+   },
+   "en": {
+    "image": "ui/vs/killerqueen_en",
+    "w": 111,
+    "h": 13
+   },
+   "tag": {
+    "image": "ui/vs/killerqueen_tag",
+    "w": 178,
+    "h": 34
+   },
+   "colours": [
+    "#4c2a5a",
+    "#1a0a20"
+   ]
+  }
+ },
+ "titles": {
+  "days_later": {
+   "image": "ui/title/days_later",
+   "w": 94,
+   "h": 34
+  },
+  "one_noon": {
+   "image": "ui/title/one_noon",
+   "w": 123,
+   "h": 35
+  },
+  "kira_pov": {
+   "image": "ui/title/kira_pov",
+   "w": 99,
+   "h": 29
+  },
+  "three_days": {
+   "image": "ui/title/three_days",
+   "w": 93,
+   "h": 34
+  }
+ },
+ "map": {
+  "stamp_199906": {
+   "image": "ui/map/stamp_199906",
+   "w": 67,
+   "h": 53
+  }
+ },
+ "sfx": {
+  "啪": {
+   "image": "ui/sfx/ch6_0",
+   "w": 32,
+   "h": 32
+  },
+  "嘶啦": {
+   "image": "ui/sfx/ch6_1",
+   "w": 53,
+   "h": 32
+  },
+  "叮": {
+   "image": "ui/sfx/ch6_2",
+   "w": 32,
+   "h": 30
+  },
+  "咔嚓": {
+   "image": "ui/sfx/ch6_3",
+   "w": 55,
+   "h": 30
+  },
+  "削！": {
+   "image": "ui/sfx/ch6_4",
+   "w": 39,
+   "h": 31
+  },
+  "唰": {
+   "image": "ui/sfx/ch6_5",
+   "w": 32,
+   "h": 32
+  },
+  "咚": {
+   "image": "ui/sfx/ch6_6",
+   "w": 32,
+   "h": 32
+  },
+  "！": {
+   "image": "ui/sfx/ch6_7",
+   "w": 13,
+   "h": 27
+  }
+ }
+}

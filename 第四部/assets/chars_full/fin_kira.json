@@ -1,0 +1,45 @@
+{
+ "id": "fin_kira",
+ "name": "吉良吉影",
+ "image": "fin_kira.png",
+ "cell": [
+  70,
+  52
+ ],
+ "pivot": [
+  33,
+  50
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  },
+  "point": {
+   "row": 2,
+   "frames": 2,
+   "fps": 6,
+   "kind": "oneshot"
+  },
+  "hurt": {
+   "row": 3,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "down": {
+   "row": 4,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  }
+ }
+}

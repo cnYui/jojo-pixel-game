@@ -1,0 +1,63 @@
+{
+ "id": "otoishi",
+ "name": "音石明",
+ "image": "otoishi.png",
+ "cell": [
+  50,
+  51
+ ],
+ "pivot": [
+  25,
+  48
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  },
+  "run": {
+   "row": 2,
+   "frames": 4,
+   "fps": 12,
+   "kind": "loop"
+  },
+  "guitar": {
+   "row": 3,
+   "frames": 2,
+   "fps": 6,
+   "kind": "oneshot"
+  },
+  "hurt": {
+   "row": 4,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "down": {
+   "row": 5,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "guard": {
+   "row": 6,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "dodge": {
+   "row": 7,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  }
+ }
+}

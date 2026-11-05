@@ -1,0 +1,176 @@
+{
+ "namecards": {
+  "okuyasu": {
+   "image": "ui/namecard/okuyasu",
+   "w": 221,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  },
+  "tamami": {
+   "image": "ui/namecard/tamami",
+   "w": 194,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  },
+  "hazamada": {
+   "image": "ui/namecard/hazamada",
+   "w": 187,
+   "h": 48,
+   "x": 24,
+   "y": 265
+  }
+ },
+ "standcards": {
+  "thehand": {
+   "image": "ui/standcard/thehand",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "echoes1": {
+   "image": "ui/standcard/echoes1",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "thelock": {
+   "image": "ui/standcard/thelock",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "surface": {
+   "image": "ui/standcard/surface",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  }
+ },
+ "specials": {
+  "okuyasu": {
+   "image": "ui/special/okuyasu",
+   "w": 191,
+   "h": 50
+  },
+  "koichi": {
+   "image": "ui/special/koichi",
+   "w": 106,
+   "h": 50
+  }
+ },
+ "sfx": {
+  "咚！": {
+   "image": "ui/sfx/echo_0",
+   "w": 29,
+   "h": 23
+  },
+  "嗡——": {
+   "image": "ui/sfx/echo_1",
+   "w": 55,
+   "h": 23
+  },
+  "叮铃铃": {
+   "image": "ui/sfx/echo_2",
+   "w": 57,
+   "h": 24
+  },
+  "啪！": {
+   "image": "ui/sfx/echo_3",
+   "w": 29,
+   "h": 23
+  },
+  "噗嗤": {
+   "image": "ui/sfx/echo_puchi",
+   "w": 40,
+   "h": 23
+  },
+  "相信我！": {
+   "image": "ui/sfx/echo_trust",
+   "w": 66,
+   "h": 24
+  },
+  "仗助君在这边～": {
+   "image": "ui/sfx/echo_here",
+   "w": 116,
+   "h": 22
+  },
+  "当当当当": {
+   "image": "ui/sfx/echo_bell",
+   "w": 75,
+   "h": 23
+  }
+ },
+ "locations": {
+  "hirose": {
+   "image": "ui/location/hirose",
+   "w": 152,
+   "h": 52,
+   "x": 24,
+   "y": 25
+  },
+  "grand_hotel": {
+   "image": "ui/location/grand_hotel",
+   "w": 164,
+   "h": 52,
+   "x": 24,
+   "y": 25
+  },
+  "shopping": {
+   "image": "ui/location/shopping",
+   "w": 146,
+   "h": 52,
+   "x": 24,
+   "y": 25
+  }
+ },
+ "vs": {
+  "thelock": {
+   "name": {
+    "image": "ui/vs/thelock_name",
+    "w": 48,
+    "h": 47
+   },
+   "en": {
+    "image": "ui/vs/thelock_en",
+    "w": 75,
+    "h": 11
+   },
+   "tag": {
+    "image": "ui/vs/thelock_tag",
+    "w": 195,
+    "h": 34
+   },
+   "colours": [
+    "#2a2e5a",
+    "#10122a"
+   ]
+  },
+  "surface": {
+   "name": {
+    "image": "ui/vs/surface_name",
+    "w": 87,
+    "h": 48
+   },
+   "en": {
+    "image": "ui/vs/surface_en",
+    "w": 69,
+    "h": 11
+   },
+   "tag": {
+    "image": "ui/vs/surface_tag",
+    "w": 207,
+    "h": 34
+   },
+   "colours": [
+    "#5a3a18",
+    "#24160a"
+   ]
+  }
+ }
+}

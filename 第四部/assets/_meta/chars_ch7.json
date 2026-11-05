@@ -1,0 +1,906 @@
+{
+ "chars": {
+  "aya": {
+   "name": "辻彩",
+   "image": "chars/aya",
+   "cell": [
+    36,
+    38
+   ],
+   "pivot": [
+    18,
+    28
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "talk": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/aya/normal_0",
+     "heads/aya/normal_1"
+    ],
+    "smile": [
+     "heads/aya/smile_0",
+     "heads/aya/smile_1"
+    ],
+    "shock": [
+     "heads/aya/shock_0",
+     "heads/aya/shock_1"
+    ],
+    "rage": [
+     "heads/aya/rage_0",
+     "heads/aya/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "talk",
+    "shock": "hurt",
+    "run": "walk",
+    "cmd": "talk"
+   },
+   "top": 27,
+   "bodyW": 3,
+   "kind": "char"
+  },
+  "sha": {
+   "name": "枯萎穿心攻击",
+   "image": "chars/sha",
+   "cell": [
+    22,
+    19
+   ],
+   "pivot": [
+    11,
+    17
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 3,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "boom": {
+     "row": 2,
+     "frames": 2,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "stuck": {
+     "row": 4,
+     "frames": 2,
+     "fps": 3,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/sha/normal_0",
+     "heads/sha/normal_1"
+    ]
+   },
+   "headAlias": {
+    "smile": "normal",
+    "rage": "normal",
+    "shock": "normal"
+   },
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "boom",
+    "run": "walk",
+    "cmd": "boom",
+    "punch": "boom",
+    "special": "boom",
+    "shock": "hurt",
+    "down": "stuck",
+    "guard": "idle",
+    "dodge": "walk",
+    "lunge": "walk"
+   },
+   "top": 14,
+   "bodyW": 6,
+   "kind": "stand"
+  },
+  "echoes3": {
+   "name": "回音 ACT3",
+   "image": "chars/echoes3",
+   "cell": [
+    49,
+    40
+   ],
+   "pivot": [
+    17,
+    37
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "rush": {
+     "row": 2,
+     "frames": 2,
+     "fps": 16,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "fist": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "kick": {
+     "row": 6,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/echoes3/normal_0",
+     "heads/echoes3/normal_1"
+    ]
+   },
+   "headAlias": {
+    "smile": "normal",
+    "rage": "normal",
+    "shock": "normal"
+   },
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "punch": "punch",
+    "punch2": "punch",
+    "punch_heavy": "kick",
+    "upper": "kick",
+    "rush": "rush",
+    "block": "pose",
+    "hurt": "hurt",
+    "special": "fist",
+    "reach": "punch",
+    "finger": "pose"
+   },
+   "top": 27,
+   "bodyW": 4,
+   "kind": "stand"
+  },
+  "cinderella": {
+   "name": "灰姑娘",
+   "image": "chars/cinderella",
+   "cell": [
+    52,
+    38
+   ],
+   "pivot": [
+    19,
+    35
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 5,
+     "kind": "loop"
+    },
+    "cast": {
+     "row": 1,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "block": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {},
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "cmd": "cast",
+    "punch": "cast",
+    "reach": "cast",
+    "special": "cast",
+    "block": "block",
+    "hurt": "hurt",
+    "talk": "idle"
+   },
+   "top": 26,
+   "bodyW": 4,
+   "kind": "stand"
+  },
+  "kawajiri": {
+   "name": "川尻浩作",
+   "image": "chars/kawajiri",
+   "cell": [
+    42,
+    42
+   ],
+   "pivot": [
+    17,
+    40
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 2,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "throw": {
+     "row": 3,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "pose": {
+     "row": 4,
+     "frames": 2,
+     "fps": 3,
+     "kind": "oneshot"
+    },
+    "laugh": {
+     "row": 5,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/kawajiri/normal_0",
+     "heads/kawajiri/normal_1"
+    ],
+    "smile": [
+     "heads/kawajiri/smile_0",
+     "heads/kawajiri/smile_1"
+    ],
+    "shock": [
+     "heads/kawajiri/shock_0",
+     "heads/kawajiri/shock_1"
+    ],
+    "rage": [
+     "heads/kawajiri/rage_0",
+     "heads/kawajiri/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "hurt",
+    "run": "walk",
+    "cmd": "throw",
+    "down": "hurt",
+    "guard": "pose",
+    "dodge": "walk"
+   },
+   "top": 29,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "tailor": {
+   "name": "裁缝店老板",
+   "image": "chars/tailor",
+   "cell": [
+    36,
+    38
+   ],
+   "pivot": [
+    18,
+    28
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "talk": {
+     "row": 4,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/tailor/normal_0",
+     "heads/tailor/normal_1"
+    ],
+    "smile": [
+     "heads/tailor/smile_0",
+     "heads/tailor/smile_1"
+    ],
+    "shock": [
+     "heads/tailor/shock_0",
+     "heads/tailor/shock_1"
+    ],
+    "rage": [
+     "heads/tailor/rage_0",
+     "heads/tailor/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "shock": "hurt",
+    "run": "walk"
+   },
+   "top": 26,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "ph7_kira": {
+   "name": "吉良吉影（占位）",
+   "image": "chars/ph7_kira",
+   "cell": [
+    42,
+    42
+   ],
+   "pivot": [
+    17,
+    40
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 2,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "throw": {
+     "row": 3,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "pose": {
+     "row": 4,
+     "frames": 2,
+     "fps": 3,
+     "kind": "oneshot"
+    },
+    "laugh": {
+     "row": 5,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/ph7_kira/normal_0",
+     "heads/ph7_kira/normal_1"
+    ],
+    "smile": [
+     "heads/ph7_kira/smile_0",
+     "heads/ph7_kira/smile_1"
+    ],
+    "shock": [
+     "heads/ph7_kira/shock_0",
+     "heads/ph7_kira/shock_1"
+    ],
+    "rage": [
+     "heads/ph7_kira/rage_0",
+     "heads/ph7_kira/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "hurt",
+    "run": "walk",
+    "cmd": "throw",
+    "down": "hurt",
+    "guard": "pose",
+    "dodge": "walk"
+   },
+   "top": 29,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "ph7_killerqueen": {
+   "name": "杀手皇后（占位）",
+   "image": "chars/ph7_killerqueen",
+   "cell": [
+    73,
+    43
+   ],
+   "pivot": [
+    19,
+    40
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "rush": {
+     "row": 2,
+     "frames": 2,
+     "fps": 16,
+     "kind": "loop"
+    },
+    "block": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "pose": {
+     "row": 4,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "reach": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "upper": {
+     "row": 7,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/ph7_killerqueen/normal_0",
+     "heads/ph7_killerqueen/normal_1"
+    ]
+   },
+   "headAlias": {
+    "smile": "normal",
+    "rage": "normal",
+    "shock": "normal"
+   },
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "punch": "punch",
+    "punch2": "punch",
+    "punch_heavy": "upper",
+    "rush": "rush",
+    "block": "block",
+    "hurt": "hurt",
+    "special": "rush",
+    "finger": "reach"
+   },
+   "top": 35,
+   "bodyW": 6,
+   "kind": "stand"
+  },
+  "ph7_yukako": {
+   "name": "山岸由花子（占位）",
+   "image": "chars/ph7_yukako",
+   "cell": [
+    45,
+    42
+   ],
+   "pivot": [
+    21,
+    32
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 1,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/ph7_yukako/normal_0",
+     "heads/ph7_yukako/normal_1"
+    ],
+    "smile": [
+     "heads/ph7_yukako/smile_0",
+     "heads/ph7_yukako/smile_1"
+    ],
+    "shock": [
+     "heads/ph7_yukako/shock_0",
+     "heads/ph7_yukako/shock_1"
+    ],
+    "rage": [
+     "heads/ph7_yukako/rage_0",
+     "heads/ph7_yukako/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "hurt",
+    "run": "walk",
+    "blush": "idle"
+   },
+   "top": 28,
+   "bodyW": 3,
+   "kind": "char"
+  },
+  "ph7_okuyasu": {
+   "name": "虹村亿泰（占位）",
+   "image": "chars/ph7_okuyasu",
+   "cell": [
+    32,
+    32
+   ],
+   "pivot": [
+    16,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "point": {
+     "row": 4,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "guard": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/ph7_okuyasu/normal_0",
+     "heads/ph7_okuyasu/normal_1"
+    ],
+    "smile": [
+     "heads/ph7_okuyasu/smile_0",
+     "heads/ph7_okuyasu/smile_1"
+    ],
+    "shock": [
+     "heads/ph7_okuyasu/shock_0",
+     "heads/ph7_okuyasu/shock_1"
+    ],
+    "rage": [
+     "heads/ph7_okuyasu/rage_0",
+     "heads/ph7_okuyasu/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "hurt",
+    "run": "walk",
+    "cmd": "point"
+   },
+   "top": 26,
+   "bodyW": 4,
+   "kind": "char"
+  }
+ },
+ "speakers": {
+  "aya": {
+   "short": "辻彩",
+   "nameColor": "#c86a96",
+   "blipHz": 700
+  },
+  "cinderella": {
+   "short": "灰姑娘",
+   "nameColor": "#c86a96",
+   "blipHz": 760
+  },
+  "echoes3": {
+   "short": "ACT3",
+   "nameColor": "#1ec080",
+   "blipHz": 600
+  },
+  "sha": {
+   "short": "枯萎穿心攻击",
+   "nameColor": "#4a6ad0",
+   "blipHz": 900
+  },
+  "kawajiri": {
+   "short": "吉良",
+   "nameColor": "#7a5a9a",
+   "blipHz": 420
+  },
+  "tailor": {
+   "short": "裁缝店老板",
+   "nameColor": "#9a8a60",
+   "blipHz": 420
+  },
+  "ph7_kira": {
+   "short": "吉良",
+   "nameColor": "#7a5a9a",
+   "blipHz": 420
+  },
+  "ph7_yukako": {
+   "short": "由花子",
+   "nameColor": "#5a5e94",
+   "blipHz": 760
+  },
+  "ph7_okuyasu": {
+   "short": "亿泰",
+   "nameColor": "#6a6a8a",
+   "blipHz": 420
+  },
+  "ph7_killerqueen": {
+   "short": "杀手皇后",
+   "nameColor": "#c080b0",
+   "blipHz": 500
+  }
+ },
+ "stands": {
+  "echoes3": {
+   "cn": "回音 ACT3",
+   "en": "ECHOES ACT3",
+   "owner": "koichi",
+   "aura": "#7af0b8",
+   "card": "#a0f0c8",
+   "ghost": "#d0fff0",
+   "impact": "green",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 2
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "cinderella": {
+   "cn": "灰姑娘",
+   "en": "CINDERELLA",
+   "owner": "aya",
+   "aura": "#f4b8d0",
+   "card": "#ffd0e4",
+   "ghost": "#ffe8f2",
+   "impact": "pink",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -10,
+    "z": 8
+   },
+   "link": null,
+   "summonSfx": null,
+   "fist": false
+  },
+  "sha": {
+   "cn": "枯萎穿心攻击",
+   "en": "SHEER HEART ATTACK",
+   "owner": "kira",
+   "aura": "#6a8ae0",
+   "card": "#a0b8f0",
+   "ghost": "#c8d8ff",
+   "impact": "blue",
+   "kind": "humanoid",
+   "idle": {
+    "dx": 0,
+    "z": 0
+   },
+   "link": null,
+   "summonSfx": null,
+   "fist": false
+  },
+  "ph7_killerqueen": {
+   "cn": "杀手皇后",
+   "en": "KILLER QUEEN",
+   "owner": "kira",
+   "aura": "#e080c0",
+   "card": "#f4c8e8",
+   "ghost": "#ffe0f4",
+   "impact": "pink",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -6,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  }
+ }
+}

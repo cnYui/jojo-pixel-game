@@ -1,0 +1,124 @@
+{
+ "props": {
+  "camcorder11": {
+   "image": "props/camcorder11",
+   "frames": 2,
+   "size": [
+    13,
+    9
+   ],
+   "pivot": [
+    6,
+    9
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "tape11": {
+   "image": "props/tape11",
+   "frames": 1,
+   "size": [
+    12,
+    7
+   ],
+   "pivot": [
+    6,
+    7
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "roll11": {
+   "image": "props/roll11",
+   "frames": 1,
+   "size": [
+    16,
+    5
+   ],
+   "pivot": [
+    8,
+    5
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "arrow11": {
+   "image": "props/arrow11",
+   "frames": 1,
+   "size": [
+    11,
+    5
+   ],
+   "pivot": [
+    5,
+    5
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "bubble11": {
+   "image": "props/bubble11",
+   "frames": 1,
+   "size": [
+    9,
+    9
+   ],
+   "pivot": [
+    4,
+    9
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "ph11_straycat": {
+   "image": "props/ph11_straycat",
+   "frames": 2,
+   "size": [
+    11,
+    16
+   ],
+   "pivot": [
+    5,
+    16
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "photo11": {
+   "image": "props/photo11",
+   "frames": 3,
+   "size": [
+    42,
+    50
+   ],
+   "pivot": [
+    21,
+    25
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "yphoto11": {
+   "image": "props/yphoto11",
+   "frames": 1,
+   "size": [
+    18,
+    22
+   ],
+   "pivot": [
+    9,
+    22
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  }
+ }
+}

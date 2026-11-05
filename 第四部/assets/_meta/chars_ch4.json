@@ -1,0 +1,951 @@
+{
+ "chars": {
+  "joseph_old": {
+   "name": "乔瑟夫·乔斯达",
+   "image": "chars/joseph_old",
+   "cell": [
+    52,
+    36
+   ],
+   "pivot": [
+    19,
+    34
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 5,
+     "kind": "loop"
+    },
+    "point": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "camera": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "oneshot"
+    },
+    "shock": {
+     "row": 4,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hold": {
+     "row": 6,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "lie": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/joseph_old/normal_0",
+     "heads/joseph_old/normal_1"
+    ],
+    "smile": [
+     "heads/joseph_old/smile_0",
+     "heads/joseph_old/smile_1"
+    ],
+    "shock": [
+     "heads/joseph_old/shock_0",
+     "heads/joseph_old/shock_1"
+    ],
+    "rage": [
+     "heads/joseph_old/rage_0",
+     "heads/joseph_old/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "run": "walk",
+    "cmd": "point",
+    "special": "camera",
+    "guard": "idle",
+    "dodge": "hurt",
+    "down": "lie",
+    "win": "idle"
+   },
+   "top": 30,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "hermit": {
+   "name": "隐者之紫",
+   "image": "chars/hermit",
+   "cell": [
+    10,
+    7
+   ],
+   "pivot": [
+    0,
+    3
+   ],
+   "animations": {
+    "vine": {
+     "row": 0,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {},
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "idle": "vine"
+   },
+   "top": 3,
+   "bodyW": 3,
+   "kind": "stand"
+  },
+  "otoishi": {
+   "name": "音石明",
+   "image": "chars/otoishi",
+   "cell": [
+    32,
+    32
+   ],
+   "pivot": [
+    16,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 2,
+     "frames": 4,
+     "fps": 12,
+     "kind": "loop"
+    },
+    "guitar": {
+     "row": 3,
+     "frames": 2,
+     "fps": 6,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "guard": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "dodge": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/otoishi/normal_0",
+     "heads/otoishi/normal_1"
+    ],
+    "smile": [
+     "heads/otoishi/smile_0",
+     "heads/otoishi/smile_1"
+    ],
+    "shock": [
+     "heads/otoishi/shock_0",
+     "heads/otoishi/shock_1"
+    ],
+    "rage": [
+     "heads/otoishi/rage_0",
+     "heads/otoishi/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "hurt",
+    "cmd": "guitar",
+    "punch": "guitar",
+    "special": "guitar",
+    "win": "idle",
+    "guard": "guard",
+    "dodge": "dodge",
+    "down": "down",
+    "hurt": "hurt",
+    "run": "run"
+   },
+   "top": 27,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "crew_oto": {
+   "name": "船员",
+   "image": "chars/crew_oto",
+   "cell": [
+    36,
+    38
+   ],
+   "pivot": [
+    18,
+    28
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "talk": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/crew_oto/normal_0",
+     "heads/crew_oto/normal_1"
+    ],
+    "smile": [
+     "heads/crew_oto/smile_0",
+     "heads/crew_oto/smile_1"
+    ],
+    "shock": [
+     "heads/crew_oto/shock_0",
+     "heads/crew_oto/shock_1"
+    ],
+    "rage": [
+     "heads/crew_oto/rage_0",
+     "heads/crew_oto/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "shock": "hurt",
+    "run": "walk",
+    "down": "hurt"
+   },
+   "top": 27,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "rhcp": {
+   "name": "辣妹",
+   "image": "chars/rhcp",
+   "cell": [
+    36,
+    32
+   ],
+   "pivot": [
+    17,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "dash": {
+     "row": 1,
+     "frames": 2,
+     "fps": 12,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 2,
+     "frames": 3,
+     "fps": 14,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hand": {
+     "row": 4,
+     "frames": 2,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "rust": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/rhcp/normal_0",
+     "heads/rhcp/normal_1"
+    ]
+   },
+   "headAlias": {
+    "smile": "normal",
+    "rage": "normal",
+    "shock": "normal"
+   },
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "walk": "dash",
+    "run": "dash",
+    "hurt": "hurt",
+    "down": "rust",
+    "shock": "hurt",
+    "cmd": "punch",
+    "punch": "punch",
+    "punch2": "punch",
+    "punch_heavy": "punch",
+    "rush": "dash",
+    "special": "dash",
+    "guard": "idle",
+    "dodge": "dash",
+    "block": "idle",
+    "win": "idle"
+   },
+   "top": 28,
+   "bodyW": 4,
+   "kind": "stand"
+  },
+  "shizuka": {
+   "name": "乔斯达·静",
+   "image": "chars/shizuka",
+   "cell": [
+    22,
+    20
+   ],
+   "pivot": [
+    11,
+    19
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "cry": {
+     "row": 1,
+     "frames": 2,
+     "fps": 6,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/shizuka/normal_0",
+     "heads/shizuka/normal_1"
+    ],
+    "shock": [
+     "heads/shizuka/shock_0",
+     "heads/shizuka/shock_1"
+    ]
+   },
+   "headAlias": {
+    "smile": "normal",
+    "rage": "shock"
+   },
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "walk": "idle",
+    "run": "idle",
+    "shock": "cry",
+    "hurt": "cry",
+    "down": "idle"
+   },
+   "top": 18,
+   "bodyW": 3,
+   "kind": "char"
+  },
+  "spw_a": {
+   "name": "SPW 工作人员",
+   "image": "chars/spw_a",
+   "cell": [
+    38,
+    39
+   ],
+   "pivot": [
+    19,
+    29
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "talk": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/spw_a/normal_0",
+     "heads/spw_a/normal_1"
+    ],
+    "smile": [
+     "heads/spw_a/smile_0",
+     "heads/spw_a/smile_1"
+    ],
+    "shock": [
+     "heads/spw_a/shock_0",
+     "heads/spw_a/shock_1"
+    ],
+    "rage": [
+     "heads/spw_a/rage_0",
+     "heads/spw_a/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "shock": "hurt",
+    "run": "walk",
+    "down": "hurt"
+   },
+   "top": 27,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "captain": {
+   "name": "船长",
+   "image": "chars/captain",
+   "cell": [
+    36,
+    38
+   ],
+   "pivot": [
+    18,
+    28
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "talk": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/captain/normal_0",
+     "heads/captain/normal_1"
+    ],
+    "smile": [
+     "heads/captain/smile_0",
+     "heads/captain/smile_1"
+    ],
+    "shock": [
+     "heads/captain/shock_0",
+     "heads/captain/shock_1"
+    ],
+    "rage": [
+     "heads/captain/rage_0",
+     "heads/captain/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "shock": "hurt",
+    "run": "walk",
+    "down": "hurt"
+   },
+   "top": 27,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "fisher": {
+   "name": "渔民",
+   "image": "chars/fisher",
+   "cell": [
+    36,
+    38
+   ],
+   "pivot": [
+    18,
+    28
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "talk": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/fisher/normal_0",
+     "heads/fisher/normal_1"
+    ],
+    "smile": [
+     "heads/fisher/smile_0",
+     "heads/fisher/smile_1"
+    ],
+    "shock": [
+     "heads/fisher/shock_0",
+     "heads/fisher/shock_1"
+    ],
+    "rage": [
+     "heads/fisher/rage_0",
+     "heads/fisher/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "shock": "hurt",
+    "run": "walk",
+    "down": "hurt"
+   },
+   "top": 26,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "crew_a": {
+   "name": "船员",
+   "image": "chars/crew_a",
+   "cell": [
+    36,
+    38
+   ],
+   "pivot": [
+    18,
+    28
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "talk": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/crew_a/normal_0",
+     "heads/crew_a/normal_1"
+    ],
+    "smile": [
+     "heads/crew_a/smile_0",
+     "heads/crew_a/smile_1"
+    ],
+    "shock": [
+     "heads/crew_a/shock_0",
+     "heads/crew_a/shock_1"
+    ],
+    "rage": [
+     "heads/crew_a/rage_0",
+     "heads/crew_a/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "shock": "hurt",
+    "run": "walk",
+    "down": "hurt"
+   },
+   "top": 27,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "crew_b": {
+   "name": "船员",
+   "image": "chars/crew_b",
+   "cell": [
+    36,
+    38
+   ],
+   "pivot": [
+    18,
+    28
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "talk": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/crew_b/normal_0",
+     "heads/crew_b/normal_1"
+    ],
+    "smile": [
+     "heads/crew_b/smile_0",
+     "heads/crew_b/smile_1"
+    ],
+    "shock": [
+     "heads/crew_b/shock_0",
+     "heads/crew_b/shock_1"
+    ],
+    "rage": [
+     "heads/crew_b/rage_0",
+     "heads/crew_b/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "shock": "hurt",
+    "run": "walk",
+    "down": "hurt"
+   },
+   "top": 27,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "crew_c": {
+   "name": "船员",
+   "image": "chars/crew_c",
+   "cell": [
+    36,
+    38
+   ],
+   "pivot": [
+    18,
+    28
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "talk": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/crew_c/normal_0",
+     "heads/crew_c/normal_1"
+    ],
+    "smile": [
+     "heads/crew_c/smile_0",
+     "heads/crew_c/smile_1"
+    ],
+    "shock": [
+     "heads/crew_c/shock_0",
+     "heads/crew_c/shock_1"
+    ],
+    "rage": [
+     "heads/crew_c/rage_0",
+     "heads/crew_c/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "shock": "hurt",
+    "run": "walk",
+    "down": "hurt"
+   },
+   "top": 27,
+   "bodyW": 4,
+   "kind": "char"
+  }
+ },
+ "heroes": {
+  "joseph_old": {
+   "cid": "joseph_old",
+   "cn": "乔瑟夫·乔斯达",
+   "short": "乔瑟夫",
+   "rn": "JOSEPH JOESTAR",
+   "stand": "hermit",
+   "burst": [
+    "#4a1a2a",
+    "#7a2a3e",
+    "#c080ff"
+   ],
+   "panel": "#1a0814",
+   "accent": "#c080ff",
+   "nameColor": "#8a3a5a",
+   "blipHz": 360,
+   "grunt": null
+  }
+ },
+ "speakers": {
+  "otoishi": {
+   "short": "音石明",
+   "nameColor": "#8a6ab8",
+   "blipHz": 560
+  },
+  "rhcp": {
+   "short": "辣妹",
+   "nameColor": "#d0a020",
+   "blipHz": 900
+  },
+  "shizuka": {
+   "short": "静",
+   "nameColor": "#d08aa8",
+   "blipHz": 980
+  },
+  "spw_a": {
+   "short": "SPW",
+   "nameColor": "#8a7a50",
+   "blipHz": 460
+  },
+  "captain": {
+   "short": "船长",
+   "nameColor": "#6a7a9a",
+   "blipHz": 380
+  },
+  "crew_a": {
+   "short": "船员",
+   "nameColor": "#5a6a7a",
+   "blipHz": 420
+  },
+  "crew_b": {
+   "short": "船员",
+   "nameColor": "#5a6a7a",
+   "blipHz": 470
+  },
+  "crew_c": {
+   "short": "船员",
+   "nameColor": "#5a6a7a",
+   "blipHz": 440
+  },
+  "crew_oto": {
+   "short": "船员",
+   "nameColor": "#5a6a7a",
+   "blipHz": 560
+  },
+  "fisher": {
+   "short": "渔民",
+   "nameColor": "#9a7a3a",
+   "blipHz": 400
+  }
+ },
+ "stands": {
+  "hermit": {
+   "cn": "隐者之紫",
+   "en": "HERMIT PURPLE",
+   "owner": "joseph_old",
+   "aura": "#c080ff",
+   "card": "#c890ff",
+   "ghost": "#d0a0ff",
+   "impact": "purple",
+   "kind": "vine",
+   "idle": null,
+   "link": null,
+   "summonSfx": "stand_summon_purple",
+   "fist": false
+  },
+  "rhcp": {
+   "cn": "辣妹",
+   "en": "RED HOT CHILI PEPPER",
+   "owner": "otoishi",
+   "aura": "#ffd040",
+   "card": "#ffe070",
+   "ghost": "#fff0a0",
+   "impact": "yellow",
+   "kind": "humanoid",
+   "idle": {
+    "dx": 0,
+    "z": 4
+   },
+   "link": null,
+   "summonSfx": null,
+   "fist": false
+  }
+ }
+}

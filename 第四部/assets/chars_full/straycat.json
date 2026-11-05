@@ -1,0 +1,39 @@
+{
+ "id": "straycat",
+ "name": "猫草",
+ "image": "straycat.png",
+ "cell": [
+  34,
+  40
+ ],
+ "pivot": [
+  17,
+  39
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 4,
+   "fps": 4,
+   "kind": "loop"
+  },
+  "puff": {
+   "row": 1,
+   "frames": 2,
+   "fps": 6,
+   "kind": "oneshot"
+  },
+  "shoot": {
+   "row": 2,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "sleep": {
+   "row": 3,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  }
+ }
+}

@@ -1,0 +1,412 @@
+{
+ "cinderella_salon": {
+  "pack": "ch7",
+  "w": 480,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "door": [
+    31,
+    148
+   ],
+   "counter": [
+    95,
+    146
+   ],
+   "menu": [
+    95,
+    74
+   ],
+   "mirror1": [
+    178,
+    74
+   ],
+   "mirror2": [
+    274,
+    74
+   ],
+   "chair1": [
+    176,
+    148
+   ],
+   "chair2": [
+    272,
+    148
+   ],
+   "lipstick": [
+    293,
+    102
+   ],
+   "face_wall": [
+    400,
+    146
+   ],
+   "table": [
+    378,
+    146
+   ],
+   "bed": [
+    445,
+    148
+   ],
+   "curtain": [
+    476,
+    146
+   ],
+   "walk_x": [
+    12,
+    468
+   ],
+   "face1": [
+    343,
+    70
+   ],
+   "face2": [
+    366,
+    70
+   ],
+   "face3": [
+    389,
+    70
+   ],
+   "face4": [
+    412,
+    70
+   ],
+   "face5": [
+    435,
+    70
+   ],
+   "face6": [
+    458,
+    70
+   ],
+   "yukako_face": [
+    412,
+    70
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/cinderella_salon/room",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "strip",
+    "image": "bg/cinderella_salon/glint",
+    "n": 10,
+    "fps": 6,
+    "x": 158,
+    "y": 48,
+    "k": 1
+   },
+   {
+    "type": "strip",
+    "image": "bg/cinderella_salon/glint",
+    "n": 10,
+    "fps": 5,
+    "x": 254,
+    "y": 48,
+    "k": 1
+   },
+   {
+    "type": "glow",
+    "image": "bg/cinderella_salon/glow",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "flicker": 0.05
+   },
+   {
+    "type": "tint",
+    "color": "#1a2048",
+    "alpha": 0.5,
+    "key": "night"
+   }
+  ],
+  "fg": []
+ },
+ "tailor_shop": {
+  "pack": "ch7",
+  "w": 480,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "door": [
+    25,
+    148
+   ],
+   "door_in": [
+    25,
+    140
+   ],
+   "window": [
+    80,
+    146
+   ],
+   "rail": [
+    158,
+    146
+   ],
+   "counter": [
+    272,
+    146
+   ],
+   "counter_front": [
+    272,
+    160
+   ],
+   "ledger": [
+    240,
+    98
+   ],
+   "shelves": [
+    272,
+    60
+   ],
+   "clock": [
+    360,
+    34
+   ],
+   "mannequin": [
+    360,
+    146
+   ],
+   "sewing": [
+    412,
+    146
+   ],
+   "fitting": [
+    462,
+    146
+   ],
+   "blast": [
+    250,
+    154
+   ],
+   "walk_x": [
+    12,
+    440
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/tailor_shop/room",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "image",
+    "image": "bg/tailor_shop/after",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "key": "after"
+   },
+   {
+    "type": "strip",
+    "image": "bg/tailor_shop/smoke",
+    "n": 8,
+    "fps": 6,
+    "x": 242,
+    "y": 116,
+    "k": 1,
+    "key": "after"
+   },
+   {
+    "type": "tint",
+    "color": "#ffb060",
+    "alpha": 0.05
+   }
+  ],
+  "fg": []
+ },
+ "morioh_avenue": {
+  "pack": "ch7",
+  "w": 960,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "tobacco": [
+    40,
+    146
+   ],
+   "tailor_window": [
+    176,
+    146
+   ],
+   "tailor_door": [
+    265,
+    146
+   ],
+   "alley": [
+    307,
+    146
+   ],
+   "vending": [
+    407,
+    146
+   ],
+   "vending_back": [
+    419,
+    108
+   ],
+   "car": [
+    554,
+    166
+   ],
+   "car_hood": [
+    582,
+    140
+   ],
+   "truck": [
+    774,
+    166
+   ],
+   "truck_hood": [
+    800,
+    138
+   ],
+   "butt": [
+    214,
+    166
+   ],
+   "bus_stop": [
+    740,
+    146
+   ],
+   "road_mid": [
+    480,
+    164
+   ],
+   "jotaro_down": [
+    620,
+    168
+   ],
+   "salon_window": [
+    852,
+    146
+   ],
+   "salon_door": [
+    919,
+    146
+   ],
+   "walk_x": [
+    8,
+    952
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/morioh_avenue/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/morioh_avenue/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "image",
+    "image": "bg/morioh_avenue/after",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "key": "after"
+   },
+   {
+    "type": "strip",
+    "image": "bg/morioh_avenue/smoke",
+    "n": 8,
+    "fps": 6,
+    "x": 168,
+    "y": 42,
+    "k": 1,
+    "key": "after"
+   },
+   {
+    "type": "image",
+    "image": "bg/morioh_avenue/closed",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "key": "closed"
+   },
+   {
+    "type": "strip",
+    "image": "bg/morioh_avenue/butt_smoke",
+    "n": 8,
+    "fps": 5,
+    "x": 213,
+    "y": 150,
+    "k": 1
+   },
+   {
+    "type": "strip",
+    "image": "bg/morioh_avenue/heat_big",
+    "n": 6,
+    "fps": 8,
+    "x": 556,
+    "y": 116,
+    "k": 1,
+    "key": "heat_car"
+   },
+   {
+    "type": "strip",
+    "image": "bg/morioh_avenue/heat",
+    "n": 6,
+    "fps": 8,
+    "x": 788,
+    "y": 118,
+    "k": 1,
+    "key": "heat_truck"
+   },
+   {
+    "type": "strip",
+    "image": "bg/morioh_avenue/heat",
+    "n": 6,
+    "fps": 8,
+    "x": 407,
+    "y": 84,
+    "k": 1,
+    "key": "heat_vend"
+   },
+   {
+    "type": "strip",
+    "image": "bg/morioh_avenue/heat",
+    "n": 6,
+    "fps": 8,
+    "x": 202,
+    "y": 144,
+    "k": 1,
+    "key": "heat_butt"
+   },
+   {
+    "type": "tint",
+    "color": "#ff8a3a",
+    "alpha": 0.16,
+    "key": "pm"
+   }
+  ],
+  "fg": []
+ }
+}

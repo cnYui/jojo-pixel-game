@@ -1,0 +1,45 @@
+{
+ "id": "tonio",
+ "name": "东尼欧·特拉萨迪",
+ "image": "tonio.png",
+ "cell": [
+  32,
+  58
+ ],
+ "pivot": [
+  16,
+  58
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  },
+  "cmd": {
+   "row": 2,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "shock": {
+   "row": 3,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "rage": {
+   "row": 4,
+   "frames": 2,
+   "fps": 6,
+   "kind": "loop"
+  }
+ }
+}

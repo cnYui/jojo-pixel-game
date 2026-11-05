@@ -1,0 +1,664 @@
+{
+ "ghost_alley": {
+  "pack": "ch6",
+  "w": 640,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "entrance": [
+    30,
+    150
+   ],
+   "back_door": [
+    192,
+    146
+   ],
+   "ac": [
+    163,
+    112
+   ],
+   "bicycle": [
+    273,
+    146
+   ],
+   "reimi": [
+    300,
+    152
+   ],
+   "arnold": [
+    318,
+    156
+   ],
+   "plants": [
+    400,
+    146
+   ],
+   "stairs": [
+    540,
+    146
+   ],
+   "exit": [
+    616,
+    150
+   ],
+   "exit_x": 600,
+   "walk_x": [
+    8,
+    632
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/ghost_alley/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/ghost_alley/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "glow",
+    "image": "bg/ghost_alley/glow",
+    "k": 1,
+    "x": 0,
+    "y": 0,
+    "flicker": 0.05
+   },
+   {
+    "type": "wrap",
+    "image": "bg/ghost_alley/mist",
+    "k": 1.15,
+    "vx": -6,
+    "y": 128
+   }
+  ],
+  "fg": [
+   {
+    "type": "pick",
+    "images": [
+     "bg/ghost_alley/vig0",
+     "bg/ghost_alley/vig1",
+     "bg/ghost_alley/vig2",
+     "bg/ghost_alley/vig3"
+    ],
+    "key": "dark",
+    "k": 0,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "strip",
+    "image": "bg/ghost_alley/hands",
+    "n": 4,
+    "fps": 5,
+    "w": 120,
+    "h": 180,
+    "x": 0,
+    "y": 0,
+    "screen": true,
+    "key": "hands"
+   }
+  ]
+ },
+ "morioh_blocks": {
+  "pack": "ch6",
+  "w": 320,
+  "ground": 170,
+  "walk": [
+   160,
+   170
+  ],
+  "anchors": {
+   "b0": [
+    61,
+    51
+   ],
+   "b1": [
+    160,
+    51
+   ],
+   "b2": [
+    259,
+    51
+   ],
+   "b3": [
+    61,
+    105
+   ],
+   "b4": [
+    160,
+    105
+   ],
+   "b5": [
+    259,
+    105
+   ],
+   "b6": [
+    61,
+    154
+   ],
+   "b7": [
+    160,
+    154
+   ],
+   "b8": [
+    259,
+    154
+   ],
+   "hud": [
+    240,
+    10
+   ]
+  },
+  "blocks": [
+   [
+    16,
+    28,
+    106,
+    74,
+    "住宅区",
+    false
+   ],
+   [
+    115,
+    28,
+    205,
+    74,
+    "商店街",
+    false
+   ],
+   [
+    214,
+    28,
+    304,
+    74,
+    "公园",
+    false
+   ],
+   [
+    16,
+    82,
+    106,
+    128,
+    "车站前",
+    false
+   ],
+   [
+    115,
+    82,
+    205,
+    128,
+    "派出所",
+    true
+   ],
+   [
+    214,
+    82,
+    304,
+    128,
+    "河边",
+    true
+   ],
+   [
+    16,
+    136,
+    106,
+    172,
+    "工地",
+    true
+   ],
+   [
+    115,
+    136,
+    205,
+    172,
+    "便利店",
+    false
+   ],
+   [
+    214,
+    136,
+    304,
+    172,
+    "银行",
+    false
+   ]
+  ],
+  "layers": [
+   {
+    "type": "static",
+    "image": "bg/morioh_blocks/map"
+   }
+  ],
+  "fg": []
+ },
+ "budogaoka_bank": {
+  "pack": "ch6",
+  "w": 320,
+  "ground": 150,
+  "walk": [
+   140,
+   176
+  ],
+  "anchors": {
+   "door": [
+    31,
+    146
+   ],
+   "ticket": [
+    71,
+    146
+   ],
+   "sofa": [
+    116,
+    146
+   ],
+   "plant": [
+    155,
+    146
+   ],
+   "poster": [
+    115,
+    66
+   ],
+   "window1": [
+    193,
+    146
+   ],
+   "window2": [
+    243,
+    146
+   ],
+   "window3": [
+    293,
+    146
+   ],
+   "counter": [
+    243,
+    108
+   ],
+   "clock": [
+    296,
+    64
+   ],
+   "sign": [
+    249,
+    30
+   ],
+   "walk_x": [
+    8,
+    312
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/budogaoka_bank/room",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "glow",
+    "image": "bg/budogaoka_bank/glow",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": []
+ },
+ "rooftops": {
+  "pack": "ch6",
+  "w": 640,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "street": [
+    160,
+    150
+   ],
+   "ledge1": [
+    150,
+    112
+   ],
+   "ledge2": [
+    150,
+    74
+   ],
+   "roof_edge": [
+    150,
+    34
+   ],
+   "ledges_y": [
+    150,
+    112,
+    74,
+    34
+   ],
+   "climb_x": [
+    16,
+    292
+   ],
+   "screen1": [
+    0,
+    320
+   ],
+   "screen2": [
+    320,
+    640
+   ],
+   "tank": [
+    352,
+    146
+   ],
+   "stairs_door": [
+    413,
+    146
+   ],
+   "pipe_l": [
+    446,
+    148
+   ],
+   "pipe_r": [
+    536,
+    148
+   ],
+   "pipe_rail_y": 126,
+   "gap": [
+    452,
+    530
+   ],
+   "roof_b": [
+    590,
+    146
+   ],
+   "pipe_segs": [
+    [
+     454,
+     472
+    ],
+    [
+     472,
+     490
+    ],
+    [
+     490,
+     508
+    ],
+    [
+     508,
+     526
+    ]
+   ],
+   "walk_x_roof": [
+    330,
+    632
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/rooftops/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/rooftops/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "image",
+    "image": "bg/rooftops/brk1",
+    "k": 1,
+    "x": 454,
+    "y": 146,
+    "key": "brk1"
+   },
+   {
+    "type": "image",
+    "image": "bg/rooftops/brk2",
+    "k": 1,
+    "x": 472,
+    "y": 146,
+    "key": "brk2"
+   },
+   {
+    "type": "image",
+    "image": "bg/rooftops/brk3",
+    "k": 1,
+    "x": 490,
+    "y": 146,
+    "key": "brk3"
+   },
+   {
+    "type": "image",
+    "image": "bg/rooftops/brk4",
+    "k": 1,
+    "x": 508,
+    "y": 146,
+    "key": "brk4"
+   }
+  ],
+  "fg": []
+ },
+ "st_gentleman": {
+  "pack": "ch6",
+  "w": 480,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "shop_window": [
+    90,
+    146
+   ],
+   "shop_door": [
+    160,
+    146
+   ],
+   "takeout": [
+    194,
+    146
+   ],
+   "menu": [
+    222,
+    146
+   ],
+   "lamp": [
+    240,
+    146
+   ],
+   "trash": [
+    249,
+    146
+   ],
+   "park_sign": [
+    266,
+    146
+   ],
+   "bench": [
+    336,
+    146
+   ],
+   "bench_seat": [
+    336,
+    132
+   ],
+   "bench2": [
+    440,
+    146
+   ],
+   "fountain": [
+    384,
+    146
+   ],
+   "pigeons": [
+    380,
+    150
+   ],
+   "walk_x": [
+    8,
+    472
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/st_gentleman/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/st_gentleman/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": []
+ },
+ "middle_school": {
+  "pack": "ch6",
+  "w": 640,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "goal": [
+    58,
+    150
+   ],
+   "tires": [
+    150,
+    152
+   ],
+   "tree": [
+    206,
+    146
+   ],
+   "shed_door": [
+    232,
+    150
+   ],
+   "vault_box": [
+    268,
+    146
+   ],
+   "mats": [
+    322,
+    146
+   ],
+   "sit": [
+    322,
+    110
+   ],
+   "ball_cart": [
+    365,
+    146
+   ],
+   "hanger": [
+    374,
+    82
+   ],
+   "shed_window": [
+    316,
+    57
+   ],
+   "corridor_in": [
+    404,
+    150
+   ],
+   "board": [
+    425,
+    47
+   ],
+   "hydrant": [
+    518,
+    146
+   ],
+   "door_2b": [
+    565,
+    146
+   ],
+   "stairs": [
+    620,
+    146
+   ],
+   "josuke_window": [
+    528,
+    84
+   ],
+   "zones": {
+    "playground": [
+     0,
+     228
+    ],
+    "shed": [
+     228,
+     392
+    ],
+    "corridor": [
+     392,
+     640
+    ]
+   },
+   "walk_x": [
+    8,
+    628
+   ]
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/middle_school/far",
+    "k": 0.5,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "pano",
+    "image": "bg/middle_school/near",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "glow",
+    "image": "bg/middle_school/glow",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   },
+   {
+    "type": "tint",
+    "color": "#ff8a3a",
+    "alpha": 0.18,
+    "key": "pm"
+   }
+  ],
+  "fg": []
+ }
+}

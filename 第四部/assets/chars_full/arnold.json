@@ -1,0 +1,39 @@
+{
+ "id": "arnold",
+ "name": "阿诺德",
+ "image": "arnold.png",
+ "cell": [
+  48,
+  44
+ ],
+ "pivot": [
+  24,
+  44
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "run": {
+   "row": 1,
+   "frames": 4,
+   "fps": 10,
+   "kind": "loop"
+  },
+  "sit": {
+   "row": 2,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "bite": {
+   "row": 3,
+   "frames": 2,
+   "fps": 6,
+   "kind": "loop"
+  }
+ }
+}

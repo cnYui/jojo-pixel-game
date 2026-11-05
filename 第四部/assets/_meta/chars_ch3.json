@@ -1,0 +1,450 @@
+{
+ "chars": {
+  "yukako": {
+   "name": "山岸由花子",
+   "image": "chars/yukako",
+   "cell": [
+    30,
+    30
+   ],
+   "pivot": [
+    15,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 2,
+     "frames": 4,
+     "fps": 13,
+     "kind": "loop"
+    },
+    "cmd": {
+     "row": 3,
+     "frames": 2,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "blush": {
+     "row": 6,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "grey_idle": {
+     "row": 7,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "grey_walk": {
+     "row": 8,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "grey_run": {
+     "row": 9,
+     "frames": 4,
+     "fps": 13,
+     "kind": "loop"
+    },
+    "grey_cmd": {
+     "row": 10,
+     "frames": 2,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "grey_hurt": {
+     "row": 11,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "grey_down": {
+     "row": 12,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "grey_blush": {
+     "row": 13,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "white_idle": {
+     "row": 14,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "white_walk": {
+     "row": 15,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "white_run": {
+     "row": 16,
+     "frames": 4,
+     "fps": 13,
+     "kind": "loop"
+    },
+    "white_cmd": {
+     "row": 17,
+     "frames": 2,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "white_hurt": {
+     "row": 18,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "white_down": {
+     "row": 19,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "white_blush": {
+     "row": 20,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/yukako/normal_0",
+     "heads/yukako/normal_1"
+    ],
+    "smile": [
+     "heads/yukako/smile_0",
+     "heads/yukako/smile_1"
+    ],
+    "shock": [
+     "heads/yukako/shock_0",
+     "heads/yukako/shock_1"
+    ],
+    "rage": [
+     "heads/yukako/rage_0",
+     "heads/yukako/rage_1"
+    ],
+    "wnormal": [
+     "heads/yukako/wnormal_0",
+     "heads/yukako/wnormal_1"
+    ],
+    "wshock": [
+     "heads/yukako/wshock_0",
+     "heads/yukako/wshock_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "hurt",
+    "special": "cmd",
+    "win": "cmd",
+    "pose": "cmd",
+    "guard": "cmd",
+    "dodge": "run",
+    "getup": "hurt"
+   },
+   "top": 26,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "echoes2": {
+   "name": "回音 ACT2",
+   "image": "chars/echoes2",
+   "cell": [
+    29,
+    30
+   ],
+   "pivot": [
+    15,
+    28
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 2,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "cast": {
+     "row": 2,
+     "frames": 2,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "block": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/echoes2/normal_0",
+     "heads/echoes2/normal_1"
+    ]
+   },
+   "headAlias": {
+    "smile": "normal",
+    "rage": "normal",
+    "shock": "normal"
+   },
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "walk": "idle",
+    "rush": "punch",
+    "punch2": "punch",
+    "punch_heavy": "punch",
+    "special": "cast",
+    "reach": "cast",
+    "pose": "cast",
+    "down": "hurt",
+    "shock": "hurt",
+    "guard": "block",
+    "dodge": "idle",
+    "cmd": "cast"
+   },
+   "top": 24,
+   "bodyW": 4,
+   "kind": "stand"
+  },
+  "tonio": {
+   "name": "东尼欧·特拉萨迪",
+   "image": "chars/tonio",
+   "cell": [
+    20,
+    37
+   ],
+   "pivot": [
+    10,
+    37
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "cmd": {
+     "row": 2,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "shock": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "rage": {
+     "row": 4,
+     "frames": 2,
+     "fps": 6,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/tonio/normal_0",
+     "heads/tonio/normal_1"
+    ],
+    "smile": [
+     "heads/tonio/smile_0",
+     "heads/tonio/smile_1"
+    ],
+    "shock": [
+     "heads/tonio/shock_0",
+     "heads/tonio/shock_1"
+    ],
+    "rage": [
+     "heads/tonio/rage_0",
+     "heads/tonio/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "run": "walk",
+    "hurt": "shock",
+    "down": "shock",
+    "special": "cmd",
+    "pose": "cmd",
+    "win": "cmd",
+    "guard": "idle",
+    "dodge": "walk"
+   },
+   "top": 33,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "pearljam": {
+   "name": "珍珠果酱",
+   "image": "chars/pearljam",
+   "cell": [
+    20,
+    11
+   ],
+   "pivot": [
+    10,
+    10
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/pearljam/normal_0",
+     "heads/pearljam/normal_1"
+    ]
+   },
+   "headAlias": {
+    "smile": "normal",
+    "rage": "normal",
+    "shock": "normal"
+   },
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "walk": "idle",
+    "punch": "idle",
+    "cast": "idle",
+    "hurt": "idle",
+    "block": "idle",
+    "reach": "idle",
+    "pose": "idle",
+    "cmd": "idle"
+   },
+   "top": 8,
+   "bodyW": 6,
+   "kind": "stand"
+  }
+ },
+ "heroes": {},
+ "speakers": {
+  "yukako": {
+   "short": "由花子",
+   "nameColor": "#8a5ac0",
+   "blipHz": 700
+  },
+  "tonio": {
+   "short": "东尼欧",
+   "nameColor": "#c05a3a",
+   "blipHz": 520
+  },
+  "echoes2": {
+   "short": "回音",
+   "nameColor": "#8a9a3a",
+   "blipHz": 880
+  },
+  "operator": {
+   "short": "电话里的声音",
+   "nameColor": "#6a7a8a",
+   "blipHz": 600
+  }
+ },
+ "stands": {
+  "echoes2": {
+   "cn": "回音 ACT2",
+   "en": "ECHOES ACT2",
+   "owner": "koichi",
+   "aura": "#b0c060",
+   "card": "#d0e080",
+   "ghost": "#e0f0a0",
+   "impact": "green",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -10,
+    "z": 10
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": false
+  },
+  "pearljam": {
+   "cn": "珍珠果酱",
+   "en": "PEARL JAM",
+   "owner": "tonio",
+   "aura": "#f0a060",
+   "card": "#ffc890",
+   "ghost": "#ffe0c0",
+   "impact": "orange",
+   "kind": "humanoid",
+   "idle": {
+    "dx": 10,
+    "z": 0
+   },
+   "link": null,
+   "summonSfx": null,
+   "fist": false
+  }
+ }
+}

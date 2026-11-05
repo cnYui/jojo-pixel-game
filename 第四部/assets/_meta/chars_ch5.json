@@ -1,0 +1,416 @@
+{
+ "chars": {
+  "rohan": {
+   "name": "岸边露伴",
+   "image": "chars/rohan",
+   "cell": [
+    54,
+    39
+   ],
+   "pivot": [
+    19,
+    37
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 2,
+     "frames": 4,
+     "fps": 12,
+     "kind": "loop"
+    },
+    "point": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 4,
+     "frames": 2,
+     "fps": 3,
+     "kind": "loop"
+    },
+    "shock": {
+     "row": 5,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "dodge": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "guard": {
+     "row": 8,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "kneel": {
+     "row": 9,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "write": {
+     "row": 10,
+     "frames": 3,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "down": {
+     "row": 11,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/rohan/normal_0",
+     "heads/rohan/normal_1"
+    ],
+    "smile": [
+     "heads/rohan/smile_0",
+     "heads/rohan/smile_1"
+    ],
+    "shock": [
+     "heads/rohan/shock_0",
+     "heads/rohan/shock_1"
+    ],
+    "rage": [
+     "heads/rohan/rage_0",
+     "heads/rohan/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "cmd": "point",
+    "cmd2": "point",
+    "cmd_hold": "write",
+    "guard": "guard",
+    "dodge": "dodge",
+    "down": "down",
+    "hurt": "hurt",
+    "special": "point",
+    "win": "pose",
+    "talk": "idle",
+    "getup": "hurt",
+    "run": "run",
+    "kneel": "kneel",
+    "write": "write",
+    "shock": "shock"
+   },
+   "top": 30,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "heavensdoor": {
+   "name": "天堂之门",
+   "image": "chars/heavensdoor",
+   "cell": [
+    26,
+    30
+   ],
+   "pivot": [
+    12,
+    28
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 10,
+     "kind": "oneshot"
+    },
+    "upper": {
+     "row": 2,
+     "frames": 3,
+     "fps": 10,
+     "kind": "oneshot"
+    },
+    "rush": {
+     "row": 3,
+     "frames": 2,
+     "fps": 14,
+     "kind": "loop"
+    },
+    "block": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "write": {
+     "row": 6,
+     "frames": 2,
+     "fps": 8,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/heavensdoor/normal_0",
+     "heads/heavensdoor/normal_1"
+    ]
+   },
+   "headAlias": {
+    "smile": "normal",
+    "rage": "normal",
+    "shock": "normal"
+   },
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "punch": "punch",
+    "punch2": "punch",
+    "punch_heavy": "upper",
+    "rush": "rush",
+    "block": "block",
+    "hurt": "hurt",
+    "special": "write",
+    "finger": "punch",
+    "write": "write"
+   },
+   "top": 23,
+   "bodyW": 4,
+   "kind": "stand"
+  },
+  "mushikui": {
+   "name": "虫食",
+   "image": "chars/mushikui",
+   "cell": [
+    24,
+    15
+   ],
+   "pivot": [
+    12,
+    13
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 2,
+     "fps": 12,
+     "kind": "loop"
+    },
+    "aim": {
+     "row": 2,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "fire": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {},
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "run": "walk",
+    "cmd": "aim",
+    "attack": "fire",
+    "shock": "hurt",
+    "guard": "idle",
+    "dodge": "walk",
+    "special": "aim",
+    "pose": "aim",
+    "point": "aim"
+   },
+   "top": 9,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "rat_a": {
+   "name": "老鼠",
+   "image": "chars/rat_a",
+   "cell": [
+    24,
+    15
+   ],
+   "pivot": [
+    12,
+    13
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 2,
+     "fps": 12,
+     "kind": "loop"
+    },
+    "aim": {
+     "row": 2,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "fire": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {},
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "run": "walk",
+    "cmd": "aim",
+    "attack": "fire",
+    "shock": "hurt",
+    "guard": "idle",
+    "dodge": "walk",
+    "special": "aim",
+    "pose": "aim",
+    "point": "aim"
+   },
+   "top": 9,
+   "bodyW": 4,
+   "kind": "char"
+  }
+ },
+ "heroes": {
+  "rohan": {
+   "cid": "rohan",
+   "cn": "岸边露伴",
+   "short": "露伴",
+   "rn": "KISHIBE ROHAN",
+   "stand": "heavensdoor",
+   "burst": [
+    "#1e4a2a",
+    "#3a7a44",
+    "#8ad070"
+   ],
+   "panel": "#0c2010",
+   "accent": "#b8e070",
+   "nameColor": "#4a9a5a",
+   "blipHz": 560,
+   "grunt": null
+  }
+ },
+ "speakers": {
+  "heavensdoor": {
+   "short": "天堂之门",
+   "nameColor": "#d0a040",
+   "blipHz": 700
+  },
+  "mushikui": {
+   "short": "虫食",
+   "nameColor": "#8a6a5a",
+   "blipHz": 900
+  },
+  "rat_a": {
+   "short": "老鼠",
+   "nameColor": "#8a6a5a",
+   "blipHz": 900
+  },
+  "spw_phone": {
+   "short": "SPW 财团",
+   "nameColor": "#6a8ab0",
+   "blipHz": 420
+  }
+ },
+ "stands": {
+  "heavensdoor": {
+   "cn": "天堂之门",
+   "en": "HEAVEN'S DOOR",
+   "owner": "rohan",
+   "aura": "#f0d070",
+   "card": "#ffe8a0",
+   "ghost": "#fff2c8",
+   "impact": "yellow",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 10
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": false
+  }
+ }
+}

@@ -1,0 +1,180 @@
+{
+ "namecards": {
+  "otoishi": {
+   "image": "ui/namecard/otoishi",
+   "w": 204,
+   "h": 48,
+   "x": 24,
+   "y": 265
+  },
+  "joseph_old": {
+   "image": "ui/namecard/joseph_old",
+   "w": 229,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  },
+  "shizuka": {
+   "image": "ui/namecard/shizuka",
+   "w": 222,
+   "h": 50,
+   "x": 24,
+   "y": 265
+  }
+ },
+ "standcards": {
+  "rhcp": {
+   "image": "ui/standcard/rhcp",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "hermit": {
+   "image": "ui/standcard/hermit",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "achtung": {
+   "image": "ui/standcard/achtung",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  }
+ },
+ "locations": {
+  "field": {
+   "image": "ui/location/field",
+   "w": 149,
+   "h": 52,
+   "x": 24,
+   "y": 25
+  },
+  "harbor": {
+   "image": "ui/location/harbor",
+   "w": 134,
+   "h": 52,
+   "x": 24,
+   "y": 25
+  },
+  "ship": {
+   "image": "ui/location/ship",
+   "w": 194,
+   "h": 52,
+   "x": 24,
+   "y": 25
+  },
+  "park": {
+   "image": "ui/location/park",
+   "w": 150,
+   "h": 52,
+   "x": 24,
+   "y": 25
+  }
+ },
+ "vs": {
+  "rhcp": {
+   "name": {
+    "image": "ui/vs/rhcp_name",
+    "w": 87,
+    "h": 48
+   },
+   "en": {
+    "image": "ui/vs/rhcp_en",
+    "w": 179,
+    "h": 11
+   },
+   "tag": {
+    "image": "ui/vs/rhcp_tag",
+    "w": 144,
+    "h": 34
+   },
+   "colours": [
+    "#8a5a0a",
+    "#2a1804"
+   ]
+  }
+ },
+ "titles": {
+  "days_later": {
+   "image": "ui/title/days_later",
+   "w": 94,
+   "h": 34
+  },
+  "night_tv": {
+   "image": "ui/title/night_tv",
+   "w": 124,
+   "h": 36
+  },
+  "saiki": {
+   "image": "ui/title/saiki",
+   "w": 183,
+   "h": 52
+  }
+ },
+ "sfx": {
+  "削": {
+   "image": "ui/sfx/ch4_0",
+   "w": 34,
+   "h": 35
+  },
+  "1/3": {
+   "image": "ui/sfx/ch4_1",
+   "w": 41,
+   "h": 30
+  },
+  "2/3": {
+   "image": "ui/sfx/ch4_2",
+   "w": 42,
+   "h": 30
+  },
+  "3/3": {
+   "image": "ui/sfx/ch4_3",
+   "w": 45,
+   "h": 32
+  },
+  "咔": {
+   "image": "ui/sfx/ch4_4",
+   "w": 31,
+   "h": 33
+  },
+  "×1.5": {
+   "image": "ui/sfx/ch4_5",
+   "w": 57,
+   "h": 23
+  },
+  "电力回满！": {
+   "image": "ui/sfx/ch4_6",
+   "w": 107,
+   "h": 29
+  },
+  "夹住了！": {
+   "image": "ui/sfx/ch4_7",
+   "w": 92,
+   "h": 31
+  },
+  "砰！": {
+   "image": "ui/sfx/ch4_8",
+   "w": 48,
+   "h": 35
+  },
+  "哇——": {
+   "image": "ui/sfx/ch4_9",
+   "w": 72,
+   "h": 27
+  },
+  "啊嚏！": {
+   "image": "ui/sfx/ch4_10",
+   "w": 61,
+   "h": 29
+  },
+  "扑通": {
+   "image": "ui/sfx/ch4_11",
+   "w": 60,
+   "h": 33
+  }
+ }
+}

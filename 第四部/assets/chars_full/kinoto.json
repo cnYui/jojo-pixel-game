@@ -1,0 +1,27 @@
+{
+ "id": "kinoto",
+ "name": "乙雅三",
+ "image": "kinoto.png",
+ "cell": [
+  32,
+  48
+ ],
+ "pivot": [
+  16,
+  48
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 8,
+   "kind": "loop"
+  }
+ }
+}

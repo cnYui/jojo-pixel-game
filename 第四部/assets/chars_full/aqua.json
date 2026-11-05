@@ -1,0 +1,33 @@
+{
+ "id": "aqua",
+ "name": "水中项链",
+ "image": "aqua.png",
+ "cell": [
+  52,
+  42
+ ],
+ "pivot": [
+  26,
+  40
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 4,
+   "fps": 6,
+   "kind": "loop"
+  },
+  "lunge": {
+   "row": 1,
+   "frames": 2,
+   "fps": 10,
+   "kind": "loop"
+  },
+  "hurt": {
+   "row": 2,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  }
+ }
+}

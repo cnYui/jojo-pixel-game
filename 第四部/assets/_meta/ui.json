@@ -1,0 +1,347 @@
+{
+ "logo": {
+  "main": {
+   "image": "ui/logo_main",
+   "w": 246,
+   "h": 85
+  }
+ },
+ "namecards": {
+  "josuke": {
+   "image": "ui/namecard/josuke",
+   "w": 211,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  },
+  "jotaro4": {
+   "image": "ui/namecard/jotaro4",
+   "w": 217,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  },
+  "koichi": {
+   "image": "ui/namecard/koichi",
+   "w": 221,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  },
+  "tomoko": {
+   "image": "ui/namecard/tomoko",
+   "w": 137,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  },
+  "ryohei": {
+   "image": "ui/namecard/ryohei",
+   "w": 150,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  },
+  "angelo": {
+   "image": "ui/namecard/angelo",
+   "w": 224,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  }
+ },
+ "standcards": {
+  "crazyd": {
+   "image": "ui/standcard/crazyd",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "aqua": {
+   "image": "ui/standcard/aqua",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  }
+ },
+ "locations": {
+  "morioh": {
+   "image": "ui/location/morioh",
+   "w": 261,
+   "h": 52,
+   "x": 24,
+   "y": 25
+  },
+  "budou": {
+   "image": "ui/location/budou",
+   "w": 188,
+   "h": 51,
+   "x": 24,
+   "y": 25
+  },
+  "market": {
+   "image": "ui/location/market",
+   "w": 134,
+   "h": 52,
+   "x": 24,
+   "y": 25
+  },
+  "higashikata": {
+   "image": "ui/location/higashikata",
+   "w": 182,
+   "h": 53,
+   "x": 24,
+   "y": 25
+  }
+ },
+ "chapters": {
+  "prologue": {
+   "image": "ui/chapter/prologue",
+   "w": 640,
+   "h": 360
+  },
+  "ch1": {
+   "image": "ui/chapter/ch1",
+   "w": 640,
+   "h": 360
+  },
+  "ch2": {
+   "image": "ui/chapter/ch2",
+   "w": 640,
+   "h": 360
+  },
+  "ch3": {
+   "image": "ui/chapter/ch3",
+   "w": 640,
+   "h": 360
+  },
+  "ch4": {
+   "image": "ui/chapter/ch4",
+   "w": 640,
+   "h": 360
+  },
+  "ch5": {
+   "image": "ui/chapter/ch5",
+   "w": 640,
+   "h": 360
+  },
+  "ch6": {
+   "image": "ui/chapter/ch6",
+   "w": 640,
+   "h": 360
+  },
+  "ch7": {
+   "image": "ui/chapter/ch7",
+   "w": 640,
+   "h": 360
+  },
+  "ch8": {
+   "image": "ui/chapter/ch8",
+   "w": 640,
+   "h": 360
+  },
+  "ch9": {
+   "image": "ui/chapter/ch9",
+   "w": 640,
+   "h": 360
+  },
+  "ch10": {
+   "image": "ui/chapter/ch10",
+   "w": 640,
+   "h": 360
+  },
+  "ch11": {
+   "image": "ui/chapter/ch11",
+   "w": 640,
+   "h": 360
+  },
+  "final": {
+   "image": "ui/chapter/final",
+   "w": 640,
+   "h": 360
+  }
+ },
+ "vs": {
+  "aqua": {
+   "name": {
+    "image": "ui/vs/aqua_name",
+    "w": 167,
+    "h": 48
+   },
+   "en": {
+    "image": "ui/vs/aqua_en",
+    "w": 127,
+    "h": 13
+   },
+   "tag": {
+    "image": "ui/vs/aqua_tag",
+    "w": 183,
+    "h": 34
+   },
+   "colours": [
+    "#1a5a8a",
+    "#0a2a48"
+   ]
+  },
+  "misunderstand": {
+   "name": {
+    "image": "ui/vs/misunderstand_name",
+    "w": 185,
+    "h": 47
+   },
+   "en": {
+    "image": "ui/vs/misunderstand_en",
+    "w": 159,
+    "h": 11
+   },
+   "tag": {
+    "image": "ui/vs/misunderstand_tag",
+    "w": 218,
+    "h": 34
+   },
+   "colours": [
+    "#3a2a8a",
+    "#160c40"
+   ]
+  }
+ },
+ "specials": {
+  "josuke": {
+   "image": "ui/special/josuke",
+   "w": 232,
+   "h": 49
+  }
+ },
+ "sfx": {
+  "DORA": {
+   "image": "ui/sfx/dora_0",
+   "w": 80,
+   "h": 27
+  },
+  "DORA!": {
+   "image": "ui/sfx/dora_1",
+   "w": 96,
+   "h": 29
+  },
+  "DORA!!": {
+   "image": "ui/sfx/dora_2",
+   "w": 112,
+   "h": 32
+  },
+  "DORA!!!": {
+   "image": "ui/sfx/dora_3",
+   "w": 140,
+   "h": 35
+  },
+  "多拉拉": {
+   "image": "ui/sfx/dorarara",
+   "w": 106,
+   "h": 37
+  }
+ },
+ "titles": {
+  "night": {
+   "image": "ui/title/night",
+   "w": 123,
+   "h": 36
+  },
+  "rain3": {
+   "image": "ui/title/rain3",
+   "w": 153,
+   "h": 37
+  }
+ },
+ "hair": {
+  "plate": {
+   "image": "ui/hair/plate",
+   "w": 229,
+   "h": 44,
+   "slot": [
+    171,
+    4,
+    27,
+    36
+   ]
+  },
+  "digits": [
+   {
+    "image": "ui/hair/d0",
+    "w": 20,
+    "h": 27
+   },
+   {
+    "image": "ui/hair/d1",
+    "w": 18,
+    "h": 27
+   },
+   {
+    "image": "ui/hair/d2",
+    "w": 19,
+    "h": 27
+   },
+   {
+    "image": "ui/hair/d3",
+    "w": 19,
+    "h": 27
+   },
+   {
+    "image": "ui/hair/d4",
+    "w": 22,
+    "h": 27
+   },
+   {
+    "image": "ui/hair/d5",
+    "w": 20,
+    "h": 27
+   },
+   {
+    "image": "ui/hair/d6",
+    "w": 20,
+    "h": 27
+   },
+   {
+    "image": "ui/hair/d7",
+    "w": 19,
+    "h": 27
+   },
+   {
+    "image": "ui/hair/d8",
+    "w": 19,
+    "h": 27
+   },
+   {
+    "image": "ui/hair/d9",
+    "w": 20,
+    "h": 27
+   }
+  ]
+ },
+ "map": {
+  "pin": {
+   "image": "ui/map/pin",
+   "w": 9,
+   "h": 14,
+   "ax": 5,
+   "ay": 15
+  },
+  "pin_gray": {
+   "image": "ui/map/pin_gray",
+   "w": 9,
+   "h": 14,
+   "ax": 5,
+   "ay": 15
+  },
+  "stamp": {
+   "image": "ui/map/stamp_199904",
+   "w": 67,
+   "h": 53
+  },
+  "place": {
+   "image": "ui/map/place",
+   "w": 79,
+   "h": 15
+  }
+ }
+}

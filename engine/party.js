@@ -141,6 +141,8 @@
       if (!o.force && (next.state === 'down' || !next.leadable || next.mem.away || this.locked)) return false;
       if (o.force && next.mem.away) return false;
       if (old) {
+        // 连打中按 Q：下面直接写 state，不经过 combat 的 state()，旧队长的连打（拳声循环）就没人收了，先收掉
+        if (G.combat && G.combat.stopRush) G.combat.stopRush(old);
         old.team = Wd.combat ? 'ally' : 'npc';
         old.state = 'idle'; old.atk = null; old.focus = null; old.cool = 0.6;
         if (old.anim !== old.idleAnim && !old.hold) old.play(old.idleAnim);

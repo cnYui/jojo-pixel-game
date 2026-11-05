@@ -1,0 +1,139 @@
+{
+ "props": {
+  "paper": {
+   "image": "props/paper",
+   "frames": 5,
+   "size": [
+    18,
+    13
+   ],
+   "pivot": [
+    9,
+    13
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "paper_trap": {
+   "image": "props/paper_trap",
+   "frames": 3,
+   "size": [
+    18,
+    13
+   ],
+   "pivot": [
+    9,
+    13
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "rivet": {
+   "image": "props/rivet",
+   "frames": 2,
+   "size": [
+    12,
+    7
+   ],
+   "pivot": [
+    6,
+    7
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "bolt": {
+   "image": "props/bolt",
+   "frames": 1,
+   "size": [
+    6,
+    6
+   ],
+   "pivot": [
+    3,
+    6
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "koichi_bag": {
+   "image": "props/koichi_bag",
+   "frames": 1,
+   "size": [
+    14,
+    10
+   ],
+   "pivot": [
+    7,
+    10
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "scent": {
+   "image": "props/scent",
+   "frames": 1,
+   "size": [
+    12,
+    6
+   ],
+   "pivot": [
+    6,
+    6
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "magnet": {
+   "image": "props/magnet",
+   "frames": 1,
+   "size": [
+    10,
+    9
+   ],
+   "pivot": [
+    5,
+    9
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "horn": {
+   "image": "props/horn",
+   "frames": 1,
+   "size": [
+    10,
+    8
+   ],
+   "pivot": [
+    5,
+    8
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  },
+  "enigma_book": {
+   "image": "props/enigma_book",
+   "frames": 1,
+   "size": [
+    12,
+    12
+   ],
+   "pivot": [
+    6,
+    12
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1.0
+  }
+ }
+}

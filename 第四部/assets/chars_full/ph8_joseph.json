@@ -1,0 +1,51 @@
+{
+ "id": "ph8_joseph",
+ "name": "乔瑟夫（占位）",
+ "image": "ph8_joseph.png",
+ "cell": [
+  82,
+  57
+ ],
+ "pivot": [
+  30,
+  54
+ ],
+ "animations": {
+  "idle": {
+   "row": 0,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "walk": {
+   "row": 1,
+   "frames": 4,
+   "fps": 6,
+   "kind": "loop"
+  },
+  "point": {
+   "row": 2,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  },
+  "camera": {
+   "row": 3,
+   "frames": 2,
+   "fps": 4,
+   "kind": "loop"
+  },
+  "shock": {
+   "row": 4,
+   "frames": 2,
+   "fps": 2,
+   "kind": "loop"
+  },
+  "hurt": {
+   "row": 5,
+   "frames": 1,
+   "fps": 1,
+   "kind": "static"
+  }
+ }
+}
