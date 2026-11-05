@@ -211,12 +211,6 @@
     if (!G.D) { el.textContent = '缺少 data/data_meta.js：先运行 python3 第四部/tools/build_p4.py'; return; }
     await G.res.preloadPack('core', (n, total) => { el.textContent = '载入角色与字库：' + n + ' / ' + total; });
     G.initFonts(); G.audio.init(); await G.audio.loadSfx();
-    // 本地标题曲登记了、文件却不在（只换了 data_meta.js）：别让标题没声音，退回芯片音乐
-    const song = G.D.audio.music.title_song;
-    if (song) {
-      el.textContent = '载入标题曲…';
-      try { await G.res.loadScript(song.file); } catch (e) { delete G.D.audio.music.title_song; G.dbg.ev('music_fail', { name: 'title_song' }); }
-    }
     await G.res.loadPack('bg_title'); titleBg = new G.Background(G.D.bg.title_morioh);
     G.start(); await G.goTitle(); el.remove(); G.booted = true;
   }
