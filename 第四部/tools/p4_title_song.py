@@ -5,8 +5,10 @@
 #   用法：
 #     python3 第四部/tools/p4_title_song.py 源音频 [--ss 秒] [--to 秒] [--xfade 秒] [--gain dB]
 #         转码成 44.1 kHz 立体声 192 kbps mp3；响度默认对齐芯片音乐 title（混好的流行歌比它响一大截，进第一章会突然变小声）。
-#         整个文件就是一圈循环（引擎整首循环）：--ss / --to 取歌里重复段的整数个周期，--xfade 把 --ss 之前那一小段
-#         交叉淡入到结尾，接回开头时波形是连着的，不会咔一下
+#         默认整个文件就是一圈循环（引擎整首循环）：--ss / --to 取歌里重复段的整数个周期，--xfade 把 --ss 之前那一小段
+#         交叉淡入到结尾，接回开头时波形是连着的，不会咔一下。
+#         歌里有一段逐样本重复的部分（《Great Days》Break Down 版就是）时，用 --loop-start / --loop-end（源文件上的秒数，
+#         长度取整数个周期）：先放前奏，再只循环这一段，接缝处波形天然连着。写进同目录 title_song.json，build 时读它
 #     python3 第四部/tools/build_p4.py --no-font --include-user-audio
 #         打进 游戏/data/music/title_song.js，data_meta 里登记 title_song（流式），标题画面改放它
 import argparse
@@ -25,6 +27,7 @@ USER_DIR = os.path.join(P4, 'assets', 'audio', 'user')
 USER_MP3 = os.path.join(USER_DIR, 'title_song.mp3')
 MUSIC_DIR = os.path.join(P4, '游戏', 'data', 'music')
 SONG_JS = os.path.join(MUSIC_DIR, 'title_song.js')
+SIDECAR = os.path.join(USER_DIR, 'title_song.json')            # 前奏 + 循环段（秒，从转好的 mp3 开头算）
 CHIP_JS = os.path.join(MUSIC_DIR, 'title.js')
 SR, KBPS = 44100, 192
 DEFAULT_ENC_DELAY = 1105             # 576（LAME 编码延迟）+ 529（解码器延迟），和第三部一样
@@ -99,7 +102,7 @@ def loop_graph(ss, to, xfade):
             f'[1:a]atrim=start={ss - xfade}:end={ss},asetpts=PTS-STARTPTS[b];[a][b]acrossfade=d={xfade}:c1=tri:c2=tri')
 
 
-def convert(src, ss=None, to=None, gain=None, xfade=0.0):
+def convert(src, ss=None, to=None, gain=None, xfade=0.0, loop=None):
     if xfade and (ss is None or to is None or ss < xfade):
         raise SystemExit('p4_title_song: --xfade 要同时给 --ss 和 --to，而且 --ss 不能小于淡化长度')
     # 不淡化：-ss / -to 放在 -i 前面直接剪；淡化：整段交给滤镜图（atrim 按样本剪）
@@ -123,6 +126,13 @@ def convert(src, ss=None, to=None, gain=None, xfade=0.0):
                          '-id3v2_version', '0', '-write_id3v1', '0', '-write_xing', '1', '-f', 'mp3', tmp]
     subprocess.run(cmd, check=True)
     os.replace(tmp, USER_MP3)
+    if loop:
+        if ss is None or loop[0] < ss or (to is not None and loop[1] > to):
+            raise SystemExit('p4_title_song: --loop-start / --loop-end 要落在 --ss 和 --to 之间')
+        with open(SIDECAR, 'w', encoding='utf-8', newline='\n') as fh:
+            json.dump({'loopStart': round(loop[0] - ss, 9), 'loopEnd': round(loop[1] - ss, 9)}, fh)
+    elif os.path.exists(SIDECAR):
+        os.remove(SIDECAR)                  # 上一首歌留下的循环段不能带到这一首
     li = lame_info(USER_MP3) or {}
     print(f'  写好 {USER_MP3}（{os.path.getsize(USER_MP3) / 1024:.0f} KB，{(li.get("samples") or 0) / SR:.2f} s）')
     print('  下一步：python3 第四部/tools/build_p4.py --no-font --include-user-audio')
@@ -150,6 +160,10 @@ def register(gd):
     # 整首循环。一分多钟的歌解码成 AudioBuffer（立体声 float，一分钟约 21 MB），循环接缝按样本对齐、没有空隙；
     #   像第三部 STAND PROUD 那样四五分钟的才走流式 <audio loop>（省内存，但每圈接回开头会有一点停顿）
     m = {'file': 'data/music/title_song.js', 'sec': sec, 'samples': int(samples), 'encDelay': delay, 'loopStart': 0, 'loopEnd': sec}
+    if os.path.isfile(SIDECAR):
+        lp = json.load(open(SIDECAR, encoding='utf-8'))
+        if 0 < lp['loopStart'] < lp['loopEnd'] <= sec:
+            m['loopStart'], m['loopEnd'] = lp['loopStart'], lp['loopEnd']      # 前奏 + 循环段（引擎 audio.js loopPts）
     if sec > 90:
         m['stream'] = True
     gd['audio']['music']['title_song'] = m
@@ -166,10 +180,14 @@ def main():
     ap.add_argument('--to', type=float, default=None, help='到源文件第几秒结束')
     ap.add_argument('--xfade', type=float, default=0.0, help='循环接缝的交叉淡化秒数（要同时给 --ss / --to）')
     ap.add_argument('--gain', type=float, default=None, help='手动增益 dB（不给就对齐芯片音乐 title 的响度）')
+    ap.add_argument('--loop-start', type=float, default=None, help='循环段起点（源文件秒）；之前的算前奏，只放一遍')
+    ap.add_argument('--loop-end', type=float, default=None, help='循环段终点（源文件秒）；之后到 --to 的尾巴不放，只为解码时留余量')
     a = ap.parse_args()
     if not os.path.isfile(a.src):
         raise SystemExit('p4_title_song: 找不到 ' + a.src)
-    convert(a.src, a.ss, a.to, a.gain, a.xfade)
+    if (a.loop_start is None) != (a.loop_end is None):
+        raise SystemExit('p4_title_song: --loop-start 和 --loop-end 要一起给')
+    convert(a.src, a.ss, a.to, a.gain, a.xfade, None if a.loop_start is None else (a.loop_start, a.loop_end))
 
 
 if __name__ == '__main__':

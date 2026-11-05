@@ -49,12 +49,19 @@
   }
   // 循环点（§3.10）：解码长度明显多于原样本数 = 浏览器没认 gapless 头，开头有编码延迟 → 跳过它。
   // “明显”= 多出 encDelay 的一半以上：Chromium 实测有几个 mp3 解码出来比原长多 2–9 个样本（尾部补齐没剪干净），那不是编码延迟，不能拿来挪循环起点
+  //   前奏（第四部加的）：meta 里 loopStart > 0 时，只循环 loopStart–loopEnd（秒，从音频开头算），第一遍从头放（lp.a），
+  //   放完前奏再进循环；标题曲用它：先放前奏，之后整段无缝循环，不会每圈都回到渐入
   function loopPts(buf, m) {
     const samples = m && m.samples;
     if (!samples) return { s: 0, e: buf.duration };
     const k = buf.sampleRate / SR, want = Math.round(samples * k), delay = m.encDelay || 1105;
-    if (buf.length - want >= (delay * k) / 2) { const s = delay / SR; return { s, e: Math.min(buf.duration, s + samples / SR) }; }
-    return { s: 0, e: Math.min(buf.duration, samples / SR) };
+    const s0 = buf.length - want >= (delay * k) / 2 ? delay / SR : 0;
+    const e0 = Math.min(buf.duration, s0 + samples / SR);
+    if (m.loopStart > 0 && m.loopEnd > m.loopStart) {
+      const e = Math.min(e0, s0 + m.loopEnd);
+      if (e > s0 + m.loopStart) return { s: s0 + m.loopStart, e, a: s0 };
+    }
+    return { s: s0, e: e0 };
   }
   function buildGroups() {
     groups = Object.create(null);
@@ -230,7 +237,7 @@
     src.connect(g);
     g.connect(A.duckGain);
     const len = Math.max(0.01, lp.e - lp.s);
-    const off = lp.s + G.mod(o.from || 0, len);
+    const off = lp.a != null && !o.from ? lp.a : lp.s + G.mod(o.from || 0, len);   // 有前奏就从头放
     src.start(n0, off);
     cur = { name, kind: 'buf', src, g, vol: o.vol, meta: m, lp, pos: off - lp.s, lastCtx: n0 };
     touchTrack(name);
