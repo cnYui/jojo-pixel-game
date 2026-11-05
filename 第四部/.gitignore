@@ -5,3 +5,7 @@ __pycache__/
 
 # 整套字体（p4lib.gfont_full 自动下载，十几 MB），不进仓库
 tools/art/fonts/*-full.ttf
+
+# 标题曲（用户指定的商业歌曲，p4_title_song.py 转码）和它打出来的数据只留在本地，不进仓库
+assets/audio/user/
+游戏/data/music/title_song.js

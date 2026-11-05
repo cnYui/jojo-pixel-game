@@ -2,6 +2,7 @@
 #   合成 第四部/游戏/data/ 下的运行时文件（格式和第三部 data/ 完全一样：window.GAME_DATA + 按包分的 img_*.js）。
 #   用法：python3 第四部/tools/build_p4.py        （先重烘字库，再合成）
 #         python3 第四部/tools/build_p4.py --no-font
+#         python3 第四部/tools/build_p4.py --no-font --include-user-audio   （只在本地：把用户的歌登记成标题曲，见 p4_title_song.py）
 import base64
 import glob
 import json
@@ -146,6 +147,11 @@ def main():
     packs['bg_title']['music'] = ['title']
     packs['bg_prologue']['music'] = ['daily', 'tension', 'battle', 'sad', 'victory']
     gd['packs'] = packs
+    # 用户指定的标题曲是商业歌曲，只在本地用：显式加 --include-user-audio 才登记（默认构建的 data_meta 里没有它，
+    #   提交上去的生成文件不会指向仓库里没有的 title_song.js）
+    if '--include-user-audio' in sys.argv:
+        import p4_title_song
+        p4_title_song.register(gd)
     # 5) 校验：元数据里提到的图都要在
     want = set()
     for c in gd['chars'].values():

@@ -1,6 +1,7 @@
 // 第四部入口：启动、标题、章节、设置与存档。章节脚本只管自己的剧情（story/p4_*.js）。
 //   骨架照第三部 main.js；不同的地方：章节表换成第四部；存档键单独用 p4-progress（两部放在同一个网站上时不串档）；
-//   标题曲只用仓库里自己写的芯片音乐 title（商业歌曲不随包分发）；暂停菜单多一页「发型记录」。
+//   标题曲：仓库里只有自己写的芯片音乐 title（商业歌曲不随包分发）；本地用 --include-user-audio 构建、放了用户指定的歌时
+//   改放 title_song（第四部/tools/p4_title_song.py）。暂停菜单多一页「发型记录」。
 'use strict';
 (function () {
   const G = window.G;
@@ -158,7 +159,7 @@
   }
   G.goTitle = async route => {
     reset(); G.curChapter = null; G.setScene(titleScene);
-    G.audio.music('title', { fade: 1.5 });
+    G.audio.music(G.D.audio.music.title_song ? 'title_song' : 'title', { fade: 1.5 });
     const token = ++menuTask; titleMenu(token, route).catch(showError);
   };
   // 一章的地图常借别章的背景（学校走廊、商店街、杜王大酒店……），背景图按章分包，只载 bg_<本章> 会缺图。
@@ -210,6 +211,12 @@
     if (!G.D) { el.textContent = '缺少 data/data_meta.js：先运行 python3 第四部/tools/build_p4.py'; return; }
     await G.res.preloadPack('core', (n, total) => { el.textContent = '载入角色与字库：' + n + ' / ' + total; });
     G.initFonts(); G.audio.init(); await G.audio.loadSfx();
+    // 本地标题曲登记了、文件却不在（只换了 data_meta.js）：别让标题没声音，退回芯片音乐
+    const song = G.D.audio.music.title_song;
+    if (song) {
+      el.textContent = '载入标题曲…';
+      try { await G.res.loadScript(song.file); } catch (e) { delete G.D.audio.music.title_song; G.dbg.ev('music_fail', { name: 'title_song' }); }
+    }
     await G.res.loadPack('bg_title'); titleBg = new G.Background(G.D.bg.title_morioh);
     G.start(); await G.goTitle(); el.remove(); G.booted = true;
   }
