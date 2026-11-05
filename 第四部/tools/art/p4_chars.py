@@ -11,6 +11,7 @@ from PIL import Image
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import p4lib as L  # noqa: E402
 import p4_heads as HD  # noqa: E402
+import p4_portraits as PT  # noqa: E402
 
 sys.path.insert(0, os.path.join(L.REPO, 'tools', 'art'))
 import shrink as SH  # noqa: E402
@@ -193,6 +194,8 @@ def save(sh, amap=None, kind='char', bodyW=None, top_anim='idle'):
     out = os.path.join(L.ASSETS, 'chars', sh.cid + '.png')
     L.ensure(out)
     small.save(out)
+    if sh.cid in PT.HEADS:       # 手画头像（p4_portraits.py）优先于换色出来的头像
+        sh.heads = PT.heads(sh.cid)
     hk = {}
     for emo, frs in sh.heads.items():
         keys = []

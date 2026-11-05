@@ -97,10 +97,6 @@
      "heads/okuyasu/normal_0",
      "heads/okuyasu/normal_1"
     ],
-    "rage": [
-     "heads/okuyasu/rage_0",
-     "heads/okuyasu/rage_1"
-    ],
     "smile": [
      "heads/okuyasu/smile_0",
      "heads/okuyasu/smile_1"
@@ -108,6 +104,10 @@
     "shock": [
      "heads/okuyasu/shock_0",
      "heads/okuyasu/shock_1"
+    ],
+    "rage": [
+     "heads/okuyasu/rage_0",
+     "heads/okuyasu/rage_1"
     ]
    },
    "headAlias": {},
