@@ -4,11 +4,11 @@
    "name": "东方仗助",
    "image": "chars/josuke",
    "cell": [
-    44,
+    35,
     36
    ],
    "pivot": [
-    19,
+    17,
     34
    ],
    "animations": {
@@ -123,7 +123,7 @@
     "sit": "sit",
     "run": "run"
    },
-   "top": 30,
+   "top": 32,
    "bodyW": 4,
    "kind": "char"
   },
@@ -131,12 +131,12 @@
    "name": "空条承太郎",
    "image": "chars/jotaro4",
    "cell": [
-    44,
-    36
+    37,
+    37
    ],
    "pivot": [
-    19,
-    34
+    18,
+    36
    ],
    "animations": {
     "idle": {
@@ -243,7 +243,7 @@
     "kick": "kick",
     "run": "run"
    },
-   "top": 29,
+   "top": 34,
    "bodyW": 4,
    "kind": "char"
   },
@@ -251,12 +251,12 @@
    "name": "疯狂钻石",
    "image": "chars/crazyd",
    "cell": [
-    73,
-    43
+    47,
+    39
    ],
    "pivot": [
-    19,
-    40
+    15,
+    38
    ],
    "animations": {
     "idle": {
@@ -352,12 +352,12 @@
    "name": "广濑康一",
    "image": "chars/koichi",
    "cell": [
-    20,
+    30,
     30
    ],
    "pivot": [
-    10,
-    30
+    15,
+    29
    ],
    "animations": {
     "idle": {
@@ -374,6 +374,36 @@
     },
     "bow": {
      "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "cmd": {
+     "row": 3,
+     "frames": 2,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "dodge": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "guard": {
+     "row": 7,
      "frames": 1,
      "fps": 1,
      "kind": "static"
@@ -415,12 +445,12 @@
    "name": "学长A",
    "image": "chars/thug_a",
    "cell": [
-    32,
-    32
+    33,
+    33
    ],
    "pivot": [
     16,
-    30
+    32
    ],
    "animations": {
     "idle": {
@@ -487,7 +517,7 @@
     "shock": "hurt",
     "run": "walk"
    },
-   "top": 26,
+   "top": 30,
    "bodyW": 4,
    "kind": "char"
   },
@@ -500,7 +530,7 @@
    ],
    "pivot": [
     16,
-    30
+    31
    ],
    "animations": {
     "idle": {
@@ -567,7 +597,7 @@
     "shock": "hurt",
     "run": "walk"
    },
-   "top": 26,
+   "top": 29,
    "bodyW": 4,
    "kind": "char"
   },
@@ -575,11 +605,11 @@
    "name": "东方朋子",
    "image": "chars/tomoko",
    "cell": [
-    43,
-    30
+    31,
+    31
    ],
    "pivot": [
-    25,
+    15,
     30
    ],
    "animations": {
@@ -636,7 +666,7 @@
     "special": "wave",
     "run": "walk"
    },
-   "top": 25,
+   "top": 28,
    "bodyW": 4,
    "kind": "char"
   },
@@ -644,12 +674,12 @@
    "name": "东方良平",
    "image": "chars/ryohei",
    "cell": [
-    28,
+    26,
     32
    ],
    "pivot": [
-    14,
-    32
+    11,
+    31
    ],
    "animations": {
     "idle": {
@@ -704,7 +734,7 @@
     "hurt": "shock",
     "run": "walk"
    },
-   "top": 27,
+   "top": 29,
    "bodyW": 4,
    "kind": "char"
   },
@@ -712,12 +742,12 @@
    "name": "片桐安十郎（送奶工）",
    "image": "chars/angelo",
    "cell": [
-    36,
-    38
+    32,
+    32
    ],
    "pivot": [
-    18,
-    28
+    16,
+    31
    ],
    "animations": {
     "idle": {
@@ -780,7 +810,7 @@
      "f": 1.6
     }
    },
-   "top": 26,
+   "top": 29,
    "bodyW": 4,
    "kind": "char"
   },
@@ -789,11 +819,11 @@
    "image": "chars/robber",
    "cell": [
     36,
-    38
+    32
    ],
    "pivot": [
-    18,
-    28
+    16,
+    31
    ],
    "animations": {
     "idle": {
@@ -859,7 +889,7 @@
     "shock": "hurt",
     "run": "walk"
    },
-   "top": 27,
+   "top": 29,
    "bodyW": 4,
    "kind": "char"
   },
@@ -867,12 +897,12 @@
    "name": "店员",
    "image": "chars/clerk",
    "cell": [
-    20,
+    18,
     30
    ],
    "pivot": [
     10,
-    30
+    29
    ],
    "animations": {
     "idle": {
@@ -916,7 +946,7 @@
     "hurt": "idle",
     "down": "idle"
    },
-   "top": 26,
+   "top": 27,
    "bodyW": 3,
    "kind": "char"
   },
@@ -924,12 +954,12 @@
    "name": "女生",
    "image": "chars/fan_a",
    "cell": [
-    30,
+    19,
     30
    ],
    "pivot": [
-    15,
-    30
+    10,
+    29
    ],
    "animations": {
     "idle": {
@@ -976,7 +1006,7 @@
    "amap": {
     "talk": "idle"
    },
-   "top": 25,
+   "top": 27,
    "bodyW": 4,
    "kind": "char"
   },
@@ -984,12 +1014,12 @@
    "name": "女生",
    "image": "chars/fan_b",
    "cell": [
-    30,
+    19,
     30
    ],
    "pivot": [
-    15,
-    30
+    10,
+    29
    ],
    "animations": {
     "idle": {
@@ -1036,7 +1066,7 @@
    "amap": {
     "talk": "idle"
    },
-   "top": 25,
+   "top": 27,
    "bodyW": 4,
    "kind": "char"
   },
@@ -1044,12 +1074,12 @@
    "name": "搭讪的男人",
    "image": "chars/flirt",
    "cell": [
-    36,
-    38
+    33,
+    33
    ],
    "pivot": [
-    18,
-    28
+    16,
+    32
    ],
    "animations": {
     "idle": {
@@ -1104,7 +1134,7 @@
     "shock": "hurt",
     "run": "walk"
    },
-   "top": 26,
+   "top": 30,
    "bodyW": 4,
    "kind": "char"
   },
@@ -1112,12 +1142,12 @@
    "name": "小学生",
    "image": "chars/kid",
    "cell": [
-    28,
-    29
+    23,
+    25
    ],
    "pivot": [
-    14,
-    19
+    12,
+    24
    ],
    "animations": {
     "idle": {
@@ -1171,7 +1201,7 @@
     "talk": "idle",
     "shock": "hurt"
    },
-   "top": 18,
+   "top": 22,
    "bodyW": 4,
    "kind": "char"
   },
@@ -1179,12 +1209,12 @@
    "name": "水中项链",
    "image": "chars/aqua",
    "cell": [
-    34,
-    27
+    40,
+    20
    ],
    "pivot": [
-    17,
-    25
+    15,
+    19
    ],
    "animations": {
     "idle": {
@@ -1233,8 +1263,113 @@
     "guard": "idle",
     "dodge": "lunge"
    },
-   "top": 20,
+   "top": 16,
    "bodyW": 4,
+   "kind": "stand"
+  },
+  "starplat": {
+   "name": "白金之星",
+   "image": "chars/starplat",
+   "cell": [
+    47,
+    39
+   ],
+   "pivot": [
+    15,
+    38
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "rush": {
+     "row": 2,
+     "frames": 2,
+     "fps": 16,
+     "kind": "loop"
+    },
+    "block": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "pose": {
+     "row": 4,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "finger": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "fist": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "reach": {
+     "row": 8,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "upper": {
+     "row": 9,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "portrait": {
+     "row": 10,
+     "frames": 2,
+     "fps": 8,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/starplat/normal_0",
+     "heads/starplat/normal_1"
+    ]
+   },
+   "headAlias": {
+    "portrait": "normal"
+   },
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "punch": "punch",
+    "punch2": "punch",
+    "punch_heavy": "upper",
+    "rush": "rush",
+    "block": "block",
+    "hurt": "hurt",
+    "special": "rush",
+    "finger": "finger"
+   },
+   "top": 34,
+   "bodyW": 9,
    "kind": "stand"
   }
  },

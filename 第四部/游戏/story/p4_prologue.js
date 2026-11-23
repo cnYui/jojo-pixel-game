@@ -640,8 +640,8 @@
     await S.walk(pl, 420, 150, { speed: 64 });
     S.face(pl, 1);
     S.sfx('blip', 0.8);
-    S.sfxText('嘀——', { wx: 431, wy: 92, wz: 0 }, { dur: 1.4 });
-    S.fx('smoke', { x: 431, y: 86, colour: '#f4f8fc', loop: true, rise: 30, t1: 2.6, life: 1.6 }, { life: 3.2 });
+    S.sfxText('嘀——', { wx: 431, wy: 112, wz: 0 }, { dur: 1.4 });
+    S.fx('smoke', { x: 431, y: 116, colour: '#f4f8fc', loop: true, rise: 24, t1: 2.6, life: 1.6 }, { life: 3.2 });
     S.animate(2.6, (k) => S.state('fog', 0.04 + 0.42 * k)).catch(G.cancelIgnore);
     await S.wait(1.4);
     await S.say('jotaro4', '……仗助。别靠近水汽。');

@@ -235,7 +235,8 @@
   // =====================================================================================================================
   // 序2 段 1 水中项链（b_pro2_aqua）：客厅，仗助 + 承太郎（AI，Q 换人）
   // =====================================================================================================================
-  const LR = { arena: [18, 462], hum: [26, 150], wall: [159, 146], hole: [159, 104], glove: [380, 147], box: [374, 98], sink: [400, 146] };
+  // 2026-11 背景按新比例重画：墙洞、手套盒搁板的高度跟着降（层高 44 px，搁板离地 23 px）
+  const LR = { arena: [18, 462], hum: [26, 150], wall: [159, 146], hole: [159, 116], glove: [380, 147], box: [374, 115], sink: [400, 146] };
   const LOW = 0.3;              // 项链 HP 低于 30%：可以引它钻进含着手套的嘴里
   let gloveH = null;
   const prop = (S, id) => S.actor(id);
@@ -244,7 +245,7 @@
   function aquaProps(S) {
     const hum = prop(S, 'lr_hum') || T().prop(S, 'humidifier', LR.hum[0], LR.hum[1], { id: 'lr_hum', frame: 0 });
     T().setFrame(hum, 0);
-    const box = prop(S, 'lr_box') || T().prop(S, 'glovebox', LR.box[0], 142, { id: 'lr_box', frame: 0, z: 44 });
+    const box = prop(S, 'lr_box') || T().prop(S, 'glovebox', LR.box[0], 142, { id: 'lr_box', frame: 0, z: 27 });
     T().setFrame(box, 0);
     const hole = prop(S, 'lr_hole');
     if (hole) hole.remove = true;

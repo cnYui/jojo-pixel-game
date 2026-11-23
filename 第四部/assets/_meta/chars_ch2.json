@@ -1236,14 +1236,14 @@
   },
   "koichi": {
    "name": "广濑康一",
-   "image": "chars/koichi_ex",
+   "image": "chars/koichi",
    "cell": [
     30,
     30
    ],
    "pivot": [
     15,
-    30
+    29
    ],
    "animations": {
     "idle": {
