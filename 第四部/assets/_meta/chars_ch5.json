@@ -4,12 +4,12 @@
    "name": "岸边露伴",
    "image": "chars/rohan",
    "cell": [
-    54,
-    39
+    34,
+    35
    ],
    "pivot": [
-    19,
-    37
+    17,
+    33
    ],
    "animations": {
     "idle": {
@@ -124,7 +124,7 @@
     "write": "write",
     "shock": "shock"
    },
-   "top": 30,
+   "top": 31,
    "bodyW": 4,
    "kind": "char"
   },
@@ -132,11 +132,11 @@
    "name": "天堂之门",
    "image": "chars/heavensdoor",
    "cell": [
-    26,
-    30
+    38,
+    29
    ],
    "pivot": [
-    12,
+    13,
     28
    ],
    "animations": {
@@ -208,7 +208,7 @@
     "finger": "punch",
     "write": "write"
    },
-   "top": 23,
+   "top": 25,
    "bodyW": 4,
    "kind": "stand"
   },

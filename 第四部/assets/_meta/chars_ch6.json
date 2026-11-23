@@ -4,12 +4,12 @@
    "name": "矢安宫重清",
    "image": "chars/shigechi",
    "cell": [
-    28,
-    29
+    25,
+    25
    ],
    "pivot": [
-    14,
-    19
+    12,
+    24
    ],
    "animations": {
     "idle": {
@@ -92,7 +92,7 @@
     "cmd": "talk",
     "special": "talk"
    },
-   "top": 19,
+   "top": 22,
    "bodyW": 4,
    "kind": "char"
   },
@@ -100,12 +100,12 @@
    "name": "丰收",
    "image": "chars/harvest",
    "cell": [
-    14,
-    17
+    12,
+    13
    ],
    "pivot": [
-    7,
-    16
+    6,
+    12
    ],
    "animations": {
     "idle": {
@@ -159,7 +159,7 @@
     "guard": "idle",
     "dodge": "walk"
    },
-   "top": 14,
+   "top": 9,
    "bodyW": 2,
    "kind": "stand"
   },
@@ -167,12 +167,12 @@
    "name": "吉良吉影",
    "image": "chars/kira",
    "cell": [
-    42,
-    42
+    34,
+    33
    ],
    "pivot": [
-    17,
-    40
+    16,
+    32
    ],
    "animations": {
     "idle": {
@@ -216,6 +216,18 @@
      "frames": 2,
      "fps": 6,
      "kind": "oneshot"
+    },
+    "punch": {
+     "row": 7,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "down": {
+     "row": 8,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
     }
    },
    "aliases": {},
@@ -252,7 +264,7 @@
     "down": "hurt",
     "punch": "point"
    },
-   "top": 29,
+   "top": 30,
    "bodyW": 4,
    "kind": "char"
   },
@@ -260,12 +272,12 @@
    "name": "杀手皇后",
    "image": "chars/killerqueen",
    "cell": [
-    49,
-    40
+    47,
+    39
    ],
    "pivot": [
-    17,
-    37
+    15,
+    38
    ],
    "animations": {
     "idle": {
@@ -315,6 +327,24 @@
      "frames": 2,
      "fps": 8,
      "kind": "oneshot"
+    },
+    "block": {
+     "row": 8,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "reach": {
+     "row": 9,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "upper": {
+     "row": 10,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
     }
    },
    "aliases": {},
@@ -341,7 +371,7 @@
     "special": "pose",
     "finger": "punch"
    },
-   "top": 35,
+   "top": 34,
    "bodyW": 6,
    "kind": "stand"
   },
@@ -354,7 +384,7 @@
    ],
    "pivot": [
     15,
-    30
+    29
    ],
    "animations": {
     "idle": {
@@ -380,6 +410,12 @@
      "frames": 1,
      "fps": 1,
      "kind": "static"
+    },
+    "wave": {
+     "row": 4,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
     }
    },
    "aliases": {},
@@ -411,7 +447,7 @@
     "run": "walk",
     "cmd": "cheer"
    },
-   "top": 25,
+   "top": 27,
    "bodyW": 3,
    "kind": "char"
   },
@@ -419,12 +455,12 @@
    "name": "阿诺德",
    "image": "chars/arnold",
    "cell": [
-    30,
-    28
+    31,
+    20
    ],
    "pivot": [
-    15,
-    28
+    14,
+    19
    ],
    "animations": {
     "idle": {
@@ -450,6 +486,12 @@
      "frames": 2,
      "fps": 6,
      "kind": "loop"
+    },
+    "walk": {
+     "row": 4,
+     "frames": 4,
+     "fps": 10,
+     "kind": "loop"
     }
    },
    "aliases": {},
@@ -473,20 +515,20 @@
     "hurt": "sit",
     "down": "sit"
    },
-   "top": 21,
+   "top": 16,
    "bodyW": 5,
    "kind": "char"
   },
   "tmp6_joseph": {
    "name": "乔瑟夫·乔斯达",
-   "image": "chars/tmp6_joseph",
+   "image": "chars/joseph_old",
    "cell": [
-    52,
-    36
+    32,
+    32
    ],
    "pivot": [
-    19,
-    34
+    16,
+    31
    ],
    "animations": {
     "idle": {
@@ -508,13 +550,13 @@
      "kind": "loop"
     },
     "shock": {
-     "row": 3,
+     "row": 4,
      "frames": 2,
      "fps": 1,
      "kind": "static"
     },
     "hurt": {
-     "row": 4,
+     "row": 5,
      "frames": 1,
      "fps": 1,
      "kind": "static"
@@ -523,20 +565,20 @@
    "aliases": {},
    "heads": {
     "normal": [
-     "heads/tmp6_joseph/normal_0",
-     "heads/tmp6_joseph/normal_1"
+     "heads/joseph_old/normal_0",
+     "heads/joseph_old/normal_1"
     ],
     "smile": [
-     "heads/tmp6_joseph/smile_0",
-     "heads/tmp6_joseph/smile_1"
+     "heads/joseph_old/smile_0",
+     "heads/joseph_old/smile_1"
     ],
     "shock": [
-     "heads/tmp6_joseph/shock_0",
-     "heads/tmp6_joseph/shock_1"
+     "heads/joseph_old/shock_0",
+     "heads/joseph_old/shock_1"
     ],
     "rage": [
-     "heads/tmp6_joseph/rage_0",
-     "heads/tmp6_joseph/rage_1"
+     "heads/joseph_old/rage_0",
+     "heads/joseph_old/rage_1"
     ]
    },
    "headAlias": {},
@@ -547,7 +589,7 @@
     "run": "walk",
     "cmd": "point"
    },
-   "top": 30,
+   "top": 29,
    "bodyW": 4,
    "kind": "char"
   }

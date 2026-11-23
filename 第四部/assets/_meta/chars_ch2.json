@@ -4,12 +4,12 @@
    "name": "虹村亿泰",
    "image": "chars/okuyasu",
    "cell": [
-    44,
-    36
+    33,
+    33
    ],
    "pivot": [
-    19,
-    34
+    16,
+    32
    ],
    "animations": {
     "idle": {
@@ -89,6 +89,12 @@
      "frames": 1,
      "fps": 1,
      "kind": "static"
+    },
+    "sit_chair": {
+     "row": 13,
+     "frames": 2,
+     "fps": 1.5,
+     "kind": "loop"
     }
    },
    "aliases": {},
@@ -130,7 +136,7 @@
     "run": "run",
     "dizzy": "dizzy"
    },
-   "top": 28,
+   "top": 30,
    "bodyW": 4,
    "kind": "char"
   },
@@ -138,12 +144,12 @@
    "name": "轰炸空间",
    "image": "chars/thehand",
    "cell": [
-    73,
-    43
+    47,
+    39
    ],
    "pivot": [
-    19,
-    40
+    15,
+    38
    ],
    "animations": {
     "idle": {
@@ -252,12 +258,12 @@
    "name": "回音 ACT1",
    "image": "chars/echoes1",
    "cell": [
-    38,
-    30
+    40,
+    20
    ],
    "pivot": [
-    19,
-    28
+    18,
+    19
    ],
    "animations": {
     "idle": {
@@ -294,7 +300,8 @@
    "aliases": {},
    "heads": {
     "normal": [
-     "heads/echoes1/normal_0"
+     "heads/echoes1/normal_0",
+     "heads/echoes1/normal_1"
     ]
    },
    "headAlias": {
@@ -320,7 +327,7 @@
     "shock": "hurt",
     "reach": "shoot"
    },
-   "top": 26,
+   "top": 16,
    "bodyW": 4,
    "kind": "stand"
   },
@@ -328,12 +335,12 @@
    "name": "小林玉美",
    "image": "chars/tamami",
    "cell": [
-    54,
-    39
+    30,
+    31
    ],
    "pivot": [
-    19,
-    37
+    15,
+    30
    ],
    "animations": {
     "idle": {
@@ -440,7 +447,7 @@
     "shock": "cover_ears",
     "run": "run"
    },
-   "top": 28,
+   "top": 27,
    "bodyW": 4,
    "kind": "char"
   },
@@ -448,11 +455,11 @@
    "name": "间田敏和",
    "image": "chars/hazamada",
    "cell": [
-    32,
-    32
+    31,
+    31
    ],
    "pivot": [
-    16,
+    15,
     30
    ],
    "animations": {
@@ -536,7 +543,7 @@
     "shock": "shock",
     "run": "run"
    },
-   "top": 26,
+   "top": 28,
    "bodyW": 4,
    "kind": "char"
   },
@@ -544,12 +551,12 @@
    "name": "表面",
    "image": "chars/surface_doll",
    "cell": [
-    44,
-    36
+    22,
+    32
    ],
    "pivot": [
-    19,
-    34
+    12,
+    31
    ],
    "animations": {
     "idle": {
@@ -604,11 +611,11 @@
    "name": "表面",
    "image": "chars/surface",
    "cell": [
-    44,
+    35,
     36
    ],
    "pivot": [
-    19,
+    17,
     34
    ],
    "animations": {
@@ -723,7 +730,7 @@
     "sit": "sit",
     "run": "run"
    },
-   "top": 30,
+   "top": 32,
    "bodyW": 4,
    "kind": "char"
   },
@@ -731,11 +738,11 @@
    "name": "表面",
    "image": "chars/surface_cut",
    "cell": [
-    44,
+    35,
     36
    ],
    "pivot": [
-    19,
+    17,
     34
    ],
    "animations": {
@@ -850,7 +857,7 @@
     "sit": "sit",
     "run": "run"
    },
-   "top": 30,
+   "top": 32,
    "bodyW": 4,
    "kind": "char"
   },
@@ -858,12 +865,12 @@
    "name": "康一的妈妈",
    "image": "chars/hirose_mom",
    "cell": [
-    43,
+    20,
     30
    ],
    "pivot": [
-    25,
-    30
+    10,
+    29
    ],
    "animations": {
     "idle": {
@@ -920,7 +927,7 @@
     "hurt": "cry",
     "down": "cry"
    },
-   "top": 25,
+   "top": 27,
    "bodyW": 4,
    "kind": "char"
   },
@@ -928,12 +935,12 @@
    "name": "广濑绫那",
    "image": "chars/ayana",
    "cell": [
-    30,
+    19,
     30
    ],
    "pivot": [
-    15,
-    30
+    10,
+    29
    ],
    "animations": {
     "idle": {
@@ -990,7 +997,7 @@
     "hurt": "cry",
     "down": "cry"
    },
-   "top": 25,
+   "top": 27,
    "bodyW": 3,
    "kind": "char"
   },
@@ -998,12 +1005,12 @@
    "name": "飙车族A",
    "image": "chars/biker_a",
    "cell": [
-    44,
-    36
+    33,
+    33
    ],
    "pivot": [
-    19,
-    34
+    16,
+    32
    ],
    "animations": {
     "idle": {
@@ -1083,12 +1090,12 @@
    "name": "飙车族B",
    "image": "chars/biker_b",
    "cell": [
-    44,
-    36
+    33,
+    33
    ],
    "pivot": [
-    19,
-    34
+    16,
+    32
    ],
    "animations": {
     "idle": {
@@ -1168,12 +1175,12 @@
    "name": "？？？",
    "image": "chars/yukako_sil",
    "cell": [
-    30,
+    20,
     30
    ],
    "pivot": [
-    15,
-    30
+    12,
+    29
    ],
    "animations": {
     "idle": {
@@ -1191,7 +1198,7 @@
    "amap": {
     "talk": "idle"
    },
-   "top": 26,
+   "top": 28,
    "bodyW": 3,
    "kind": "char"
   },
@@ -1199,12 +1206,12 @@
    "name": "广濑康一",
    "image": "chars/koichi_bike",
    "cell": [
-    36,
-    31
+    33,
+    39
    ],
    "pivot": [
-    17,
-    30
+    16,
+    38
    ],
    "animations": {
     "ride": {
@@ -1230,7 +1237,7 @@
     "walk": "ride",
     "run": "ride"
    },
-   "top": 29,
+   "top": 37,
    "bodyW": 6,
    "kind": "char"
   },

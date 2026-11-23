@@ -4,12 +4,12 @@
    "name": "辻彩",
    "image": "chars/aya",
    "cell": [
-    36,
-    38
+    31,
+    31
    ],
    "pivot": [
-    18,
-    28
+    15,
+    30
    ],
    "animations": {
     "idle": {
@@ -71,7 +71,7 @@
     "run": "walk",
     "cmd": "talk"
    },
-   "top": 27,
+   "top": 28,
    "bodyW": 3,
    "kind": "char"
   },
@@ -79,12 +79,12 @@
    "name": "枯萎穿心攻击",
    "image": "chars/sha",
    "cell": [
-    22,
-    19
+    25,
+    18
    ],
    "pivot": [
-    11,
-    17
+    14,
+    15
    ],
    "animations": {
     "idle": {
@@ -144,7 +144,7 @@
     "dodge": "walk",
     "lunge": "walk"
    },
-   "top": 14,
+   "top": 12,
    "bodyW": 6,
    "kind": "stand"
   },
@@ -152,12 +152,12 @@
    "name": "回音 ACT3",
    "image": "chars/echoes3",
    "cell": [
-    49,
-    40
+    39,
+    31
    ],
    "pivot": [
-    17,
-    37
+    12,
+    30
    ],
    "animations": {
     "idle": {
@@ -201,6 +201,30 @@
      "frames": 2,
      "fps": 8,
      "kind": "oneshot"
+    },
+    "block": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "finger": {
+     "row": 8,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "reach": {
+     "row": 9,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "upper": {
+     "row": 10,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
     }
    },
    "aliases": {},
@@ -237,11 +261,11 @@
    "name": "灰姑娘",
    "image": "chars/cinderella",
    "cell": [
-    52,
-    38
+    33,
+    36
    ],
    "pivot": [
-    19,
+    12,
     35
    ],
    "animations": {
@@ -284,7 +308,7 @@
     "hurt": "hurt",
     "talk": "idle"
    },
-   "top": 26,
+   "top": 32,
    "bodyW": 4,
    "kind": "stand"
   },
@@ -292,12 +316,12 @@
    "name": "川尻浩作",
    "image": "chars/kawajiri",
    "cell": [
-    42,
-    42
+    34,
+    33
    ],
    "pivot": [
-    17,
-    40
+    16,
+    32
    ],
    "animations": {
     "idle": {
@@ -341,6 +365,18 @@
      "frames": 1,
      "fps": 1,
      "kind": "static"
+    },
+    "point": {
+     "row": 7,
+     "frames": 2,
+     "fps": 6,
+     "kind": "oneshot"
+    },
+    "down": {
+     "row": 8,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
     }
    },
    "aliases": {},
@@ -374,7 +410,7 @@
     "guard": "pose",
     "dodge": "walk"
    },
-   "top": 29,
+   "top": 30,
    "bodyW": 4,
    "kind": "char"
   },
@@ -382,12 +418,12 @@
    "name": "裁缝店老板",
    "image": "chars/tailor",
    "cell": [
-    36,
-    38
+    30,
+    30
    ],
    "pivot": [
-    18,
-    28
+    15,
+    29
    ],
    "animations": {
     "idle": {
@@ -447,20 +483,20 @@
     "shock": "hurt",
     "run": "walk"
    },
-   "top": 26,
+   "top": 27,
    "bodyW": 4,
    "kind": "char"
   },
   "ph7_kira": {
    "name": "吉良吉影（占位）",
-   "image": "chars/ph7_kira",
+   "image": "chars/kira",
    "cell": [
-    42,
-    42
+    34,
+    33
    ],
    "pivot": [
-    17,
-    40
+    16,
+    32
    ],
    "animations": {
     "idle": {
@@ -476,31 +512,31 @@
      "kind": "loop"
     },
     "punch": {
-     "row": 2,
+     "row": 7,
      "frames": 2,
      "fps": 8,
      "kind": "oneshot"
     },
     "throw": {
-     "row": 3,
+     "row": 6,
      "frames": 2,
      "fps": 8,
      "kind": "oneshot"
     },
     "pose": {
-     "row": 4,
+     "row": 3,
      "frames": 2,
      "fps": 3,
      "kind": "oneshot"
     },
     "laugh": {
-     "row": 5,
+     "row": 4,
      "frames": 2,
      "fps": 4,
      "kind": "loop"
     },
     "hurt": {
-     "row": 6,
+     "row": 5,
      "frames": 1,
      "fps": 1,
      "kind": "static"
@@ -509,20 +545,20 @@
    "aliases": {},
    "heads": {
     "normal": [
-     "heads/ph7_kira/normal_0",
-     "heads/ph7_kira/normal_1"
+     "heads/kira/normal_0",
+     "heads/kira/normal_1"
     ],
     "smile": [
-     "heads/ph7_kira/smile_0",
-     "heads/ph7_kira/smile_1"
+     "heads/kira/smile_0",
+     "heads/kira/smile_1"
     ],
     "shock": [
-     "heads/ph7_kira/shock_0",
-     "heads/ph7_kira/shock_1"
+     "heads/kira/shock_0",
+     "heads/kira/shock_1"
     ],
     "rage": [
-     "heads/ph7_kira/rage_0",
-     "heads/ph7_kira/rage_1"
+     "heads/kira/rage_0",
+     "heads/kira/rage_1"
     ]
    },
    "headAlias": {},
@@ -537,20 +573,20 @@
     "guard": "pose",
     "dodge": "walk"
    },
-   "top": 29,
+   "top": 30,
    "bodyW": 4,
    "kind": "char"
   },
   "ph7_killerqueen": {
    "name": "杀手皇后（占位）",
-   "image": "chars/ph7_killerqueen",
+   "image": "chars/killerqueen",
    "cell": [
-    73,
-    43
+    47,
+    39
    ],
    "pivot": [
-    19,
-    40
+    15,
+    38
    ],
    "animations": {
     "idle": {
@@ -572,31 +608,31 @@
      "kind": "loop"
     },
     "block": {
-     "row": 3,
+     "row": 8,
      "frames": 1,
      "fps": 1,
      "kind": "static"
     },
     "pose": {
-     "row": 4,
+     "row": 3,
      "frames": 2,
      "fps": 4,
      "kind": "loop"
     },
     "hurt": {
-     "row": 5,
+     "row": 4,
      "frames": 1,
      "fps": 1,
      "kind": "static"
     },
     "reach": {
-     "row": 6,
+     "row": 9,
      "frames": 1,
      "fps": 1,
      "kind": "static"
     },
     "upper": {
-     "row": 7,
+     "row": 10,
      "frames": 3,
      "fps": 12,
      "kind": "oneshot"
@@ -605,8 +641,8 @@
    "aliases": {},
    "heads": {
     "normal": [
-     "heads/ph7_killerqueen/normal_0",
-     "heads/ph7_killerqueen/normal_1"
+     "heads/killerqueen/normal_0",
+     "heads/killerqueen/normal_1"
     ]
    },
    "headAlias": {
@@ -626,25 +662,25 @@
     "special": "rush",
     "finger": "reach"
    },
-   "top": 35,
+   "top": 34,
    "bodyW": 6,
    "kind": "stand"
   },
   "ph7_yukako": {
    "name": "山岸由花子（占位）",
-   "image": "chars/ph7_yukako",
+   "image": "chars/yukako",
    "cell": [
-    45,
-    42
+    31,
+    31
    ],
    "pivot": [
-    21,
-    32
+    15,
+    30
    ],
    "animations": {
     "idle": {
      "row": 0,
-     "frames": 1,
+     "frames": 2,
      "fps": 2,
      "kind": "loop"
     },
@@ -655,13 +691,13 @@
      "kind": "loop"
     },
     "hurt": {
-     "row": 2,
+     "row": 4,
      "frames": 1,
      "fps": 1,
      "kind": "static"
     },
     "down": {
-     "row": 3,
+     "row": 5,
      "frames": 1,
      "fps": 1,
      "kind": "static"
@@ -670,20 +706,20 @@
    "aliases": {},
    "heads": {
     "normal": [
-     "heads/ph7_yukako/normal_0",
-     "heads/ph7_yukako/normal_1"
+     "heads/yukako/normal_0",
+     "heads/yukako/normal_1"
     ],
     "smile": [
-     "heads/ph7_yukako/smile_0",
-     "heads/ph7_yukako/smile_1"
+     "heads/yukako/smile_0",
+     "heads/yukako/smile_1"
     ],
     "shock": [
-     "heads/ph7_yukako/shock_0",
-     "heads/ph7_yukako/shock_1"
+     "heads/yukako/shock_0",
+     "heads/yukako/shock_1"
     ],
     "rage": [
-     "heads/ph7_yukako/rage_0",
-     "heads/ph7_yukako/rage_1"
+     "heads/yukako/rage_0",
+     "heads/yukako/rage_1"
     ]
    },
    "headAlias": {},
@@ -701,14 +737,14 @@
   },
   "ph7_okuyasu": {
    "name": "虹村亿泰（占位）",
-   "image": "chars/ph7_okuyasu",
+   "image": "chars/okuyasu",
    "cell": [
-    32,
-    32
+    33,
+    33
    ],
    "pivot": [
     16,
-    30
+    32
    ],
    "animations": {
     "idle": {
@@ -724,25 +760,25 @@
      "kind": "loop"
     },
     "hurt": {
-     "row": 2,
+     "row": 6,
      "frames": 1,
      "fps": 1,
      "kind": "static"
     },
     "down": {
-     "row": 3,
+     "row": 12,
      "frames": 1,
      "fps": 1,
      "kind": "static"
     },
     "point": {
-     "row": 4,
+     "row": 3,
      "frames": 2,
      "fps": 4,
      "kind": "loop"
     },
     "guard": {
-     "row": 5,
+     "row": 8,
      "frames": 1,
      "fps": 1,
      "kind": "static"
@@ -751,20 +787,20 @@
    "aliases": {},
    "heads": {
     "normal": [
-     "heads/ph7_okuyasu/normal_0",
-     "heads/ph7_okuyasu/normal_1"
+     "heads/okuyasu/normal_0",
+     "heads/okuyasu/normal_1"
     ],
     "smile": [
-     "heads/ph7_okuyasu/smile_0",
-     "heads/ph7_okuyasu/smile_1"
+     "heads/okuyasu/smile_0",
+     "heads/okuyasu/smile_1"
     ],
     "shock": [
-     "heads/ph7_okuyasu/shock_0",
-     "heads/ph7_okuyasu/shock_1"
+     "heads/okuyasu/shock_0",
+     "heads/okuyasu/shock_1"
     ],
     "rage": [
-     "heads/ph7_okuyasu/rage_0",
-     "heads/ph7_okuyasu/rage_1"
+     "heads/okuyasu/rage_0",
+     "heads/okuyasu/rage_1"
     ]
    },
    "headAlias": {},
@@ -776,7 +812,7 @@
     "run": "walk",
     "cmd": "point"
    },
-   "top": 26,
+   "top": 30,
    "bodyW": 4,
    "kind": "char"
   }

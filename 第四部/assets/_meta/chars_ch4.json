@@ -4,12 +4,12 @@
    "name": "乔瑟夫·乔斯达",
    "image": "chars/joseph_old",
    "cell": [
-    52,
-    36
+    32,
+    32
    ],
    "pivot": [
-    19,
-    34
+    16,
+    31
    ],
    "animations": {
     "idle": {
@@ -93,7 +93,7 @@
     "down": "lie",
     "win": "idle"
    },
-   "top": 30,
+   "top": 29,
    "bodyW": 4,
    "kind": "char"
   },
@@ -132,12 +132,12 @@
    "name": "音石明",
    "image": "chars/otoishi",
    "cell": [
-    32,
-    32
+    33,
+    33
    ],
    "pivot": [
     16,
-    30
+    32
    ],
    "animations": {
     "idle": {
@@ -224,7 +224,7 @@
     "hurt": "hurt",
     "run": "run"
    },
-   "top": 27,
+   "top": 30,
    "bodyW": 4,
    "kind": "char"
   },
@@ -232,12 +232,12 @@
    "name": "船员",
    "image": "chars/crew_oto",
    "cell": [
-    36,
-    38
+    22,
+    31
    ],
    "pivot": [
-    18,
-    28
+    12,
+    30
    ],
    "animations": {
     "idle": {
@@ -292,7 +292,7 @@
     "run": "walk",
     "down": "hurt"
    },
-   "top": 27,
+   "top": 28,
    "bodyW": 4,
    "kind": "char"
   },
@@ -301,11 +301,11 @@
    "image": "chars/rhcp",
    "cell": [
     36,
-    32
+    37
    ],
    "pivot": [
-    17,
-    30
+    12,
+    36
    ],
    "animations": {
     "idle": {
@@ -377,7 +377,7 @@
     "block": "idle",
     "win": "idle"
    },
-   "top": 28,
+   "top": 29,
    "bodyW": 4,
    "kind": "stand"
   },
@@ -385,12 +385,12 @@
    "name": "乔斯达·静",
    "image": "chars/shizuka",
    "cell": [
-    22,
-    20
+    17,
+    16
    ],
    "pivot": [
-    11,
-    19
+    8,
+    15
    ],
    "animations": {
     "idle": {
@@ -431,7 +431,7 @@
     "hurt": "cry",
     "down": "idle"
    },
-   "top": 18,
+   "top": 13,
    "bodyW": 3,
    "kind": "char"
   },
@@ -439,12 +439,12 @@
    "name": "SPW 工作人员",
    "image": "chars/spw_a",
    "cell": [
-    38,
-    39
+    22,
+    31
    ],
    "pivot": [
-    19,
-    29
+    12,
+    30
    ],
    "animations": {
     "idle": {
@@ -499,7 +499,7 @@
     "run": "walk",
     "down": "hurt"
    },
-   "top": 27,
+   "top": 28,
    "bodyW": 4,
    "kind": "char"
   },
@@ -507,12 +507,12 @@
    "name": "船长",
    "image": "chars/captain",
    "cell": [
-    36,
-    38
+    22,
+    31
    ],
    "pivot": [
-    18,
-    28
+    12,
+    30
    ],
    "animations": {
     "idle": {
@@ -567,7 +567,7 @@
     "run": "walk",
     "down": "hurt"
    },
-   "top": 27,
+   "top": 28,
    "bodyW": 4,
    "kind": "char"
   },
@@ -575,12 +575,12 @@
    "name": "渔民",
    "image": "chars/fisher",
    "cell": [
-    36,
-    38
+    22,
+    31
    ],
    "pivot": [
-    18,
-    28
+    12,
+    30
    ],
    "animations": {
     "idle": {
@@ -635,7 +635,7 @@
     "run": "walk",
     "down": "hurt"
    },
-   "top": 26,
+   "top": 28,
    "bodyW": 4,
    "kind": "char"
   },
@@ -643,12 +643,12 @@
    "name": "船员",
    "image": "chars/crew_a",
    "cell": [
-    36,
-    38
+    22,
+    31
    ],
    "pivot": [
-    18,
-    28
+    12,
+    30
    ],
    "animations": {
     "idle": {
@@ -703,7 +703,7 @@
     "run": "walk",
     "down": "hurt"
    },
-   "top": 27,
+   "top": 28,
    "bodyW": 4,
    "kind": "char"
   },
@@ -711,12 +711,12 @@
    "name": "船员",
    "image": "chars/crew_b",
    "cell": [
-    36,
-    38
+    22,
+    31
    ],
    "pivot": [
-    18,
-    28
+    12,
+    30
    ],
    "animations": {
     "idle": {
@@ -771,7 +771,7 @@
     "run": "walk",
     "down": "hurt"
    },
-   "top": 27,
+   "top": 28,
    "bodyW": 4,
    "kind": "char"
   },
@@ -779,12 +779,12 @@
    "name": "船员",
    "image": "chars/crew_c",
    "cell": [
-    36,
-    38
+    22,
+    31
    ],
    "pivot": [
-    18,
-    28
+    12,
+    30
    ],
    "animations": {
     "idle": {
@@ -839,7 +839,7 @@
     "run": "walk",
     "down": "hurt"
    },
-   "top": 27,
+   "top": 28,
    "bodyW": 4,
    "kind": "char"
   }

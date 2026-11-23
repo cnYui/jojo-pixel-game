@@ -396,7 +396,7 @@
   }
 
   // ================================================================ 节拍 7 学校自由走动：康一 U 听储物柜（Q 换队长）
-  const HALL = { lockers: 133, hzLocker: 147, board: 271, hydrant: 314, window: 468, seat: [507, 74], stairs: 628, phone: [338, 145] };
+  const HALL = { lockers: 133, hzLocker: 147, board: 271, hydrant: 314, window: 468, seat: [507, 116], stairs: 628, phone: [338, 145] };
   function checked(id) {
     const c = (F().checked = F().checked || {});
     if (!c[id]) { c[id] = true; F().checks = (F().checks || 0) + 1; }
@@ -426,17 +426,17 @@
     if (F().listened) { await S.say('koichi', '……左数第七个。还在动。'); return; }
     // 回音的尾巴贴到柜门上：「……咔哒、咔哒。」
     checked('lockers');
-    S.sfxText('咔哒', { wx: HALL.hzLocker, wy: 146, wz: 40 }, { dur: 0.8 });
+    S.sfxText('咔哒', { wx: HALL.hzLocker, wy: 146, wz: 22 }, { dur: 0.8 });
     S.sfx('doll_scurry', 0.6);
     await S.wait(0.5);
-    S.sfxText('咔哒', { wx: HALL.hzLocker + 4, wy: 146, wz: 46 }, { dur: 0.8 });
+    S.sfxText('咔哒', { wx: HALL.hzLocker + 4, wy: 146, wz: 26 }, { dur: 0.8 });
     S.sfx('doll_scurry', 0.5);
     await S.wait(0.4);
     await S.say(null, '……咔哒、咔哒。');
     await S.say('koichi', '左数第七个柜子里……有东西在动。', { expr: 'shock' });
     F().listened = true;
     S.mark('ch2_listen');
-    S.fx('glint', { x: HALL.hzLocker, y: 104, size: 8 }, { life: 0.6 });
+    S.fx('glint', { x: HALL.hzLocker, y: 118, size: 8 }, { life: 0.6 });
   }
   async function useHzLocker(S) {
     checked('hz_locker');
@@ -471,7 +471,7 @@
       { id: 'lockers', x: HALL.lockers - 12, y: 150, r: 14, label: '储物柜', use: useLockers },
       { id: 'lockers_look', x: HALL.lockers, y: 150, r: 22, lx: HALL.lockers, ly: 110, label: '储物柜', tags: ['listen', 'erase', 'pull'], look: lookLockers },
       { id: 'hz_locker', x: HALL.hzLocker, y: 150, r: 10, label: '左数第七个柜子', use: useHzLocker },
-      { id: 'hydrant', x: HALL.hydrant, y: 150, r: 16, label: '消火栓', tags: ['fix'], fx: HALL.hydrant, fy: 112, look: lookHydrant,
+      { id: 'hydrant', x: HALL.hydrant, y: 150, r: 16, label: '消火栓', tags: ['fix'], fx: HALL.hydrant, fy: 124, look: lookHydrant,
         use: async (S2) => { checked('hydrant'); await S2.say(null, '红色的消火栓箱。'); } },
     );
     T().memberTalk({

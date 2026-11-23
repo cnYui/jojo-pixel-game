@@ -171,7 +171,7 @@
   }
   function setupSchoolFree(S) {
     const st = G.world.stage;
-    T().prop(S, 'bento', 189, 149, { id: 'bento', frame: 0, z: 32 });
+    T().prop(S, 'bento', 189, 149, { id: 'bento', frame: 0, z: 15 });   // 课桌面按新比例 11 px
     st.hotspots.push(
       { id: 'desk', x: 189, y: 152, r: 20, label: '康一的课桌', tags: ['erase'], use: useBento,
         look: async (S2, h, p) => {
@@ -280,7 +280,7 @@
     S.sfx('door', 0.8);
     yk.remove = true;
     S.sfx('clang', 0.6);
-    S.sfxText('咔嚓', { wx: 57, wy: 110, wz: 0 }, { dur: 0.7 });
+    S.sfxText('咔嚓', { wx: 57, wy: 118, wz: 0 }, { dur: 0.7 });
     const c0 = S.actor('vl_chair0');
     if (c0) c0.remove = true;
     focus(null);
@@ -298,7 +298,7 @@
     S.sfx('crossfire', 0.9);
     S.fx('lightning', { x0: 57, y0: 70, x1: 57, y1: 112, colour: '#fff4a0' }, { life: 0.5 });
     S.flash(0.12, 0.6, '#fff4a0');
-    S.sfxText('滋啦！', { wx: 57, wy: 96, wz: 0 }, { dur: 1.0 });
+    S.sfxText('滋啦！', { wx: 57, wy: 110, wz: 0 }, { dur: 1.0 });
     S.shake(3, 0.4);
     S.mark('ch3_knob');
     await S.wait(0.6);
@@ -346,7 +346,7 @@
     await S.say('yukako', '康一君……为什么不明白我的心意！', { expr: 'rage' });
     await S.say('koichi', '……趁现在！', { expr: 'shock' });
     S.sfx('crash', 0.9); S.sfx('glass_break', 0.8); S.shake(4, 0.4);
-    S.fx('burst', { x: 607, y: 100, n: 16, speed: 40, colours: ['#d8f0ff', '#a0c8e0'], gravity: 140, life: 0.8 }, { life: 1 });
+    S.fx('burst', { x: 607, y: 116, n: 16, speed: 40, colours: ['#d8f0ff', '#a0c8e0'], gravity: 140, life: 0.8 }, { life: 1 });
     await S.walk(p, 620, 156, { speed: 120, anim: 'walk' });
     await S.fadeOut(0.5);
     focus(null);
@@ -446,7 +446,7 @@
     p.visible = true;
     const js = S.actor('josuke');
     if (js) Object.assign(js, { x: 236, y: 152, follow: null, facing: -1 });
-    T().prop(S, 'notebook', 189, 149, { id: 'notebook', z: 32 });
+    T().prop(S, 'notebook', 189, 149, { id: 'notebook', z: 15 });
     snapTo({ x: 170 });
     await S.fadeIn(0.5);
     await S.say(null, '康一的桌上放着一本笔记，封面写「英语·满分笔记 由花子」。');
@@ -481,7 +481,7 @@
     await S.say('tonio', '我是厨师。今天的菜单，由您的身体来决定。', { expr: 'smile' });
     await S.say('josuke', '（……摸一下手就知道？不对劲。）');
     // 亿泰入座，东尼欧回后厨
-    if (ok) { await S.walk(ok, TR.seat, 156, { speed: 60 }); S.face(ok, 1); S.pose(ok, 'sit'); }
+    if (ok) { await S.walk(ok, TR.seat, 153, { speed: 60 }); S.face(ok, 1); S.pose(ok, 'sit_chair'); }
     await S.walk(tn, 460, 152, { speed: 60 });
     tn.remove = true;
     await S.say('josuke', '亿泰，你先吃着。我去后面看看。');
@@ -506,9 +506,9 @@
     await S.setStage('trattoria_ch3', { x: 300, y: 158, facing: -1, music: 'daily' });
     const ok = S.actor('okuyasu'), p = S.player;
     p.visible = true;
-    if (ok) { Object.assign(ok, { x: TR.seat, y: 156, follow: null, facing: 1 }); S.pose(ok, 'sit'); }
+    if (ok) { Object.assign(ok, { x: TR.seat, y: 153, follow: null, facing: 1 }); S.pose(ok, 'sit_chair'); }
     const d = DISH[i];
-    const dish = T().prop(S, 'dish', TR.table, 151, { id: 'dish', frame: i, z: 22 });
+    const dish = T().prop(S, 'dish', TR.table, 151, { id: 'dish', frame: i, z: 12 });
     snapTo({ x: 240 });
     await S.say(null, '第' + (i + 1) + '道：' + d.name + '。');
     if (ok) {
@@ -526,7 +526,7 @@
       }
       await S.wait(0.6);
       for (const l of d.lines) await S.say(l[0], l[1], { expr: l[2] });
-      S.pose(ok, 'sit');
+      S.pose(ok, 'sit_chair');
     }
     if (dish) dish.remove = true;
   }
@@ -549,9 +549,9 @@
     await S.setStage('trattoria_ch3', { x: TR.seat2 + 14, y: 158, facing: -1, music: 'daily' });
     const ok = S.actor('okuyasu');
     S.player.visible = true;
-    if (ok) { Object.assign(ok, { x: TR.seat, y: 156, follow: null, facing: 1 }); S.pose(ok, 'sit'); }
+    if (ok) { Object.assign(ok, { x: TR.seat, y: 153, follow: null, facing: 1 }); S.pose(ok, 'sit_chair'); }
     const t2 = S.spawn('tonio', 300, 152, { id: 'tonio', facing: -1, name: '东尼欧' });
-    const dish = T().prop(S, 'dish', TR.table, 151, { id: 'dish', frame: 3, z: 22 });
+    const dish = T().prop(S, 'dish', TR.table, 151, { id: 'dish', frame: 3, z: 12 });
     snapTo({ x: 250 });
     await S.fadeIn(0.4);
     await S.say(null, '第4道：布丁。');

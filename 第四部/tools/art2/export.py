@@ -37,6 +37,60 @@ def find_entries(cid, files):
     return [(fp, d['chars'][cid]) for fp, d in files.items() if cid in d.get('chars', {})]
 
 
+# 各章的占位 / 换章复用的角色：同一个人只画一张图集，别名条目指过去（名字、amap、各自的 fps / kind 保留）
+ALIASES = {
+    'ph7_kira': 'kira', 'ph7_killerqueen': 'killerqueen', 'ph7_yukako': 'yukako', 'ph7_okuyasu': 'okuyasu',
+    'ph8_rohan': 'rohan', 'ph8_joseph': 'joseph_old', 'ph8_kosaku': 'kawajiri', 'tmp6_joseph': 'joseph_old',
+    'mikitaka_tmp': 'mikitaka', 'yuya_tmp': 'yuya', 'highway_tmp': 'highway',
+    'ph11_hayato': 'hayato', 'ph11_kosaku': 'kawajiri', 'ph11_shinobu': 'shinobu', 'ph11_rohan': 'rohan', 'ph11_okuyasu': 'okuyasu',
+    'ph11_reimi': 'reimi', 'ph11_killerq': 'killerqueen',
+    'fin_kq': 'killerqueen', 'fin_thehand': 'thehand', 'fin_echoes3': 'echoes3', 'fin_okuyasu': 'okuyasu', 'fin_keicho': 'keicho',
+    'fin_rohan': 'rohan', 'fin_hayato': 'hayato', 'fin_reimi': 'reimi', 'fin_shinobu': 'shinobu', 'fin_arnold': 'arnold',
+    'fin_joseph': 'joseph_old',
+}
+ALL = ['cast_pro', 'stands_pro', 'cast_ch1_3', 'stands_all', 'cast_ch4_6', 'cast_ch7_fin']
+
+
+def apply_aliases():
+    files = {fp: load(fp) for fp in sorted(glob.glob(os.path.join(META, 'chars*.json')))}
+    canon = {}
+    for fp, d in files.items():          # 后面的文件盖前面的（和 build_p4 的合并顺序一样）
+        for cid, e in d.get('chars', {}).items():
+            canon[cid] = e
+    n = 0
+    for alias, cid in ALIASES.items():
+        c = canon.get(cid)
+        if not c:
+            print('  ！别名 %s 指向的 %s 还没有' % (alias, cid))
+            continue
+        for fp, e in find_entries(alias, files):
+            anims = {}
+            for a, old in (e.get('animations') or {}).items():
+                if a not in c['animations']:
+                    print('  ！%s 要的动作 %s 在 %s 的图集里没有' % (alias, a, cid))
+                    continue
+                anims[a] = dict(c['animations'][a], fps=old.get('fps', c['animations'][a]['fps']), kind=old.get('kind', c['animations'][a]['kind']))
+            e.update(image=c['image'], cell=c['cell'], pivot=c['pivot'], top=c['top'], animations=anims)
+            if e.get('heads') and c.get('heads'):
+                e['heads'] = {k: (c['heads'].get(k) or c['heads'].get('normal')) for k in e['heads']}
+                e['headSize'] = {}
+            e['amap'] = {k: v for k, v in (e.get('amap') or {}).items() if (v if isinstance(v, str) else v.get('a')) in anims}
+            n += 1
+        # 别名自己的旧图不再用
+        for rel in ('chars/%s.png' % alias,):
+            p = os.path.join(ASSETS, rel)
+            if os.path.exists(p):
+                os.remove(p)
+        hd = os.path.join(ASSETS, 'heads', alias)
+        if os.path.isdir(hd):
+            for f in os.listdir(hd):
+                os.remove(os.path.join(hd, f))
+            os.rmdir(hd)
+    for fp in files:
+        save(fp, files[fp])
+    print('别名条目', n)
+
+
 def export(mod_name, only=None, home='chars.json'):
     mod = importlib.import_module(mod_name)
     files = {fp: load(fp) for fp in sorted(glob.glob(os.path.join(META, 'chars*.json')))}
@@ -76,7 +130,10 @@ def export(mod_name, only=None, home='chars.json'):
             lost = sorted(set(e.get('animations', {})) - set(new))
             if lost:
                 print('  ！%s 少了旧图集里有的动作（%s）：%s' % (cid, os.path.basename(fp), lost))
-            e.update(image='chars/' + cid, cell=cell, pivot=pivot, animations=new, top=top)
+            oldan = e.get('animations') or {}
+            anims = {a: dict(v, fps=oldan[a]['fps'], kind=oldan[a]['kind']) if a in oldan and oldan[a].get('frames') == v['frames'] else v
+                     for a, v in new.items()}       # 帧数没变的动作沿用旧的 fps / kind（招式表按时间卡帧）
+            e.update(image='chars/' + cid, cell=cell, pivot=pivot, animations=anims, top=top)
             if heads and e.get('heads'):
                 e['heads'] = {k: heads[k] for k in e['heads'] if k in heads}
                 e['headSize'] = {}
@@ -88,7 +145,10 @@ def export(mod_name, only=None, home='chars.json'):
 
 
 if __name__ == '__main__':
-    for arg in [a for a in sys.argv[1:] if not a.startswith('--')]:
+    args = [a for a in sys.argv[1:] if not a.startswith('--')]
+    for arg in (ALL if args == ['all'] else args):
         name, _, ids = arg.partition(':')
         print(name)
         export(name, set(ids.split(',')) if ids else None)
+    if args == ['all'] or '--aliases' in sys.argv:
+        apply_aliases()

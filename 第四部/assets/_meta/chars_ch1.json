@@ -4,12 +4,12 @@
    "name": "虹村形兆",
    "image": "chars/keicho",
    "cell": [
-    44,
-    36
+    36,
+    38
    ],
    "pivot": [
-    19,
-    34
+    18,
+    35
    ],
    "animations": {
     "idle": {
@@ -116,7 +116,7 @@
     "sit": "sit",
     "run": "run"
    },
-   "top": 29,
+   "top": 33,
    "bodyW": 4,
    "kind": "char"
   },
@@ -312,12 +312,12 @@
    "name": "虹村兄弟的父亲",
    "image": "chars/nijimura_dad",
    "cell": [
-    32,
-    30
+    28,
+    21
    ],
    "pivot": [
-    15,
-    29
+    14,
+    19
    ],
    "animations": {
     "idle": {
@@ -345,7 +345,7 @@
     "hurt": "idle",
     "pose": "hug"
    },
-   "top": 27,
+   "top": 18,
    "bodyW": 8,
    "kind": "char"
   }

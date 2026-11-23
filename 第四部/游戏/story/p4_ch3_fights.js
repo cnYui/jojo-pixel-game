@@ -193,7 +193,7 @@
           cine(c, async () => {
             S.sfx('ding', 0.6);
             await S.wait(0.4);
-            S.sfxText('嘟——', { wx: VL.window - 10, wy: 100, wz: 0 }, { dur: 1.0 });
+            S.sfxText('嘟——', { wx: VL.window - 10, wy: 116, wz: 0 }, { dur: 1.0 });
             await S.wait(0.7);
             await S.say('josuke', '喂？……康一？！你在哪儿？', { name: '电话那头（仗助）' });
             await S.say('koichi', '仗助君！我被关在一栋海边的别墅里……', { expr: 'shock' });
@@ -247,7 +247,7 @@
       if (s.x < VL.door + 50 && !C3.F.hateNote) {
         C3.F.hateNote = true;
         cine(c, async () => {
-          S.sfxText('我讨厌你', { wx: VL.door, wy: 100, wz: 0 }, { dur: 3 });
+          S.sfxText('我讨厌你', { wx: VL.door, wy: 112, wz: 0 }, { dur: 3 });
           S.sfx('sting_comedy', 0.7);
           await S.narrate('……她回来看到这个，大概也只会觉得我在害羞。', { pos: 'top' });
         });
@@ -583,7 +583,7 @@
     if (!t) return;
     if (d.cook > 0) {
       d.cook -= dt; t.play('cmd');
-      if (Math.floor(d.cook * 2) !== Math.floor((d.cook + dt) * 2)) S.fx('smoke', { x: KT.stove, y: 70, n: 3, rise: 14, colour: '#f0f0f4', life: 0.8 }, { life: 1 });
+      if (Math.floor(d.cook * 2) !== Math.floor((d.cook + dt) * 2)) S.fx('smoke', { x: KT.stove, y: 110, n: 3, rise: 14, colour: '#f0f0f4', life: 0.8 }, { life: 1 });
       if (d.cook <= 0) t.play('walk');
       return;
     }

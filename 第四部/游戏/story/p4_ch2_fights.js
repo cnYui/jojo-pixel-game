@@ -217,7 +217,7 @@
     S.face(e, -1);
     e.play('wave');
     await S.say('tamami', '伯母——！您儿子偷了人家五十万日元哦～', { expr: 'smile' });
-    S.sfxText('呜呜……', { wx: 22, wy: 140, wz: 34 }, { dur: 1.4 });
+    S.sfxText('呜呜……', { wx: 22, wy: 140, wz: 24 }, { dur: 1.4 });
     await S.narrate('门外传来妈妈的哭声。', { pos: 'top' });
     await addLock(S, c);
     if ((d.locks || 0) >= 3) return;

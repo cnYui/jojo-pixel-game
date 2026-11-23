@@ -4,12 +4,12 @@
    "name": "吉良吉广",
    "image": "chars/yoshihiro",
    "cell": [
-    36,
-    38
+    27,
+    27
    ],
    "pivot": [
-    18,
-    28
+    13,
+    26
    ],
    "animations": {
     "idle": {
@@ -77,7 +77,7 @@
     "cmd": "throw",
     "punch": "throw"
    },
-   "top": 26,
+   "top": 24,
    "bodyW": 4,
    "kind": "char"
   },
@@ -85,12 +85,12 @@
    "name": "大柳贤",
    "image": "chars/oyanagi",
    "cell": [
-    28,
-    29
+    22,
+    27
    ],
    "pivot": [
-    14,
-    19
+    12,
+    26
    ],
    "animations": {
     "idle": {
@@ -149,7 +149,7 @@
    "amap": {
     "shock": "hurt"
    },
-   "top": 18,
+   "top": 24,
    "bodyW": 3,
    "kind": "char"
   },
@@ -157,12 +157,12 @@
    "name": "川尻忍",
    "image": "chars/shinobu",
    "cell": [
-    43,
+    20,
     30
    ],
    "pivot": [
-    25,
-    30
+    10,
+    29
    ],
    "animations": {
     "idle": {
@@ -179,6 +179,12 @@
     },
     "wave": {
      "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "talk": {
+     "row": 3,
      "frames": 2,
      "fps": 4,
      "kind": "loop"
@@ -211,20 +217,20 @@
     "shock": "wave",
     "run": "walk"
    },
-   "top": 25,
+   "top": 27,
    "bodyW": 4,
    "kind": "char"
   },
   "ph8_rohan": {
    "name": "岸边露伴（占位）",
-   "image": "chars/ph8_rohan",
+   "image": "chars/rohan",
    "cell": [
-    32,
-    32
+    34,
+    35
    ],
    "pivot": [
-    16,
-    30
+    17,
+    33
    ],
    "animations": {
     "idle": {
@@ -240,25 +246,25 @@
      "kind": "loop"
     },
     "point": {
-     "row": 2,
+     "row": 3,
      "frames": 2,
      "fps": 4,
      "kind": "loop"
     },
     "hurt": {
-     "row": 3,
+     "row": 6,
      "frames": 1,
      "fps": 1,
      "kind": "static"
     },
     "guard": {
-     "row": 4,
+     "row": 8,
      "frames": 1,
      "fps": 1,
      "kind": "static"
     },
     "dodge": {
-     "row": 5,
+     "row": 7,
      "frames": 1,
      "fps": 1,
      "kind": "static"
@@ -267,20 +273,20 @@
    "aliases": {},
    "heads": {
     "normal": [
-     "heads/ph8_rohan/normal_0",
-     "heads/ph8_rohan/normal_1"
+     "heads/rohan/normal_0",
+     "heads/rohan/normal_1"
     ],
     "smile": [
-     "heads/ph8_rohan/smile_0",
-     "heads/ph8_rohan/smile_1"
+     "heads/rohan/smile_0",
+     "heads/rohan/smile_1"
     ],
     "shock": [
-     "heads/ph8_rohan/shock_0",
-     "heads/ph8_rohan/shock_1"
+     "heads/rohan/shock_0",
+     "heads/rohan/shock_1"
     ],
     "rage": [
-     "heads/ph8_rohan/rage_0",
-     "heads/ph8_rohan/rage_1"
+     "heads/rohan/rage_0",
+     "heads/rohan/rage_1"
     ]
    },
    "headAlias": {},
@@ -292,20 +298,20 @@
     "run": "walk",
     "pose": "point"
    },
-   "top": 26,
+   "top": 31,
    "bodyW": 4,
    "kind": "char"
   },
   "ph8_joseph": {
    "name": "乔瑟夫（占位）",
-   "image": "chars/ph8_joseph",
+   "image": "chars/joseph_old",
    "cell": [
-    52,
-    36
+    32,
+    32
    ],
    "pivot": [
-    19,
-    34
+    16,
+    31
    ],
    "animations": {
     "idle": {
@@ -348,20 +354,20 @@
    "aliases": {},
    "heads": {
     "normal": [
-     "heads/ph8_joseph/normal_0",
-     "heads/ph8_joseph/normal_1"
+     "heads/joseph_old/normal_0",
+     "heads/joseph_old/normal_1"
     ],
     "smile": [
-     "heads/ph8_joseph/smile_0",
-     "heads/ph8_joseph/smile_1"
+     "heads/joseph_old/smile_0",
+     "heads/joseph_old/smile_1"
     ],
     "shock": [
-     "heads/ph8_joseph/shock_0",
-     "heads/ph8_joseph/shock_1"
+     "heads/joseph_old/shock_0",
+     "heads/joseph_old/shock_1"
     ],
     "rage": [
-     "heads/ph8_joseph/rage_0",
-     "heads/ph8_joseph/rage_1"
+     "heads/joseph_old/rage_0",
+     "heads/joseph_old/rage_1"
     ]
    },
    "headAlias": {},
@@ -371,20 +377,20 @@
     "talk": "idle",
     "run": "walk"
    },
-   "top": 30,
+   "top": 29,
    "bodyW": 4,
    "kind": "char"
   },
   "ph8_kosaku": {
    "name": "川尻浩作（占位）",
-   "image": "chars/ph8_kosaku",
+   "image": "chars/kawajiri",
    "cell": [
-    20,
-    30
+    34,
+    33
    ],
    "pivot": [
-    10,
-    30
+    16,
+    32
    ],
    "animations": {
     "idle": {
@@ -403,20 +409,20 @@
    "aliases": {},
    "heads": {
     "normal": [
-     "heads/ph8_kosaku/normal_0",
-     "heads/ph8_kosaku/normal_1"
+     "heads/kawajiri/normal_0",
+     "heads/kawajiri/normal_1"
     ],
     "smile": [
-     "heads/ph8_kosaku/smile_0",
-     "heads/ph8_kosaku/smile_1"
+     "heads/kawajiri/smile_0",
+     "heads/kawajiri/smile_1"
     ],
     "shock": [
-     "heads/ph8_kosaku/shock_0",
-     "heads/ph8_kosaku/shock_1"
+     "heads/kawajiri/shock_0",
+     "heads/kawajiri/shock_1"
     ],
     "rage": [
-     "heads/ph8_kosaku/rage_0",
-     "heads/ph8_kosaku/rage_1"
+     "heads/kawajiri/rage_0",
+     "heads/kawajiri/rage_1"
     ]
    },
    "headAlias": {},
@@ -427,7 +433,7 @@
     "shock": "idle",
     "run": "walk"
    },
-   "top": 26,
+   "top": 30,
    "bodyW": 3,
    "kind": "char"
   }
