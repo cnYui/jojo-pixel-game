@@ -28,8 +28,18 @@ def rain_view(cols=('#5a6478', '#77839a')):
 
 
 # ================================================================ 东方家客厅（480）
-def higashikata_living():
-    """东方家客厅 + 厨房：镜头在屋里（天花、后墙、地板），家具按比例标准"""
+def night_view(cv, x0, y0, x1, y1):
+    K.vgrad(cv, x0, y0, x1, y1, ['#0c1030', '#1e2a5c'])
+    for i, (dx, dy) in enumerate(((5, 4), (17, 9), (30, 3), (44, 12), (52, 6), (24, 15))):
+        if x0 + dx < x1:
+            cv.put(x0 + dx, y0 + dy, '#e8ecff' if i % 2 else '#a8b0e0')
+    cv.rect(x0, y1 - 6, x1, y1, '#16202e')
+    cv.rect(x0 + (x1 - x0) // 2, y0 + 16, x1, y1 - 6, '#1a2238')
+    cv.rect(x0 + (x1 - x0) // 2 + 6, y0 + 20, x0 + (x1 - x0) // 2 + 10, y0 + 24, '#f6d98a')
+
+
+def higashikata_living(var='rain', ret_screen=False):
+    """东方家客厅 + 厨房：镜头在屋里（天花、后墙、地板），家具按比例标准。var = rain（序章，窗外下雨）/ night（第4章，夜里）"""
     W = 480
     cv = Cv(W, 180)
     F = FLOOR
@@ -45,7 +55,7 @@ def higashikata_living():
     K.phone_stand(cv, 22, F)
     K.door(cv, 48, F, c='#a87a4c', frame='#6a4a2c', side=-1)        # 通走廊的门（204 cm）
     R.transom(cv, 38, 58, F - 44, F - 38)
-    K.window(cv, 68, F - 38, 128, F - 1, frame='#e8dcc4', nx=2, ny=1, sill=False, view=rain_view(), curtain='#d8847a', rod='#7a5a3c')
+    K.window(cv, 68, F - 38, 128, F - 1, frame='#e8dcc4', nx=2, ny=1, sill=False, view=rain_view() if var == 'rain' else night_view, curtain='#d8847a', rod='#7a5a3c')
     K.switch(cv, 146, F - 21)
     K.bookshelf(cv, 174, 198, F, 34, '#8a6240', seed=7)
     K.sofa(cv, 231, F, w=48, c='#7a6ab8', cushion='#e8a0b8')
@@ -57,8 +67,10 @@ def higashikata_living():
     K.plant(cv, 276, F - 12, 9, seed=4)
     cv.rect(286, F - 15, 291, F - 13, '#e8e4d8')
     K.plant(cv, 304, F, 16, pot='#8a8a94', seed=9)
-    K.tv_crt(cv, 325, F, stand_h=8)
-    K.picture(cv, 325, F - 31, 14, 9, '#6a4a2a')
+    scr = K.tv_crt(cv, 325, F, stand_h=8, w=16, h=13)
+    K.picture(cv, 325, F - 34, 14, 9, '#6a4a2a')
+    cv.rect(288, F - 6, 290, F - 4, '#f0ece0')                       # 墙上的插座
+    cv.put(289, F - 5, '#8a8a90')
     K.bookshelf(cv, 343, 358, F, 34, '#9a7248', seed=11, empty=0.4)
     R.pendant(cv, 200, drop=20, w=12)
     cv.rect(362, R.CL + 2, 364, F, '#8a6a44')                        # 客厅和厨房之间的柱
@@ -72,7 +84,7 @@ def higashikata_living():
     K.fridge(cv, 450, F, 13, 28)
     K.rug(cv, 180, 290, 152, 166)
     R.pendant(cv, 416, drop=18, w=8)
-    return cv
+    return (cv, scr) if ret_screen else cv
 
 
 def build_higashikata_living():

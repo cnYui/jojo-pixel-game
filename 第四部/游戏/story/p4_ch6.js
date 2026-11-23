@@ -32,7 +32,8 @@
   ST.deli_ch6 = base('deli_ch6', 'st_gentleman', 480, { music: 'tension', obstacles: walls(8, 472, 480) });
   ST.road_ch6 = base('road_ch6', 'morioh_road', 960, { music: 'daily', state: { pm: 0 } });
   ST.town_ch6 = base('town_ch6', 'morioh_blocks', 320, { music: 'battle', yMin: 160, yMax: 170, obstacles: [] });
-  ST.bank_ch6 = base('bank_ch6', 'budogaoka_bank', 320, { music: 'daily', obstacles: walls(8, 312, 320) });
+  // fgDepth：柜台是前景层，按这条线参与纵深排序——柜员（y = 139）站在柜台后面，顾客（y ≥ 140）在前面
+  ST.bank_ch6 = base('bank_ch6', 'budogaoka_bank', 320, { music: 'daily', obstacles: walls(8, 312, 320), fgDepth: 139.5 });
   // 第 9 战两屏：外墙（0–320）和楼顶（320–640）是同一张图，舞台用 x0 / x1 把镜头卡在一屏里
   ST.wall_ch6 = base('wall_ch6', 'rooftops', 640, { x0: 0, x1: 320, yMin: 150, yMax: 150, music: 'battle', obstacles: walls(16, 292, 640) });
   ST.roof_ch6 = base('roof_ch6', 'rooftops', 640, { x0: 320, x1: 640, camX: 320, music: 'battle', obstacles: walls(330, 632, 640),
@@ -309,16 +310,16 @@
   }
 
   // ================================================================ 节拍 6 银行：仗助把彩票背面的字“修”成别的
-  const BK = { counter: [243, 146], teller: [243, 140] };
+  const BK = { counter: [243, 146], teller: [243, 139] };
   async function beatBank(S) {
     S.party(['josuke', OKU()], { leader: 'josuke' });
     await S.setStage('bank_ch6', { x: 40, y: 160, facing: 1, music: 'daily', fade: false });
     const p = S.player;
-    const tl = S.spawn('clerk', 243, 140, { id: 'teller', facing: 1, name: '柜员' });
+    const tl = S.spawn('clerk', 243, 139, { id: 'teller', facing: 1, name: '柜员' });
     tl.facing = -1;
     const sg = place(S, 'shigechi', 14, 164, 1);
     sg.team = 'npc'; sg.name = '重清';
-    T().prop(S, 'lottery', BK.counter[0] - 8, 144, { id: 'ticket', frame: 1, z: 30 });
+    T().prop(S, 'lottery', BK.counter[0] - 8, 144, { id: 'ticket', frame: 1, z: 22 });
     snapTo({ x: 160 });
     await S.fadeIn(0.5);
     S.location('bank', { y: NAME_TOP });
@@ -328,7 +329,7 @@
     await S.say('clerk', '这张彩票背面，写着买的人的名字和电话。不是这位同学的名字呢。', { actor: tl, name: '柜员' });
     await S.say('shigechi', '那、那是我捡的嘛……', { expr: 'shock', actor: sg });
     await S.say('clerk', '那就要先联系这位买主了。请稍等。', { actor: tl, name: '柜员' });
-    S.walk(tl, 296, 140, { speed: 30 }).catch(G.cancelIgnore);
+    S.walk(tl, 296, 139, { speed: 30 }).catch(G.cancelIgnore);
     await S.say(OKU(), '……完了，五百万飞了。', { expr: 'shock' });
     await S.say('josuke', '……背面的字，是“写上去”的吧。', { expr: 'smile' });
   }
@@ -355,7 +356,7 @@
   function setupBankFree(S) {
     const st = G.world.stage;
     st.hotspots.push(
-      { id: 'ticket', x: BK.counter[0], y: 150, r: 22, ry: 14, label: '彩票', tags: ['fix', 'erase'], fx: BK.counter[0] - 8, fy: 114,
+      { id: 'ticket', x: BK.counter[0], y: 150, r: 22, ry: 14, label: '彩票', tags: ['fix', 'erase'], fx: BK.counter[0] - 8, fy: 121,
         use: useTicket, look: async (S2, h, p) => { if (p.cid === 'josuke') await fixTicket(S2, h, p); else await eraseTicket(S2); } },
       { id: 'number', x: 71, y: 150, r: 12, label: '取号机', use: async (S2) => { S2.sfx('blip', 0.6); await S2.say(null, '取号机吐出一张小票：2-041。'); } },
       { id: 'sofa', x: 116, y: 150, r: 14, label: '沙发', use: async (S2) => { await S2.say(OKU(), '银行的沙发软乎乎的……五百万……'); } },
@@ -367,10 +368,10 @@
   }
   async function beatCheck(S) {
     const p = S.player, tl = S.actor('teller'), sg = S.actor('shigechi');
-    if (tl) await S.walk(tl, 243, 140, { speed: 40 });
+    if (tl) await S.walk(tl, 243, 139, { speed: 40 });
     await S.say('clerk', '……咦？名字是“矢安宫重清”呢。是我看错了。', { actor: tl, name: '柜员', expr: 'shock' });
     await S.say('clerk', '好的，矢安宫先生。这是五百万日元的汇票。', { actor: tl, name: '柜员', expr: 'smile' });
-    T().prop(S, 'check', 236, 150, { id: 'check', frame: 0, z: 30 });
+    T().prop(S, 'check', 236, 150, { id: 'check', frame: 0, z: 28 });
     S.sfx('ding', 0.8);
     S.mark('ch6_check');
     const ck = S.actor('check');
@@ -497,7 +498,7 @@
   }
 
   // ================================================================ 节拍 10 体育仓库
-  const JH = { sit: [322, 150], hanger: [374, 82], shedDoor: 232, window: 528 };
+  const JH = { sit: [322, 150], hanger: [374, 106], shedDoor: 232, window: 528 };
   async function beatShed(S) {
     S.party(['josuke', OKU()], { leader: 'josuke' });
     await S.setStage('jhs_ch6', { x: 300, y: 158, facing: 1, music: 'daily', fade: false });

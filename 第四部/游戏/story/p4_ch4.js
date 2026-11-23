@@ -100,7 +100,7 @@
       npcs: [], triggers: [],
       hotspots: [
         { id: 'console', x: 296, y: 156, r: 16, label: '游戏机', use: async (S) => { await S.say('josuke', '存档还没存……'); } },
-        { id: 'switch', x: 159, y: 150, r: 16, label: '灯开关', use: async (S) => {
+        { id: 'switch', x: 146, y: 150, r: 16, label: '灯开关', use: async (S) => {
           const on = !(G.world.stage.state && G.world.stage.state.lamp);
           S.state('lamp', on ? 1 : 0); S.sfx('blip', 0.6);
           await S.say(null, on ? '开了灯。' : '关了灯。电视的光照在墙上。');
@@ -124,10 +124,10 @@
     await S.wait(0.6);
     // 屏幕里伸出一只发光的手
     const hand = S.spawn('rhcp', 325, 150, { id: 'tv_hand', facing: -1, alpha: 0 });
-    hand.z = 58; hand.shadow = false;
+    hand.z = 24; hand.shadow = false;
     S.pose(hand, 'hand');
     S.sfx('sting_shock', 0.8);
-    zap(S, 325, 84, 316, 92, 0.4);
+    zap(S, 323, 122, 314, 128, 0.4);
     await S.animate(0.3, (k) => { hand.alpha = k; hand.x = 325 - 8 * k; });
     S.mark('ch4_tv_hand');
     const r = await S.press({ key: 'attack', window: 0.7, label: '按 J！' });
@@ -138,7 +138,7 @@
       S.sfxText('DORA!', hand, { dur: 0.6 });
       await S.wait(0.12);
       S.sfx('clang', 0.8);
-      S.fx('hit_spark', { x: 316, y: 92, size: 12, accent: '#ffe060' });
+      S.fx('hit_spark', { x: 314, y: 126, size: 12, accent: '#ffe060' });
       await S.say('josuke', '弹开了？！好快……', { expr: 'shock' });
     }
     // 被打飞，撞到沙发（喜剧）
@@ -151,11 +151,11 @@
     S.pose(p, 'down');
     // 发光的小东西钻出半个身子 → 钻进插座
     S.unpose(hand); hand.hold = true; hand.play('idle');
-    await S.animate(0.3, (k) => { hand.z = 58 - 20 * k; });
+    await S.animate(0.3, (k) => { hand.z = 24 - 8 * k; });
     await S.say('rhcp', '嘿嘿……比你的替身快吧？', { expr: 'smile' });
     S.sfx('whoosh', 0.7);
-    await S.animate(0.3, (k) => { hand.x = 317 - 28 * k; hand.z = 38 - 8 * k; hand.scale = 1 - 0.7 * k; });
-    zap(S, 289, 124, 289, 132, 0.3);
+    await S.animate(0.3, (k) => { hand.x = 317 - 28 * k; hand.z = 16 - 3 * k; hand.scale = 1 - 0.7 * k; });
+    zap(S, 289, 128, 289, 134, 0.3);
     hand.remove = true;
     S.mark('ch4_socket');
     for (let i = 0; i < 2; i++) { S.state('lamp', 1); S.sfx('blip', 0.5); await S.wait(0.12); S.state('lamp', 0); await S.wait(0.12); }
