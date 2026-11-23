@@ -256,7 +256,7 @@
    ],
    "stairs_top": [
     232,
-    94
+    68
    ],
    "handrail": [
     190,
@@ -344,7 +344,7 @@
     "image": "bg/seaside_villa/hair_walls",
     "k": 1,
     "x": 0,
-    "y": 92,
+    "y": 66,
     "key": "hair_walls"
    },
    {
@@ -352,7 +352,7 @@
     "image": "bg/seaside_villa/hair_door",
     "k": 1,
     "x": 20,
-    "y": 90,
+    "y": 64,
     "key": "hair_door"
    },
    {
@@ -360,7 +360,7 @@
     "image": "bg/seaside_villa/hair_stairs",
     "k": 1,
     "x": 132,
-    "y": 88,
+    "y": 62,
     "key": "hair_stairs"
    },
    {
@@ -368,7 +368,7 @@
     "image": "bg/seaside_villa/hair_window",
     "k": 1,
     "x": 574,
-    "y": 88,
+    "y": 62,
     "key": "hair_window"
    }
   ],

@@ -12,6 +12,7 @@ from px import Cv, mix, shade, rgba  # noqa: E402
 import bgkit as K  # noqa: E402
 import bgout as O  # noqa: E402
 import bgin2 as I  # noqa: E402
+import bgroom as R  # noqa: E402
 from bgkit import FLOOR  # noqa: E402
 from bgout import GROUND  # noqa: E402
 from pfont import ptext  # noqa: E402
@@ -48,6 +49,9 @@ def nj_top(cv, W, C, sky=('#8a8ea0', '#a4a8b4', '#c0c2c8', '#d8d8d8')):
 
 def nj_wall(cv, x0, x1, C, seed=0):
     K.wall(cv, x0, x1, NJ['wall'], y0=C, y1=F, stripes=(10, NJ['wall2']), wains=(14, NJ['wains']), base='#2e2018', crown='#2e2018')
+    if F - C > 56:                                         # 墙高的时候在门头高度压一条挂镜线
+        cv.rect(x0, F - 46, x1, F - 45, '#2e2018')
+        cv.hline(x0, x1, F - 44, shade(NJ['wall'], -0.25))
     r = K.rng(seed)
     for _ in range(max(2, (x1 - x0) // 70)):              # 发霉、墙纸剥落
         I.stain(cv, r.randint(x0 + 10, x1 - 10), r.randint(C + 8, F - 20), r.randint(8, 16), r.randint(6, 12), shade(NJ['wall'], -0.35), seed=int(r.randint(999)))
@@ -63,9 +67,9 @@ def nj_wall(cv, x0, x1, C, seed=0):
 def nijimura_hall():
     W = 640
     cv = Cv(W, 180)
-    C = F - 50
-    nj_top(cv, W, C)
-    nj_wall(cv, 0, W - 1, C, seed=3)
+    C = R.CL
+    R.ceiling(cv, 0, W - 1, c='#3a322c', beam='#2a1e18')
+    nj_wall(cv, 0, W - 1, C + 2, seed=3)
     K.floor_wood(cv, 0, W - 1, c=NJ['floor'], seed=7)
     # 开着的正门（外面是亮的院子）
     cv.rect(21, F - 37, 43, F, NJ['frame'])
@@ -132,11 +136,7 @@ def nijimura_stairs():
     cv = Cv(W, 180)
     L2 = 80                               # 二楼地面
     C2 = L2 - 50                          # 二楼天花
-    # 最上面：阁楼的暗影（梁）
-    cv.rect(0, 0, W - 1, C2 - 4, '#1c1614')
-    for x in range(20, W, 60):
-        cv.line(x, C2 - 5, x + 30, 0, '#2a201a')
-    K.ceiling_slab(cv, 0, W - 1, C2, 4, '#3a2a20')
+    R.ceiling(cv, 0, W - 1, cl=C2, c='#3a322c', beam=None)
     # 二楼的墙（只有平台那一段有地面，左边是挑空）
     K.wall(cv, 0, W - 1, NJ['wall'], y0=C2, y1=L2, stripes=(10, NJ['wall2']), wains=None, base=None, crown='#2e2018')
     nj_wall(cv, 0, W - 1, L2 + 4, seed=9)
@@ -212,20 +212,12 @@ def sunset_view(cv, x0, y0, x1, y1):
 def hirose_living(door_open=False):
     W = 320
     cv = Cv(W, 180)
-    C = F - K.CEIL
-    K.sky(cv, 0, W - 1, C - 4, K.SKY_EVE)
-    K.cloud(cv, 40, 30, 40, 2, ('#ffe0c0', '#f8c0a0', '#d89a90'))
-    K.roof_hip(cv, 10, 310, C - 44, C - 70, '#4a3a44', inset=40)
-    K.siding(cv, 18, C - 42, 302, C - 5, '#e8d8c0')
-    for wx in (70, 160, 250):
-        K.window_ext(cv, wx - 12, C - 33, wx + 12, C - 15, lit='#f6d98a' if wx == 160 else None, nx=2)
-    K.ceiling_slab(cv, 0, W - 1, C, 4, '#6a4e36')
-    K.wall(cv, 8, 311, '#f0dcc8', stripes=(8, '#e8d0b8'), wains=(13, '#b08a60'), crown='#8a6a44')
+    C = R.CL
+    R.ceiling(cv, 0, W - 1, c='#f0e6d2', beam='#8a6a44')
+    R.back_wall(cv, 0, W - 1, '#f0dcc8', stripes=(8, '#e8d0b8'), wains=(13, '#b08a60'))
     K.floor_wood(cv, 0, W - 1, c='#c08a58')
-    for x in (5, 312):
-        K.cut_wall(cv, x, C, 179, 3)
-    cv.rect(0, C, 4, 179, '#8a6a5a')
-    cv.rect(315, C, W - 1, 179, '#8a6a5a')
+    R.side_wall(cv, 0, 7, '#f0dcc8', left=True)
+    R.side_wall(cv, 312, W - 1, '#f0dcc8', left=False)
     # 门（左边，state.door = 1 时开着）
     if door_open:
         I.doorway(cv, 27, F, 17, 34, '#6a4a2c', inside='#3a2a22')
@@ -242,14 +234,14 @@ def hirose_living(door_open=False):
     K.sofa(cv, 164, F, w=46, c='#5a8a5a', cushion='#c8b888')
     K.picture(cv, 164, F - 28, 18, 11, '#8a6a3a', ('#8ac0e0', '#3a7a9a', '#f4f4f0'))
     K.bookshelf(cv, 214, 238, F, 30, '#8a6240', seed=3)
-    K.window(cv, 256, F - 35, 304, F - 14, frame='#f4ece0', nx=2, view=sunset_view, curtain='#f0e0d0', rod='#8a6a44')
+    K.window(cv, 256, F - 40, 304, F - 14, frame='#f4ece0', nx=2, view=sunset_view, curtain='#f0e0d0', rod='#8a6a44')
     K.plant(cv, 266, F - 14, 7, pot='#c86a4a', seed=2)
     cv.rect(288, F - 19, 292, F - 15, '#f8f8f4')            # 窗台上的招财猫
     cv.put(289, F - 20, '#f8f8f4')
     cv.put(291, F - 20, '#f8f8f4')
     cv.put(290, F - 17, '#d04a4a')
     K.rug(cv, 110, 230, 152, 168, '#4a6a9a', '#c8b888', '#c8b888')
-    K.lamp_ceiling(cv, 160, C + 2, w=12)
+    R.pendant(cv, 160, drop=20, w=12)
     return cv
 
 
@@ -259,7 +251,7 @@ def build_hirose_living():
     # 开着的门单独存一层：只留门那一块
     d = Cv(320, 180)
     d.a[F - 38:F + 1, 14:42] = op.a[F - 38:F + 1, 14:42]
-    glow = I.shafts(320, [[(258, F - 34), (302, F - 34), (236, 172), (150, 172)]], spots=[(196, 160, 46, 10, 0.3)], col='#ffc880', k=0.2)
+    glow = I.shafts(320, [[(258, F - 39), (302, F - 39), (236, 172), (150, 172)]], spots=[(196, 160, 46, 10, 0.3)], col='#ffc880', k=0.2)
     dust = I.dust(100, 70, n=12, count=14, seed=7)
     K.save_layers('hirose_living', dict(room=cv, door_open=d, glow=glow, dust=dust))
     K.update_meta('hirose_living', anchors=dict(clock=[76, F - 32], window=[280, F - 24]), layers={'dust': dict(x=170, y=100, w=100, h=70, n=12)})
@@ -280,34 +272,24 @@ def classroom_view(cv, x0, y0, x1, y1):
 def budogaoka_hall(locker_open=False):
     W = 640
     cv = Cv(W, 180)
-    C = F - 50
-    K.sky(cv, 0, W - 1, C - 4, K.SKY_DAY)
-    K.cloud(cv, 120, 16, 50, 3)
-    K.cloud(cv, 470, 22, 40, 4)
-    # 楼上一层的外墙（一排长窗）+ 楼顶
-    cv.rect(0, C - 56, W - 1, C - 5, '#ece6da')
-    cv.rect(0, C - 60, W - 1, C - 57, '#5a9a8a')
-    cv.hline(0, W - 1, C - 60, '#7ab8a8')
-    for x in range(10, W - 20, 30):
-        cv.rect(x, C - 42, x + 22, C - 20, '#f4f0e6')
-        cv.rect(x + 1, C - 41, x + 21, C - 21, '#8cb4cc')
-        cv.vline(x + 8, C - 42, C - 20, '#f4f0e6')
-        cv.vline(x + 15, C - 42, C - 20, '#f4f0e6')
-        cv.line(x + 2, C - 23, x + 6, C - 39, '#b8d4e4')
-    K.ceiling_slab(cv, 0, W - 1, C, 4, '#8a8a86')
-    # 走廊：上白下绿的墙
-    K.wall(cv, 0, W - 1, '#f2eee0', y0=C, y1=F, base='#5a7a6a', crown='#c8c4b4')
+    C = 62
+    R.ceiling(cv, 0, W - 1, cl=C, c='#eeeadc', boards=False)
+    for x in range(20, W, 80):                             # 天花上两排日光灯
+        cv.rect(x, C - 10, x + 36, C - 9, '#ffffff')
+        cv.hline(x, x + 36, C - 8, '#d0ccbc')
+        cv.rect(x - 8, C - 36, x + 46, C - 34, '#ffffff')
+        cv.hline(x - 8, x + 46, C - 33, '#d0ccbc')
+    K.wall(cv, 0, W - 1, '#f2eee0', y0=C + 2, y1=F, base='#5a7a6a', crown=None)
     cv.rect(0, F - 16, W - 1, F - 2, '#8ab0a0')
     cv.hline(0, W - 1, F - 16, '#6a9484')
     K.floor_plain(cv, 0, W - 1, c='#c8b48a', line='#b8a47a')
     for x in range(40, W, 110):                            # 地上的窗光
         K.dither(cv, x, F + 6, x + 40, 178, '#e8d8a8', 0.5)
-    for x in range(30, W, 70):                             # 天花的日光灯
-        cv.rect(x, C + 2, x + 24, C + 3, '#ffffff')
-    # 门上面一直到天花的气窗
+    # 门上面一排朝教室的高窗
     for x in range(8, W - 30, 26):
-        cv.rect(x, C + 6, x + 22, C + 13, '#f4f0e6')
-        cv.rect(x + 1, C + 7, x + 21, C + 12, '#b8d8e8')
+        cv.rect(x, F - 58, x + 22, F - 49, '#5a7a6a')
+        cv.rect(x + 1, F - 57, x + 21, F - 50, '#b8d8e8')
+        cv.vline(x + 11, F - 58, F - 49, '#5a7a6a')
     I.class_door(cv, 30, F, sign='1-A')
     I.lockers(cv, 78, 188, F, 30)
     if locker_open:
@@ -334,7 +316,7 @@ def budogaoka_hall(locker_open=False):
         cv.rect(614 + i * 4, F - 5 - i * 5, W - 1, F - i * 5, '#b8b4a4')
         cv.hline(614 + i * 4, W - 1, F - 5 - i * 5, '#e0dccc')
     cv.line(614, F - 20, 638, F - 50, '#6a6a70')
-    cv.rect(606, C + 8, 622, C + 13, '#3aa05a')              # 安全出口灯
+    cv.rect(596, F - 62, 612, F - 57, '#3aa05a')             # 安全出口灯
     return cv
 
 
@@ -360,20 +342,13 @@ def yard_view(cv, x0, y0, x1, y1):
 def budogaoka_classroom():
     W = 320
     cv = Cv(W, 180)
-    C = F - 50
-    K.sky(cv, 0, W - 1, C - 4, K.SKY_EVE)
-    cv.rect(0, C - 56, W - 1, C - 5, '#ece6da')
-    cv.rect(0, C - 60, W - 1, C - 57, '#5a9a8a')
-    for x in range(10, W - 20, 30):
-        cv.rect(x, C - 42, x + 22, C - 20, '#f4f0e6')
-        cv.rect(x + 1, C - 41, x + 21, C - 21, '#d8a878')
-        cv.vline(x + 11, C - 42, C - 20, '#f4f0e6')
-    K.darken(cv, 0, C - 60, W - 1, C - 5, 0.92, (1.04, 0.98, 0.92))
-    K.ceiling_slab(cv, 0, W - 1, C, 4, '#8a8a86')
-    K.wall(cv, 0, W - 1, '#f4ecd8', y0=C, y1=F, wains=(12, '#c8a878'), base='#8a6a44', crown='#c8c4b4')
+    C = 62
+    R.ceiling(cv, 0, W - 1, cl=C, c='#f0e8d4', boards=False)
+    for x in range(30, W, 90):                              # 天花上的日光灯
+        cv.rect(x, C - 10, x + 30, C - 9, '#ffffff')
+        cv.rect(x - 8, C - 36, x + 40, C - 34, '#ffffff')
+    K.wall(cv, 0, W - 1, '#f4ecd8', y0=C + 2, y1=F, wains=(12, '#c8a878'), base='#8a6a44', crown=None)
     K.floor_wood(cv, 0, W - 1, c='#c8a068')
-    for x in range(30, W, 90):
-        cv.rect(x, C + 2, x + 24, C + 3, '#ffffff')
     # 门（最左边，侧墙上的推拉门只露一条边）
     cv.rect(0, F - 34, 6, F, '#a8845a')
     cv.vline(6, F - 34, F, '#5a7a6a')
@@ -384,8 +359,8 @@ def budogaoka_classroom():
     K.clock(cv, 64, F - 40, 3)
     I.podium(cv, 62, F)
     # 靠窗的一面：两扇大窗 + 窗下的矮柜
-    K.window(cv, 136, F - 36, 216, F - 15, frame='#f4ece0', nx=3, view=yard_view, curtain='#f4e4c0')
-    K.window(cv, 232, F - 36, 312, F - 15, frame='#f4ece0', nx=3, view=yard_view, curtain='#f4e4c0')
+    K.window(cv, 136, F - 44, 216, F - 15, frame='#f4ece0', nx=3, ny=2, view=yard_view, curtain='#f4e4c0')
+    K.window(cv, 232, F - 44, 312, F - 15, frame='#f4ece0', nx=3, ny=2, view=yard_view, curtain='#f4e4c0')
     K.cabinet(cv, 130, 318, F, 12, '#b89060', doors=12)
     for x, col in ((150, '#3a4a7a'), (176, '#7a3a3a'), (236, '#3a6a4a'), (270, '#3a4a7a'), (300, '#8a6a3a')):   # 柜上的书包
         cv.rect(x, F - 18, x + 8, F - 13, col)
@@ -398,7 +373,7 @@ def budogaoka_classroom():
 
 def build_budogaoka_classroom():
     cv = budogaoka_classroom()
-    sun = I.shafts(320, [[(136, F - 36), (216, F - 36), (150, 178), (40, 178)], [(232, F - 36), (312, F - 36), (250, 178), (140, 178)]],
+    sun = I.shafts(320, [[(136, F - 44), (216, F - 44), (150, 178), (40, 178)], [(232, F - 44), (312, F - 44), (250, 178), (140, 178)]],
                    col='#ffb870', k=0.16)
     K.save_layers('budogaoka_classroom', dict(room=cv, sun=sun))
     K.update_meta('budogaoka_classroom', anchors=dict(bento=[189, 146 - 13]))
@@ -482,23 +457,13 @@ def sea_view(cv, x0, y0, x1, y1):
 def seaside_villa():
     W = 640
     cv = Cv(W, 180)
-    C = F - 46
-    K.sky(cv, 0, W - 1, C - 4, K.SKY_DAY)
-    K.cloud(cv, 90, 24, 50, 5)
-    K.cloud(cv, 480, 18, 44, 6)
-    K.roof_hip(cv, 4, 636, C - 44, C - 72, '#3a5a78', inset=42)
-    K.siding(cv, 12, C - 42, 628, C - 5, '#f4f0e6')
-    for wx in (60, 150, 240, 330, 420, 510, 590):
-        K.window_ext(cv, wx - 11, C - 33, wx + 11, C - 15, frame='#ffffff', nx=2, shutter='#3a5a78')
-    K.ceiling_slab(cv, 0, W - 1, C, 4, '#6a4e36')
-    # 玄关（0–124）铺石砖，屋里铺木地板
-    K.wall(cv, 8, 631, '#f2ecdc', y0=C, y1=F, wains=(13, '#8aa4b8'), base='#5a6a7a', crown='#7a5a3c')
+    C = R.CL
+    R.ceiling(cv, 0, W - 1, c='#f4efe2', beam='#7a5a3c')
+    R.back_wall(cv, 0, W - 1, '#f2ecdc', wains=(13, '#8aa4b8'), base='#5a6a7a', rail_c='#7a5a3c')
     K.floor_tile(cv, 0, 124, c1='#d8d4c8', c2='#c0bcb0', size=11)
     K.floor_wood(cv, 125, W - 1, c='#8a5a3a')
-    for x in (5, 632):
-        K.cut_wall(cv, x, C, 179, 3)
-    cv.rect(0, C, 4, 179, '#7a9ab0')
-    cv.rect(635, C, W - 1, 179, '#7a9ab0')
+    R.side_wall(cv, 0, 7, '#f2ecdc', left=True)
+    R.side_wall(cv, 632, W - 1, '#f2ecdc', left=False)
     cv.rect(124, F, 126, 179, '#5a3a28')                    # 玄关和屋里之间的门槛
     # 玄关：伞架、大门（双开，彩色玻璃气窗）、椭圆镜、鞋柜的位置（鞋柜是单独的一层）
     cv.rect(11, F - 7, 17, F, '#5a5a62')
@@ -531,7 +496,7 @@ def seaside_villa():
     cv.rect(244, C + 2, 246, F, '#7a5a3c')                   # 柱
     # 餐厅：朝海的窗、吊灯、餐桌（另画在可走带上）、餐边柜 + 照片
     K.window(cv, 296, F - 36, 344, F - 15, frame='#ffffff', nx=2, view=sea_view, curtain='#f4f0e6', rod='#7a5a3c')
-    K.lamp_ceiling(cv, 348, C + 2, c='#e8c060', w=10, cord=8)
+    R.pendant(cv, 348, drop=26, c='#e8c060', w=10)
     K.cabinet(cv, 372, 408, F, 14, '#7a5030', doors=2, drawers=2)
     cv.rect(398, F - 20, 405, F - 15, '#c8a850')
     cv.rect(399, F - 19, 404, F - 16, '#d8e0e8')
@@ -584,7 +549,7 @@ def hair_mass(cv, x0, y0, x1, y1, seed=0, density=1.0):
 
 def build_seaside_villa():
     cv = seaside_villa()
-    C = F - 46
+    C = R.CL
     L = dict(room=cv)
     # 鞋柜（单独一层，被头发拖走时关掉）：1.1 m 高
     sb = Cv(34, 26)
@@ -639,23 +604,16 @@ def street_view(cv, x0, y0, x1, y1):
 def trattoria():
     W = 480
     cv = Cv(W, 180)
-    C = F - 48
-    K.sky(cv, 0, W - 1, C - 4, K.SKY_EVE)
-    K.roof_hip(cv, 4, 476, C - 20, C - 44, '#a8583a', inset=30)
-    cv.rect(10, C - 20, 470, C - 5, '#f0e0b8')                # 檐下的外墙 + 店招
-    cv.rect(150, C - 18, 330, C - 8, '#3a6a3a')
-    ptext(cv, 176, C - 16, 'TRATTORIA TRUSSARDI', '#f4f0d8', 1, gap=1)
+    C = R.CL
+    R.ceiling(cv, 0, W - 1, c='#e8d4a8', beam='#5a3a28')
+    R.back_wall(cv, 0, W - 1, '#f0d8a0', wains=(13, '#3a5a44'), base='#2a3a2e', rail_c='#5a3a28', upper='#ecd096')
+    cv.rect(150, C + 8, 330, C + 18, '#3a6a3a')               # 墙上段的店招
+    ptext(cv, 176, C + 10, 'TRATTORIA TRUSSARDI', '#f4f0d8', 1, gap=1)
     for x, col in ((132, '#3a8a4a'), (138, '#f4f4f0'), (144, '#d03a3a')):
-        cv.rect(x, C - 18, x + 5, C - 8, col)
-    K.ceiling_slab(cv, 0, W - 1, C, 4, '#5a3a28')
-    K.wall(cv, 8, 471, '#f0d8a0', y0=C, y1=F, wains=(13, '#3a5a44'), base='#2a3a2e', crown='#5a3a28')
-    for x in range(40, W, 80):                                # 天花的木梁
-        cv.rect(x, C + 2, x + 5, C + 5, '#5a3a28')
+        cv.rect(x, C + 8, x + 5, C + 18, col)
     K.floor_tile(cv, 0, W - 1, c1='#b8603e', c2='#a8523a', size=12)
-    for x in (5, 472):
-        K.cut_wall(cv, x, C, 179, 3)
-    cv.rect(0, C, 4, 179, '#c8a078')
-    cv.rect(475, C, W - 1, 179, '#c8a078')
+    R.side_wall(cv, 0, 7, '#f0d8a0', left=True)
+    R.side_wall(cv, 472, W - 1, '#f0d8a0', left=False)
     # 入口门（玻璃门 + 意大利小旗）、临街的窗、盆栽
     K.door(cv, 32, F, w=17, h=34, c='#7a4a30', frame='#4a2c20', glass='#f8d8a0')
     for i, col in enumerate(('#3a8a4a', '#f4f4f0', '#d03a3a')):
@@ -669,7 +627,7 @@ def trattoria():
         cv.hline(159, 159 + (yy * 7) % 14 + 5, yy, '#e8e8e0')
     K.picture(cv, 228, F - 32, 16, 10, '#c8a850', ('#a8d0e8', '#6a9a4a', '#f4e8b0'))
     for x, col in ((200, '#f4f0e0'), (262, '#d03a3a')):
-        for yy in range(C + 6, C + 22, 3):
+        for yy in range(F - 44, F - 28, 3):
             cv.ellipse(x, yy, 1.6, 1.6, col)
     I.wine_rack(cv, 312, 344, F, 32)
     # 出菜口 + 吧台、厨房的弹簧门
@@ -681,8 +639,7 @@ def trattoria():
     I.swing_door(cv, 443, F)
     # 吊灯
     for x in (118, 228, 318):
-        K.lamp_ceiling(cv, x, C + 2, c='#3a6a4a', w=8, cord=10)
-        cv.hline(x - 2, x + 2, C + 16, '#fff0b0')
+        R.pendant(cv, x, drop=32, c='#3a6a4a', w=8)
     # 三张桌子（落在可走带上，y = 150）和椅子
     for tx in (118, 228, 318):
         I.bistro_chair(cv, tx - 30, 152, face=1)
@@ -695,7 +652,7 @@ def trattoria():
 
 def build_trattoria():
     cv = trattoria()
-    C = F - 48
+    C = R.CL
     glow = I.shafts(480, spots=[(118, 142, 30, 16, 0.26), (228, 142, 30, 16, 0.26), (318, 142, 30, 16, 0.26)], col='#ffd890')
     K.save_layers('trattoria', dict(room=cv, glow=glow))
     K.update_meta('trattoria', anchors=dict(window=[92, F - 25], menu=[168, F - 29], pass_window=[387, F - 25]))
@@ -706,29 +663,23 @@ def build_trattoria():
 def trattoria_kitchen():
     W = 480
     cv = Cv(W, 180)
-    C = F - 48
-    K.sky(cv, 0, W - 1, C - 4, K.SKY_EVE)
-    K.roof_hip(cv, 4, 476, C - 20, C - 44, '#a8583a', inset=30)
-    cv.rect(10, C - 20, 470, C - 5, '#f0e0b8')
-    cv.rect(372, C - 60, 384, C - 20, '#a8583a')               # 烤炉的烟囱
-    cv.rect(370, C - 62, 386, C - 59, '#8a4630')
-    K.ceiling_slab(cv, 0, W - 1, C, 4, '#8a8a86')
+    C = R.CL
+    R.ceiling(cv, 0, W - 1, c='#eeece4', boards=False)
+    for x in range(60, W, 120):                             # 天花上的日光灯
+        cv.rect(x, C - 10, x + 36, C - 9, '#ffffff')
+        cv.rect(x - 8, C - 36, x + 46, C - 34, '#ffffff')
     # 白瓷砖墙
-    cv.rect(8, C, 471, F, '#f2f0e8')
+    cv.rect(0, C + 2, W - 1, F, '#f2f0e8')
     for y in range(C + 3, F, 4):
-        cv.hline(8, 471, y, '#dcd8cc')
+        cv.hline(0, W - 1, y, '#dcd8cc')
     for j, y in enumerate(range(C, F, 4)):
-        for x in range(8 + (j % 2) * 4, 471, 8):
+        for x in range((j % 2) * 4, W - 1, 8):
             cv.vline(x, y, min(F, y + 3), '#dcd8cc')
-    cv.hline(8, 471, F - 24, '#3a8a5a')
-    cv.rect(8, F - 1, 471, F, '#a8a498')
+    cv.hline(0, W - 1, F - 24, '#3a8a5a')
+    cv.rect(0, F - 1, W - 1, F, '#a8a498')
     K.floor_tile(cv, 0, W - 1, c1='#b8603e', c2='#a8523a', size=12)
-    for x in (5, 472):
-        K.cut_wall(cv, x, C, 179, 3, '#6a6a70')
-    cv.rect(0, C, 4, 179, '#c8a078')
-    cv.rect(475, C, W - 1, 179, '#c8a078')
-    for x in range(60, W, 120):
-        cv.rect(x, C + 2, x + 30, C + 3, '#ffffff')
+    R.side_wall(cv, 0, 7, '#f2f0e8', left=True)
+    R.side_wall(cv, 472, W - 1, '#f2f0e8', left=False)
     I.swing_door(cv, 24, F)
     # 水槽（台面 14）+ 墙上的洗手告示
     K.cabinet(cv, 58, 104, F, 14, '#c8ccd0', doors=3, handles='#6a6e76')
