@@ -173,8 +173,8 @@
     T().setFrame(pot, 0);
     S.sfx('whoosh', 0.6);
     // 碎片飞回窗台（窗台比路面高 44 px）
-    if (pot) await S.animate(0.45, (k) => { pot.z = Math.round(44 * (1 - (1 - k) * (1 - k))); });
-    P4().fixGlow(S, 332, 104);
+    if (pot) await S.animate(0.45, (k) => { pot.z = Math.round(33 * (1 - (1 - k) * (1 - k))); });   // 窗台按新比例在 y ≈ 117
+    P4().fixGlow(S, 332, 112);
     S.mark('pro_pot');
     await S.say('granny', '哎呀，谢谢你啊。', { name: '窗里的老奶奶' });
     await S.say('josuke', 'Great～', { expr: 'smile' });
