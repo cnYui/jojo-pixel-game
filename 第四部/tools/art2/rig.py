@@ -351,6 +351,7 @@ class Sheet:
         self.cid, self.name, self.kind = cid, name, kind
         self.rows = []                    # (动作名, [Cv 工作画布…], fps, kind)
         self.body = None
+        self.face = None                  # 整帧手画的角色：头像从待机帧的哪一块裁（左上角，16 × 16）
 
     def add(self, anim, frames, fps=6, kind='loop'):
         self.rows.append((anim, list(frames), fps, kind))

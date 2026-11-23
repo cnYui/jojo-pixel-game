@@ -161,6 +161,15 @@ def portraits(B, emos=('normal', 'rage', 'smile', 'shock')):
                     put(ox + xx, oy + yy, dark)
                     if emo != 'shock':
                         put(ox + xx, oy + yy + 1, dark if emo == 'rage' or wi >= 3 else a[min(H2 - 1, oy + yy + 1), ox + xx])
+            # ---- 鼻子：两眼之间偏前、眼和嘴中间的一小撇暗皮肤色
+            if len(eye_g) >= 2 and mouth_g:
+                ex = max(i for i, _ in eye_g[-1])
+                ey = max(j for g in eye_g for _, j in g)
+                my = min(j for _, j in mouth_g[0])
+                nx, ny = to2(ex - 1, ey + 1)
+                if my - ey >= 2:
+                    put(nx - 1, ny + 0, rgba(pal.get('d', '#d8946c')))
+                    put(nx - 1, ny + 1, rgba(pal.get('d', '#d8946c')))
             # ---- 嘴
             for g in mouth_g:
                 ci, cj = min(i for i, _ in g), min(j for _, j in g)
@@ -207,16 +216,39 @@ def portraits(B, emos=('normal', 'rage', 'smile', 'shock')):
     return out
 
 
+ALIAS = {'angry': 'rage', 'glare': 'rage', 'surprise': 'shock', 'hurt': 'shock', 'happy': 'smile', 'blush': 'smile', 'cry': 'shock',
+         'sad': 'normal', 'serious': 'normal', 'portrait': 'normal', 'portrait_angry': 'rage', 'grey': 'normal', 'white': 'normal'}
+
+
 def export_heads(cid, B, emos):
-    """写 assets/heads/<cid>/<表情>_<帧>.png；返回 {表情: [图名…]}"""
+    """写 assets/heads/<cid>/<表情>_<帧>.png；返回 {表情: [图名…]}。旧元数据里四种以外的表情名落到最像的那张上"""
     res = {}
-    ps = portraits(B, [e for e in emos if e in ('normal', 'rage', 'smile', 'shock')] or ['normal'])
+    ps = portraits(B)
     for emo in emos:
-        frs = ps.get(emo) or ps['normal']
+        frs = ps.get(emo) or ps.get(ALIAS.get(emo, 'normal')) or ps['normal']
         keys = []
         for i, f in enumerate(frs):
             key = 'heads/%s/%s_%d' % (cid, emo, i)
             f.save(ensure(os.path.join(ASSETS, key + '.png')))
+            keys.append(key)
+        res[emo] = keys
+    return res
+
+
+def export_face(cid, frame, box, emos):
+    """整帧手画的角色（水中项链、小动物……）：从待机帧上裁 16 × 16 的脸放大 2 倍当头像（各表情同一张）"""
+    x0, y0 = box
+    sub = frame.a[y0:y0 + 16, x0:x0 + 16].copy()
+    big = scale2x(sub)
+    cv = Cv(SIZE, SIZE)
+    cv.a[:, :] = big
+    im = cv.img()
+    res = {}
+    for emo in emos:
+        keys = []
+        for i in range(2):
+            key = 'heads/%s/%s_%d' % (cid, emo, i)
+            im.save(ensure(os.path.join(ASSETS, key + '.png')))
             keys.append(key)
         res[emo] = keys
     return res

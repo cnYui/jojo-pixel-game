@@ -58,11 +58,28 @@ def export(mod_name, only=None, home='chars.json'):
             found = [(fp, e)]
         new = sh.anims()
         top = sh.top()
+        heads = None
+        if (sh.body is not None or getattr(sh, 'face', None)) and '--no-heads' not in sys.argv:
+            # 对话头像跟着新造型重出：表情键照旧元数据（没有头像的角色不加）
+            emos = []
+            for _, e in found:
+                for k in (e.get('heads') or {}):
+                    if k not in emos:
+                        emos.append(k)
+            if emos:
+                import portrait
+                if sh.body is not None:
+                    heads = portrait.export_heads(cid, sh.body, emos)
+                else:
+                    heads = portrait.export_face(cid, sh.rows[0][1][0], sh.face, emos)
         for fp, e in found:
             lost = sorted(set(e.get('animations', {})) - set(new))
             if lost:
                 print('  ！%s 少了旧图集里有的动作（%s）：%s' % (cid, os.path.basename(fp), lost))
             e.update(image='chars/' + cid, cell=cell, pivot=pivot, animations=new, top=top)
+            if heads and e.get('heads'):
+                e['heads'] = {k: heads[k] for k in e['heads'] if k in heads}
+                e['headSize'] = {}
             e['amap'] = {k: v for k, v in (e.get('amap') or {}).items() if (v if isinstance(v, str) else v.get('a')) in new}
             touched.add(fp)
         print('  %-14s cell %s pivot %s top %d  %d 行 %d 帧' % (cid, cell, pivot, top, len(new), sum(a['frames'] for a in new.values())))
@@ -71,7 +88,7 @@ def export(mod_name, only=None, home='chars.json'):
 
 
 if __name__ == '__main__':
-    for arg in sys.argv[1:]:
+    for arg in [a for a in sys.argv[1:] if not a.startswith('--')]:
         name, _, ids = arg.partition(':')
         print(name)
         export(name, set(ids.split(',')) if ids else None)

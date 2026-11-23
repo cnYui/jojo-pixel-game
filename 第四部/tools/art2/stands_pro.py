@@ -212,6 +212,7 @@ def aqua():
     sh.add('idle', [frame(AQ_BODY, 0, 0), frame(AQ_BODY, 0, -1), frame(AQ_BODY, 1, -2), frame(AQ_BODY, 0, -1)], 6, 'loop')
     sh.add('lunge', [frame(AQ_LUNGE, 4, -3), frame(AQ_LUNGE, 6, -4)], 10, 'loop')
     sh.add('hurt', [frame(AQ_HURT, 0, -2)], 1, 'static')
+    sh.face = (OX - 8, OY - 15)          # 头像从待机帧的脸这一块放大
     return sh
 
 
