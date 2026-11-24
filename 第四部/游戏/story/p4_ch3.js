@@ -49,12 +49,14 @@
 
   // ================================================================ 节拍 1 日历地图（第3章自己的红章「1999年5月」，序章的两枚图钉变灰）
   const PINS_OLD = [[170, 70], [118, 126]];
-  const PINS_NEW = [{ xy: [266, 136], label: '海边别墅' }, { xy: [146, 98], label: '意大利餐厅' }];
+  // 海边别墅的图钉跟杜王町地图的锚点 villa 走（重画的地图上别墅在东北海岬；旧坐标 [266,136] 落在海里、被红章盖住）
+  const PINS_NEW = [{ at: 'villa', xy: [266, 136], label: '海边别墅' }, { xy: [146, 98], label: '意大利餐厅' }];
   async function calendar(S) {
     const ui = (G.D && G.D.ui) || {}, m = ui.map || {}, m3 = ui.map_ch3 || {};
     const img = (k) => { const im = k ? G.image(k) : null; return im && G.ready(im) ? im : null; };
     const ease = (u) => 1 - Math.pow(1 - Math.max(0, Math.min(1, u)), 3);
-    const pins = PINS_NEW.map((p, i) => Object.assign({ t0: 0.5 + i * 0.45 }, p));
+    const an = (G.D && G.D.bg && G.D.bg.morioh_map && G.D.bg.morioh_map.anchors) || {};
+    const pins = PINS_NEW.map((p, i) => Object.assign({ t0: 0.5 + i * 0.45 }, p, p.at && an[p.at] ? { xy: an[p.at] } : {}));
     const stampAt = 0.5 + pins.length * 0.45 + 0.25;
     const pin = (g, xy, im, dy) => {
       if (!im) return;
