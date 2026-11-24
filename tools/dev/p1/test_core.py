@@ -139,9 +139,12 @@ def test_core(browser, shots):
     page.evaluate('() => { G.input.clear(); G.dbg.tick(2); G.hitStopAll(0.3); G.dbg.tick(5); window.__w0 = G.clk.world; }')
     page.keyboard.down('j')
     page.keyboard.up('j')
-    r = page.evaluate('''() => { const w0 = window.__w0; G.dbg.tick(13); const frozen = Math.abs(G.clk.world - w0) < 1e-12;
-        G.dbg.tick(1); return { frozen, hs: G.hitStopAll_t, take: G.input.take('attack', 0.25), dw: G.clk.world - w0 }; }''')
-    check('顿帧 0.3 s 期间 world 时钟不走', r['frozen'], r)
+    # 顿帧 = 冻结 + 缓出：0.3 s = 18 步，前 60%（11 步）倍率 0，后 7 步倍率 0.15 → 1，总步数不变（打击感，G.HITSTOP）
+    r = page.evaluate('''() => { const w0 = window.__w0; G.dbg.tick(6); const frozen = Math.abs(G.clk.world - w0) < 1e-12;
+        G.dbg.tick(7); const ease = G.clk.world - w0, hs = G.hitStopAll_t; G.dbg.tick(1);
+        return { frozen, hs, ease, take: G.input.take('attack', 0.25), dw: G.clk.world - w0 }; }''')
+    check('顿帧 0.3 s：前 60%（11 步）world 时钟不走', r['frozen'], r)
+    check('顿帧 0.3 s：缓出段 world 时钟按 0.15 → 1 倍走（0 < 走过 < 7 步），18 步后顿帧结束', 0 < r['ease'] < 7 / 60 and r['hs'] == 0, r)
     check('顿帧中按的 J：顿帧结束后 take(attack, 0.25) 为真（顿帧不吞键）', r['take'], r)
     # 对照：没有顿帧时按 J、过 0.3 s 世界时间，take(0.25) 应该为假
     page.keyboard.down('j')

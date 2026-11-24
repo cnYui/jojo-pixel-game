@@ -20,7 +20,10 @@
     wallSlam:{minPush:40,bounce:8,sfx:'wall_slam',crack:12},
     warnTier:{1:{W1:f(24),W2:f(45),W3:1,W4:f(36),W5:f(45),W6:1},2:{W1:f(20),W2:f(40),W3:f(50),W4:f(30),W5:f(40),W6:1},3:{W1:f(18),W2:f(36),W3:f(45),W4:f(28),W5:f(36),W6:1},4:{W1:f(16),W2:f(30),W3:f(40),W4:f(24),W5:f(30),W6:1}},
     enemyDmg:{light:8,mid:12,heavy:20,super:30},maxTokens:2,cutin:.92,
-    failSlow:{k:.3,dur:.5},failSepia:.6,assistMul:.7,assistAfter:2
+    failSlow:{k:.3,dur:.5},failSepia:.6,assistMul:.7,assistAfter:2,
+    // 重击受击反馈：flash 满亮 hold 帧再衰减 decay 帧（界面时钟；≥ 2/60 s 一帧闪铁律），reduceFlash 开启时 alpha 乘 reduceMul；
+    //   squash 命中后头 frames 帧倾斜 lean px、抽行压矮 1/drop
+    flash:{peak:1,hold:f(3),decay:f(4),reduceMul:.35},squash:{frames:2,lean:2,drop:8}
   };
   const W = () => G.world, now = () => G.clk.world, ctx = () => W().fight;
   const clamp = (n,a,b) => Math.max(a,Math.min(b,n));
@@ -128,9 +131,14 @@
     };
     return t ? test(t) : targets(a).filter(test);
   }
+  // 击退：先快后慢。位移走累计曲线 pushPos(u)=1-(1-u)^3（速度 ∝ 3(1-u)^2，积分正好是 1），
+  //   总位移和以前恒速 0.18 s 完全相同，只是前面更冲、后面收住。
+  //   撞墙：以前看“这一步被墙挡掉一半以上”，恒速时等于墙离目标不到整段击退的 97%（40 px 的击退是 38.9 px）；
+  //   缓出以后末几步每步不到 1 px，这个判法会把“刚好贴墙”也算撞，所以改成累计：被墙吃掉的位移 > 击退量的 2.8% 才算撞，边界和以前一致
+  const PUSH_DUR=.18,pushPos=u=>1-Math.pow(1-u,3);
   function shove(t,att,push) {
     if(!push)return; const dir=att ? Math.sign(t.x-att.x)||att.facing||1 : 1;
-    t._push={left:.18,v:push*dir/.18,mag:Math.abs(push)};
+    t._push={t:0,u:0,d:push*dir,mag:Math.abs(push),lost:0};
   }
   function poiseHit(t,n) {
     if(!t.poiseMax || t.breakT>0)return;
@@ -166,6 +174,17 @@
     }
     return {parry:true,dmg:0};
   }
+  // 受击白闪：把“时长”和“alpha”拆开。轻击不变（alpha .9，随世界时间 7/s 衰减）。
+  //   重击（带 flashTarget 的招）以前把 flashTarget×7 同时当衰减时长和 alpha：2/60 s 的招只剩 23% 的白、2 帧，比轻击还弱。
+  //   现在 alpha 拉满，按界面时钟满亮 CFG.flash.hold 帧再线性衰减 CFG.flash.decay 帧；界面时钟不被全局顿帧冻住，
+  //   闪白正好落在顿帧的冻结画面里。reduceFlash 开启时 alpha 乘 CFG.flash.reduceMul。被格挡住的重击保持旧值；
+  //   同时记下命中后头 2 帧的倾斜 / 压扁（world.js 画，物件不压）
+  function hitFlash(t,att,m,guarded){
+    if(!m.flashTarget || guarded){t.flash=Math.max(t.flash || 0,m.flashTarget ? m.flashTarget*7 : .9);return;}
+    const F=CFG.flash,k=G.settings && G.settings.reduceFlash ? F.reduceMul : 1,dir=att ? Math.sign(t.x-att.x)||att.facing||1 : 1;
+    t._flashFx={t0:G.clk.ui,peak:F.peak*k,hold:Math.max(F.hold,m.flashTarget),decay:Math.max(F.decay,m.flashTarget)};
+    if(t.team!=='object')t._squash={t0:G.clk.ui,dir};
+  }
   function hit(att,t,move,o={}) {
     const m=normMove(move),slot=m.slot,info={slot,shot:o.shot||null,rushHits:att && att.rush ? att.rush.n+1 : 0};
     if(!t || t.dead || t.remove)return {dmg:0};
@@ -193,7 +212,7 @@
     let dmg=Math.max(1,Math.round((m.dmg||0)*mul*(att&&att.dmgOut || 1)*(t.dmgIn || 1)*side*(att&&att.nextMul || 1)*(t.breakT>0 ? t.mem.breakMul || CFG.poise.breakMul:1)*(slot==='rush' && t.boss && t.chainT>=CFG.rushCap.after?CFG.rushCap.mul:1)*(guarded ? m.guard==='pierce' ? CFG.pierceLeak : CFG.guard.mul:queuedGuard?.3:1)));
     if(!m.dmg)dmg=0;
     const min=Math.max(t.minHp || 0,t===W().player && c ? c.spec.playerMinHp || 0 : 0);
-    t.hp=Math.max(min,t.hp-dmg);t.flash=Math.max(t.flash || 0,m.flashTarget ? m.flashTarget*7 : .9);
+    t.hp=Math.max(min,t.hp-dmg);hitFlash(t,att,m,guarded);
     if(att){att.nextMul=1;att.nextMulT=0;gainEnergy(att,(m.energy==null ? slot==='rush'?1:slot==='shot'?1:slot==='fin'?4:2:m.energy)*(t.team==='object'?.5:1),'hit');}
     if(guarded){gainEnergy(t,1,'guard');snd('guard');emit('guard',{who:t,att,move:m});shove(t,att,m.push>=24?16:8);if(G.fx)G.fx.hit(frontX(t),midY(t),'guard',{by:t,accent:t.stand&&t.stand.color||'#ffffff'});}
     if(t===W().player || t.team==='ally'){
@@ -227,6 +246,7 @@
       else if(slot==='rush')t._heavyDown=false;
       }
       shove(t,att,m.push);
+      t._hitUi=G.clk.ui;   // 记下被打中的时刻：全局顿帧里这个人 ±1 px 抖（world.js draw）
     }
     if(m.root && t.rootImmuneT<=0){t.rootT=t.boss && m.rootBoss!=null?m.rootBoss:m.root;t.rootImmuneT=t.rootT+(m.rootImmune || 1);t.rootBy=att;}
     if(m.burn){const b=m.burn,tick=b.tick||.5;t.burn=Object.assign({},b,{owner:att,tick,dps:b.dps==null?(b.dmg||4)/tick:b.dps,until:now()+(b.dur||tick*(b.n||2))+1e-6,_next:now()+tick});}
@@ -328,7 +348,7 @@
     const len=Math.hypot(x,y)||1;a._dodge={x:x/len*d.dist,y:y/len*d.dist*d.yMul,dur:d.dur,t:0,u:0};a.atk=null;cancelRush(a);a.iframe=d.iframe;a.dodgeCd=d.cd;a.dodgeT0=now();a.grazed=false;a.ghostOn=true;state(a,'dodge');play(a,'dodge');snd('dodge');if(G.fx)G.fx.dustAt(a.x,a.y,-x,4);emit('dodge',{who:a});
   }
   function motionTick(a,dt) {
-    if(a._push){const p=a._push,before=a.x;W().move(a,p.v*Math.min(dt,p.left),0);p.left-=dt;if(Math.abs(a.x-before)<Math.abs(p.v*dt)*.5 && p.mag>=40 && now()>=(a._wallNext || 0)){a._wallNext=now()+1;W().move(a,-Math.sign(p.v)*8,0);snd('wall_slam');fxAt('crack',{x:a.x,y:a.y-20,size:12},a,.4);G.shake(3,.2);a.stunT=Math.max(a.stunT,f(12));p.left=0;}if(p.left<=0)a._push=null;}
+    if(a._push){const p=a._push,before=a.x;p.t+=dt;const u=Math.min(1,p.t/PUSH_DUR),want=p.d*(pushPos(u)-pushPos(p.u));p.u=u;W().move(a,want,0);p.lost+=Math.max(0,Math.abs(want)-Math.abs(a.x-before));if(p.lost>p.mag*.028 && p.mag>=40 && now()>=(a._wallNext || 0)){a._wallNext=now()+1;W().move(a,-Math.sign(p.d)*8,0);snd('wall_slam');fxAt('crack',{x:a.x,y:a.y-20,size:12},a,.4);G.shake(3,.2);a.stunT=Math.max(a.stunT,f(12));p.u=1;}if(p.u>=1)a._push=null;}
     a.rushCdT=Math.max(0,(a.rushCdT || 0)-dt);a.guardRelT=Math.max(0,(a.guardRelT || 0)-dt);a._specialCd=Math.max(0,(a._specialCd || 0)-dt);a.cool=Math.max(0,(a.cool || 0)-dt);
     for(const id in a.moveCd)a.moveCd[id]=Math.max(0,a.moveCd[id]-dt);
     if(a.poiseMax){if(a.breakT<=1e-9)a.breakT=0;a.poiseIdleT+=dt;if(a.breakT<=0 && (a.state==='broken'||a.poiseIdleT>=2)){a.poise=a.poiseMax;a.mem.breakMul=null;if(a.state==='broken')idle(a);}}

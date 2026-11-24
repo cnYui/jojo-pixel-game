@@ -268,6 +268,8 @@
   G.flashA = 0;
   G.flashColor = '#fff';
   G.hitStopAll_t = 0;
+  G.hitStopAll_total = 0;                  // 这一次顿帧的总时长（缓出曲线按它算位置）
+  G.hitStopAll_ui = -1;                    // 这一次顿帧开始时的界面时钟
   G.slowAllK = 1;
   G.slowAllT = 0;
   let fadeTw = null, flashTw = null;
@@ -292,7 +294,24 @@
       c.shakeDecay = o.decay !== false;
     }
   };
-  G.hitStopAll = (sec) => { G.hitStopAll_t = Math.max(G.hitStopAll_t, Math.min(sec, 0.5)); };
+  // 全局顿帧 = 冻结 + 缓出（打击感）：总时长不变（仍是 sec，上限 0.5 s），前 freeze（60%）世界时间倍率 0，
+  //   后面倍率从 floor（0.15）缓入到 1。倍率乘进 wdt，世界时钟、局部计时、特效（flow 钟）一起变慢；
+  //   输入缓冲 / 精准窗口按世界时钟记，宽度不变（技术约定 §4.3.2）。freeze 设成 1 就是旧的二值冻结
+  G.HITSTOP = { freeze: 0.6, floor: 0.15 };
+  G.hitStopAll = (sec) => {
+    const v = Math.min(sec, 0.5);
+    if (v > G.hitStopAll_t) { G.hitStopAll_t = v; G.hitStopAll_total = v; G.hitStopAll_ui = G.clk.ui; }     // 比剩下的长才重开曲线（记开始的界面时钟，world.js 判断谁在这一下顿帧里被打中）；不比剩下的长就不动（和以前取 max 一样）
+  };
+  // 这一步的顿帧时间倍率（没顿帧 = 1）：按“这一步的中点”在整段里的位置取曲线，冻结段 0、缓出段二次缓入
+  function hitStopMul(dt) {
+    const left = G.hitStopAll_t;
+    if (!(left > 0)) return 1;
+    const total = Math.max(G.hitStopAll_total || 0, left), H = G.HITSTOP;
+    const p = (total - left + dt / 2) / total;
+    if (p < H.freeze) return 0;
+    const v = Math.min(1, (p - H.freeze) / (1 - H.freeze));
+    return H.floor + (1 - H.floor) * v * v;
+  }
   G.slowAll = (k, sec) => {
     G.slowAllK = Math.min(G.slowAllK, k);
     G.slowAllT = Math.max(G.slowAllT, sec);
@@ -427,10 +446,11 @@
     try {
       if (G.audio) G.audio.update(dt);
       const sc = G.scene;
-      const worldAdv = G.hitStopAll_t <= 0 && !(sc && sc.frozen);
+      const hm = hitStopMul(dt);             // 顿帧时间倍率：冻结段 0、缓出段 0.15→1、没顿帧 1（要在下面扣时间之前取）
+      const worldAdv = hm > 0 && !(sc && sc.frozen);
       if (G.hitStopAll_t > 0) { G.hitStopAll_t -= dt; if (G.hitStopAll_t < 1e-9) G.hitStopAll_t = 0; }
       if (G.slowAllT > 0) { G.slowAllT -= dt; if (G.slowAllT <= 1e-9) { G.slowAllT = 0; G.slowAllK = 1; } }   // 慢放时长按 ui 时钟
-      const wdt = dt * G.slowAllK;
+      const wdt = dt * G.slowAllK * hm;
       if (sc && sc.update) sc.update(dt, worldAdv, wdt);
       if (worldAdv) {
         G.clk.world += wdt;
