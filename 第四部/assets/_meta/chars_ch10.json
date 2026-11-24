@@ -381,14 +381,14 @@
   },
   "highway_tmp": {
    "name": "公路之星",
-   "image": "chars/highway",
+   "image": "chars/highway_tmp",
    "cell": [
-    47,
-    39
+    73,
+    43
    ],
    "pivot": [
-    15,
-    38
+    19,
+    40
    ],
    "animations": {
     "idle": {
@@ -455,8 +455,8 @@
    "aliases": {},
    "heads": {
     "normal": [
-     "heads/highway/normal_0",
-     "heads/highway/normal_1"
+     "heads/highway_tmp/normal_0",
+     "heads/highway_tmp/normal_1"
     ]
    },
    "headAlias": {
@@ -476,7 +476,7 @@
     "special": "rush",
     "kick": "punch"
    },
-   "top": 34,
+   "top": 35,
    "bodyW": 6,
    "kind": "stand"
   }

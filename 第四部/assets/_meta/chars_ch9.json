@@ -295,12 +295,12 @@
    "name": "公路之星",
    "image": "chars/highway",
    "cell": [
-    47,
-    39
+    73,
+    43
    ],
    "pivot": [
-    15,
-    38
+    19,
+    40
    ],
    "animations": {
     "idle": {
@@ -393,7 +393,7 @@
     "cmd": "punch",
     "reach": "reach"
    },
-   "top": 34,
+   "top": 35,
    "bodyW": 6,
    "kind": "stand"
   },
@@ -401,12 +401,12 @@
    "name": "猫草",
    "image": "chars/straycat",
    "cell": [
-    26,
-    19
+    22,
+    26
    ],
    "pivot": [
     11,
-    18
+    25
    ],
    "animations": {
     "idle": {
@@ -463,7 +463,7 @@
     "guard": "idle",
     "dodge": "idle"
    },
-   "top": 17,
+   "top": 23,
    "bodyW": 4,
    "kind": "char",
    "shadow": false

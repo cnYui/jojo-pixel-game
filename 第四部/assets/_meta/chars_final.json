@@ -113,14 +113,14 @@
   },
   "fin_kq": {
    "name": "杀手皇后",
-   "image": "chars/killerqueen",
+   "image": "chars/fin_kq",
    "cell": [
-    47,
-    39
+    49,
+    40
    ],
    "pivot": [
-    15,
-    38
+    17,
+    37
    ],
    "animations": {
     "idle": {
@@ -175,8 +175,8 @@
    "aliases": {},
    "heads": {
     "normal": [
-     "heads/killerqueen/normal_0",
-     "heads/killerqueen/normal_1"
+     "heads/fin_kq/normal_0",
+     "heads/fin_kq/normal_1"
     ]
    },
    "headAlias": {
@@ -198,20 +198,20 @@
     "finger": "punch",
     "upper": "punch"
    },
-   "top": 34,
+   "top": 36,
    "bodyW": 6,
    "kind": "stand"
   },
   "fin_thehand": {
    "name": "轰炸空间",
-   "image": "chars/thehand",
+   "image": "chars/fin_thehand",
    "cell": [
-    47,
-    39
+    73,
+    43
    ],
    "pivot": [
-    15,
-    38
+    19,
+    40
    ],
    "animations": {
     "idle": {
@@ -278,8 +278,8 @@
    "aliases": {},
    "heads": {
     "normal": [
-     "heads/thehand/normal_0",
-     "heads/thehand/normal_1"
+     "heads/fin_thehand/normal_0",
+     "heads/fin_thehand/normal_1"
     ]
    },
    "headAlias": {
@@ -301,20 +301,20 @@
     "finger": "punch",
     "upper": "punch"
    },
-   "top": 34,
+   "top": 35,
    "bodyW": 6,
    "kind": "stand"
   },
   "fin_echoes3": {
    "name": "回音 ACT3",
-   "image": "chars/echoes3",
+   "image": "chars/fin_echoes3",
    "cell": [
-    39,
-    31
+    73,
+    43
    ],
    "pivot": [
-    12,
-    30
+    19,
+    40
    ],
    "animations": {
     "idle": {
@@ -336,43 +336,43 @@
      "kind": "loop"
     },
     "block": {
-     "row": 7,
+     "row": 3,
      "frames": 1,
      "fps": 1,
      "kind": "static"
     },
     "pose": {
-     "row": 3,
+     "row": 4,
      "frames": 2,
      "fps": 4,
      "kind": "loop"
     },
     "hurt": {
-     "row": 4,
-     "frames": 1,
-     "fps": 1,
-     "kind": "static"
-    },
-    "finger": {
-     "row": 8,
-     "frames": 1,
-     "fps": 1,
-     "kind": "static"
-    },
-    "fist": {
      "row": 5,
      "frames": 1,
      "fps": 1,
      "kind": "static"
     },
+    "finger": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "fist": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
     "reach": {
-     "row": 9,
+     "row": 8,
      "frames": 1,
      "fps": 1,
      "kind": "static"
     },
     "upper": {
-     "row": 10,
+     "row": 9,
      "frames": 3,
      "fps": 12,
      "kind": "oneshot"
@@ -381,8 +381,8 @@
    "aliases": {},
    "heads": {
     "normal": [
-     "heads/echoes3/normal_0",
-     "heads/echoes3/normal_1"
+     "heads/fin_echoes3/normal_0",
+     "heads/fin_echoes3/normal_1"
     ]
    },
    "headAlias": {
@@ -404,7 +404,7 @@
     "finger": "punch",
     "upper": "punch"
    },
-   "top": 27,
+   "top": 24,
    "bodyW": 4,
    "kind": "stand"
   },

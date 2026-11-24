@@ -100,12 +100,12 @@
    "name": "丰收",
    "image": "chars/harvest",
    "cell": [
-    12,
-    13
+    14,
+    17
    ],
    "pivot": [
-    6,
-    12
+    7,
+    16
    ],
    "animations": {
     "idle": {
@@ -159,7 +159,7 @@
     "guard": "idle",
     "dodge": "walk"
    },
-   "top": 9,
+   "top": 14,
    "bodyW": 2,
    "kind": "stand"
   },
@@ -272,12 +272,12 @@
    "name": "杀手皇后",
    "image": "chars/killerqueen",
    "cell": [
-    47,
-    39
+    49,
+    40
    ],
    "pivot": [
-    15,
-    38
+    17,
+    37
    ],
    "animations": {
     "idle": {
@@ -327,24 +327,6 @@
      "frames": 2,
      "fps": 8,
      "kind": "oneshot"
-    },
-    "block": {
-     "row": 8,
-     "frames": 1,
-     "fps": 1,
-     "kind": "static"
-    },
-    "reach": {
-     "row": 9,
-     "frames": 1,
-     "fps": 1,
-     "kind": "static"
-    },
-    "upper": {
-     "row": 10,
-     "frames": 3,
-     "fps": 12,
-     "kind": "oneshot"
     }
    },
    "aliases": {},
@@ -371,7 +353,7 @@
     "special": "pose",
     "finger": "punch"
    },
-   "top": 34,
+   "top": 35,
    "bodyW": 6,
    "kind": "stand"
   },

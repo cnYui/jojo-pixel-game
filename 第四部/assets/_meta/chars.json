@@ -251,12 +251,12 @@
    "name": "疯狂钻石",
    "image": "chars/crazyd",
    "cell": [
-    47,
-    39
+    73,
+    43
    ],
    "pivot": [
-    15,
-    38
+    19,
+    40
    ],
    "animations": {
     "idle": {
@@ -1209,12 +1209,12 @@
    "name": "水中项链",
    "image": "chars/aqua",
    "cell": [
-    40,
-    20
+    34,
+    27
    ],
    "pivot": [
-    15,
-    19
+    17,
+    25
    ],
    "animations": {
     "idle": {
@@ -1263,113 +1263,8 @@
     "guard": "idle",
     "dodge": "lunge"
    },
-   "top": 16,
+   "top": 20,
    "bodyW": 4,
-   "kind": "stand"
-  },
-  "starplat": {
-   "name": "白金之星",
-   "image": "chars/starplat",
-   "cell": [
-    47,
-    39
-   ],
-   "pivot": [
-    15,
-    38
-   ],
-   "animations": {
-    "idle": {
-     "row": 0,
-     "frames": 4,
-     "fps": 6,
-     "kind": "loop"
-    },
-    "punch": {
-     "row": 1,
-     "frames": 3,
-     "fps": 12,
-     "kind": "oneshot"
-    },
-    "rush": {
-     "row": 2,
-     "frames": 2,
-     "fps": 16,
-     "kind": "loop"
-    },
-    "block": {
-     "row": 3,
-     "frames": 1,
-     "fps": 1,
-     "kind": "static"
-    },
-    "pose": {
-     "row": 4,
-     "frames": 2,
-     "fps": 4,
-     "kind": "loop"
-    },
-    "hurt": {
-     "row": 5,
-     "frames": 1,
-     "fps": 1,
-     "kind": "static"
-    },
-    "finger": {
-     "row": 6,
-     "frames": 1,
-     "fps": 1,
-     "kind": "static"
-    },
-    "fist": {
-     "row": 7,
-     "frames": 1,
-     "fps": 1,
-     "kind": "static"
-    },
-    "reach": {
-     "row": 8,
-     "frames": 1,
-     "fps": 1,
-     "kind": "static"
-    },
-    "upper": {
-     "row": 9,
-     "frames": 3,
-     "fps": 12,
-     "kind": "oneshot"
-    },
-    "portrait": {
-     "row": 10,
-     "frames": 2,
-     "fps": 8,
-     "kind": "loop"
-    }
-   },
-   "aliases": {},
-   "heads": {
-    "normal": [
-     "heads/starplat/normal_0",
-     "heads/starplat/normal_1"
-    ]
-   },
-   "headAlias": {
-    "portrait": "normal"
-   },
-   "headSize": {},
-   "k": 0.625,
-   "amap": {
-    "punch": "punch",
-    "punch2": "punch",
-    "punch_heavy": "upper",
-    "rush": "rush",
-    "block": "block",
-    "hurt": "hurt",
-    "special": "rush",
-    "finger": "finger"
-   },
-   "top": 34,
-   "bodyW": 9,
    "kind": "stand"
   }
  },

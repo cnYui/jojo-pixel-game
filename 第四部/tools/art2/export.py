@@ -39,16 +39,17 @@ def find_entries(cid, files):
 
 # 各章的占位 / 换章复用的角色：同一个人只画一张图集，别名条目指过去（名字、amap、各自的 fps / kind 保留）
 ALIASES = {
-    'ph7_kira': 'kira', 'ph7_killerqueen': 'killerqueen', 'ph7_yukako': 'yukako', 'ph7_okuyasu': 'okuyasu',
+    'ph7_kira': 'kira', 'ph7_yukako': 'yukako', 'ph7_okuyasu': 'okuyasu',
     'ph8_rohan': 'rohan', 'ph8_joseph': 'joseph_old', 'ph8_kosaku': 'kawajiri', 'tmp6_joseph': 'joseph_old',
-    'mikitaka_tmp': 'mikitaka', 'yuya_tmp': 'yuya', 'highway_tmp': 'highway',
+    'mikitaka_tmp': 'mikitaka', 'yuya_tmp': 'yuya',
     'ph11_hayato': 'hayato', 'ph11_kosaku': 'kawajiri', 'ph11_shinobu': 'shinobu', 'ph11_rohan': 'rohan', 'ph11_okuyasu': 'okuyasu',
-    'ph11_reimi': 'reimi', 'ph11_killerq': 'killerqueen',
-    'fin_kq': 'killerqueen', 'fin_thehand': 'thehand', 'fin_echoes3': 'echoes3', 'fin_okuyasu': 'okuyasu', 'fin_keicho': 'keicho',
+    'ph11_reimi': 'reimi',
+    'fin_okuyasu': 'okuyasu', 'fin_keicho': 'keicho',
     'fin_rohan': 'rohan', 'fin_hayato': 'hayato', 'fin_reimi': 'reimi', 'fin_shinobu': 'shinobu', 'fin_arnold': 'arnold',
     'fin_joseph': 'joseph_old',
 }
-ALL = ['cast_pro', 'stands_pro', 'cast_ch1_3', 'stands_all', 'cast_ch4_6', 'cast_ch7_fin']
+# 2026-11-24 用户定：替身用重画之前的旧版，不要这批新画的（stands_pro / stands_all 留着备查，别放进 ALL，也别给替身的别名条目重新指过去）
+ALL = ['cast_pro', 'cast_ch1_3', 'cast_ch4_6', 'cast_ch7_fin']
 
 
 def apply_aliases():

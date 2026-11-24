@@ -144,12 +144,12 @@
    "name": "轰炸空间",
    "image": "chars/thehand",
    "cell": [
-    47,
-    39
+    73,
+    43
    ],
    "pivot": [
-    15,
-    38
+    19,
+    40
    ],
    "animations": {
     "idle": {
@@ -258,12 +258,12 @@
    "name": "回音 ACT1",
    "image": "chars/echoes1",
    "cell": [
-    40,
-    20
+    38,
+    30
    ],
    "pivot": [
-    18,
-    19
+    19,
+    28
    ],
    "animations": {
     "idle": {
@@ -300,8 +300,7 @@
    "aliases": {},
    "heads": {
     "normal": [
-     "heads/echoes1/normal_0",
-     "heads/echoes1/normal_1"
+     "heads/echoes1/normal_0"
     ]
    },
    "headAlias": {
@@ -327,7 +326,7 @@
     "shock": "hurt",
     "reach": "shoot"
    },
-   "top": 16,
+   "top": 26,
    "bodyW": 4,
    "kind": "stand"
   },

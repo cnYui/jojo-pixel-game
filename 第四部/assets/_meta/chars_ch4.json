@@ -301,11 +301,11 @@
    "image": "chars/rhcp",
    "cell": [
     36,
-    37
+    32
    ],
    "pivot": [
-    12,
-    36
+    17,
+    30
    ],
    "animations": {
     "idle": {
@@ -377,7 +377,7 @@
     "block": "idle",
     "win": "idle"
    },
-   "top": 29,
+   "top": 28,
    "bodyW": 4,
    "kind": "stand"
   },

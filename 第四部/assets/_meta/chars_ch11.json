@@ -68,12 +68,12 @@
    "name": "Cheap Trick",
    "image": "chars/cheaptrick",
    "cell": [
-    16,
-    17
+    18,
+    20
    ],
    "pivot": [
-    8,
-    16
+    9,
+    19
    ],
    "animations": {
     "idle": {
@@ -121,7 +121,7 @@
     "guard": "idle",
     "dodge": "idle"
    },
-   "top": 14,
+   "top": 17,
    "bodyW": 3,
    "kind": "stand"
   },
@@ -534,14 +534,14 @@
   },
   "ph11_killerq": {
    "name": "杀手皇后（占位）",
-   "image": "chars/killerqueen",
+   "image": "chars/ph11_killerq",
    "cell": [
-    47,
-    39
+    73,
+    43
    ],
    "pivot": [
-    15,
-    38
+    19,
+    40
    ],
    "animations": {
     "idle": {
@@ -557,7 +557,7 @@
      "kind": "oneshot"
     },
     "block": {
-     "row": 8,
+     "row": 2,
      "frames": 1,
      "fps": 1,
      "kind": "static"
@@ -569,7 +569,7 @@
      "kind": "loop"
     },
     "reach": {
-     "row": 9,
+     "row": 4,
      "frames": 1,
      "fps": 1,
      "kind": "static"
@@ -578,8 +578,8 @@
    "aliases": {},
    "heads": {
     "normal": [
-     "heads/killerqueen/normal_0",
-     "heads/killerqueen/normal_1"
+     "heads/ph11_killerq/normal_0",
+     "heads/ph11_killerq/normal_1"
     ]
    },
    "headAlias": {
@@ -596,7 +596,7 @@
     "special": "pose",
     "rush": "punch"
    },
-   "top": 34,
+   "top": 35,
    "bodyW": 6,
    "kind": "stand"
   }

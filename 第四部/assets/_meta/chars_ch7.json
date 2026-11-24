@@ -79,12 +79,12 @@
    "name": "枯萎穿心攻击",
    "image": "chars/sha",
    "cell": [
-    25,
-    18
+    22,
+    19
    ],
    "pivot": [
-    14,
-    15
+    11,
+    17
    ],
    "animations": {
     "idle": {
@@ -144,7 +144,7 @@
     "dodge": "walk",
     "lunge": "walk"
    },
-   "top": 12,
+   "top": 14,
    "bodyW": 6,
    "kind": "stand"
   },
@@ -152,12 +152,12 @@
    "name": "回音 ACT3",
    "image": "chars/echoes3",
    "cell": [
-    39,
-    31
+    49,
+    40
    ],
    "pivot": [
-    12,
-    30
+    17,
+    37
    ],
    "animations": {
     "idle": {
@@ -201,30 +201,6 @@
      "frames": 2,
      "fps": 8,
      "kind": "oneshot"
-    },
-    "block": {
-     "row": 7,
-     "frames": 1,
-     "fps": 1,
-     "kind": "static"
-    },
-    "finger": {
-     "row": 8,
-     "frames": 1,
-     "fps": 1,
-     "kind": "static"
-    },
-    "reach": {
-     "row": 9,
-     "frames": 1,
-     "fps": 1,
-     "kind": "static"
-    },
-    "upper": {
-     "row": 10,
-     "frames": 3,
-     "fps": 12,
-     "kind": "oneshot"
     }
    },
    "aliases": {},
@@ -261,11 +237,11 @@
    "name": "灰姑娘",
    "image": "chars/cinderella",
    "cell": [
-    33,
-    36
+    52,
+    38
    ],
    "pivot": [
-    12,
+    19,
     35
    ],
    "animations": {
@@ -308,7 +284,7 @@
     "hurt": "hurt",
     "talk": "idle"
    },
-   "top": 32,
+   "top": 26,
    "bodyW": 4,
    "kind": "stand"
   },
@@ -579,14 +555,14 @@
   },
   "ph7_killerqueen": {
    "name": "杀手皇后（占位）",
-   "image": "chars/killerqueen",
+   "image": "chars/ph7_killerqueen",
    "cell": [
-    47,
-    39
+    73,
+    43
    ],
    "pivot": [
-    15,
-    38
+    19,
+    40
    ],
    "animations": {
     "idle": {
@@ -608,31 +584,31 @@
      "kind": "loop"
     },
     "block": {
-     "row": 8,
+     "row": 3,
      "frames": 1,
      "fps": 1,
      "kind": "static"
     },
     "pose": {
-     "row": 3,
+     "row": 4,
      "frames": 2,
      "fps": 4,
      "kind": "loop"
     },
     "hurt": {
-     "row": 4,
+     "row": 5,
      "frames": 1,
      "fps": 1,
      "kind": "static"
     },
     "reach": {
-     "row": 9,
+     "row": 6,
      "frames": 1,
      "fps": 1,
      "kind": "static"
     },
     "upper": {
-     "row": 10,
+     "row": 7,
      "frames": 3,
      "fps": 12,
      "kind": "oneshot"
@@ -641,8 +617,8 @@
    "aliases": {},
    "heads": {
     "normal": [
-     "heads/killerqueen/normal_0",
-     "heads/killerqueen/normal_1"
+     "heads/ph7_killerqueen/normal_0",
+     "heads/ph7_killerqueen/normal_1"
     ]
    },
    "headAlias": {
@@ -662,7 +638,7 @@
     "special": "rush",
     "finger": "reach"
    },
-   "top": 34,
+   "top": 35,
    "bodyW": 6,
    "kind": "stand"
   },
