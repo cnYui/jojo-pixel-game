@@ -91,6 +91,9 @@
       this.invuln = 0;
       this.iframe = 0;
       this.stopT = 0;
+      this._hitUi = -1;                // 最近一次被打中（会进受击状态的那种）的界面时钟（combat.hit 记；全局顿帧里据此做 ±1 px 抖动）
+      this._flashFx = null;            // 重击白闪（combat.hit 记；draw 里按界面时钟算 alpha，见 flashNow）
+      this._squash = null;             // 重击后头 2 帧的倾斜 / 压扁（combat.hit 记；见 squashNow）
       this.slowK = 1;
       this.armor = option('armor', false);
       this.poise = 0;
@@ -220,16 +223,41 @@
       let alpha = this.alpha;
       if (this.invuln > 0 && (this.team === 'player' || this.team === 'ally') && Math.floor(wt * 20) % 2 === 0) alpha *= 0.45;
       if (this.iframe > 0 && this.state === 'dodge' && Math.floor(wt * 30) % 2 === 1) alpha *= 0.6;
-      if (this.stopT > 0 && this.state === 'hurt') sx += Math.floor(wt * 30) % 2 ? 1 : -1;
+      // 受击抖动 ±1 px：局部顿帧（stopT，轻击 J1 / J2）按世界时钟；全局顿帧里被打中的人（重击）世界时钟停了，
+      //   相位改按界面时钟走（以前重击用全局顿帧，目标站着不抖）
+      const gst = G.hitStopAll_t > 0 && Math.abs(this._hitUi - G.hitStopAll_ui) <= 0.1;      // 这一下全局顿帧开始前后 6 帧内被打中的人（必杀的顿帧是打完几下以后才调的）
+      if ((this.stopT > 0 && this.state === 'hurt') || (gst && (this.state === 'hurt' || this.state === 'launched'))) sx += Math.floor((gst ? G.clk.ui : wt) * 30) % 2 ? 1 : -1;
       const at = this.atlasFor(this.anim), fr = this.frameIndex(), flip = this.facing < 0;
       if (this.auraFlame && G.fx && G.fx.auraFlame) {
         const r = G.fx.auraFlame(this.cid, this.anim, fr, flip, this.scale, this.ownT, this.auraFlame);
         if (r && r.canvas) g.drawImage(r.canvas, Math.round(sx) - r.ox, Math.round(sy) - r.oy);
       }
-      at.draw(g, this.anim, fr, sx, sy, {
-        flip, scale: this.scale, rot: this.rot, alpha, flash: this.flash, tint: this.tint,
+      const dopt = {
+        flip, scale: this.scale, rot: this.rot, alpha, flash: this.flashNow(), tint: this.tint,
         outline: o.outline || this.outline, skin: this.skin, sil: o.sil, backlit: o.backlit, rim: o.rim, dither: o.dither,
-      });
+      };
+      const sq = this.squashNow();
+      if (sq && !this.rot && !at.missing && at.ready() && !at.resolve(this.anim, this.skin).rot) squashDraw(g, at, this.anim, fr, sx, sy, dopt, sq);
+      else at.draw(g, this.anim, fr, sx, sy, dopt);
+    }
+    // 受击白闪的 alpha：轻击是随世界时间衰减的 this.flash；重击（combat.hit 记的 _flashFx）按界面时钟：
+    //   满亮 hold 帧再线性衰减 decay 帧（界面时钟不被全局顿帧冻住，闪白正好落在顿帧的冻结画面里）；两者取大
+    flashNow() {
+      const fx = this._flashFx;
+      if (!fx) return this.flash;
+      const n = Math.round((G.clk.ui - fx.t0) * 60), hold = Math.round(fx.hold * 60), dec = Math.max(1, Math.round(fx.decay * 60));
+      const a = n < 0 ? 0 : n < hold ? fx.peak : fx.peak * (1 - (n - hold + 1) / (dec + 1));
+      if (a <= 0) { this._flashFx = null; return this.flash; }
+      return Math.max(this.flash, a);
+    }
+    // 重击后头几帧的倾斜 / 压扁参数；过了就清掉（只改画面，判定盒和坐标都不动）
+    squashNow() {
+      const s = this._squash;
+      if (!s) return null;
+      const c = (G.combat && G.combat.CFG && G.combat.CFG.squash) || { frames: 2, lean: 2, drop: 8 };
+      const n = Math.round((G.clk.ui - s.t0) * 60);
+      if (n < 0 || n >= c.frames) { this._squash = null; return null; }
+      return { dir: s.dir, lean: c.lean, drop: c.drop };
     }
     setStand(standId) {
       const sd = standId && G.D && G.D.stands ? G.D.stands[standId] : null;
@@ -278,6 +306,36 @@
     bounds() { return this.lock ? [this.lock.x0 + 10, this.lock.x1 - 10] : [this.x0 + 8, this.x1 - 8]; }
   }
   G.Stage = Stage;
+
+  // ------------------------------------------------------------------ 受击压扁（整数像素，只改画面）
+  //   先把人画到小画布，再按行拷回屏幕：脚底以上每 drop 行抽掉 1 行（压矮约 1/drop），第 h 行再按高度比例横移 lean × h / 全高 个整数像素
+  //   （头往被打的方向倾）。没有非整数缩放、没有旋转，行与行之间还是整像素格子
+  let sqCv = null;
+  function squashDraw(g, at, anim, fr, sx, sy, o, sq) {
+    const sc = o.scale || 1, pad = 12;
+    const hx = Math.ceil(Math.max(at.px, at.cw - at.px) * sc) + pad, up = Math.ceil(at.py * sc) + pad, dn = Math.ceil((at.ch - at.py) * sc) + pad;
+    const W = hx * 2, H = up + dn;
+    if (!sqCv || sqCv.width < W || sqCv.height < H) sqCv = G.mkCanvas(Math.max(W, sqCv ? sqCv.width : 0), Math.max(H, sqCv ? sqCv.height : 0));
+    const tg = sqCv.g;
+    tg.setTransform(1, 0, 0, 1, 0, 0);
+    tg.globalAlpha = 1;
+    tg.globalCompositeOperation = 'source-over';
+    tg.imageSmoothingEnabled = false;
+    tg.clearRect(0, 0, sqCv.width, sqCv.height);
+    at.draw(tg, anim, fr, hx, up, o);
+    const X = Math.round(sx) - hx, Y = Math.round(sy), top = Math.max(8, Math.round(at.topPx() * sc));
+    for (let y = 0; y < H; y++) {
+      const h = up - y;                                   // 脚底线以上第几行（≥ 1 在脚上）
+      let dy = Y + (y - up), shear = 0;
+      if (h >= 1) {
+        if (h % sq.drop === 0) continue;                  // 抽掉的行
+        const hd = h - Math.floor(h / sq.drop);           // 抽行以后离脚底的高度
+        dy = Y - hd;
+        shear = Math.round(sq.dir * sq.lean * Math.min(1, hd / top));
+      }
+      g.drawImage(sqCv, 0, y, W, 1, X + shear, dy, W, 1);
+    }
+  }
 
   // ------------------------------------------------------------------ 影子（fx.shadow：两级椭圆，乘法变暗；小画布预先做好，multiply 画上去）
   const shadowCache = new Map();
