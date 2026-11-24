@@ -21,7 +21,7 @@ const TAG = opt('--tag', 'run');
 const FRAMES = parseInt(opt('--frames', '600'), 10);
 const SEED = parseInt(opt('--seed', '20261124'), 10);
 const EXPLORE = flag('--explore');
-const DX0 = parseInt(opt('--gap-from-wall', '150'), 10);       // 仗助站位离右墙多远（调场景用）
+const DX0 = parseInt(opt('--gap-from-wall', '92'), 10);       // 仗助站位离右墙多远（调场景用）
 const T0 = Date.now();
 const log = (...a) => console.log('[' + ((Date.now() - T0) / 1000).toFixed(1) + 's]', ...a);
 
