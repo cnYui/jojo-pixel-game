@@ -1266,6 +1266,49 @@
    "top": 20,
    "bodyW": 4,
    "kind": "stand"
+  },
+  "kid_umb": {
+   "name": "小学生（撑伞）",
+   "aliases": {},
+   "heads": {},
+   "headAlias": {},
+   "headSize": {},
+   "amap": {
+    "talk": "idle",
+    "shock": "hurt"
+   },
+   "bodyW": 4,
+   "kind": "char",
+   "image": "chars/kid_umb",
+   "cell": [
+    25,
+    34
+   ],
+   "pivot": [
+    15,
+    33
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "top": 31
   }
  },
  "heroes": {

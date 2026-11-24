@@ -708,9 +708,8 @@
     await S.say('angelo', '他说他是杜王町的人！我只知道这些！', { expr: 'shock' });
     S.mark('pro_bow_arrow');
     // 一个打着伞的小学生路过；安杰罗偷偷让水中项链从水洼溜出去，扑向他
-    const kid = S.spawn('kid', p.x - 40, 170, { id: 'kid', facing: 1 });
-    const umb = T().prop(S, 'umbrella', kid.x, kid.y + 0.5, { id: 'umb', z: 24 });
-    stick(umb, kid, 0, 24, { flip: false });
+    // 伞画在 kid_umb 的图集里（近侧手向后伸握着伞柄，伞面罩在头上）：以前是 kid + 一个悬着的伞道具，伞和手对不上
+    const kid = S.spawn('kid_umb', p.x - 40, 170, { id: 'kid', facing: 1 });
     await S.walk(kid, p.x + 30, 170, { speed: 30 });
     const aq = S.spawn('aqua', an.x - 10, 172, { id: 'aqua_sneak', facing: -1, alpha: 0 });
     aq.z = 2;
@@ -766,7 +765,7 @@
     S.mark('pro_angelo_rock');
     S.face(kid, p);
     await S.say('kid', '哥哥谢谢你！', { expr: 'smile' });
-    S.walk(kid, p.x + 300, 170, { speed: 70 }).then(() => { kid.remove = true; umb.remove = true; }, G.cancelIgnore);
+    S.walk(kid, p.x + 300, 170, { speed: 70 }).then(() => { kid.remove = true; }, G.cancelIgnore);
     await S.narrate('后来，那块石头成了杜王町的名胜。大家叫它“安杰罗岩”。', { pos: 'top' });
     await S.fadeOut(0.8);
   }
