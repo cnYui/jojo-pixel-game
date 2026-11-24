@@ -4,12 +4,12 @@
    "name": "钢田一丰大",
    "image": "chars/toyohiro",
    "cell": [
-    38,
-    39
+    34,
+    34
    ],
    "pivot": [
-    19,
-    29
+    17,
+    33
    ],
    "animations": {
     "idle": {
@@ -84,7 +84,7 @@
     "dodge": "walk",
     "special": "kick"
    },
-   "top": 28,
+   "top": 31,
    "bodyW": 5,
    "kind": "char"
   },
@@ -97,7 +97,7 @@
    ],
    "pivot": [
     16,
-    30
+    31
    ],
    "animations": {
     "idle": {
@@ -181,20 +181,20 @@
     "punch": "point",
     "special": "point"
    },
-   "top": 26,
+   "top": 29,
    "bodyW": 4,
    "kind": "char"
   },
   "mikitaka_tmp": {
    "name": "支仓未起隆",
-   "image": "chars/mikitaka_tmp",
+   "image": "chars/mikitaka",
    "cell": [
-    45,
-    34
+    33,
+    35
    ],
    "pivot": [
-    21,
-    32
+    16,
+    34
    ],
    "animations": {
     "idle": {
@@ -210,19 +210,19 @@
      "kind": "loop"
     },
     "point": {
-     "row": 2,
+     "row": 8,
      "frames": 2,
      "fps": 4,
      "kind": "oneshot"
     },
     "hurt": {
-     "row": 3,
+     "row": 2,
      "frames": 1,
      "fps": 1,
      "kind": "static"
     },
     "down": {
-     "row": 4,
+     "row": 3,
      "frames": 1,
      "fps": 1,
      "kind": "static"
@@ -231,20 +231,20 @@
    "aliases": {},
    "heads": {
     "normal": [
-     "heads/mikitaka_tmp/normal_0",
-     "heads/mikitaka_tmp/normal_1"
+     "heads/mikitaka/normal_0",
+     "heads/mikitaka/normal_1"
     ],
     "smile": [
-     "heads/mikitaka_tmp/smile_0",
-     "heads/mikitaka_tmp/smile_1"
+     "heads/mikitaka/smile_0",
+     "heads/mikitaka/smile_1"
     ],
     "shock": [
-     "heads/mikitaka_tmp/shock_0",
-     "heads/mikitaka_tmp/shock_1"
+     "heads/mikitaka/shock_0",
+     "heads/mikitaka/shock_1"
     ],
     "rage": [
-     "heads/mikitaka_tmp/rage_0",
-     "heads/mikitaka_tmp/rage_1"
+     "heads/mikitaka/rage_0",
+     "heads/mikitaka/rage_1"
     ]
    },
    "headAlias": {},
@@ -264,20 +264,20 @@
     "special": "point",
     "punch": "point"
    },
-   "top": 25,
+   "top": 30,
    "bodyW": 4,
    "kind": "char"
   },
   "yuya_tmp": {
    "name": "喷上裕也",
-   "image": "chars/yuya_tmp",
+   "image": "chars/yuya",
    "cell": [
-    54,
-    39
+    33,
+    33
    ],
    "pivot": [
-    19,
-    37
+    16,
+    32
    ],
    "animations": {
     "idle": {
@@ -293,43 +293,43 @@
      "kind": "loop"
     },
     "fight": {
-     "row": 2,
+     "row": 7,
      "frames": 2,
      "fps": 4,
      "kind": "loop"
     },
     "kick": {
-     "row": 3,
+     "row": 8,
      "frames": 2,
      "fps": 8,
      "kind": "oneshot"
     },
     "shock": {
-     "row": 4,
+     "row": 9,
      "frames": 2,
      "fps": 4,
      "kind": "loop"
     },
     "hurt": {
-     "row": 5,
+     "row": 2,
      "frames": 1,
      "fps": 1,
      "kind": "static"
     },
     "down": {
-     "row": 6,
+     "row": 3,
      "frames": 1,
      "fps": 1,
      "kind": "static"
     },
     "dodge": {
-     "row": 7,
+     "row": 4,
      "frames": 1,
      "fps": 1,
      "kind": "static"
     },
     "guard": {
-     "row": 8,
+     "row": 5,
      "frames": 1,
      "fps": 1,
      "kind": "static"
@@ -338,20 +338,20 @@
    "aliases": {},
    "heads": {
     "normal": [
-     "heads/yuya_tmp/normal_0",
-     "heads/yuya_tmp/normal_1"
+     "heads/yuya/normal_0",
+     "heads/yuya/normal_1"
     ],
     "smile": [
-     "heads/yuya_tmp/smile_0",
-     "heads/yuya_tmp/smile_1"
+     "heads/yuya/smile_0",
+     "heads/yuya/smile_1"
     ],
     "shock": [
-     "heads/yuya_tmp/shock_0",
-     "heads/yuya_tmp/shock_1"
+     "heads/yuya/shock_0",
+     "heads/yuya/shock_1"
     ],
     "rage": [
-     "heads/yuya_tmp/rage_0",
-     "heads/yuya_tmp/rage_1"
+     "heads/yuya/rage_0",
+     "heads/yuya/rage_1"
     ]
    },
    "headAlias": {},
@@ -375,7 +375,7 @@
     },
     "shock": "shock"
    },
-   "top": 34,
+   "top": 30,
    "bodyW": 4,
    "kind": "char"
   },

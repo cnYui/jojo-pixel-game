@@ -5,6 +5,7 @@
 //     node 第四部/tools/dev/p4_play.js --out 输出目录 [--read 0.25] [--fail-chase 2] [--size 960x540]
 //     node 第四部/tools/dev/p4_play.js --record 输出目录/序章.webm --size 1920x1080 --read 1
 //     node 第四部/tools/dev/p4_play.js --chapter ch2 --out 输出目录      只跑一章（标题停一下就直接进这一章，打完回标题）
+//     加 --clean（和 --record 一起用）：画面上藏掉对话框、旁白、操作提示和目标箭头，录宣传片素材用；--read 0.25 让对白读得快
 //   输出：剧情标记截图（编号_标记.png）、report.json（标记、战斗、机器人日志、报错、缺图缺字、连打拳声漏停 rushLoopLeaks）。
 //   这一章在 G.STORY.<章>.marks 里列了应有的剧情标记时，缺的记在 missingMarks。
 //   退出码：整章打完、没报错、没缺图缺字、没漏停、标记齐 → 0，否则 1（最后一行写着哪里不对）。
@@ -125,7 +126,8 @@ const STATE = () => {
   await page.addScriptTag({ path: path.join(__dirname, 'p4_bot.js') });
   for (const f of fs.readdirSync(__dirname).filter((n) => /^p4_bot_.+\.js$/.test(n)).sort()) await page.addScriptTag({ path: path.join(__dirname, f) });
   if (RECORD) {
-    await page.evaluate(() => { window.__recCleanUI = false; });
+    // --clean：录宣传片素材，画面上藏掉对话框、旁白、操作提示和目标箭头（状态不动，机器人照常读快照）
+    await page.evaluate((c) => { window.__recCleanUI = c; }, flag('--clean'));
     await page.addScriptTag({ path: REC_JS });
     log('录屏开始', RECORD);
   }

@@ -4,12 +4,12 @@
    "name": "岸边露伴",
    "image": "chars/rohan",
    "cell": [
-    54,
-    39
+    34,
+    35
    ],
    "pivot": [
-    19,
-    37
+    17,
+    33
    ],
    "animations": {
     "idle": {
@@ -124,7 +124,7 @@
     "write": "write",
     "shock": "shock"
    },
-   "top": 30,
+   "top": 31,
    "bodyW": 4,
    "kind": "char"
   },

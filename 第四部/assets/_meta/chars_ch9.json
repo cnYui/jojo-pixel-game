@@ -4,12 +4,12 @@
    "name": "支仓未起隆",
    "image": "chars/mikitaka",
    "cell": [
-    32,
-    32
+    33,
+    35
    ],
    "pivot": [
     16,
-    30
+    34
    ],
    "animations": {
     "idle": {
@@ -59,6 +59,12 @@
      "frames": 2,
      "fps": 4,
      "kind": "loop"
+    },
+    "point": {
+     "row": 8,
+     "frames": 2,
+     "fps": 4,
+     "kind": "oneshot"
     }
    },
    "aliases": {},
@@ -93,7 +99,7 @@
     "point": "cmd",
     "punch": "cmd"
    },
-   "top": 26,
+   "top": 30,
    "bodyW": 4,
    "kind": "char"
   },
@@ -101,12 +107,12 @@
    "name": "喷上裕也",
    "image": "chars/yuya",
    "cell": [
-    32,
-    32
+    33,
+    33
    ],
    "pivot": [
     16,
-    30
+    32
    ],
    "animations": {
     "idle": {
@@ -150,6 +156,24 @@
      "frames": 2,
      "fps": 4,
      "kind": "loop"
+    },
+    "fight": {
+     "row": 7,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "kick": {
+     "row": 8,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "shock": {
+     "row": 9,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
     }
    },
    "aliases": {},
@@ -184,7 +208,7 @@
     "bed": "down",
     "point": "cmd"
    },
-   "top": 26,
+   "top": 30,
    "bodyW": 4,
    "kind": "char"
   },
@@ -192,12 +216,12 @@
    "name": "川尻早人",
    "image": "chars/hayato",
    "cell": [
-    28,
-    29
+    27,
+    27
    ],
    "pivot": [
-    14,
-    19
+    13,
+    26
    ],
    "animations": {
     "idle": {
@@ -229,6 +253,12 @@
      "frames": 1,
      "fps": 1,
      "kind": "static"
+    },
+    "talk": {
+     "row": 5,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
     }
    },
    "aliases": {},
@@ -257,7 +287,7 @@
     "talk": "idle",
     "shock": "hurt"
    },
-   "top": 18,
+   "top": 24,
    "bodyW": 3,
    "kind": "char"
   },
@@ -442,12 +472,12 @@
    "name": "护士",
    "image": "chars/nurse9",
    "cell": [
-    30,
+    17,
     30
    ],
    "pivot": [
-    15,
-    30
+    9,
+    29
    ],
    "animations": {
     "idle": {

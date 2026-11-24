@@ -354,7 +354,7 @@
   function setupStudio(S) {
     const st = G.world.stage;
     st.hotspots.push(
-      { id: 'hole', x: 398, y: 150, r: 22, ry: 14, label: '墙上的洞', tags: ['fix'], fx: 398, fy: 66,
+      { id: 'hole', x: 398, y: 150, r: 22, ry: 14, label: '墙上的洞', tags: ['fix'], fx: 398, fy: 106,
         use: async (S2) => { await S2.say('josuke', '露伴撞出来的。……准确说是我打出来的。'); },
         look: async (S2) => {
           if (F().holeFixed) return;

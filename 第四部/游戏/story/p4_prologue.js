@@ -173,8 +173,8 @@
     T().setFrame(pot, 0);
     S.sfx('whoosh', 0.6);
     // 碎片飞回窗台（窗台比路面高 44 px）
-    if (pot) await S.animate(0.45, (k) => { pot.z = Math.round(44 * (1 - (1 - k) * (1 - k))); });
-    P4().fixGlow(S, 332, 104);
+    if (pot) await S.animate(0.45, (k) => { pot.z = Math.round(33 * (1 - (1 - k) * (1 - k))); });   // 窗台按新比例在 y ≈ 117
+    P4().fixGlow(S, 332, 112);
     S.mark('pro_pot');
     await S.say('granny', '哎呀，谢谢你啊。', { name: '窗里的老奶奶' });
     await S.say('josuke', 'Great～', { expr: 'smile' });
@@ -640,8 +640,8 @@
     await S.walk(pl, 420, 150, { speed: 64 });
     S.face(pl, 1);
     S.sfx('blip', 0.8);
-    S.sfxText('嘀——', { wx: 431, wy: 92, wz: 0 }, { dur: 1.4 });
-    S.fx('smoke', { x: 431, y: 86, colour: '#f4f8fc', loop: true, rise: 30, t1: 2.6, life: 1.6 }, { life: 3.2 });
+    S.sfxText('嘀——', { wx: 431, wy: 112, wz: 0 }, { dur: 1.4 });
+    S.fx('smoke', { x: 431, y: 116, colour: '#f4f8fc', loop: true, rise: 24, t1: 2.6, life: 1.6 }, { life: 3.2 });
     S.animate(2.6, (k) => S.state('fog', 0.04 + 0.42 * k)).catch(G.cancelIgnore);
     await S.wait(1.4);
     await S.say('jotaro4', '……仗助。别靠近水汽。');
@@ -708,9 +708,8 @@
     await S.say('angelo', '他说他是杜王町的人！我只知道这些！', { expr: 'shock' });
     S.mark('pro_bow_arrow');
     // 一个打着伞的小学生路过；安杰罗偷偷让水中项链从水洼溜出去，扑向他
-    const kid = S.spawn('kid', p.x - 40, 170, { id: 'kid', facing: 1 });
-    const umb = T().prop(S, 'umbrella', kid.x, kid.y + 0.5, { id: 'umb', z: 24 });
-    stick(umb, kid, 0, 24, { flip: false });
+    // 伞画在 kid_umb 的图集里（近侧手向后伸握着伞柄，伞面罩在头上）：以前是 kid + 一个悬着的伞道具，伞和手对不上
+    const kid = S.spawn('kid_umb', p.x - 40, 170, { id: 'kid', facing: 1 });
     await S.walk(kid, p.x + 30, 170, { speed: 30 });
     const aq = S.spawn('aqua', an.x - 10, 172, { id: 'aqua_sneak', facing: -1, alpha: 0 });
     aq.z = 2;
@@ -766,7 +765,7 @@
     S.mark('pro_angelo_rock');
     S.face(kid, p);
     await S.say('kid', '哥哥谢谢你！', { expr: 'smile' });
-    S.walk(kid, p.x + 300, 170, { speed: 70 }).then(() => { kid.remove = true; umb.remove = true; }, G.cancelIgnore);
+    S.walk(kid, p.x + 300, 170, { speed: 70 }).then(() => { kid.remove = true; }, G.cancelIgnore);
     await S.narrate('后来，那块石头成了杜王町的名胜。大家叫它“安杰罗岩”。', { pos: 'top' });
     await S.fadeOut(0.8);
   }

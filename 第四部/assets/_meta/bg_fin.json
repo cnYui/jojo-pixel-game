@@ -789,11 +789,11 @@
    ],
    "forklift_batt": [
     622,
-    133
+    138
    ],
    "tyre": [
     618,
-    143
+    145
    ],
    "grates": [
     [
@@ -920,8 +920,8 @@
      "bg/morioh_harbor_late/tyre1"
     ],
     "k": 1,
-    "x": 608,
-    "y": 134
+    "x": 611,
+    "y": 139
    },
    {
     "type": "glow",

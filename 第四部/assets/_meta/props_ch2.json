@@ -259,12 +259,12 @@
    "image": "props/ambulance",
    "frames": 2,
    "size": [
-    54,
-    28
+    94,
+    46
    ],
    "pivot": [
-    27,
-    28
+    47,
+    46
    ],
    "fps": 4,
    "kind": "loop",

@@ -4,8 +4,8 @@
    "name": "山岸由花子",
    "image": "chars/yukako",
    "cell": [
-    30,
-    30
+    31,
+    31
    ],
    "pivot": [
     15,
@@ -179,7 +179,7 @@
     "dodge": "run",
     "getup": "hurt"
    },
-   "top": 26,
+   "top": 28,
    "bodyW": 4,
    "kind": "char"
   },
@@ -263,12 +263,12 @@
    "name": "东尼欧·特拉萨迪",
    "image": "chars/tonio",
    "cell": [
-    20,
-    37
+    27,
+    36
    ],
    "pivot": [
-    10,
-    37
+    11,
+    35
    ],
    "animations": {
     "idle": {
