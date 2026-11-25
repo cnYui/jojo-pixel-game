@@ -1,0 +1,85 @@
+{
+ "props": {
+  "suitcase": {
+   "image": "props/suitcase",
+   "frames": 1,
+   "size": [
+    12,
+    10
+   ],
+   "pivot": [
+    6,
+    10
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1,
+   "placeholder": true
+  },
+  "frog": {
+   "image": "props/frog",
+   "frames": 1,
+   "size": [
+    8,
+    6
+   ],
+   "pivot": [
+    4,
+    6
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1,
+   "placeholder": true
+  },
+  "taxi": {
+   "image": "props/taxi",
+   "frames": 1,
+   "size": [
+    73,
+    23
+   ],
+   "pivot": [
+    36,
+    23
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1,
+   "placeholder": true
+  },
+  "ladybug": {
+   "image": "props/ladybug",
+   "frames": 1,
+   "size": [
+    5,
+    4
+   ],
+   "pivot": [
+    2,
+    4
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1,
+   "placeholder": true
+  },
+  "shovel": {
+   "image": "props/shovel",
+   "frames": 1,
+   "size": [
+    8,
+    26
+   ],
+   "pivot": [
+    4,
+    26
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1,
+   "placeholder": true
+  }
+ },
+ "scene": {}
+}
