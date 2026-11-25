@@ -1,5 +1,6 @@
 tools/dev/_out/
 **/__pycache__/
 tools/art/fonts/
+tools/font_cache/
 assets/audio/user/
 游戏/data/music/title_song.js
