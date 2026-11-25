@@ -130,6 +130,8 @@
     "bg/cape_cliff/near.png",
     "bg/cinderella_salon/room.png",
     "bg/empty_house/room.png",
+    "bg/empty_house/vase_broken.png",
+    "bg/empty_house/vase_ok.png",
     "bg/farm_out/far.png",
     "bg/farm_out/near.png",
     "bg/farmhouse/room.png",
@@ -159,9 +161,14 @@
     "bg/irrigation_ditch/near.png",
     "bg/kawajiri_attic/room.png",
     "bg/kawajiri_house/room.png",
+    "bg/kawajiri_house/win_dusk.png",
+    "bg/kawajiri_house/win_night.png",
+    "bg/kira_house/box_open.png",
     "bg/kira_house/photo.png",
     "bg/kira_house/room.png",
+    "bg/kira_house/window_open.png",
     "bg/kira_house_out/far.png",
+    "bg/kira_house_out/gate_open.png",
     "bg/kira_house_out/near.png",
     "bg/library/room.png",
     "bg/middle_school/far.png",
@@ -216,6 +223,8 @@
     "bg/park_pond/near.png",
     "bg/rail_crossing/far.png",
     "bg/rail_crossing/near.png",
+    "bg/residential_street/ambulance.png",
+    "bg/residential_street/ambulance_rev.png",
     "bg/residential_street/far.png",
     "bg/residential_street/near.png",
     "bg/rohan_house/far.png",
@@ -230,6 +239,7 @@
     "bg/rooftops/far.png",
     "bg/rooftops/near.png",
     "bg/route_tunnel/near.png",
+    "bg/route_tunnel/room.png",
     "bg/seaside_villa/chair.png",
     "bg/seaside_villa/hair_door.png",
     "bg/seaside_villa/hair_stairs.png",
@@ -275,9 +285,7 @@
       "bg/empty_house/ash_2",
       "bg/empty_house/ash_3",
       "bg/empty_house/glass_hole",
-      "bg/empty_house/ring",
-      "bg/empty_house/vase_broken",
-      "bg/empty_house/vase_ok"
+      "bg/empty_house/ring"
     ],
     "farm_out": [
       "bg/farm_out/cans_shot",
@@ -336,18 +344,13 @@
       "bg/kawajiri_house/cam",
       "bg/kawajiri_house/glow",
       "bg/kawajiri_house/led",
-      "bg/kawajiri_house/win_dusk",
-      "bg/kawajiri_house/win_night",
       "tint"
     ],
     "kira_house": [
-      "bg/kira_house/box_open",
       "bg/kira_house/pinned",
-      "bg/kira_house/tv",
-      "bg/kira_house/window_open"
+      "bg/kira_house/tv"
     ],
     "kira_house_out": [
-      "bg/kira_house_out/gate_open",
       "tint"
     ],
     "library": [
@@ -465,8 +468,6 @@
     ],
     "residential_street": [
       "bg/residential_street/amb_none",
-      "bg/residential_street/ambulance",
-      "bg/residential_street/ambulance_rev",
       "bg/residential_street/rain",
       "bg/residential_street/siren",
       "tint"
@@ -496,7 +497,6 @@
       "bg/rooftops/brk4"
     ],
     "route_tunnel": [
-      "bg/route_tunnel/room",
       "bg/route_tunnel/room_glow"
     ],
     "spw_ship": [
@@ -535,9 +535,7 @@
       "rohan_studio__hole",
       "tailor_shop__after",
       "morioh_avenue__after",
-      "morioh_avenue__closed"
-    ],
-    "missing": [
+      "morioh_avenue__closed",
       "kira_house_out__gate_open",
       "kira_house__window_open",
       "kira_house__box_open",
@@ -549,6 +547,7 @@
       "empty_house__vase_ok",
       "empty_house__vase_broken"
     ],
+    "missing": [],
     "errors": {},
     "derived": {
       "bg/nijimura_yard/pots_1": {
