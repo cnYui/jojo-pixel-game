@@ -32,12 +32,14 @@ HEAD_ALIAS = {'angry': 'rage', 'glare': 'rage', 'surprise': 'shock', 'hurt': 'sh
 
 
 def read_gd(path):
-    s = open(path, encoding='utf-8').read()
+    with open(path, encoding='utf-8') as fh:
+        s = fh.read()
     return json.loads(s[s.index('=') + 1:s.rindex(';')])
 
 
 def read_pack(path):
-    s = open(path, encoding='utf-8').read()
+    with open(path, encoding='utf-8') as fh:
+        s = fh.read()
     a = s.index('Object.assign(D.img,') + len('Object.assign(D.img,')
     b = s.index(');D.packKeys')
     return json.loads(s[a:b])
@@ -76,8 +78,6 @@ def main():
     for fp in sorted(glob.glob(os.path.join(L.META, 'bg_*.json'))):
         bgm.update(L.load_json(fp, {}) or {})
     uim = meta('ui', {})
-    protected_bg = {layer['image'] for spec in bgm.values() for layer in background_layers(spec)
-                    if layer.get('key') and layer.get('image')}
     font = meta('font', {})
     # 各章自己的元数据（第四部/docs/分章开发约定.md）：chars_chN.json / props_chN.json / ui_chN.json 深合并进来。
     #   每章只写自己的文件，几条分支就不会同时改 chars.json、props.json、ui.json（这几份是各自生成脚本整份重写的）
@@ -107,9 +107,9 @@ def main():
         elif key.startswith('ui/chapter/'):
             # 篇章卡（640×360，一张二十来 KB）跟着那一章的背景包走：开章时 playFrom 先载 bg_<章>，开机不用把 13 张都载上
             pack = 'bg_' + key.split('/')[2]
-        # 替换图沿用原键和分包；跳过开关层，保证接入目录不能覆盖原开关素材。
+        # 流水线只输出清单内的图层，整屏开关变体也必须沿用对应替换图。
         replacement = os.path.join(L.ASSETS, 'bg_gpt', *rel.split('/'))
-        source = replacement if key.startswith('bg/') and key not in protected_bg and os.path.isfile(replacement) else fp
+        source = replacement if key.startswith('bg/') and os.path.isfile(replacement) else fp
         with open(source, 'rb') as fh:
             gd['img'][key] = 'data:image/png;base64,' + base64.b64encode(fh.read()).decode('ascii')
         for g in groups.values():

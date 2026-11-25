@@ -14,6 +14,7 @@
       "angelo_rain__near"
     ],
     "budogaoka_bank": [
+      "budogaoka_bank__counter",
       "budogaoka_bank__room"
     ],
     "budogaoka_classroom": [
@@ -75,6 +76,7 @@
     ],
     "hillside": [
       "hillside__far",
+      "hillside__fg",
       "hillside__near"
     ],
     "hirose_living": [
@@ -155,6 +157,12 @@
     "morning_corner_rain": [
       "morning_corner_rain__far",
       "morning_corner_rain__near"
+    ],
+    "national_road": [
+      "national_road__near",
+      "national_road__sea",
+      "national_road__shore",
+      "national_road__sky"
     ],
     "nijimura_attic": [
       "nijimura_attic__room"
@@ -237,6 +245,10 @@
       "title_morioh__far",
       "title_morioh__near"
     ],
+    "transmission_tower": [
+      "transmission_tower__far",
+      "transmission_tower__near"
+    ],
     "trattoria": [
       "trattoria__room"
     ],
@@ -292,7 +304,6 @@
       "bg/higashikata_rain/splash"
     ],
     "higashikata_tvnight": [
-      "bg/higashikata_tvnight/lit",
       "bg/higashikata_tvnight/snow"
     ],
     "hillside": [
@@ -329,9 +340,6 @@
     "kira_house_out": [
       "bg/kira_house_out/gate_open",
       "tint"
-    ],
-    "library": [
-      "bg/library/book"
     ],
     "middle_school": [
       "tint"
@@ -469,12 +477,6 @@
       "tint"
     ]
   },
-  "unplanned": [
-    "national_road",
-    "transmission_tower"
-  ],
-  "unrecognized_raw": [
-    "higashikata_tvnight.png",
-    "park_pond.png"
-  ]
+  "unplanned": [],
+  "unrecognized_raw": []
 }

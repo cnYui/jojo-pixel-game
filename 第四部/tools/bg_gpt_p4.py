@@ -54,7 +54,52 @@ def magenta(rgb):
     return (255 - r) + g + (255 - b) < 150 or (r > 150 and b > 150 and g < 90)
 
 
-def convert(raw_path, original_path, size, near=False):
+def original_pink(pixel, original):
+    # 真正的纯洋红始终是幕布；旧图紫红物件只在原位置且颜色相近时豁免。
+    return (original[3] >= 128 and magenta(original) and
+            sum(abs(c - k) for c, k in zip(original[:3], (255, 0, 255))) >= 60 and
+            sum(abs(a - b) for a, b in zip(pixel[:3], (255, 0, 255))) >= 60 and
+            max(abs(a - b) for a, b in zip(pixel[:3], original[:3])) <= 24)
+
+
+def pink_fringe(pixel):
+    r, g, b = pixel[:3]
+    return magenta(pixel) or (min(r, b) > 120 and min(r, b) - g > 35)
+
+
+def seamless_wrap(image):
+    """在右端重叠带找最小误差缝，整像素接到左端镜像，不混色也不模糊 alpha。"""
+    image = image.copy()
+    w, h = image.size
+    if w < 2:
+        return image
+    band = min(w // 2, max(2, min(16, w // 16)))
+    if band < 2:
+        image.paste(image.crop((0, 0, 1, h)), (w - 1, 0))
+        return image
+    pixels = image.load()
+    costs, parents = [], []
+    for y in range(h):
+        row, prev = [], []
+        for x in range(band - 1):
+            a, b = pixels[w - band + x, y], pixels[band - 1 - x, y]
+            # 透明 RGB 不影响观感；alpha 差异也纳入误差，避免缝穿过轮廓。
+            error = sum(abs(a[c] * a[3] - b[c] * b[3]) // 255 for c in range(3)) + abs(a[3] - b[3]) * 3
+            parent = min(range(max(0, x - 1), min(band - 1, x + 2)),
+                         key=lambda k: (costs[-1][k], k)) if y else x
+            row.append(error + (costs[-1][parent] if y else 0))
+            prev.append(parent)
+        costs.append(row)
+        parents.append(prev)
+    seam = min(range(band - 1), key=lambda x: (costs[-1][x], x))
+    for y in range(h - 1, -1, -1):
+        for x in range(seam, band):
+            pixels[w - band + x, y] = pixels[band - 1 - x, y]
+        seam = parents[y][seam]
+    return image
+
+
+def convert(raw_path, original_path, size, near=False, wrap=False):
     with Image.open(original_path) as im:
         original = im.convert('RGBA')
     if original.size != tuple(size):
@@ -63,26 +108,20 @@ def convert(raw_path, original_path, size, near=False):
         crop = crop_band(im.convert('RGBA'), size)
     if near:
         opaque = original.getchannel('A').point(lambda a: 255 if a >= 128 else 0)
-        # 只在原透明区及一像素边界抠色，避免误删物件内部的正常紫红色。
-        allowed = ImageChops.invert(opaque).filter(ImageFilter.MaxFilter(3))
-        allowed = allowed.resize(crop.size, Image.Resampling.NEAREST)
+        reference = original.resize(crop.size, Image.Resampling.NEAREST)
+        # 全图抠幕布，包括原轮廓内部未画满的洞；不借用原图颜色补边。
         keyed = Image.new('L', crop.size)
-        keyed.putdata([0 if magenta(p) and a else p[3]
-                       for p, a in zip(crop.getdata(), allowed.getdata())])
+        keyed.putdata([0 if magenta(p) and not original_pink(p, o) else p[3]
+                       for p, o in zip(crop.getdata(), reference.getdata())])
         crop.putalpha(keyed)
     small = crop.resize(tuple(size), Image.Resampling.BOX)
     alpha = small.getchannel('A').point(lambda a: 255 if a >= 128 else 0)
     if near:
-        alpha = ImageChops.multiply(alpha, opaque)
-        edge = ImageChops.subtract(opaque, opaque.filter(ImageFilter.MinFilter(3)))
-        pixels = list(small.getdata())
-        # BOX 后的混色粉边用原边界色兜底，既不留下洋红线，也不扩大透明洞。
-        repaired = [(o if e and (not a or magenta(p)) else p,
-                     255 if e and not a else a)
-                    for p, o, a, e in zip(pixels, original.getdata(), alpha.getdata(), edge.getdata())]
-        pixels = [p for p, a in repaired]
-        alpha.putdata([a for p, a in repaired])
-        small.putdata(pixels)
+        # 允许新增顶面和侧面伸出四个游戏像素，仅用旧轮廓限制远处杂点。
+        alpha = ImageChops.multiply(alpha, opaque.filter(ImageFilter.MaxFilter(9)))
+        # BOX 使用预乘 alpha，仍偏粉的残边直接透明，避免回填旧画或扩散粉色。
+        alpha.putdata([0 if pink_fringe(p) and not original_pink(p, o) else a
+                       for p, o, a in zip(small.getdata(), original.getdata(), alpha.getdata())])
     rgb = small.convert('RGB')
     visible = [p for p, a in zip(rgb.getdata(), alpha.getdata()) if a]
     if visible:
@@ -95,7 +134,7 @@ def convert(raw_path, original_path, size, near=False):
         result = Image.new('RGBA', tuple(size))
     result.putalpha(alpha)
     result.putdata([p if p[3] else (0, 0, 0, 0) for p in result.getdata()])
-    return result
+    return seamless_wrap(result) if wrap else result
 
 
 def run(src=DEFAULT_SRC, partial=False, assets=ASSETS, output=OUTPUT):
@@ -121,9 +160,11 @@ def run(src=DEFAULT_SRC, partial=False, assets=ASSETS, output=OUTPUT):
         if not (assets / rel).is_file():
             raise ValueError(f'原图不存在：{rel}')
         groups[key].append(job)
-    overlays = {key: sorted({l.get('image', l['type']) for l in layers(spec) if l.get('key')})
-                for key, spec in sorted(bg.items()) if any(l.get('key') for l in layers(spec))}
-    protected = {l['image'] for spec in bg.values() for l in layers(spec) if l.get('key') and l.get('image')}
+    planned = {job['image'] for job in jobs}
+    overlays = {key: sorted({l.get('image', l['type']) for l in layers(spec)
+                            if l.get('key') and l.get('image') not in planned})
+                for key, spec in sorted(bg.items())}
+    overlays = {key: value for key, value in overlays.items() if value}
     report = dict(mode='partial' if partial else 'complete', enabled=[], incomplete={}, errors={},
                   outputs=[], retained_overlays=overlays, unplanned=sorted(set(bg) - set(groups)),
                   unrecognized_raw=sorted(p.name for p in (src / 'raw').glob('*.png') if p.stem not in seen))
@@ -140,10 +181,9 @@ def run(src=DEFAULT_SRC, partial=False, assets=ASSETS, output=OUTPUT):
                 path = src / 'raw' / (job['name'] + '.png')
                 if not path.is_file():
                     continue
-                # 变体参与整组完整性检查，但 key 开关层始终保留原图。
-                image = convert(path, assets / relative_image(job['image']), job['size'], job['kind'] == 'near')
-                if job['image'] not in protected:
-                    images[relative_image(job['image']).as_posix()] = image
+                image = convert(path, assets / relative_image(job['image']), job['size'],
+                                job['kind'] == 'near', job.get('wrap', False))
+                images[relative_image(job['image']).as_posix()] = image
         except (OSError, ValueError) as exc:
             report['errors'][key] = str(exc)
             continue
