@@ -8,6 +8,10 @@ from p5_paths import ASSETS, META, load_json, save_json
 TARGETS = dict(taxi=(74, 34), taxi_hit=(74, 34), suitcase=(14, 12), shovel=(7, 16),
                frog=(11, 9), frog_hop=(11, 9), ladybug=(7, 6), butterfly=(11, 9),
                vine=(24, 40), zipper=(28, 10), banknote=(9, 5), insect_light=(5, 5))
+SHEETS = [('props_sheet.png', 4, 3, dict(TARGETS)),
+          ('props_sheet2.png', 3, 1, dict(gravel=(14, 7), bench=(34, 14), key=(11, 5)))]
+TARGETS.update(SHEETS[1][3])
+SOURCES = {cid: 'props_src/' + name for name, _, _, targets in SHEETS for cid in targets}
 ALPHA = 128
 OUTLINE = (26, 16, 32, 255)
 
@@ -72,7 +76,7 @@ def fit(image, target, pad=0):
     return colour
 
 
-def pixelate(image, target):
+def pixelate(image, target, add_outline=True):
     small = fit(image, target)
     mask = small.getchannel('A')
     padded = Image.new('L', (small.width + 2, small.height + 2))
@@ -80,7 +84,7 @@ def pixelate(image, target):
     edge = ImageChops.subtract(padded, padded.filter(ImageFilter.MinFilter(3))).crop((1, 1, small.width + 1, small.height + 1))
     colours = [rgb for (*rgb, a), e in zip(small.getdata(), edge.getdata()) if a and e]
     dark = sum(max(rgb) < 100 for rgb in colours) / max(1, len(colours))
-    outlined = dark < .5
+    outlined = add_outline and dark < .5
     if outlined:
         small = fit(image, target, 1)
         mask = Image.new('L', (small.width + 2, small.height + 2))
@@ -95,25 +99,27 @@ def pixelate(image, target):
 
 
 def build(assets=ASSETS):
-    source = assets / 'props_src/props_sheet.png'
-    if not source.exists():
-        return {}
-    sheet = Image.open(source).convert('RGBA')
     props = {}
-    for index, (cid, size) in enumerate(TARGETS.items()):
-        col, row = index % 4, index // 4
-        cell = (sheet.width * col // 4, sheet.height * row // 3,
-                sheet.width * (col + 1) // 4, sheet.height * (row + 1) // 3)
-        cropped, box = subject(sheet.crop(cell))
-        if cropped is None:
+    for name, cols, rows, targets in SHEETS:
+        source = assets / 'props_src' / name
+        if not source.exists():
             continue
-        image, outlined = pixelate(cropped, size)
-        target = assets / f'props/{cid}.png'
-        target.parent.mkdir(parents=True, exist_ok=True)
-        image.save(target)
-        props[cid] = dict(image=f'props/{cid}', frames=1, size=list(size), pivot=[size[0] // 2, size[1]],
-                          fps=1, kind='static', k=1, placeholder=False, source='props_src/props_sheet.png',
-                          sourceCell=list(cell), sourceBox=list(box), alphaThreshold=ALPHA, outlined=outlined)
+        sheet = Image.open(source).convert('RGBA')
+        for index, (cid, size) in enumerate(targets.items()):
+            col, row = index % cols, index // cols
+            cell = (sheet.width * col // cols, sheet.height * row // rows,
+                    sheet.width * (col + 1) // cols, sheet.height * (row + 1) // rows)
+            cropped, box = subject(sheet.crop(cell))
+            if cropped is None:
+                continue
+            # 钥匙仅高5像素，保留源图深色边；额外外描边会挤掉齿和匙环。
+            image, outlined = pixelate(cropped, size, add_outline=cid != 'key')
+            target = assets / f'props/{cid}.png'
+            target.parent.mkdir(parents=True, exist_ok=True)
+            image.save(target)
+            props[cid] = dict(image=f'props/{cid}', frames=1, size=list(size), pivot=[size[0] // 2, size[1]],
+                              fps=1, kind='static', k=1, placeholder=False, source=SOURCES[cid],
+                              sourceCell=list(cell), sourceBox=list(box), alphaThreshold=ALPHA, outlined=outlined)
     return props
 
 

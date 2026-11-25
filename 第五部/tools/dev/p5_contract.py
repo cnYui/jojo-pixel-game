@@ -11,7 +11,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from p5_paths import REPO, P5, GAME, BACKGROUNDS
 from build_p5 import read_gd, read_pack, merge
 from p5_font import charset
-from props_p5 import TARGETS
+from props_p5 import TARGETS, SOURCES
 
 
 def main():
@@ -60,7 +60,7 @@ def main():
     checks.append('用户音频排除')
     for cid, size in TARGETS.items():
         meta = gd['props'][cid]
-        assert meta['source'] == 'props_src/props_sheet.png' and not meta['placeholder'], cid
+        assert meta['source'] == SOURCES[cid] and not meta['placeholder'], cid
         assert meta['size'] == list(size) and meta['pivot'] == [size[0] // 2, size[1]], cid
         raw = (P5 / 'assets' / (meta['image'] + '.png')).read_bytes()
         assert base64.b64decode(images[meta['image']].split(',', 1)[1]) == raw, cid

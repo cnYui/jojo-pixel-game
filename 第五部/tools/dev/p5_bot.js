@@ -99,11 +99,22 @@ class P5Bot {
       return false;
     }
     if (s.stage === 'street_ch1' && s.free && !s.busy) {
-      const route = [[48, 'u'], [100, 'u'], [168, 'e'], [220, 'u'], [340, 'u'], [404, 'e']];
+      // 从调查半径内的左侧施放，截图能同时看清人物和变化前后的道具。
+      const route = [[48, 'u'], [84, 'u', 'vine'], [168, 'e'], [204, 'u', 'frog'], [324, 'u', 'butterfly'], [404, 'e']];
       const target = route[this.streetSpot];
       if (!target) await this.keys(['ArrowRight']);
       else if (Math.abs(s.px - target[0]) > 4) await this.keys([s.px < target[0] ? 'ArrowRight' : 'ArrowLeft']);
-      else { await this.keys(); await this.tap(target[1]); this.streetSpot++; }
+      else {
+        await this.keys();
+        const life = target[2];
+        if (life && this.options.streetLife) await this.options.streetLife(life, 'before');
+        await this.tap(target[1]);
+        if (life && this.options.streetLife) {
+          await this.step(60);
+          await this.options.streetLife(life, 'after');
+        }
+        this.streetSpot++;
+      }
       return false;
     }
     if (s.combat && !s.cine && /^b_ch1_/.test(s.fightId)) {

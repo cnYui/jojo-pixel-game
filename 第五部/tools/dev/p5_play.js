@@ -85,6 +85,20 @@ async function main() {
       const file = String(report.shots.length + 1).padStart(2, '0') + '_' + name + '.png';
       await page.screenshot({ path: path.join(out, file) }); report.shots.push(file);
     };
+    if (!recording) bot.options.streetLife = async (id, phase) => {
+      // 让开场提示自然消退，避免底部文字框挡住花盆和贴地小道具。
+      if (id === 'vine' && phase === 'before') await bot.step(720);
+      await shot('life_' + id + '_' + phase);
+      const state = await page.evaluate(() => ({
+        gravel: G.S.actor('gravel').visible, key: G.S.actor('key').visible,
+        frog: !!G.S.actor('frog')?.visible, bench: G.S.actor('bench').visible,
+        benchY: G.S.actor('bench').y, playerY: G.world.player.y,
+      }));
+      report.life ||= {}; report.life[id + '_' + phase] = state;
+      assert(state.bench && state.benchY < state.playerY, '长椅应在主角脚底纵深之后');
+      if (id === 'frog') { assert.equal(state.gravel, phase === 'before'); assert.equal(state.frog, phase === 'after'); }
+      if (id === 'butterfly') assert.equal(state.key, phase === 'before');
+    };
     await shot('title');
     const t0 = Date.now(); let progressT = 0;
     for (let i = 0; i < 30000; i++) {
@@ -95,6 +109,7 @@ async function main() {
       if (s.vs) await shot('vs_card_' + s.fightId);
       if (s.tbc) await shot('to_be_continued_' + s.stage);
       if (s.hint?.includes('出租车在右边')) await shot('hall_45s_arrow');
+      if (s.stage === 'street_ch1' && bot.streetSpot >= 5 && Math.abs(s.px - 340) < 5) await shot('bench_front_occlusion');
       if (s.dlg && !report.dialogs.some(d => d.text === s.dlg)) report.dialogs.push({ who: s.dwho, text: s.dlg, pages: s.dlen });
       if (s.fightId) {
         report.fights.push({ id: s.fightId, t: s.clk, attempt: s.attempt, hp: s.hp, ...s.taxi, ...s.fightHint });

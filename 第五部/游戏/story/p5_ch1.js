@@ -29,6 +29,10 @@
     await S.narrate('我想成为黑帮里的明星。不是为了钱，也不是为了让人害怕。', { pos: 'top' });
     await S.narrate('我要改变这个让孩子也沾上毒品的帮派。这座城市，不该把未来交给他们。', { pos: 'top' });
     const st = G.world.stage, life = {}, born = {};
+    const gravel = prop(S, 'gravel', 220, 162);
+    // 长椅和钥匙共用脚底纵深，让站在椅前的人自然遮住它们；z只负责把钥匙抬到座位。
+    prop(S, 'bench', 340, 160);
+    const key = prop(S, 'key', 344, 160); key.z = 11;
     const ink = P.worldInk((at, t) => {
       at(100, 159, g => {
         if (life.vine) {
@@ -40,11 +44,6 @@
           g.beginPath(); g.rect(-12, -9, 24, 9); g.clip();
           G.ui.sheet(g, 'vine', 0, 0, 0);
         }
-      });
-      if (!life.frog) at(220, 162, g => { g.fillStyle = '#aaa5a2'; g.fillRect(-5, -4, 7, 4); g.fillRect(3, -2, 4, 3); });
-      at(340, 160, g => {
-        g.fillStyle = '#6c4334'; g.fillRect(-17, -10, 34, 3); g.fillRect(-13, -7, 3, 8); g.fillRect(10, -7, 3, 8);
-        if (!life.butterfly) { g.strokeStyle = '#ffe089'; g.lineWidth = 1; g.strokeRect(0, -14, 3, 3); g.fillStyle = '#ffe089'; g.fillRect(3, -13, 6, 1); }
       });
       if (life.butterfly) {
         const k = Math.min(1, (t - born.butterfly) / 2.2);
@@ -63,7 +62,8 @@
       look: async S2 => {
         if (life[id]) { await S2.say('giorno', '它已经得到生命了。'); return; }
         life[id] = true; born[id] = G.clk.ui - ink.t0;
-        if (id === 'frog') prop(S2, 'frog', 220, 162);
+        if (id === 'frog') { gravel.visible = false; prop(S2, 'frog', 220, 162); }
+        if (id === 'butterfly') key.visible = false;
         S2.fx('sparkles', { x, y: 148, n: 8, radius: 12, colour: '#ffe29c', period: .5 }, { life: 1 });
         await S2.wait(id === 'butterfly' ? 2.3 : .9);
         S2.mark('p5_life_' + id); await S2.say('giorno', text);

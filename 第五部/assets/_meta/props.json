@@ -371,6 +371,99 @@
    ],
    "alphaThreshold": 128,
    "outlined": true
+  },
+  "gravel": {
+   "image": "props/gravel",
+   "frames": 1,
+   "size": [
+    14,
+    7
+   ],
+   "pivot": [
+    7,
+    7
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1,
+   "placeholder": false,
+   "source": "props_src/props_sheet2.png",
+   "sourceCell": [
+    0,
+    0,
+    512,
+    1024
+   ],
+   "sourceBox": [
+    120,
+    506,
+    387,
+    617
+   ],
+   "alphaThreshold": 128,
+   "outlined": false
+  },
+  "bench": {
+   "image": "props/bench",
+   "frames": 1,
+   "size": [
+    34,
+    14
+   ],
+   "pivot": [
+    17,
+    14
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1,
+   "placeholder": false,
+   "source": "props_src/props_sheet2.png",
+   "sourceCell": [
+    512,
+    0,
+    1024,
+    1024
+   ],
+   "sourceBox": [
+    0,
+    449,
+    512,
+    661
+   ],
+   "alphaThreshold": 128,
+   "outlined": false
+  },
+  "key": {
+   "image": "props/key",
+   "frames": 1,
+   "size": [
+    11,
+    5
+   ],
+   "pivot": [
+    5,
+    5
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1,
+   "placeholder": false,
+   "source": "props_src/props_sheet2.png",
+   "sourceCell": [
+    1024,
+    0,
+    1536,
+    1024
+   ],
+   "sourceBox": [
+    176,
+    509,
+    352,
+    602
+   ],
+   "alphaThreshold": 128,
+   "outlined": false
   }
  },
  "scene": {}
