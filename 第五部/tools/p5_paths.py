@@ -23,7 +23,7 @@ BACKGROUNDS = [
     ('map_pro', 'naples_map', 320, False, 'prologue'),
     ('airin_pro', 'airport_hall', 480, True, 'prologue'),
     ('airout_pro', 'airport_out', 640, False, 'prologue'),
-    ('street_ch1', 'naples_street', 960, False, 'ch1'),
+    ('street_ch1', 'naples_street', 480, False, 'ch1'),
     ('cafe_ch1', 'naples_cafe', 480, False, 'ch1'),
     ('station_ch1', 'funicular_station', 480, False, 'ch1'),
     ('car_ch1', 'funicular_car', 320, True, 'ch1'),

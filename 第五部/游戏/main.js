@@ -124,20 +124,20 @@
       if (G.progress.max > 0) add('继续', () => G.playFrom(G.progress.max));
       add('从序章开始', () => G.playFrom(0)); add('选择章节', async () => { const idx = await chapterMenu(); if (idx != null) await G.playFrom(idx); });
       add('操作说明', controls); add('设置', settings);
-      const i = await G.ui.openMenu('', opts, { y: 214, note: '同人游戏，免费体验。角色版权归原作者。' });
+      const i = await G.ui.openMenu('', opts, { y: 214, dim: 0, note: '同人游戏，免费体验。角色版权归原作者。' });
       if (token !== menuTask) return;
       await actions[i]();
     }
   }
-  // 标题沿用角色逆光构图，背景由第五部流水线提供。
-  const TITLE_CAST = [['koichi', 34, 1], ['giorno', 80, 1], ['bucciarati', 268, -1]];
+  // 标题菜单不压暗背景人物，保证第五部角色和标题同时可辨。
+  const TITLE_CAST = [['giorno', 48, 1], ['bucciarati', 272, -1]];
   const titleScene = {
     name: 'title', frozen: false,
     update(dt) { G.ui.update(dt); },
     drawWorld(g) {
       if (titleBg) titleBg.draw(g, 0, G.clk.world, { state: {} });
       for (const [cid, x, facing] of TITLE_CAST) {
-        G.atlas(cid).draw(g, 'idle', 0, x, 170, { flip: facing < 0, backlit: { dark: '#140a18', k: .88, rim: '#ffb070' } });
+        G.atlas(cid).draw(g, 'idle', G.clk.ui, x, 170, { flip: facing < 0 });
       }
     },
     drawUI(g) {
@@ -146,7 +146,10 @@
       if (G.ready(im)) {
         // 整数倍放大：像素字的笔画才不会一粗一细
         const k = Math.max(1, Math.floor(Math.min(520 / im.width, 150 / im.height)));
-        g.drawImage(im, Math.round(320 - im.width * k / 2), 22, Math.round(im.width * k), Math.round(im.height * k));
+        const x = Math.round(320 - im.width * k / 2);
+        // 海湾的亮部会吞掉浅色笔画，用暗底衬保证菜单出现时标题仍清楚。
+        g.fillStyle = '#20142bd9'; g.fillRect(x - 10, 16, im.width * k + 20, im.height * k + 12);
+        g.drawImage(im, x, 22, Math.round(im.width * k), Math.round(im.height * k));
       } else text(g, 'JoJo的奇妙冒险　黄金之风', 320, 55, '#ffe070', 16, 'center');
       text(g, '同人像素游戏', 320, 116, '#ffd9a0', 12, 'center');   // 菜单框会盖到下半屏，副标题放在标志下面
       if (progress.clear) text(g, '★', 610, 14, '#ffe040');

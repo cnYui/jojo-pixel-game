@@ -788,7 +788,7 @@
     },
     drawMenu(g) {
       const m = this.menu, F = f16();
-      g.fillStyle = 'rgba(0,0,0,0.55)'; g.fillRect(0, 0, UW, UH);
+      g.fillStyle = 'rgba(0,0,0,' + (m.dim == null ? .55 : m.dim) + ')'; g.fillRect(0, 0, UW, UH);
       const { x, y, w, h, oy } = this.menuLayout(m);
       const k = ez(Math.min(1, m.t / 0.12), 'out');
       if (k < 1) { const cy = y + h / 2, hh = Math.max(2, h * k / 2); this.box(g, x, Math.floor(cy - hh), x + w, Math.floor(cy + hh)); return; }

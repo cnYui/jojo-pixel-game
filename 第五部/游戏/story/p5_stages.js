@@ -11,7 +11,7 @@
   G.p5Stage = { base, walls };
   for (const [id, bg, w] of [
     ['map_pro', 'naples_map', 320], ['airin_pro', 'airport_hall', 480], ['airout_pro', 'airport_out', 640],
-    ['street_ch1', 'naples_street', 960], ['cafe_ch1', 'naples_cafe', 480], ['station_ch1', 'funicular_station', 480],
+    ['street_ch1', 'naples_street', 480], ['cafe_ch1', 'naples_cafe', 480], ['station_ch1', 'funicular_station', 480],
     ['car_ch1', 'funicular_car', 320], ['square_ch1', 'station_square', 640], ['harbor_ch1', 'naples_harbor', 640],
   ]) G.STAGES[id] = base(id, bg, w, id === 'map_pro' ? { music: null } : {});
 })();

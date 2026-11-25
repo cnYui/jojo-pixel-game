@@ -1,4 +1,4 @@
-# 大图只负责视觉，地图宽度和可走带固定在元数据中，换背景不会改变剧情坐标。
+# 大图只负责视觉；宽度从 p5_paths.BACKGROUNDS 读取，老城街道为480，保证整栋楼入画。
 import argparse
 from PIL import Image, ImageDraw, ImageFilter
 
