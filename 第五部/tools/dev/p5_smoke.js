@@ -53,6 +53,12 @@ async function main() {
     await press('Enter');
     await page.waitForFunction(() => window.G?.S.cardOn === true);
     report.chapterCard = await page.evaluate(() => G.uifx.chapter.key);
+    // 正式序章在自由走动前有地图与电话对白，必须实际确认，不能再等空壳直接交还操作。
+    for (let n = 0; n < 100; n++) {
+      if (await page.evaluate(() => G.world.stage?.id === 'airin_pro' && G.world.free && G.fadeA < .01)) break;
+      if (await page.evaluate(() => !!(G.ui.dlg || G.ui.narr))) await press('Enter');
+      await page.waitForTimeout(100);
+    }
     await page.waitForFunction(() => G.world.stage?.id === 'airin_pro' && G.world.free && G.fadeA < .01);
     report.before = await page.evaluate(() => ({ cid: G.world.player.cid, x: G.world.player.x, y: G.world.player.y }));
     assert.equal(report.before.cid, 'koichi');

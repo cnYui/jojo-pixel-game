@@ -1,0 +1,107 @@
+{
+ "namecards": {
+  "koichi": {
+   "image": "ui/namecard/koichi",
+   "w": 196,
+   "h": 47,
+   "x": 24,
+   "y": 265
+  },
+  "giorno": {
+   "image": "ui/namecard/giorno",
+   "w": 178,
+   "h": 48,
+   "x": 24,
+   "y": 265
+  }
+ },
+ "standcards": {
+  "echoes3": {
+   "image": "ui/standcard/echoes3",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "goldexp": {
+   "image": "ui/standcard/goldexp",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  }
+ },
+ "locations": {
+  "naples": {
+   "image": "ui/location/naples",
+   "w": 312,
+   "h": 51,
+   "x": 24,
+   "y": 25
+  },
+  "airport_hall": {
+   "image": "ui/location/airport_hall",
+   "w": 175,
+   "h": 50,
+   "x": 24,
+   "y": 25
+  },
+  "airport_out": {
+   "image": "ui/location/airport_out",
+   "w": 134,
+   "h": 50,
+   "x": 24,
+   "y": 25
+  }
+ },
+ "titles": {
+  "b_pro1_taxi": {
+   "image": "ui/title/b_pro1_taxi",
+   "w": 168,
+   "h": 34
+  }
+ },
+ "specials": {
+  "koichi": {
+   "image": "ui/special/koichi",
+   "w": 170,
+   "h": 34
+  }
+ },
+ "sfx": {
+  "3 FREEZE": {
+   "image": "ui/sfx/act3_0",
+   "w": 124,
+   "h": 26
+  },
+  "ACT3": {
+   "image": "ui/sfx/act3_1",
+   "w": 72,
+   "h": 26
+  },
+  "ACT3!": {
+   "image": "ui/sfx/act3_2",
+   "w": 82,
+   "h": 26
+  }
+ },
+ "map": {
+  "pin": {
+   "image": "ui/map/pin",
+   "w": 11,
+   "h": 17,
+   "ax": 5,
+   "ay": 16
+  },
+  "stamp": {
+   "image": "ui/map/stamp",
+   "w": 117,
+   "h": 32
+  },
+  "place": {
+   "image": "ui/map/place",
+   "w": 93,
+   "h": 14
+  }
+ }
+}

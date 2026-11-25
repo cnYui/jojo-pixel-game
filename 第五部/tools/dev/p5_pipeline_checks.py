@@ -12,6 +12,7 @@ from PIL import Image, ImageDraw
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from bg_p5 import crop_source
+import bg_p5 as bg
 import export_p5 as export
 import cast5_heroes
 
@@ -59,6 +60,23 @@ def main():
         assert (assets / 'heads/luca/normal_0.png').is_file()
         checks.append('补画模块自动替换真实人物及头像，未补画id仍占位')
         checks.append('props5返回px.Cv自动替换，未补画道具仍占位')
+        # 在隔离目录验证默认配置和单键覆盖，保证覆盖机场时不会丢掉缆车偏移。
+        source_dir = assets / 'bg_src'
+        source_dir.mkdir()
+        settings = source_dir / 'offsets.json'
+        settings.write_text('{"airport_out":128,"funicular_car":80}', encoding='utf-8')
+        backgrounds = [('airout_pro', 'airport_out', 640, False, 'prologue'),
+                       ('car_ch1', 'funicular_car', 320, True, 'ch1')]
+        with patch.multiple(bg, ASSETS=assets, META=assets / '_meta', BACKGROUNDS=backgrounds), \
+                contextlib.redirect_stdout(io.StringIO()):
+            bg.build()
+            default = json.loads((assets / '_meta/bg.json').read_text(encoding='utf-8'))
+            bg.build({'airport_out': -20})
+            override = json.loads((assets / '_meta/bg.json').read_text(encoding='utf-8'))
+        assert [default[k]['cropY'] for k in ('airport_out', 'funicular_car')] == [128, 80]
+        assert [override[k]['cropY'] for k in ('airport_out', 'funicular_car')] == [-20, 80]
+        assert json.loads(settings.read_text(encoding='utf-8')) == {'airport_out': 128, 'funicular_car': 80}
+        checks.append('默认读取裁切配置，单键覆盖保留其他键且不改写配置')
     (out / 'pipeline.json').write_text(json.dumps(dict(ok=True, checks=checks), ensure_ascii=False, indent=2), encoding='utf-8')
     print(f'PASS：{len(checks)}项源图与补画模块验收')
 

@@ -105,6 +105,8 @@ def main():
     pm = parts('props', load_json(META / 'props.json', {}))
     bg = parts('bg', load_json(META / 'bg.json', {}))
     ui_images(font)
+    import p5_ui
+    p5_ui.build()
     uim = parts('ui', load_json(META / 'ui.json', {}))
     if not cm.get('chars') or len(bg) < 10:
         raise RuntimeError('缺少第五部素材，请先运行export_p5.py和bg_p5.py')
