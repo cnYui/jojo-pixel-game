@@ -2,27 +2,36 @@
   "mode": "complete",
   "enabled": [
     "angelo_after",
+    "angelo_rain",
+    "budogaoka_hall",
     "budou_gate",
     "higashikata_eve",
     "higashikata_living",
     "higashikata_night",
     "higashikata_rain",
     "higashikata_tvnight",
+    "hirose_living",
     "morioh_map",
     "morioh_road",
+    "morioh_shopping_street",
+    "nijimura_attic",
     "nijimura_hall",
     "nijimura_stairs",
+    "nijimura_yard",
     "park_pond",
     "supermarket",
     "title_morioh"
   ],
   "baked_clouds": [
     "angelo_after",
+    "angelo_rain",
     "budou_gate",
     "higashikata_eve",
     "higashikata_night",
     "higashikata_rain",
     "morioh_road",
+    "morioh_shopping_street",
+    "nijimura_yard",
     "park_pond",
     "title_morioh"
   ],
@@ -30,18 +39,12 @@
     "afterlife_dream": [
       "afterlife_dream__base"
     ],
-    "angelo_rain": [
-      "angelo_rain__near"
-    ],
     "budogaoka_bank": [
       "budogaoka_bank__counter",
       "budogaoka_bank__room"
     ],
     "budogaoka_classroom": [
       "budogaoka_classroom__room"
-    ],
-    "budogaoka_hall": [
-      "budogaoka_hall__room"
     ],
     "cape_cliff": [
       "cape_cliff__far",
@@ -76,9 +79,6 @@
       "hillside__far",
       "hillside__fg",
       "hillside__near"
-    ],
-    "hirose_living": [
-      "hirose_living__room"
     ],
     "hospital_corridor": [
       "hospital_corridor__near"
@@ -133,10 +133,6 @@
       "morioh_harbor_late__far",
       "morioh_harbor_late__near"
     ],
-    "morioh_shopping_street": [
-      "morioh_shopping_street__far",
-      "morioh_shopping_street__near"
-    ],
     "morioh_station": [
       "morioh_station__far",
       "morioh_station__near"
@@ -154,13 +150,6 @@
       "national_road__sea",
       "national_road__shore",
       "national_road__sky"
-    ],
-    "nijimura_attic": [
-      "nijimura_attic__room"
-    ],
-    "nijimura_yard": [
-      "nijimura_yard__far",
-      "nijimura_yard__near"
     ],
     "open_field": [
       "open_field__far",
@@ -235,6 +224,9 @@
   "outputs": [
     "bg/angelo_after/far.png",
     "bg/angelo_after/near.png",
+    "bg/angelo_rain/far.png",
+    "bg/angelo_rain/near.png",
+    "bg/budogaoka_hall/room.png",
     "bg/budou_gate/far.png",
     "bg/budou_gate/near.png",
     "bg/higashikata_eve/far.png",
@@ -246,11 +238,17 @@
     "bg/higashikata_rain/near.png",
     "bg/higashikata_tvnight/lit.png",
     "bg/higashikata_tvnight/room.png",
+    "bg/hirose_living/room.png",
     "bg/morioh_map/map.png",
     "bg/morioh_road/far.png",
     "bg/morioh_road/near.png",
+    "bg/morioh_shopping_street/far.png",
+    "bg/morioh_shopping_street/near.png",
+    "bg/nijimura_attic/room.png",
     "bg/nijimura_hall/room.png",
     "bg/nijimura_stairs/room.png",
+    "bg/nijimura_yard/far.png",
+    "bg/nijimura_yard/near.png",
     "bg/park_pond/far.png",
     "bg/park_pond/near.png",
     "bg/supermarket/room.png",
