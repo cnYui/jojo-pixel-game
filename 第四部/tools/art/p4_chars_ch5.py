@@ -256,17 +256,18 @@ def hd_frame(pose='idle', t=0.0, w=40, h=46):
 
 
 def build_heavensdoor():
-    sh = C.Sheet('heavensdoor', '天堂之门', (40, 46), (18, 44))
-    sh.add('idle', [hd_frame('idle', t / 4) for t in range(4)], 6, 'loop')
-    sh.add('punch', [hd_frame('idle'), hd_frame('punch'), hd_frame('punch')], 10, 'oneshot')
-    sh.add('upper', [hd_frame('idle'), hd_frame('punch'), hd_frame('punch')], 10, 'oneshot')
-    sh.add('rush', [hd_frame('rush', 0), hd_frame('rush', 0.5)], 14, 'loop')
-    sh.add('block', [hd_frame('block')], 1, 'static')
-    sh.add('hurt', [hd_frame('hurt')], 1, 'static')
-    sh.add('write', [hd_frame('write', 0), hd_frame('write', 0.5)], 8, 'loop')
-    big = hd_frame('idle').resize((80, 92), Image.NEAREST)
-    face = Image.new('RGBA', (32, 32), (0, 0, 0, 0))
-    face.alpha_composite(big.crop((22, 6, 54, 38)))
+    """2026-11-24 用户给了官方形象（银白礼服 + 金色滚边、金色格栅高礼帽、绿眼、橙领结和鞋），旧的米白披风小人整个换掉，
+    画法在 p4_hd.py。动作名和帧数不变（引擎按这些名字和帧数播）。"""
+    import p4_hd as HDA
+    sh = C.Sheet('heavensdoor', '天堂之门', (HDA.CW, HDA.CH), HDA.PIVOT)
+    sh.add('idle', [HDA.frame('idle', t / 4) for t in range(4)], 6, 'loop')
+    sh.add('punch', [HDA.frame('wind'), HDA.frame('punch'), HDA.frame('punch2')], 10, 'oneshot')
+    sh.add('upper', [HDA.frame('wind'), HDA.frame('upper'), HDA.frame('upper')], 10, 'oneshot')
+    sh.add('rush', [HDA.frame('rush'), HDA.frame('rush2')], 14, 'loop')
+    sh.add('block', [HDA.frame('block')], 1, 'static')
+    sh.add('hurt', [HDA.frame('hurt')], 1, 'static')
+    sh.add('write', [HDA.frame('write', 0.0), HDA.frame('write', 0.6)], 8, 'loop')
+    face = HDA.portrait()
     sh.heads = {'normal': [face, face]}
     e = C.save(sh, amap={'punch': 'punch', 'punch2': 'punch', 'punch_heavy': 'upper', 'rush': 'rush', 'block': 'block', 'hurt': 'hurt',
                          'special': 'write', 'finger': 'punch', 'write': 'write'}, kind='stand', bodyW=4)
@@ -355,7 +356,20 @@ STANDS = {
 }
 
 
+def only_heavensdoor():
+    """只重出天堂之门：不碰露伴 / 老鼠（第四部重画后露伴已经是新的人物，整个 main 会把它覆盖回旧版），
+    元数据只替换 chars_ch5.json 里 chars.heavensdoor 这一条。"""
+    path = os.path.join(L.META, 'chars_ch5.json')
+    meta = L.load_json(path)
+    meta['chars']['heavensdoor'] = build_heavensdoor()
+    L.save_json(path, meta)
+    e = meta['chars']['heavensdoor']
+    print('天堂之门', e['cell'], e['pivot'], 'top', e['top'], '动作', list(e['animations']))
+
+
 def main():
+    if len(sys.argv) > 1 and sys.argv[1] == 'heavensdoor':
+        return only_heavensdoor()
     meta = {'chars': {}}
     for cid, fn in [('rohan', build_rohan), ('heavensdoor', build_heavensdoor),
                     ('mushikui', lambda: build_rat('mushikui', '虫食', True)), ('rat_a', lambda: build_rat('rat_a', '老鼠', False))]:

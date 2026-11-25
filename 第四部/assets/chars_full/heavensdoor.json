@@ -3,12 +3,12 @@
  "name": "天堂之门",
  "image": "heavensdoor.png",
  "cell": [
-  40,
-  46
+  48,
+  48
  ],
  "pivot": [
-  18,
-  44
+  20,
+  45
  ],
  "animations": {
   "idle": {
