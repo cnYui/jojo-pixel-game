@@ -1,6 +1,12 @@
 {
   "mode": "complete",
-  "enabled": [],
+  "enabled": [
+    "higashikata_tvnight",
+    "morioh_road",
+    "park_pond",
+    "supermarket",
+    "title_morioh"
+  ],
   "incomplete": {
     "afterlife_dream": [
       "afterlife_dream__base"
@@ -71,9 +77,6 @@
       "higashikata_rain__far",
       "higashikata_rain__near"
     ],
-    "higashikata_tvnight": [
-      "higashikata_tvnight__lit"
-    ],
     "hillside": [
       "hillside__far",
       "hillside__fg",
@@ -138,10 +141,6 @@
     "morioh_map": [
       "morioh_map__map"
     ],
-    "morioh_road": [
-      "morioh_road__far",
-      "morioh_road__near"
-    ],
     "morioh_shopping_street": [
       "morioh_shopping_street__far",
       "morioh_shopping_street__near"
@@ -183,9 +182,6 @@
     ],
     "paper_world": [
       "paper_world__paper"
-    ],
-    "park_pond": [
-      "park_pond__near"
     ],
     "rail_crossing": [
       "rail_crossing__far",
@@ -235,15 +231,8 @@
       "street_crossing__far",
       "street_crossing__near"
     ],
-    "supermarket": [
-      "supermarket__room"
-    ],
     "tailor_shop": [
       "tailor_shop__room"
-    ],
-    "title_morioh": [
-      "title_morioh__far",
-      "title_morioh__near"
     ],
     "transmission_tower": [
       "transmission_tower__far",
@@ -257,7 +246,17 @@
     ]
   },
   "errors": {},
-  "outputs": [],
+  "outputs": [
+    "bg/higashikata_tvnight/lit.png",
+    "bg/higashikata_tvnight/room.png",
+    "bg/morioh_road/far.png",
+    "bg/morioh_road/near.png",
+    "bg/park_pond/far.png",
+    "bg/park_pond/near.png",
+    "bg/supermarket/room.png",
+    "bg/title_morioh/far.png",
+    "bg/title_morioh/near.png"
+  ],
   "retained_overlays": {
     "afterlife_dream": [
       "tint"
