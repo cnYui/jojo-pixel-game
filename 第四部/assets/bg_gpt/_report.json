@@ -3,10 +3,12 @@
   "enabled": [
     "angelo_after",
     "angelo_rain",
+    "budogaoka_bank",
     "budogaoka_classroom",
     "budogaoka_hall",
     "budou_gate",
     "cape_cliff",
+    "cinderella_salon",
     "farm_out",
     "farmhouse",
     "ghost_alley",
@@ -18,6 +20,7 @@
     "hillside",
     "hirose_living",
     "irrigation_ditch",
+    "morioh_blocks",
     "morioh_grand_hotel",
     "morioh_harbor",
     "morioh_map",
@@ -32,9 +35,11 @@
     "rail_crossing",
     "rohan_house",
     "rohan_studio",
+    "rooftops",
     "seaside_villa",
     "seaside_villa_out",
     "spw_ship",
+    "st_gentleman",
     "supermarket",
     "title_morioh",
     "trattoria",
@@ -61,20 +66,15 @@
     "park_pond",
     "rail_crossing",
     "rohan_house",
+    "rooftops",
     "seaside_villa_out",
     "spw_ship",
+    "st_gentleman",
     "title_morioh"
   ],
   "incomplete": {
     "afterlife_dream": [
       "afterlife_dream__base"
-    ],
-    "budogaoka_bank": [
-      "budogaoka_bank__counter",
-      "budogaoka_bank__room"
-    ],
-    "cinderella_salon": [
-      "cinderella_salon__room"
     ],
     "empty_house": [
       "empty_house__room"
@@ -121,9 +121,6 @@
       "morioh_avenue__far",
       "morioh_avenue__near"
     ],
-    "morioh_blocks": [
-      "morioh_blocks__map"
-    ],
     "morioh_harbor_late": [
       "morioh_harbor_late__far",
       "morioh_harbor_late__near"
@@ -160,16 +157,8 @@
     "rohan_parlor": [
       "rohan_parlor__room"
     ],
-    "rooftops": [
-      "rooftops__far",
-      "rooftops__near"
-    ],
     "route_tunnel": [
       "route_tunnel__near"
-    ],
-    "st_gentleman": [
-      "st_gentleman__far",
-      "st_gentleman__near"
     ],
     "street_crossing": [
       "street_crossing__far",
@@ -189,12 +178,15 @@
     "bg/angelo_after/near.png",
     "bg/angelo_rain/far.png",
     "bg/angelo_rain/near.png",
+    "bg/budogaoka_bank/counter.png",
+    "bg/budogaoka_bank/room.png",
     "bg/budogaoka_classroom/room.png",
     "bg/budogaoka_hall/room.png",
     "bg/budou_gate/far.png",
     "bg/budou_gate/near.png",
     "bg/cape_cliff/far.png",
     "bg/cape_cliff/near.png",
+    "bg/cinderella_salon/room.png",
     "bg/farm_out/far.png",
     "bg/farm_out/near.png",
     "bg/farmhouse/room.png",
@@ -215,6 +207,7 @@
     "bg/hirose_living/room.png",
     "bg/irrigation_ditch/far.png",
     "bg/irrigation_ditch/near.png",
+    "bg/morioh_blocks/map.png",
     "bg/morioh_grand_hotel/far.png",
     "bg/morioh_grand_hotel/near.png",
     "bg/morioh_harbor/far.png",
@@ -238,11 +231,15 @@
     "bg/rohan_house/far.png",
     "bg/rohan_house/near.png",
     "bg/rohan_studio/room.png",
+    "bg/rooftops/far.png",
+    "bg/rooftops/near.png",
     "bg/seaside_villa/room.png",
     "bg/seaside_villa_out/far.png",
     "bg/seaside_villa_out/near.png",
     "bg/spw_ship/far.png",
     "bg/spw_ship/near.png",
+    "bg/st_gentleman/far.png",
+    "bg/st_gentleman/near.png",
     "bg/supermarket/room.png",
     "bg/title_morioh/far.png",
     "bg/title_morioh/near.png",
