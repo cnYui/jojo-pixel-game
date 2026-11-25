@@ -2,7 +2,7 @@
 import argparse
 from PIL import Image, ImageDraw, ImageFilter
 
-from p5_paths import ASSETS, META, BACKGROUNDS, save_json
+from p5_paths import ASSETS, META, BACKGROUNDS, load_json, save_json
 
 
 def crop_source(image, width, offset=0, sharpen=False):
@@ -41,7 +41,11 @@ def placeholder(map_id, width, indoor):
 
 
 def build(offsets=None, sharpen=False):
-    offsets = offsets or {}
+    # 把已验收的构图保存在源图旁；命令行只覆盖本次指定的背景。
+    offsets = {**load_json(ASSETS / 'bg_src/offsets.json', {}), **(offsets or {})}
+    keys = {item[1] for item in BACKGROUNDS}
+    if any(key not in keys or type(value) is not int for key, value in offsets.items()):
+        raise ValueError('offsets.json 必须是背景键到整数裁切偏移的映射')
     meta = {}
     for map_id, key, width, indoor, pack in BACKGROUNDS:
         source = ASSETS / 'bg_src' / (key + '.png')
