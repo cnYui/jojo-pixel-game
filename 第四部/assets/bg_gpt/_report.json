@@ -3,6 +3,7 @@
   "enabled": [
     "angelo_after",
     "angelo_rain",
+    "budogaoka_classroom",
     "budogaoka_hall",
     "budou_gate",
     "higashikata_eve",
@@ -11,6 +12,7 @@
     "higashikata_rain",
     "higashikata_tvnight",
     "hirose_living",
+    "morioh_grand_hotel",
     "morioh_map",
     "morioh_road",
     "morioh_shopping_street",
@@ -19,6 +21,9 @@
     "nijimura_stairs",
     "nijimura_yard",
     "park_pond",
+    "rail_crossing",
+    "seaside_villa",
+    "seaside_villa_out",
     "supermarket",
     "title_morioh"
   ],
@@ -29,10 +34,13 @@
     "higashikata_eve",
     "higashikata_night",
     "higashikata_rain",
+    "morioh_grand_hotel",
     "morioh_road",
     "morioh_shopping_street",
     "nijimura_yard",
     "park_pond",
+    "rail_crossing",
+    "seaside_villa_out",
     "title_morioh"
   ],
   "incomplete": {
@@ -42,9 +50,6 @@
     "budogaoka_bank": [
       "budogaoka_bank__counter",
       "budogaoka_bank__room"
-    ],
-    "budogaoka_classroom": [
-      "budogaoka_classroom__room"
     ],
     "cape_cliff": [
       "cape_cliff__far",
@@ -121,10 +126,6 @@
     "morioh_blocks": [
       "morioh_blocks__map"
     ],
-    "morioh_grand_hotel": [
-      "morioh_grand_hotel__far",
-      "morioh_grand_hotel__near"
-    ],
     "morioh_harbor": [
       "morioh_harbor__far",
       "morioh_harbor__near"
@@ -158,10 +159,6 @@
     "paper_world": [
       "paper_world__paper"
     ],
-    "rail_crossing": [
-      "rail_crossing__far",
-      "rail_crossing__near"
-    ],
     "residential_street": [
       "residential_street__far",
       "residential_street__near"
@@ -186,13 +183,6 @@
     ],
     "route_tunnel": [
       "route_tunnel__near"
-    ],
-    "seaside_villa": [
-      "seaside_villa__room"
-    ],
-    "seaside_villa_out": [
-      "seaside_villa_out__far",
-      "seaside_villa_out__near"
     ],
     "spw_ship": [
       "spw_ship__far",
@@ -226,6 +216,7 @@
     "bg/angelo_after/near.png",
     "bg/angelo_rain/far.png",
     "bg/angelo_rain/near.png",
+    "bg/budogaoka_classroom/room.png",
     "bg/budogaoka_hall/room.png",
     "bg/budou_gate/far.png",
     "bg/budou_gate/near.png",
@@ -239,6 +230,8 @@
     "bg/higashikata_tvnight/lit.png",
     "bg/higashikata_tvnight/room.png",
     "bg/hirose_living/room.png",
+    "bg/morioh_grand_hotel/far.png",
+    "bg/morioh_grand_hotel/near.png",
     "bg/morioh_map/map.png",
     "bg/morioh_road/far.png",
     "bg/morioh_road/near.png",
@@ -251,6 +244,11 @@
     "bg/nijimura_yard/near.png",
     "bg/park_pond/far.png",
     "bg/park_pond/near.png",
+    "bg/rail_crossing/far.png",
+    "bg/rail_crossing/near.png",
+    "bg/seaside_villa/room.png",
+    "bg/seaside_villa_out/far.png",
+    "bg/seaside_villa_out/near.png",
     "bg/supermarket/room.png",
     "bg/title_morioh/far.png",
     "bg/title_morioh/near.png"
