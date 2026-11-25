@@ -1,0 +1,480 @@
+{
+  "mode": "complete",
+  "enabled": [],
+  "incomplete": {
+    "afterlife_dream": [
+      "afterlife_dream__base"
+    ],
+    "angelo_after": [
+      "angelo_after__far",
+      "angelo_after__near"
+    ],
+    "angelo_rain": [
+      "angelo_rain__far",
+      "angelo_rain__near"
+    ],
+    "budogaoka_bank": [
+      "budogaoka_bank__room"
+    ],
+    "budogaoka_classroom": [
+      "budogaoka_classroom__room"
+    ],
+    "budogaoka_hall": [
+      "budogaoka_hall__room"
+    ],
+    "budou_gate": [
+      "budou_gate__far",
+      "budou_gate__near"
+    ],
+    "cape_cliff": [
+      "cape_cliff__far",
+      "cape_cliff__near"
+    ],
+    "cinderella_salon": [
+      "cinderella_salon__room"
+    ],
+    "empty_house": [
+      "empty_house__room"
+    ],
+    "farm_out": [
+      "farm_out__far",
+      "farm_out__near"
+    ],
+    "farmhouse": [
+      "farmhouse__room"
+    ],
+    "ghost_alley": [
+      "ghost_alley__far",
+      "ghost_alley__near"
+    ],
+    "ghost_alley_cold": [
+      "ghost_alley_cold__far",
+      "ghost_alley_cold__near"
+    ],
+    "ghost_alley_dawn": [
+      "ghost_alley_dawn__far",
+      "ghost_alley_dawn__near"
+    ],
+    "higashikata_eve": [
+      "higashikata_eve__far",
+      "higashikata_eve__near"
+    ],
+    "higashikata_living": [
+      "higashikata_living__room"
+    ],
+    "higashikata_night": [
+      "higashikata_night__far",
+      "higashikata_night__near"
+    ],
+    "higashikata_rain": [
+      "higashikata_rain__far",
+      "higashikata_rain__near"
+    ],
+    "higashikata_tvnight": [
+      "higashikata_tvnight__lit"
+    ],
+    "hillside": [
+      "hillside__far",
+      "hillside__near"
+    ],
+    "hirose_living": [
+      "hirose_living__room"
+    ],
+    "hospital_corridor": [
+      "hospital_corridor__near"
+    ],
+    "hospital_room": [
+      "hospital_room__room"
+    ],
+    "irrigation_ditch": [
+      "irrigation_ditch__far",
+      "irrigation_ditch__near"
+    ],
+    "kawajiri_attic": [
+      "kawajiri_attic__room"
+    ],
+    "kawajiri_house": [
+      "kawajiri_house__room"
+    ],
+    "kira_house": [
+      "kira_house__room"
+    ],
+    "kira_house_out": [
+      "kira_house_out__far",
+      "kira_house_out__near"
+    ],
+    "library": [
+      "library__book",
+      "library__room"
+    ],
+    "middle_school": [
+      "middle_school__far",
+      "middle_school__near"
+    ],
+    "miyamoto_house": [
+      "miyamoto_house__room"
+    ],
+    "morioh_avenue": [
+      "morioh_avenue__far",
+      "morioh_avenue__near"
+    ],
+    "morioh_blocks": [
+      "morioh_blocks__map"
+    ],
+    "morioh_grand_hotel": [
+      "morioh_grand_hotel__far",
+      "morioh_grand_hotel__near"
+    ],
+    "morioh_harbor": [
+      "morioh_harbor__far",
+      "morioh_harbor__near"
+    ],
+    "morioh_harbor_late": [
+      "morioh_harbor_late__far",
+      "morioh_harbor_late__near"
+    ],
+    "morioh_map": [
+      "morioh_map__map"
+    ],
+    "morioh_road": [
+      "morioh_road__far",
+      "morioh_road__near"
+    ],
+    "morioh_shopping_street": [
+      "morioh_shopping_street__far",
+      "morioh_shopping_street__near"
+    ],
+    "morioh_station": [
+      "morioh_station__far",
+      "morioh_station__near"
+    ],
+    "morning_corner": [
+      "morning_corner__far",
+      "morning_corner__near"
+    ],
+    "morning_corner_rain": [
+      "morning_corner_rain__far",
+      "morning_corner_rain__near"
+    ],
+    "nijimura_attic": [
+      "nijimura_attic__room"
+    ],
+    "nijimura_hall": [
+      "nijimura_hall__room"
+    ],
+    "nijimura_stairs": [
+      "nijimura_stairs__room"
+    ],
+    "nijimura_yard": [
+      "nijimura_yard__far",
+      "nijimura_yard__near"
+    ],
+    "open_field": [
+      "open_field__far",
+      "open_field__near"
+    ],
+    "paper_world": [
+      "paper_world__paper"
+    ],
+    "park_pond": [
+      "park_pond__near"
+    ],
+    "rail_crossing": [
+      "rail_crossing__far",
+      "rail_crossing__near"
+    ],
+    "residential_street": [
+      "residential_street__far",
+      "residential_street__near"
+    ],
+    "rohan_house": [
+      "rohan_house__far",
+      "rohan_house__near"
+    ],
+    "rohan_house_scaffold": [
+      "rohan_house_scaffold__far",
+      "rohan_house_scaffold__near"
+    ],
+    "rohan_parlor": [
+      "rohan_parlor__room"
+    ],
+    "rohan_studio": [
+      "rohan_studio__room"
+    ],
+    "rooftops": [
+      "rooftops__far",
+      "rooftops__near"
+    ],
+    "route_tunnel": [
+      "route_tunnel__near"
+    ],
+    "seaside_villa": [
+      "seaside_villa__room"
+    ],
+    "seaside_villa_out": [
+      "seaside_villa_out__far",
+      "seaside_villa_out__near"
+    ],
+    "spw_ship": [
+      "spw_ship__far",
+      "spw_ship__near"
+    ],
+    "st_gentleman": [
+      "st_gentleman__far",
+      "st_gentleman__near"
+    ],
+    "street_crossing": [
+      "street_crossing__far",
+      "street_crossing__near"
+    ],
+    "supermarket": [
+      "supermarket__room"
+    ],
+    "tailor_shop": [
+      "tailor_shop__room"
+    ],
+    "title_morioh": [
+      "title_morioh__far",
+      "title_morioh__near"
+    ],
+    "trattoria": [
+      "trattoria__room"
+    ],
+    "trattoria_kitchen": [
+      "trattoria_kitchen__room"
+    ]
+  },
+  "errors": {},
+  "outputs": [],
+  "retained_overlays": {
+    "afterlife_dream": [
+      "tint"
+    ],
+    "angelo_rain": [
+      "bg/angelo_rain/rain",
+      "bg/angelo_rain/splash"
+    ],
+    "budogaoka_hall": [
+      "bg/budogaoka_hall/locker_open"
+    ],
+    "cinderella_salon": [
+      "tint"
+    ],
+    "empty_house": [
+      "bg/empty_house/glass_hole",
+      "bg/empty_house/ring",
+      "pick"
+    ],
+    "farm_out": [
+      "pick",
+      "tint"
+    ],
+    "farmhouse": [
+      "pick"
+    ],
+    "ghost_alley": [
+      "bg/ghost_alley/hands",
+      "pick"
+    ],
+    "ghost_alley_cold": [
+      "bg/ghost_alley_cold/hands",
+      "pick"
+    ],
+    "ghost_alley_dawn": [
+      "bg/ghost_alley_dawn/hands",
+      "pick"
+    ],
+    "higashikata_living": [
+      "tint"
+    ],
+    "higashikata_rain": [
+      "bg/higashikata_rain/rain",
+      "bg/higashikata_rain/splash"
+    ],
+    "higashikata_tvnight": [
+      "bg/higashikata_tvnight/lit",
+      "bg/higashikata_tvnight/snow"
+    ],
+    "hillside": [
+      "tint"
+    ],
+    "hirose_living": [
+      "bg/hirose_living/door_open"
+    ],
+    "hospital_corridor": [
+      "tint"
+    ],
+    "irrigation_ditch": [
+      "tint"
+    ],
+    "kawajiri_attic": [
+      "bg/kawajiri_attic/bulb",
+      "bg/kawajiri_attic/lamp"
+    ],
+    "kawajiri_house": [
+      "bg/kawajiri_house/cam",
+      "bg/kawajiri_house/glow",
+      "bg/kawajiri_house/led",
+      "bg/kawajiri_house/win_dusk",
+      "bg/kawajiri_house/win_night",
+      "tint"
+    ],
+    "kira_house": [
+      "bg/kira_house/box_open",
+      "bg/kira_house/photo",
+      "bg/kira_house/pinned",
+      "bg/kira_house/tv",
+      "bg/kira_house/window_open"
+    ],
+    "kira_house_out": [
+      "bg/kira_house_out/gate_open",
+      "tint"
+    ],
+    "library": [
+      "bg/library/book"
+    ],
+    "middle_school": [
+      "tint"
+    ],
+    "miyamoto_house": [
+      "bg/miyamoto_house/shred",
+      "tint"
+    ],
+    "morioh_avenue": [
+      "bg/morioh_avenue/after",
+      "bg/morioh_avenue/closed",
+      "bg/morioh_avenue/heat",
+      "bg/morioh_avenue/heat_big",
+      "bg/morioh_avenue/smoke",
+      "tint"
+    ],
+    "morioh_grand_hotel": [
+      "tint"
+    ],
+    "morioh_harbor": [
+      "bg/morioh_harbor/fglow",
+      "bg/morioh_harbor/ship",
+      "pick"
+    ],
+    "morioh_harbor_late": [
+      "bg/morioh_harbor_late/fglow",
+      "bg/morioh_harbor_late/ship",
+      "pick"
+    ],
+    "morioh_road": [
+      "tint"
+    ],
+    "morioh_shopping_street": [
+      "tint"
+    ],
+    "morioh_station": [
+      "tint"
+    ],
+    "morning_corner": [
+      "pick",
+      "tint"
+    ],
+    "morning_corner_rain": [
+      "pick",
+      "tint"
+    ],
+    "national_road": [
+      "tint"
+    ],
+    "nijimura_attic": [
+      "bg/nijimura_attic/spark",
+      "bg/nijimura_attic/spark_glow"
+    ],
+    "nijimura_hall": [
+      "bg/nijimura_hall/holes"
+    ],
+    "nijimura_stairs": [
+      "bg/nijimura_stairs/holes"
+    ],
+    "nijimura_yard": [
+      "bg/nijimura_yard/figure",
+      "pick",
+      "tint"
+    ],
+    "open_field": [
+      "bg/open_field/cable",
+      "bg/open_field/spark"
+    ],
+    "park_pond": [
+      "bg/park_pond/red",
+      "bg/park_pond/ring"
+    ],
+    "rail_crossing": [
+      "bg/rail_crossing/alarm",
+      "pick",
+      "tint"
+    ],
+    "residential_street": [
+      "bg/residential_street/rain",
+      "bg/residential_street/siren",
+      "pick",
+      "tint"
+    ],
+    "rohan_house": [
+      "bg/rohan_house/window_open",
+      "tint"
+    ],
+    "rohan_house_scaffold": [
+      "tint"
+    ],
+    "rohan_parlor": [
+      "bg/rohan_parlor/fire_big",
+      "bg/rohan_parlor/fire_cur",
+      "bg/rohan_parlor/fire_glow",
+      "bg/rohan_parlor/fire_low",
+      "bg/rohan_parlor/scorch",
+      "bg/rohan_parlor/smoke",
+      "tint"
+    ],
+    "rohan_studio": [
+      "bg/rohan_studio/hole",
+      "bg/rohan_studio/pages",
+      "tint"
+    ],
+    "rooftops": [
+      "bg/rooftops/brk1",
+      "bg/rooftops/brk2",
+      "bg/rooftops/brk3",
+      "bg/rooftops/brk4"
+    ],
+    "route_tunnel": [
+      "bg/route_tunnel/room",
+      "bg/route_tunnel/room_glow"
+    ],
+    "seaside_villa": [
+      "bg/seaside_villa/chair",
+      "bg/seaside_villa/hair_door",
+      "bg/seaside_villa/hair_stairs",
+      "bg/seaside_villa/hair_walls",
+      "bg/seaside_villa/hair_window",
+      "bg/seaside_villa/shoebox"
+    ],
+    "spw_ship": [
+      "bg/spw_ship/gglow"
+    ],
+    "street_crossing": [
+      "pick",
+      "tint"
+    ],
+    "tailor_shop": [
+      "bg/tailor_shop/after",
+      "bg/tailor_shop/smoke"
+    ],
+    "transmission_tower": [
+      "tint"
+    ]
+  },
+  "unplanned": [
+    "national_road",
+    "transmission_tower"
+  ],
+  "unrecognized_raw": [
+    "higashikata_tvnight.png",
+    "park_pond.png"
+  ]
+}
