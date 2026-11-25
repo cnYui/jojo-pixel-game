@@ -151,13 +151,67 @@ class PipelineTests(unittest.TestCase):
                 if not p[3]:
                     self.assertEqual(p, (0, 0, 0, 0))
             self.assertEqual(set(result.getchannel('A').getdata()), {0, 255})
-            self.assertLessEqual(len({p[:3] for p in result.getdata() if p[3]}), 96)
+
+    def test_rare_warm_accents_survive_gray_green_field(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            size = (256, 64)
+            scene = Image.new('RGBA', size)
+            # 数千种灰绿占据几乎全部像素，避免少数纯色的简单夹具掩盖调色板丢色。
+            scene.putdata([(35 + (x * 7 + y * 3) % 110,
+                            45 + (x * 3 + y * 11) % 120,
+                            35 + (x * 13 + y * 5) % 100, 255)
+                           for y in range(size[1]) for x in range(size[0])])
+            accents = [(231, 34, 26, 255), (228, 126, 27, 255),
+                       (245, 197, 32, 255), (248, 130, 218, 255)]
+            for x, color in enumerate(accents, 20):
+                scene.putpixel((x, 30), color)
+            scene.save(root / 'original.png')
+            raw = scene.resize((512, 128), Image.Resampling.NEAREST)
+            raw.save(root / 'raw.png')
+            for near in (False, True):
+                with self.subTest(near=near):
+                    with patch.object(pipe, 'crop_band', return_value=raw):
+                        result = pipe.convert(root / 'raw.png', root / 'original.png', size, near=near)
+                    for x, color in enumerate(accents, 20):
+                        pixel = result.getpixel((x, 30))
+                        self.assertEqual(pixel[3], 255)
+                        self.assertLessEqual(max(abs(a - b) for a, b in zip(pixel[:3], color[:3])), 2)
+
+    def test_dim_screen_holes_without_bright_seed_and_warm_edges(self):
+        raw = Image.new('RGBA', (32, 24), (40, 80, 45, 255))
+        # 整个小孔都低于旧亮度门槛，内部也远离任何纯洋红种子。
+        raw.paste((190, 20, 185, 255), (2, 2, 15, 15))
+        raw.paste((192, 34, 165, 255), (18, 12, 23, 17))
+        raw.putpixel((25, 20), (234, 136, 231, 255))
+        original = Image.new('RGBA', raw.size)
+        original.paste((30, 58, 46, 255), (18, 12, 23, 17))
+        raw.putpixel((20, 14), (218, 35, 152, 255))
+        colors = [(231, 34, 26, 255), (228, 126, 27, 255),
+                  (245, 197, 32, 255), (248, 130, 218, 255),
+                  (240, 40, 175, 255), (205, 105, 195, 255)]
+        for y, color in enumerate(colors, 3):
+            raw.putpixel((15, y), color)
+        original.putpixel((8, 8), (188, 20, 188, 255))
+        raw.putpixel((8, 8), (190, 22, 190, 255))
+        result = pipe.key_and_despill(raw, original)
+        for point in [(3, 3), (7, 7), (14, 14), (20, 14), (25, 20)]:
+            self.assertEqual(result.getpixel(point), (0, 0, 0, 0))
+        self.assertEqual(result.getpixel((8, 8)), (190, 22, 190, 255))
+        for y, color in enumerate(colors, 3):
+            self.assertEqual(result.getpixel((15, y)), color)
+
+        # 同样偏红的真实花瓣由旧樱花区保护，绿树去混色不得扩散到整张图。
+        original.paste((0, 0, 0, 0), (17, 11, 24, 18))
+        original.putpixel((20, 14), (240, 100, 180, 255))
+        raw.putpixel((20, 14), (240, 40, 175, 255))
+        self.assertEqual(pipe.key_and_despill(raw, original).getpixel((20, 14)), (240, 40, 175, 255))
 
     def test_narrow_key_preserves_pink_and_raw_three_pixel_despill(self):
         raw = Image.new('RGBA', (16, 8), (70, 35, 60, 255))
         raw.paste((253, 1, 252, 255), (0, 0, 4, 8))
         for x, color in [(4, (220, 8, 215, 255)), (5, (125, 30, 120, 255)),
-                         (6, (90, 25, 85, 255)), (7, (90, 25, 85, 255))]:
+                         (7, (90, 25, 85, 255)), (8, (90, 25, 85, 255))]:
             raw.putpixel((x, 0), color)
         # 两类正常粉色都紧挨幕布；内部紫色不应因整图去色而变灰。
         pinks = [(248, 130, 218, 255), (240, 40, 175, 255), (205, 105, 195, 255)]
@@ -172,8 +226,8 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(result.getpixel((3, 0)), (0, 0, 0, 0))
         self.assertEqual(result.getpixel((4, 0)), (0, 0, 0, 0))
         self.assertEqual(result.getpixel((5, 0)), (35, 30, 30, 255))
-        self.assertEqual(result.getpixel((6, 0)), (30, 25, 25, 255))
-        self.assertEqual(result.getpixel((7, 0)), raw.getpixel((7, 0)))
+        self.assertEqual(result.getpixel((7, 0)), (30, 25, 25, 255))
+        self.assertEqual(result.getpixel((8, 0)), raw.getpixel((8, 0)))
         self.assertEqual(result.getpixel((4, 4)), (35, 35, 78, 255))
         self.assertEqual(result.getpixel((4, 5)), (212, 22, 212, 255))
         for y, pink in enumerate(pinks, 1):

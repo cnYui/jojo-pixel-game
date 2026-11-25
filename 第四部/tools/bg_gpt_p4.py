@@ -49,10 +49,13 @@ def crop_band(raw, size):
     return raw.crop(box)
 
 
-def magenta(rgb):
+def magenta(rgb, green=False):
     r, g, b = rgb[:3]
-    # 成图幕布峰值约为 (253, 1, 252) / (247, 2, 249)，不能把樱花粉算进去。
-    return min(r, b) >= 225 and g <= 35 and abs(r - b) <= 20
+    # 小孔里的幕布会混入暗树色；按幕布占比而非亮度识别，避开高绿或偏红的樱花。
+    excess = min(r, b) - g
+    limit = 100 if green and g < 100 else 64
+    ratio = (0.45 if green else 0.5) if g < 100 else 0.78
+    return -64 <= r - b <= limit and excess > 25 and excess >= (255 - g) * ratio
 
 
 def original_pink(pixel, original):
@@ -67,18 +70,25 @@ def original_pink(pixel, original):
 def key_and_despill(crop, reference):
     """只在原始分辨率的幕布边界三像素内去溢色，保留花瓣和细线轮廓。"""
     pixels, originals = list(crop.getdata()), list(reference.getdata())
+    # 绿树缝隙的混色会明显偏红；只在旧绿色植被附近放宽色相，樱花区仍用保粉门槛。
+    foliage = Image.new('L', crop.size)
+    foliage.putdata([255 if o[3] >= 128 and o[1] - o[0] >= 8 and o[1] - o[2] >= 5
+                     else 0 for o in originals])
+    foliage = foliage.filter(ImageFilter.MaxFilter(7))
+    greens = list(foliage.getdata())
     removed = Image.new('L', crop.size)
-    removed.putdata([255 if magenta(p) and not original_pink(p, o) else 0
-                     for p, o in zip(pixels, originals)])
+    removed.putdata([255 if magenta(p, green) and not original_pink(p, o) else 0
+                     for p, o, green in zip(pixels, originals, greens)])
     border = removed.filter(ImageFilter.MaxFilter(7))
     result = []
-    for p, o, cut, edge in zip(pixels, originals, removed.getdata(), border.getdata()):
+    for p, o, cut, edge, green in zip(pixels, originals, removed.getdata(), border.getdata(), greens):
         r, g, b, a = p
         if cut:
             result.append((0, 0, 0, 0))
             continue
         # 高绿粉色和红蓝差大的樱花不去色；原生紫红物件仍按同位置颜色匹配保护。
-        if edge and a and g < 90 and min(r, b) - g > 25 and -64 <= r - b <= 24 and not original_pink(p, o):
+        if (edge and a and g < (130 if green else 100) and min(r, b) - g > 25 and
+                -64 <= r - b <= (100 if green else 64) and not original_pink(p, o)):
             excess = min(r, b) - g
             if excess >= (255 - g) * 0.8:
                 result.append((0, 0, 0, 0))
@@ -139,16 +149,8 @@ def convert(raw_path, original_path, size, near=False, wrap=False):
     if near:
         # 允许新增顶面和侧面伸出四个游戏像素，仅用旧轮廓限制远处杂点。
         alpha = ImageChops.multiply(alpha, opaque.filter(ImageFilter.MaxFilter(9)))
-    rgb = small.convert('RGB')
-    visible = [p for p, a in zip(rgb.getdata(), alpha.getdata()) if a]
-    if visible:
-        training = Image.new('RGB', (len(visible), 1))
-        training.putdata(visible)
-        palette = training.quantize(colors=96, method=Image.Quantize.MEDIANCUT,
-                                    dither=Image.Dither.NONE)
-        result = rgb.quantize(palette=palette, dither=Image.Dither.NONE).convert('RGBA')
-    else:
-        result = Image.new('RGBA', tuple(size))
+    # 保留 BOX 的真彩色：按面积训练的调色板会把长椅、路牌等稀少暖色并入灰绿。
+    result = small
     result.putalpha(alpha)
     result.putdata([p if p[3] else (0, 0, 0, 0) for p in result.getdata()])
     return seamless_wrap(result) if wrap else result
