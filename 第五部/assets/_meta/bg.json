@@ -38,8 +38,8 @@
    }
   ],
   "fg": [],
-  "placeholder": true,
-  "cropY": 0
+  "placeholder": false,
+  "cropY": -10
  },
  "airport_hall": {
   "pack": "prologue",
@@ -82,8 +82,8 @@
    }
   ],
   "fg": [],
-  "placeholder": true,
-  "cropY": 0
+  "placeholder": false,
+  "cropY": 184
  },
  "airport_out": {
   "pack": "prologue",
@@ -166,8 +166,8 @@
    }
   ],
   "fg": [],
-  "placeholder": true,
-  "cropY": 0
+  "placeholder": false,
+  "cropY": 142
  },
  "naples_cafe": {
   "pack": "ch1",
@@ -208,8 +208,8 @@
    }
   ],
   "fg": [],
-  "placeholder": true,
-  "cropY": 0
+  "placeholder": false,
+  "cropY": 114
  },
  "funicular_station": {
   "pack": "ch1",
@@ -250,8 +250,8 @@
    }
   ],
   "fg": [],
-  "placeholder": true,
-  "cropY": 0
+  "placeholder": false,
+  "cropY": 110
  },
  "funicular_car": {
   "pack": "ch1",
@@ -336,8 +336,8 @@
    }
   ],
   "fg": [],
-  "placeholder": true,
-  "cropY": 0
+  "placeholder": false,
+  "cropY": 98
  },
  "naples_harbor": {
   "pack": "ch1",
@@ -378,8 +378,8 @@
    }
   ],
   "fg": [],
-  "placeholder": true,
-  "cropY": 0
+  "placeholder": false,
+  "cropY": 123
  },
  "p5_title": {
   "pack": "title",
@@ -420,7 +420,7 @@
    }
   ],
   "fg": [],
-  "placeholder": true,
+  "placeholder": false,
   "cropY": 0
  }
 }

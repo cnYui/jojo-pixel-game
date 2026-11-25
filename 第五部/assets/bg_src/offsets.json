@@ -1,4 +1,12 @@
 {
+  "airport_hall": 184,
   "airport_out": 128,
-  "funicular_car": 80
+  "naples_street": 142,
+  "naples_cafe": 114,
+  "funicular_station": 110,
+  "funicular_car": 80,
+  "station_square": 98,
+  "naples_harbor": 123,
+  "naples_map": -10,
+  "p5_title": 0
 }
