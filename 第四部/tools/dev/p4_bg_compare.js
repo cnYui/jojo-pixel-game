@@ -35,7 +35,7 @@ const { chromium } = require('playwright');
           const bg = new G.Background(spec), stage = { state: row.state, camY: row.y };
           bg.draw(g, row.x, 0, stage); bg.drawFg(g, row.x, 0, stage);
           return cv.toDataURL('image/png').split(',')[1];
-        }), { spec: item.spec, rows: item.rows });
+        }), { spec: item.specs[side], rows: item.rows });
         captures.forEach((capture, i) => { rows[i][side] = capture; });
         await page.close();
       }

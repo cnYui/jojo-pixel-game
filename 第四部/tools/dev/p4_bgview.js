@@ -24,16 +24,22 @@ fs.mkdirSync(OUT, { recursive: true });
   page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
   await page.goto(url + 'index.html?autotest=1');
   await page.waitForFunction(() => window.G && G.booted && G.ui.menu, null, { timeout: 60000 });
+  if (keys.includes('title_morioh')) {
+    await page.waitForFunction(() => G.ui.menu && G.ui.menu.t >= 0.6 && !G.fadeA);
+    await page.screenshot({ path: path.join(OUT, 'title_morioh_menu.png') });
+  }
   // 借第 N 章的位置跑一个只摆背景的“章节”：playFrom 会先加载 bg_common 和 bg_<章节>
   const list = await page.evaluate(async ({ CH, keys }) => {
     const idx = G.CHAPTERS.findIndex((c) => c.key === CH);
     const bg = G.D.bg;
     const want = keys.length ? keys : Object.keys(bg).filter((k) => bg[k].pack === CH);
+    if (idx < 0 || want.some(k => !bg[k])) throw new Error('章节或背景不存在');
     window.__S = null;
     G.CHAPTERS[idx].run = (S) => { window.__S = S; return new Promise(() => {}); };
     G.playFrom(idx);
     const t0 = Date.now();
     while (!window.__S && Date.now() - t0 < 20000) await new Promise((r) => setTimeout(r, 50));
+    if (!window.__S) throw new Error('等待背景验收场景超时');
     return want.map((k) => ({ key: k, w: bg[k].w, anchors: bg[k].anchors || {},
       toggles: (bg[k].layers || []).concat(bg[k].fg || []).filter((L) => L.key).map((L) => L.key) }));
   }, { CH, keys });
@@ -75,4 +81,6 @@ fs.mkdirSync(OUT, { recursive: true });
   console.log(errors.length ? '报错：\n' + errors.join('\n') : '无报错');
   await browser.close();
   srv.close();
+  // 截图落盘不代表验收成功，页面错误必须让命令失败。
+  if (errors.length) process.exitCode = 1;
 })().catch((e) => { console.error(e); process.exit(1); });

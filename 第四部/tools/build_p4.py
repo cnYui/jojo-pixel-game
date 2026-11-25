@@ -65,6 +65,16 @@ def background_layers(spec):
         yield from background_layers(layer)
 
 
+def generated_background(spec, baked_clouds=False):
+    # 只改运行时副本，原元数据保留，撤回生图时自动恢复程序云。
+    result = dict(spec)
+    for section in ('layers', 'fg'):
+        if section in spec:
+            result[section] = [generated_background(layer, baked_clouds) for layer in spec[section]
+                               if not (baked_clouds and layer.get('type') == 'clouds')]
+    return result
+
+
 def main():
     if '--no-font' not in sys.argv:
         import p4_font
@@ -77,6 +87,9 @@ def main():
     bgm = meta('bg', {})
     for fp in sorted(glob.glob(os.path.join(L.META, 'bg_*.json'))):
         bgm.update(L.load_json(fp, {}) or {})
+    report = L.load_json(os.path.join(L.ASSETS, 'bg_gpt', '_report.json'), {}) or {}
+    baked_clouds = set(report.get('baked_clouds', [])) & set(report.get('enabled', []))
+    bgm = {key: generated_background(spec, key in baked_clouds) for key, spec in bgm.items()}
     uim = meta('ui', {})
     font = meta('font', {})
     # 各章自己的元数据（第四部/docs/分章开发约定.md）：chars_chN.json / props_chN.json / ui_chN.json 深合并进来。

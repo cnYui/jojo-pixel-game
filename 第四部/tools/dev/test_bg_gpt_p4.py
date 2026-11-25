@@ -51,10 +51,12 @@ class PipelineTests(unittest.TestCase):
             names = [('far', 'far'), ('near', 'near'), ('lit', 'variant'),
                      ('keyed', 'far'), ('nested', 'far'), ('front', 'near')]
             layer = lambda name, **kw: dict(type='pano', image=f'bg/demo/{name}', **kw)
-            spec = {'demo': {'layers': [layer('far'), layer('near'), layer('lit', key='lamp'),
+            cloud = dict(type='clouds', clouds=[], span=520)
+            spec = {'demo': {'layers': [cloud, layer('far'), layer('near'), layer('lit', key='lamp'),
                                        layer('keyed', key='switch'),
-                                       dict(type='group', layers=[layer('nested')]),
-                                       layer('spark', key='spark')], 'fg': [layer('front')]}}
+                                       dict(type='group', layers=[cloud, layer('nested')]),
+                                       layer('spark', key='spark')], 'fg': [cloud, layer('front')]},
+                    'untouched': {'layers': [cloud]}}
             (assets / '_meta/bg.json').write_text(json.dumps(spec), encoding='utf-8')
             jobs = [dict(name=f'demo__{name}', key='demo', image=f'bg/demo/{name}',
                          size=[32, 16], kind=kind) for name, kind in names]
@@ -72,6 +74,7 @@ class PipelineTests(unittest.TestCase):
             save_raw(changed, src / 'raw/demo__lit.png')
             report = pipe.run(src, assets=assets, output=output)
             self.assertEqual(report['enabled'], ['demo'])
+            self.assertEqual(report['baked_clouds'], ['demo'])
             self.assertEqual(report['outputs'], sorted(f'bg/demo/{n}.png' for n, _ in names))
             self.assertEqual(report['retained_overlays'], {'demo': ['bg/demo/spark']})
             data = root / 'data'
@@ -80,6 +83,11 @@ class PipelineTests(unittest.TestCase):
                  redirect_stdout(StringIO()):
                 build.main()
             pack = build.read_pack(data / 'img_bg_prologue.js')
+            runtime = build.read_gd(data / 'data_meta.js')['bg']
+            self.assertFalse(any(l['type'] == 'clouds' for l in pipe.layers(runtime['demo'])))
+            self.assertEqual(runtime['untouched'], spec['untouched'])
+            self.assertEqual(build.generated_background(spec['demo']), spec['demo'])
+            self.assertEqual(sum(l['type'] == 'clouds' for l in pipe.layers(spec['demo'])), 3)
             for name, _ in names:
                 self.assertEqual(base64.b64decode(pack[f'bg/demo/{name}'].split(',')[1]),
                                  (output / f'bg/demo/{name}.png').read_bytes())
@@ -90,6 +98,11 @@ class PipelineTests(unittest.TestCase):
             (src / 'raw/demo__lit.png').unlink()
             self.assertEqual(pipe.run(src, assets=assets, output=output)['enabled'], [])
             self.assertEqual(list(output.rglob('*.png')), [])
+            with patch.multiple(build.L, ASSETS=str(assets), META=str(assets / '_meta')), \
+                 patch.object(build, 'DATA', str(data)), patch.object(sys, 'argv', ['build_p4.py', '--no-font']), \
+                 redirect_stdout(StringIO()):
+                build.main()
+            self.assertEqual(build.read_gd(data / 'data_meta.js')['bg'], spec)
             (src / 'raw/demo__lit.png').write_bytes(b'incomplete PNG')
             self.assertIn('demo', pipe.run(src, assets=assets, output=output)['errors'])
             self.assertEqual(list(output.rglob('*.png')), [])
@@ -130,17 +143,60 @@ class PipelineTests(unittest.TestCase):
             self.assertEqual(result.getpixel((17, 13))[3], 0)
             self.assertEqual(result.getpixel((0, 0))[3], 0)
             self.assertEqual(result.getpixel((5, 10))[3], 0)
-            self.assertEqual(result.getpixel((7, 9))[3], 0)
+            self.assertEqual(result.getpixel((7, 9))[3], 255)
             self.assertEqual(result.getpixel((22, 16)), (212, 22, 212, 255))
             self.assertEqual(result.getpixel((23, 16))[3], 0)
             self.assertNotIn((180, 110, 40, 255), set(result.getdata()))
-            for p, o in zip(result.getdata(), original.getdata()):
-                if p[3]:
-                    self.assertTrue(not pipe.pink_fringe(p) or pipe.original_pink(p, o))
-                else:
+            for p in result.getdata():
+                if not p[3]:
                     self.assertEqual(p, (0, 0, 0, 0))
             self.assertEqual(set(result.getchannel('A').getdata()), {0, 255})
             self.assertLessEqual(len({p[:3] for p in result.getdata() if p[3]}), 96)
+
+    def test_narrow_key_preserves_pink_and_raw_three_pixel_despill(self):
+        raw = Image.new('RGBA', (16, 8), (70, 35, 60, 255))
+        raw.paste((253, 1, 252, 255), (0, 0, 4, 8))
+        for x, color in [(4, (220, 8, 215, 255)), (5, (125, 30, 120, 255)),
+                         (6, (90, 25, 85, 255)), (7, (90, 25, 85, 255))]:
+            raw.putpixel((x, 0), color)
+        # 两类正常粉色都紧挨幕布；内部紫色不应因整图去色而变灰。
+        pinks = [(248, 130, 218, 255), (240, 40, 175, 255), (205, 105, 195, 255)]
+        for y, pink in enumerate(pinks, 1):
+            raw.putpixel((4, y), pink)
+            self.assertFalse(pipe.magenta(pink))
+        raw.putpixel((4, 4), (103, 35, 146, 255))
+        original = Image.new('RGBA', raw.size)
+        original.putpixel((4, 5), (210, 20, 210, 255))
+        raw.putpixel((4, 5), (212, 22, 212, 255))
+        result = pipe.key_and_despill(raw, original)
+        self.assertEqual(result.getpixel((3, 0)), (0, 0, 0, 0))
+        self.assertEqual(result.getpixel((4, 0)), (0, 0, 0, 0))
+        self.assertEqual(result.getpixel((5, 0)), (35, 30, 30, 255))
+        self.assertEqual(result.getpixel((6, 0)), (30, 25, 25, 255))
+        self.assertEqual(result.getpixel((7, 0)), raw.getpixel((7, 0)))
+        self.assertEqual(result.getpixel((4, 4)), (35, 35, 78, 255))
+        self.assertEqual(result.getpixel((4, 5)), (212, 22, 212, 255))
+        for y, pink in enumerate(pinks, 1):
+            self.assertEqual(result.getpixel((4, y)), pink)
+
+    def test_box_ignores_transparent_rgb_and_keeps_thin_line(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            original = Image.new('RGBA', (2, 1), (40, 30, 20, 255))
+            original.save(root / 'original.png')
+            raw = Image.new('RGBA', (4, 2), (253, 1, 252, 255))
+            raw.putpixel((0, 0), (40, 30, 20, 255))
+            raw.putpixel((0, 1), (40, 30, 20, 255))
+            raw.putpixel((1, 1), (255, 0, 255, 0))
+            raw.putpixel((2, 0), (125, 30, 120, 255))
+            raw.putpixel((2, 1), (125, 30, 120, 255))
+            raw.save(root / 'raw.png')
+            with patch.object(pipe, 'crop_band', return_value=raw):
+                result = pipe.convert(root / 'raw.png', root / 'original.png', [2, 1], near=True)
+            for point, expected in [((0, 0), (40, 30, 20)), ((1, 0), (35, 30, 30))]:
+                pixel = result.getpixel(point)
+                self.assertEqual(pixel[3], 255)
+                self.assertLessEqual(max(abs(a - b) for a, b in zip(pixel[:3], expected)), 2)
 
     def test_wrap_manifest_seams_rgb_alpha_and_pixel_palette(self):
         with tempfile.TemporaryDirectory() as tmp:

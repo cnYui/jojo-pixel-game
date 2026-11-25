@@ -51,20 +51,43 @@ def crop_band(raw, size):
 
 def magenta(rgb):
     r, g, b = rgb[:3]
-    return (255 - r) + g + (255 - b) < 150 or (r > 150 and b > 150 and g < 90)
+    # 成图幕布峰值约为 (253, 1, 252) / (247, 2, 249)，不能把樱花粉算进去。
+    return min(r, b) >= 225 and g <= 35 and abs(r - b) <= 20
 
 
 def original_pink(pixel, original):
     # 真正的纯洋红始终是幕布；旧图紫红物件只在原位置且颜色相近时豁免。
-    return (original[3] >= 128 and magenta(original) and
+    r, g, b = original[:3]
+    return (original[3] >= 128 and min(r, b) - g > 35 and abs(r - b) <= 32 and
             sum(abs(c - k) for c, k in zip(original[:3], (255, 0, 255))) >= 60 and
             sum(abs(a - b) for a, b in zip(pixel[:3], (255, 0, 255))) >= 60 and
             max(abs(a - b) for a, b in zip(pixel[:3], original[:3])) <= 24)
 
 
-def pink_fringe(pixel):
-    r, g, b = pixel[:3]
-    return magenta(pixel) or (min(r, b) > 120 and min(r, b) - g > 35)
+def key_and_despill(crop, reference):
+    """只在原始分辨率的幕布边界三像素内去溢色，保留花瓣和细线轮廓。"""
+    pixels, originals = list(crop.getdata()), list(reference.getdata())
+    removed = Image.new('L', crop.size)
+    removed.putdata([255 if magenta(p) and not original_pink(p, o) else 0
+                     for p, o in zip(pixels, originals)])
+    border = removed.filter(ImageFilter.MaxFilter(7))
+    result = []
+    for p, o, cut, edge in zip(pixels, originals, removed.getdata(), border.getdata()):
+        r, g, b, a = p
+        if cut:
+            result.append((0, 0, 0, 0))
+            continue
+        # 高绿粉色和红蓝差大的樱花不去色；原生紫红物件仍按同位置颜色匹配保护。
+        if edge and a and g < 90 and min(r, b) - g > 25 and -64 <= r - b <= 24 and not original_pink(p, o):
+            excess = min(r, b) - g
+            if excess >= (255 - g) * 0.8:
+                result.append((0, 0, 0, 0))
+                continue
+            r, b = r - excess, b - excess
+        result.append((r, g, b, a) if a else (0, 0, 0, 0))
+    keyed = Image.new('RGBA', crop.size)
+    keyed.putdata(result)
+    return keyed
 
 
 def seamless_wrap(image):
@@ -109,19 +132,13 @@ def convert(raw_path, original_path, size, near=False, wrap=False):
     if near:
         opaque = original.getchannel('A').point(lambda a: 255 if a >= 128 else 0)
         reference = original.resize(crop.size, Image.Resampling.NEAREST)
-        # 全图抠幕布，包括原轮廓内部未画满的洞；不借用原图颜色补边。
-        keyed = Image.new('L', crop.size)
-        keyed.putdata([0 if magenta(p) and not original_pink(p, o) else p[3]
-                       for p, o in zip(crop.getdata(), reference.getdata())])
-        crop.putalpha(keyed)
-    small = crop.resize(tuple(size), Image.Resampling.BOX)
+        crop = key_and_despill(crop, reference)
+    # 显式预乘 alpha，完全透明的幕布 RGB 不得进入 BOX 的颜色平均。
+    small = crop.convert('RGBa').resize(tuple(size), Image.Resampling.BOX).convert('RGBA')
     alpha = small.getchannel('A').point(lambda a: 255 if a >= 128 else 0)
     if near:
         # 允许新增顶面和侧面伸出四个游戏像素，仅用旧轮廓限制远处杂点。
         alpha = ImageChops.multiply(alpha, opaque.filter(ImageFilter.MaxFilter(9)))
-        # BOX 使用预乘 alpha，仍偏粉的残边直接透明，避免回填旧画或扩散粉色。
-        alpha.putdata([0 if pink_fringe(p) and not original_pink(p, o) else a
-                       for p, o, a in zip(small.getdata(), original.getdata(), alpha.getdata())])
     rgb = small.convert('RGB')
     visible = [p for p, a in zip(rgb.getdata(), alpha.getdata()) if a]
     if visible:
@@ -165,7 +182,7 @@ def run(src=DEFAULT_SRC, partial=False, assets=ASSETS, output=OUTPUT):
                             if l.get('key') and l.get('image') not in planned})
                 for key, spec in sorted(bg.items())}
     overlays = {key: value for key, value in overlays.items() if value}
-    report = dict(mode='partial' if partial else 'complete', enabled=[], incomplete={}, errors={},
+    report = dict(mode='partial' if partial else 'complete', enabled=[], baked_clouds=[], incomplete={}, errors={},
                   outputs=[], retained_overlays=overlays, unplanned=sorted(set(bg) - set(groups)),
                   unrecognized_raw=sorted(p.name for p in (src / 'raw').glob('*.png') if p.stem not in seen))
     converted = {}
@@ -189,6 +206,9 @@ def run(src=DEFAULT_SRC, partial=False, assets=ASSETS, output=OUTPUT):
             continue
         if images:
             report['enabled'].append(key)
+            # 当前远景成图已包含天空云层；只有实际接入 far 的背景才撤下程序云。
+            if any(j['kind'] == 'far' and relative_image(j['image']).as_posix() in images for j in group):
+                report['baked_clouds'].append(key)
             converted.update(images)
     output.mkdir(parents=True, exist_ok=True)
     for rel, im in sorted(converted.items()):

@@ -15,6 +15,7 @@ from PIL import Image, ImageDraw
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
 import bg_gpt_p4 as pipe
+from build_p4 import generated_background
 
 
 def image_keys(value):
@@ -56,7 +57,8 @@ def main():
         ys = sorted({0, *cy}) if isinstance(cy, list) else [0]
         rows = [dict(label=f'{label} x={x} y={y}', state=state, x=x, y=y)
                 for y in ys for x in cams for label, state in states]
-        payload.append(dict(key=key, spec=spec, images=images, rows=rows))
+        specs = {'old': spec, 'new': generated_background(spec, key in report.get('baked_clouds', []))}
+        payload.append(dict(key=key, specs=specs, images=images, rows=rows))
     env = dict(os.environ)
     env.setdefault('NODE_PATH', 'D:/CodeWorkSpace/honglou-juan2/node_modules')
     proc = subprocess.run(['node', str(HERE / 'p4_bg_compare.js')], input=json.dumps(payload),
