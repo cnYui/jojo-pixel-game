@@ -13,6 +13,7 @@
     "higashikata_rain",
     "higashikata_tvnight",
     "hirose_living",
+    "irrigation_ditch",
     "morioh_grand_hotel",
     "morioh_harbor",
     "morioh_map",
@@ -25,8 +26,11 @@
     "open_field",
     "park_pond",
     "rail_crossing",
+    "rohan_house",
+    "rohan_studio",
     "seaside_villa",
     "seaside_villa_out",
+    "spw_ship",
     "supermarket",
     "title_morioh",
     "trattoria",
@@ -40,6 +44,7 @@
     "higashikata_eve",
     "higashikata_night",
     "higashikata_rain",
+    "irrigation_ditch",
     "morioh_grand_hotel",
     "morioh_harbor",
     "morioh_road",
@@ -48,7 +53,9 @@
     "open_field",
     "park_pond",
     "rail_crossing",
+    "rohan_house",
     "seaside_villa_out",
+    "spw_ship",
     "title_morioh"
   ],
   "incomplete": {
@@ -94,10 +101,6 @@
     ],
     "hospital_room": [
       "hospital_room__room"
-    ],
-    "irrigation_ditch": [
-      "irrigation_ditch__far",
-      "irrigation_ditch__near"
     ],
     "kawajiri_attic": [
       "kawajiri_attic__room"
@@ -159,10 +162,6 @@
       "residential_street__far",
       "residential_street__near"
     ],
-    "rohan_house": [
-      "rohan_house__far",
-      "rohan_house__near"
-    ],
     "rohan_house_scaffold": [
       "rohan_house_scaffold__far",
       "rohan_house_scaffold__near"
@@ -170,19 +169,12 @@
     "rohan_parlor": [
       "rohan_parlor__room"
     ],
-    "rohan_studio": [
-      "rohan_studio__room"
-    ],
     "rooftops": [
       "rooftops__far",
       "rooftops__near"
     ],
     "route_tunnel": [
       "route_tunnel__near"
-    ],
-    "spw_ship": [
-      "spw_ship__far",
-      "spw_ship__near"
     ],
     "st_gentleman": [
       "st_gentleman__far",
@@ -222,6 +214,8 @@
     "bg/higashikata_tvnight/lit.png",
     "bg/higashikata_tvnight/room.png",
     "bg/hirose_living/room.png",
+    "bg/irrigation_ditch/far.png",
+    "bg/irrigation_ditch/near.png",
     "bg/morioh_grand_hotel/far.png",
     "bg/morioh_grand_hotel/near.png",
     "bg/morioh_harbor/far.png",
@@ -242,9 +236,14 @@
     "bg/park_pond/near.png",
     "bg/rail_crossing/far.png",
     "bg/rail_crossing/near.png",
+    "bg/rohan_house/far.png",
+    "bg/rohan_house/near.png",
+    "bg/rohan_studio/room.png",
     "bg/seaside_villa/room.png",
     "bg/seaside_villa_out/far.png",
     "bg/seaside_villa_out/near.png",
+    "bg/spw_ship/far.png",
+    "bg/spw_ship/near.png",
     "bg/supermarket/room.png",
     "bg/title_morioh/far.png",
     "bg/title_morioh/near.png",
