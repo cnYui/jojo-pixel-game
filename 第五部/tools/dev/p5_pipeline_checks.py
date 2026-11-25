@@ -57,6 +57,7 @@ def main():
         assert cm['chars']['police']['placeholder']
         assert not pm['props']['frog']['placeholder'] and pm['props']['frog']['size'] == [11, 7]
         assert pm['props']['suitcase']['placeholder']
+        assert pm['props']['butterfly']['placeholder'] and pm['props']['zipper']['placeholder']
         assert (assets / 'heads/luca/normal_0.png').is_file()
         checks.append('补画模块自动替换真实人物及头像，未补画id仍占位')
         checks.append('props5返回px.Cv自动替换，未补画道具仍占位')

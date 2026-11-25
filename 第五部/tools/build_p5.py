@@ -103,6 +103,10 @@ def main():
 
     cm = parts('chars', load_json(META / 'chars.json', {}))
     pm = parts('props', load_json(META / 'props.json', {}))
+    # 最后覆盖生图条目，避免旧的分章元数据或再次构建把它们换回代码版。
+    from props_p5 import build as build_props
+    pm.setdefault('props', {}).update(build_props())
+    save_json(META / 'props.json', pm)
     bg = parts('bg', load_json(META / 'bg.json', {}))
     ui_images(font)
     import p5_ui

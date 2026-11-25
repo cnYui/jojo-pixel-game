@@ -31,13 +31,14 @@
     const st = G.world.stage, life = {}, born = {};
     const ink = P.worldInk((at, t) => {
       at(100, 159, g => {
-        g.fillStyle = '#733c38'; g.fillRect(-5, -7, 10, 7); g.fillStyle = '#d8915b'; g.fillRect(-6, -9, 12, 3);
         if (life.vine) {
           const h = Math.min(30, (t - born.vine) * 35);
-          g.strokeStyle = '#4d8c52'; g.lineWidth = 2; g.beginPath(); g.moveTo(0, -9);
-          for (let y = 0; y <= h; y += 2) g.lineTo(Math.sin(y / 7) * 4, -9 - y);
-          g.stroke(); g.fillStyle = '#9abf68';
-          for (let y = 5; y < h; y += 7) g.fillRect(Math.sin(y / 7) * 4 + (y % 2 ? -5 : 1), -10 - y, 5, 3);
+          g.scale(1, (9 + h) / 40);
+          G.ui.sheet(g, 'vine', 0, 0, 0);
+        } else {
+          // 源图已带花盆；未赋予生命时只露底部，避免额外画一套盆。
+          g.beginPath(); g.rect(-12, -9, 24, 9); g.clip();
+          G.ui.sheet(g, 'vine', 0, 0, 0);
         }
       });
       if (!life.frog) at(220, 162, g => { g.fillStyle = '#aaa5a2'; g.fillRect(-5, -4, 7, 4); g.fillRect(3, -2, 4, 3); });
@@ -48,9 +49,8 @@
       if (life.butterfly) {
         const k = Math.min(1, (t - born.butterfly) / 2.2);
         at(G.lerp(340, 404, k), 143 - Math.sin(k * Math.PI) * 20, g => {
-          const w = 2 + Math.abs(Math.sin(t * 16)) * 4;
-          g.fillStyle = '#ffeaa2'; g.fillRect(-w, -3, w * 2, 5); g.fillStyle = '#bb738d'; g.fillRect(-w, -1, w * 2, 2);
-          g.fillStyle = '#4b304c'; g.fillRect(0, -3, 1, 6);
+          g.scale((2 + Math.abs(Math.sin(t * 16)) * 4) / 6, 1);
+          G.ui.sheet(g, 'butterfly', 0, 0, 4);
         });
       }
     });
@@ -125,8 +125,8 @@
     await S.say('giorno', '外面也有拉链……但你留下的小东西，还能替我带路。');
     await S.summon(S.player, { dur: .2 }); S.standAct(S.player, 'reach', { dur: .7 }); S.sfx('sparkle');
     const dot = { x: 252, y: 151 };
-    const fly = P.worldInk(at => at(dot.x, dot.y, g => {
-      g.fillStyle = '#f8e69c'; g.fillRect(-2, -2, 4, 4); g.fillStyle = '#fffbea'; g.fillRect(-4, -1, 2, 1); g.fillRect(2, -3, 2, 1);
+    const fly = P.worldInk((at, t) => at(dot.x, dot.y, g => {
+      G.ui.sheet(g, 'insect_light', 0, 0, 2, 1, { alpha: Math.sin(t * 16) > 0 ? 1 : .7 });
     }));
     await S.animate(1.5, k => { dot.x = G.lerp(252, b.x, k); dot.y = 147 - Math.sin(k * Math.PI * 3) * 7; });
     S.mark('p5_tracking_fly'); await S.wait(.8);

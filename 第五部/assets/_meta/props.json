@@ -1,37 +1,5 @@
 {
  "props": {
-  "suitcase": {
-   "image": "props/suitcase",
-   "frames": 1,
-   "size": [
-    14,
-    12
-   ],
-   "pivot": [
-    7,
-    12
-   ],
-   "fps": 1,
-   "kind": "static",
-   "k": 1,
-   "placeholder": false
-  },
-  "frog": {
-   "image": "props/frog",
-   "frames": 1,
-   "size": [
-    11,
-    9
-   ],
-   "pivot": [
-    5,
-    9
-   ],
-   "fps": 1,
-   "kind": "static",
-   "k": 1,
-   "placeholder": false
-  },
   "taxi": {
    "image": "props/taxi",
    "frames": 1,
@@ -46,55 +14,22 @@
    "fps": 1,
    "kind": "static",
    "k": 1,
-   "placeholder": false
-  },
-  "ladybug": {
-   "image": "props/ladybug",
-   "frames": 1,
-   "size": [
-    8,
-    6
+   "placeholder": false,
+   "source": "props_src/props_sheet.png",
+   "sourceCell": [
+    0,
+    0,
+    384,
+    341
    ],
-   "pivot": [
-    4,
-    6
+   "sourceBox": [
+    44,
+    106,
+    362,
+    269
    ],
-   "fps": 1,
-   "kind": "static",
-   "k": 1,
-   "placeholder": false
-  },
-  "shovel": {
-   "image": "props/shovel",
-   "frames": 1,
-   "size": [
-    8,
-    16
-   ],
-   "pivot": [
-    4,
-    16
-   ],
-   "fps": 1,
-   "kind": "static",
-   "k": 1,
-   "placeholder": false
-  },
-  "frog_hop": {
-   "image": "props/frog_hop",
-   "frames": 1,
-   "size": [
-    11,
-    10
-   ],
-   "pivot": [
-    5,
-    10
-   ],
-   "fps": 1,
-   "kind": "static",
-   "k": 1,
-   "placeholder": false
+   "alphaThreshold": 128,
+   "outlined": false
   },
   "taxi_hit": {
    "image": "props/taxi_hit",
@@ -110,7 +45,332 @@
    "fps": 1,
    "kind": "static",
    "k": 1,
-   "placeholder": false
+   "placeholder": false,
+   "source": "props_src/props_sheet.png",
+   "sourceCell": [
+    384,
+    0,
+    768,
+    341
+   ],
+   "sourceBox": [
+    44,
+    106,
+    362,
+    269
+   ],
+   "alphaThreshold": 128,
+   "outlined": false
+  },
+  "suitcase": {
+   "image": "props/suitcase",
+   "frames": 1,
+   "size": [
+    14,
+    12
+   ],
+   "pivot": [
+    7,
+    12
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1,
+   "placeholder": false,
+   "source": "props_src/props_sheet.png",
+   "sourceCell": [
+    768,
+    0,
+    1152,
+    341
+   ],
+   "sourceBox": [
+    100,
+    105,
+    285,
+    277
+   ],
+   "alphaThreshold": 128,
+   "outlined": false
+  },
+  "shovel": {
+   "image": "props/shovel",
+   "frames": 1,
+   "size": [
+    7,
+    16
+   ],
+   "pivot": [
+    3,
+    16
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1,
+   "placeholder": false,
+   "source": "props_src/props_sheet.png",
+   "sourceCell": [
+    1152,
+    0,
+    1536,
+    341
+   ],
+   "sourceBox": [
+    142,
+    65,
+    239,
+    307
+   ],
+   "alphaThreshold": 128,
+   "outlined": false
+  },
+  "frog": {
+   "image": "props/frog",
+   "frames": 1,
+   "size": [
+    11,
+    9
+   ],
+   "pivot": [
+    5,
+    9
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1,
+   "placeholder": false,
+   "source": "props_src/props_sheet.png",
+   "sourceCell": [
+    0,
+    341,
+    384,
+    682
+   ],
+   "sourceBox": [
+    115,
+    111,
+    274,
+    240
+   ],
+   "alphaThreshold": 128,
+   "outlined": false
+  },
+  "frog_hop": {
+   "image": "props/frog_hop",
+   "frames": 1,
+   "size": [
+    11,
+    9
+   ],
+   "pivot": [
+    5,
+    9
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1,
+   "placeholder": false,
+   "source": "props_src/props_sheet.png",
+   "sourceCell": [
+    384,
+    341,
+    768,
+    682
+   ],
+   "sourceBox": [
+    111,
+    86,
+    280,
+    246
+   ],
+   "alphaThreshold": 128,
+   "outlined": true
+  },
+  "ladybug": {
+   "image": "props/ladybug",
+   "frames": 1,
+   "size": [
+    7,
+    6
+   ],
+   "pivot": [
+    3,
+    6
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1,
+   "placeholder": false,
+   "source": "props_src/props_sheet.png",
+   "sourceCell": [
+    768,
+    341,
+    1152,
+    682
+   ],
+   "sourceBox": [
+    116,
+    107,
+    268,
+    240
+   ],
+   "alphaThreshold": 128,
+   "outlined": false
+  },
+  "butterfly": {
+   "image": "props/butterfly",
+   "frames": 1,
+   "size": [
+    11,
+    9
+   ],
+   "pivot": [
+    5,
+    9
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1,
+   "placeholder": false,
+   "source": "props_src/props_sheet.png",
+   "sourceCell": [
+    1152,
+    341,
+    1536,
+    682
+   ],
+   "sourceBox": [
+    90,
+    89,
+    302,
+    252
+   ],
+   "alphaThreshold": 128,
+   "outlined": false
+  },
+  "vine": {
+   "image": "props/vine",
+   "frames": 1,
+   "size": [
+    24,
+    40
+   ],
+   "pivot": [
+    12,
+    40
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1,
+   "placeholder": false,
+   "source": "props_src/props_sheet.png",
+   "sourceCell": [
+    0,
+    682,
+    384,
+    1024
+   ],
+   "sourceBox": [
+    115,
+    8,
+    288,
+    323
+   ],
+   "alphaThreshold": 128,
+   "outlined": false
+  },
+  "zipper": {
+   "image": "props/zipper",
+   "frames": 1,
+   "size": [
+    28,
+    10
+   ],
+   "pivot": [
+    14,
+    10
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1,
+   "placeholder": false,
+   "source": "props_src/props_sheet.png",
+   "sourceCell": [
+    384,
+    682,
+    768,
+    1024
+   ],
+   "sourceBox": [
+    29,
+    117,
+    356,
+    228
+   ],
+   "alphaThreshold": 128,
+   "outlined": true
+  },
+  "banknote": {
+   "image": "props/banknote",
+   "frames": 1,
+   "size": [
+    9,
+    5
+   ],
+   "pivot": [
+    4,
+    5
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1,
+   "placeholder": false,
+   "source": "props_src/props_sheet.png",
+   "sourceCell": [
+    768,
+    682,
+    1152,
+    1024
+   ],
+   "sourceBox": [
+    89,
+    114,
+    301,
+    226
+   ],
+   "alphaThreshold": 128,
+   "outlined": true
+  },
+  "insect_light": {
+   "image": "props/insect_light",
+   "frames": 1,
+   "size": [
+    5,
+    5
+   ],
+   "pivot": [
+    2,
+    5
+   ],
+   "fps": 1,
+   "kind": "static",
+   "k": 1,
+   "placeholder": false,
+   "source": "props_src/props_sheet.png",
+   "sourceCell": [
+    1152,
+    682,
+    1536,
+    1024
+   ],
+   "sourceBox": [
+    132,
+    117,
+    257,
+    226
+   ],
+   "alphaThreshold": 128,
+   "outlined": true
   }
  },
  "scene": {}

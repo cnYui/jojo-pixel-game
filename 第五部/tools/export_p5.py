@@ -128,16 +128,20 @@ def main():
             meta['chars'][cid] = placeholder(cid, name, colour)
             meta['speakers'][cid] = dict(short=name, nameColor=colour, blipHz=500)
             print('占位人物', cid)
+    from props_p5 import TARGETS, build as build_props
+    props = build_props(ASSETS)
     real = importlib.import_module('props5').PROPS if (P5 / 'tools/art/props5.py').exists() else {}
-    props = {}
-    for cid in dict.fromkeys([*PROPS, *real]):
+    fallback_sizes = {**TARGETS, **PROPS}
+    for cid in dict.fromkeys([*fallback_sizes, *real]):
+        if cid in props:
+            continue
         if cid in real:
             cv = real[cid]()
             if not isinstance(cv, px.Cv):
                 raise TypeError(f'props5.PROPS[{cid!r}] 必须返回 px.Cv')
             im = cv.img()
         else:
-            im = Image.new('RGBA', PROPS[cid], '#c89a50')
+            im = Image.new('RGBA', fallback_sizes[cid], '#c89a50')
             ImageDraw.Draw(im).rectangle((0, 0, im.width - 1, im.height - 1), outline='#1a1020')
         write_image('props/' + cid, im)
         props[cid] = dict(image='props/' + cid, frames=1, size=list(im.size), pivot=[im.width // 2, im.height],

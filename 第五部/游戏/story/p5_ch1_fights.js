@@ -1,4 +1,4 @@
-// 两场布加拉提战共用公共战斗判定，重试由S.fight恢复；拉链口只在运行时绘制。
+// 两场布加拉提战共用公共战斗判定，重试由S.fight恢复；拉链图随原判定缩放。
 'use strict';
 (function () {
   const G = window.G, R = G.P5CH1 = {};
@@ -38,16 +38,13 @@
         if (h.dead || !h.p5zip) continue;
         at((h.x0 + h.x1) / 2, (h.y0 + h.y1) / 2, q => {
           const w = (h.x1 - h.x0) / 2, active = h.phase === 'active';
-          q.fillStyle = active ? '#140f26' : '#f5cf6b66'; q.fillRect(-w, -3, w * 2, 6);
-          q.strokeStyle = active ? '#c7b4f4' : '#ffd472'; q.lineWidth = 1;
-          q.strokeRect(-w, -4, w * 2, 8);
-          for (let x = -w; x < w; x += 5) { q.fillStyle = '#e1d7ed'; q.fillRect(x, -4, 2, 2); q.fillRect(x + 2, 2, 2, 2); }
-          if (active && h.ankle) { q.fillStyle = '#c9d5ef'; q.fillRect(-w, -5, w * 2 - 5, 3); q.fillRect(w - 6, -6, 6, 6); }
+          q.scale(w * 2 / 28, active && h.ankle ? 1.2 : .8);
+          G.ui.sheet(q, 'zipper', 0, 0, 5, 1, { alpha: active ? 1 : .45 + Math.abs(Math.sin(t * 12)) * .35 });
         });
       }
       if (c.data.hidden > 0 && c.boss) at(c.data.doorX, c.boss.y, q => {
-        q.fillStyle = '#19122c'; q.fillRect(-11, -2, 22, 5); q.fillStyle = '#dbd0ec';
-        for (let x = -11; x < 11; x += 4) q.fillRect(x, -3, 2, 7);
+        q.scale(22 / 28, .7);
+        G.ui.sheet(q, 'zipper', 0, 0, 5);
       });
       if (c.data.sense > 0) {
         g.fillStyle = '#fff6ed30'; g.fillRect(0, 0, 640, 360);

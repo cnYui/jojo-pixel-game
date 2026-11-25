@@ -11,6 +11,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from p5_paths import REPO, P5, GAME, BACKGROUNDS
 from build_p5 import read_gd, read_pack, merge
 from p5_font import charset
+from props_p5 import TARGETS
 
 
 def main():
@@ -57,6 +58,18 @@ def main():
     assert 'title_song' not in gd['audio']['music']
     assert sorted(p.stem for p in (data / 'music').glob('*.js')) == sorted(gd['audio']['music'])
     checks.append('用户音频排除')
+    for cid, size in TARGETS.items():
+        meta = gd['props'][cid]
+        assert meta['source'] == 'props_src/props_sheet.png' and not meta['placeholder'], cid
+        assert meta['size'] == list(size) and meta['pivot'] == [size[0] // 2, size[1]], cid
+        raw = (P5 / 'assets' / (meta['image'] + '.png')).read_bytes()
+        assert base64.b64decode(images[meta['image']].split(',', 1)[1]) == raw, cid
+        with Image.open(io.BytesIO(raw)) as image:
+            assert image.size == size and image.getbbox(), cid
+            assert set(image.getchannel('A').getdata()) <= {0, 255}, cid
+            assert len({p[:3] for p in image.getdata() if p[3]}) <= 25, cid
+            assert image.getbbox()[3] == size[1], (cid, '底边未对齐')
+        checks.append(cid + ' 生图优先、像素规格和运行包一致')
     result = dict(ok=True, checks=checks, images=len(images), chars=len(gd['chars']), backgrounds=len(gd['bg']))
     out = Path(__file__).resolve().parent / '_out'
     out.mkdir(exist_ok=True)

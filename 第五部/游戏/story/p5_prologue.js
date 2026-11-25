@@ -65,13 +65,11 @@
     await S.walk(police, 452, 153, { speed: 50 });
     S.mark('p5_police'); await S.say('police', '喂，这里不让停车！');
     await S.walk(gi, 430, 155, { speed: 40 });
-    // 纸币只在这一幕出现，用小型插入层画，避免修改现成道具和引擎。
+    // 沿用插入层和原轨迹，只换成生图道具，保持交钱时机不变。
     const bill = { x: 439, z: 17 };
     const paper = G.P5.overlay(g => {
       const at = G.cam.w2u(bill.x, 155 - bill.z, 0);
-      g.fillStyle = '#1b332b'; g.fillRect(at.x - 7, at.y - 4, 15, 9);
-      g.fillStyle = '#add59b'; g.fillRect(at.x - 6, at.y - 3, 13, 7);
-      g.fillStyle = '#4e865b'; g.fillRect(at.x - 1, at.y - 2, 3, 5);
+      G.ui.sheet(g, 'banknote', 0, at.x, at.y + 5, 2);
     });
     S.mark('p5_banknote');
     await S.animate(.8, k => { bill.x = G.lerp(434, 451, k); bill.z = 17 + Math.sin(k * Math.PI) * 2; });
