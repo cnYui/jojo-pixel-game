@@ -1,6 +1,7 @@
 {
   "mode": "complete",
   "enabled": [
+    "afterlife_dream",
     "angelo_after",
     "angelo_rain",
     "budogaoka_bank",
@@ -9,9 +10,12 @@
     "budou_gate",
     "cape_cliff",
     "cinderella_salon",
+    "empty_house",
     "farm_out",
     "farmhouse",
     "ghost_alley",
+    "ghost_alley_cold",
+    "ghost_alley_dawn",
     "higashikata_eve",
     "higashikata_living",
     "higashikata_night",
@@ -19,34 +23,52 @@
     "higashikata_tvnight",
     "hillside",
     "hirose_living",
+    "hospital_corridor",
+    "hospital_room",
     "irrigation_ditch",
+    "kawajiri_attic",
+    "kawajiri_house",
     "kira_house",
     "kira_house_out",
+    "library",
     "middle_school",
+    "miyamoto_house",
     "morioh_avenue",
     "morioh_blocks",
     "morioh_grand_hotel",
     "morioh_harbor",
+    "morioh_harbor_late",
     "morioh_map",
     "morioh_road",
     "morioh_shopping_street",
+    "morioh_station",
+    "morning_corner",
+    "morning_corner_rain",
+    "national_road",
     "nijimura_attic",
     "nijimura_hall",
     "nijimura_stairs",
     "nijimura_yard",
     "open_field",
+    "paper_world",
     "park_pond",
     "rail_crossing",
+    "residential_street",
     "rohan_house",
+    "rohan_house_scaffold",
+    "rohan_parlor",
     "rohan_studio",
     "rooftops",
+    "route_tunnel",
     "seaside_villa",
     "seaside_villa_out",
     "spw_ship",
     "st_gentleman",
+    "street_crossing",
     "supermarket",
     "tailor_shop",
     "title_morioh",
+    "transmission_tower",
     "trattoria",
     "trattoria_kitchen"
   ],
@@ -57,6 +79,8 @@
     "cape_cliff",
     "farm_out",
     "ghost_alley",
+    "ghost_alley_cold",
+    "ghost_alley_dawn",
     "higashikata_eve",
     "higashikata_night",
     "higashikata_rain",
@@ -67,103 +91,31 @@
     "morioh_avenue",
     "morioh_grand_hotel",
     "morioh_harbor",
+    "morioh_harbor_late",
     "morioh_road",
     "morioh_shopping_street",
+    "morioh_station",
+    "morning_corner",
+    "morning_corner_rain",
     "nijimura_yard",
     "open_field",
     "park_pond",
     "rail_crossing",
+    "residential_street",
     "rohan_house",
+    "rohan_house_scaffold",
     "rooftops",
     "seaside_villa_out",
     "spw_ship",
     "st_gentleman",
-    "title_morioh"
+    "street_crossing",
+    "title_morioh",
+    "transmission_tower"
   ],
-  "incomplete": {
-    "afterlife_dream": [
-      "afterlife_dream__base"
-    ],
-    "empty_house": [
-      "empty_house__room"
-    ],
-    "ghost_alley_cold": [
-      "ghost_alley_cold__far",
-      "ghost_alley_cold__near"
-    ],
-    "ghost_alley_dawn": [
-      "ghost_alley_dawn__far",
-      "ghost_alley_dawn__near"
-    ],
-    "hospital_corridor": [
-      "hospital_corridor__near"
-    ],
-    "hospital_room": [
-      "hospital_room__room"
-    ],
-    "kawajiri_attic": [
-      "kawajiri_attic__room"
-    ],
-    "kawajiri_house": [
-      "kawajiri_house__room"
-    ],
-    "library": [
-      "library__book",
-      "library__room"
-    ],
-    "miyamoto_house": [
-      "miyamoto_house__room"
-    ],
-    "morioh_harbor_late": [
-      "morioh_harbor_late__far",
-      "morioh_harbor_late__near"
-    ],
-    "morioh_station": [
-      "morioh_station__far",
-      "morioh_station__near"
-    ],
-    "morning_corner": [
-      "morning_corner__far",
-      "morning_corner__near"
-    ],
-    "morning_corner_rain": [
-      "morning_corner_rain__far",
-      "morning_corner_rain__near"
-    ],
-    "national_road": [
-      "national_road__near",
-      "national_road__sea",
-      "national_road__shore",
-      "national_road__sky"
-    ],
-    "paper_world": [
-      "paper_world__paper"
-    ],
-    "residential_street": [
-      "residential_street__far",
-      "residential_street__near"
-    ],
-    "rohan_house_scaffold": [
-      "rohan_house_scaffold__far",
-      "rohan_house_scaffold__near"
-    ],
-    "rohan_parlor": [
-      "rohan_parlor__room"
-    ],
-    "route_tunnel": [
-      "route_tunnel__near"
-    ],
-    "street_crossing": [
-      "street_crossing__far",
-      "street_crossing__near"
-    ],
-    "transmission_tower": [
-      "transmission_tower__far",
-      "transmission_tower__near"
-    ]
-  },
+  "incomplete": {},
   "errors": {},
   "outputs": [
+    "bg/afterlife_dream/base.png",
     "bg/angelo_after/far.png",
     "bg/angelo_after/near.png",
     "bg/angelo_rain/far.png",
@@ -177,11 +129,16 @@
     "bg/cape_cliff/far.png",
     "bg/cape_cliff/near.png",
     "bg/cinderella_salon/room.png",
+    "bg/empty_house/room.png",
     "bg/farm_out/far.png",
     "bg/farm_out/near.png",
     "bg/farmhouse/room.png",
     "bg/ghost_alley/far.png",
     "bg/ghost_alley/near.png",
+    "bg/ghost_alley_cold/far.png",
+    "bg/ghost_alley_cold/near.png",
+    "bg/ghost_alley_dawn/far.png",
+    "bg/ghost_alley_dawn/near.png",
     "bg/higashikata_eve/far.png",
     "bg/higashikata_eve/near.png",
     "bg/higashikata_living/room.png",
@@ -195,13 +152,19 @@
     "bg/hillside/fg.png",
     "bg/hillside/near.png",
     "bg/hirose_living/room.png",
+    "bg/hospital_corridor/near.png",
+    "bg/hospital_room/room.png",
     "bg/irrigation_ditch/far.png",
     "bg/irrigation_ditch/near.png",
+    "bg/kawajiri_attic/room.png",
+    "bg/kawajiri_house/room.png",
     "bg/kira_house/room.png",
     "bg/kira_house_out/far.png",
     "bg/kira_house_out/near.png",
+    "bg/library/room.png",
     "bg/middle_school/far.png",
     "bg/middle_school/near.png",
+    "bg/miyamoto_house/room.png",
     "bg/morioh_avenue/far.png",
     "bg/morioh_avenue/near.png",
     "bg/morioh_blocks/map.png",
@@ -209,11 +172,23 @@
     "bg/morioh_grand_hotel/near.png",
     "bg/morioh_harbor/far.png",
     "bg/morioh_harbor/near.png",
+    "bg/morioh_harbor_late/far.png",
+    "bg/morioh_harbor_late/near.png",
     "bg/morioh_map/map.png",
     "bg/morioh_road/far.png",
     "bg/morioh_road/near.png",
     "bg/morioh_shopping_street/far.png",
     "bg/morioh_shopping_street/near.png",
+    "bg/morioh_station/far.png",
+    "bg/morioh_station/near.png",
+    "bg/morning_corner/far.png",
+    "bg/morning_corner/near.png",
+    "bg/morning_corner_rain/far.png",
+    "bg/morning_corner_rain/near.png",
+    "bg/national_road/near.png",
+    "bg/national_road/sea.png",
+    "bg/national_road/shore.png",
+    "bg/national_road/sky.png",
     "bg/nijimura_attic/room.png",
     "bg/nijimura_hall/room.png",
     "bg/nijimura_stairs/room.png",
@@ -221,15 +196,22 @@
     "bg/nijimura_yard/near.png",
     "bg/open_field/far.png",
     "bg/open_field/near.png",
+    "bg/paper_world/paper.png",
     "bg/park_pond/far.png",
     "bg/park_pond/near.png",
     "bg/rail_crossing/far.png",
     "bg/rail_crossing/near.png",
+    "bg/residential_street/far.png",
+    "bg/residential_street/near.png",
     "bg/rohan_house/far.png",
     "bg/rohan_house/near.png",
+    "bg/rohan_house_scaffold/far.png",
+    "bg/rohan_house_scaffold/near.png",
+    "bg/rohan_parlor/room.png",
     "bg/rohan_studio/room.png",
     "bg/rooftops/far.png",
     "bg/rooftops/near.png",
+    "bg/route_tunnel/near.png",
     "bg/seaside_villa/room.png",
     "bg/seaside_villa_out/far.png",
     "bg/seaside_villa_out/near.png",
@@ -237,10 +219,14 @@
     "bg/spw_ship/near.png",
     "bg/st_gentleman/far.png",
     "bg/st_gentleman/near.png",
+    "bg/street_crossing/far.png",
+    "bg/street_crossing/near.png",
     "bg/supermarket/room.png",
     "bg/tailor_shop/room.png",
     "bg/title_morioh/far.png",
     "bg/title_morioh/near.png",
+    "bg/transmission_tower/far.png",
+    "bg/transmission_tower/near.png",
     "bg/trattoria/room.png",
     "bg/trattoria_kitchen/room.png"
   ],
@@ -326,6 +312,9 @@
     "kira_house_out": [
       "bg/kira_house_out/gate_open",
       "tint"
+    ],
+    "library": [
+      "bg/library/book"
     ],
     "middle_school": [
       "tint"
