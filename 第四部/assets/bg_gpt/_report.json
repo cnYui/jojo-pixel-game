@@ -6,6 +6,7 @@
     "budogaoka_classroom",
     "budogaoka_hall",
     "budou_gate",
+    "cape_cliff",
     "higashikata_eve",
     "higashikata_living",
     "higashikata_night",
@@ -13,6 +14,7 @@
     "higashikata_tvnight",
     "hirose_living",
     "morioh_grand_hotel",
+    "morioh_harbor",
     "morioh_map",
     "morioh_road",
     "morioh_shopping_street",
@@ -20,24 +22,30 @@
     "nijimura_hall",
     "nijimura_stairs",
     "nijimura_yard",
+    "open_field",
     "park_pond",
     "rail_crossing",
     "seaside_villa",
     "seaside_villa_out",
     "supermarket",
-    "title_morioh"
+    "title_morioh",
+    "trattoria",
+    "trattoria_kitchen"
   ],
   "baked_clouds": [
     "angelo_after",
     "angelo_rain",
     "budou_gate",
+    "cape_cliff",
     "higashikata_eve",
     "higashikata_night",
     "higashikata_rain",
     "morioh_grand_hotel",
+    "morioh_harbor",
     "morioh_road",
     "morioh_shopping_street",
     "nijimura_yard",
+    "open_field",
     "park_pond",
     "rail_crossing",
     "seaside_villa_out",
@@ -50,10 +58,6 @@
     "budogaoka_bank": [
       "budogaoka_bank__counter",
       "budogaoka_bank__room"
-    ],
-    "cape_cliff": [
-      "cape_cliff__far",
-      "cape_cliff__near"
     ],
     "cinderella_salon": [
       "cinderella_salon__room"
@@ -126,10 +130,6 @@
     "morioh_blocks": [
       "morioh_blocks__map"
     ],
-    "morioh_harbor": [
-      "morioh_harbor__far",
-      "morioh_harbor__near"
-    ],
     "morioh_harbor_late": [
       "morioh_harbor_late__far",
       "morioh_harbor_late__near"
@@ -151,10 +151,6 @@
       "national_road__sea",
       "national_road__shore",
       "national_road__sky"
-    ],
-    "open_field": [
-      "open_field__far",
-      "open_field__near"
     ],
     "paper_world": [
       "paper_world__paper"
@@ -202,12 +198,6 @@
     "transmission_tower": [
       "transmission_tower__far",
       "transmission_tower__near"
-    ],
-    "trattoria": [
-      "trattoria__room"
-    ],
-    "trattoria_kitchen": [
-      "trattoria_kitchen__room"
     ]
   },
   "errors": {},
@@ -220,6 +210,8 @@
     "bg/budogaoka_hall/room.png",
     "bg/budou_gate/far.png",
     "bg/budou_gate/near.png",
+    "bg/cape_cliff/far.png",
+    "bg/cape_cliff/near.png",
     "bg/higashikata_eve/far.png",
     "bg/higashikata_eve/near.png",
     "bg/higashikata_living/room.png",
@@ -232,6 +224,8 @@
     "bg/hirose_living/room.png",
     "bg/morioh_grand_hotel/far.png",
     "bg/morioh_grand_hotel/near.png",
+    "bg/morioh_harbor/far.png",
+    "bg/morioh_harbor/near.png",
     "bg/morioh_map/map.png",
     "bg/morioh_road/far.png",
     "bg/morioh_road/near.png",
@@ -242,6 +236,8 @@
     "bg/nijimura_stairs/room.png",
     "bg/nijimura_yard/far.png",
     "bg/nijimura_yard/near.png",
+    "bg/open_field/far.png",
+    "bg/open_field/near.png",
     "bg/park_pond/far.png",
     "bg/park_pond/near.png",
     "bg/rail_crossing/far.png",
@@ -251,7 +247,9 @@
     "bg/seaside_villa_out/near.png",
     "bg/supermarket/room.png",
     "bg/title_morioh/far.png",
-    "bg/title_morioh/near.png"
+    "bg/title_morioh/near.png",
+    "bg/trattoria/room.png",
+    "bg/trattoria_kitchen/room.png"
   ],
   "retained_overlays": {
     "afterlife_dream": [
