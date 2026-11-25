@@ -20,6 +20,10 @@
     "hillside",
     "hirose_living",
     "irrigation_ditch",
+    "kira_house",
+    "kira_house_out",
+    "middle_school",
+    "morioh_avenue",
     "morioh_blocks",
     "morioh_grand_hotel",
     "morioh_harbor",
@@ -41,6 +45,7 @@
     "spw_ship",
     "st_gentleman",
     "supermarket",
+    "tailor_shop",
     "title_morioh",
     "trattoria",
     "trattoria_kitchen"
@@ -57,6 +62,9 @@
     "higashikata_rain",
     "hillside",
     "irrigation_ditch",
+    "kira_house_out",
+    "middle_school",
+    "morioh_avenue",
     "morioh_grand_hotel",
     "morioh_harbor",
     "morioh_road",
@@ -99,27 +107,12 @@
     "kawajiri_house": [
       "kawajiri_house__room"
     ],
-    "kira_house": [
-      "kira_house__room"
-    ],
-    "kira_house_out": [
-      "kira_house_out__far",
-      "kira_house_out__near"
-    ],
     "library": [
       "library__book",
       "library__room"
     ],
-    "middle_school": [
-      "middle_school__far",
-      "middle_school__near"
-    ],
     "miyamoto_house": [
       "miyamoto_house__room"
-    ],
-    "morioh_avenue": [
-      "morioh_avenue__far",
-      "morioh_avenue__near"
     ],
     "morioh_harbor_late": [
       "morioh_harbor_late__far",
@@ -164,9 +157,6 @@
       "street_crossing__far",
       "street_crossing__near"
     ],
-    "tailor_shop": [
-      "tailor_shop__room"
-    ],
     "transmission_tower": [
       "transmission_tower__far",
       "transmission_tower__near"
@@ -207,6 +197,13 @@
     "bg/hirose_living/room.png",
     "bg/irrigation_ditch/far.png",
     "bg/irrigation_ditch/near.png",
+    "bg/kira_house/room.png",
+    "bg/kira_house_out/far.png",
+    "bg/kira_house_out/near.png",
+    "bg/middle_school/far.png",
+    "bg/middle_school/near.png",
+    "bg/morioh_avenue/far.png",
+    "bg/morioh_avenue/near.png",
     "bg/morioh_blocks/map.png",
     "bg/morioh_grand_hotel/far.png",
     "bg/morioh_grand_hotel/near.png",
@@ -241,6 +238,7 @@
     "bg/st_gentleman/far.png",
     "bg/st_gentleman/near.png",
     "bg/supermarket/room.png",
+    "bg/tailor_shop/room.png",
     "bg/title_morioh/far.png",
     "bg/title_morioh/near.png",
     "bg/trattoria/room.png",
