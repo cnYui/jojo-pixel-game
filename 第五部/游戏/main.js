@@ -74,7 +74,7 @@
   let titleBg, menuTask = 0, transitioning = false;
   const text = (g, s, x, y, col = '#fff4d6', size = 16, align = 'left') => G['f' + size].draw(g, s, x, y, col, { align, outline: '#130b20' });
   async function controls() {
-    await G.ui.notice({ title: '操作说明', text: '方向键 / WASD 移动；Q 换队长。\n自由：E 调查、说话；U 替身调查（剧情功能待接入）。\n战斗：J 三连与连打；K 闪避；L 格挡，\n看准命中前按 L 弹反；能量满了按 U 必杀。\nEnter / 空格 / 点击确认；Esc 暂停。' });
+    await G.ui.notice({ title: '操作说明', text: '方向键 / WASD 移动；Q 换队长。\n自由：E 调查、说话；U 黄金体验赋予生命。\n战斗：J 三连与连打；K 闪避；L 格挡，\n看准命中前按 L 弹反；能量满了按 U 必杀。\nEnter / 空格 / 点击确认；Esc 暂停。' });
   }
   async function settings() {
     let idx = 0;
@@ -234,9 +234,9 @@
         G.fadeA = 0;   // 黑幕画在 UI 层上面，会把提示框整个盖住
         await G.ui.notice({ title: c.title + '　完', text: '感谢游玩！\n' + next.title + '「' + next.sub + '」还在制作中，敬请期待。' });
       }
-      const i = await G.ui.openMenu(c.title + '　完', [next && next.run ? '继续下一章' : '返回标题', '选择章节'], { escIndex: 0 });
+      const i = await G.ui.openMenu(c.title + '　完', next && next.run ? ['继续下一章', '选择章节', '返回标题'] : ['返回标题', '选择章节'], { escIndex: 0 });
       if (i === 1) await G.goTitle('chapters');
-      else if (next && next.run) await G.playFrom(idx + 1); else await G.goTitle();
+      else if (i === 0 && next && next.run) await G.playFrom(idx + 1); else await G.goTitle();
     } catch (e) { if (id === G.runId) showError(e); } finally { transitioning = false; }
   };
   function showError(e) {

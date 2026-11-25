@@ -88,6 +88,12 @@ async function main() {
     assert(await page.evaluate(() => G.ui.menu?.title?.startsWith('选择章节')));
     await press('ArrowUp');
     await press('Enter');
+    // 第1章已有开场旁白，和序章一样先真实确认，再检查自由移动。
+    for (let n = 0; n < 100; n++) {
+      if (await page.evaluate(() => G.world.stage?.id === 'street_ch1' && G.world.free && G.fadeA < .01)) break;
+      if (await page.evaluate(() => !!(G.ui.dlg || G.ui.narr))) await press('Enter');
+      await page.waitForTimeout(100);
+    }
     await page.waitForFunction(() => G.world.stage?.id === 'street_ch1' && G.world.free && G.fadeA < .01);
     assert.equal(await page.evaluate(() => G.world.player.cid), 'giorno');
     const x = await page.evaluate(() => G.world.player.x);
