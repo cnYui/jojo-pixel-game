@@ -1,0 +1,19 @@
+{
+ "chapters": {
+  "prologue": {
+   "image": "ui/chapter/prologue",
+   "w": 640,
+   "h": 360
+  },
+  "ch1": {
+   "image": "ui/chapter/ch1",
+   "w": 640,
+   "h": 360
+  }
+ },
+ "logo": {
+  "main": {
+   "image": "ui/logo_main"
+  }
+ }
+}
