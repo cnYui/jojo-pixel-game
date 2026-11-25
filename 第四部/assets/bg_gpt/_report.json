@@ -7,11 +7,15 @@
     "budogaoka_hall",
     "budou_gate",
     "cape_cliff",
+    "farm_out",
+    "farmhouse",
+    "ghost_alley",
     "higashikata_eve",
     "higashikata_living",
     "higashikata_night",
     "higashikata_rain",
     "higashikata_tvnight",
+    "hillside",
     "hirose_living",
     "irrigation_ditch",
     "morioh_grand_hotel",
@@ -41,9 +45,12 @@
     "angelo_rain",
     "budou_gate",
     "cape_cliff",
+    "farm_out",
+    "ghost_alley",
     "higashikata_eve",
     "higashikata_night",
     "higashikata_rain",
+    "hillside",
     "irrigation_ditch",
     "morioh_grand_hotel",
     "morioh_harbor",
@@ -72,17 +79,6 @@
     "empty_house": [
       "empty_house__room"
     ],
-    "farm_out": [
-      "farm_out__far",
-      "farm_out__near"
-    ],
-    "farmhouse": [
-      "farmhouse__room"
-    ],
-    "ghost_alley": [
-      "ghost_alley__far",
-      "ghost_alley__near"
-    ],
     "ghost_alley_cold": [
       "ghost_alley_cold__far",
       "ghost_alley_cold__near"
@@ -90,11 +86,6 @@
     "ghost_alley_dawn": [
       "ghost_alley_dawn__far",
       "ghost_alley_dawn__near"
-    ],
-    "hillside": [
-      "hillside__far",
-      "hillside__fg",
-      "hillside__near"
     ],
     "hospital_corridor": [
       "hospital_corridor__near"
@@ -204,6 +195,11 @@
     "bg/budou_gate/near.png",
     "bg/cape_cliff/far.png",
     "bg/cape_cliff/near.png",
+    "bg/farm_out/far.png",
+    "bg/farm_out/near.png",
+    "bg/farmhouse/room.png",
+    "bg/ghost_alley/far.png",
+    "bg/ghost_alley/near.png",
     "bg/higashikata_eve/far.png",
     "bg/higashikata_eve/near.png",
     "bg/higashikata_living/room.png",
@@ -213,6 +209,9 @@
     "bg/higashikata_rain/near.png",
     "bg/higashikata_tvnight/lit.png",
     "bg/higashikata_tvnight/room.png",
+    "bg/hillside/far.png",
+    "bg/hillside/fg.png",
+    "bg/hillside/near.png",
     "bg/hirose_living/room.png",
     "bg/irrigation_ditch/far.png",
     "bg/irrigation_ditch/near.png",
