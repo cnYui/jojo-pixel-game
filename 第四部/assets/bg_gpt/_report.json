@@ -1,13 +1,21 @@
 {
   "mode": "complete",
   "enabled": [
+    "budou_gate",
+    "higashikata_eve",
+    "higashikata_living",
+    "higashikata_night",
     "higashikata_tvnight",
+    "morioh_map",
     "morioh_road",
     "park_pond",
     "supermarket",
     "title_morioh"
   ],
   "baked_clouds": [
+    "budou_gate",
+    "higashikata_eve",
+    "higashikata_night",
     "morioh_road",
     "park_pond",
     "title_morioh"
@@ -33,10 +41,6 @@
     ],
     "budogaoka_hall": [
       "budogaoka_hall__room"
-    ],
-    "budou_gate": [
-      "budou_gate__far",
-      "budou_gate__near"
     ],
     "cape_cliff": [
       "cape_cliff__far",
@@ -66,17 +70,6 @@
     "ghost_alley_dawn": [
       "ghost_alley_dawn__far",
       "ghost_alley_dawn__near"
-    ],
-    "higashikata_eve": [
-      "higashikata_eve__far",
-      "higashikata_eve__near"
-    ],
-    "higashikata_living": [
-      "higashikata_living__room"
-    ],
-    "higashikata_night": [
-      "higashikata_night__far",
-      "higashikata_night__near"
     ],
     "higashikata_rain": [
       "higashikata_rain__far",
@@ -142,9 +135,6 @@
     "morioh_harbor_late": [
       "morioh_harbor_late__far",
       "morioh_harbor_late__near"
-    ],
-    "morioh_map": [
-      "morioh_map__map"
     ],
     "morioh_shopping_street": [
       "morioh_shopping_street__far",
@@ -252,8 +242,16 @@
   },
   "errors": {},
   "outputs": [
+    "bg/budou_gate/far.png",
+    "bg/budou_gate/near.png",
+    "bg/higashikata_eve/far.png",
+    "bg/higashikata_eve/near.png",
+    "bg/higashikata_living/room.png",
+    "bg/higashikata_night/far.png",
+    "bg/higashikata_night/near.png",
     "bg/higashikata_tvnight/lit.png",
     "bg/higashikata_tvnight/room.png",
+    "bg/morioh_map/map.png",
     "bg/morioh_road/far.png",
     "bg/morioh_road/near.png",
     "bg/park_pond/far.png",
