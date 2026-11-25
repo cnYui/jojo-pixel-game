@@ -124,8 +124,8 @@
    }
   ],
   "fg": [],
-  "placeholder": true,
-  "cropY": 0
+  "placeholder": false,
+  "cropY": 128
  },
  "naples_street": {
   "pack": "ch1",
@@ -294,8 +294,8 @@
    }
   ],
   "fg": [],
-  "placeholder": true,
-  "cropY": 0
+  "placeholder": false,
+  "cropY": 80
  },
  "station_square": {
   "pack": "ch1",

@@ -5377,22 +5377,52 @@
    "name": "泪眼卢卡",
    "image": "chars/luca",
    "cell": [
-    20,
-    32
+    50,
+    37
    ],
    "pivot": [
-    10,
-    31
+    17,
+    36
    ],
    "animations": {
     "idle": {
      "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "talk": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "cry": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 4,
+     "frames": 3,
+     "fps": 9,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 5,
      "frames": 1,
      "fps": 1,
      "kind": "static"
     },
-    "walk": {
-     "row": 0,
+    "down": {
+     "row": 6,
      "frames": 1,
      "fps": 1,
      "kind": "static"
@@ -5435,62 +5465,87 @@
    "headSize": {},
    "amap": {
     "run": "walk",
-    "talk": "idle",
-    "cmd": "idle",
-    "cmd2": "idle",
+    "cmd": "attack",
+    "cmd2": "attack",
     "cmd_hold": "idle",
     "guard": "idle",
     "block": "idle",
     "dodge": "walk",
-    "hurt": "idle",
-    "getup": "idle",
-    "down": "idle",
-    "fly": "idle",
-    "special": "idle",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "attack",
     "win": "idle",
     "pose": "idle",
-    "shock": "idle",
-    "punch": "idle",
-    "punch2": "idle",
-    "punch_heavy": "idle",
-    "upper": "idle",
-    "rush": "idle",
-    "windup": "idle",
-    "attack": "idle",
-    "attack2": "idle",
-    "shoot": "idle",
-    "reach": "idle",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "attack",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
     "finger": "idle",
-    "kick": "idle",
-    "fist": "idle",
+    "kick": "attack",
+    "fist": "attack",
     "float": "idle"
    },
-   "top": 30,
+   "top": 32,
    "bodyW": 4,
    "kind": "char",
-   "k": 1,
-   "placeholder": true
+   "k": 1
   },
   "police": {
-   "name": "机场警官",
+   "name": "警官",
    "image": "chars/police",
    "cell": [
-    20,
-    32
+    34,
+    34
    ],
    "pivot": [
-    10,
-    31
+    17,
+    33
    ],
    "animations": {
     "idle": {
      "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "talk": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "cmd": {
+     "row": 3,
+     "frames": 2,
+     "fps": 5,
+     "kind": "loop"
+    },
+    "shock": {
+     "row": 4,
      "frames": 1,
      "fps": 1,
      "kind": "static"
     },
-    "walk": {
-     "row": 0,
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 6,
      "frames": 1,
      "fps": 1,
      "kind": "static"
@@ -5533,21 +5588,16 @@
    "headSize": {},
    "amap": {
     "run": "walk",
-    "talk": "idle",
-    "cmd": "idle",
     "cmd2": "idle",
     "cmd_hold": "idle",
     "guard": "idle",
     "block": "idle",
     "dodge": "walk",
-    "hurt": "idle",
-    "getup": "idle",
-    "down": "idle",
-    "fly": "idle",
+    "getup": "hurt",
+    "fly": "hurt",
     "special": "idle",
     "win": "idle",
     "pose": "idle",
-    "shock": "idle",
     "punch": "idle",
     "punch2": "idle",
     "punch_heavy": "idle",
@@ -5563,32 +5613,55 @@
     "fist": "idle",
     "float": "idle"
    },
-   "top": 30,
+   "top": 31,
    "bodyW": 4,
    "kind": "char",
-   "k": 1,
-   "placeholder": true
+   "k": 1
   },
   "passer_m": {
-   "name": "男路人",
+   "name": "路人",
    "image": "chars/passer_m",
    "cell": [
-    20,
-    32
+    33,
+    33
    ],
    "pivot": [
-    10,
-    31
+    16,
+    32
    ],
    "animations": {
     "idle": {
      "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "talk": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "shock": {
+     "row": 3,
      "frames": 1,
      "fps": 1,
      "kind": "static"
     },
-    "walk": {
-     "row": 0,
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
      "frames": 1,
      "fps": 1,
      "kind": "static"
@@ -5631,21 +5704,17 @@
    "headSize": {},
    "amap": {
     "run": "walk",
-    "talk": "idle",
     "cmd": "idle",
     "cmd2": "idle",
     "cmd_hold": "idle",
     "guard": "idle",
     "block": "idle",
     "dodge": "walk",
-    "hurt": "idle",
-    "getup": "idle",
-    "down": "idle",
-    "fly": "idle",
+    "getup": "hurt",
+    "fly": "hurt",
     "special": "idle",
     "win": "idle",
     "pose": "idle",
-    "shock": "idle",
     "punch": "idle",
     "punch2": "idle",
     "punch_heavy": "idle",
@@ -5664,29 +5733,52 @@
    "top": 30,
    "bodyW": 4,
    "kind": "char",
-   "k": 1,
-   "placeholder": true
+   "k": 1
   },
   "passer_f": {
-   "name": "女路人",
+   "name": "路人",
    "image": "chars/passer_f",
    "cell": [
-    20,
-    32
+    31,
+    31
    ],
    "pivot": [
-    10,
-    31
+    15,
+    30
    ],
    "animations": {
     "idle": {
      "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "talk": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "shock": {
+     "row": 3,
      "frames": 1,
      "fps": 1,
      "kind": "static"
     },
-    "walk": {
-     "row": 0,
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
      "frames": 1,
      "fps": 1,
      "kind": "static"
@@ -5729,21 +5821,17 @@
    "headSize": {},
    "amap": {
     "run": "walk",
-    "talk": "idle",
     "cmd": "idle",
     "cmd2": "idle",
     "cmd_hold": "idle",
     "guard": "idle",
     "block": "idle",
     "dodge": "walk",
-    "hurt": "idle",
-    "getup": "idle",
-    "down": "idle",
-    "fly": "idle",
+    "getup": "hurt",
+    "fly": "hurt",
     "special": "idle",
     "win": "idle",
     "pose": "idle",
-    "shock": "idle",
     "punch": "idle",
     "punch2": "idle",
     "punch_heavy": "idle",
@@ -5759,11 +5847,10 @@
     "fist": "idle",
     "float": "idle"
    },
-   "top": 30,
+   "top": 28,
    "bodyW": 4,
    "kind": "char",
-   "k": 1,
-   "placeholder": true
+   "k": 1
   }
  },
  "heroes": {
@@ -6120,23 +6207,23 @@
   },
   "luca": {
    "short": "泪眼卢卡",
-   "nameColor": "#9b7251",
-   "blipHz": 500
+   "nameColor": "#b89450",
+   "blipHz": 540
   },
   "police": {
-   "short": "机场警官",
-   "nameColor": "#536880",
-   "blipHz": 500
+   "short": "警官",
+   "nameColor": "#b89450",
+   "blipHz": 540
   },
   "passer_m": {
-   "short": "男路人",
-   "nameColor": "#77935a",
-   "blipHz": 500
+   "short": "路人",
+   "nameColor": "#b89450",
+   "blipHz": 540
   },
   "passer_f": {
-   "short": "女路人",
-   "nameColor": "#a8729a",
-   "blipHz": 500
+   "short": "路人",
+   "nameColor": "#b89450",
+   "blipHz": 540
   }
  },
  "stands": {
