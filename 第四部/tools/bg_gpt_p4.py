@@ -28,9 +28,16 @@ def layers(spec):
         yield from layers(layer)
 
 
+def layer_images(spec):
+    for layer in layers(spec):
+        if layer.get('image'):
+            yield layer['image']
+        yield from layer.get('images', [])
+
+
 def relative_image(image):
     path = PurePosixPath(image)
-    if '\\' in image or ':' in image or path.is_absolute() or '..' in path.parts or path.parts[0] != 'bg':
+    if not path.parts or '\\' in image or ':' in image or path.is_absolute() or '..' in path.parts or path.parts[0] != 'bg':
         raise ValueError(f'背景图路径越界：{image}')
     return Path(*path.parts).with_suffix('.png')
 
@@ -132,13 +139,8 @@ def seamless_wrap(image):
     return image
 
 
-def convert(raw_path, original_path, size, near=False, wrap=False):
-    with Image.open(original_path) as im:
-        original = im.convert('RGBA')
-    if original.size != tuple(size):
-        raise ValueError(f'原图尺寸 {original.size} 与清单 {size} 不同')
-    with Image.open(raw_path) as im:
-        crop = crop_band(im.convert('RGBA'), size)
+def finish_crop(crop, original, near=False, margin=4):
+    size = original.size
     if near:
         opaque = original.getchannel('A').point(lambda a: 255 if a >= 128 else 0)
         reference = original.resize(crop.size, Image.Resampling.NEAREST)
@@ -147,13 +149,127 @@ def convert(raw_path, original_path, size, near=False, wrap=False):
     small = crop.convert('RGBa').resize(tuple(size), Image.Resampling.BOX).convert('RGBA')
     alpha = small.getchannel('A').point(lambda a: 255 if a >= 128 else 0)
     if near:
-        # 允许新增顶面和侧面伸出四个游戏像素，仅用旧轮廓限制远处杂点。
-        alpha = ImageChops.multiply(alpha, opaque.filter(ImageFilter.MaxFilter(9)))
+        # 用游戏像素限制外轮廓；小图层只放宽两像素，避免盖住相邻门框。
+        alpha = ImageChops.multiply(alpha, opaque.filter(ImageFilter.MaxFilter(margin * 2 + 1)))
     # 保留 BOX 的真彩色：按面积训练的调色板会把长椅、路牌等稀少暖色并入灰绿。
     result = small
     result.putalpha(alpha)
     result.putdata([p if p[3] else (0, 0, 0, 0) for p in result.getdata()])
+    return result
+
+
+def convert(raw_path, original_path, size, near=False, wrap=False):
+    with Image.open(original_path) as im:
+        original = im.convert('RGBA')
+    if original.size != tuple(size):
+        raise ValueError(f'原图尺寸 {original.size} 与清单 {size} 不同')
+    with Image.open(raw_path) as im:
+        crop = crop_band(im.convert('RGBA'), size)
+    result = finish_crop(crop, original, near)
     return seamless_wrap(result) if wrap else result
+
+
+def convert_overlay(raw_path, original_path, job):
+    with Image.open(original_path) as im:
+        original = im.convert('RGBA')
+    if original.size != tuple(job['size']):
+        raise ValueError(f"原图尺寸 {original.size} 与清单 {job['size']} 不同")
+    box = job['crop']
+    if (len(box) != 4 or any(type(n) is not int for n in box) or
+            not (0 <= box[0] < box[2] <= original.width and 0 <= box[1] < box[3] <= original.height)):
+        raise ValueError(f'无效裁切框：{box}')
+    reference = original.crop(box)
+    with Image.open(raw_path) as im:
+        crop = crop_band(im.convert('RGBA'), reference.size)
+    small = finish_crop(crop, reference, near=True, margin=2)
+    result = Image.new('RGBA', original.size)
+    result.paste(small, box[:2])
+    return result
+
+
+def masked_image(image, original, margin=0):
+    if image.size != original.size:
+        raise ValueError(f'派生层尺寸不同：来源 {image.size}，原图 {original.size}')
+    mask = original.getchannel('A').point(lambda a: 255 if a >= 128 else 0)
+    if margin:
+        mask = mask.filter(ImageFilter.MaxFilter(margin * 2 + 1))
+    result = image.copy()
+    result.putalpha(ImageChops.multiply(image.getchannel('A'), mask))
+    result.putdata([p if p[3] else (0, 0, 0, 0) for p in result.getdata()])
+    return result
+
+
+def add_overlays(src, assets, bg, converted, report):
+    manifest = src / 'overlays.json'
+    jobs = json.loads(manifest.read_text(encoding='utf-8')) if manifest.is_file() else []
+    status = report['overlays'] = dict(enabled=[], missing=[], errors={}, derived={}, comparisons={})
+    seen, images = set(), set()
+    for job in jobs:
+        name = job['name']
+        try:
+            if (name in seen or not name or Path(name).name != name or
+                    any(c in name for c in ('/', '\\', ':'))):
+                raise ValueError(f'任务名重复或越界：{name}')
+            seen.add(name)
+            rel = relative_image(job['image']).as_posix()
+            if rel in images or rel in converted:
+                raise ValueError(f"重复图层：{job['image']}")
+            images.add(rel)
+            if job['key'] not in bg or job['image'] not in set(layer_images(bg[job['key']])):
+                raise ValueError(f'任务与当前背景元数据不符：{name}')
+            raw = src / 'raw_ovl' / (name + '.png')
+            if not raw.is_file():
+                status['missing'].append(name)
+                continue
+            converted[rel] = convert_overlay(raw, assets / rel, job)
+            status['enabled'].append(name)
+        except (OSError, ValueError, KeyError, TypeError) as exc:
+            # 小图层失败不能撤下所在背景组，也不能沿用上次的替换图。
+            status['errors'][name] = str(exc)
+    status['unrecognized_raw'] = sorted(p.name for p in (src / 'raw_ovl').glob('*.png') if p.stem not in seen)
+
+    def derive(target, source, kind):
+        rel, origin = relative_image(target).as_posix(), relative_image(source).as_posix()
+        info = status['derived'][target] = dict(source=source, kind=kind, status='missing_source')
+        if origin not in converted:
+            return
+        try:
+            with Image.open(assets / rel) as im:
+                original = im.convert('RGBA')
+            image = converted[origin]
+            if kind == 'reuse':
+                with Image.open(assets / relative_image(source)) as im:
+                    source_original = im.convert('RGBA')
+                same_size = original.size == source_original.size
+                same_alpha = same_size and ImageChops.difference(
+                    original.getchannel('A'), source_original.getchannel('A')).getbbox() is None
+                status['comparisons'][target] = dict(source_size=list(source_original.size),
+                    target_size=list(original.size), same_size=same_size, same_alpha=same_alpha)
+                if not same_size:
+                    raise ValueError('两个原船层尺寸不同，不能原样复用')
+                result = image.copy()
+                if not same_alpha:
+                    info['note'] = '两个原船层 alpha 形状不同；按要求复用来源处理结果'
+            elif kind == 'pots_alpha_1':
+                result = masked_image(image, original, margin=1)
+            else:
+                gray = image.convert('L').convert('RGBA')
+                gray.putalpha(image.getchannel('A'))
+                result = masked_image(gray, original)
+                # 原生成脚本以这个暖白色画拍立得相框，保留边框像素而不复制旧房间。
+                result.putdata([o if o[3] and o[:3] == (244, 242, 234) else p
+                                for p, o in zip(result.getdata(), original.getdata())])
+                info['preserved_frame_rgb'] = [244, 242, 234]
+            converted[rel] = result
+            info['status'] = 'enabled'
+        except (OSError, ValueError) as exc:
+            info['status'] = 'error'
+            status['errors'][target] = str(exc)
+
+    for n in range(1, 6):
+        derive(f'bg/nijimura_yard/pots_{n}', 'bg/nijimura_yard/pots_0', 'pots_alpha_1')
+    derive('bg/morioh_harbor_late/ship', 'bg/morioh_harbor/ship', 'reuse')
+    derive('bg/kira_house/photo', 'bg/kira_house/room', 'photo_gray')
 
 
 def run(src=DEFAULT_SRC, partial=False, assets=ASSETS, output=OUTPUT):
@@ -170,7 +286,7 @@ def run(src=DEFAULT_SRC, partial=False, assets=ASSETS, output=OUTPUT):
             raise ValueError(f'任务名重复或越界：{name}')
         seen.add(name)
         rel = relative_image(job['image'])
-        if key not in bg or job['image'] not in {l.get('image') for l in layers(bg[key])}:
+        if key not in bg or job['image'] not in set(layer_images(bg[key])):
             raise ValueError(f'任务与当前背景元数据不符：{name}')
         if len(job['size']) != 2 or any(type(n) is not int or n <= 0 for n in job['size']):
             raise ValueError(f'无效尺寸：{name}')
@@ -179,13 +295,8 @@ def run(src=DEFAULT_SRC, partial=False, assets=ASSETS, output=OUTPUT):
         if not (assets / rel).is_file():
             raise ValueError(f'原图不存在：{rel}')
         groups[key].append(job)
-    planned = {job['image'] for job in jobs}
-    overlays = {key: sorted({l.get('image', l['type']) for l in layers(spec)
-                            if l.get('key') and l.get('image') not in planned})
-                for key, spec in sorted(bg.items())}
-    overlays = {key: value for key, value in overlays.items() if value}
     report = dict(mode='partial' if partial else 'complete', enabled=[], baked_clouds=[], incomplete={}, errors={},
-                  outputs=[], retained_overlays=overlays, unplanned=sorted(set(bg) - set(groups)),
+                  outputs=[], retained_overlays={}, unplanned=sorted(set(bg) - set(groups)),
                   unrecognized_raw=sorted(p.name for p in (src / 'raw').glob('*.png') if p.stem not in seen))
     converted = {}
     for key, group in sorted(groups.items()):
@@ -212,6 +323,19 @@ def run(src=DEFAULT_SRC, partial=False, assets=ASSETS, output=OUTPUT):
             if any(j['kind'] == 'far' and relative_image(j['image']).as_posix() in images for j in group):
                 report['baked_clouds'].append(key)
             converted.update(images)
+    add_overlays(src, assets, bg, converted, report)
+    planned = {job['image'] for job in jobs}
+    for key, spec in sorted(bg.items()):
+        retained = set()
+        for layer in layers(spec):
+            if not layer.get('key'):
+                continue
+            paths = ([layer['image']] if layer.get('image') else []) + layer.get('images', [])
+            retained.update(p for p in paths if p not in planned and relative_image(p).as_posix() not in converted)
+            if not paths:
+                retained.add(layer['type'])
+        if retained:
+            report['retained_overlays'][key] = sorted(retained)
     output.mkdir(parents=True, exist_ok=True)
     for rel, im in sorted(converted.items()):
         target = output / rel
@@ -240,8 +364,8 @@ def main():
     args = parser.parse_args()
     report = run(args.src, args.partial)
     print(json.dumps({k: report[k] for k in ('mode', 'enabled', 'errors')}, ensure_ascii=False))
-    print(f"待补齐 {len(report['incomplete'])} 组；保留开关叠加层 {len(report['retained_overlays'])} 组；详见 assets/bg_gpt/_report.json")
-    return bool(report['errors'])
+    print(f"待补齐 {len(report['incomplete'])} 组；小图层接入 {len(report['overlays']['enabled'])} 项，待补齐 {len(report['overlays']['missing'])} 项；详见 assets/bg_gpt/_report.json")
+    return bool(report['errors'] or report['overlays']['errors'])
 
 
 if __name__ == '__main__':

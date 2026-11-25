@@ -30,6 +30,127 @@ def save_raw(scene, target):
 
 
 class PipelineTests(unittest.TestCase):
+    def test_overlay_crop_mask_offset_and_size_validation(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            for box in ([10, 5, 30, 20], [10, 5, 20, 23]):
+                original = Image.new('RGBA', (48, 32))
+                original.paste((40, 90, 30, 255), (box[0] + 4, box[1] + 4, box[2] - 2, box[3] - 2))
+                original.save(root / 'original.png')
+                scene = Image.new('RGBA', (box[2] - box[0], box[3] - box[1]), (255, 0, 255, 255))
+                scene.paste((60, 130, 70, 255), (0, 0, scene.width, scene.height))
+                scene.putpixel((5, 5), (255, 0, 255, 255))
+                save_raw(scene, root / 'raw.png')
+                job = dict(size=[48, 32], crop=box)
+                result = pipe.convert_overlay(root / 'raw.png', root / 'original.png', job)
+                self.assertEqual(result.size, original.size)
+                self.assertEqual(result.getpixel((box[0] + 2, box[1] + 2)), (60, 130, 70, 255))
+                self.assertEqual(result.getpixel((box[0] + 1, box[1] + 2)), (0, 0, 0, 0))
+                self.assertEqual(result.getpixel((box[0] + 5, box[1] + 5)), (0, 0, 0, 0))
+                self.assertEqual(result.getpixel((0, 0)), (0, 0, 0, 0))
+                with self.assertRaises(ValueError):
+                    pipe.convert_overlay(root / 'raw.png', root / 'original.png', dict(size=[1, 1], crop=box))
+                for invalid in ([-1, 0, 10, 10], [0, 0, 49, 32], [4, 0, 4, 3]):
+                    with self.assertRaises(ValueError):
+                        pipe.convert_overlay(root / 'raw.png', root / 'original.png', dict(size=[48, 32], crop=invalid))
+
+    def test_optional_pick_fallback_pack_and_stale_cleanup(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            assets, src, output = root / 'assets', root / 'src', root / 'assets/bg_gpt'
+            (assets / '_meta').mkdir(parents=True)
+            (assets / 'bg/demo').mkdir(parents=True)
+            (src / 'raw').mkdir(parents=True)
+            (src / 'raw_ovl').mkdir()
+            spec = {'demo': {'layers': [dict(type='pano', image='bg/demo/room'),
+                dict(type='pick', images=['bg/demo/open', 'bg/demo/closed'], key='gate')]}}
+            (assets / '_meta/bg.json').write_text(json.dumps(spec), encoding='utf-8')
+            (src / 'jobs.json').write_text(json.dumps([dict(name='demo__room', key='demo',
+                image='bg/demo/room', size=[32, 16], kind='base')]), encoding='utf-8')
+            jobs = [dict(name=f'demo__{n}', key='demo', image=f'bg/demo/{n}', size=[32, 16],
+                         crop=[4, 2, 24, 14]) for n in ('open', 'closed')]
+            (src / 'overlays.json').write_text(json.dumps(jobs), encoding='utf-8')
+            old = Image.new('RGBA', (32, 16), (20, 30, 40, 255))
+            new = Image.new('RGBA', (32, 16), (80, 120, 70, 255))
+            for n in ('room', 'open', 'closed'):
+                old.save(assets / f'bg/demo/{n}.png')
+            save_raw(new, src / 'raw/demo__room.png')
+            save_raw(new.crop((4, 2, 24, 14)), src / 'raw_ovl/demo__open.png')
+            report = pipe.run(src, assets=assets, output=output)
+            self.assertEqual(report['enabled'], ['demo'])
+            self.assertEqual(report['overlays']['enabled'], ['demo__open'])
+            self.assertEqual(report['overlays']['missing'], ['demo__closed'])
+            self.assertEqual(report['retained_overlays'], {'demo': ['bg/demo/closed']})
+            data = root / 'data'
+            with patch.multiple(build.L, ASSETS=str(assets), META=str(assets / '_meta')), \
+                 patch.object(build, 'DATA', str(data)), patch.object(sys, 'argv', ['build_p4.py', '--no-font']), \
+                 redirect_stdout(StringIO()):
+                build.main()
+            pack = build.read_pack(data / 'img_bg_prologue.js')
+            self.assertEqual(base64.b64decode(pack['bg/demo/open'].split(',')[1]), (output / 'bg/demo/open.png').read_bytes())
+            self.assertEqual(base64.b64decode(pack['bg/demo/closed'].split(',')[1]), (assets / 'bg/demo/closed.png').read_bytes())
+            # 损坏或移除可选层时只撤下该层，完整背景继续启用。
+            (src / 'raw_ovl/demo__open.png').write_bytes(b'incomplete PNG')
+            report = pipe.run(src, assets=assets, output=output)
+            self.assertEqual(report['enabled'], ['demo'])
+            self.assertIn('demo__open', report['overlays']['errors'])
+            self.assertFalse((output / 'bg/demo/open.png').exists())
+            (src / 'raw_ovl/demo__open.png').unlink()
+            report = pipe.run(src, assets=assets, output=output)
+            self.assertEqual(report['enabled'], ['demo'])
+            self.assertEqual(report['overlays']['missing'], ['demo__open', 'demo__closed'])
+
+    def test_derived_pots_ship_photo_and_missing_sources(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = Image.new('RGBA', (16, 12), (80, 120, 60, 255))
+            source.putpixel((6, 6), (0, 0, 0, 0))
+            converted = {f'bg/{p}.png': source.copy() for p in (
+                'nijimura_yard/pots_0', 'morioh_harbor/ship', 'kira_house/room')}
+            originals = {}
+            paths = ['nijimura_yard/pots_' + str(n) for n in range(1, 6)] + [
+                'morioh_harbor/ship', 'morioh_harbor_late/ship', 'kira_house/photo']
+            for p in paths:
+                original = Image.new('RGBA', source.size)
+                original.paste((120, 130, 140, 255), (4, 4, 10, 10))
+                if p == 'kira_house/photo':
+                    original.putpixel((4, 4), (244, 242, 234, 255))
+                target = root / ('bg/' + p + '.png')
+                target.parent.mkdir(parents=True, exist_ok=True)
+                original.save(target)
+                originals[p] = original
+            report = {}
+            pipe.add_overlays(root, root, {}, converted, report)
+            self.assertEqual(report['overlays']['errors'], {})
+            self.assertEqual(len(converted), 10)
+            for n in range(1, 6):
+                result = converted[f'bg/nijimura_yard/pots_{n}.png']
+                self.assertEqual(result.getpixel((3, 3)), source.getpixel((3, 3)))
+                self.assertEqual(result.getpixel((2, 3)), (0, 0, 0, 0))
+            self.assertEqual(converted['bg/morioh_harbor_late/ship.png'].tobytes(), source.tobytes())
+            self.assertTrue(report['overlays']['comparisons']['bg/morioh_harbor_late/ship']['same_alpha'])
+            result = converted['bg/kira_house/photo.png']
+            self.assertEqual(result.getpixel((0, 0)), (0, 0, 0, 0))
+            self.assertEqual(result.getpixel((4, 4)), (244, 242, 234, 255))
+            gray = source.convert('L').getpixel((5, 5))
+            self.assertEqual(result.getpixel((5, 5)), (gray, gray, gray, 255))
+            self.assertEqual(result.getpixel((6, 6)), (0, 0, 0, 0))
+            empty = {}
+            pipe.add_overlays(root, root, {}, empty, report)
+            self.assertEqual(empty, {})
+            self.assertTrue(all(v['status'] == 'missing_source' for v in report['overlays']['derived'].values()))
+            changed_shape = originals['morioh_harbor_late/ship'].copy()
+            changed_shape.putpixel((0, 0), (1, 2, 3, 255))
+            changed_shape.save(root / 'bg/morioh_harbor_late/ship.png')
+            pipe.add_overlays(root, root, {}, {'bg/morioh_harbor/ship.png': source}, report)
+            self.assertFalse(report['overlays']['comparisons']['bg/morioh_harbor_late/ship']['same_alpha'])
+            self.assertIn('note', report['overlays']['derived']['bg/morioh_harbor_late/ship'])
+            Image.new('RGBA', (12, 12)).save(root / 'bg/morioh_harbor_late/ship.png')
+            converted = {'bg/morioh_harbor/ship.png': source}
+            pipe.add_overlays(root, root, {}, converted, report)
+            self.assertIn('bg/morioh_harbor_late/ship', report['overlays']['errors'])
+            self.assertFalse(report['overlays']['comparisons']['bg/morioh_harbor_late/ship']['same_size'])
+
     def test_scaled_band_landscape_and_portrait(self):
         for size in [(480, 180), (120, 360), (320, 180)]:
             w, h = size
