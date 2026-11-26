@@ -1,0 +1,6622 @@
+{
+ "chars": {
+  "giorno": {
+   "name": "乔鲁诺",
+   "image": "chars/giorno",
+   "cell": [
+    34,
+    33
+   ],
+   "pivot": [
+    16,
+    32
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 2,
+     "frames": 4,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 3,
+     "kind": "loop"
+    },
+    "dream": {
+     "row": 4,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 5,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "guard": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 8,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/giorno/normal_0",
+     "heads/giorno/normal_1"
+    ],
+    "smile": [
+     "heads/giorno/smile_0",
+     "heads/giorno/smile_1"
+    ],
+    "rage": [
+     "heads/giorno/rage_0",
+     "heads/giorno/rage_1"
+    ],
+    "shock": [
+     "heads/giorno/shock_0",
+     "heads/giorno/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "block": "guard",
+    "dodge": "run",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "dream",
+    "win": "pose",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 30,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "bucciarati": {
+   "name": "布加拉提",
+   "image": "chars/bucciarati",
+   "cell": [
+    46,
+    35
+   ],
+   "pivot": [
+    17,
+    34
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 2,
+     "frames": 4,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 3,
+     "kind": "loop"
+    },
+    "arrive": {
+     "row": 4,
+     "frames": 2,
+     "fps": 5,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 5,
+     "frames": 3,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "guard": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 8,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/bucciarati/normal_0",
+     "heads/bucciarati/normal_1"
+    ],
+    "smile": [
+     "heads/bucciarati/smile_0",
+     "heads/bucciarati/smile_1"
+    ],
+    "rage": [
+     "heads/bucciarati/rage_0",
+     "heads/bucciarati/rage_1"
+    ],
+    "shock": [
+     "heads/bucciarati/shock_0",
+     "heads/bucciarati/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "block": "guard",
+    "dodge": "run",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 32,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "abbacchio": {
+   "name": "阿帕基",
+   "image": "chars/abbacchio",
+   "cell": [
+    35,
+    35
+   ],
+   "pivot": [
+    17,
+    34
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 2,
+     "frames": 4,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "rewind": {
+     "row": 4,
+     "frames": 3,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 5,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "guard": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 8,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/abbacchio/normal_0",
+     "heads/abbacchio/normal_1"
+    ],
+    "smile": [
+     "heads/abbacchio/smile_0",
+     "heads/abbacchio/smile_1"
+    ],
+    "rage": [
+     "heads/abbacchio/rage_0",
+     "heads/abbacchio/rage_1"
+    ],
+    "shock": [
+     "heads/abbacchio/shock_0",
+     "heads/abbacchio/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "block": "guard",
+    "dodge": "run",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 32,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "mista": {
+   "name": "米斯达",
+   "image": "chars/mista",
+   "cell": [
+    43,
+    36
+   ],
+   "pivot": [
+    18,
+    35
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 2,
+     "frames": 4,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 3,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 4,
+     "frames": 4,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "guard": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/mista/normal_0",
+     "heads/mista/normal_1"
+    ],
+    "smile": [
+     "heads/mista/smile_0",
+     "heads/mista/smile_1"
+    ],
+    "rage": [
+     "heads/mista/rage_0",
+     "heads/mista/rage_1"
+    ],
+    "shock": [
+     "heads/mista/shock_0",
+     "heads/mista/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "block": "guard",
+    "dodge": "run",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 33,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "narancia": {
+   "name": "纳兰迦",
+   "image": "chars/narancia",
+   "cell": [
+    37,
+    32
+   ],
+   "pivot": [
+    16,
+    31
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 2,
+     "frames": 4,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "cheer": {
+     "row": 4,
+     "frames": 2,
+     "fps": 5,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 5,
+     "frames": 3,
+     "fps": 10,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "guard": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 8,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/narancia/normal_0",
+     "heads/narancia/normal_1"
+    ],
+    "smile": [
+     "heads/narancia/smile_0",
+     "heads/narancia/smile_1"
+    ],
+    "rage": [
+     "heads/narancia/rage_0",
+     "heads/narancia/rage_1"
+    ],
+    "shock": [
+     "heads/narancia/shock_0",
+     "heads/narancia/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "block": "guard",
+    "dodge": "run",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 29,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "fugo": {
+   "name": "福葛",
+   "image": "chars/fugo",
+   "cell": [
+    41,
+    34
+   ],
+   "pivot": [
+    17,
+    33
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 2,
+     "frames": 4,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 3,
+     "kind": "loop"
+    },
+    "rage": {
+     "row": 4,
+     "frames": 2,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 5,
+     "frames": 3,
+     "fps": 10,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "guard": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 8,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/fugo/normal_0",
+     "heads/fugo/normal_1"
+    ],
+    "smile": [
+     "heads/fugo/smile_0",
+     "heads/fugo/smile_1"
+    ],
+    "rage": [
+     "heads/fugo/rage_0",
+     "heads/fugo/rage_1"
+    ],
+    "shock": [
+     "heads/fugo/shock_0",
+     "heads/fugo/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "block": "guard",
+    "dodge": "run",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 31,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "trish": {
+   "name": "特莉休",
+   "image": "chars/trish",
+   "cell": [
+    32,
+    32
+   ],
+   "pivot": [
+    16,
+    31
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 2,
+     "frames": 4,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 3,
+     "kind": "loop"
+    },
+    "cry": {
+     "row": 4,
+     "frames": 2,
+     "fps": 3,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 5,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "guard": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 8,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/trish/normal_0",
+     "heads/trish/normal_1"
+    ],
+    "smile": [
+     "heads/trish/smile_0",
+     "heads/trish/smile_1"
+    ],
+    "rage": [
+     "heads/trish/rage_0",
+     "heads/trish/rage_1"
+    ],
+    "shock": [
+     "heads/trish/shock_0",
+     "heads/trish/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "block": "guard",
+    "dodge": "run",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 29,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "diavolo": {
+   "name": "迪亚波罗",
+   "image": "chars/diavolo",
+   "cell": [
+    38,
+    36
+   ],
+   "pivot": [
+    18,
+    35
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "laugh": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 4,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/diavolo/normal_0",
+     "heads/diavolo/normal_1"
+    ],
+    "smile": [
+     "heads/diavolo/smile_0",
+     "heads/diavolo/smile_1"
+    ],
+    "rage": [
+     "heads/diavolo/rage_0",
+     "heads/diavolo/rage_1"
+    ],
+    "shock": [
+     "heads/diavolo/shock_0",
+     "heads/diavolo/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "run": "walk",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "walk",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 33,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "doppio": {
+   "name": "多比欧",
+   "image": "chars/doppio",
+   "cell": [
+    32,
+    32
+   ],
+   "pivot": [
+    16,
+    31
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "call": {
+     "row": 2,
+     "frames": 3,
+     "fps": 5,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 4,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/doppio/normal_0",
+     "heads/doppio/normal_1"
+    ],
+    "smile": [
+     "heads/doppio/smile_0",
+     "heads/doppio/smile_1"
+    ],
+    "rage": [
+     "heads/doppio/rage_0",
+     "heads/doppio/rage_1"
+    ],
+    "shock": [
+     "heads/doppio/shock_0",
+     "heads/doppio/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "run": "walk",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "walk",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 29,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "risotto": {
+   "name": "里苏特",
+   "image": "chars/risotto",
+   "cell": [
+    46,
+    35
+   ],
+   "pivot": [
+    17,
+    34
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 3,
+     "frames": 3,
+     "fps": 7,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/risotto/normal_0",
+     "heads/risotto/normal_1"
+    ],
+    "smile": [
+     "heads/risotto/smile_0",
+     "heads/risotto/smile_1"
+    ],
+    "rage": [
+     "heads/risotto/rage_0",
+     "heads/risotto/rage_1"
+    ],
+    "shock": [
+     "heads/risotto/shock_0",
+     "heads/risotto/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "run": "walk",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "walk",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 32,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "formaggio": {
+   "name": "霍尔马吉欧",
+   "image": "chars/formaggio",
+   "cell": [
+    40,
+    34
+   ],
+   "pivot": [
+    17,
+    33
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 3,
+     "frames": 3,
+     "fps": 10,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/formaggio/normal_0",
+     "heads/formaggio/normal_1"
+    ],
+    "smile": [
+     "heads/formaggio/smile_0",
+     "heads/formaggio/smile_1"
+    ],
+    "rage": [
+     "heads/formaggio/rage_0",
+     "heads/formaggio/rage_1"
+    ],
+    "shock": [
+     "heads/formaggio/shock_0",
+     "heads/formaggio/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "run": "walk",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "walk",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 31,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "illuso": {
+   "name": "伊鲁佐",
+   "image": "chars/illuso",
+   "cell": [
+    41,
+    35
+   ],
+   "pivot": [
+    17,
+    34
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 3,
+     "frames": 3,
+     "fps": 7,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/illuso/normal_0",
+     "heads/illuso/normal_1"
+    ],
+    "smile": [
+     "heads/illuso/smile_0",
+     "heads/illuso/smile_1"
+    ],
+    "rage": [
+     "heads/illuso/rage_0",
+     "heads/illuso/rage_1"
+    ],
+    "shock": [
+     "heads/illuso/shock_0",
+     "heads/illuso/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "run": "walk",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "walk",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 32,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "prosciutto": {
+   "name": "普罗修特",
+   "image": "chars/prosciutto",
+   "cell": [
+    39,
+    34
+   ],
+   "pivot": [
+    17,
+    33
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 3,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 3,
+     "frames": 3,
+     "fps": 9,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/prosciutto/normal_0",
+     "heads/prosciutto/normal_1"
+    ],
+    "smile": [
+     "heads/prosciutto/smile_0",
+     "heads/prosciutto/smile_1"
+    ],
+    "rage": [
+     "heads/prosciutto/rage_0",
+     "heads/prosciutto/rage_1"
+    ],
+    "shock": [
+     "heads/prosciutto/shock_0",
+     "heads/prosciutto/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "run": "walk",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "walk",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 31,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "pesci": {
+   "name": "贝西",
+   "image": "chars/pesci",
+   "cell": [
+    56,
+    31
+   ],
+   "pivot": [
+    17,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 5,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 3,
+     "frames": 3,
+     "fps": 5,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/pesci/normal_0",
+     "heads/pesci/normal_1"
+    ],
+    "smile": [
+     "heads/pesci/smile_0",
+     "heads/pesci/smile_1"
+    ],
+    "rage": [
+     "heads/pesci/rage_0",
+     "heads/pesci/rage_1"
+    ],
+    "shock": [
+     "heads/pesci/shock_0",
+     "heads/pesci/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "run": "walk",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "walk",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 27,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "melone": {
+   "name": "梅洛尼",
+   "image": "chars/melone",
+   "cell": [
+    34,
+    33
+   ],
+   "pivot": [
+    16,
+    32
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 3,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 3,
+     "frames": 3,
+     "fps": 7,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/melone/normal_0",
+     "heads/melone/normal_1"
+    ],
+    "smile": [
+     "heads/melone/smile_0",
+     "heads/melone/smile_1"
+    ],
+    "rage": [
+     "heads/melone/rage_0",
+     "heads/melone/rage_1"
+    ],
+    "shock": [
+     "heads/melone/shock_0",
+     "heads/melone/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "run": "walk",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "walk",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 30,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "ghiaccio": {
+   "name": "加丘",
+   "image": "chars/ghiaccio",
+   "cell": [
+    33,
+    33
+   ],
+   "pivot": [
+    16,
+    32
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 3,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/ghiaccio/normal_0",
+     "heads/ghiaccio/normal_1"
+    ],
+    "smile": [
+     "heads/ghiaccio/smile_0",
+     "heads/ghiaccio/smile_1"
+    ],
+    "rage": [
+     "heads/ghiaccio/rage_0",
+     "heads/ghiaccio/rage_1"
+    ],
+    "shock": [
+     "heads/ghiaccio/shock_0",
+     "heads/ghiaccio/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "run": "walk",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "walk",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 30,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "squalo": {
+   "name": "史克亚罗",
+   "image": "chars/squalo",
+   "cell": [
+    40,
+    34
+   ],
+   "pivot": [
+    17,
+    33
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 3,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 3,
+     "frames": 3,
+     "fps": 10,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/squalo/normal_0",
+     "heads/squalo/normal_1"
+    ],
+    "smile": [
+     "heads/squalo/smile_0",
+     "heads/squalo/smile_1"
+    ],
+    "rage": [
+     "heads/squalo/rage_0",
+     "heads/squalo/rage_1"
+    ],
+    "shock": [
+     "heads/squalo/shock_0",
+     "heads/squalo/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "run": "walk",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "walk",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 31,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "tiziano": {
+   "name": "提查诺",
+   "image": "chars/tiziano",
+   "cell": [
+    35,
+    34
+   ],
+   "pivot": [
+    17,
+    33
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 3,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 3,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/tiziano/normal_0",
+     "heads/tiziano/normal_1"
+    ],
+    "smile": [
+     "heads/tiziano/smile_0",
+     "heads/tiziano/smile_1"
+    ],
+    "rage": [
+     "heads/tiziano/rage_0",
+     "heads/tiziano/rage_1"
+    ],
+    "shock": [
+     "heads/tiziano/shock_0",
+     "heads/tiziano/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "run": "walk",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "walk",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 31,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "cioccolata": {
+   "name": "乔可拉特",
+   "image": "chars/cioccolata",
+   "cell": [
+    36,
+    35
+   ],
+   "pivot": [
+    17,
+    34
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 3,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 3,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/cioccolata/normal_0",
+     "heads/cioccolata/normal_1"
+    ],
+    "smile": [
+     "heads/cioccolata/smile_0",
+     "heads/cioccolata/smile_1"
+    ],
+    "rage": [
+     "heads/cioccolata/rage_0",
+     "heads/cioccolata/rage_1"
+    ],
+    "shock": [
+     "heads/cioccolata/shock_0",
+     "heads/cioccolata/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "run": "walk",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "walk",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 32,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "secco": {
+   "name": "塞可",
+   "image": "chars/secco",
+   "cell": [
+    39,
+    33
+   ],
+   "pivot": [
+    15,
+    32
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 5,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 3,
+     "frames": 3,
+     "fps": 9,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/secco/normal_0",
+     "heads/secco/normal_1"
+    ],
+    "smile": [
+     "heads/secco/smile_0",
+     "heads/secco/smile_1"
+    ],
+    "rage": [
+     "heads/secco/rage_0",
+     "heads/secco/rage_1"
+    ],
+    "shock": [
+     "heads/secco/shock_0",
+     "heads/secco/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "run": "walk",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "walk",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 24,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "zucchero": {
+   "name": "祖凯罗",
+   "image": "chars/zucchero",
+   "cell": [
+    50,
+    34
+   ],
+   "pivot": [
+    17,
+    33
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 3,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 3,
+     "frames": 3,
+     "fps": 10,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/zucchero/normal_0",
+     "heads/zucchero/normal_1"
+    ],
+    "smile": [
+     "heads/zucchero/smile_0",
+     "heads/zucchero/smile_1"
+    ],
+    "rage": [
+     "heads/zucchero/rage_0",
+     "heads/zucchero/rage_1"
+    ],
+    "shock": [
+     "heads/zucchero/shock_0",
+     "heads/zucchero/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "run": "walk",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "walk",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 31,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "sale": {
+   "name": "萨雷",
+   "image": "chars/sale",
+   "cell": [
+    42,
+    34
+   ],
+   "pivot": [
+    17,
+    33
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 3,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 3,
+     "frames": 4,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/sale/normal_0",
+     "heads/sale/normal_1"
+    ],
+    "smile": [
+     "heads/sale/smile_0",
+     "heads/sale/smile_1"
+    ],
+    "rage": [
+     "heads/sale/rage_0",
+     "heads/sale/rage_1"
+    ],
+    "shock": [
+     "heads/sale/shock_0",
+     "heads/sale/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "run": "walk",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "walk",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 31,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "polpo": {
+   "name": "波尔波",
+   "image": "chars/polpo",
+   "cell": [
+    53,
+    46
+   ],
+   "pivot": [
+    25,
+    45
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 1,
+     "frames": 4,
+     "fps": 5,
+     "kind": "loop"
+    },
+    "laugh": {
+     "row": 2,
+     "frames": 2,
+     "fps": 6,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/polpo/normal_0",
+     "heads/polpo/normal_1"
+    ],
+    "smile": [
+     "heads/polpo/smile_0",
+     "heads/polpo/smile_1"
+    ],
+    "rage": [
+     "heads/polpo/rage_0",
+     "heads/polpo/rage_1"
+    ],
+    "shock": [
+     "heads/polpo/shock_0",
+     "heads/polpo/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "idle",
+    "hurt": "idle",
+    "getup": "idle",
+    "down": "idle",
+    "fly": "idle",
+    "special": "pose",
+    "win": "pose",
+    "shock": "idle",
+    "punch": "idle",
+    "punch2": "idle",
+    "punch_heavy": "idle",
+    "upper": "idle",
+    "rush": "idle",
+    "windup": "pose",
+    "attack": "pose",
+    "attack2": "idle",
+    "shoot": "idle",
+    "reach": "pose",
+    "finger": "pose",
+    "kick": "idle",
+    "fist": "pose",
+    "float": "idle"
+   },
+   "top": 42,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "goldexp": {
+   "name": "黄金体验",
+   "image": "chars/goldexp",
+   "cell": [
+    59,
+    44
+   ],
+   "pivot": [
+    21,
+    43
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "rush": {
+     "row": 2,
+     "frames": 2,
+     "fps": 16,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "block": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/goldexp/normal_0",
+     "heads/goldexp/normal_1"
+    ],
+    "smile": [
+     "heads/goldexp/smile_0",
+     "heads/goldexp/smile_1"
+    ],
+    "rage": [
+     "heads/goldexp/rage_0",
+     "heads/goldexp/rage_1"
+    ],
+    "shock": [
+     "heads/goldexp/shock_0",
+     "heads/goldexp/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "block",
+    "dodge": "hurt",
+    "getup": "hurt",
+    "down": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch2": "punch",
+    "punch_heavy": "punch",
+    "upper": "punch",
+    "windup": "pose",
+    "attack": "punch",
+    "attack2": "punch",
+    "shoot": "punch",
+    "reach": "punch",
+    "finger": "pose",
+    "kick": "punch",
+    "fist": "punch",
+    "float": "idle"
+   },
+   "top": 42,
+   "bodyW": 4,
+   "kind": "stand",
+   "k": 1
+  },
+  "stickyfingers": {
+   "name": "钢链手指",
+   "image": "chars/stickyfingers",
+   "cell": [
+    59,
+    44
+   ],
+   "pivot": [
+    21,
+    43
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "rush": {
+     "row": 2,
+     "frames": 2,
+     "fps": 16,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "block": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/stickyfingers/normal_0",
+     "heads/stickyfingers/normal_1"
+    ],
+    "smile": [
+     "heads/stickyfingers/smile_0",
+     "heads/stickyfingers/smile_1"
+    ],
+    "rage": [
+     "heads/stickyfingers/rage_0",
+     "heads/stickyfingers/rage_1"
+    ],
+    "shock": [
+     "heads/stickyfingers/shock_0",
+     "heads/stickyfingers/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "block",
+    "dodge": "hurt",
+    "getup": "hurt",
+    "down": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch2": "punch",
+    "punch_heavy": "punch",
+    "upper": "punch",
+    "windup": "pose",
+    "attack": "punch",
+    "attack2": "punch",
+    "shoot": "punch",
+    "reach": "punch",
+    "finger": "pose",
+    "kick": "punch",
+    "fist": "punch",
+    "float": "idle"
+   },
+   "top": 42,
+   "bodyW": 4,
+   "kind": "stand",
+   "k": 1
+  },
+  "moodyblues": {
+   "name": "忧郁蓝调",
+   "image": "chars/moodyblues",
+   "cell": [
+    66,
+    44
+   ],
+   "pivot": [
+    28,
+    43
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "rush": {
+     "row": 2,
+     "frames": 2,
+     "fps": 16,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "block": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "rewind": {
+     "row": 6,
+     "frames": 3,
+     "fps": 6,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/moodyblues/normal_0",
+     "heads/moodyblues/normal_1"
+    ],
+    "smile": [
+     "heads/moodyblues/smile_0",
+     "heads/moodyblues/smile_1"
+    ],
+    "rage": [
+     "heads/moodyblues/rage_0",
+     "heads/moodyblues/rage_1"
+    ],
+    "shock": [
+     "heads/moodyblues/shock_0",
+     "heads/moodyblues/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "block",
+    "dodge": "hurt",
+    "getup": "hurt",
+    "down": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch2": "punch",
+    "punch_heavy": "punch",
+    "upper": "punch",
+    "windup": "pose",
+    "attack": "punch",
+    "attack2": "punch",
+    "shoot": "punch",
+    "reach": "punch",
+    "finger": "pose",
+    "kick": "punch",
+    "fist": "punch",
+    "float": "idle"
+   },
+   "top": 42,
+   "bodyW": 4,
+   "kind": "stand",
+   "k": 1
+  },
+  "sexpistols": {
+   "name": "性感手枪",
+   "image": "chars/sexpistols",
+   "cell": [
+    69,
+    58
+   ],
+   "pivot": [
+    28,
+    57
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 1,
+     "frames": 3,
+     "fps": 10,
+     "kind": "oneshot"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/sexpistols/normal_0",
+     "heads/sexpistols/normal_1"
+    ],
+    "smile": [
+     "heads/sexpistols/smile_0",
+     "heads/sexpistols/smile_1"
+    ],
+    "rage": [
+     "heads/sexpistols/rage_0",
+     "heads/sexpistols/rage_1"
+    ],
+    "shock": [
+     "heads/sexpistols/shock_0",
+     "heads/sexpistols/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "idle",
+    "hurt": "idle",
+    "getup": "idle",
+    "down": "idle",
+    "fly": "idle",
+    "special": "pose",
+    "win": "pose",
+    "shock": "idle",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 51,
+   "bodyW": 4,
+   "kind": "stand",
+   "k": 1
+  },
+  "aerosmith": {
+   "name": "航空史密斯",
+   "image": "chars/aerosmith",
+   "cell": [
+    75,
+    50
+   ],
+   "pivot": [
+    24,
+    49
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 1,
+     "frames": 3,
+     "fps": 14,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 8,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/aerosmith/normal_0",
+     "heads/aerosmith/normal_1"
+    ],
+    "smile": [
+     "heads/aerosmith/smile_0",
+     "heads/aerosmith/smile_1"
+    ],
+    "rage": [
+     "heads/aerosmith/rage_0",
+     "heads/aerosmith/rage_1"
+    ],
+    "shock": [
+     "heads/aerosmith/shock_0",
+     "heads/aerosmith/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "idle",
+    "hurt": "idle",
+    "getup": "idle",
+    "down": "idle",
+    "fly": "idle",
+    "special": "pose",
+    "win": "pose",
+    "shock": "idle",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 43,
+   "bodyW": 4,
+   "kind": "stand",
+   "k": 1
+  },
+  "purplehaze": {
+   "name": "紫烟",
+   "image": "chars/purplehaze",
+   "cell": [
+    60,
+    43
+   ],
+   "pivot": [
+    22,
+    41
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "rush": {
+     "row": 2,
+     "frames": 2,
+     "fps": 16,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "block": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/purplehaze/normal_0",
+     "heads/purplehaze/normal_1"
+    ],
+    "smile": [
+     "heads/purplehaze/smile_0",
+     "heads/purplehaze/smile_1"
+    ],
+    "rage": [
+     "heads/purplehaze/rage_0",
+     "heads/purplehaze/rage_1"
+    ],
+    "shock": [
+     "heads/purplehaze/shock_0",
+     "heads/purplehaze/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "block",
+    "dodge": "hurt",
+    "getup": "hurt",
+    "down": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch2": "punch",
+    "punch_heavy": "punch",
+    "upper": "punch",
+    "windup": "pose",
+    "attack": "punch",
+    "attack2": "punch",
+    "shoot": "punch",
+    "reach": "punch",
+    "finger": "pose",
+    "kick": "punch",
+    "fist": "punch",
+    "float": "idle"
+   },
+   "top": 39,
+   "bodyW": 4,
+   "kind": "stand",
+   "k": 1
+  },
+  "spicegirl": {
+   "name": "辣妹",
+   "image": "chars/spicegirl",
+   "cell": [
+    58,
+    44
+   ],
+   "pivot": [
+    20,
+    43
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "rush": {
+     "row": 2,
+     "frames": 2,
+     "fps": 16,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "block": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/spicegirl/normal_0",
+     "heads/spicegirl/normal_1"
+    ],
+    "smile": [
+     "heads/spicegirl/smile_0",
+     "heads/spicegirl/smile_1"
+    ],
+    "rage": [
+     "heads/spicegirl/rage_0",
+     "heads/spicegirl/rage_1"
+    ],
+    "shock": [
+     "heads/spicegirl/shock_0",
+     "heads/spicegirl/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "block",
+    "dodge": "hurt",
+    "getup": "hurt",
+    "down": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch2": "punch",
+    "punch_heavy": "punch",
+    "upper": "punch",
+    "windup": "pose",
+    "attack": "punch",
+    "attack2": "punch",
+    "shoot": "punch",
+    "reach": "punch",
+    "finger": "pose",
+    "kick": "punch",
+    "fist": "punch",
+    "float": "idle"
+   },
+   "top": 42,
+   "bodyW": 4,
+   "kind": "stand",
+   "k": 1
+  },
+  "requiem": {
+   "name": "黄金体验镇魂曲",
+   "image": "chars/requiem",
+   "cell": [
+    64,
+    50
+   ],
+   "pivot": [
+    26,
+    48
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "rush": {
+     "row": 2,
+     "frames": 2,
+     "fps": 16,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "block": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "zero": {
+     "row": 6,
+     "frames": 3,
+     "fps": 8,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/requiem/normal_0",
+     "heads/requiem/normal_1"
+    ],
+    "smile": [
+     "heads/requiem/smile_0",
+     "heads/requiem/smile_1"
+    ],
+    "rage": [
+     "heads/requiem/rage_0",
+     "heads/requiem/rage_1"
+    ],
+    "shock": [
+     "heads/requiem/shock_0",
+     "heads/requiem/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "block",
+    "dodge": "hurt",
+    "getup": "hurt",
+    "down": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch2": "punch",
+    "punch_heavy": "punch",
+    "upper": "punch",
+    "windup": "pose",
+    "attack": "punch",
+    "attack2": "punch",
+    "shoot": "punch",
+    "reach": "punch",
+    "finger": "pose",
+    "kick": "punch",
+    "fist": "punch",
+    "float": "idle"
+   },
+   "top": 42,
+   "bodyW": 4,
+   "kind": "stand",
+   "k": 1
+  },
+  "kingcrimson": {
+   "name": "绯红之王",
+   "image": "chars/kingcrimson",
+   "cell": [
+    59,
+    44
+   ],
+   "pivot": [
+    21,
+    43
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "rush": {
+     "row": 2,
+     "frames": 2,
+     "fps": 16,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "block": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/kingcrimson/normal_0",
+     "heads/kingcrimson/normal_1"
+    ],
+    "smile": [
+     "heads/kingcrimson/smile_0",
+     "heads/kingcrimson/smile_1"
+    ],
+    "rage": [
+     "heads/kingcrimson/rage_0",
+     "heads/kingcrimson/rage_1"
+    ],
+    "shock": [
+     "heads/kingcrimson/shock_0",
+     "heads/kingcrimson/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "block",
+    "dodge": "hurt",
+    "getup": "hurt",
+    "down": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch2": "punch",
+    "punch_heavy": "punch",
+    "upper": "punch",
+    "windup": "pose",
+    "attack": "punch",
+    "attack2": "punch",
+    "shoot": "punch",
+    "reach": "punch",
+    "finger": "pose",
+    "kick": "punch",
+    "fist": "punch",
+    "float": "idle"
+   },
+   "top": 42,
+   "bodyW": 4,
+   "kind": "stand",
+   "k": 1
+  },
+  "metallica": {
+   "name": "金属制品",
+   "image": "chars/metallica",
+   "cell": [
+    70,
+    51
+   ],
+   "pivot": [
+    27,
+    50
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 1,
+     "frames": 3,
+     "fps": 10,
+     "kind": "oneshot"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/metallica/normal_0",
+     "heads/metallica/normal_1"
+    ],
+    "smile": [
+     "heads/metallica/smile_0",
+     "heads/metallica/smile_1"
+    ],
+    "rage": [
+     "heads/metallica/rage_0",
+     "heads/metallica/rage_1"
+    ],
+    "shock": [
+     "heads/metallica/shock_0",
+     "heads/metallica/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "idle",
+    "hurt": "idle",
+    "getup": "idle",
+    "down": "idle",
+    "fly": "idle",
+    "special": "pose",
+    "win": "pose",
+    "shock": "idle",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 48,
+   "bodyW": 4,
+   "kind": "stand",
+   "k": 1
+  },
+  "littlefeet": {
+   "name": "小脚",
+   "image": "chars/littlefeet",
+   "cell": [
+    55,
+    50
+   ],
+   "pivot": [
+    21,
+    48
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "block": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/littlefeet/normal_0",
+     "heads/littlefeet/normal_1"
+    ],
+    "smile": [
+     "heads/littlefeet/smile_0",
+     "heads/littlefeet/smile_1"
+    ],
+    "rage": [
+     "heads/littlefeet/rage_0",
+     "heads/littlefeet/rage_1"
+    ],
+    "shock": [
+     "heads/littlefeet/shock_0",
+     "heads/littlefeet/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "block",
+    "dodge": "hurt",
+    "getup": "hurt",
+    "down": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch2": "punch",
+    "punch_heavy": "punch",
+    "upper": "punch",
+    "rush": "punch",
+    "windup": "pose",
+    "attack": "punch",
+    "attack2": "punch",
+    "shoot": "punch",
+    "reach": "punch",
+    "finger": "pose",
+    "kick": "punch",
+    "fist": "punch",
+    "float": "idle"
+   },
+   "top": 42,
+   "bodyW": 4,
+   "kind": "stand",
+   "k": 1
+  },
+  "mirrorman": {
+   "name": "镜中人",
+   "image": "chars/mirrorman",
+   "cell": [
+    59,
+    44
+   ],
+   "pivot": [
+    21,
+    43
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "rush": {
+     "row": 2,
+     "frames": 2,
+     "fps": 16,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "block": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/mirrorman/normal_0",
+     "heads/mirrorman/normal_1"
+    ],
+    "smile": [
+     "heads/mirrorman/smile_0",
+     "heads/mirrorman/smile_1"
+    ],
+    "rage": [
+     "heads/mirrorman/rage_0",
+     "heads/mirrorman/rage_1"
+    ],
+    "shock": [
+     "heads/mirrorman/shock_0",
+     "heads/mirrorman/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "block",
+    "dodge": "hurt",
+    "getup": "hurt",
+    "down": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch2": "punch",
+    "punch_heavy": "punch",
+    "upper": "punch",
+    "windup": "pose",
+    "attack": "punch",
+    "attack2": "punch",
+    "shoot": "punch",
+    "reach": "punch",
+    "finger": "pose",
+    "kick": "punch",
+    "fist": "punch",
+    "float": "idle"
+   },
+   "top": 42,
+   "bodyW": 4,
+   "kind": "stand",
+   "k": 1
+  },
+  "gratefuldead": {
+   "name": "壮烈成仁",
+   "image": "chars/gratefuldead",
+   "cell": [
+    59,
+    45
+   ],
+   "pivot": [
+    21,
+    42
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "rush": {
+     "row": 2,
+     "frames": 2,
+     "fps": 16,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "block": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/gratefuldead/normal_0",
+     "heads/gratefuldead/normal_1"
+    ],
+    "smile": [
+     "heads/gratefuldead/smile_0",
+     "heads/gratefuldead/smile_1"
+    ],
+    "rage": [
+     "heads/gratefuldead/rage_0",
+     "heads/gratefuldead/rage_1"
+    ],
+    "shock": [
+     "heads/gratefuldead/shock_0",
+     "heads/gratefuldead/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "block",
+    "dodge": "hurt",
+    "getup": "hurt",
+    "down": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch2": "punch",
+    "punch_heavy": "punch",
+    "upper": "punch",
+    "windup": "pose",
+    "attack": "punch",
+    "attack2": "punch",
+    "shoot": "punch",
+    "reach": "punch",
+    "finger": "pose",
+    "kick": "punch",
+    "fist": "punch",
+    "float": "idle"
+   },
+   "top": 41,
+   "bodyW": 4,
+   "kind": "stand",
+   "k": 1
+  },
+  "beachboy": {
+   "name": "沙滩男孩",
+   "image": "chars/beachboy",
+   "cell": [
+    73,
+    53
+   ],
+   "pivot": [
+    25,
+    52
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 1,
+     "frames": 3,
+     "fps": 10,
+     "kind": "oneshot"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/beachboy/normal_0",
+     "heads/beachboy/normal_1"
+    ],
+    "smile": [
+     "heads/beachboy/smile_0",
+     "heads/beachboy/smile_1"
+    ],
+    "rage": [
+     "heads/beachboy/rage_0",
+     "heads/beachboy/rage_1"
+    ],
+    "shock": [
+     "heads/beachboy/shock_0",
+     "heads/beachboy/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "idle",
+    "hurt": "idle",
+    "getup": "idle",
+    "down": "idle",
+    "fly": "idle",
+    "special": "pose",
+    "win": "pose",
+    "shock": "idle",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 43,
+   "bodyW": 4,
+   "kind": "stand",
+   "k": 1
+  },
+  "babyface": {
+   "name": "娃娃脸",
+   "image": "chars/babyface",
+   "cell": [
+    73,
+    55
+   ],
+   "pivot": [
+    22,
+    54
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 1,
+     "frames": 3,
+     "fps": 9,
+     "kind": "oneshot"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/babyface/normal_0",
+     "heads/babyface/normal_1"
+    ],
+    "smile": [
+     "heads/babyface/smile_0",
+     "heads/babyface/smile_1"
+    ],
+    "rage": [
+     "heads/babyface/rage_0",
+     "heads/babyface/rage_1"
+    ],
+    "shock": [
+     "heads/babyface/shock_0",
+     "heads/babyface/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "idle",
+    "hurt": "idle",
+    "getup": "idle",
+    "down": "idle",
+    "fly": "idle",
+    "special": "pose",
+    "win": "pose",
+    "shock": "idle",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 46,
+   "bodyW": 4,
+   "kind": "stand",
+   "k": 1
+  },
+  "whitealbum": {
+   "name": "白色相簿",
+   "image": "chars/whitealbum",
+   "cell": [
+    59,
+    47
+   ],
+   "pivot": [
+    21,
+    43
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "rush": {
+     "row": 2,
+     "frames": 2,
+     "fps": 16,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "block": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/whitealbum/normal_0",
+     "heads/whitealbum/normal_1"
+    ],
+    "smile": [
+     "heads/whitealbum/smile_0",
+     "heads/whitealbum/smile_1"
+    ],
+    "rage": [
+     "heads/whitealbum/rage_0",
+     "heads/whitealbum/rage_1"
+    ],
+    "shock": [
+     "heads/whitealbum/shock_0",
+     "heads/whitealbum/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "block",
+    "dodge": "hurt",
+    "getup": "hurt",
+    "down": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch2": "punch",
+    "punch_heavy": "punch",
+    "upper": "punch",
+    "windup": "pose",
+    "attack": "punch",
+    "attack2": "punch",
+    "shoot": "punch",
+    "reach": "punch",
+    "finger": "pose",
+    "kick": "punch",
+    "fist": "punch",
+    "float": "idle"
+   },
+   "top": 42,
+   "bodyW": 4,
+   "kind": "stand",
+   "k": 1
+  },
+  "clash": {
+   "name": "冲突",
+   "image": "chars/clash",
+   "cell": [
+    73,
+    53
+   ],
+   "pivot": [
+    29,
+    52
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 1,
+     "frames": 3,
+     "fps": 10,
+     "kind": "oneshot"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/clash/normal_0",
+     "heads/clash/normal_1"
+    ],
+    "smile": [
+     "heads/clash/smile_0",
+     "heads/clash/smile_1"
+    ],
+    "rage": [
+     "heads/clash/rage_0",
+     "heads/clash/rage_1"
+    ],
+    "shock": [
+     "heads/clash/shock_0",
+     "heads/clash/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "idle",
+    "hurt": "idle",
+    "getup": "idle",
+    "down": "idle",
+    "fly": "idle",
+    "special": "pose",
+    "win": "pose",
+    "shock": "idle",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 49,
+   "bodyW": 4,
+   "kind": "stand",
+   "k": 1
+  },
+  "talkinghead": {
+   "name": "传话头",
+   "image": "chars/talkinghead",
+   "cell": [
+    65,
+    61
+   ],
+   "pivot": [
+    22,
+    60
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 1,
+     "frames": 3,
+     "fps": 10,
+     "kind": "oneshot"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/talkinghead/normal_0",
+     "heads/talkinghead/normal_1"
+    ],
+    "smile": [
+     "heads/talkinghead/smile_0",
+     "heads/talkinghead/smile_1"
+    ],
+    "rage": [
+     "heads/talkinghead/rage_0",
+     "heads/talkinghead/rage_1"
+    ],
+    "shock": [
+     "heads/talkinghead/shock_0",
+     "heads/talkinghead/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "idle",
+    "hurt": "idle",
+    "getup": "idle",
+    "down": "idle",
+    "fly": "idle",
+    "special": "pose",
+    "win": "pose",
+    "shock": "idle",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "pose",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "pose",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 55,
+   "bodyW": 4,
+   "kind": "stand",
+   "k": 1
+  },
+  "greenday": {
+   "name": "绿日",
+   "image": "chars/greenday",
+   "cell": [
+    60,
+    45
+   ],
+   "pivot": [
+    22,
+    43
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "rush": {
+     "row": 2,
+     "frames": 2,
+     "fps": 16,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "block": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/greenday/normal_0",
+     "heads/greenday/normal_1"
+    ],
+    "smile": [
+     "heads/greenday/smile_0",
+     "heads/greenday/smile_1"
+    ],
+    "rage": [
+     "heads/greenday/rage_0",
+     "heads/greenday/rage_1"
+    ],
+    "shock": [
+     "heads/greenday/shock_0",
+     "heads/greenday/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "block",
+    "dodge": "hurt",
+    "getup": "hurt",
+    "down": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch2": "punch",
+    "punch_heavy": "punch",
+    "upper": "punch",
+    "windup": "pose",
+    "attack": "punch",
+    "attack2": "punch",
+    "shoot": "punch",
+    "reach": "punch",
+    "finger": "pose",
+    "kick": "punch",
+    "fist": "punch",
+    "float": "idle"
+   },
+   "top": 40,
+   "bodyW": 4,
+   "kind": "stand",
+   "k": 1
+  },
+  "oasis": {
+   "name": "绿洲",
+   "image": "chars/oasis",
+   "cell": [
+    58,
+    36
+   ],
+   "pivot": [
+    19,
+    33
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "rush": {
+     "row": 2,
+     "frames": 2,
+     "fps": 16,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/oasis/normal_0",
+     "heads/oasis/normal_1"
+    ],
+    "smile": [
+     "heads/oasis/smile_0",
+     "heads/oasis/smile_1"
+    ],
+    "rage": [
+     "heads/oasis/rage_0",
+     "heads/oasis/rage_1"
+    ],
+    "shock": [
+     "heads/oasis/shock_0",
+     "heads/oasis/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "pose",
+    "block": "pose",
+    "dodge": "hurt",
+    "getup": "hurt",
+    "down": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch2": "punch",
+    "punch_heavy": "punch",
+    "upper": "punch",
+    "windup": "pose",
+    "attack": "punch",
+    "attack2": "punch",
+    "shoot": "punch",
+    "reach": "punch",
+    "finger": "pose",
+    "kick": "punch",
+    "fist": "punch",
+    "float": "idle"
+   },
+   "top": 31,
+   "bodyW": 4,
+   "kind": "stand",
+   "k": 1
+  },
+  "softmachine": {
+   "name": "软机器",
+   "image": "chars/softmachine",
+   "cell": [
+    57,
+    51
+   ],
+   "pivot": [
+    21,
+    50
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "block": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/softmachine/normal_0",
+     "heads/softmachine/normal_1"
+    ],
+    "smile": [
+     "heads/softmachine/smile_0",
+     "heads/softmachine/smile_1"
+    ],
+    "rage": [
+     "heads/softmachine/rage_0",
+     "heads/softmachine/rage_1"
+    ],
+    "shock": [
+     "heads/softmachine/shock_0",
+     "heads/softmachine/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "block",
+    "dodge": "hurt",
+    "getup": "hurt",
+    "down": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch2": "punch",
+    "punch_heavy": "punch",
+    "upper": "punch",
+    "rush": "punch",
+    "windup": "pose",
+    "attack": "punch",
+    "attack2": "punch",
+    "shoot": "punch",
+    "reach": "punch",
+    "finger": "pose",
+    "kick": "punch",
+    "fist": "punch",
+    "float": "idle"
+   },
+   "top": 42,
+   "bodyW": 4,
+   "kind": "stand",
+   "k": 1
+  },
+  "kraftwork": {
+   "name": "工艺品",
+   "image": "chars/kraftwork",
+   "cell": [
+    59,
+    44
+   ],
+   "pivot": [
+    21,
+    43
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "rush": {
+     "row": 2,
+     "frames": 2,
+     "fps": 16,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "block": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/kraftwork/normal_0",
+     "heads/kraftwork/normal_1"
+    ],
+    "smile": [
+     "heads/kraftwork/smile_0",
+     "heads/kraftwork/smile_1"
+    ],
+    "rage": [
+     "heads/kraftwork/rage_0",
+     "heads/kraftwork/rage_1"
+    ],
+    "shock": [
+     "heads/kraftwork/shock_0",
+     "heads/kraftwork/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "block",
+    "dodge": "hurt",
+    "getup": "hurt",
+    "down": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch2": "punch",
+    "punch_heavy": "punch",
+    "upper": "punch",
+    "windup": "pose",
+    "attack": "punch",
+    "attack2": "punch",
+    "shoot": "punch",
+    "reach": "punch",
+    "finger": "pose",
+    "kick": "punch",
+    "fist": "punch",
+    "float": "idle"
+   },
+   "top": 42,
+   "bodyW": 4,
+   "kind": "stand",
+   "k": 1
+  },
+  "blacksabbath": {
+   "name": "黑色安息日",
+   "image": "chars/blacksabbath",
+   "cell": [
+    49,
+    47
+   ],
+   "pivot": [
+    21,
+    44
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "pose": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "block": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/blacksabbath/normal_0",
+     "heads/blacksabbath/normal_1"
+    ],
+    "smile": [
+     "heads/blacksabbath/smile_0",
+     "heads/blacksabbath/smile_1"
+    ],
+    "rage": [
+     "heads/blacksabbath/rage_0",
+     "heads/blacksabbath/rage_1"
+    ],
+    "shock": [
+     "heads/blacksabbath/shock_0",
+     "heads/blacksabbath/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "walk": "idle",
+    "run": "idle",
+    "talk": "idle",
+    "cmd": "pose",
+    "cmd2": "pose",
+    "cmd_hold": "pose",
+    "guard": "block",
+    "dodge": "hurt",
+    "getup": "hurt",
+    "down": "hurt",
+    "fly": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "shock": "hurt",
+    "punch2": "punch",
+    "punch_heavy": "punch",
+    "upper": "punch",
+    "rush": "punch",
+    "windup": "pose",
+    "attack": "punch",
+    "attack2": "punch",
+    "shoot": "punch",
+    "reach": "punch",
+    "finger": "pose",
+    "kick": "punch",
+    "fist": "punch",
+    "float": "idle"
+   },
+   "top": 43,
+   "bodyW": 4,
+   "kind": "stand",
+   "k": 1
+  },
+  "luca": {
+   "name": "泪眼卢卡",
+   "image": "chars/luca",
+   "cell": [
+    50,
+    37
+   ],
+   "pivot": [
+    17,
+    36
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "talk": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "cry": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "attack": {
+     "row": 4,
+     "frames": 3,
+     "fps": 9,
+     "kind": "oneshot"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/luca/normal_0",
+     "heads/luca/normal_1"
+    ],
+    "smile": [
+     "heads/luca/smile_0",
+     "heads/luca/smile_1"
+    ],
+    "rage": [
+     "heads/luca/rage_0",
+     "heads/luca/rage_1"
+    ],
+    "shock": [
+     "heads/luca/shock_0",
+     "heads/luca/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "run": "walk",
+    "cmd": "attack",
+    "cmd2": "attack",
+    "cmd_hold": "idle",
+    "guard": "idle",
+    "block": "idle",
+    "dodge": "walk",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "attack",
+    "win": "idle",
+    "pose": "idle",
+    "shock": "hurt",
+    "punch": "attack",
+    "punch2": "attack",
+    "punch_heavy": "attack",
+    "upper": "attack",
+    "rush": "attack",
+    "windup": "attack",
+    "attack2": "attack",
+    "shoot": "attack",
+    "reach": "attack",
+    "finger": "idle",
+    "kick": "attack",
+    "fist": "attack",
+    "float": "idle"
+   },
+   "top": 32,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "police": {
+   "name": "警官",
+   "image": "chars/police",
+   "cell": [
+    34,
+    34
+   ],
+   "pivot": [
+    17,
+    33
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "talk": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "cmd": {
+     "row": 3,
+     "frames": 2,
+     "fps": 5,
+     "kind": "loop"
+    },
+    "shock": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/police/normal_0",
+     "heads/police/normal_1"
+    ],
+    "smile": [
+     "heads/police/smile_0",
+     "heads/police/smile_1"
+    ],
+    "rage": [
+     "heads/police/rage_0",
+     "heads/police/rage_1"
+    ],
+    "shock": [
+     "heads/police/shock_0",
+     "heads/police/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "run": "walk",
+    "cmd2": "idle",
+    "cmd_hold": "idle",
+    "guard": "idle",
+    "block": "idle",
+    "dodge": "walk",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "idle",
+    "win": "idle",
+    "pose": "idle",
+    "punch": "idle",
+    "punch2": "idle",
+    "punch_heavy": "idle",
+    "upper": "idle",
+    "rush": "idle",
+    "windup": "idle",
+    "attack": "idle",
+    "attack2": "idle",
+    "shoot": "idle",
+    "reach": "idle",
+    "finger": "idle",
+    "kick": "idle",
+    "fist": "idle",
+    "float": "idle"
+   },
+   "top": 31,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "passer_m": {
+   "name": "路人",
+   "image": "chars/passer_m",
+   "cell": [
+    33,
+    33
+   ],
+   "pivot": [
+    16,
+    32
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "talk": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "shock": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/passer_m/normal_0",
+     "heads/passer_m/normal_1"
+    ],
+    "smile": [
+     "heads/passer_m/smile_0",
+     "heads/passer_m/smile_1"
+    ],
+    "rage": [
+     "heads/passer_m/rage_0",
+     "heads/passer_m/rage_1"
+    ],
+    "shock": [
+     "heads/passer_m/shock_0",
+     "heads/passer_m/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "run": "walk",
+    "cmd": "idle",
+    "cmd2": "idle",
+    "cmd_hold": "idle",
+    "guard": "idle",
+    "block": "idle",
+    "dodge": "walk",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "idle",
+    "win": "idle",
+    "pose": "idle",
+    "punch": "idle",
+    "punch2": "idle",
+    "punch_heavy": "idle",
+    "upper": "idle",
+    "rush": "idle",
+    "windup": "idle",
+    "attack": "idle",
+    "attack2": "idle",
+    "shoot": "idle",
+    "reach": "idle",
+    "finger": "idle",
+    "kick": "idle",
+    "fist": "idle",
+    "float": "idle"
+   },
+   "top": 30,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  },
+  "passer_f": {
+   "name": "路人",
+   "image": "chars/passer_f",
+   "cell": [
+    31,
+    31
+   ],
+   "pivot": [
+    15,
+    30
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "talk": {
+     "row": 2,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "shock": {
+     "row": 3,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/passer_f/normal_0",
+     "heads/passer_f/normal_1"
+    ],
+    "smile": [
+     "heads/passer_f/smile_0",
+     "heads/passer_f/smile_1"
+    ],
+    "rage": [
+     "heads/passer_f/rage_0",
+     "heads/passer_f/rage_1"
+    ],
+    "shock": [
+     "heads/passer_f/shock_0",
+     "heads/passer_f/shock_1"
+    ]
+   },
+   "headAlias": {
+    "angry": "rage",
+    "glare": "rage",
+    "surprise": "shock",
+    "hurt": "shock",
+    "happy": "smile",
+    "blush": "smile",
+    "cry": "shock",
+    "sad": "normal",
+    "serious": "normal",
+    "portrait": "normal",
+    "portrait_angry": "rage",
+    "grey": "normal",
+    "white": "normal"
+   },
+   "headSize": {},
+   "amap": {
+    "run": "walk",
+    "cmd": "idle",
+    "cmd2": "idle",
+    "cmd_hold": "idle",
+    "guard": "idle",
+    "block": "idle",
+    "dodge": "walk",
+    "getup": "hurt",
+    "fly": "hurt",
+    "special": "idle",
+    "win": "idle",
+    "pose": "idle",
+    "punch": "idle",
+    "punch2": "idle",
+    "punch_heavy": "idle",
+    "upper": "idle",
+    "rush": "idle",
+    "windup": "idle",
+    "attack": "idle",
+    "attack2": "idle",
+    "shoot": "idle",
+    "reach": "idle",
+    "finger": "idle",
+    "kick": "idle",
+    "fist": "idle",
+    "float": "idle"
+   },
+   "top": 28,
+   "bodyW": 4,
+   "kind": "char",
+   "k": 1
+  }
+ },
+ "heroes": {
+  "giorno": {
+   "cid": "giorno",
+   "cn": "乔鲁诺",
+   "short": "乔鲁诺",
+   "rn": "GIORNO",
+   "stand": "goldexp",
+   "burst": [
+    "#57336b",
+    "#a47b36",
+    "#edc862"
+   ],
+   "panel": "#24172d",
+   "accent": "#edc862",
+   "nameColor": "#ad8038",
+   "blipHz": 540,
+   "grunt": null
+  },
+  "bucciarati": {
+   "cid": "bucciarati",
+   "cn": "布加拉提",
+   "short": "布加拉提",
+   "rn": "BUCCIARATI",
+   "stand": "stickyfingers",
+   "burst": [
+    "#57336b",
+    "#a47b36",
+    "#edc862"
+   ],
+   "panel": "#24172d",
+   "accent": "#edc862",
+   "nameColor": "#ad8038",
+   "blipHz": 540,
+   "grunt": null
+  },
+  "abbacchio": {
+   "cid": "abbacchio",
+   "cn": "阿帕基",
+   "short": "阿帕基",
+   "rn": "ABBACCHIO",
+   "stand": "moodyblues",
+   "burst": [
+    "#57336b",
+    "#a47b36",
+    "#edc862"
+   ],
+   "panel": "#24172d",
+   "accent": "#edc862",
+   "nameColor": "#ad8038",
+   "blipHz": 540,
+   "grunt": null
+  },
+  "mista": {
+   "cid": "mista",
+   "cn": "米斯达",
+   "short": "米斯达",
+   "rn": "MISTA",
+   "stand": "sexpistols",
+   "burst": [
+    "#57336b",
+    "#a47b36",
+    "#edc862"
+   ],
+   "panel": "#24172d",
+   "accent": "#edc862",
+   "nameColor": "#ad8038",
+   "blipHz": 540,
+   "grunt": null
+  },
+  "narancia": {
+   "cid": "narancia",
+   "cn": "纳兰迦",
+   "short": "纳兰迦",
+   "rn": "NARANCIA",
+   "stand": "aerosmith",
+   "burst": [
+    "#57336b",
+    "#a47b36",
+    "#edc862"
+   ],
+   "panel": "#24172d",
+   "accent": "#edc862",
+   "nameColor": "#ad8038",
+   "blipHz": 540,
+   "grunt": null
+  },
+  "fugo": {
+   "cid": "fugo",
+   "cn": "福葛",
+   "short": "福葛",
+   "rn": "FUGO",
+   "stand": "purplehaze",
+   "burst": [
+    "#57336b",
+    "#a47b36",
+    "#edc862"
+   ],
+   "panel": "#24172d",
+   "accent": "#edc862",
+   "nameColor": "#ad8038",
+   "blipHz": 540,
+   "grunt": null
+  },
+  "trish": {
+   "cid": "trish",
+   "cn": "特莉休",
+   "short": "特莉休",
+   "rn": "TRISH",
+   "stand": "spicegirl",
+   "burst": [
+    "#57336b",
+    "#a47b36",
+    "#edc862"
+   ],
+   "panel": "#24172d",
+   "accent": "#edc862",
+   "nameColor": "#ad8038",
+   "blipHz": 540,
+   "grunt": null
+  }
+ },
+ "speakers": {
+  "giorno": {
+   "short": "乔鲁诺",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "bucciarati": {
+   "short": "布加拉提",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "abbacchio": {
+   "short": "阿帕基",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "mista": {
+   "short": "米斯达",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "narancia": {
+   "short": "纳兰迦",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "fugo": {
+   "short": "福葛",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "trish": {
+   "short": "特莉休",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "diavolo": {
+   "short": "迪亚波罗",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "doppio": {
+   "short": "多比欧",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "risotto": {
+   "short": "里苏特",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "formaggio": {
+   "short": "霍尔马吉欧",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "illuso": {
+   "short": "伊鲁佐",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "prosciutto": {
+   "short": "普罗修特",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "pesci": {
+   "short": "贝西",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "melone": {
+   "short": "梅洛尼",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "ghiaccio": {
+   "short": "加丘",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "squalo": {
+   "short": "史克亚罗",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "tiziano": {
+   "short": "提查诺",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "cioccolata": {
+   "short": "乔可拉特",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "secco": {
+   "short": "塞可",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "zucchero": {
+   "short": "祖凯罗",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "sale": {
+   "short": "萨雷",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "polpo": {
+   "short": "波尔波",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "goldexp": {
+   "short": "黄金体验",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "stickyfingers": {
+   "short": "钢链手指",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "moodyblues": {
+   "short": "忧郁蓝调",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "sexpistols": {
+   "short": "性感手枪",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "aerosmith": {
+   "short": "航空史密斯",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "purplehaze": {
+   "short": "紫烟",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "spicegirl": {
+   "short": "辣妹",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "requiem": {
+   "short": "黄金体验镇魂曲",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "kingcrimson": {
+   "short": "绯红之王",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "metallica": {
+   "short": "金属制品",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "littlefeet": {
+   "short": "小脚",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "mirrorman": {
+   "short": "镜中人",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "gratefuldead": {
+   "short": "壮烈成仁",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "beachboy": {
+   "short": "沙滩男孩",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "babyface": {
+   "short": "娃娃脸",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "whitealbum": {
+   "short": "白色相簿",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "clash": {
+   "short": "冲突",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "talkinghead": {
+   "short": "传话头",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "greenday": {
+   "short": "绿日",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "oasis": {
+   "short": "绿洲",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "softmachine": {
+   "short": "软机器",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "kraftwork": {
+   "short": "工艺品",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "blacksabbath": {
+   "short": "黑色安息日",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "luca": {
+   "short": "泪眼卢卡",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "police": {
+   "short": "警官",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "passer_m": {
+   "short": "路人",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  },
+  "passer_f": {
+   "short": "路人",
+   "nameColor": "#b89450",
+   "blipHz": 540
+  }
+ },
+ "stands": {
+  "goldexp": {
+   "cn": "黄金体验",
+   "en": "GOLDEXP",
+   "owner": "giorno",
+   "aura": "#edc862",
+   "card": "#ffe29c",
+   "ghost": "#fff3c8",
+   "impact": "gold",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "stickyfingers": {
+   "cn": "钢链手指",
+   "en": "STICKYFINGERS",
+   "owner": "bucciarati",
+   "aura": "#edc862",
+   "card": "#ffe29c",
+   "ghost": "#fff3c8",
+   "impact": "gold",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "moodyblues": {
+   "cn": "忧郁蓝调",
+   "en": "MOODYBLUES",
+   "owner": "abbacchio",
+   "aura": "#edc862",
+   "card": "#ffe29c",
+   "ghost": "#fff3c8",
+   "impact": "gold",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "sexpistols": {
+   "cn": "性感手枪",
+   "en": "SEXPISTOLS",
+   "owner": "mista",
+   "aura": "#edc862",
+   "card": "#ffe29c",
+   "ghost": "#fff3c8",
+   "impact": "gold",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "aerosmith": {
+   "cn": "航空史密斯",
+   "en": "AEROSMITH",
+   "owner": "narancia",
+   "aura": "#edc862",
+   "card": "#ffe29c",
+   "ghost": "#fff3c8",
+   "impact": "gold",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "purplehaze": {
+   "cn": "紫烟",
+   "en": "PURPLEHAZE",
+   "owner": "fugo",
+   "aura": "#edc862",
+   "card": "#ffe29c",
+   "ghost": "#fff3c8",
+   "impact": "gold",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "spicegirl": {
+   "cn": "辣妹",
+   "en": "SPICEGIRL",
+   "owner": "trish",
+   "aura": "#edc862",
+   "card": "#ffe29c",
+   "ghost": "#fff3c8",
+   "impact": "gold",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "requiem": {
+   "cn": "黄金体验镇魂曲",
+   "en": "REQUIEM",
+   "owner": "giorno",
+   "aura": "#edc862",
+   "card": "#ffe29c",
+   "ghost": "#fff3c8",
+   "impact": "gold",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "kingcrimson": {
+   "cn": "绯红之王",
+   "en": "KINGCRIMSON",
+   "owner": "diavolo",
+   "aura": "#edc862",
+   "card": "#ffe29c",
+   "ghost": "#fff3c8",
+   "impact": "gold",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "metallica": {
+   "cn": "金属制品",
+   "en": "METALLICA",
+   "owner": "risotto",
+   "aura": "#edc862",
+   "card": "#ffe29c",
+   "ghost": "#fff3c8",
+   "impact": "gold",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "littlefeet": {
+   "cn": "小脚",
+   "en": "LITTLEFEET",
+   "owner": "formaggio",
+   "aura": "#edc862",
+   "card": "#ffe29c",
+   "ghost": "#fff3c8",
+   "impact": "gold",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "mirrorman": {
+   "cn": "镜中人",
+   "en": "MIRRORMAN",
+   "owner": "illuso",
+   "aura": "#edc862",
+   "card": "#ffe29c",
+   "ghost": "#fff3c8",
+   "impact": "gold",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "gratefuldead": {
+   "cn": "壮烈成仁",
+   "en": "GRATEFULDEAD",
+   "owner": "prosciutto",
+   "aura": "#edc862",
+   "card": "#ffe29c",
+   "ghost": "#fff3c8",
+   "impact": "gold",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "beachboy": {
+   "cn": "沙滩男孩",
+   "en": "BEACHBOY",
+   "owner": "pesci",
+   "aura": "#edc862",
+   "card": "#ffe29c",
+   "ghost": "#fff3c8",
+   "impact": "gold",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "babyface": {
+   "cn": "娃娃脸",
+   "en": "BABYFACE",
+   "owner": "melone",
+   "aura": "#edc862",
+   "card": "#ffe29c",
+   "ghost": "#fff3c8",
+   "impact": "gold",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "whitealbum": {
+   "cn": "白色相簿",
+   "en": "WHITEALBUM",
+   "owner": "ghiaccio",
+   "aura": "#edc862",
+   "card": "#ffe29c",
+   "ghost": "#fff3c8",
+   "impact": "gold",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "clash": {
+   "cn": "冲突",
+   "en": "CLASH",
+   "owner": "squalo",
+   "aura": "#edc862",
+   "card": "#ffe29c",
+   "ghost": "#fff3c8",
+   "impact": "gold",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "talkinghead": {
+   "cn": "传话头",
+   "en": "TALKINGHEAD",
+   "owner": "tiziano",
+   "aura": "#edc862",
+   "card": "#ffe29c",
+   "ghost": "#fff3c8",
+   "impact": "gold",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "greenday": {
+   "cn": "绿日",
+   "en": "GREENDAY",
+   "owner": "cioccolata",
+   "aura": "#edc862",
+   "card": "#ffe29c",
+   "ghost": "#fff3c8",
+   "impact": "gold",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "oasis": {
+   "cn": "绿洲",
+   "en": "OASIS",
+   "owner": "secco",
+   "aura": "#edc862",
+   "card": "#ffe29c",
+   "ghost": "#fff3c8",
+   "impact": "gold",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "softmachine": {
+   "cn": "软机器",
+   "en": "SOFTMACHINE",
+   "owner": "zucchero",
+   "aura": "#edc862",
+   "card": "#ffe29c",
+   "ghost": "#fff3c8",
+   "impact": "gold",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "kraftwork": {
+   "cn": "工艺品",
+   "en": "KRAFTWORK",
+   "owner": "sale",
+   "aura": "#edc862",
+   "card": "#ffe29c",
+   "ghost": "#fff3c8",
+   "impact": "gold",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  },
+  "blacksabbath": {
+   "cn": "黑色安息日",
+   "en": "BLACKSABBATH",
+   "owner": "polpo",
+   "aura": "#edc862",
+   "card": "#ffe29c",
+   "ghost": "#fff3c8",
+   "impact": "gold",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 6
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  }
+ }
+}

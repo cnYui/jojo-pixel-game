@@ -1,0 +1,222 @@
+{
+ "namecards": {
+  "koichi": {
+   "image": "ui/namecard/koichi",
+   "w": 196,
+   "h": 47,
+   "x": 24,
+   "y": 265
+  },
+  "giorno": {
+   "image": "ui/namecard/giorno",
+   "w": 178,
+   "h": 48,
+   "x": 24,
+   "y": 265
+  },
+  "bucciarati": {
+   "image": "ui/namecard/bucciarati",
+   "w": 148,
+   "h": 49,
+   "x": 24,
+   "y": 265
+  }
+ },
+ "standcards": {
+  "echoes3": {
+   "image": "ui/standcard/echoes3",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "goldexp": {
+   "image": "ui/standcard/goldexp",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  },
+  "stickyfingers": {
+   "image": "ui/standcard/stickyfingers",
+   "w": 192,
+   "h": 63,
+   "side": "right",
+   "y": 40
+  }
+ },
+ "locations": {
+  "naples": {
+   "image": "ui/location/naples",
+   "w": 312,
+   "h": 51,
+   "x": 24,
+   "y": 25
+  },
+  "airport_hall": {
+   "image": "ui/location/airport_hall",
+   "w": 175,
+   "h": 50,
+   "x": 24,
+   "y": 25
+  },
+  "airport_out": {
+   "image": "ui/location/airport_out",
+   "w": 134,
+   "h": 50,
+   "x": 24,
+   "y": 25
+  },
+  "naples_street": {
+   "image": "ui/location/naples_street",
+   "w": 224,
+   "h": 51,
+   "x": 24,
+   "y": 25
+  },
+  "naples_cafe": {
+   "image": "ui/location/naples_cafe",
+   "w": 151,
+   "h": 51,
+   "x": 24,
+   "y": 25
+  },
+  "funicular_station": {
+   "image": "ui/location/funicular_station",
+   "w": 149,
+   "h": 50,
+   "x": 24,
+   "y": 25
+  },
+  "funicular_car": {
+   "image": "ui/location/funicular_car",
+   "w": 134,
+   "h": 50,
+   "x": 24,
+   "y": 25
+  },
+  "station_square": {
+   "image": "ui/location/station_square",
+   "w": 150,
+   "h": 51,
+   "x": 24,
+   "y": 25
+  },
+  "naples_harbor": {
+   "image": "ui/location/naples_harbor",
+   "w": 134,
+   "h": 50,
+   "x": 24,
+   "y": 25
+  }
+ },
+ "titles": {
+  "b_pro1_taxi": {
+   "image": "ui/title/b_pro1_taxi",
+   "w": 168,
+   "h": 34
+  }
+ },
+ "specials": {
+  "koichi": {
+   "image": "ui/special/koichi",
+   "w": 170,
+   "h": 34
+  },
+  "giorno": {
+   "image": "ui/special/giorno",
+   "w": 267,
+   "h": 37
+  }
+ },
+ "sfx": {
+  "3 FREEZE": {
+   "image": "ui/sfx/act3_0",
+   "w": 124,
+   "h": 26
+  },
+  "ACT3": {
+   "image": "ui/sfx/act3_1",
+   "w": 72,
+   "h": 26
+  },
+  "ACT3!": {
+   "image": "ui/sfx/act3_2",
+   "w": 82,
+   "h": 26
+  },
+  "MUDA": {
+   "image": "ui/sfx/muda_0",
+   "w": 82,
+   "h": 25
+  },
+  "MUDA!": {
+   "image": "ui/sfx/muda_1",
+   "w": 91,
+   "h": 26
+  }
+ },
+ "map": {
+  "pin": {
+   "image": "ui/map/pin",
+   "w": 11,
+   "h": 17,
+   "ax": 5,
+   "ay": 16
+  },
+  "stamp": {
+   "image": "ui/map/stamp",
+   "w": 117,
+   "h": 32
+  },
+  "place": {
+   "image": "ui/map/place",
+   "w": 93,
+   "h": 14
+  }
+ },
+ "vs": {
+  "b_ch1_1": {
+   "name": {
+    "image": "ui/vs/b_ch1_1_name",
+    "w": 168,
+    "h": 48
+   },
+   "en": {
+    "image": "ui/vs/b_ch1_1_en",
+    "w": 92,
+    "h": 12
+   },
+   "tag": {
+    "image": "ui/vs/b_ch1_1_tag",
+    "w": 231,
+    "h": 34
+   },
+   "colours": [
+    "#29385d",
+    "#16152e"
+   ]
+  },
+  "b_ch1_2": {
+   "name": {
+    "image": "ui/vs/b_ch1_2_name",
+    "w": 168,
+    "h": 48
+   },
+   "en": {
+    "image": "ui/vs/b_ch1_2_en",
+    "w": 92,
+    "h": 12
+   },
+   "tag": {
+    "image": "ui/vs/b_ch1_2_tag",
+    "w": 231,
+    "h": 34
+   },
+   "colours": [
+    "#29385d",
+    "#16152e"
+   ]
+  }
+ }
+}
