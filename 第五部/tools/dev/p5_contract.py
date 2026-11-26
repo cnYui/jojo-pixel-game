@@ -38,6 +38,8 @@ def main():
         meta = gd['bg'][key]
         assert meta['w'] == width and meta['walk'] == [142, 176] and meta['ground'] == 150
         assert meta['pack'] == pack
+        if key.startswith('p5_') and key != 'p5_title':
+            assert not meta['placeholder'], (key, '正篇背景不能用占位图')
         with Image.open(P5 / f'assets/bg/{key}/base.png') as image:
             assert image.size == (width, 180)
             assert len(image.convert('RGB').getcolors(maxcolors=65) or []) in range(1, 65)
@@ -70,6 +72,16 @@ def main():
             assert len({p[:3] for p in image.getdata() if p[3]}) <= 25, cid
             assert image.getbbox()[3] == size[1], (cid, '底边未对齐')
         checks.append(cid + ' 生图优先、像素规格和运行包一致')
+    for key in ('prologue', 'ch1', 'ch2', 'ch3', 'ch4', 'ch5', 'ch6', 'ch7', 'ch8', 'final'):
+        chapter = gd['ui']['chapters'][key]
+        assert chapter['image'] in images
+        assert gd['packs']['bg_' + key]['bg'], key
+        checks.append(key + ' 篇章卡及背景分包')
+    chariot = gd['props']['chariot_requiem']
+    with Image.open(P5 / 'assets/props/chariot_requiem.png') as image:
+        assert list(image.size) == chariot['size'] and image.getbbox()[3] == chariot['pivot'][1]
+        assert image.getchannel('A').getextrema() == (0, 255) and not chariot['placeholder']
+    checks.append('银色战车镇魂曲透明剪影与脚底锚点')
     result = dict(ok=True, checks=checks, images=len(images), chars=len(gd['chars']), backgrounds=len(gd['bg']))
     out = Path(__file__).resolve().parent / '_out'
     out.mkdir(exist_ok=True)

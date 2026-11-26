@@ -120,7 +120,7 @@ async function main() {
       if (s.errors.length || report.errors.length) throw new Error('游戏运行报错 ' + JSON.stringify(s.errors));
       if (await bot.act(s)) break;
       await bot.step(8);
-      if (Date.now() - t0 > (recording ? 1200000 : 360000)) throw new Error('试玩超时');
+      if (Date.now() - t0 > (recording ? 3600000 : 900000)) throw new Error('试玩超时');
     }
     await bot.keys(); const end = await page.evaluate(read);
     assert(bot.finished && end.scene === 'title', '应完成所选章节并回标题');
@@ -129,7 +129,7 @@ async function main() {
     if (chapter !== 'prologue') expected.push('p5_life_unneeded', 'p5_life_vine', 'p5_life_frog', 'p5_life_butterfly', 'p5_ch1_talk_passer_m', 'p5_ch1_talk_passer_f', 'p5_luca_cry', 'p5_luca_attack', 'p5_luca_reflect', 'p5_luca_down', 'p5_funicular_station', 'p5_bucciarati_cards', 'p5_zip_punch', 'p5_zip_dive', 'p5_zip_reappear', 'p5_ch1_1_win', 'p5_tracking_fly', 'p5_zip_hole', 'p5_zip_ankle', 'p5_sense_overload', 'p5_sense_recovered', 'p5_ch1_2_win', 'p5_harbor_alliance', 'p5_ch1_end');
     for (const mark of expected) assert(marks.has(mark), '缺关键节拍 ' + mark);
     if (!recording) {
-      for (const id of new Set(report.fights.map(f => f.id))) {
+      for (const id of new Set(report.fights.map(f => f.id).filter(id => !id.startsWith('b_p5_')))) {
         assert(bot.losses.has(id), id + '不操作应该输并重试');
         const retry = report.fights.find(f => f.id === id && f.attempt === 1);
         assert(retry && retry.hp === (id === 'b_pro1_taxi' ? 100 : 120), id + '重试满血');
@@ -147,6 +147,23 @@ async function main() {
       assert(report.marks.some(m => m.mark === 'p5_ch1_2_win' && m.bossHp === 0), '广场击败布加拉提');
       const start = report.marks.find(m => m.mark === 'p5_sense_overload'), stop = report.marks.find(m => m.mark === 'p5_sense_recovered');
       assert(stop.t - start.t >= 3 && stop.t - start.t < 4, '感觉失控持续三秒');
+    }
+    if (!chapter) {
+      const episodes = await page.evaluate(() => Object.entries(G.P5_EPISODES).map(([key, ep]) => ({
+        key, battles: ep.scenes.flatMap((scene, i) => scene.fight ? ['b_p5_' + key + '_' + (i + 1)] : []),
+      })));
+      assert.deepEqual(episodes.map(e => e.key), ['ch2','ch3','ch4','ch5','ch6','ch7','ch8','final']);
+      for (const ep of episodes) {
+        assert(marks.has('p5_' + ep.key + '_clear'), '没有打完 ' + ep.key);
+        for (const id of ep.battles) assert(marks.has(id + '_win'), '没打赢 ' + id);
+      }
+      assert(marks.has('p5_campaign_special'), '新章节必杀键未触发');
+      if (!recording) assert(bot.campaignRetry, '没有重试新增战斗');
+      assert.deepEqual(await page.evaluate(() => G.store.get('p5-progress', null)), { v: 1, max: 9, last: 9, clear: true });
+      await shot('returned_title');
+      await page.reload();
+      await page.waitForFunction(() => G.booted && G.scene?.name === 'title');
+      assert.deepEqual(await page.evaluate(() => ({ max: G.progress.max, clear: G.progress.clear })), { max: 9, clear: true });
     }
     assert.deepEqual(report.missing, {}, '缺图缺字或动作回退');
     assert(report.dialogs.every(d => d.pages === 1), '对话不应拆页');

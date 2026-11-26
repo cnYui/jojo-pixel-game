@@ -30,4 +30,14 @@ BACKGROUNDS = [
     ('square_ch1', 'station_square', 640, False, 'ch1'),
     ('harbor_ch1', 'naples_harbor', 640, False, 'ch1'),
     ('title', 'p5_title', 320, False, 'title'),
+    # 新章背景保留完整画面，按章延迟加载。
+    ('prison_ch2', 'p5_prison', 320, True, 'ch2'),
+    ('capri_ch3', 'p5_capri', 320, False, 'ch3'),
+    ('pompeii_ch4', 'p5_pompeii', 320, False, 'ch4'),
+    ('train_ch5', 'p5_train', 320, True, 'ch5'),
+    ('highway_ch6', 'p5_highway', 320, False, 'ch6'),
+    ('venice_ch7', 'p5_venice', 320, False, 'ch7'),
+    ('sardinia_ch8', 'p5_sardinia', 320, False, 'ch8'),
+    ('rome_fin', 'p5_rome', 320, False, 'final'),
+    ('colosseum_fin', 'p5_colosseum', 320, False, 'final'),
 ]

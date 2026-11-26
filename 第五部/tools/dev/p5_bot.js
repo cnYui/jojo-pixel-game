@@ -37,7 +37,7 @@ class P5Bot {
         await this.choose(s, '再来一次'); return false;
       }
       if (s.menuItems.includes('继续下一章')) {
-        if (this.options.chapter === 'prologue') await this.choose(s, '返回标题');
+        if (this.options.chapter === 'prologue' || (this.options.chapter === 'ch1' && s.stage === 'harbor_ch1')) await this.choose(s, '返回标题');
         else await this.choose(s, '继续下一章');
         return false;
       }
@@ -134,6 +134,36 @@ class P5Bot {
       if (Math.abs(dy) > 3) keys.push(dy > 0 ? 'ArrowDown' : 'ArrowUp');
       await this.keys(keys);
       if (Math.abs(dx) < 36 && Math.abs(dy) < 8 && q.hidden <= 0) {
+        if (s.facing !== (dx >= 0 ? 1 : -1)) await this.tap(dx >= 0 ? 'ArrowRight' : 'ArrowLeft');
+        await this.tap('j');
+      }
+      return false;
+    }
+    if (s.stage?.startsWith('p5_s') && s.free && !s.busy) {
+      // 调查后走剧情；仅用于没有调查点的自由路段时继续向右。
+      if (s.px < 127) await this.keys(['ArrowRight']);
+      else if (s.px < 148) { await this.keys(); await this.tap('e'); }
+      else await this.keys(['ArrowRight']);
+      return false;
+    }
+    if (s.combat && !s.cine && /^b_p5_/.test(s.fightId)) {
+      const q = s.fightHint;
+      if (q?.bossHp == null || q.bossHp <= 0) return false;
+      // 在一场新增战斗故意失败，验证新机制走同一个重试合同。
+      if (!this.options.record && !this.campaignRetry && s.fightId.startsWith('b_p5_ch2_')) {
+        if (!this.losses.has(s.fightId)) { await this.keys(); return false; }
+        this.campaignRetry = true;
+      }
+      const dx = q.bossX - s.px, dy = q.bossY - s.py;
+      const warning = q.hazards.some(h => h.phase === 'warn' && h.left < .25 &&
+        s.px >= h.x0 - 2 && s.px <= h.x1 + 2 && s.py >= h.y0 - 2 && s.py <= h.y1 + 2);
+      if (warning) { await this.keys([s.py < 159 ? 'ArrowDown' : 'ArrowUp']); await this.tap('k'); return false; }
+      if (s.energy >= 100 && (q.attacks || this.options.record)) { await this.keys(); await this.tap('u'); return false; }
+      const keys = [];
+      if (Math.abs(dx) > 24) keys.push(dx >= 0 ? 'ArrowRight' : 'ArrowLeft');
+      if (Math.abs(dy) > 3) keys.push(dy >= 0 ? 'ArrowDown' : 'ArrowUp');
+      await this.keys(keys);
+      if (Math.abs(dx) < 39 && Math.abs(dy) < 8) {
         if (s.facing !== (dx >= 0 ? 1 : -1)) await this.tap(dx >= 0 ? 'ArrowRight' : 'ArrowLeft');
         await this.tap('j');
       }

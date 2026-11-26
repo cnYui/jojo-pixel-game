@@ -3,7 +3,7 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const { pathToFileURL } = require('node:url');
+const http = require('node:http');
 process.env.NODE_PATH ||= 'D:/CodeWorkSpace/honglou-juan2/node_modules';
 require('node:module').Module._initPaths();
 const { chromium } = require('playwright');
@@ -12,26 +12,43 @@ const out = path.join(__dirname, '_out/regression');
 const checks = [], errors = [];
 function check(name, ok, detail) { checks.push({ name, ok: !!ok, detail }); }
 
+const route = file => '/' + path.relative(root, file).split(path.sep).map(encodeURIComponent).join('/');
 function fixture(name) {
   const source = path.join(root, 'tools/dev/p5');
   const html = fs.readFileSync(path.join(source, name + '.html'), 'utf8').replace(/src="([^"]+)"/g, (_, relative) => {
     const target = relative.startsWith('../../../engine/')
       ? path.join(root, '第五部/游戏/engine', path.basename(relative)) : path.resolve(source, relative);
-    return `src="${pathToFileURL(target).href}"`;
+    return `src="${route(target)}"`;
   });
   const target = path.join(out, name + '.html');
   fs.writeFileSync(target, html);
-  return pathToFileURL(target).href;
+  return route(target);
 }
 
 async function main() {
   fs.mkdirSync(out, { recursive: true });
-  const browser = await chromium.launch({ headless: true });
+  // file: 在受管理 Chromium 中可能禁用；同源静态 HTTP 保留原夹具和断言。
+  const server = http.createServer((req, res) => {
+    const name = decodeURIComponent(new URL(req.url, 'http://127.0.0.1').pathname);
+    if (name === '/favicon.ico') { res.writeHead(204).end(); return; }
+    const file = path.resolve(root, '.' + name);
+    if (!file.startsWith(root + path.sep) || !/\.(js|html)$/.test(file)) { res.writeHead(404).end(); return; }
+    const open = fs.createReadStream(file);
+    open.once('error', () => res.writeHead(404).end());
+    open.once('open', () => {
+      res.setHeader('Content-Type', file.endsWith('.js') ? 'text/javascript; charset=utf-8' : 'text/html; charset=utf-8');
+      open.pipe(res);
+    });
+  });
+  await new Promise((resolve, reject) => server.once('error', reject).listen(0, '127.0.0.1', resolve));
+  const base = 'http://127.0.0.1:' + server.address().port;
+  let browser;
   try {
+    browser = await chromium.launch({ headless: true });
     const page = await browser.newPage({ viewport: { width: 640, height: 360 } });
     page.on('pageerror', error => errors.push(error.message));
     page.on('console', msg => { if (['warning', 'error'].includes(msg.type())) errors.push(msg.text()); });
-    const url = fixture('arena');
+    const url = base + fixture('arena');
     await page.goto(url);
     await page.evaluate(() => P5.init());
     for (const method of ['aiRange', 'combos', 'dodge', 'guards', 'poise', 'wall', 'special', 'shots', 'timestop', 'cancellation', 'retry', 'finish', 'rushLoop']) {
@@ -62,7 +79,7 @@ async function main() {
       }
     }
     check('战斗循环无异常', !(await page.evaluate(() => P5.diagnostics())).events.length);
-    await page.goto(fixture('specials'));
+    await page.goto(base + fixture('specials'));
     await page.evaluate(() => Specials.init());
     const matrix = await page.evaluate(() => Specials.matrix());
     const extras = await page.evaluate(() => Specials.extras());
@@ -83,6 +100,6 @@ async function main() {
     for (const failure of checks.filter(v => !v.ok)) console.error(failure.name, failure.detail);
     assert(checks.every(v => v.ok), '公共战斗/大招回归失败');
     console.log(`PASS：${checks.length}项公共战斗与六人大招回归（第五部复制引擎，无第五部剧情战斗）。`);
-  } finally { await browser.close(); }
+  } finally { if (browser) await browser.close(); server.close(); }
 }
 main().catch(error => { console.error(error); process.exitCode = 1; });

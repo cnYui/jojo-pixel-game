@@ -48,7 +48,7 @@ async function main() {
     await page.goto(url, { waitUntil: 'load' });
     await page.waitForFunction(() => window.G?.booted && G.scene?.name === 'title' && G.ui.menu?.t > .4);
     assert.equal(await page.title(), 'JoJo的奇妙冒险 黄金之风 · 像素游戏');
-    assert.deepEqual(await page.evaluate(() => G.CHAPTERS.filter(c => c.run).map(c => c.key)), ['prologue', 'ch1']);
+    assert.deepEqual(await page.evaluate(() => G.CHAPTERS.filter(c => c.run).map(c => c.key)), ['prologue', 'ch1', 'ch2', 'ch3', 'ch4', 'ch5', 'ch6', 'ch7', 'ch8', 'final']);
     await page.screenshot({ path: path.join(out, '01-title.png') });
     await press('Enter');
     await page.waitForFunction(() => window.G?.S.cardOn === true);

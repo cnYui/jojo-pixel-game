@@ -1,4 +1,4 @@
-// 第五部入口沿用现成引擎；只登记已实现的章节，防止制作中的章节被继续存档误选。
+// 第五部入口沿用现成引擎；序章和第1章仍可直接试玩，后续按通关记录解锁。
 'use strict';
 (function () {
   const G = window.G;
@@ -106,12 +106,15 @@
     const pages = Math.ceil(G.CHAPTERS.length / 5);
     for (;;) {
       const start = page * 5, cs = G.CHAPTERS.slice(start, start + 5);
-      const opts = cs.map(c => c.title + (c.run ? '' : '（制作中）'));
+      const allowed = Math.max(1, G.progress.max);
+      const disabled = cs.map((c, i) => !c.run || start + i > allowed ? i : -1).filter(i => i >= 0);
+      const opts = cs.map((c, i) => c.title + (!c.run ? '（制作中）' : disabled.includes(i) ? '（未解锁）' : ''));
       const prev = opts.length; opts.push('上一页'); const next = opts.length; opts.push('下一页'); const back = opts.length; opts.push('返回');
-      const i = await G.ui.openMenu('选择章节　' + (page + 1) + ' / ' + pages, opts, { escIndex: back, disabled: cs.map((c, i) => c.run ? -1 : i).filter(i => i >= 0) });
+      const i = await G.ui.openMenu('选择章节　' + (page + 1) + ' / ' + pages, opts, { escIndex: back, disabled });
       if (i === back) return null;
       if (i === prev) { page = (page + pages - 1) % pages; continue; }
       if (i === next) { page = (page + 1) % pages; continue; }
+      if (disabled.includes(i) && cs[i].run) continue;
       if (!cs[i].run) { await G.ui.notice({ title: cs[i].title, text: '这一章还在制作中。' }); continue; }
       return start + i;
     }

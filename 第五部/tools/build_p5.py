@@ -70,7 +70,10 @@ def ui_images(font_meta):
     target.parent.mkdir(parents=True, exist_ok=True)
     logo.save(target)
     ui['logo']['main'] = dict(image='ui/logo_main')
-    for key, title, sub in [('prologue', '序章　那不勒斯', '黄金之风'), ('ch1', '第1章　街头干部', '布加拉提登场')]:
+    # 主入口的章节顺序也用于篇章卡，新增章节不得出现空卡。
+    main = (GAME / 'main.js').read_text(encoding='utf-8')
+    chapters = json.loads(main.split('const names = ', 1)[1].split(';', 1)[0].strip())
+    for key, title, sub in chapters:
         card = Image.new('RGBA', (640, 360), '#20142b')
         for text, scale, y in [(title, 2, 138), (sub, 1, 196)]:
             image = line(text, scale)
@@ -86,6 +89,7 @@ def ui_images(font_meta):
 def main():
     parser = argparse.ArgumentParser(description='第五部公共素材、字库和背景分包构建，默认无用户音频。')
     parser.add_argument('--no-font', action='store_true', help='复用第五部已生成字库')
+    parser.add_argument('--rebuild-art', action='store_true', help='重新导出已有道具及序章/第1章装饰卡；默认使用已检入图与元数据')
     args = parser.parse_args()
     if not args.no_font:
         import p5_font
@@ -104,13 +108,15 @@ def main():
     cm = parts('chars', load_json(META / 'chars.json', {}))
     pm = parts('props', load_json(META / 'props.json', {}))
     # 最后覆盖生图条目，避免旧的分章元数据或再次构建把它们换回代码版。
-    from props_p5 import build as build_props
-    pm.setdefault('props', {}).update(build_props())
-    save_json(META / 'props.json', pm)
+    if args.rebuild_art:
+        from props_p5 import build as build_props
+        pm.setdefault('props', {}).update(build_props())
+        save_json(META / 'props.json', pm)
     bg = parts('bg', load_json(META / 'bg.json', {}))
     ui_images(font)
-    import p5_ui
-    p5_ui.build()
+    if args.rebuild_art:
+        import p5_ui
+        p5_ui.build()
     uim = parts('ui', load_json(META / 'ui.json', {}))
     if not cm.get('chars') or len(bg) < 10:
         raise RuntimeError('缺少第五部素材，请先运行export_p5.py和bg_p5.py')

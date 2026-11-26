@@ -1,0 +1,14 @@
+{
+ "props": {
+  "chariot_requiem": {
+   "image": "props/chariot_requiem",
+   "frames": 1,
+   "size": [30, 48],
+   "pivot": [15, 48],
+   "fps": 1,
+   "kind": "static",
+   "k": 1,
+   "placeholder": false
+  }
+ }
+}
