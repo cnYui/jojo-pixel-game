@@ -24,21 +24,33 @@ fs.mkdirSync(OUT, { recursive: true });
   page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
   await page.goto(url + 'index.html?autotest=1');
   await page.waitForFunction(() => window.G && G.booted && G.ui.menu, null, { timeout: 60000 });
+  if (keys.includes('title_morioh')) {
+    await page.waitForFunction(() => G.ui.menu && G.ui.menu.t >= 0.6 && !G.fadeA);
+    await page.screenshot({ path: path.join(OUT, 'title_morioh_menu.png') });
+  }
   // 借第 N 章的位置跑一个只摆背景的“章节”：playFrom 会先加载 bg_common 和 bg_<章节>
   const list = await page.evaluate(async ({ CH, keys }) => {
     const idx = G.CHAPTERS.findIndex((c) => c.key === CH);
     const bg = G.D.bg;
     const want = keys.length ? keys : Object.keys(bg).filter((k) => bg[k].pack === CH);
+    if (idx < 0 || want.some(k => !bg[k])) throw new Error('章节或背景不存在');
     window.__S = null;
     G.CHAPTERS[idx].run = (S) => { window.__S = S; return new Promise(() => {}); };
     G.playFrom(idx);
     const t0 = Date.now();
     while (!window.__S && Date.now() - t0 < 20000) await new Promise((r) => setTimeout(r, 50));
+    if (!window.__S) throw new Error('等待背景验收场景超时');
+    const layers = (s) => (s.layers || []).concat(s.fg || []).flatMap(L => [L, ...layers(L)]);
     return want.map((k) => ({ key: k, w: bg[k].w, anchors: bg[k].anchors || {},
-      toggles: (bg[k].layers || []).concat(bg[k].fg || []).filter((L) => L.key).map((L) => L.key) }));
+      // pick 有多个移除阶段，不能只把 key 设成 1；逐个截取实际取值。
+      toggles: layers(bg[k]).filter(L => L.key).flatMap(L => L.type === 'pick'
+        ? (L.images || []).map((_, i, a) => ({ key: L.key,
+            value: L.values && L.values.length === a.length ? L.values[i] : i / Math.max(1, a.length - 1),
+            label: L.key + '_' + i }))
+        : [{ key: L.key, value: 1, label: L.key }]) }));
   }, { CH, keys });
   for (const it of list) {
-    const toggles = [...new Set(it.toggles)];
+    const toggles = [...new Map(it.toggles.map(t => [t.label, t])).values()];
     await page.evaluate(async (it) => {
       const S = window.__S, ST = G.STAGES, id = 'bgview_' + it.key;
       ST[id] = Object.assign({}, ST.road_pro, { id, bg: it.key, x0: 0, x1: it.w, camX: 0, obstacles: [], state: {}, music: null,
@@ -51,14 +63,14 @@ fs.mkdirSync(OUT, { recursive: true });
       if (ko) ko.visible = true;
       G.world.stage.state = {};
     }, it);
-    const cams = it.w <= 320 ? [0] : [0, Math.round((it.w - 320) / 2), it.w - 320];
+    const cams = [...new Set(it.w <= 320 ? [0] : [0, Math.round((it.w - 320) / 2), it.w - 320])];
     for (const cx of cams) {
       for (const tg of [null, ...toggles]) {
         await page.evaluate(({ cx, tg }) => {
           const st = G.world.stage;
           st.camTarget = cx;
           st.state = {};
-          if (tg) st.state[tg] = 1;
+          if (tg) st.state[tg.key] = tg.value;
           const p = G.world.player;
           if (p) { p.x = cx + 60; p.y = 160; }
           const ko = st.actors.find((a) => a.id === 'koichi_v');
@@ -66,7 +78,7 @@ fs.mkdirSync(OUT, { recursive: true });
           G.world.snapCamera();
         }, { cx, tg });
         await page.waitForTimeout(350);
-        const name = `${it.key}_${cx}${tg ? '_' + tg : ''}.png`;
+        const name = `${it.key}_${cx}${tg ? '_' + tg.label : ''}.png`;
         await page.screenshot({ path: path.join(OUT, name) });
         console.log('截图', name);
       }
@@ -75,4 +87,6 @@ fs.mkdirSync(OUT, { recursive: true });
   console.log(errors.length ? '报错：\n' + errors.join('\n') : '无报错');
   await browser.close();
   srv.close();
+  // 截图落盘不代表验收成功，页面错误必须让命令失败。
+  if (errors.length) process.exitCode = 1;
 })().catch((e) => { console.error(e); process.exit(1); });

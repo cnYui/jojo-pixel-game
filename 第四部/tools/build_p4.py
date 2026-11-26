@@ -32,12 +32,14 @@ HEAD_ALIAS = {'angry': 'rage', 'glare': 'rage', 'surprise': 'shock', 'hurt': 'sh
 
 
 def read_gd(path):
-    s = open(path, encoding='utf-8').read()
+    with open(path, encoding='utf-8') as fh:
+        s = fh.read()
     return json.loads(s[s.index('=') + 1:s.rindex(';')])
 
 
 def read_pack(path):
-    s = open(path, encoding='utf-8').read()
+    with open(path, encoding='utf-8') as fh:
+        s = fh.read()
     a = s.index('Object.assign(D.img,') + len('Object.assign(D.img,')
     b = s.index(');D.packKeys')
     return json.loads(s[a:b])
@@ -57,6 +59,22 @@ def deep_merge(a, b):
     return out
 
 
+def background_layers(spec):
+    for layer in spec.get('layers', []) + spec.get('fg', []):
+        yield layer
+        yield from background_layers(layer)
+
+
+def generated_background(spec, baked_clouds=False):
+    # 只改运行时副本，原元数据保留，撤回生图时自动恢复程序云。
+    result = dict(spec)
+    for section in ('layers', 'fg'):
+        if section in spec:
+            result[section] = [generated_background(layer, baked_clouds) for layer in spec[section]
+                               if not (baked_clouds and layer.get('type') == 'clouds')]
+    return result
+
+
 def main():
     if '--no-font' not in sys.argv:
         import p4_font
@@ -69,6 +87,9 @@ def main():
     bgm = meta('bg', {})
     for fp in sorted(glob.glob(os.path.join(L.META, 'bg_*.json'))):
         bgm.update(L.load_json(fp, {}) or {})
+    report = L.load_json(os.path.join(L.ASSETS, 'bg_gpt', '_report.json'), {}) or {}
+    baked_clouds = set(report.get('baked_clouds', [])) & set(report.get('enabled', []))
+    bgm = {key: generated_background(spec, key in baked_clouds) for key, spec in bgm.items()}
     uim = meta('ui', {})
     font = meta('font', {})
     # 各章自己的元数据（第四部/docs/分章开发约定.md）：chars_chN.json / props_chN.json / ui_chN.json 深合并进来。
@@ -89,7 +110,7 @@ def main():
     # 2) 第四部的图（同名时第四部覆盖）
     for fp in sorted(glob.glob(os.path.join(L.ASSETS, '**', '*.png'), recursive=True)):
         rel = os.path.relpath(fp, L.ASSETS).replace(os.sep, '/')
-        if rel.startswith('_') or '/_' in rel or rel.startswith('preview/') or rel.startswith('chars_full/'):
+        if rel.startswith('_') or '/_' in rel or rel.startswith(('preview/', 'chars_full/', 'bg_gpt/')):
             continue
         key = rel[:-4]
         pack = 'core'
@@ -99,7 +120,10 @@ def main():
         elif key.startswith('ui/chapter/'):
             # 篇章卡（640×360，一张二十来 KB）跟着那一章的背景包走：开章时 playFrom 先载 bg_<章>，开机不用把 13 张都载上
             pack = 'bg_' + key.split('/')[2]
-        with open(fp, 'rb') as fh:
+        # 流水线只输出清单内的图层，整屏开关变体也必须沿用对应替换图。
+        replacement = os.path.join(L.ASSETS, 'bg_gpt', *rel.split('/'))
+        source = replacement if key.startswith('bg/') and os.path.isfile(replacement) else fp
+        with open(source, 'rb') as fh:
             gd['img'][key] = 'data:image/png;base64,' + base64.b64encode(fh.read()).decode('ascii')
         for g in groups.values():
             if key in g:

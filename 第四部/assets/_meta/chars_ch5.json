@@ -132,12 +132,12 @@
    "name": "天堂之门",
    "image": "chars/heavensdoor",
    "cell": [
-    26,
-    30
+    31,
+    31
    ],
    "pivot": [
-    12,
-    28
+    13,
+    29
    ],
    "animations": {
     "idle": {
@@ -208,7 +208,7 @@
     "finger": "punch",
     "write": "write"
    },
-   "top": 23,
+   "top": 26,
    "bodyW": 4,
    "kind": "stand"
   },
