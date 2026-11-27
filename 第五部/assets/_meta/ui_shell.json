@@ -1,0 +1,59 @@
+{
+ "chapters": {
+  "prologue": {
+   "image": "ui/chapter/prologue",
+   "w": 640,
+   "h": 360
+  },
+  "ch1": {
+   "image": "ui/chapter/ch1",
+   "w": 640,
+   "h": 360
+  },
+  "ch2": {
+   "image": "ui/chapter/ch2",
+   "w": 640,
+   "h": 360
+  },
+  "ch3": {
+   "image": "ui/chapter/ch3",
+   "w": 640,
+   "h": 360
+  },
+  "ch4": {
+   "image": "ui/chapter/ch4",
+   "w": 640,
+   "h": 360
+  },
+  "ch5": {
+   "image": "ui/chapter/ch5",
+   "w": 640,
+   "h": 360
+  },
+  "ch6": {
+   "image": "ui/chapter/ch6",
+   "w": 640,
+   "h": 360
+  },
+  "ch7": {
+   "image": "ui/chapter/ch7",
+   "w": 640,
+   "h": 360
+  },
+  "ch8": {
+   "image": "ui/chapter/ch8",
+   "w": 640,
+   "h": 360
+  },
+  "final": {
+   "image": "ui/chapter/final",
+   "w": 640,
+   "h": 360
+  }
+ },
+ "logo": {
+  "main": {
+   "image": "ui/logo_main"
+  }
+ }
+}

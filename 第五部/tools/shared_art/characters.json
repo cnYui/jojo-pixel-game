@@ -1,0 +1,375 @@
+{
+ "chars": {
+  "koichi": {
+   "name": "广濑康一",
+   "image": "chars/koichi",
+   "cell": [
+    30,
+    30
+   ],
+   "pivot": [
+    15,
+    29
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "bow": {
+     "row": 2,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "cmd": {
+     "row": 3,
+     "frames": 2,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "down": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "dodge": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "guard": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/koichi/normal_0",
+     "heads/koichi/normal_1"
+    ],
+    "smile": [
+     "heads/koichi/smile_0",
+     "heads/koichi/smile_1"
+    ],
+    "shock": [
+     "heads/koichi/shock_0",
+     "heads/koichi/shock_1"
+    ],
+    "rage": [
+     "heads/koichi/rage_0",
+     "heads/koichi/rage_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "talk": "idle",
+    "shock": "hurt",
+    "hurt": "hurt",
+    "run": "walk",
+    "down": "down",
+    "getup": "hurt",
+    "dodge": "dodge",
+    "guard": "guard",
+    "block": "guard",
+    "cmd": "cmd",
+    "cmd2": "cmd",
+    "cmd_hold": "cmd",
+    "special": "cmd",
+    "win": "cmd",
+    "shoot": "cmd"
+   },
+   "top": 27,
+   "bodyW": 3,
+   "kind": "char"
+  },
+  "jotaro4": {
+   "name": "空条承太郎",
+   "image": "chars/jotaro4",
+   "cell": [
+    37,
+    37
+   ],
+   "pivot": [
+    18,
+    36
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 2,
+     "fps": 2,
+     "kind": "loop"
+    },
+    "walk": {
+     "row": 1,
+     "frames": 4,
+     "fps": 8,
+     "kind": "loop"
+    },
+    "run": {
+     "row": 2,
+     "frames": 4,
+     "fps": 10,
+     "kind": "loop"
+    },
+    "point": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 4,
+     "frames": 2,
+     "fps": 3,
+     "kind": "oneshot"
+    },
+    "shock": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "hurt": {
+     "row": 6,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "dodge": {
+     "row": 7,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "guard": {
+     "row": 8,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "kick": {
+     "row": 9,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    },
+    "down": {
+     "row": 10,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/jotaro4/normal_0",
+     "heads/jotaro4/normal_1"
+    ],
+    "rage": [
+     "heads/jotaro4/rage_0",
+     "heads/jotaro4/rage_1"
+    ],
+    "smile": [
+     "heads/jotaro4/smile_0",
+     "heads/jotaro4/smile_1"
+    ],
+    "shock": [
+     "heads/jotaro4/shock_0",
+     "heads/jotaro4/shock_1"
+    ]
+   },
+   "headAlias": {},
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "cmd": "point",
+    "cmd2": "point",
+    "cmd_hold": "point",
+    "guard": "guard",
+    "dodge": "dodge",
+    "down": "down",
+    "hurt": "hurt",
+    "special": "pose",
+    "win": "pose",
+    "talk": "idle",
+    "getup": "hurt",
+    "kick": "kick",
+    "run": "run"
+   },
+   "top": 34,
+   "bodyW": 4,
+   "kind": "char"
+  },
+  "echoes3": {
+   "name": "回音 ACT3",
+   "image": "chars/echoes3",
+   "cell": [
+    49,
+    40
+   ],
+   "pivot": [
+    17,
+    37
+   ],
+   "animations": {
+    "idle": {
+     "row": 0,
+     "frames": 4,
+     "fps": 6,
+     "kind": "loop"
+    },
+    "punch": {
+     "row": 1,
+     "frames": 3,
+     "fps": 12,
+     "kind": "oneshot"
+    },
+    "rush": {
+     "row": 2,
+     "frames": 2,
+     "fps": 16,
+     "kind": "loop"
+    },
+    "pose": {
+     "row": 3,
+     "frames": 2,
+     "fps": 4,
+     "kind": "loop"
+    },
+    "hurt": {
+     "row": 4,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "fist": {
+     "row": 5,
+     "frames": 1,
+     "fps": 1,
+     "kind": "static"
+    },
+    "kick": {
+     "row": 6,
+     "frames": 2,
+     "fps": 8,
+     "kind": "oneshot"
+    }
+   },
+   "aliases": {},
+   "heads": {
+    "normal": [
+     "heads/echoes3/normal_0",
+     "heads/echoes3/normal_1"
+    ]
+   },
+   "headAlias": {
+    "smile": "normal",
+    "rage": "normal",
+    "shock": "normal"
+   },
+   "headSize": {},
+   "k": 0.625,
+   "amap": {
+    "punch": "punch",
+    "punch2": "punch",
+    "punch_heavy": "kick",
+    "upper": "kick",
+    "rush": "rush",
+    "block": "pose",
+    "hurt": "hurt",
+    "special": "fist",
+    "reach": "punch",
+    "finger": "pose"
+   },
+   "top": 27,
+   "bodyW": 4,
+   "kind": "stand"
+  }
+ },
+ "heroes": {
+  "koichi": {
+   "cid": "koichi",
+   "cn": "广濑康一",
+   "short": "康一",
+   "rn": "HIROSE KOICHI",
+   "stand": "echoes1",
+   "burst": [
+    "#2a5a1a",
+    "#4a8a2a",
+    "#9be070"
+   ],
+   "panel": "#0e200a",
+   "accent": "#9be070",
+   "nameColor": "#5a9a3a",
+   "blipHz": 660,
+   "grunt": null
+  },
+  "jotaro4": {
+   "cid": "jotaro4",
+   "cn": "空条承太郎",
+   "short": "承太郎",
+   "rn": "KUJO JOTARO",
+   "stand": "starplat",
+   "burst": [
+    "#241c6a",
+    "#3e32a8",
+    "#5a4ad0"
+   ],
+   "panel": "#0e0a2c",
+   "accent": "#ffe040",
+   "nameColor": "#5a6ab0",
+   "blipHz": 440,
+   "grunt": "grunt_jotaro"
+  }
+ },
+ "speakers": {
+  "echoes3": {
+   "short": "ACT3",
+   "nameColor": "#1ec080",
+   "blipHz": 600
+  }
+ },
+ "stands": {
+  "echoes3": {
+   "cn": "回音 ACT3",
+   "en": "ECHOES ACT3",
+   "owner": "koichi",
+   "aura": "#7af0b8",
+   "card": "#a0f0c8",
+   "ghost": "#d0fff0",
+   "impact": "green",
+   "kind": "humanoid",
+   "idle": {
+    "dx": -8,
+    "z": 2
+   },
+   "link": null,
+   "summonSfx": "stand_summon_star",
+   "fist": true
+  }
+ }
+}
