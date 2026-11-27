@@ -1,0 +1,808 @@
+{
+ "naples_map": {
+  "pack": "prologue",
+  "w": 320,
+  "h": 180,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "entrance": [
+    24,
+    160
+   ],
+   "exit": [
+    296,
+    160
+   ],
+   "spawn": [
+    80,
+    160
+   ],
+   "exit_x": 296,
+   "walk_x": [
+    8,
+    312
+   ],
+   "ground_y": 150
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/naples_map/base",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": [],
+  "placeholder": false,
+  "cropY": -10
+ },
+ "airport_hall": {
+  "pack": "prologue",
+  "w": 480,
+  "h": 180,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "entrance": [
+    24,
+    160
+   ],
+   "exit": [
+    456,
+    160
+   ],
+   "spawn": [
+    80,
+    160
+   ],
+   "exit_x": 456,
+   "walk_x": [
+    8,
+    472
+   ],
+   "ground_y": 150,
+   "wall_y": 138,
+   "ceiling_y": 66
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/airport_hall/base",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": [],
+  "placeholder": false,
+  "cropY": 184
+ },
+ "airport_out": {
+  "pack": "prologue",
+  "w": 640,
+  "h": 180,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "entrance": [
+    24,
+    160
+   ],
+   "exit": [
+    616,
+    160
+   ],
+   "spawn": [
+    80,
+    160
+   ],
+   "exit_x": 616,
+   "walk_x": [
+    8,
+    632
+   ],
+   "ground_y": 150
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/airport_out/base",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": [],
+  "placeholder": false,
+  "cropY": 128
+ },
+ "naples_street": {
+  "pack": "ch1",
+  "w": 480,
+  "h": 180,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "entrance": [
+    24,
+    160
+   ],
+   "exit": [
+    456,
+    160
+   ],
+   "spawn": [
+    80,
+    160
+   ],
+   "exit_x": 456,
+   "walk_x": [
+    8,
+    472
+   ],
+   "ground_y": 150
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/naples_street/base",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": [],
+  "placeholder": false,
+  "cropY": 142
+ },
+ "naples_cafe": {
+  "pack": "ch1",
+  "w": 480,
+  "h": 180,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "entrance": [
+    24,
+    160
+   ],
+   "exit": [
+    456,
+    160
+   ],
+   "spawn": [
+    80,
+    160
+   ],
+   "exit_x": 456,
+   "walk_x": [
+    8,
+    472
+   ],
+   "ground_y": 150
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/naples_cafe/base",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": [],
+  "placeholder": false,
+  "cropY": 114
+ },
+ "funicular_station": {
+  "pack": "ch1",
+  "w": 480,
+  "h": 180,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "entrance": [
+    24,
+    160
+   ],
+   "exit": [
+    456,
+    160
+   ],
+   "spawn": [
+    80,
+    160
+   ],
+   "exit_x": 456,
+   "walk_x": [
+    8,
+    472
+   ],
+   "ground_y": 150
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/funicular_station/base",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": [],
+  "placeholder": false,
+  "cropY": 110
+ },
+ "funicular_car": {
+  "pack": "ch1",
+  "w": 320,
+  "h": 180,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "entrance": [
+    24,
+    160
+   ],
+   "exit": [
+    296,
+    160
+   ],
+   "spawn": [
+    80,
+    160
+   ],
+   "exit_x": 296,
+   "walk_x": [
+    8,
+    312
+   ],
+   "ground_y": 150,
+   "wall_y": 138,
+   "ceiling_y": 66
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/funicular_car/base",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": [],
+  "placeholder": false,
+  "cropY": 80
+ },
+ "station_square": {
+  "pack": "ch1",
+  "w": 640,
+  "h": 180,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "entrance": [
+    24,
+    160
+   ],
+   "exit": [
+    616,
+    160
+   ],
+   "spawn": [
+    80,
+    160
+   ],
+   "exit_x": 616,
+   "walk_x": [
+    8,
+    632
+   ],
+   "ground_y": 150
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/station_square/base",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": [],
+  "placeholder": false,
+  "cropY": 98
+ },
+ "naples_harbor": {
+  "pack": "ch1",
+  "w": 640,
+  "h": 180,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "entrance": [
+    24,
+    160
+   ],
+   "exit": [
+    616,
+    160
+   ],
+   "spawn": [
+    80,
+    160
+   ],
+   "exit_x": 616,
+   "walk_x": [
+    8,
+    632
+   ],
+   "ground_y": 150
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/naples_harbor/base",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": [],
+  "placeholder": false,
+  "cropY": 123
+ },
+ "p5_title": {
+  "pack": "title",
+  "w": 320,
+  "h": 180,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "entrance": [
+    24,
+    160
+   ],
+   "exit": [
+    296,
+    160
+   ],
+   "spawn": [
+    80,
+    160
+   ],
+   "exit_x": 296,
+   "walk_x": [
+    8,
+    312
+   ],
+   "ground_y": 150
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/p5_title/base",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": [],
+  "placeholder": false,
+  "cropY": 0
+ },
+ "p5_prison": {
+  "pack": "ch2",
+  "w": 320,
+  "h": 180,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "entrance": [
+    24,
+    160
+   ],
+   "exit": [
+    296,
+    160
+   ],
+   "spawn": [
+    80,
+    160
+   ],
+   "exit_x": 296,
+   "walk_x": [
+    8,
+    312
+   ],
+   "ground_y": 150,
+   "wall_y": 138,
+   "ceiling_y": 66
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/p5_prison/base",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": [],
+  "placeholder": false,
+  "cropY": 0
+ },
+ "p5_capri": {
+  "pack": "ch3",
+  "w": 320,
+  "h": 180,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "entrance": [
+    24,
+    160
+   ],
+   "exit": [
+    296,
+    160
+   ],
+   "spawn": [
+    80,
+    160
+   ],
+   "exit_x": 296,
+   "walk_x": [
+    8,
+    312
+   ],
+   "ground_y": 150
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/p5_capri/base",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": [],
+  "placeholder": false,
+  "cropY": 0
+ },
+ "p5_pompeii": {
+  "pack": "ch4",
+  "w": 320,
+  "h": 180,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "entrance": [
+    24,
+    160
+   ],
+   "exit": [
+    296,
+    160
+   ],
+   "spawn": [
+    80,
+    160
+   ],
+   "exit_x": 296,
+   "walk_x": [
+    8,
+    312
+   ],
+   "ground_y": 150
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/p5_pompeii/base",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": [],
+  "placeholder": false,
+  "cropY": 0
+ },
+ "p5_train": {
+  "pack": "ch5",
+  "w": 320,
+  "h": 180,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "entrance": [
+    24,
+    160
+   ],
+   "exit": [
+    296,
+    160
+   ],
+   "spawn": [
+    80,
+    160
+   ],
+   "exit_x": 296,
+   "walk_x": [
+    8,
+    312
+   ],
+   "ground_y": 150,
+   "wall_y": 138,
+   "ceiling_y": 66
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/p5_train/base",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": [],
+  "placeholder": false,
+  "cropY": 0
+ },
+ "p5_highway": {
+  "pack": "ch6",
+  "w": 320,
+  "h": 180,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "entrance": [
+    24,
+    160
+   ],
+   "exit": [
+    296,
+    160
+   ],
+   "spawn": [
+    80,
+    160
+   ],
+   "exit_x": 296,
+   "walk_x": [
+    8,
+    312
+   ],
+   "ground_y": 150
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/p5_highway/base",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": [],
+  "placeholder": false,
+  "cropY": 0
+ },
+ "p5_venice": {
+  "pack": "ch7",
+  "w": 320,
+  "h": 180,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "entrance": [
+    24,
+    160
+   ],
+   "exit": [
+    296,
+    160
+   ],
+   "spawn": [
+    80,
+    160
+   ],
+   "exit_x": 296,
+   "walk_x": [
+    8,
+    312
+   ],
+   "ground_y": 150
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/p5_venice/base",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": [],
+  "placeholder": false,
+  "cropY": 0
+ },
+ "p5_sardinia": {
+  "pack": "ch8",
+  "w": 320,
+  "h": 180,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "entrance": [
+    24,
+    160
+   ],
+   "exit": [
+    296,
+    160
+   ],
+   "spawn": [
+    80,
+    160
+   ],
+   "exit_x": 296,
+   "walk_x": [
+    8,
+    312
+   ],
+   "ground_y": 150
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/p5_sardinia/base",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": [],
+  "placeholder": false,
+  "cropY": 0
+ },
+ "p5_rome": {
+  "pack": "final",
+  "w": 320,
+  "h": 180,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "entrance": [
+    24,
+    160
+   ],
+   "exit": [
+    296,
+    160
+   ],
+   "spawn": [
+    80,
+    160
+   ],
+   "exit_x": 296,
+   "walk_x": [
+    8,
+    312
+   ],
+   "ground_y": 150
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/p5_rome/base",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": [],
+  "placeholder": false,
+  "cropY": 0
+ },
+ "p5_colosseum": {
+  "pack": "final",
+  "w": 320,
+  "h": 180,
+  "ground": 150,
+  "walk": [
+   142,
+   176
+  ],
+  "anchors": {
+   "entrance": [
+    24,
+    160
+   ],
+   "exit": [
+    296,
+    160
+   ],
+   "spawn": [
+    80,
+    160
+   ],
+   "exit_x": 296,
+   "walk_x": [
+    8,
+    312
+   ],
+   "ground_y": 150
+  },
+  "layers": [
+   {
+    "type": "pano",
+    "image": "bg/p5_colosseum/base",
+    "k": 1,
+    "x": 0,
+    "y": 0
+   }
+  ],
+  "fg": [],
+  "placeholder": false,
+  "cropY": 0
+ }
+}
